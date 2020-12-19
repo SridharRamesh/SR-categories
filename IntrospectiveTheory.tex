@@ -1,0 +1,78 @@
+\section{Introspective theories and GL-categories}
+TODO: Write IntrospectiveTheory.tex
+
+Let's define introspective theories, armed with our concepts of multiply internal sets and maps between them.
+
+\subsection{Motivation}
+TODO: Motivation
+
+% Non-evil definition
+\subsection{Definition}
+The main definition of an introspective theory is like so: An 
+
+There is a (morally) equivalent definition. TODO: Prove the equivalence here and discuss the slight sense in which it is non-equivalent.
+\subsection{Definition}
+The definition comes in 4 parts. That is, there are 4 pieces of data involved.
+
+\begin{enumerate}
+
+\item
+The data of an introspective theory includes, among other things, the data of an essentially algebraic theory; that is, a lex-category. 
+
+Often, in typical abuse of language, we identify the name for the introspective theory with the name for its "underlying" essentially algebraic theory/lex-category. For now, I'll call this $T$. 
+
+\item
+Our data includes also the specification of a lex-category internal to $T$. I'll call this $T_1$ for now. 
+
+\item
+Our third piece of data is a homomorphism from $T$ to $T_1$, which I usually call $S$. That is, our third piece of data is a lex-functor $S : T \to T_1$.
+
+However, since $T$ is an actual lex-category, while $T_1$ is an internal lex-category, this map $S$ isn't an ordinary lex-functor; that is, it is not made up of $(0, 0)$-functions from the data of $T$ to the data of $T_1$. Rather, $S$ is a $(0, 1)$ lex-functor; that is, a lex-functor made up of $(0, 1)$-functions.
+
+This is just the same thing as an internal lex-functor between $T$ and $T_1$ when both are thought of as internal categories living in TreeSet.
+
+\item
+Finally, Part 4, is a natural transformation, from the identity functor on $T$, to $S$. (I will usually call this natural transformation $Q$.)
+
+Taken literally, $Q : 1_T \to S$ doesn't make sense. The identity functor on $T$ has type $T \to T$. On the other hand, $S$ has type $T \to T_1$. So while these two functors have the same domain, they have different codomains. We don't normally have a notion of natural transformations between functors with different codomains.
+
+But a way to make sense of this kind of natural transformation is to think of both $T$ and $T_1$ as embedded in TreeSet, where we have the notion of maps between $T$-objects and $T_1$-objects (i.e., $(0, 1)$ maps), which is all we need to make sense of this kind of natural transformation. You just interpret the usual definition of natural transformation, keeping in mind that it makes sense to speak about maps from objects in $T$ to objects in $T_1$.
+
+Put another way, what we mean by "a natural transformation from $1_T$ to $S$" amounts to the data of an honest-to-god natural transformation from (the embedding of $T$ into TreeSet) to (the composition of $S$ with the embedding of $T_1$ into TreeSet), both of these parentheticals being of type T -> TreeSet.
+
+(More generally, whenever a category $D_2$ is multiply internal to a category $D_1$, it makes sense to speak of natural transformations from a $C \to D_1$ functor to a $C \to D_2$ functor, in just this same way.)
+
+This has been where things have gotten unbearably hairy for many before, but hopefully in the language of $(m, n)$ maps, it is clear enough now.
+
+This natural transformation $Q$ is the raison d'etre of an introspective theory. Since natural transformations correspond to homomorphisms of algebraic structures, $Q$ directly ensures that every model of our introspective theory comes with a $(0, 1)$-homomorphism into another model of that same theory, internal to itself.
+
+Everything else in the definition of an introspective theory is in some sense just there so we have the right shaped environment for $Q$ to live in. To define $Q$, we need a domain and codomain for $Q$. The domain of $Q$ is $1_T$ (corresponding to an arbitrary original model of our theory). The codomain of $Q$ is $S$, itself having domain $T$ and codomain $T_1$ internal to $T$ (thus, $S$ corresponds to a designated model of our theory internal to our arbitrary original model)
+\end{enumerate}
+
+To recap, an introspective theory is:
+\begin{enumerate}
+
+\item 
+ A (lex) theory T [this is a 0-lexcat]
+
+\item
+A (lex) theory $T_1$ internal to T [this is a 1-lexcat]
+
+\item
+A map $S : T \to T_1$ [this is a lex-functor whose data is a (0, 1)-function, instead of a usual (0, 0)-function]
+
+\item
+A map $Q : \id_T \to S$ [this is a natural transformation whose components are (1, 2)-functions, instead of usual (1, 1)-functions]
+
+\end{enumerate}
+
+
+\subsection{Introspective Theories Are Essentially Algebraic}
+As with everything I ever define, I emphasize that the definition of an introspective theory is itself essentially algebraic.
+
+And so, in particular, there is an initial introspective theory. I call this the theory of "GL-categories". We will give an explicit yet tractable axiomatization of the theory of GL-categories later. We will also construct some other introspective theories, and demonstrate nontrivial models of them, thus establishing the nontriviality of everything.
+
+But for now, let's first make sure we all understand the definition of an introspective theory.
+
+\subsection{Free Introspective Theories/GL-categories}
+TODO. GL-categories. Theorems about these (six axiom formulation of GL-categories, how to read introspective theories as GL-categories and almost vice versa)

@@ -1,0 +1,25 @@
+\section{Pedantries}
+
+\subsection{Pedantries}
+A minor formal point: In the definition of an introspective theory, in point 3, we speak about a "lex-functor".
+
+Since we are viewing everything as essentially algebraic, our theory of "categories with finite limits" can't merely postulate existence of finite limits, but indeed must postulate CHOSEN finite limits (say, via chosen terminal objects and chosen binary pullbacks).
+
+We can consider lex-functors as having to preserve chosen limits on-the-nose, or as only having to take limit diagrams to limit diagrams (not necessarily taking chosen limits to chosen limits).
+
+The former concept is considered somewhat "evil", because ideally we shouldn't care about distinctions between isomorphic objects.
+
+However, the notion of homomorphism which falls right out of the general framework of essentially algebraic theories is indeed the evil one: when lex-categories are considered as an essentially algebraic concept, the corresponding notion of homomorphism is lex-functors which preserve chosen limits-on-the-nose.
+
+Lex-functors between categories with chosen limits which merely take limit diagrams to limit diagrams are also an essentially algebraically definable concept, though.
+So we have a choice of which of these concepts to use in our formal definition of an introspective theory.
+In the past, I've made different decisions here, but on this go-round, I'm going to say the notion of lex-functor we should use is the one which fits right into the usual framework of essentially algebraic theories: whenever I say "lex-functor", I will mean for it to take chosen limits to chosen limits.
+
+This will not be a problem for any of the model constructions I am interested in, and will make everything else much easier. (edited) 
+
+The whole need to worry about this kind of choice is only because our categories come with a notion of equality between objects which is finer-grained than isomorphism. This is because our theory of categories is essentially algebraic, and thus given by a lex 1-category itself, instead of by a lex 2-category.
+
+We could rectify all this by trying to climb the dimensionality ladder, but since our categories are supposed to be capable of containing internal such categories as well, it's no use merely stepping to n-categories: an internal weak n-category (weak in the senes of not presuming any notion of equality on objects beyond the n-categorical notion of isomorphism) lives nontrivially only in an (n + 1)-category, not in an n-category. So if we really wanted to rectify this and Do No Evil, we'd have to step all the way up to infinity-categories (in the sense of (infinity, 1)-categories; i.e., morphisms at arbitrary depth, but we can take all 2- or higher morphisms to be invertible).
+This is something worth working out at some point, surely, but it would so extraneously complicate and thus obfuscate this already empirically difficult-to-explain first introduction to everything that I leave it to future work. (Presumably or hopefully or morally, everything would just port over in just the same way to that context, given any decent formalization of (infinity, 1)-categories and internal (infinity, 1)-categories; there's only one point I worry about, which I will note when we come to it.)
+
+(This is just picayune formalities and nit-picking, but these are the kind of picayune formalities and nit-picking some category theorists got hung up on in looking at my notes way back in the past, so: I note pre-emptively these formalities and disclaimers. We're going to go ahead and be Evil here, and we can figure out the non-Evil version of things later.)

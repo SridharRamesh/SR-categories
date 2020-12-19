@@ -1,0 +1,460 @@
+\section{Multiply internal structures}
+
+\subsection{What we're about to do}
+I presume for now that the reader is already familiar with the concepts of essentially algebraic theories (on any number of sorts), the functorial semantics correspondence between these and categories with finite limits (aka, lex categories), and the concept of an internal category this gives rise to (as the theory of categories is itself essentially algebraic and thus can be interpreted within a category with finite limits), and in the same vein, an internal category with finite (chosen) limits.
+
+There are two more concepts we'll need, which can be explained in many different ways. I'll spend a bit of time explaining them and the phenomena around them in lots of ways, to let them sink in. The first new concept is that of ``multiply internal'' structures. The second new concept is that of maps from ordinary structures to multiply internal structures.
+
+\subsection{Multiply Internal Structures}
+We will often use the terminology of describing an object of a lex category as a set internal to that category. Similarly, we describe a morphism of a lex category as a function internal to that category.
+
+\begin{definition}An {\bf internal set} with {\bf parent} $C$ is an object in $C$. An {\bf internal function} with {\bf parent} $C$ is a morphism in $C$.
+\end{definition}
+
+An ordinary structure is made of sets and functions between those sets (or finite limits of those sets). In the same way, we can have a structure internal to a lex category, which simply means having internal sets (i.e., objects) and internal functions (i.e., morphisms) play the role of sets and functions. In this way, we can speak of not only sets internal to a lex category but also, e.g., groups internal to a lex category, or lex categories internal to a lex category, or models of any essentially algebraic theory internal to a lex category. 
+[Note that the constants of a structure can be thought of as 0-ary functions, i.e. functions with domain $1$, and thus we can make sense of these within internal structures as well, as morphisms with domain the terminal object $1$.].
+
+The fact that the theory of lex categories is itself essentially algebraic, so that we can speak of lex categories internal to lex categories, lends itself to a productive iteration, like so:
+
+An internal set [or internal function] is a lex category and a designated object [or morphism] within that category. The theory of a lex category and a designated object within that category is an essentially algebraic theory, and thus can itself be interpreted internal to a lex category. A model of this theory within a lex category $C_0$ is an internal lex category $C_1$ in $C_0$ (thus, objects $\Ob(C_1)$ and $\Mor(C_1)$ in $C_0$, and some further suitable morphisms between limits of these, satisfying certain equations) along with a designated object [or morphism] of $C_1$ given by a morphism $: 1 \to \Ob(C_1)$ [or $: 1 \to \Mor(C_1)$] in $C_0$.
+
+We call this setup (of a set-[or function]-internal-to-$C_1$ internal to $C_0$) a set [or function] doubly internal to $C_0$. And in the same way, we can speak of doubly internal structures made of doubly internal sets and doubly internal functions between finite limits of them; e.g., doubly internal groups, doubly internal categories, and so on.
+
+And we can continue to iterate in the same way: The theories of doubly internal sets and of doubly internal functions can themselves be interpreted internal to any lex category, giving rise to the concepts of triply internal sets and triply internal functions. And so on, ad infinitum:
+
+\begin{definition}
+An {\bf $n$-internal} lex category is made of $n$-internal sets and $n$-internal functions in the place of usual sets and functions, and an {\bf $(n + 1)$-internal set} or {\bf $(n + 1)$-internal function} is a globally defined object or morphism of an $n$-internal lex category.
+
+(The base case of these recursive definitions is that a $0$-internal structure is the ordinary sense of that structure. It would also be natural to consider the category $\Set$ of ordinary sets and ordinary functions to thus be a (-1)-internal lex category.)
+
+When we are not concerned about the specific value of $n$, we say {\bf multiply internal} to encompass $n$-internal for all $n$.
+\end{definition}
+
+Put another way:
+\begin{definition}
+For any essentially algebraic theory $T$, there is an essentially algebraic theory $\rm{Internal}(T)$ of lex categories with an internal model of $T$. We refer to models of $\rm{Internal}^n(T)$ as {\bf $n$-internal} models of $T$.
+\end{definition}
+
+In this way, we can speak of $n$-internal models of sets, of functions, of elements of sets, of lex categories, and so on.
+
+Note that each $(n + 1)$-internal structure sits within an $n$-internal lex category, as the theory $\rm{Internal}^{n + 1}(T)$ extends the theory $\rm{Internal}^{n + 1}(\emptyset) = \rm{Internal}^{n}(\rm{LexCat})$, where $\emptyset$ is the initial essentially algebraic theory postulating no sorts, operations, or equations, and $\rm{LexCat} = \rm{Internal}(\emptyset)$ is the theory of lex categories.
+
+\begin{definition}
+In the preceding relationship, we refer to the $n$-internal lex category as the {\bf parent} of the $(n + 1)$-internal structure.
+\end{definition}
+
+In this way, we get a tree whose root node is the category $\Set$ of actual sets, with the children of this being all lex categories, the children of these being their internal lex categories, the children of those being doubly internal lex categories, and so on. We can also consider as part of this tree all $n$-internal sets for each $n$, as nodes under the appropriate parent lex category they are internal to.
+
+Note that throughout this tree, there are many different multiply internal sets naturally named ``$1$'', one such child for each different multiply internal lex category. It usually will cause no confusion to simply call all these by the same name ``$1$'', as context will make clear which is the appropriate object being discussed (or will be such that any different choices of interpretation lead to equivalent statements). If ever necessary for disambiguation, we write $1_C$ to mean the terminal object within the category $C$.
+
+Another important point to observe is as to the concept of $n$-internal ``elements of sets''. The theory of a set with an element is the same as the theory of a set with a function into it from $1$. Thus, when we speak of an element of an $n$-internal set, we mean the same thing as an $n$-internal function from $1$ into it. Indeed, if we fully work out what it means to discuss an $n$-internal element of some $n$-internal set $X$ internal to $C_{n - 1}$ internal to $C_{n - 2}$ internal to ... internal to lex category $C_0$, we find this data amounts to an element of what would naturally be called $\Hom_{C_0}(1, \Hom_{C_1}(1, \ldots \Hom_{C_{n - 1}}(1, X)\ldots))$. That is, it amounts to a fully globally defined element of $X$.
+
+\begin{definition}
+An {\bf element} (or {\bf global element} for emphasis) of an $(n + 1)$-internal set $X$ is an element of the $n$-internal set $\Hom_C(1_C, X)$, where $C$ is the parent of $X$.
+
+(The base case of this recursive definition is that an element of an ordinary set (i.e., 0-internal set) is an element of it in the ordinary sense.)
+\end{definition}
+
+Note that any two $(n + 1)$-internal sets $A$ and $B$ with the same parent $C$ give rise to an $n$-internal set $\Hom_C(A, B)$. In particular, from any $(n + 1)$-internal set $B$ with parent $C$, we get an $n$-internal set $\Hom_C(1_C, B)$. For convenience, let us give this process a name:
+
+\begin{definition}
+For any $(n + 1)$-internal set $B$ with parent $C$, we use $\Glob(B)$ to refer to the $n$-internal set $\Hom_C(1_C, B)$.
+\end{definition}
+
+Note that the set of elements of an $n$-internal set is the result of applying $\Glob$ to it $n$ times.
+
+It will also be useful to make this observation:
+
+\begin{observation}
+$\Glob$ acts functorially, in the sense that an $(n + 1)$-internal function between $A$ and $B$ naturally induces a corresponding $n$-internal function between $\Glob(A)$ and $\Glob(B)$, and furthermore, this process preserves composition.
+\end{observation}
+
+\subsection{Maps From Sets To Internal Sets}
+
+We've seen how to define $n$-internal functions, whose domain and codomain are both $n$-internal sets for the same $n$. (These are ordinary functions when $n = 0$ and morphisms in a lex category when $n = 1$).
+
+The next concept we will need is that of a map from a set to an internal set (or even multiply internal set). Note that the domain here is a $0$-internal set but the codomain is a $1$-tuply or $n$-internal set.
+
+The definition is straightforward:
+
+\begin{definition}
+Given a set $S$ and a multiply internal set $X$, we define a {\bf map from $S$ to $X$} to be an function from $S$ to the set of elements of $X$. (In particular, if $X$ is singly internal, this is a function from $S$ to $\Hom_C(1_C, X)$, where $C$ is the parent of $X$).
+
+When $X$ is an $n$-internal set, we refer to this sort of map as a {\bf $\mathbf{(0, n)}$ map} to indicate that its domain is a $0$-internal set but its codomain is an $n$-internal set.
+\end{definition}
+
+The definition is straightforward, but the motivation of it may raise some questions. The ultimate motivation is that this is what will make it easiest to talk about what we wish to talk about in this work. The definition is justified by its ubiquitous convenience for discussing the concepts, results, and insights to come later in this writeup.
+
+That said, a little further motivation can be given like so: For any set $S$, the theory of a set and a function into it from $S$ is essentially algebraic, and we find that models of this theory internal to $C$ are the same as objects $X$ in $C$ along with a function $S \to \Hom_C(1, X)$.
+
+The theory of $(0, n)$ maps is itself essentially algebraic, and so, as ever, we can apply $\rm{Internal}$ to it.
+
+\begin{definition}
+An internal $(0, n)$ map is a {\bf $\mathbf{(1, n + 1)}$ map}, going from $1$-internal sets to $(n + 1)$-internal sets. And by iteration of $\rm{Internal}$, we obtain the concepts of {\bf $\mathbf{(m, m + n)}$ maps} for each $m$ and $n$, going from an $m$-internal set $S$ to an $(m + n)$-internal set $X$, in each case meaning an $m$-internal function from $S$ to the $m$-internal set naturally described as $\Hom(1, \Hom(1, \ldots \Hom(1, X)\ldots))$, which has the same parent as $S$.
+
+We refer to this general notion of an $(m, m + n)$ map [which is to say, a multiply internal $(0, n)$ map] as an {\bf $\mathbf{n}$-diving map}, to indicate that its codomain is $n$ levels of internality further down than its domain.
+\end{definition}
+
+Put another way, an $n$-diving map from $m$-internal set $A$ to $(m + n)$-internal set $B$ is an $m$-internal map from $A$ to $\Glob^n(B)$.
+
+Note that an $n$-diving map is always such that its codomain's parent is a descendant of its domain's parent, and the data of the $n$-diving map in its domain's parent.
+
+Next, let us observe that these diving maps compose associatively in a natural way, and thus give us a full-on category of multiply internal sets, which we may call $\MultiplyInternalSet$.
+
+\begin{definition}
+Given an $n$-diving maps $f : A \to B$ and a $p$-diving map $g : B \to C$, where $A$ is an $m$-internal set, $B$ is an $(m + n)$-internal set, and $C$ is an $(m + n + p)$-internal set, corresponding to an $n$-internal function $F : A \to \Glob^{n}(B)$ and an $(m + n)$-internal function $G : B \to \Glob^{p}(C)$ respectively, we define their composition $g \circ f$ as the $(n + p)$-diving map from $A$ to $C$ corresponding to the $m$-internal function $\Glob^{n}(G) \circ F : A \to \Glob^{n + p}(C)$.
+\end{definition}
+
+\begin{theorem}
+The preceding notion of composition is associative, has identities, and is compatible with the existing notion of composition of multiply internal functions with the same parent.
+\end{theorem}
+\begin{proof}
+The latter two claims are thoroughly straightforward. For the associativity claim, observe that given diving maps $f : A \to B$, $g : B \to C$, and $h : C \to D$, diving $m$, $n$, and $p$ levels respectively, with corresponding non-diving multiply internal functions $F : A \to \Glob^{m}(B)$, $G : B \to \Glob^{n}(C)$, and $H : C \to \Glob^{p}(D)$, respectively, the non-diving data corresponding to the composition $h \circ (g \circ f)$ is $\Glob^{m + n}(H) \circ (\Glob^{m}(G) \circ F)$, while the non-diving data corresponding to the composition $(h \circ g) \circ f$ is $\Glob^{m}(\Glob^{n}(H) \circ G) \circ F$. These two are equivalent by the functoriality of $\Glob$ and the associativity of composition of multiply internal functions.
+\end{proof}
+
+\begin{definition}
+$\MultiplyInternalSet$ is the category whose objects are all multiply internal sets and whose morphisms are diving maps between them, composing as above.
+\end{definition}
+
+One observation which is often convenient for discussing diagrams in $\MultiplyInternalSet$ is the following:
+
+\begin{lemma}
+Let $A$ and $B$ be multiply internal lex categories, with $B$ a descendant of $A$. Let $1_A$ and $1_B$ be their terminal objects, respectively. Then there is a unique map from $1_A$ to $1_B$, and furthermore, every map from $1_A$ to a multiply internal set with parent $B$ factors uniquely through the map from $1_A$ to $1_B$.
+\end{lemma}
+
+As a result of this lemma, there is no harm in conflating all such $1$ objects with different parents within a diagram in $\MultiplyInternalSet$ into a single object with no specific label as to its parent, so long as the only role of these objects is to be the domain (rather than codomain) of maps.
+
+\begin{comment}
+
+\subsection{Scrap writing}
+
+TODO: Incorporate or get rid of this.
+
+The very simplest case is this question: Given a set $S$ and an object $X$ in some category $C$ (we will think of $X$ as a ``set internal to'' $C$), what counts as a morphism from $S$ to $X$?
+
+The trouble here is that $S$ and $X$ live in different worlds. $S$ lives in the category $\Set$, and $X$ lives in the category $C$. Ordinarily, morphisms connect two things that live in the same world.
+
+Nonetheless, for our purposes, there is a particular way of making sense of this which will be most appropriate, which will come up over and over. Namely, we'll bring $S$ and $X$ to the same world, and answer the question there: both $S$ and $X$ can naturally be interpreted as living in $C^{\op} \to \Set$, the presheaves over $C$ [$S$ as the constantly $S$ functor; $C$ as its Yoneda embedding $\Hom(-, C)$], and so we can ask what a morphism from $S$ to $X$ in that context is.
+
+This amounts to taking ``morphism from $S$ to $X$'' to mean a function from $S$ to the global elements of $X$. If $C$ happens to have a terminal object (and for our purpose, basically the only categories we will ever consider are lex-categories, so it will), this amounts to the same thing as a function from $S$ to $\Hom_C(1, X)$.
+
+This sort of thing can be pre-composed with ordinary set functions, or post-composed with morphisms in $C$, to get other morphisms from sets to internal sets.
+
+These morphisms can ALSO be post-composed with lex-functors between lex-categories [that is, given a morphism $m$ from set $S$ to object $X$ in lex-category $C$, and a lex-functor $f$ taking $X$ in $C$ to $f(X)$ in category $D$, we get automatically a corresponding morphism $m;f$ from $S$ to $f(X)$].
+
+All these kinds of compositions act associatively.
+We can thus consider commutative diagrams whose arrows are a mix of functions from sets to sets, morphisms from object to object inside a category, morphisms from a set to an object of a category, and lex-functors taking an object of one category to an object of another category. Since everything still composes associatively, we can reason about these commutative diagrams in essentially just the ordinary way as for any commutative diagrams.
+
+Now, though I've given this definition, let me motivate it a little more. Because there is something which makes this definition right for our purposes, while other similar definitions of other similar notions would be completely misguided.
+
+(For example, we might have considered just as well defining morphisms in the other direction as well, from internal set $X$ to actual set $S$, via the same sort of embeddings in $C^{\op} \to \Set$, but this would be misguided, for our purposes. Or we could've considered defining morphisms from $S$ to $X$ via the other embedding, in $C \to \Set$ instead, and again this would be misguided.) 
+
+The idea is this: In the ordinary world of sets, we already know what functions from $S$ to $T$ are. But if we hold $S$ fixed, and ask for that fixed $S$ about the notion of ``A set $T$, and a function from $S$ to $T$'' (i.e., the objects of the slice category $S/\Set$), this notion is an essentially algebraic notion: there is an essentially algebraic theory whose models are precisely these (and whose category of such models including their homomorphism structure is $S/\Set$).
+
+As an essentially algebraic theory, we can interpret this not into just $\Set$, but into any lex-category $C$ (or into any category at all, via its Yoneda embedding into its lex-category of presheaves, though this is not super-important for our purposes). And when we do so, we find that the models of this theory in a category $C$ are precisely objects $X$ in $C$ along with the notion of a morphism from $S$ to $X$ given above; that is, an object $X$ in $C$ along with a function from $S$ to $\Hom_C(1, X)$.
+
+Because to us everything is about essentially algebraic theories, the fact that there is this essentially algebraic notion of ``function out of $S$'' is what makes this the right notion.
+
+Note that this doesn't symmetrize; the notion of ``function into S'' for a fixed set $S$ is NOT an essentially algebraic notion, and therefore we do not get an appropriate way to interpret it in arbitrary categories for free.
+
+\subsection{Adjunction}
+Note also that there is an adjunction here.
+That is, whenever we have a one-directional notion of "Morphisms from As to Bs" for different kinds of objects A and B, it may be that it is representable on either side (that a morphism from A to B is as good as a morphism from f(A) to B in the universe where B lives, or as good as a morphism from A to g(B) in the universe where A lives), and if it is representable on both sides, we have an adjunction.
+
+In our case, a morphism from a set S to an "internal set" X (i.e., object X in an arbitrary lex-category C) can be represented by bringing X into the world of real sets via $\Hom_C(1, X)$ and looking at the set-functions $S -> \Hom_C(1, X)$. Or it can be represented by bringing S into the world of internal sets, by constructing the essentially algebraic theory of functions out of S, and then interpreting this theory into C.
+
+Formally, the adjunction is like so: Take IntSet (the category of internal sets) to be the category whose objects are pairs (C, X) where X is an object in lex-category C, and such that morphisms from (C, X) to (D, Y) are pairs (f, m) where f is a functor : C -> D and m is a morphism in $\Hom_D(f(X), Y)$. Composition of these morphisms proceeds in the obvious way, and is indeed associative. (If you are familiar with "fibered categories" represented via the "Grothendieck construction", this category IntSet is essentially the generic Grothendieck construction, the one whose projection to Cat is the fibered category representation of the identity functor from Cat to Cat).
+
+Then we have a functor from IntSet to Set which sends (C, X) to $\Hom_C(1, X)$. And this functor has a left adjoint from Set to IntSet which sends a set S to the free lex-category interpreting the lex-theory of "a set with a function into it from S".
+
+Does that make sense so far? (None of this adjunction stuff is strictly necessary for what's to come, but still I think it is good to pour here all my thoughts about the yoga of dealing with internal constructions.)
+
+\subsection{Internal structures}
+If that does make sense, the next step is to start talking about internal structures more general than just sets, and then to talk about multiply-internal sets and structures. 
+
+Remember above, I said "We can thus consider commutative diagrams whose arrows are a mix of functions from sets to sets, morphisms from object to object inside a category, morphisms from a set to an object of a category, and lex-functors taking an object of one category to an object of another category. Since everything still composes associatively, we can reason about these commutative diagrams in essentially just the ordinary way as for any commutative diagrams.".
+
+This will let us talk not just about morphisms from S to X for sets S and internal sets X (in some category C), but also about morphisms from S to X for structures S and internal structures X (in some category C).
+
+For example, a group is a set (let's call it G) along with some arrows (the group operations; unit from 1 to G, binary multiplication from G x G to G, inverse from G to G), satisfying some properties. It's a particular diagram (in the language of diagrams that are allowed to invoke finite limit structure; in this case, the products 1 and G x G) of sets.
+
+A homomorphism between groups is a morphism of such diagrams; that is, an arrow between domain and codomain sets, that induces a commutative square for each pair of corresponding arrows in the domain and codomain structure.
+
+In just the same way, an internal group is an internal set along with such arrows, satisfying such properties. And we have internal group homomorphisms as such arrows making such things commute, yes, yes.
+
+But also, since we have a notion of maps from sets to internal sets, we also have a notion of homomorphisms from groups to internal groups. A homomorphism from a group with underlying set G to an internal group with underlying object G' is an arrow from G to G' (in the sense we defined above; i.e., a function from G to global elements of G'; i.e., a function from G to Hom(1, G')), such that all the relevant induced squares commute.
+
+Indeed, we have the full general yoga for groups that we had for sets:
+
+Homomorphisms from groups to internal groups can be pre-composed with homomorphisms between groups, or post-composed with internal homomorphisms between internal groups in the same category, or post-composed with lex-functors taking an internal group in one category to an internal group in another category. And all these compositions act associatively.
+
+And our notion of morphisms from groups to internal groups arises from an adjunction:
+
+We have our category of actual groups Group, and we have a category of internal groups IntGroup (whose morphisms are combinations of lex-functors between categories taking one group to another, and internal group homomorphisms within one category between two of its internal groups).
+
+There is a functor from IntGroup to Group given by taking global sections.
+
+And this IntGroup to Group functor has a left adjoint: For every fixed group G, the theory of "A group, along with a homomorphism into it from G" is an essentially algebraic theory, and thus has a free model, the free category with an internal group extending G.
+
+("Again, this is probably my model theory bias, but I think it will be clearer for a lot of people if you specify that this essentially algebraic theory is nothing but the theory of groups, with the language augmented with a constant symbol for every element of G and the theory augmented with the diagram of G."
+
+Yeah, that makes sense; I'll make sure to note that. This is indeed exactly the "diagram" construction from model theory… except you model theorists toss into your diagram the negated sentences that hold (and other such things using arbitrary Boolean connectives), and we will not want to do that. So the theory is for our purposes to be augmented with all the equations in lex-language that hold in G, but it's important to note that lex-language does not include negated equalities.
+
+But, yeah, just as the "diagram of M" is the theory whose models are the same thing as structures extending M in a particular way, and the "elementary diagram of M" is the theory whose models are the same thing as structures extending M in the manner of elementary extensions, yes, we're doing a very similar thing here, so if I spell that out as you say, hopefully people will find the idea familiar enough.)
+
+Now, I specified this for "groups" here, but it works in just the same way for any kind of structure given in terms of diagrams of some shape (perhaps invoking in these diagrams also limits of some kind).
+
+For any limit-theory, we have a notion of actual models of the theory, and also of internal models of the theory in categories with the appropriate limit-structure (for our purposes, we will always be looking at finite limit theories interpreted in categories with finite limits). We have a notion of homomorphisms from actual models to internal models, just given by the appropriate commutative diagram between sets and internal sets.
+
+And this pre-composes with ordinary homomorphisms and post-composes with internal homomorphisms and limit-preserving functors, all in an associative way, all arising from an adjunction between the functor taking an actual structure to the theory of structures extending it, and the functor taking an internal structure to the actual structure given by its global elements.
+
+I become very worried that I'm babbling unclearly, so please, give me feedback soon.
+
+But the key idea in all of this is that once we have the notion of morphisms from sets to internal sets, we can do all the ordinary things we ever do with ordinary diagrams entirely of sets or ordinary diagrams entirely of internal sets, but just allowing for some of the morphisms to go from sets to internal sets.
+
+Next we'll move on to discussing how this automatically extends to considering multiply internal sets and structures.
+
+\subsection{Multiply Internal}
+We already have sets (which I'll also call 0-internal sets) and internal sets (i.e., objects in (lex-)categories, which I'll also call 1-internal sets). And we have functions between sets (which I'll call (0,0)-maps) and morphisms between internal sets ( (1, 1)-maps) and also morphisms from sets to internal sets ( (0, 1)-maps).
+
+Every concept we ever define is essentially algebraic.
+
+So, in particular, the concept of "A (lex-)category C, along with an internal set X in C" is essentially algebraic.
+
+(It's just the extension of the theory of (lex-)categories by specifying a designated object in that category)
+
+And as an essentially algebraic theory, it has models not just in Set, but interpretable into any lex-category
+
+Models of this theory in a lex-category D are called a set doubly internal to D; it consists of a category C internal to D, along with extra data picking out our doubly internal set X internal to C (edited) 
+
+Unpacking this definition, more explicitly, a doubly internal set in D is this:
+
+A category C internal to D (thus, objects Ob(C) and Mor(C) in D, along with the morphisms and equalities that equip these with category structure).
+
+A global element of Ob(C) (that is, a map from 1 to Ob(C) in D).
+
+Does that make sense so far? I feel like there's probably a cleaner way to phrase it, but it's also probably clear to you two already anyway.
+
+We can phrase this in terms of globalization of structures as well, in that for C internal to D, we can create an actual category Glob(C), and X then amounts to picking an object from that category. These are just two different ways of looking at the same thing.
+
+Put yet another way, an internal set in a category is a functor from 1 into that category. But because we have the notion of (0, 1)-maps in addition to (0,0)-maps, we have not only the notion of functors from 1 into categories, but also the notion of functors from 1 into internal categories. A functor from 1 into an internal category amounts to the same thing as  a doubly-internal set. 
+
+\subsection{Globalization}
+the globalization summary for Reid:
+
+I assume in the following you are happy with the notion of a morphism from a set to an internal set. (Basically, a morphism from set S to internal set (i.e., object-in-category) X amounts to a function from S to the global elements of X)
+
+Recall that our notion of morphisms from sets to internal sets can be seen as arising from an adjunction of functors between Set and IntSet, where IntSet is the category whose objects are pairs (C, X) [a (lex-)category C, and an object, aka internal set, X in C] and whose morphisms F : (C, X) -> (D, Y) are (lex-)functors F along with a morphism m : F(X) -> Y in D, composing in the expected way.
+
+The right adjoint in this adjunction sends (C, X) to the set of global elements of X; i.e., $\Hom_C(1, X)$. This is called "globalization" of internal sets.
+
+The left adjoint in this adjunction (though I should note it will cease to exist later in some contexts, since its construction depends on colimits) sends a set S to (C, X) where C is the lex-category representing the essentially algebraic theory of a set X along with a function from S to X; i.e., the free lex-category generated by an object X and S-many maps from 1 to X. By the model theory analogy Alex gave before, we could call this the "algebraic diagram" of S.)
+
+All of this is pretty straightforward when thinking just about sets, but in fact, for ANY lex-theory (and the same thing works even with theories with infinitary operations, but let's just always talk about lex-theories) T, we can form the category of its models $Mod(T) = Set^T$ and the category of its internal models $IntMod(T) = IntSet^T$, where $C^T$ means "the category of lex-functors from T to C, and natural transformations between them".
+
+And our adjunction will automatically lift in the same way to an adjunction between Mod(T) and IntMod(T), with a functor from IntMod(T) to Mod(T) that sends an internal model of T to an actual model of T, by taking global elements of all its underlying internal sets to turn them into actual sets. This is what I call "globalization", of structures in general.
+
+(And also there is a functor from Mod(T) to IntMod(T) which takes an actual model M of T to the theory describing extensions of M, which is to say, the free lex-category with an internal model of T extending M. Again, we can call this the "algebraic diagram" functor.] 
+Does that make sense?
+
+But again, I want to say, even though globalization is important, I think in the past I've over-emphasized it at the beginning. You don't actually need to think about "globalization" as such at all, for defining introspective theories; you can just think about the more directly relevant notion of "maps from structures to internal structures".
+
+Am I being confusing so far? I need feedback.
+
+There is another notion which I'm going to call "internalization", but I'm not very good with names, so give me feedback on this as well:
+
+To any theory T, we can straightforwardly associate another theory Internal(T) whose models are lex-categories with internal models of T.
+
+This is the process which turns the theory of a set into the theory of a lex-category with an internal set, for example.
+
+We can iterate this process, and get the theory of a lex-category with an internal "lex-category with an internal set", which was our notion of doubly-internal set.
+
+And we can keep going ad infinitum, getting triply-internal sets, etc.
+Does that all make sense?
+
+If you are comfortable with Globalization, what this amounts to is that a multiply internal set is a lex-category with an internal lex-category, within whose globalization we pick another internal lex-category, within whose globalization we pick another internal lex-category, terminating at some point with picking an internal set rather than an internal lex-category.
+
+So there's a kind of tree structure, whose nodes are strings "C;D;E;F;G" where C is a lex-category, D is a lex-category internal to C, E is a lex-category internal to D, etc.
+
+And we can arrange for this tree to have also internal sets as its leaf nodes, as children of the categories they live in.
+Does that make sense?
+
+I fear I probably need to provide some clarification on the above but await feedback.
+
+Ah, I feel like I'm wasting time explaining some things that maybe aren't important again. There's a trade-off between explaining everything I ever think about, so you have the same conceptual tools at the ready that I do, and just explaining what's necessary to get us going with understanding what an introspective theory, to start.
+
+So, the adjunction, the category IntSet with its two kinds of morphisms, globalization, algebraic diagrams. That's all not strictly necessary to understand.
+The important concepts to start are internal and multiple internal sets and structures, and maps from sets to multiply internal sets.
+
+Alex  9:55 AM
+You should probably write this down as a lemma and write down a proof. Lemma: Let T be an essentially algebraic theory. Then there is an essentially algebraic theory Internal(T) such that a model of Internal(T) is a lex category with an internal model of T. Proof: ...
+
+Incidentally, when we say "model" here, we mean "model in Set". And then (blithely ignoring "up to equivalence" issues everywhere), uniqueness of Internal(T) comes down to the fact that an essentially algebraic theory is determined by its models in Set. One way to see this is to note that the Set models of an essentially algebraic theory T form a locally finitely presentable category, and its subcategory of finitely presentable objects is $T^op$, so we can recover T from the category of Set-models of T. Do I have this right?
+
+Sridhar  10:00 AM
+Re: https://srcat.slack.com/archives/CBE0GC6S1/p1530712556000035
+Ah, ok. The proof is to take the "algebraic diagram" of the lex category T. So perhaps really the thing to write is the lemma that these "algebraic diagram"s exist. 
+
+(As reminder, I use this algebraic diagram terminology like so: the AD of a model M of theory T is the theory of models of T extending M; that is, the theory T extended by constants for each member of M, and equations for each equation of T operations satisfied by these members of M)
+
+So we have these notions of sets, internal sets, doubly internal sets, etc.
+
+And we have these notions of (0, n) maps, by which I mean, a map from a set to an n-internal set. Remember, this works by taking the models of $Internal^n$(the theory of functions out of S) as the (0, n) maps out of S, for any fixed set S.
+
+From the above it is clear that for any fixed set S and natural n, the theory of a (0, n) map out of S is essentially algebraic.
+
+But an important realization that may not be obvious, and which I want you to ponder on, is this: it is in fact the case that for any fixed natural n, the theory of an arbitrary (0, n) map [i.e., the theory of a set S and a (0, n) map out of S] is also essentially algebraic.
+
+If this is not obvious, it may be illustrative to sit down and actually just write out for yourself a presentation of the essentially algebraic theory of a (0, 1) or a (0, 2) map, for example, to see how this works. 
+
+The reason it is important that the theory of a (0, n) map is essentially algebraic is because it means we can therefore construct the theory $Internal^m$(the theory of a (0, n) map) as well.
+
+Models of this theory are a kind of map from an m-internal sets to an (m + n)-internal set; I'll call this an (m, m + n) map.
+
+(a, b) maps can be composed with (b, c) maps to get (a, c) maps, and this composition structure is associative.
+This will fully justify writing the kinds of diagrams of maps between internal sets at different levels of internality that I intend to write. I will write diagrams with maps from a-internal sets to b-internal sets, meaning by this always an (a, b) map in the sense just defined.
+
+Alex  10:40 AM
+So the theory of a (0,1) map has sorts S, Ob, Mor, the structure of a category C on (Ob, Mor), a constant symbol x of sort Ob, and a function $f: S -> \Hom_C(1_C,x)$.
+
+Sridhar  10:41 AM
+Yup
+
+Alex  10:42 AM
+That is, theory of a (0,n) map out of S always has an S-indexed family of constant symbols living in some definable set, and we replace that family with an actual function to that definable set from a sort called S.
+
+Can you justify the composition of (a,b) maps with (b,c) maps being well-defined and associative using an adjunction to de-internalize? Or do you have some other way of proving this?
+
+(This is one of those things that couldn't not be true, but you will have to write down a proof at some point)
+
+Sridhar  10:51 AM
+Re: https://srcat.slack.com/archives/CBE0GC6S1/p1531147360000383: Yup.
+In slightly more detail, the theory of a (0, n) map extends the theory of an n-internal set (the codomain), so it contains a tower of internal categories terminating in the codomain n-internal set X. And then we obtain a definable set from this X by essentially applying Hom(1, -) over and over, climbing up the tower of internal categories, [i.e., repeated Globalization], and then using an actual function from S to this definable set.
+
+Basically, our "S -> $Globalization^n$(X)" definition is immediately essentially algebraic, as Globalization is an essentially algebraic procedure.
+
+[This is as opposed to the "$Internal^n$(Algebraic Diagram of S) -> X" definition, as the Internal(...) operation (and the Algebraic Diagram operation, for that matter) is not an essentially algebraic procedure, but rather a kind of colimit construction. Hence, my previous (over-)emphasis on Globalization. (Maybe there's a way to understand Internal and Algebraic Diagram as lex constructions using categories with specified finite limits instead of categories with all finite limits, but I haven't bothered working it out)] (edited) 
+
+Alex
+That is, theory of a (0,n) map out of S always has an S-indexed family of constant symbols living in some definable set, and we replace that family with an actual function to that definable set from a sort called S.
+
+Sridhar  11:41 AM
+Re: https://srcat.slack.com/archives/CBE0GC6S1/p1531147588000194:
+Yes. In fact, there's a whole theory of abstract "tree-categories" (the first thing I came up with) that generalizes all this, but seems to only distract people to explain. I'll probably still talk about it at some point. But for now:
+
+The relevant idea for our purposes is this: An (m, m + x) map is a kind of morphism between m-tuply-internal sets living in the same (m-1)-tuply-internal category.
+
+[Perhaps I'll just say "m-whatever" from now on as shorthand for "m-tuply-internal-whatever"].
+
+In more detail, an (m, m + x) map from A to B amounts to a morphism of m-sets between A [which is itself an m-set] and $Glob^x$(B) [the m-set that results from taking the (m + x)-set B, constructing its (m + x - 1)-set of global elements Glob(B), then constructing ITS (m + x - 2)-set of global elements $Glob^2$(B), etc., iterated x times].
+In other words, an (m, m + x) map from A to B is the same data as an (m, m) map from A to $Glob^x$(B).
+
+[This representation can be convenient, because (m, m) maps are perfectly ordinary straightforward things; the theory of (m, m) maps is just $Internal^m$(the theory of functions), and thus they compose associatively, etc, automatically].
+
+But also, every morphism of m-sets gives rise to an associated morphism of (m - 1)-sets, its action on global elements. [The case of this where m = 1 is just the observation "A morphism between objects takes global elements of the domain to global elements of the codomain", and each further case is just the re-internalization of this observation.].
+
+Thus, to compose an (m, m + x) map f: A -> B [a kind of morphism of m-sets from A to $Glob^x$(B)] with an (m + x, m + x + y) map g : B -> C [a kind of morphism of (m + x)-sets, from B to $Glob^y$(C)], we apply the previous paragraph's idea x many times to the latter map to obtain g', a morphism of m-sets from $Glob^x(B)$ to $Glob^(x + y)(C)$. Now we can compose f with g' as just ordinary composition (of morphisms between m-sets), to obtain a morphism of m-sets from A to $Glob^(x + y)(C)$, which is precisely what it is to be an (m, m + x + y) morphism from A to C.
+
+This defines our notion of composition for these internalization-level-shifting maps.
+
+In other words, composing f of type (m, m + x) from A to B with g of type (m + x, m + x + y) from B to C amounts to taking the ordinary (m, m) composition of f with $GlobalAction^x(g)$. (edited) 
+
+Alex
+Can you justify the composition of (a,b) maps with (b,c) maps being well-defined and associative using an adjunction to de-internalize? Or do you have some other way of proving this?
+
+Sridhar  11:56 AM
+As for associativity, this follows immediately once we realize that everything is defined in a lex way, and thus preserved by GlobalAction. Actually, all that matters is the functoriality of GlobalAction:
+
+Given f, g, and h, as level-shifting maps which we wish to compose, with f shifting down x levels of internalization and g shifting down y levels of internalization, and writing F, G, and H for the equivalent data thought of as non-level-shifting maps, we have that (f . g) . h amounts to $F \circ GlobalAction^x(G) \circ GlobalAction^(x + y)(H)$, while f (g h) amounts to $F \circ  GlobalAction^x (G \circ GlobalAction^y(H))$.
+
+Because GlobalAction is functorial and thus distributes across the relevant composition, these two expressions are equal.
+
+Does that make sense? I'm sort of making up ad hoc haphazard notation for what I'm trying to say here, with my lowercase and uppercase distinction, but I think maybe you can follow what I mean?
+
+I think things have reached (or even passed) the point where I should make the first blogposts soon, cleaning up much of what we've discussed so far. We're almost out of the weeds of what we need to know about internal sets and level-shifting maps between them.
+
+We're very nearly ready to move on to actually discussing introspective theories. I'll just spend a little more time discussing the category of level-shifting-maps between arbitrary-level internal-sets, to try and establish familiarity and fluency with its yoga.
+
+Alex  1:13 PM
+Great, I'm with you on all of the above
+
+Sridhar  1:14 PM
+Great!
+
+So now I want to draw attention back to the tree of all sets and (lex-)categories and multiply internal sets and lexcats.
+
+We've defined a notion of morphisms between the various sets in this tree, where it makes sense to ask about the morphisms from m-set A to (m + x)-set B, just in case B is a proper descendant of A's parent.
+https://srcat.slack.com/archives/CBE0GC6S1/p1530486943000002
+
+Sridhar
+So there's a kind of tree structure, whose nodes are strings "C;D;E;F;G" where C is a lex-category, D is a lex-category internal to C, E is a lex-category internal to D, etc.
+
+And we can arrange for this tree to have also internal sets as its leaf nodes, as children of the categories they live in.
+
+Does that make sense?
+
+Sridhar  1:26 PM
+Since we have an associative notion of composition of these morphisms, we have indeed a genuine category whose objects are the (any level)-set nodes in this tree.
+I'll call this category TreeSet or something. Feel free to suggest a better name.
+
+There are various constructions and properties and whatever relating this category structure to the tree structure, but the main thing for now is just to keep in mind that a morphism from A to B can exist just in case B is a proper descendant of A's parent (which is a category node rather than a set node), its data amounting to a diagram of some sort within that parent category (meaning a globally defined diagram within that internal category, to whatever extent that category is multiply internal).
+Keep this in mind as we go along and it will help you be aware of what kinds of things make sense and how, and what doesn't make sense, in the yoga of level-shifting maps across multiply internal sets. A useful sanity check, like dimension checking in physics.
+
+Dale  1:30 PM
+I'm happy with everything that's happened so far.
+
+Sridhar  1:30 PM
+Great.
+1:31
+My task for now is to blogpost up what has been done so far. Then I think we can move on to discussing introspective theories.
+
+There's still some more to say about the yoga of internal sets, etc, but I think we can handle it bit by bit as it comes up in context, from hereon.
+
+Sridhar  1:40 PM
+I want to re-stress that every thing we've ever discussed so far has been essentially algebraic definitions, constructions, proofs, etc, with the exception of the process of freely adding all remaining finite limits to a category with merely some specified finite limits, and the use of this in A) turning a lexcat T into the lexcat Internal(T), or B) turning a lexfunctor T -> Set [i.e., a model of T] into the lexcat of its Algebraic Diagram [i.e., the theory of extensions of that model].
+
+A) and B) were used expositionally above, but ultimately these general constructions aren't necessary qua general constructions for anything we've done in defining and proving facts about (m, n) maps. All of our constructions concerning (m, n) maps are fully internalizable to any lex context. (edited) 
+
+Sridhar  7:46 PM
+Ok, a concept we're about to need is that of an internal (presheaf on a category).
+
+The theory of presheaves on a category is essentially algebraic in a completely standard way. Given an internal category C, a presheaf on it is a slice P : Whatever -> Ob(C), along with an appropriate action of Mor(C) on this.
+
+Hm, I should maybe spell this out in more detail, but for now, can I trust that you guys see how the theory of "a presheaf on a category" is understood as essentially algebraic? The key thing is to interpret Set-valued functions not directly in those terms, but rather by slice representation. (edited) 
+
+A function between sets or a morphism in a multiply internal category is an (n, n) map. We've also spoken about functions from sets to objects, and the internalized like, which are (n, n + m) maps; that is, maps that takes us deeper into internalization.
+A presheaf, though, is sort of like an (n, n - 1) map. If C is internal to V which is internal to W, then a presheaf on C is like a map from Ob(C) to Ob(V), which is from an object in V to an object in W, climbing rather than descending in level of internalization. (edited) 
+
+Sridhar  10:32 PM
+More generally, this is true of slices. A slice over object X in category V is like a map from X to Ob(V).
+
+Sridhar  1:44 PM
+For example, given a slice over X and a map f : Y -> X, we can pull the slice back along f to get a slice over Y. In the particular case where Y = 1, this turns global elements of X into objects of the category X lives in.
+
+Sridhar  1:53 PM
+Two warnings:
+The sense in which a slice over X in category V represents a map from X to Ob(V) is of course only up to isomorphism of objects in V; there's no guarantee that our chosen pullbacks will ever be able to represent hitting particular elements of Ob(V) on the nose, nor do we want to care about such things anyway. Our Ob(V)'s evilly carry equality structure beyond isomorphism, but we'll ignore this. The old evil wart.
+Also, the sense in which a slice over X in category V acts like an (n, n - 1) map from X to Ob(V) doesn't give us any general theory of (n, n - 1) maps with arbitrary codomain. Perhaps our formal theory of (m, n) maps could be generalized in some fashion, but for now, I say slices act like (n, n - 1) maps only to guide your intuition; not because they actually fit into our formal theory of (n, m) maps
+
+Sridhar  7:41 PM
+Let me point out one little observation-lemma about internal-sets-etc that it will be good to be comfortable with as we head into proofs:
+
+Sridhar  7:52 PM
+Suppose X is an object in W internal to V.
+Then, when it comes to considering what the global elements of X are, it doesn't matter whether we use $1_V$ or $1_W$, in the sense that $\Hom_{TreeSet}(1_V, X)$ amounts to the same thing as $\Hom_{TreeSet}(1_W, X)$.
+This is because both of these end up meaning $\Hom_V(1_V, \Hom_W(1_W, X))$.
+
+The above is the binary case, but in just the same way, if X is an object internal to $V_1$ internal to $V_2$ internal to $V_3$ internal to..., and we consider $\Hom(1_{V_i}, X)$ for any i, we get the same thing. $\Hom_{TreeSet}(1, X)$ is well-defined regardless of which "1" we use.
+
+For sake of a name to refer to this by, let's call this "1-conflatability". (edited) 
+
+Sridhar  9:20 PM
+Hm, returning to the discussion of slices, it will perhaps be useful to speak more about how to "compose" an (n, m) map with a slice (thought of as an (m, m - 1) map) to get an (n, m - 1) map.
+
+Sridhar  1:16 AM
+For what it's worth, generally, the most salient thing about an (n, n + m) map is the difference m, not the base level n. (After all, an (n, n + m) map is supposed to be just the same thing as a (0, m) map, but in the internal logic of some multiply internal category). Accordingly, I will also call these things "m-diving maps", emphasizing the salient quantity; it's a map which dives down a further m levels of internality, between domain and codomain.
+
+\subsection{Abstract Tree-categories}
+TODO. Optional, perhaps will not write.
+
+\end{comment}

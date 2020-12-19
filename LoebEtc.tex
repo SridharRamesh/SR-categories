@@ -1,0 +1,53 @@
+\section{\Loeb's theorem and fixed point theorems.}
+
+The categorical Loeb’s theorem [and related results: P(P(1)) |- P(1) as the categorical Loeb’s theorem, fixed points and their uniqueness, initial algebra/terminal coalgebra properties and coincidence.]
+
+Can discuss at this point the GL modal logic connection. [Can also discuss K4 component of this modal logic earlier
+
+\section{Categorical \Loeb's Theorem}
+Within an introspective theory T with internal category C, functor F : T -> C, and natural transformation $N : 1_T -> F$, let P be a presheaf on C, and suppose given an object X of C such that X is isomorphic to []P(X).
+
+[TODO: Write out everything in the following rough sketch in detail, readably to others.]
+
+\begin{theorem}
+Categorical \Loeb's Theorem
+\end{theorem}
+Let $T$ be an introspective theory, let $P$ be a presheaf in $T$ upon its internal category $T_1$, let $X$ be an object of $T_0$, and let $m$ be an isomorphism $: X \to P(\SRFunctor X)$.
+
+Construct a map $M : X \to P(1)$ like so: $\langle m, \SRTransform_X \rangle : X \to P(\SRFunctor X) \times \Hom(1, \SRFunctor X)$. The presheaf mapping action takes us from this codomain into $P(1)$.
+
+Applying $\SRFunctor$ to $M$ and then applying the presheaf mapping action to the result, we get a map $W : P(\SRFunctor P(1)) \to P(\SRFunctor X)$.
+
+Note that we also have a map $E : P(\SRFunctor X) \to P(1)$, given by taking $m^{-1} : P(\SRFunctor X) \to X$ and then applying $M : X \to P(1)$.
+
+Composing $W$ and $E$, we get a map $: P(\SRFunctor P(1)) \to P(1)$.
+
+This is tantamount to the Y combinator but this resemblance is sort of hidden in the above way of writing it. [This is where a lambda calculus for SR categories would be very useful] TODO: Demonstrate fixed point properties of this Y combinator.
+
+Let's modify this slightly. Instead of demanding this fixed point $X$ within $T_0$, we'll have it within $T_1$. That is, $X$ will be an object of $T_1$ and $m$ will be an isomorphism $: X \to \SRFunctor P(X)$.
+
+Now we construct a map $M : X \to \SRFunctor P(1)$
+
+We can then make the Y combinator Y : P(P(1)) -> P(1) = lambda g : P(P(1)) -> (W g) (W g). And we derive a fixed point property from this accordingly.
+
+This is the categorical Loeb’s theorem.
+
+To kick this all off, though, we need an X which is isomorphic to []P(X).
+
+This would be a solution to a fixed point equation, and we could get it therefore by re-invoking this very categorical Loeb’s theorem, when we take P to be be the presheaf which assigns to every object the slices above it (the sets indexed by it, so to speak). From this, it follows that any slice above Ob(C), interpreted as an Ob(C)-indexed set, has a fixed point, so to speak.
+
+In this re-invocation, we’ll still need some X isomorphic to [](Slices above X), to kick off our bootstrapping.
+
+Actually, by paying more careful attention, our categorical Loeb’s theorem doesn’t need isomorphism; it needs some sort of weaker split epimorphism type property, some quasi-isomorphism so to speak. And we can see that we can get this kind of quasi-isomorphism when X is itself Mor(C), the type of ALL slices at once. [TODO: There is something tricky here in how there seems to be some dependence on evil encoding in establishing that this has the appropriate quasi-isomorphism property; think about this more]
+
+So from that, our bootstrapping completes, and we can drop the X ~= []P(X) explicit requirement from all instances of categorical Loeb’s theorem for general presheaves P.
+
+Furthermore, for the specific case of the presheaf P = slice, we get our fixedpoints for slices above Ob, but what are their uniqueness properties?
+
+We can show that if a slice above Ob comes from a presheaf with respect to Core(C), then by invoking categorical Loeb’s theorem, [](an iso between two fixed points for this slice above Ob) yields an iso between the two fixed points, and therefore, there really is an iso between them. Thus, unique fixed points.
+
+Furthermore, if the slice above Ob comes from a covariant Set-valued functor (i.e., presheaf with respect to $C^{op}$), the same kind of Loeb’s theorem invoking reasoning will establish that it is both an initial algebra and a terminal coalgebra. [TODO: Look up initial/terminal coincidence in the literature and think more about that]
+
+[TODO: We also have to be careful about the fact that Slices above – isn’t actually a functor, only a 2-functor or functor up to isomorphism or whatever. And we want a version of our P(P(1)) |- P(1) theorem that acts on setoid-valued presheaves, rather than just set-valued presheaves, so we can impose isomorphism as the appropriate equivalence relation. All just problems because we work in 1- rather than (infinity, 1)-category theory, but good to take care of.]
+
+[TODO: There should also be something about presheaves parametrized by elements of objects of T or something?]]
