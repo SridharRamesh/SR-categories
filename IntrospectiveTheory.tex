@@ -1,5 +1,10 @@
 \section{Introspective theories and GL-categories}
+
 TODO: Write IntrospectiveTheory.tex
+
+TODO: Prove that slice categories of introspective theories are introspective theories
+
+TODO: Understand the relationship between C/S(x) and Hom(x, C)
 
 Let's define introspective theories, armed with our concepts of multiply internal sets and maps between them.
 
@@ -8,7 +13,10 @@ TODO: Motivation
 
 % Non-evil definition
 \subsection{Definition}
-The main definition of an introspective theory is like so: An 
+The main definition of an introspective theory is like so:
+\begin{definition}
+An \textbf{introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$ (that is, a contravariant functor $C$ from $T$ to the category of lex categories) which is "representable" (TODO), and a $T$-indexed lexfunctor $F$ from $T$ to $C$ (that is, a natural transformation $F$ between the slice-category functor $T/-$ and $C$, both viewed as contravariant functors from $T$ to the category of lex categories).
+\end{definition}
 
 There is a (morally) equivalent definition. TODO: Prove the equivalence here and discuss the slight sense in which it is non-equivalent.
 \subsection{Definition}

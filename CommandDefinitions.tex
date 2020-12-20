@@ -1,16 +1,32 @@
 % Commands defined by Sridhar for this document
 
-\theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
+% Remember: \newtheorem{command name}{displayed name}[counter] makes a theorem whose counter is subordinate to counter, but \newtheorem{command name}[counter]{displayed name} makes a theorem which shares the counter. Also remember that there is automatically a counter available named "section".
+
+% Playing around
+\newtheoremstyle{bluestyle}
+  {\topsep}
+  {\topsep}
+  {}
+  {}
+  {\scshape \color{blue}}
+  {}
+  {.5em}
+  {}
+
+%\theoremstyle{plain}
+\theoremstyle{bluestyle}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{observation}[theorem]{Observation}
 \newtheorem{corollary}[theorem]{Corollary}
 
-\theoremstyle{definition}
+%\theoremstyle{definition}
+\theoremstyle{bluestyle}
 \newtheorem{definition}[theorem]{Definition}
 
-\theoremstyle{remark}
+%\theoremstyle{remark}
+\theoremstyle{bluestyle}
 \newtheorem*{remark}{Remark}
 
 \newcommand{\Nat}{\mathcal{N}}

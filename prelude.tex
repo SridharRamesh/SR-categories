@@ -1,7 +1,11 @@
 % \documentclass{article}
 % The above really belongs in the prelude, but Overleaf gets a little weird about that not being in the main document.
 
-\usepackage{arxiv}
+\usepackage[
+  a4paper,
+  margin=0.7in,
+  headsep=5pt, % separation between header rule and text
+]{geometry}
 
 % Copied from Reid
 \usepackage{amssymb,amsmath, amsthm}
@@ -16,6 +20,9 @@
 \usepackage{lipsum}
 
 % Put in by me, Sridhar
+\usepackage{color}
+\usepackage{newpxtext} % Nice text font
+
 \usepackage{enumitem}
 \setenumerate{parsep=10pt} % Futz with the exact value later
 \usepackage{comment}
