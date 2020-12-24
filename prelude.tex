@@ -1,6 +1,6 @@
-% \documentclass{article}
-% The above really belongs in the prelude, but Overleaf gets a little weird about that not being in the main document.
+% The document class really belongs in the prelude, but Overleaf gets a little weird about that not being in the main document.
 
+% Just some made up sizing for now, a little wider than the default. Can tinker with this later.
 \usepackage[
   a4paper,
   margin=0.7in,
@@ -17,15 +17,12 @@
 \usepackage{amsfonts}       % blackboard math symbols
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
-\usepackage{lipsum}
 
 % Put in by me, Sridhar
-\usepackage{color}
-\usepackage{newpxtext} % Nice text font
-
-\usepackage{enumitem}
-\setenumerate{parsep=10pt} % Futz with the exact value later
-\usepackage{comment}
-
-% No more underfull vbox errors
-\raggedbottom
+\usepackage{color}          % Color definitions (used for blue)
+\usepackage{newpxtext}      % Use a nice text font
+\usepackage{enumitem}       % Bulleted lists
+  \setenumerate{parsep=10pt} % Futz with the exact value later
+\usepackage{comment}        % Multiline comments
+\raggedbottom               % No more underfull vbox errors
+\usepackage{quiver}         % Commutative diagrams
