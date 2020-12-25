@@ -35,19 +35,36 @@
 % This doesn't quite work yet. The word "Proof" is bolded?
 % \renewenvironment{proof}{\paragraph{\scshape \color{blue} Proof:}}{\hfill$\square$}
 
-\newcommand{\Nat}{\mathcal{N}}
+% Playing around
+\newtheoremstyle{redstyle}
+  {\topsep}
+  {\topsep}
+  {\color{red}}
+  {}
+  {\scshape \color{red}}
+  {}
+  {.5em}
+  {}
+  
+\theoremstyle{redstyle}
+\newtheorem*{TODOblock}{TO DO}
+
+% Warning! LaTeX will swallow the following space stupidly in all of these commands. You may have to place a backslash-space after them instead.
+\newcommand{\TODO}{{\color{red} TO DO}}
+\newcommand{\TODOinline}[1]{\TODO\ {\color{red} #1}}
+\newcommand{\Goedel}{G\"odel}
 \newcommand{\Loeb}{L\"ob}
+
+\newcommand{\Nat}{\mathcal{N}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Set}{\mathrm{Set}}
-\newcommand{\op}{\mathrm{op}}
+\newcommand{\op}[1]{#1^{\mathrm{op}}}
 \newcommand{\Ob}{\mathrm{Ob}}
 \newcommand{\Mor}{\mathrm{Mor}}
 \newcommand{\id}{\mathrm{id}}
-
+\newcommand{\Cat}{\mathrm{Cat}}
 \newcommand{\LexCat}{\mathrm{LexCat}}
 
-\newcommand{\MultiplyInternalSet}{\mathrm{MultiplyInternalSet}}
-\newcommand{\Glob}{\mathrm{Glob}}
 \newcommand{\SRFunctor}{\mathcal{F}}
 \newcommand{\SRTransform}{\mathcal{N}}
 

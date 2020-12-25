@@ -1,30 +1,27 @@
 \section{Introspective theories and GL-categories}
 
-\subsection{Terminology}
-Whenever I speak of "natural", I really mean "pseudonatural" in the sense appropriate to the dimension of the categories involved.
-
 % Non-evil definition
 \subsection{Definition}
 \begin{definition}
-A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$ (that is, a contravariant functor $C$ from $T$ to the category of lex categories), and a lexfunctor $F$ from $T/t$ to $C(t)$ natural in $t : T$, like so:
+A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, and a lexfunctor $F$ from the self-indexing of $T$ to $C$, like so:
 
 \[\begin{tikzcd}
-	{T} && {\LexCat}
+	{\op{T}} && {\LexCat}
 	\arrow["{T/-}"{name=0}, from=1-1, to=1-3, shift left=2]
 	\arrow["{C}"{name=1, swap}, from=1-1, to=1-3, shift right=2]
 	\arrow[Rightarrow, "{F}"', from=0, to=1]
 \end{tikzcd}\]
 
-If $C$ is representable (meaning each $C(t)$ can be taken as having a set of objects, set of morphisms, and set of 2-cell equalities between morphisms, in such a way as that these presheaves over $T$ are each representable; i.e., $C$ is a $T$-internal category), then we say this is an \defined{introspective theory}.
+If $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively.
 \end{definition}
 
-We write $\langle T, C, F \rangle$ to refer to a (pre-)introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$, when this would not cause confusion.
+We write $\langle T, C, F \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$, when this would not cause confusion.
 
 \begin{construction}
-If $\langle T, C, F \rangle$ is a pre-introspective theory, and any $T$-indexed lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ F \rangle$ is itself a pre-introspective theory, like so: 
+If $\langle T, C, F \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ F \rangle$ is itself a pre-introspective theory, like so: 
 
 \[\begin{tikzcd}
-	{T} && {\LexCat}
+	{\op{T}} && {\LexCat}
 	\arrow["{T/-}"{name=0}, from=1-1, to=1-3, shift left=5]
 	\arrow["{C}"{name=1, description}, from=1-1, to=1-3]
 	\arrow["{D}"{name=2, swap}, from=1-1, to=1-3, shift right=5]
@@ -32,17 +29,17 @@ If $\langle T, C, F \rangle$ is a pre-introspective theory, and any $T$-indexed 
 	\arrow[Rightarrow, "{G}"', from=1, to=2]
 \end{tikzcd}\]
 
-In the particular case where $D$ is representable (i.e., defines an internal category), this yields an introspective theory.
+Of course, this yields an introspective or locally introspective theory just in case $D$ is small or locally small, respectively.
 \end{construction}
 
 \begin{construction}
-If $\langle T, C, F \rangle$ is a (pre-)introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a (pre-)introspective theory as well.
+If $\langle T, C, F \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
 \end{construction}
 \begin{proof}
 Consider the forgetful functor $\Sigma : T/t \to T$. Composition and whiskering with this gives us the triple $\langle T/t, \Sigma C, \Sigma F \rangle$, like so:
 
 \[\begin{tikzcd}
-	{T/t} & {T} && {\LexCat}
+	{\op{\left(T/t\right)}} & {\op{T}} && {\LexCat}
 	\arrow["{T/-}"{name=0}, from=1-2, to=1-4, shift left=2]
 	\arrow["{C}"{name=1, swap}, from=1-2, to=1-4, shift right=2]
 	\arrow["{\Sigma}", from=1-1, to=1-2]
@@ -51,19 +48,29 @@ Consider the forgetful functor $\Sigma : T/t \to T$. Composition and whiskering 
 
 This is a pre-introspective theory as the top composite is the same as the slice category presheaf $(T/t)/-$ on $T/t$ (that is, slice categories within slice categories are obtained by first applying the forgetful functor into the ambient category and then taking the ordinary slice category).
 
-When we start from an introspective theory (i.e., when $C$ is a representable functor), then this is an introspective theory as well (i.e., the composite $\Sigma C$ is a representable functor). The representing objects for $\Sigma C$ will simply be those for $C$, mapped into $T/t$ via $\Sigma$'s right adjoint (i.e., pulled back along the unique morphism from $t$ to $1$).
+When $C$ is small or locally small, then so respectively is $\Sigma C$. The representing objects for $\Sigma C$ will simply be those for $C$, mapped into $T/t$ via $\Sigma$'s right adjoint (i.e., pulled back along the unique morphism from $t$ to $1$).
 \end{proof}
 
 When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean. That said, there is another natural way to equip $T/t$ as an introspective theory as well.
 
-[TODO: There is another way to equip $T/t$ as an introspective theory, in which we use as our internal category the slice category $C/t$ so to speak. Construction 1.3 is actually equivalent to doing this and then applying Construction 1.2 to the internal forgetful lexfunctor from $C/t$ to $C$. This equivalence is easier to see once we see how the natural transformation taking $t$ to $\Hom_C(1, t)$ works.]
+\begin{TODOblock}
+There is another way to equip $T/t$ as an introspective theory, in which we use as our internal category the slice category $C/t$ so to speak. Construction 1.3 is actually equivalent to doing this and then applying Construction 1.2 to the internal forgetful lexfunctor from $C/t$ to $C$. This equivalence is easier to see once we see how the natural transformation taking $t$ to $\Hom_C(1, t)$ works.
+\end{TODOblock}
 
 \begin{construction}[Obtaining S and N]
-Given a pre-introspective theory $\langle T, C, F \rangle$, we obtain immediately a lexfunctor from $T$ to $C(1)$ given by the component of $F$ at the terminal object $1$; let us call this lexfunctor $S$.
+Given a pre-introspective theory $\langle T, C, F \rangle$, we obtain immediately a lexfunctor from $T$ to $C(1)$, given by the component of $F$ at the terminal object $1$. Let us call this lexfunctor $S$.
 
-We shall also obtain, naturally in $t : T$, a map from $t$ to $\Hom_C(1, F(t))$; let us call this $N$. The specific construction of $N$ is like so: 
+We shall also obtain, naturally in $x : T$, a map from $x$ to $\Hom_C(1, F(x))$. Let us call this $N$. The specific construction of $N$ is like so: 
 
-Given any $T$-indexed functor $F$ between $T$-indexed categories $D$ and $C$, we obtain a $T$-indexed function from $\Hom_D(x, y)$ to $\Hom_C(F(x), F(y))$, natural in $x$ and $y$. If $F$ is specifically a lexfunctor, we can specialize this to a $T$-indexed function from $\Hom_D(1, y)$ to $\Hom_C(1, F(y))$ natural in $y$. By plugging in for $y$ any globally defined object or morphism from $D(1)$, TODO
+\begin{comment}
+Note that in a general pre-introspective theory, $\Hom_C(1, F(x))$ amounts to a $T$-indexed set, i.e. a presheaf over $T$, which may or may not be representable. However, if we are dealing with an introspective theory, the presheaf corresponding to $\Hom_C(1, F(x))$ will be representable (as it is given by pulling back a global object of $\Ob(C)^2$ along the domain and codomain projections from $\Mor(C)$, with each of these being representable). By the Yoneda lemma, we can in any case speak of all of this equivalently as a function from $\Hom_T(t, x)$ to $\Hom_{C(t)}(1, F(t)(x))$, natural in $t$ and $x$ both from $T$
+\end{comment}
 
-As a lexfunctor, $S$ gives us a natural transformation between $\Hom_T(1, t)$ and $\Hom_C(1, F(t))$, both viewed as functors from $T$ to Set. Here, these homsets of $T$-indexed categories ($T$ treated as self-indexed) must be understood as $T$-indexed presheaves the former understood in the sense of the self-indexing of $t$. But the presheaf over $T$ corresponding to $\Hom_T(1, t)$ for any global object $t$ of $T$ is representable, represented by $t$. [TODO: Explain this better]
+Given any $T$-indexed lexfunctor $F$ between any $T$-indexed categories $D$ and $C$, the global action of $F$ gives us a $T$-indexed map from $\Hom_{D(1)}(1, x)$ to $\Hom_{C(1)}(1, F(x))$ natural in $x : D(1)$, where the domain and codomain of this map are $T$-indexed sets; i.e., presheaves on $T$. In our particular case, we are taking $D$ as the self-indexing of $T$, and so it remains only to understand which presheaf over $T$ amounts to $\Hom_{D(1)}(1, x)$ for an object $x$ in $T = D(1)$. In general, the self-indexing is such that $\Hom_{D(1)}(y, x)$ will be the presheaf $\Hom_T(y \times -, x)$. But when $y = 1$, this is simply the presheaf represented by $x$ itself, exactly as we desired.
 \end{construction}
+
+\begin{TODOblock}
+Check that the above makes sense.
+\end{TODOblock}
+
+It turns out, we can recover $F$ from arbitrary such $N$ and $S$ too. That is, this last construction has an inverse. \TODO
