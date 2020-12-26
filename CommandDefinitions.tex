@@ -35,7 +35,6 @@
 % This doesn't quite work yet. The word "Proof" is bolded?
 % \renewenvironment{proof}{\paragraph{\scshape \color{blue} Proof:}}{\hfill$\square$}
 
-% Playing around
 \newtheoremstyle{redstyle}
   {\topsep}
   {\topsep}
@@ -65,8 +64,7 @@
 \newcommand{\Cat}{\mathrm{Cat}}
 \newcommand{\LexCat}{\mathrm{LexCat}}
 
+\renewcommand{\implies}{\supset}
+
 \newcommand{\SRFunctor}{\mathcal{F}}
 \newcommand{\SRTransform}{\mathcal{N}}
-
-\newcommand{\indexedToPresheaf}[1]{\hat{#1}}
-\newcommand{\presheafToIndexed}[1]{#1_t}
