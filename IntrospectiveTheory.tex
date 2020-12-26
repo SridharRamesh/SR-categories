@@ -15,7 +15,7 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 If $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively.
 \end{definition}
 
-We write $\langle T, C, F \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$, when this would not cause confusion.
+We write out the triple $\langle T, C, F \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$, when this would not cause confusion.
 
 \begin{construction}
 If $\langle T, C, F \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ F \rangle$ is itself a pre-introspective theory, like so: 
@@ -58,22 +58,51 @@ There is another way to equip $T/t$ as an introspective theory, in which we use 
 \end{TODOblock}
 
 \begin{construction}\label{SAndN}
-Given a pre-introspective theory $\langle T, C, F \rangle$, we obtain immediately a lexfunctor from $T$ to $C(1)$, given by the component of $F$ at the terminal object $1$ of $T$. Let us call this lexfunctor $S$.
+Given a pre-introspective theory $\langle T, C, F \rangle$, we obtain immediately a lexfunctor from $T$ to the global aspect of $C$, given by the global aspect of $F$. Let us call this lexfunctor $S$, though all it amounts to is the same thing as $F$, restricted to acting on $T/1$.
 
-We shall also obtain, naturally in $x : T$, a map from $x$ to $\Hom_C(1, F(x))$. Let us call this $N$. The specific construction of $N$ is like so:
+We shall also obtain a natural transformation from the identity functor on $T$ to the functor $x \mapsto \Hom_C(1, S(x))$ [equivalently, $\Hom_C(1, F(x))$]. Let us call this natural transformation $N$. The specific construction of $N$ is like so:
 \end{construction}
 \begin{proof}[Details]
-Given any functor $F$ between any $T$-indexed categories $D$ and $C$, we obtain a function from $\Hom_D(y, x)$ to $\Hom_C(F(y), F(x))$ natural in $x$ and $y$. For $F$ a lexfunctor, we can specialize this to a function from $\Hom_D(1, x)$ to $\Hom_C(1, F(x))$ natural in $x$. This is a $T$-indexed collection of functions, applicable to objects $x$ of $D$ defined over any object in $T$ and natural with respect to all morphisms defined over any object in $T$, but in particular this is all applicable to the globally defined objects and morphisms of $D$.
+Given any functor $F$ between any $T$-indexed categories $D$ and $C$, we obtain a function from $\Hom_D(y, x)$ to $\Hom_C(F(y), F(x))$ natural in $x$ and $y$. For $F$ a lexfunctor, we can specialize this to a function from $\Hom_D(1, x)$ to $\Hom_C(1, F(x))$ natural in $x$. This is a $T$-indexed collection of functions, applicable to objects $x$ of $D$ defined over any object in $T$ and natural with respect to all morphisms of $D$ defined over any object in $T$. But in particular, this is applicable to objects within, and natural with respect to morphisms within, the global aspect of $D$.
 
-If we now take $D$ to be the self-indexing of $T$, its globally defined objects and morphisms are $T$ itself, and for each such object $x$, we may identify $\Hom_D(1, x)$ with $x$ itself. Thus, we obtain a natural transformation from $x$ to $\Hom_C(1, F(x))$ as desired.
+If we now take $D$ to be the self-indexing of $T$, its global aspect is $T$ itself, and for each such object $x$, we may identify $\Hom_D(1, x)$ with $x$ itself, construed as a $T$-indexed set. Thus, we obtain a natural transformation from $x$ to $\Hom_C(1, F(x))$ as desired.
 \end{proof}
 
-It turns out, we can recover $F$ from arbitrary such $N$ and $S$ too. That is, \cref{SAndN} has an inverse. \TODO
+It turns out, we can recover $F$ from arbitrary such $S$ and $N$ too. That is, \cref{SAndN} has an inverse.
 
-Thus, an equivalent definition to \cref{IntrospectiveTheory} is like so:
+\begin{construction}\label{InvertSAndN}
+Given a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $S$ from $T$ to the global aspect of $C$, and a natural transformation $N$ from the identity functor on $T$ to the functor $x \mapsto \Hom_C(1, S(x))$, we can obtain a lexfunctor $F$ from the self-indexing of $T$ to $C$.
+
+Specifically, let us first define yet another $T$-indexed lexcategory. We start with the observation that $C$, as a lexcategory (even if it is a $T$-indexed one) comes with a self-indexing $C/-$ of its own. That is, we get a $T$-indexed $C$-indexed lexcategory. The aspect of this defined over $1$ in $T$ gives us a lexcategory indexed by the global aspect of $C$. Composing this with our functor $S$ from $T$ to the global aspect of $C$, we get a $T$-indexed lexcategory. It is specifically the $T$-indexed lexcategory which assigns to each object $t$ in $T$ the global aspect of $C/S(t)$, and whose action on morphisms $f$ in $T$ is given by pullback along $S(f)$ in the global aspect of $C$. For sake of a name, let us call this $C/S$.
+
+We will create our lexfunctor $F$ as a composition of lexfunctors from the self-indexing of $T$ to $C/S$ and from $C/S$ to $C$.
+
+To obtain a lexfunctor from the self-indexing of $T$ to $C/S$, consider any data in the category $T/t$ for arbitrary object $t$ in $T$. This amounts to corresponding data in $T$ (slices over $t$ and commutative triangles over $t$), to which we can apply $S$ to get slices and commutative triangles over $S(t)$ in the global aspect of $C$. As $S$ is a lexfunctor, and finite limits in slice categories can be constructed out of finite limits in the underlying category, this yields a lexfunctor from $T/t$ to $C/S$. \TODOinline{Naturality? This depends on the lexness of S too, it seems.}
+
+Next, note that if we had an element of $\Hom_C(1, S(t))$, pullback along that would give a lexfunctor from $C/S(t)$ to $C$. And indeed, this is precisely what $N$ gives us: an element of $\Hom_C(1, S(t))$ defined over $t$. Thus, we get a lexfunctor from $C/S$ to $C$. \TODOinline{Naturality?}
+
+Composing these two steps, we have our desired lexfunctor $F$ from the self-indexing of $T$ to $C$.
+\end{construction}
+
+\begin{theorem}\label{SAndNCorrespondence}
+If we apply the two constructions \cref{SAndN} and \cref{InvertSAndN} one after another in either order, we end up with the same values we started with. Thus, we have a true one-to-one correspondence.
+\end{theorem}
+\begin{proof}
+If we apply \cref{InvertSAndN} first and \cref{SAndN} subsequently, we end up with the same $S$ and $N$ we started with.
+
+For the $S$ we end up with acts on data by treating this data as slices over $1$, applying the original $S$ to it, then pulling it back along a morphism from $1$ to $\Hom_C(1, S(1)) = \Hom_C(1, 1) = 1$. This morphism from $1$ to $1$ must be the identity, and so we have done nothing here but simply apply $S$ in the end.
+
+And the $N$ we end up with acts on any object $x$ of $T$ by \TODO.
+
+Conversely, if we apply \cref{SAndN} first and \cref{InvertSAndN} subsequently, we end up with the same $F$ we started with. \TODO
+\end{proof}
+
+As a result of \cref{SAndNCorrespondence}, we can give another definition equivalent to \cref{IntrospectiveTheory}.
 
 \begin{definition}\label{IntrospectiveTheoryNS}
 A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $S$ from $T$ to the global aspect of $C$, and a map $N$ from $t$ to $\Hom_C(1, S(t))$, natural in $t$ in $T$.
 \end{definition}
 
-As before, introspective or locally introspective theories are those where $C$ is small or locally small. The value of this new definition is that there is much less data around. In particular, when we wish to turn this into a lex definition \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between pre-introspective theories by thinking about this definition.
+As before, introspective or locally introspective theories are those where $C$ is small or locally small. The value of this new definition is that there is much less data around. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between pre-introspective theories by thinking about this definition.
+
+This definition also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $N$) into an internal model of the same theory (this is the role of $S$).
