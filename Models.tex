@@ -1,16 +1,10 @@
 \section{Models}
 
-2.B: Models [general theorems on model constructions (e.g., from theories with internal initial models for themselves), and observing specific traditional instances of Goedel’s incompleteness theorem (PA, ZFC, Joyal style arithmetic universes) as models of these structures]
+Let $T$ be a theory with an internal model of itself
 
-Four kinds of examples of introspective theory:
-Any lex category trivially equipped as an introspective theory with its internal C = the terminal category 1.
-Free construction (e.g., the initial introspective theory, the theory of GL-Xes more generally)
-Sigma-1 theories (sigma-1 PA, sigma-1 ZFC, etc; really Primitive Recursive Arithmetic suffices, this is what arithmetic universes are about, but whatever)
-Theories of the initial model of some theory that has internal initial models of itself (theory of the initial topos with NNO, theory of the initial arithmetic universe; these are both examples of the fact that any arithmetic universe contains an internal initial model of any finitely specified lex theory)
+Let $T$ be any lexcategory. There is an algebraish theory of lexcategories with an initial internal model of $T$, but this theory may not specifically be lex. It is lex if $T$ is finitely axiomatizable over a finite language. In general, it may use limits of size as large as needed to express the theory $T$ (whatever size is needed for a sketch generating $T$, where a sketch is taken to be a directed graph and some equations over that graph in the language of lexcategories). Regardless, within this algebraish theory describing an initial model of $T$, there is such an initial model of $T$, which may have more structure around than simply demanded by $T$, and we are interested in extracting that structure. We do so now. \TODOinline{Word this all better}
 
-There are models of the initial introspective theory (GL-categories) of note as well:
-The full PA category, full ZFC category, etc.
-Any introspective theory itself [with suitable care about chosen limits and so on]
-The actual initial model of any theory with internal initial models of itself [this is just an instance of the last bullet point above]
+Let $T$ be any lexcategory. There is of course the identity lexfunctor from $T$ to itself, but there may be others as well.
 
-Even though many of these models make use of some kind of initiality, it's worth noting that the free introspective theory doesn't demand any initiality on C (this can be observed from the fact that any particular initiality statement, that C is an initial topos for example or whatever, will fail in one of these more explicit constructions; this can also be observed from the fact that we can apply any lexfunctor : C -> D to shift the introspective theory into using D as its internal model, for example with D = 1 trivial and terminal)
+Let $T$ be any lextheory with an internal initial model of itself; that is, with an internal category $C$, a functor $S$ from $T$ to the global aspect of $C$, and a unique natural transformation from $S$ to $Z$ for any 
+
