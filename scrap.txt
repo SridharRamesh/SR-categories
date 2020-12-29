@@ -1,19 +1,32 @@
-It's extremely clean. Listen to this, you'll like this:
+There is a 2-category where the 0-cells are lexcategories, the 1-cells are n-internalizing lexfunctors for any n, and the 2-cells are natural transformations of the appropriate sort. Hm.
 
-There are two separate lemmas for us to combine:
+T contains T' such that for any map from T to J, the corresponding
 
-Lemma 1: If T is a category with terminal object, then a map from D to C as T-indexed Xes is the same as a map S from D(1) to C(1) along with a map from D to C as T-indexed (Xes under D(1)). This is completely straightforward and short. Note that the map S will be used to treat C as an X under D(1).
+Suppose K is the initial model of T.
 
-In order to state lemma 2, some terminology: If T is a lexcategory, then for each object of t, we can construct the free lexcategory under T augmented with a global element of t. Call this T[1 -> t]. Also, for any f : s -> t in T, we can take the generic global element of t in T[1 -> t] to f applied to the generic global element of s in T[1 -> s]. This action is clearly functorial. Thus, T[1 -> -] comprises a T-indexed lexcategory under T.
+K has an internal initial model of T.
 
-Lemma 2: T[1 -> -] is T/-, as a T-indexed lexcategory under T. This is a standard observation, and also simple enough to show.
+So we have K with K' inside K.
 
-We just apply these two lemmas in order and we get our result. Let T be a lexcategory, and let C be some T-indexed lexcategory. By lemma 1, a map from the self-indexing T/- to C as T-indexed lexcategories is the same as a lexfunctor S from T to the global aspect of C, along with a map from T/- to C as T-indexed (lexcategories under T). The map S will be used to treat C as a lexcategory under T.
+Because K is initial, we have a map from K to Hom(1, K').
+Because K' is initial within K, we have a map from K' to Hom(1, K'') within K, where K'' = the image of K' under our first map.
+By initiality, the 
 
-Next we apply lemma 2. The map from T/- to C as T-indexed (lexcategories under T) is the same as choosing, in a natural way over all t in T, some t-defined value in Hom_C(1, S(t)). That is, a natural choice of maps from t to Hom_C(1, S(t)), where the latter T-indexed set need not be presumed representable. This is our natural transformation N from t to Hom_C(1, S(t)).
+K is initial, K' is initial
 
----
+Suppose M is initial in real life, and N is initial internal to M. Then M maps to Hom(1, N) [because N is a model, and therefore so is Hom(1, N)] 
 
-It wasn't fundamentally important that we were dealing with lexcategories here. Lemma 1 only required a terminal object. And for any algebraish notion extending categories-with-global-elements, there is some free construction T[1 -> -].
+Suppose theory T has an internal weakly initial T.
 
-In particular, for categories-with-finite-products and for cartesian closed categories, there is also a simple independent account of the free structure T[1 -> t], amounting to the full subcategory of T/t on just those slices which are projections from some t x s to t. So we get the same result if we replace throughout "lexcategory" and "lexfunctor" by finite-product or cartesian-closed structure, and replace T/- by this projection subcategory.
+Then the theory of a weakly initial T has an internal initial T.
+
+So I map the the internal thing, but also, by initiality, we get a natural transformation.
+
+Say a model is "self-initial" if
+
+T has C internal to it.
+
+We extend T freely to have a natural transformation to its internal C. In so doing, new objects added to T.
+
+T --> T
+ ---> Q

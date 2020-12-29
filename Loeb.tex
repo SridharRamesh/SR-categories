@@ -1,0 +1,35 @@
+\section{\Loeb's theorem}
+
+\subsection{The basics of double indexing}
+\begin{TODOblock}
+The following is all preliminary scribblings, to be written up properly and moved to the Preliminaries later.
+\end{TODOblock}
+
+Suppose $T$ is some category and $C$ is some category indexed over $T$. What does it mean to speak of a $T$-indexed $C$-indexed structure? For example, a $T$-indexed $C$-indexed set. That is, a $T$-indexed $C$-indexed presheaf $P$.
+
+What this means is that, for every object $t$ in $T$ and every $t$-defined object $c$ in $C$, we have some corresponding set of $P$ (the $t$-defined $c$-defined elements of $P$), and we also have a coherent system of pullback maps between these: Along any map $f : s \to t$ in $T$, we can pull back a $t$-defined $c$-defined element of $P$ to an $s$-defined $c$-defined element of $P$ (where the latter $c$ is implicitly the pullback along $f$ of the former $c$). And for any fixed $t$, given a $t$-defined map $g : d \to c$ in $C$, we can pull back a $t$-defined $c$-defined element of $P$ along this to a $t$-defined $d$-defined element of $P$. Both of these systems of pullbacks are functorial, and they also interact with each other \quote{commutatively} in the sense that pulling back along a map $g$ in $C$ and then pulling back along a map $f$ in $T$ is the same as pulling back along the map $f$ in $T$ and then pulling back along the map $g$ in $C$ (where, again, the latter, $g$ is implicitly the pullback along $f$ of the former $g$).
+
+This all amounts to saying that $P$ is in fact indexed over the Grothendieck construction corresponding to $C$.
+
+What about maps such doubly-indexed sets? Well, this is the same as the notion we get again by thinking of these as in fact singly-indexed over the Grothendieck construction. A natural transformation in that context.
+
+Now that we understand doubly-indexed sets and maps between them, we can also understand doubly-indexed structures in general. Including doubly-indexed strict categories, and everything about doubly-indexed categorical structures works in basically the same fashion.
+
+That all being said, we won't really need any of that just yet. All we need is the concept of doubly-indexed sets. Even maps between these aren't really going to concern us, just yet.
+
+\subsection{The basics of \Loeb}
+Let $\langle T, C, F \rangle = \langle T, C, S, N \rangle$ be a pre-introspective theory. Consider now a $T$-indexed presheaf $P$ on $C$ which is $T$-small, in the sense that for any $t$-defined object $c$ of $C$, the value of $P$ at object $c$ is given by some $t$-defined object of $T/-$. In other words, the corresponding discrete fibration to $P$ has $T$-small fibers.
+
+Presume also given some globally defined\footnote{The globally defined presumption is not a major condition, I think; if it were merely $t$-defined, then we would simply pass to the slice introspective theory over $t$. But for convenience now, we take the definition as global. \TODOinline{Make sure the passage to a slice category here could work}} object $X$ in $C$ and an isomorphism $B$ in $C$ from $X$ to $S(P(X))$. Note that $S(P(X))$ is well-defined as $P(X)$ is an object in $T$, by our $T$-smallness presumption on $P$.
+
+[Note that an $X$ in $C$ isomorphic to $S(P(X))$ is as good as a $Y$ in $T$ isomorphic to $P(S(Y))$, by $Y = P(X)$ and $X = S(Y)$; if speaking in terms of $Y$, let us call the isomorphism $B' = P(B)$ and $B = S(B')$]
+
+Suppose now given any generalized element $y$ of $Y$. Then, we can take the value $B'(y)$ within $P(S(Y))$ and pull it back via the presheaf action of $P$ along the value $N_Y(y)$ within $\Hom_C(1, S(Y))$, to get a value inside $P(1)$. Thus, discharging our assumption of $y$, we have produced a morphism in $T$ from $Y$ to $P(1)$. Call this morphism $W$.
+
+Suppose now given any generalized element $f$ of $P(S(P(1)))$.
+
+By pulling $f$ back along $S(W)$, we get an element of $P(S(Y))$. By applying $B'^{-1}$ to this, we have an element of $Y$. And applying $W$ to this, we end up with an element of $P(1)$. Thus, discharging our assumption of $f$, we have produced a morphism in $T$ from $P(S(P(1)))$ to $P(1)$.
+
+This final morphism represents \Loeb's theorem. \TODOinline{Demonstrate that it satisfies an important fixed point property!}
+
+However, this was all dependent on our assumption of the fixed point $X$ (equivalently, $Y$) in the first place. We will now show how to bootstrap away this assumption, in the context of an introspective theory.

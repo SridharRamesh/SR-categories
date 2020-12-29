@@ -52,17 +52,23 @@
 \newcommand{\TODO}{{\color{red} TO DO}}
 \newcommand{\TODOinline}[1]{\TODO\ {\color{red} #1}}
 \newcommand{\Goedel}{G\"odel}
+\newcommand{\Godel}{\Goedel}
 \newcommand{\Loeb}{L\"ob}
+\newcommand{\Lob}{\Loeb}
+
+% Using \operatorname for constants is maybe a little wrong, as it suggests a closer semantic association to the right. For now, we just use \mathrm.
+\newcommand{\const}[1]{\mathrm{#1}} % Typesetting named constants
+\newcommand{\constcat}[1]{\const{#1}} % Typesetting named constant categories
 
 \newcommand{\Nat}{\mathcal{N}}
-\newcommand{\Hom}{\mathrm{Hom}}
-\newcommand{\Set}{\mathrm{Set}}
-\newcommand{\op}[1]{#1^{\mathrm{op}}}
-\newcommand{\Ob}{\mathrm{Ob}}
-\newcommand{\Mor}{\mathrm{Mor}}
-\newcommand{\id}{\mathrm{id}}
-\newcommand{\Cat}{\mathrm{Cat}}
-\newcommand{\LexCat}{\mathrm{LexCat}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\renewcommand{\op}[1]{#1^{\mathrm{op}}} % Renew as \op is defined for \outerproduct by the `physics` package.
+\newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\Set}{\constcat{Set}}
+\newcommand{\Cat}{\constcat{Cat}}
+\newcommand{\LexCat}{\constcat{LexCat}}
+\newcommand{\id}{\const{id}}
 
 \renewcommand{\implies}{\supset}
 
