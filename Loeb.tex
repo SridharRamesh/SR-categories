@@ -22,17 +22,40 @@ Let $\langle T, C, F \rangle = \langle T, C, S, N \rangle$ be a pre-introspectiv
 
 Presume also given some globally defined\footnote{The globally defined presumption is not a major condition, I think; if it were merely $t$-defined, then we would simply pass to the slice introspective theory over $t$. But for convenience now, we take the definition as global. \TODOinline{Make sure the passage to a slice category here could work}} object $X$ in $C$ and an isomorphism $B$ in $C$ from $X$ to $S(P(X))$. Note that $S(P(X))$ is well-defined as $P(X)$ is an object in $T$, by our $T$-smallness presumption on $P$.
 
-[Note that an $X$ in $C$ isomorphic to $S(P(X))$ is as good as a $Y$ in $T$ isomorphic to $P(S(Y))$, by $Y = P(X)$ and $X = S(Y)$; if speaking in terms of $Y$, let us call the isomorphism $B' = P(B)$ and $B = S(B')$]
+[Note that an $X$ in $C$ isomorphic to $S(P(X))$ is as good as a $Y$ in $T$ isomorphic to $P(S(Y))$, by $Y = P(X)$ and $X = S(Y)$; if speaking in terms of $Y$, let us call the isomorphism $B'$, satisfying $B' = P(B)$ and $B = S(B')$]
 
 Suppose now given any generalized element $y$ of $Y$. Then, we can take the value $B'(y)$ within $P(S(Y))$ and pull it back via the presheaf action of $P$ along the value $N_Y(y)$ within $\Hom_C(1, S(Y))$, to get a value inside $P(1)$. Thus, discharging our assumption of $y$, we have produced a morphism in $T$ from $Y$ to $P(1)$. Call this morphism $W$.
 
 Suppose now given any generalized element $f$ of $P(S(P(1)))$.
 
-By pulling $f$ back along $S(W)$, we get an element of $P(S(Y))$. By applying $B'^{-1}$ to this, we have an element of $Y$. And applying $W$ to this, we end up with an element of $P(1)$. Thus, discharging our assumption of $f$, we have produced a morphism in $T$ from $P(S(P(1)))$ to $P(1)$.
+By pulling $f :P(S(P(1)))$ back along $S(W) : \Hom_C(S(Y), S(P(1)))$, we get an element of $P(S(Y))$. By applying $B'^{-1}$ to this, we have an element of $Y$. And applying $W$ to this, we end up with an element of $P(1)$. Thus, discharging our assumption of $f$, we have produced a morphism in $T$ from $P(S(P(1)))$ to $P(1)$.
 
-This final morphism represents \Loeb's theorem. \TODOinline{Demonstrate that it satisfies an important fixed point property!!}
+This final morphism represents \Loeb's theorem. For sake of a name, let's call it $R$ for now.
 
-However, this was all dependent on our assumption of the fixed point $X$ (equivalently, $Y$) in the first place. We will now show how to bootstrap away this assumption, in the context of an introspective theory. \TODOinline{This will require first paying more attention that fixed point property!}
+\subsection{The fixed point property}
+Recall that $f$ is a generalized element of $P(S(P(1)))$ and $R(f)$ is a similarly generalized element of $P(1)$. We will show that $R(f)$ is equal to pulling $f$ back along the map from $1$ to $S(P(1))$ given by applying $N_{P(1)}$ to $R(f)$.
+
+Setting $y = B'^{-1}(S(W)^* f) : Y$, recall that $R(f)$ is $W(y) : P(1)$. Which is $B'(y) = B'(B'^{-1}(S(W)^* f)) = S(W)^* f : P(S(Y))$ pulled back along $N_Y(y) : \Hom_C(1, S(Y))$. But $N_Y(y) : \Hom_C(1, S(Y))$ composed with $S(W) : \Hom_C(S(Y), S(P(1)))$ is $N_{P(1)}(W(y))$ (by the naturality of $N$). So we find that $R(f)$ is $f$ pulled back along $N_{P(1)}(W(y))$. As $W(y) = R(f)$, this completes the proof.
+
+\subsection{Continuing}
+
+However, this was all dependent on our assumption of the fixed point $X$ (equivalently, $Y$) in the first place. We will now show how to bootstrap away this assumption, in the context of an introspective theory. \TODO
+
+The gist is this: First, we observe that although we stated the above in terms of an isomorphism between $Y$ and $P(S(Y))$, the argument didn't actually make full use of an isomorphism. The argument only required one direction of cancelling out; that $P(S(Y))$ is a retract of $Y$. That is, there is $B'^{-1} : P(S(Y)) \to Y$ and $B' : Y \to P(S(Y))$ such that $B'$ following $B'^{-1}$ cancels out to the identity. The composition in the other direction did not matter.
+
+In fact, it suffices to have either $P(S(Y))$ a retract of $Y$ in $T$, OR $Y$ a retract of $P(S(Y))$ in $T$, OR $S(P(X))$ a retract of $X$ in $C$, OR $X$ a retract of $S(P(X))$ in $C$. Since we have one covariant functor $S$ from $T$ to $C$, and one contravariant functor $P$ from $C$ back to $T$, by starting with any of these four instances and repeatedly applying $S$ or $P$, we obtain instances of each of the others as well. \TODOinline{This is straightforward abstract nonsense, but explain this more clearly all the same.}
+
+But the terminal object $1$ is a retract of anything it maps into. So if $P(S(1))$ has a global element in $T$, or $S(P(1))$ has a global element in $C$, then we are set.
+
+Now suppose we wish to apply our \Loeb's theorem taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set of objects of $C/c$, with pullback as action on morphisms. Observe that $P(S(1))$ in $T$ is isomorphic to $\Ob(C)$, which has global elements (e.g., the terminal object of $C$, or $S$ applied to any object of $T$). So we can run our \Loeb's theorem on this presheaf.
+
+With one caveat! This presheaf isn't quite a presheaf, as it is valued not in sets but in setoids. Pullback isn't well-defined, it is only well-defined up to isomorphism. We must be careful about this. It turns out this will be no bother for our \Loeb's theorem proof as above. \TODOinline{Show how our \Loeb's theorem allows us to work with setoids fine in this way.}
+
+But supposing we take care of that, the fixed point property we derive then tells us that, for any slice $Q$ above $S(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $N_{\Ob(C)}(c) : \Hom_C(1, S(\Ob(C)))$.
+
+In particular, let $Q$ be the slice corresponding to some arbitrarily presheaf $Q'$ on $C$. Then this tells us there is some object $c$ of $C$ which is isomorphic to $Q'(S(c))$. This is the condition we need to run our categorical \Loeb's theorem on the presheaf $Q'$ itself.
+
+Thus, in the context of an introspective theory, we can run the categorical \Loeb's theorem on ALL presheaves, unconditionally.
 
 \begin{TODOblock}
 Discuss uniqueness of the fixed point in general, and the simultaneous initial algebra and terminal coalgebra properties for functorial fixed points (even stating what these functorial fixed points amount to requires looking specifically at $P(c) = \Ob(C/c)$, which we will be using for our bootstrapping, but which may also drive us into talking about $P$ here as category-valued (at least, groupoid-valued) rather than set-valued).
