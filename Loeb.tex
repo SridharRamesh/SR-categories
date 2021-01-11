@@ -1,21 +1,6 @@
 \section{\Loeb's theorem}
 
-\subsection{The basics of double indexing}
-\begin{TODOblock}
-The following is all preliminary scribblings, to be written up properly and moved to the Preliminaries later.
-\end{TODOblock}
-
-Suppose $T$ is some category and $C$ is some category indexed over $T$. What does it mean to speak of a $T$-indexed $C$-indexed structure? For example, a $T$-indexed $C$-indexed set. That is, a $T$-indexed $C$-indexed presheaf $P$.
-
-What this means is that, for every object $t$ in $T$ and every $t$-defined object $c$ in $C$, we have some corresponding set of $P$ (the $t$-defined $c$-defined elements of $P$), and we also have a coherent system of pullback maps between these: Along any map $f : s \to t$ in $T$, we can pull back a $t$-defined $c$-defined element of $P$ to an $s$-defined $c$-defined element of $P$ (where the latter $c$ is implicitly the pullback along $f$ of the former $c$). And for any fixed $t$, given a $t$-defined map $g : d \to c$ in $C$, we can pull back a $t$-defined $c$-defined element of $P$ along this to a $t$-defined $d$-defined element of $P$. Both of these systems of pullbacks are functorial, and they also interact with each other \quote{commutatively} in the sense that pulling back along a map $g$ in $C$ and then pulling back along a map $f$ in $T$ is the same as pulling back along the map $f$ in $T$ and then pulling back along the map $g$ in $C$ (where, again, the latter, $g$ is implicitly the pullback along $f$ of the former $g$).
-
-This all amounts to saying that $P$ is in fact indexed over the Grothendieck construction corresponding to $C$.
-
-What about maps between such doubly-indexed sets? Well, this is the same as the notion we get again by thinking of these as in fact singly-indexed over the Grothendieck construction. A natural transformation in that context.
-
-Now that we understand doubly-indexed sets and maps between them, we can also understand doubly-indexed structures in general. Including doubly-indexed strict categories, and everything about doubly-indexed categorical structures works in basically the same fashion.
-
-That all being said, we won't really need any of that just yet. All we need is the concept of doubly-indexed sets. Even maps between these aren't really going to concern us, just yet.
+\TODOinline{Warning to the reader: refresh yourself on the double indexing section from the preliminaries, if this is not familiar to you.}
 
 \subsection{The basics of \Loeb's theorem}
 Let $\langle T, C, F \rangle = \langle T, C, S, N \rangle$ be a pre-introspective theory. Consider now a $T$-indexed presheaf $P$ on $C$ which is $T$-small, in the sense that for any $t$-defined object $c$ of $C$, the value of $P$ at object $c$ is given by some $t$-defined object of $T/-$. In other words, the corresponding discrete fibration to $P$ has $T$-small fibers.
@@ -34,7 +19,7 @@ By pulling $f :P(S(P(1)))$ back along $S(W) : \Hom_C(S(Y), S(P(1)))$, we get an 
 
 This final morphism represents \Loeb's theorem. For sake of a name, let's call it $L$ for now.
 
-\subsection{The fixed point/relation point property}
+\subsection{The fixed point/related point property}
 Recall that $f$ is a generalized element of $P(S(P(1)))$ and $L(f)$ is a similarly generalized element of $P(1)$. We will show that $L(f)$ is related to pulling $f$ back along the map from $1$ to $S(P(1))$ given by applying $N_{P(1)}$ to $L(f)$.
 
 Setting $y = u(S(W)^* f) : Y$, recall that $L(f)$ is $W(y) : P(1)$. Which is $d(y) = d(u(S(W)^* f))$ pulled back along $N_Y(y) : \Hom_C(1, S(Y))$; that is, $L(f) = W(y) = N_Y(y)^* d(u(S(W)^* f))$. By the naturality of our maps $R_l$ and $R_r$, the relationship between $S(W)^*f$ and $d(u(S(W)^*f))$ pulls back to a relationship between $N_Y(y)^* S(W)^*f = (S(W) \circ N_Y(y))^* f$ and $N_Y(y)^* d(u(S(W)^*f)) = L(f)$.
@@ -72,21 +57,25 @@ In the context of an introspective theory, we shall be able to get rid of the pr
 \subsection{Bootstrapping}
 We will now show how to bootstrap away this assumption, in the context of an introspective theory:
 
-Suppose we wish to apply our \Loeb's theorem taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
+Essentially, we wish to apply \cref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
 
-With one caveat! This presheaf isn't quite a presheaf, as it is valued not in sets but in setoids. Pullback isn't well-defined, it is only well-defined up to isomorphism. We must be careful about this. But we can deal with this suitably enough.
+There is one caveat! This presheaf isn't quite a presheaf, as it is valued not in sets but in setoids. Pullback isn't well-defined, it is only well-defined up to isomorphism. We must be careful about this. But we can deal with this suitably enough.
 
-But supposing we take care of that, we shall impose upon this the relationship given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with $R_r$ and $R_l$ as the domain and codomain maps.
+But supposing we take care of that, we will naturally want to impose upon this $P$ the relationship given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with $R_r$ and $R_l$ as the domain and codomain maps.
 
-Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relationship $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism from $x$ to $y$, and an element of $P(y)$, with the pullback action of $P$ simply being composition upon its morphism component. We then impose upon this presheaf $P$ the relationship $R$ under which two elements of $P$ are related by any relationship in $R'$ between the corresponding elements-up-to-isomorphism of $P'$. (When $R'$ itself is simply the isomorphism relationship, then $R$ is also simply the appropriate isomorphism relationship). \TODOinline{Write this out in a detailed way.}
+Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism from $x$ to $y$, and an element of $P(y)$, with the pullback action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. We then impose upon this presheaf $P$ the relation $R$ under which two elements of $P$ are related by any relationship in $R'$ between the corresponding elements-up-to-isomorphism of $P'$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). \TODOinline{Write this out in a detailed way.}
 
-We will then find a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, this $Y$ will be $P(S(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. Any such slice above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $S$ gives us an injection in $C$ from $S(Y)$ to $S(\Mor(C))$ [$S$ preserves monicity as it is a lexfunctor]. Push forward (i.e., composition) and pullback along this injection will be our maps from $P(S(Y))$ to and from $P(S(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that pushing forward and then pulling back along any monic map results in a slice isomorphic to the one started with. \TODOinline{Write out details}
+We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P(S(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. Any such slice above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $S$ gives us an injection in $C$ from $S(Y)$ to $S(\Mor(C))$ [$S$ preserves monicity as it is a lexfunctor]. Push forward (i.e., composition) and pullback along this injection will be our maps from $P(S(Y))$ to and from $P(S(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that pushing forward and then pulling back along any monic map results in a slice isomorphic to the one started with. \TODOinline{Write out details}
 
 The fixed point property we derive then tells us that, for any slice $Q$ above $S(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $N_{\Ob(C)}(c) : \Hom_C(1, S(\Ob(C)))$.
 
-In particular, let $Q$ be the slice corresponding to some arbitrary presheaf $Q'$ on $C$. Then this tells us there is some object $c$ of $C$ which is isomorphic to $Q'(S(c))$. As an isomorphism is automatically a retract, this provides the precondition to run our categorical \Loeb's theorem on the presheaf $Q'$ itself (using \cref{RetractInC}).
+In particular, let $Q$ be the slice corresponding to some arbitrary presheaf $Q'$ on $C$. Then the above invocation of our \Loeb's theorem tells us there is some object $c$ of $C$ which is isomorphic to $Q'(S(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb's theorem on the presheaf $Q'$ itself (in the form of \cref{RetractInC}).
 
-Thus, in the context of an introspective theory, we can run the categorical \Loeb's theorem on ALL presheaves, unconditionally.
+Thus, in the context of an introspective theory, we can run the \Loeb's fixed point theorem on ALL presheaves, unconditionally. That is, we have proven the following:
+
+\begin{corollary}\label{LoebInIntrosp}
+If $\langle T, C, S, N \rangle$ is an introspective theory, and $P$ is any presheaf upon $C$ satisfying the $T$-smallness condition, then there is a map $L : P(S(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
+\end{corollary}
 
 \subsection{Continuing}
 
