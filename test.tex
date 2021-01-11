@@ -1,4 +1,23 @@
 \section{Test}
 Anything that appears here is just for my test LaTeX debugging.
 
-$f \operatorname{Hom}(a, b)$
+\[\begin{tikzcd}
+	&& {\bar{E}} \\
+	& {RE} && {M_QRV \times M_QRV} \\
+	{} && {RV \times RV} \\
+	{} && {} \\
+	& {} && {} \\
+	&& {}
+	\arrow["{i}", from=1-3, to=2-2]
+	\arrow["{j}", from=1-3, to=2-4]
+	\arrow["{(s, t)}"', from=2-2, to=3-3]
+	\arrow["{R_{\epsilon_V} \times R_{\epsilon_V}}", from=2-4, to=3-3]
+	\arrow["{R_g \times R_g}", from=3-3, to=4-3]
+	\arrow["{R_f}"', from=2-2, to=5-2]
+	\arrow["{(s', t')}", from=5-2, to=4-3]
+	\arrow["{R_{\epsilon_{RV'}} \times R_{\epsilon_{RV'}}}"', from=5-4, to=4-3]
+	\arrow["{M_Q R_g \times M_Q R_g}", from=2-4, to=5-4]
+	\arrow["{i'}"', from=6-3, to=5-2]
+	\arrow["{j'}"', from=6-3, to=5-4]
+	\arrow["{\bar{f}}", from=1-3, to=6-3, curve={height=200pt}, dashed]
+\end{tikzcd}\]

@@ -18,7 +18,7 @@ Now that we understand doubly-indexed sets and maps between them, we can also un
 That all being said, we won't really need any of that just yet. All we need is the concept of doubly-indexed sets. Even maps between these aren't really going to concern us, just yet.
 
 \subsection{The basics of \Loeb}
-Let $\langle T, C, F \rangle = \langle T, C, S, N \rangle$ be a pre-introspective theory. Consider now a $T$-indexed presheaf $P$ on $C$ which is $T$-small, in the sense that for any $t$-defined object $c$ of $C$, the value of $P$ at object $c$ is given by some $t$-defined object of $T/-$. In other words, the corresponding discrete fibration to $P$ has $T$-small fibers.
+Let $\langle T, C, F \rangle = \langle T, C, S, N \rangle$ be a pre-introspective theory.\TODOinline{Perhaps it suffices for T to be a category, C to be a T-indexed category with a designated (not necessarily terminal) object 1, S to be a functor from T to the global aspect of C, and N a natural transformation from t to $\Hom_C(1, S(t))$, so long as the needed things are T-small.} Consider now a $T$-indexed presheaf $P$ on $C$ which is $T$-small, in the sense that for any $t$-defined object $c$ of $C$, the value of $P$ at object $c$ is given by some $t$-defined object of $T/-$. In other words, the corresponding discrete fibration to $P$ has $T$-small fibers.
 
 Presume also given some globally defined\footnote{The globally defined presumption is not a major condition, I think; if it were merely $t$-defined, then we would simply pass to the slice introspective theory over $t$. But for convenience now, we take the definition as global. \TODOinline{Make sure the passage to a slice category here could work}} object $X$ in $C$ and an isomorphism $B$ in $C$ from $X$ to $S(P(X))$. Note that $S(P(X))$ is well-defined as $P(X)$ is an object in $T$, by our $T$-smallness presumption on $P$.
 
@@ -37,13 +37,17 @@ Recall that $f$ is a generalized element of $P(S(P(1)))$ and $R(f)$ is a similar
 
 Setting $y = B'^{-1}(S(W)^* f) : Y$, recall that $R(f)$ is $W(y) : P(1)$. Which is $B'(y) = B'(B'^{-1}(S(W)^* f)) = S(W)^* f : P(S(Y))$ pulled back along $N_Y(y) : \Hom_C(1, S(Y))$. But $N_Y(y) : \Hom_C(1, S(Y))$ composed with $S(W) : \Hom_C(S(Y), S(P(1)))$ is $N_{P(1)}(W(y))$ (by the naturality of $N$). So we find that $R(f)$ is $f$ pulled back along $N_{P(1)}(W(y))$. As $W(y) = R(f)$, this completes the proof.
 
+\begin{TODOblock}
+Note that the only place where we we use the functoriality of the presheaf action is in this last section, where we presumed that the pullback of $f$ along $S(W)$ then further pulled back along $N_Y(y)$ is the same as the pullback of $f$ along their composition. If instead we were working with some kind of 2-presheaf, where these should be thought of as isomorphic rather than equal, we then get a fixed point up to isomorphism; we get that $R(f)$ is isomorphic to pulling $f$ back along $N_{P(1)}(R(f))$. \TODOinline{We also don't seem to use the lexness of S anywhere here. Is that correct, for the theorem phrased this way?}
+\end{TODOblock}
+
 \subsection{Continuing}
 
 However, this was all dependent on our assumption of the fixed point $X$ (equivalently, $Y$) in the first place. We will now show how to bootstrap away this assumption, in the context of an introspective theory. \TODO
 
 The gist is this: First, we observe that although we stated the above in terms of an isomorphism between $Y$ and $P(S(Y))$, the argument didn't actually make full use of an isomorphism. The argument only required one direction of cancelling out; that $P(S(Y))$ is a retract of $Y$. That is, there is $B'^{-1} : P(S(Y)) \to Y$ and $B' : Y \to P(S(Y))$ such that $B'$ following $B'^{-1}$ cancels out to the identity. The composition in the other direction did not matter.
 
-In fact, it suffices to have either $P(S(Y))$ a retract of $Y$ in $T$, OR $Y$ a retract of $P(S(Y))$ in $T$, OR $S(P(X))$ a retract of $X$ in $C$, OR $X$ a retract of $S(P(X))$ in $C$. Since we have one covariant functor $S$ from $T$ to $C$, and one contravariant functor $P$ from $C$ back to $T$, by starting with any of these four instances and repeatedly applying $S$ or $P$, we obtain instances of each of the others as well. \TODOinline{This is straightforward abstract nonsense, but explain this more clearly all the same.}
+In fact, it suffices to have either $P(S(Y))$ a retract of $Y$ in $T$, OR $Y$ a retract of $P(S(Y))$ in $T$, OR $S(P(X))$ a retract of $X$ in $C$, OR $X$ a retract of $S(P(X))$ in $C$. Since we have one covariant functor $S$ from $T$ to $C$, and one contravariant functor $P$ from $C$ back to $T$, by starting with any of these four instances and repeatedly applying $S$ or $P$, we obtain instances of each of the others as well. \TODOinline{This is straightforward abstract nonsense, but explain this more clearly all the same.} \TODOinline{What if P is only a 2-functor?} \TODOinline{Wait, this whole bit is wrong; contravariance can't take us from X as retract of F(X) to the other way around. The thing to do is to note that X = Mor(C) lets P(S(X)) be a retract of X, for P the objects-of-slice-category-above functor}
 
 But the terminal object $1$ is a retract of anything it maps into. So if $P(S(1))$ has a global element in $T$, or $S(P(1))$ has a global element in $C$, then we are set.
 
@@ -60,3 +64,25 @@ Thus, in the context of an introspective theory, we can run the categorical \Loe
 \begin{TODOblock}
 Discuss uniqueness of the fixed point in general, and the simultaneous initial algebra and terminal coalgebra properties for functorial fixed points.
 \end{TODOblock}
+
+\subsection{The basics of \Loeb\ rewritten}
+Let $T$, $C$, $S$, and $N$ be as whatever. \TODO
+
+Consider now a $T$-indexed presheaf $P$ on $C$ which is $T$-small or whatever. \TODO Suppose this comes also with a relation on it, which is to say, another presheaf $R$ on $C$ and maps $R_l, R_r : R \to P$ (meaning we get components for $R_l$ and $R_r$ at every object of $C$).
+
+Presume also given some globally defined \TODOinline{Does this matter?} object $Y$ in $T$ and maps $u: P(S(Y)) \to Y$ and $d : Y \to P(S(Y))$ such that the identity on $P(S(Y))$ is related to $d \circ u$, in the sense that there is some map $\delta : P(S(Y)) \to R(S(Y))$ such that $R_{l, S(Y)} \circ \delta$ is the identity on $P(S(Y))$ while $R_{r, S(Y)} \circ \delta$ is $d \circ u$.
+
+Suppose now given any generalized element $y$ of $Y$. Then, we can take the value $d(y)$ within $P(S(Y))$ and pull it back via the presheaf action of $P$ along the value $N_Y(y)$ within $\Hom_C(1, S(Y))$, to get a value inside $P(1)$. Thus, discharging our assumption of $y$, we have produced a morphism in $T$ from $Y$ to $P(1)$. Call this morphism $W$.
+
+Suppose now given any generalized element $f$ of $P(S(P(1)))$.
+
+By pulling $f :P(S(P(1)))$ back along $S(W) : \Hom_C(S(Y), S(P(1)))$, we get an element of $P(S(Y))$. By applying $u$ to this, we have an element of $Y$. And applying $W$ to this, we end up with an element of $P(1)$. Thus, discharging our assumption of $f$, we have produced a morphism in $T$ from $P(S(P(1)))$ to $P(1)$.
+
+This final morphism represents \Loeb's theorem. For sake of a name, let's call it $L$ for now.
+
+\subsection{The fixed point/relation point property}
+Recall that $f$ is a generalized element of $P(S(P(1)))$ and $L(f)$ is a similarly generalized element of $P(1)$. We will show that $L(f)$ is related to pulling $f$ back along the map from $1$ to $S(P(1))$ given by applying $N_{P(1)}$ to $L(f)$.
+
+Setting $y = u(S(W)^* f) : Y$, recall that $L(f)$ is $W(y) : P(1)$. Which is $d(y) = d(u(S(W)^* f))$ pulled back along $N_Y(y) : \Hom_C(1, S(Y))$; that is, $L(f) = W(y) = N_Y(y)^* d(u(S(W)^* f))$. By the naturality of our maps $R_l$ and $R_r$, the relationship between $S(W)^*f$ and $d(u(S(W)^*f))$ pulls back to a relationship between $N_Y(y)^* S(W)^*f = (S(W) \circ N_Y(y))^* f$ and $N_Y(y)^* d(u(S(W)^*f)) = L(f)$.
+
+Finally, note that $N_Y(y) : \Hom_C(1, S(Y))$ composed with $S(W) : \Hom_C(S(Y), S(P(1)))$ is $N_{P(1)}(W(y))$ (by the naturality of $N$), which is to say, $N_{P(1)}(L(f))$. So $(S(W) \circ N_Y(y))^* f = N_{P(1)}(L(f))$, which completes the proof.

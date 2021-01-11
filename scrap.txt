@@ -30,3 +30,19 @@ We extend T freely to have a natural transformation to its internal C. In so doi
 
 T --> T
  ---> Q
+
+----
+
+Ex/Lex(T) maps by forgetful into
+T maps by S into
+C maps by P into
+---------------------------------
+
+P(S(Y)) is a retract according to its particular Ex/Lex relation?
+
+R(f) is related to S(w)* f pulled back along N_Y(y), which is related to f pulled back along N_P(1)(R(f)).
+---
+
+This depends on having P(S(Y)) as the retract of Y. How do we make this happen? Normally we instead have that 1 is a retract of everything with a global point. Well, suppose S(forgetful P(1)) has a global point in C (perhaps by virtue of P(1) having a global point already in T). Then 1 is a retract of S(forgetful P(1)) in C, and so P(1) is a retract of P(S(forgetful P(1))) in Ex/Lex(T). This gets the job done.
+
+1 as a retract of anything in T or C with a global point becomes via S followed by P or just P, 
