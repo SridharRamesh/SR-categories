@@ -20,13 +20,15 @@ Definitely won't get that all done in a week, but whatever.
 Then:
 7. Back to categorical Löb's theorem. Things that are needed here: Deriving P(P(1)) |- P(1) from X nearly (but not necessarily exactly) a fixed point match for P(X) [P here is some presheaf such as [](- -> A)], constructing the near-fixed point needed to bootstrap this all and get the conclusion unconditionally, demonstrating that fixed points for functions that respect isos are unique, demonstrating that our fixed points for functors are initial algebras and terminal coalgebras.
 
+First parts DONE. Must still write up the uniqueness parts.
+
 8. Writing out all the examples of models in Models.tex.
 
-9. Writing out relationship to GL modal logic (K4 is easy, and then 6 gives Löb's theorem; the fact that the logic we get doesn't go beyond GL modal logic I don't know off the top of my head a good clean way to see directly. It would be nice. We can derive it from the PA model and known relationship between the PA model and GL logic). The GLS modal logic can also be discussed, and the relationship between GL logic, GLS logic, GL categories, and introspective theories [there is also a logic GLT, with A |- []A as proper internalizable axiom |- [](A -> []A), but where unmodalized negation and implication are not around as operators; this should correspond to introspective theories].
+9. Writing out relationship to GL modal logic (K4 is easy, and then 6 gives Löb's theorem; the fact that the logic we get doesn't go beyond GL modal logic I don't know off the top of my head a good clean way to see directly. It would be nice. We can derive it from the PA model and known relationship between the PA model and GL logic). The GLS modal logic can also be discussed, and the relationship between GL logic, GLS logic, GL categories, and introspective theories [there is also a logic GLT, with A |- []A as proper internalizable axiom |- [](A -> []A), but where unmodalized negation and implication are not around as operators; this should correspond to introspective theories]. It's worth noting that we have []~A even when we don't have 0, by virtue of the non-representable total limit presheaf.
 
 ...
 
-100. Write out naive set theory thing.
+100. Write out naive set theory thing. [And also naive untyped lambda calculus]. For naive set theory, it may be useful to consider notions like A isomorphic to []P(A x A) rather than A isomorphic to []P(A) or such things, just because ordered pairs are a pain in this world.
 ----
 Speculative:
 
@@ -37,6 +39,8 @@ Speculatively, we should be able to make an introspective theory or GL-category 
 Perhaps we can turn any semilattice model of GL modal logic into a corresponding GL-category (one where this semilattice appears as the subobjects of 1 or as the preorder reflection of the whole category), and similarly for GLT and introspective theories? That'd be great. Instead of just focusing on the subobjects of 1, we should also automatically get some corresponding fact for the full space by then using reg/lex completion or ex/lex completion. It will be much easier to at least show that any semilattice model of GL embeds into some introspective theory's subobjects, which suffices to show that GL is the appropriate modal logic for introspective theories.
 
 The right result of the above sort should be that given any GLS lattice T' and GL lattice C', with a meet and [] preserving homomorphism from the former to the latter, we can create a corresponding <T, C, ...> introspective theory.
+
+Actually, it may be easy to do something of the above sort for well-founded orders directly, and then appeal to the known relationship between GL and well-founded orders. To think about well-founded orders, it's something like working within the corresponding presheaf topos, but not quite. Let's think about the linear orders case first, then build on top of that.
 
 In T-indexed world, it's like there are large sets (actual sets, arbitrary presheaves), and small sets (objects of T, representable presheaves). All arguments are just like that. An enriched category is like a large but locally small category, an internal category is like a small category. Many of our arguments do not depend on the smallness of C, just its local smallness.
 

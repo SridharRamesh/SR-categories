@@ -1,0 +1,11 @@
+Just as we can extend a GL category C forward along a lexfunctor from C to D, we can also sometimes extend it backwards along a lexfunctor from D to C; specifically, when the now D-indexed category C1 is furthermore D-small.
+
+In particular, we can take D to be something like the maps X -> []X and squares between these in C, and then the resulting GL-category D should be furthermore an introspective theory.
+
+Something like the maximum introspective theory within C. Does this make introspective theories something like a reflective subcategory of the GL-categories? But beware, the same X may have multiple X -> []X maps available.
+
+This last thing is something like a Freyd cover argument.
+
+---
+
+To prove that the initial arithmetic universe is an introspective theory, we can use a Freyd cover argument that fails for the initial topos, because the Freyd cover of an AU's two projections are both AU morphisms, but only one of the two projections and not the other is a (logical) topos morphism. To see that both projections are AU morphisms, follow through the details that the Freyd cover is an AU in the first place; the constructions of finite limits and colimits and list objects.

@@ -1,0 +1,1 @@
+Note that, even in C that lack an initial object, we can still talk about negation and thus Goedel's second incompleteness theorem by virtue of the non-representable total limit presheaf.

@@ -1,0 +1,11 @@
+There has unfortunately been a lot of related work done in the years since I stopped thinking about this. :(
+
+We always knew to cite Maietti's work on arithmetic universes. There is now also "Gödel incompleteness through Arithmetic Universes after A. Joyal" (2020) by Joost van Dijk, Alexander Gietelink Oldenziel.
+
+There's also some stuff on coalgebra/algebra coincidence we might want to cite, from Adamek, Milius, and Moss.
+
+Maybe cite "Godel-Rosser's Incompleteness Theorems for Non-Recursively Enumerable Theories by Salehi" and Saraji? I haven't bothered to read this and don't particularly intend to.
+
+Cite Lawvere and Yanofsky on diagonalization in cartesian closed categories.
+
+There's "Reasoning in Arithmetic Universes" by Alan Morrison, which talks about how arithmetic universes have internal free models of finite sketches.

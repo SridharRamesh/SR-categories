@@ -14,3 +14,7 @@ Any introspective theory itself [with suitable care about chosen limits and so o
 The actual initial model of any theory with internal initial models of itself [this is just an instance of the last bullet point above]
 
 Even though many of these models make use of some kind of initiality, it's worth noting that the free introspective theory doesn't demand any initiality on C (this can be observed from the fact that any particular initiality statement, that C is an initial topos for example or whatever, will fail in one of these more explicit constructions; this can also be observed from the fact that we can apply any lexfunctor : C -> D to shift the introspective theory into using D as its internal model, for example with D = 1 trivial and terminal)
+
+----
+
+Note that although we get Loeb's theorem and G2IT from that, we do not get Rosser's strengthening of G1IT. That is, there are 2-valued GL-categories; most simply, the GL-category whose underlying category is the 2-element Boolean algebra and whose internal GL-category is trivial (i.e., the terminal object 1). This is in the same way that there are models of GL modal logic which are 2-valued.
