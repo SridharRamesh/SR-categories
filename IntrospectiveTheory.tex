@@ -117,3 +117,8 @@ There is another way to equip $T/t$ as an introspective theory, in which we use 
 \begin{TODOblock}
 Make the useful observation that, as the theory of introspective theories is essentially lex, we can take products of introspective theories in the straightforward way.
 \end{TODOblock}
+
+\subsection{Homomorphisms}
+The theory of introspective theories is essentially lex (\quote{essentially} because of complications about how categories do not actually have sets of objects, etc \TODO), so in the usual way, we get notions of homomorphisms between introspective theories, and free constructions of introspective theories, and so on. Let us observe what the notion of homomorphisms is for now. We will return to the matter of free introspective theories in the later chapter on \quote{GL-categories} \TODO.
+
+Given a pre-introspective theory $\langle T_1, C_1, F_1 \rangle$ and a pre-introspective theory $\langle T_2, C_2, F_2 \rangle$, we will say a pre-introspective theory homomorphism between them is a lexfunctor $H_T : T_1 \to T_2$ (note that this automatically gives us a way to view any $T_2$-indexed category as $T_1$-indexed, and also gives us a $T_1$-indexed lexfunctor between $T_1$'s self-indexing and $T_2$'s self-indexing reconstrued as a $T_1$-indexing via $H_T$), a $T_1$-indexed lexfunctor $H_C$ between $C_1$ and $C_2$ (the latter construed as $T_1$-indexed via $H_T$), and a $T$-indexed natural isomorphism $H_F$ between $H_C \circ F_1$ and $F_2 \circ H_T$ in the appropriate sense. \TODOinline{For introspective theories, some care needs to be paid to the representing objects as well. Hm. Let's start with pre-introspective theories and go from there.} \TODO
