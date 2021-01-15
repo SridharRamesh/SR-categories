@@ -9,3 +9,5 @@ Maybe cite "Godel-Rosser's Incompleteness Theorems for Non-Recursively Enumerabl
 Cite Lawvere and Yanofsky on diagonalization in cartesian closed categories.
 
 There's "Reasoning in Arithmetic Universes" by Alan Morrison, which talks about how arithmetic universes have internal free models of finite sketches.
+
+See "Topos Semantics for Higher-Order Modal Logic" by Awodey et al.
