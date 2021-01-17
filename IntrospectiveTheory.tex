@@ -3,31 +3,31 @@
 % Non-evil definition
 \subsection{Definition}
 \begin{definition} \label{DefnPreIntrospIndexed}
-A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, and a lexfunctor $F$ from the self-indexing of $T$ to $C$, like so:
+A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, and a lexfunctor $\introF$ from the self-indexing of $T$ to $C$, like so:
 
 \[\begin{tikzcd}
 	{\op{T}} && {\LexCat}
 	\arrow["{T/-}"{name=0}, from=1-1, to=1-3, shift left=2]
 	\arrow["{C}"{name=1, swap}, from=1-1, to=1-3, shift right=2]
-	\arrow[Rightarrow, "{F}"', from=0, to=1]
+	\arrow[Rightarrow, "{\introF}"', from=0, to=1]
 \end{tikzcd}\]
 \end{definition}
 
-We write out the triple $\langle T, C, F \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$ or of the pair $\langle T, C \rangle$, when this would not cause confusion.
+We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$ or of the pair $\langle T, C \rangle$, when this would not cause confusion. We will frequently use the same name $\introF$ as though it applies to all introspective theories simultaneously, in the same way that notation like $+$ or $\times$ is overloaded as applying over all rings simultaneously.
 
 We shall now make an observation about an alternative but equivalent way to specify this data.
 
 \begin{theorem}\label{SNCorrespondence}
-Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$ is equivalent to specifying a (non-indexed) lexfunctor $S$ from $T$ to the global aspect of $C$, as well as specifying a natural transformation from $t$ in $T$ to $\Hom_C(1, S(t))$.
+Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$ is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, as well as specifying a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 \end{theorem}
 
 As preparation for the proof of \cref{SNCorrespondence}, we will need two lemmas.
 
 \begin{lemma}\label{Lemma1}
-If T is a category with terminal object, then a map from D to C as T-indexed Xes is the same as a map S from D(1) to C(1) along with a map from D to C as T-indexed (Xes under\footnote{In the sense of co-slices.} D(1)).
+If $T$ is a category with terminal object, then a map from $D$ to $C$ as $T$-indexed Xes is the same as a map $\introS$ from $D(1)$ to $C(1)$ along with a map from $D$ to $C$ as $T$-indexed (Xes under\footnote{In the sense of co-slices.} $D(1)$).
 \end{lemma}
 \begin{proof}
-This is completely straightforward and short. Note that the map S will be used to treat C as an X under D(1). \TODO
+This is completely straightforward and short. Note that the map $\introS$ will be used to treat $C$ as an X under $D(1)$. \TODO
 \end{proof}
 
 In order to state the next lemma, some terminology: If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory under $T$ augmented with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory under $T$. \TODOinline{Move this and \cref{Lemma2} itself to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with.}
@@ -42,9 +42,9 @@ This is a standard observation, and also simple enough to show. \TODO
 Now, we shall prove \cref{SNCorrespondence}.
 
 \begin{proof}
-Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \cref{Lemma1}, a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $S$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$). The map $S$ will be used to treat $C$ as a lexcategory under $T$.
+Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \cref{Lemma1}, a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$). The map $\introS$ will be used to treat $C$ as a lexcategory under $T$.
 
-Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$) is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, S(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, S(t))$.
+Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$) is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
 \end{proof}
 
 \begin{remark}
@@ -54,10 +54,10 @@ It wasn't fundamentally important that we were dealing with lexcategories here. 
 As a result of \cref{SNCorrespondence}, we can give another definition essentially equivalent to \cref{DefnPreIntrospIndexed}.
 
 \begin{definition}\label{DefnPreIntrospSN}
-A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $S$ from $T$ to the global aspect of $C$, and a map $N$ from $t$ to $\Hom_C(1, S(t))$, natural in $t$ in $T$.
+A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a map $\introN$ from $t$ to $\Hom_C(1, S(t))$, natural in $t$ in $T$.
 \end{definition}
 
-As before, we may write out $\langle T, C, S, N \rangle$ to be fully explicit, but in typical abuse of language, may refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$.
+As before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, may refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all introspective theories (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
 
 \begin{TODOblock}
 Some good notational/terminological convention for how to sometimes refer to pre-introspective theories using the structure of the one definition, sometimes refer to them using the structure of the other definition, and sometimes introduce them with the structure of one definition but then refer to their structure as in the other sense.
@@ -71,18 +71,28 @@ If $\langle T, C \rangle$ is a pre-introspective theory and $C$ is small or loca
 
 While it is sometimes easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will usually be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The value of this new definition is that there is much less data around. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
-\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $N$) into an internal model of the same theory (this is the role of $S$).
+\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of the same theory (this is the role of $\introS$).
+
+Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
+
+\begin{definition}
+By an \defined{inner-strict introspective theory}, we mean a pre-introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as a small indexed strict lexcategory.
+\end{definition}
+
+Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available.
+
+We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
 
 \subsection{Some useful constructions}
 \begin{construction}\label{IntrospInternalMap}
-If $\langle T, C, F \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ F \rangle$ is itself a pre-introspective theory, like so: 
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
 
 \[\begin{tikzcd}
 	{\op{T}} && {\LexCat}
 	\arrow["{T/-}"{name=0}, from=1-1, to=1-3, shift left=5]
 	\arrow["{C}"{name=1, description}, from=1-1, to=1-3]
 	\arrow["{D}"{name=2, swap}, from=1-1, to=1-3, shift right=5]
-	\arrow[Rightarrow, "{F}"', from=0, to=1]
+	\arrow[Rightarrow, "{\introF}"', from=0, to=1]
 	\arrow[Rightarrow, "{G}"', from=1, to=2]
 \end{tikzcd}\]
 
@@ -90,17 +100,17 @@ Of course, this yields an introspective or locally introspective theory just in 
 \end{construction}
 
 \begin{construction}\label{IntrospSlice}
-If $\langle T, C, F \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
 \end{construction}
 \begin{proof}[Details]
-Consider the forgetful functor $\Sigma : T/t \to T$. Composition and whiskering with this gives us the triple $\langle T/t, \Sigma C, \Sigma F \rangle$, like so:
+Consider the forgetful functor $\Sigma : T/t \to T$. Composition and whiskering with this gives us the triple $\langle T/t, \Sigma C, \Sigma \introF \rangle$, like so:
 
 \[\begin{tikzcd}
 	{\op{\left(T/t\right)}} & {\op{T}} && {\LexCat}
 	\arrow["{T/-}"{name=0}, from=1-2, to=1-4, shift left=2]
 	\arrow["{C}"{name=1, swap}, from=1-2, to=1-4, shift right=2]
 	\arrow["{\Sigma}", from=1-1, to=1-2]
-	\arrow[Rightarrow, "{F}"', from=0, to=1]
+	\arrow[Rightarrow, "{\introF}"', from=0, to=1]
 \end{tikzcd}\]
 
 This is a pre-introspective theory as the top composite is the same as the self-indexing $(T/t)/-$ of $T/t$ (that is, slice categories within slice categories are obtained by first applying the forgetful functor into the ambient category and then taking the ordinary slice category).
