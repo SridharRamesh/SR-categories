@@ -1,1 +1,125 @@
 \section{GL-categories}
+
+In this chapter, we will develop the free introspective theory, and relate it to introspective theories in general. \TODOinline{Write and word this introductory section properly.}
+
+Alas, there will be some finicky preliminary definition laying down in this chapter, just for writing down obvious definitions, the sort one gets automatically by the general machinery of lex theories or pseudo-lex theories (theories given by the appropriate 2-categorical analogue of a lexcategory, like the theory of categories itself, as opposed to strict categories).
+
+Specifically, the theory of (pre- or locally- or simpliciter) introspective theories is itself an essentially lex theory, and so we get automatically notions of homomorphisms, natural equivalences between such homomorphisms, and compositions of such homomorphisms between such structures.
+
+While we're paying attention to the distinction between ordinary and strict categorical structure, we'll also want to set down quite clearly the notions of strict lexcategory (one with chosen limits), strict lexfunctor (one preserving chosen limits on the nose), etc.
+
+All of this is perfectly straightforward and mechanical, but we write out the details of the definitions all the same.
+
+We will also create a strictly lex analogue of our introspective theory concepts, and automatically get notions of homomorphisms for this as well. (This is perhaps not entirely so straightforward and mechanical, as we need to make some correct choices here to make our final result in this chapter work, but it's still pretty boring.)
+
+We also automatically get initial structures of all these sorts.
+
+The non-mechanical, interesting portions of this chapter will be giving a more explicit description of the initial introspective theory and initial locally introspective theory, and also showing that any strict introspective theory can itself be equipped in a natural way as a model of the initial introspective theory.
+
+\subsection{Preliminaries}
+Keep in mind throughout the following that the initial lexcategory is the same as the terminal category, 1. This is initial in the sense that there is a unique (up to natural isomorphism) lexfunctor from it to any other lexcategory.
+
+\subsection{Introspective Theory Homomorphisms}
+The theory of introspective theories is essentially lex (\quote{essentially} because of complications about how categories do not actually have sets of objects, etc \TODO), so in the usual way, we get notions of homomorphisms between introspective theories, and free constructions of introspective theories, and so on. Let us observe what the notion of homomorphism is for now.
+
+\begin{definition}\label{PreIntrospHomo}
+Given a pre-introspective theory $\langle T_1, C_1, F_1 \rangle$ and a pre-introspective theory $\langle T_2, C_2, F_2 \rangle$, we will say a \defined{pre-introspective theory homomorphism} between them is a lexfunctor $H_T : T_1 \to T_2$ (note that this automatically gives us a way to view any $T_2$-indexed structure as $T_1$-indexed, and also gives us a $T_1$-indexed lexfunctor between $T_1$'s self-indexing and $T_2$'s self-indexing reconstrued as a $T_1$-indexing via $H_T$ itself), a $T_1$-indexed lexfunctor $H_C$ between $C_1$ and $C_2$ (the latter construed as $T_1$-indexed via $H_T$), and a $T_1$-indexed natural isomorphism $H_F$ between $H_C \circ F_1$ and $F_2 \circ H_T$ (both of which are $T_1$-indexed lexfunctors from $T_1$ to $C_2$, the latter again construed as $T_1$-indexed via $H_T$). \TODOinline{For introspective theories, some care needs to be paid to the representing objects as well. Hm. Let's start with pre-introspective theories and go from there.} \TODOinline{Write out more clearly how and when $T_2$-indexed structures are transported into $T_1$-indexed structures along $H_T$ here}
+
+Two such homomorphisms are \defined{naturally isomorphic} if they are related by isomorphisms between their $H_T$ and $H_C$ components in a coherent way. \TODO
+
+These admit a notion of \defined{composition} in a straightforward way, respecting this notion of equivalence. \TODO
+\end{definition}
+
+Note that the initial pre-introspective theory is not very interesting:
+
+\begin{theorem}
+The initial pre-introspective theory is $\langle 1, 1, !\rangle$ (meaning, its first component is the initial lexcategory, its second component is the initial lexcategory construed as a constant indexed lexcategory, and its third component is the unique and trivial indexed lexfunctor from the self-indexing of the former to the latter), in the sense that there is a unique (up to natural isomorphism) pre-introspective theory homomorphism from this to any other pre-introspective theory.
+\end{theorem}
+\begin{proof}
+This follows routinely from the initiality of the component lexcategories.
+\end{proof}
+
+The reason nothing very interesting happens here is because, without some kind of $T$-smallness condition, there is no feedback in a pre-introspective theory $\langle T, C, F \rangle$ from which structure in $C$ induces corresponding structure in $T$, to which $F$ can be applied to produce further structure in $C$, in turn yielding further structure in $T$, ad infinitum. Things become more interesting in precisely this way as we turn to free locally introspective theories.
+
+Recall that a locally introspective theory $\langle T, C, F \rangle$ is one for which $\Hom_C(c, d)$ is $T$-small for all generalized elements $c, d$ of $\Ob(C)$; that is, representable by an object in the appropriate slice category of $T$. While an introspective theory is a locally introspective theory for which furthermore $\Ob(C)$ is representable in the same fashion. The additional structure of these representing objects is now something which our homomorphisms should respect as well. (This is in the same way that the notion of a homomorphism between pointed categories is more restrictive than the notion of homomorphism between discrete fibrations, even when the discrete fibrations involved are all representable)
+
+\begin{definition}
+A \defined{locally introspective theory homomorphism} between locally introspective theories $\langle T_1, C_1, F_1 \rangle$ and $\langle T_2, C_2, F_2 \rangle$ is a homomorphism $\langle H_T, H_C, H_F \rangle$ between their pre-introspective theory structures, satisfying the property that $H_T(\Hom_{C_1}(c, d))$ is isomorphic to $\Hom_{C_2}(H_T(c), H_T(d))$.
+
+\TODOinline{Do we need a condition expressing that $H_T$ and $H_C$ act coherently here, or is that automatic?}
+
+(As a locally introspective theory is defined by the condition that certain presheaves are representable, but without making any particular choice of representing object, this last statement can be equally evalauted for any choice of representing object in $T/t$ for the representable presheaf $\Hom_{C_1}(c, d)$. This phenomenon that representers of a presheaf are only defined up to isomorphism is why we do not here concern ourselves with choosing any particular isomorphism, simply with the property that some isomorphism exists.)
+\end{definition}
+
+\begin{definition}
+A \defined{introspective theory homomorphism} between introspective theories $\langle T_1, C_1, F_1 \rangle$ and $\langle T_2, C_2, F_2 \rangle$ is a homomorphism $\langle H_T, H_C, H_F \rangle$ between their locally introspective theory structures, satisfying the property that $H_T(\Ob(C_1))$ is $\Ob(C_2)$.
+\end{definition}
+
+\begin{theorem}
+The notions of pre-introspective theory homomorphism, locally introspective theory homomorphism, and introspective theory homomorphism given above are equivalent to ones given in terms of $\langle T, C, S, N \rangle$ structure, like so: \TODO
+\end{theorem}
+\begin{proof}
+This follows from \cref{SNCorrespondence}.
+\end{proof}
+
+\begin{theorem}
+An introspective theory homomorphism $\langle H_T, H_C, H_F \rangle$ is entirely determined by $H_T$ and $H_F$. $H_C$ can be recovered from $H_T$ like so: \TODO. Thus, we can state the conditions to be an introspective theory homomorphism purely in terms of $H_T$ and $H_F$ like so: \TODO
+\end{theorem}
+
+\TODOinline{Possibly in the above, just give the T, C, S, N formulation of the definitions of homomorphism if it makes things easier and don't bother about the T, C, F formulation. Or vice versa! Whichever makes writing the definitions and the proofs of the interesting results easier, we can just focus on giving those definitions. Since all the definitions are completely mechanical to generate, this isn't leaving anything out important.
+
+Similarly, we don't really do much with composition of these homomorphisms, so maybe there's no point mentioning it.}
+
+\subsection{The free introspective theory: The theory of GL-categories}
+\begin{definition}
+A \defined{GL-category} is a structure with the following six components and properties:
+\begin{itemize}
+    \item 1: A strict lexcategory $C$.
+    \item 1': Internally to $C$, a strict lexcategory $C'$.
+    \item 2: A strict lexfunctor $J$ from $C$ to $\Hom_C(1, C')$.
+    \item 2': Internally to $C$, a strict lexfunctor $J'$ from $C'$ to $\Hom_{C'}(1, C'')$, where $C'' = J[C']$.
+    \item 3: Such that $J \circ J = J' \circ J$, in the appropriate sense.
+    \item 3': Such that $J' \circ J' = J'' \circ J'$, in the appropriate sense, where $J'' = J[J']$.
+\end{itemize}
+In usual abuse of language, we may name simply $C$ to refer to this entire GL-category structure. But when we are fully explicit, we may write out $\langle C, C', J, J' \rangle$
+\TODOinline{Word this all better, most clearly}
+\end{definition}
+
+\begin{construction}
+The lexcategory $T$ representing the theory of GL-categories can naturally be equipped as an introspective theory $\langle T, C, S, N \rangle$. That is, every GL-category has an internal GL-category and a GL-category homomorphism into it.
+
+Specifically, we of course take $C$ as the underlying strict lexcategory $C$ of the generic GL-category within $T$.
+
+We define $S$ by sending $\langle C, C', J, J' \rangle$ to $\langle C', C'', J', J'' \rangle$. We are allowed to do this because $T$ itself is the initial lexcategory with an internal GL-category, so we simply need to verify that $\langle C', C'', J', J'' \rangle$ satisfies the necessary properties to be a GL-category. For axioms 1, 2, and 3 to hold in $C'$ is precisely the stipulation of axioms 1', 2', and 3' of $C$, respectively. And for axioms 1', 2', and 3' to hold in $C'$ is obtained by applying $J$ to the corresponding structures witnessing axioms 1', 2', and 3' in $C$. Thus, $S$ is well-defined.
+
+Finally, we obtain the action of $N$ from $J$ itself. We validate its naturality by \TODO.
+
+\TODOinline{Write up all the details here, and word it all better, more followably. This is perhaps the prime example of the sort of proof which Hyland had called a mess in the 2016 notes. Well, who knows?}
+\end{construction}
+
+\begin{theorem}
+The introspective theory of GL-categories is the initial introspective theory, in the sense that there is a unique (up to natural isomorphism) introspective theory homomorphism from this to any other introspective theory.
+\end{theorem}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{construction}
+Every strict introspective theory $\langle T, C, F \rangle$ can itself be naturally equipped as a GL-category $\langle T, C, F, F \rangle$ in suitable sense \TODO.
+\end{construction}
+
+\begin{TODOblock}
+Repeat the construction and initiality proof analogous to the theory of GL-categories for the theory of GL-Xes (the initial introspective theory extending the theory of X, for any particular lex theory X extending the theory of lexcategories; e.g., GL-toposes). We do not have that every introspective theory is a GL-X, of course.
+
+Repeat all these constructions and proofs also for the analogs dealing only with locally introspective theories.
+\end{TODOblock}
+
+\begin{TODOblock}
+Write out how we can sort of re-extract from a GL-category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms X -> []X within $C$, and the former meaning either the theory of GL-categories itself or the free lex theory with an internal model of $C$. There's some profunctor between introspective theories and GL-categories to consider here.
+\end{TODOblock}
+
+\begin{TODOblock}
+Observe that GL-categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a GL-category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any GL-category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points.
+
+But a GL-category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic GL-category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors.
+\end{TODOblock}

@@ -26,19 +26,19 @@ Now, let us suppose $P(1)$ is $T$-small, so that it will make sense to speak of 
 
 Furthermore, let us make a relational surjectivity assumption on $d$. Specifically, suppose we are given a relation $R$ on $P$ (that is, another presheaf on $C$, and two parallel maps from it into $P$), and let us suppose $d$ is surjective with respect to relation $R(S(Y))$ over some domain of definition $D$.
 
-Observe now that, from any $D$-defined generalized element $f$ of $P(S(P(1)))$, we can obtain a $D$-defined element of $P(1)$, like so: By pulling $f$ back along $S(W) : \Hom_C(S(Y), S(P(1)))$, we get an element $S(W)^*f$ of $P(S(Y))$. By applying our surjectivity presumption on $d$, we obtain a $D$-defined element $y$ of $Y$ such that this $S(W)^*f$ is related to $d(y)$. And applying $W$ to $y$, we end up with an element of $P(1)$. For sake of a name, let us call this final value $L(f)$ for now.
+Observe now that, from any $D$-defined generalized element $f$ of $P(S(P(1)))$, we can obtain a $D$-defined element of $P(1)$, like so: By pulling $f$ back along $S(W) : \Hom_C(S(Y), S(P(1)))$, we get an element $S(W)^*f$ of $P(S(Y))$. By applying our surjectivity presumption on $d$, we obtain a $D$-defined element $y$ of $Y$ such that this $S(W)^*f$ is related to $d(y)$. And applying $W$ to $y$, we end up with an element of $P(1)$. For sake of a name, let us call this final value $L(f)$ for now\footnote{Though technically, which value $L(f)$ we end up with depends not just on $f$ but also on which particular choice of $y$ we make.}.
 
 This process of turning $f: P(S(P(1)))$ into $L(f): P(1)$ will ultimately represent \Loeb's theorem. But this also captures diagonalization and associated fixed point arguments in general. Let us observe the fixed point properties of this construction in full generality for now, then we will specialize to introspective theories and investigate further.
 
 \subsection{The fixed point/related point property}
 Recall that $f$ is a generalized element of $P(S(P(1)))$ and $L(f)$ is a similarly generalized element of $P(1)$.
 \begin{theorem}
-$L(f)$ is related to pulling $f$ back along the map from $1$ to $S(P(1))$ given by applying $N_{P(1)}$ to $L(f)$.
+Pulling $f$ back along $N_{P(1)}(L(f)) : \Hom_C(1, S(P(1)))$ yields a value related to $L(f)$.
 \end{theorem}
 \begin{proof}
 Recall that $L(f)$ is $W(y) : P(1)$, which is $d(y)$ pulled back along $N_Y(y) : \Hom_C(1, S(Y))$; that is, $L(f) = W(y) = N_Y(y)^* d(y)$. By the naturality of our relation $R$ over $P$, the relationship between $S(W)^*f$ and $d(y)$ pulls back to a relationship between $N_Y(y)^* S(W)^*f = (S(W) \circ N_Y(y))^* f$ and $N_Y(y)^* d(y) = L(f)$.
 
-Finally, note that $N_Y(y) : \Hom_C(1, S(Y))$ composed with $S(W) : \Hom_C(S(Y), S(P(1)))$ is $N_{P(1)}(W(y))$ (by the naturality of $N$), which is to say, $N_{P(1)}(L(f))$. So $(S(W) \circ N_Y(y))^* f = N_{P(1)}(L(f))$, which completes the proof.
+Finally, note that $N_Y(y) : \Hom_C(1, S(Y))$ composed with $S(W) : \Hom_C(S(Y), S(P(1)))$ is $N_{P(1)}(W(y))$ (by the naturality of $N$), which is to say, $N_{P(1)}(L(f))$. This completes the proof.
 \end{proof}
 
 Note that $R$ here can be any kind of relation at all. When $R$ specifically represents an equivalence relation (e.g., as when the maps defining $R$ are taken to be the domain and codomain projections from morphisms to objects for some groupoid structure whose objects are given by $P$), this result is naturally thought of as a fixed point property. We will only be looking at such $R$ for now in this document, though it is worth thinking about more general $R$ in future work.
@@ -50,14 +50,14 @@ One special case of the above is Cantor's theorem, in the form of the claim that
 \end{observation}
 
 \begin{corollary}\label{RetractDiag}
-Note that if the domain of definition $D$ over which $d$ is relationally surjective is $P(S(P(1)))$ itself, then we can take $f$ to be the generic generalized element of $P(S(P(1)))$ (the one given by the identity map on $P(S(Y))$). The $D$-defined $L(f)$ we obtain is then given by a morphism from $P(S(P(1)))$ to $P(1)$, which we can think of as representing $L$ in general, applicable to any other $f$. From hereon out, we focus on this situation. \TODOinline{Word this as a properly stated corollary}
+Note that if the domain of definition $D$ over which $d$ is relationally surjective is $P(S(P(1)))$ itself, then we can take $f$ to be the generic generalized element of $P(S(P(1)))$ (the one given by the identity map on $P(S(P(1)))$). The $D$-defined $L(f)$ we obtain is then given by a morphism from $P(S(P(1)))$ to $P(1)$, which we can think of as representing $L$ in general, applicable to any other $f$. From hereon out, we focus on this situation. \TODOinline{Word this as a properly stated corollary}
 \end{corollary}
 
 \begin{corollary}\label{RetractInT}
 If $T$, $C$, $S$, $N$, and $P$ are given as above such that there is an object $Y$ in $T$ with $P(S(Y))$ being a retract of $Y$, then there is a map $L : P(S(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
 \end{corollary}
 \begin{proof}
-Apply \cref{RetractDiag} with the relation $R$ being true equality; that is, given by two parallel identity maps from $P$ to itself.
+Apply \cref{RetractDiag} with the relation $R$ being true equality; that is, given by two parallel identity maps from $P$ to itself. The retraction from $Y$ onto $P(S(Y))$ will play the role of $d$ as above, and the section from $P(S(Y))$ into $Y$ will witness the required surjectivity of $d$.
 \end{proof}
 
 \begin{corollary}\label{RetractInC}
@@ -68,19 +68,19 @@ If $S(P(X))$ is a retract of $X$ in $C$, then by applying the contravariant func
 \end{proof}
 
 \begin{observation}[The Y Combinator]\label{YCombinator}
-One application of these corollaries is to the untyped lambda calculus. It is well-known that the untyped lambda calculus is modelled by a cartesian closed category $T$ with an object $Y$ such that $Y^Y$ is a retract of $Y$. More generally, let us consider any cartesian closed category $T$ with objects $Y$ and $A$ such that $A^Y$ is a retract of $Y$. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, with $S$ and $N$ being the canonical isomorphisms of the appropriate type, and let $P$ be the presheaf $\Hom_C(-, A)$, which amounts to $A^{-}$. As we have presumed $A^Y$ to be a retract of $Y$, we can apply our above corollary, and find ourselves with a fixed point combinator from $P(S(P(1))) \iso A^A$ to $P(1) \iso A$. In the particular case where $A = Y$ so we model the untyped lambda calculus in the ordinary way, the fixed point combinator we obtain is essentially the familiar \quote{Y combinator} (no pun intended on the Y).
+One application of these corollaries is to the untyped lambda calculus. It is well-known that the untyped lambda calculus (in full generality not presuming the $\eta$-conversion rule) is modelled by a cartesian closed category $T$ with an object $Y$ such that $Y^Y$ is a retract of $Y$. More generally, let us consider any cartesian closed category $T$ with objects $Y$ and $A$ such that $A^Y$ is a retract of $Y$. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, with $S$ and $N$ being the canonical isomorphisms of the appropriate type, and let $P$ be the presheaf $\Hom_C(-, A)$, which amounts to $A^{-}$. As we have presumed $A^Y$ to be a retract of $Y$, we can apply either of our above corollaries (\cref{RetractInT} and \cref{RetractInC} amount to the same as each other in this case, as $T$ matches the global aspect of $C$), and find ourselves with a fixed point combinator from $P(S(P(1))) \iso A^A$ to $P(1) \iso A$. In the particular case where $Y$ and $A$ are the same object so we model the untyped lambda calculus in the ordinary way, the fixed point combinator we obtain is essentially the familiar \quote{Y combinator} (no pun intended on the Y).
 \end{observation}
 
 In a sense, all we have shown so far are some very familiar results. Diagonalization is quite old hat. Its formalization in terms of cartesian closed structure to yield Lawvere's fixed point theorem, with \nameref{CantorsTheorem} and \nameref{YCombinator} as special cases of this, is well known. Cf. Lawvere's and Yonofsky's existing papers on diagonal arguments, fixed point theorems, and cartesian closed categories. \TODOinline{Write whatever should be written here, make whatever citations.}
 
 But we have now formalized it at a particularly general level of abstraction, even more general than Lawvere's fixed point theorem, which will allow us to move beyond cartesian closed structure as such, into suitably modalized exponentials. Instead of only producing the traditional Y combinator, what we produce in general will be a suitably modalized Y combinator, as is necessary for the context we now turn to, of introspective theories.
 
-In the context of an introspective theory, we shall be able to get rid of the presumption of the retraction from \cref{RetractInT} and \cref{RetractInC}, to get an unconditional version of \Loeb's theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(S(Y))$ always exists, whenever $P$ is a $T$-small presheaf.
+In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from \cref{RetractInT} and \cref{RetractInC}, to get an unconditional version of \Loeb's theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(S(Y))$ always exists.
 
 \subsection{Bootstrapping}
-We will now show how to bootstrap away this assumption, in the context of an introspective theory:
+We will now show how to bootstrap away this precondition, in the context of an introspective theory:
 
-Essentially, we wish to apply \cref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
+Essentially, our plan is to apply \cref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
 
 There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
 
@@ -97,16 +97,21 @@ In particular, let $Q$ be $S$ applied to the slice above $\Ob(C)$ in $T$ corresp
 Thus, in the context of an introspective theory, we can run the \Loeb's fixed point theorem on ALL presheaves, unconditionally. That is, we have proven the following:
 
 \begin{corollary}[Introspective \Loeb's theorem]\label{LoebInIntrosp}
-If $\langle T, C, S, N \rangle$ is an introspective theory, and $P$ is any presheaf upon $C$ satisfying the $T$-smallness condition, then there is a map $L : P(S(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
+If $\langle T, C, S, N \rangle$ is an introspective theory, and $P$ is any $T$-small presheaf upon $C$, then there is a map $L : P(S(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
 \end{corollary}
 
+\begin{observation}
+Although we above observed that in any introspective theory there is an object $Y$ such that the object of slices in $C$ above $S(Y)$ was merely a retract-up-to-isomorphism of $Y$, we can now reapply \cref{LoebInIntrosp} to construct an object $Y'$ such that the object of slices in $C$ above $S(Y')$ is in fact isomorphic-up-to-isomorphism to $Y'$. \TODOinline{Word this better}
+\end{observation}
+
 \subsection{Uniqueness of Fixed Points}
+\TODOinline{Perhaps define and write this section for the concept of a locally introspective theory with fixed points for every locally $T$-small presheaf on $C$, as we still have \Loeb's theorem and uniqueness in this context, and this seems to be the context most directly produced by Kripke-style models we will eventually want to consider in addition to full-on introspective theories. We may then wish to move this section before the bootstrapping section.}
 
 \begin{theorem}\label{UniqueFixedPoints}
-The fixed points produced by \parensref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(S(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ pulled back along $S$ of itself)), we have that $a = b$.
+The fixed points produced by \parensref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(S(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ pulled back along $N$ of itself), we have that $a = b$.
 \end{theorem}
 \begin{proof}
-By passing to the appropriate slice introspective theory $T/t$, we can assume without loss of generality that all relevant values in the following are globally defined. \TODOinline{Expand on this, after we've gotten our head straight about the details of slice introspective theories.}
+By passing to the appropriate slice introspective theory $T/t$, we can assume without loss of generality that all relevant values in the following are globally defined. \TODOinline{Expand on this, after we've gotten our head straight about the details of slice introspective theories. Note also that $N$ and $S$ match in their effect on global values.}
 
 Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there were a map from $1$ to $E$, then $a$ and $b$ would be equal. In just the same way, taking this equalizer diagram's image under the lexfunctor $S$, we see that any value in $\Hom_C(1, S(E))$ would lead to $S(a)$ and $S(b)$ being equal, thus corresponding to equal maps from $1$ to $S(P(1))$ in $C$. Pulling $f$ back along these two would yield equal values, therefore. But pulling $f$ back along these two yields $a$ and $b$ respectively, so we would have that $a$ and $b$ are equal. This argument yields a morphism from $\Hom_C(1, S(E))$ to $E$ in $T$. Applying $S$ to this, we have a morphism in $C$, which lives in $Q(S(Q(1)))$, where $Q$ is the presheaf on $C$ represented by $S(E)$. Applying \parensref{LoebInIntrosp} to this, we get an element of $Q(1)$, which is to say, a global element of $S(E)$ in $C$. This makes $S(a)$ and $S(b)$ equal as global points of $S(P(1))$ in $C$. And by pulling $f$ back along these, we conclude as before that $a$ and $b$ are equal. \TODOinline{Word this all better}
 \end{proof}
@@ -115,10 +120,14 @@ Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there 
 Note that this argument made essential use of the structure (notably, equalizers) available in an introspective theory, and thus does not apply in such full generality as \parensref{GeneralDiag} does. For example, we saw in \parensref{YCombinator} that we get fixed points for arbitrary functions in the untyped lambda calculus, but as a cartesian closed category in general is not an introspective theory, we cannot conclude that fixed points of functions in the untyped lambda calculus are unique (and indeed, they will not be, as one such function is the identity function, whose fixed points are all values!).
 \end{observation}
 
+\begin{observation}
+Note that this means that the apparent dependence on which particular object $Y$ and retraction from $P(S(Y))$ into $Y$ is used in the diagonalization theorem doesn't actually matter, in this context. We get the same result no matter what. \TODOinline{Word better}
+\end{observation}
+
 A similar argument to \cref{UniqueFixedPoints} tells us that fixed points for endofunctors are unique, and even some initial algebra/terminal coalgebra properties for them: \TODO
 
 \begin{TODOblock}
-Discuss uniqueness of the fixed point for presheaves on the core of $C$ (i.e., fixed points of isovariant functors), and the simultaneous initial algebra and terminal coalgebra properties for fixed points of covariant functors. More specifically, every coalgebra has a unique homomorphism into every algebra.
+Discuss uniqueness of the fixed point for presheaves on the core of $C$ (i.e., fixed points of isovariant functors), and the simultaneous initial algebra and terminal coalgebra properties for fixed points of covariant functors. Moreover, every coalgebra has a unique homomorphism into every algebra.
 \end{TODOblock}
 
 \begin{TODOblock}

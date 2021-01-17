@@ -4,10 +4,27 @@ We always knew to cite Maietti's work on arithmetic universes. There is now also
 
 There's also some stuff on coalgebra/algebra coincidence we might want to cite, from Adamek, Milius, and Moss.
 
-Maybe cite "Godel-Rosser's Incompleteness Theorems for Non-Recursively Enumerable Theories by Salehi" and Saraji? I haven't bothered to read this and don't particularly intend to.
+Maybe cite "Godel-Rosser's Incompleteness Theorems for Non-Recursively Enumerable Theories" by Salehi and Saraji? I haven't bothered to read this and don't particularly intend to.
 
 Cite Lawvere and Yanofsky on diagonalization in cartesian closed categories.
 
 There's "Reasoning in Arithmetic Universes" by Alan Morrison, which talks about how arithmetic universes have internal free models of finite sketches.
 
 See "Topos Semantics for Higher-Order Modal Logic" by Awodey et al.
+
+---
+To check:
+
+https://arxiv.org/pdf/1602.04860.pdf (DUAL-CONTEXT CALCULI FOR MODAL LOGIC, Kavvos). There is a "Godel-Lob category" concept here that is similar to the locally introspective version of our Godel-Lob categories.
+
+https://arxiv.org/pdf/1309.0895.pdf (Guard Your Daggers and Traces: On The Equational Properties of Guarded (Co-)recursion: Milius et al). In the terminology of this, we are dealing with "unique guarded fixpoint categories". There's also an example here concerning complete metric spaces and the Banach fixed point theorem. This is likely a locally introspective theory with Lob's theorem fixed points. Can it be made an introspective theory? Probably not, but that'd be great.
+
+https://arxiv.org/pdf/1208.3596.pdf (FIRST STEPS IN SYNTHETIC GUARDED DOMAIN THEORY: STEP-INDEXING IN THE TOPOS OF TREES: Birkedal et al). This is similar to the well-founded Kripke models we will deal with.
+
+https://drops.dagstuhl.de/opus/volltexte/2019/11436/pdf/LIPIcs-CALCO-2019-8.pdf (Coinduction in Flow: The Later Modality in Fibrations, by Basold)
+
+https://www.sciencedirect.com/science/article/abs/pii/S0019357717301167 (Lewis meets Brouwer: Constructive strict implication)
+
+https://arxiv.org/pdf/1708.05607.pdf (Constructive Modalities with Provability Smack). This is useful not directly, but because it has references to the existing work on unique propositional fixed points for GL modal logic. It also discusses SL modal logic.
+
+Perhaps see "Note on Some Fixed Point Constructions in Provability Logic" by Lindstrom.
