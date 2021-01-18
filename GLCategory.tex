@@ -25,17 +25,17 @@ The less tedious, less mechanical, actually interesting portions of this chapter
 \subsection{Arriving at GL-categories}
 Let $\langle T, C, \introF\rangle$ be an inner-strict introspective theory. (Recall that every introspective theory admits some way to equip it as an inner-strict introspective theory, which amounts to choosing a particular representation for $C$ as a strict lexcategory internal to $T$.)
 
-Now make the following observation: We have $C$ as an internal strict lexcategory in $T$. But by applying $\introF$ to the diagram in $T$ specifying $C$, we also get some strict lexcategory $C' = \introF[C]$ internal to $C$ itself (that is, internal to the global aspect of $C$). In fact, we can iterate this process repeatedly. There is some diagram in $T$ specifying $C'$ as a strict lexcategory internal to $C$. We can apply $\introF$ to this in turn to get some strict lexcategory $C''$ internal to the global aspect of $C'$, where the global aspect of $C'$ is defined in the \TODO obvious way. And iterating $\introF$ in this way, we get strict lexcategory $C^{(n + 1)} = F^{n + 1}[C]$ internal to $C^{(n)} = F^n[C]$ for each $\introN$, in a suitable sense (with $C = C^{(0)}$ being internal to $T$). \TODO
+Now make the following observation: We have $C$ as an internal strict lexcategory in $T$. But by applying $\introF$ to the diagram in $T$ specifying $C$, we also get some strict lexcategory $C' = \introF[C]$ internal to $C$ itself (that is, internal to the global aspect of $C$). In fact, we can iterate this process repeatedly. There is some diagram in $T$ specifying $C'$ as a strict lexcategory internal to $C$. We can apply $\introF$ to this in turn to get some strict lexcategory $C''$ internal to the global aspect of $C'$, where the global aspect of $C'$ is defined in the \TODO obvious way. And we can go on forever in this way, continuing to iterate applications of $\introF$ as we like. \TODO
 
-What's more, the natural transformation $\introN$ on $T$ then gives us a strict lexfunctor from $C$ to $F[C] = C'$. More precisely, we get internal to $T$ a strict lexfunctor $\glQuote$ from $C$ to the strict lexcategory given as the global aspect of $C'$ (that is, whose objects are given by $\Hom_C(1, \Ob(C'))$, whose morphisms are given by $\Hom_C(1, \Mor(C'))$, and whose composition structure and chosen basic limits are given in the same fashion).
+What's more, the natural transformation $\introN$ on $T$ then gives us a strict lexfunctor from $C$ to $\introF[C] = C'$. More precisely, we get internal to $T$ a strict lexfunctor $\glQuote$ from $C$ to the strict lexcategory given as the global aspect of $C'$ (that is, whose objects are given by $\Hom_C(1, \Ob(C'))$, whose morphisms are given by $\Hom_C(1, \Mor(C'))$, and whose composition structure and chosen basic limits are given in the same fashion).
 
 Note that the action of $\glQuote$ matches the action of $\introF$ \TODO.
 
-What's more, just in the same way that we applied $\introF$ to $C$ to obtain $C'$, we can apply $\introF$ to this strict lexfunctor $\glQuote$ too. We get, in a suitable sense, a strict lexfunctor $\glQuote'$, internal to $C$, from $C'$ to $C''$. And iterating applications of $\introF$ again, we get strict lexfunctors $\glQuote^{(n)} = F^n[\glQuote]$ for each $\introN$, from $C^{(n)}$ to $C^{(n + 1)}$, internal to $C^{(n - 1)}$ (with $\glQuote = \glQuote^{(0)}$ being internal to $T$). \TODO
+What's more, just in the same way that we applied $\introF$ to $C$ to obtain $C'$, we can apply $\introF$ to this strict lexfunctor $\glQuote$ too. We get, in a suitable sense, a strict lexfunctor $\glQuote'$, internal to $C$, from $C'$ to $C''$. And again, we can go on forever, continuing to iterate applications of $\introF$ as we like. \TODO
 
-Observe also that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, in suitable sense. \TODO. And by $\introN$-fold application of $\introF$, it follows that $\glQuote^{(n)} \circ \glQuote^{(n)} = \glQuote^{(n + 1)} \circ \glQuote^{(n)}$, in suitable sense.
+Observe also that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, in suitable sense. \TODO. And by applying $\introF$ to this once, we also get that $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$, in suitable sense. \TODO Again, we can continue iterating applications of $\introF$ forever to get further such equations.
 
-But all of the aforementioned structure follows from just the existence of $C$, $C'$, $\glQuote$, $\glQuote'$, and the equations $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$ and $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$. \TODOinline{As each $n + 2$ structure or property is given by $(n + 1)$-fold application of $\glQuote$ to the corresponding $n = 1$ structure or property, using the fact that $\glQuote$ and $\introF$ have the same action.}
+But all of the aforementioned structure follows from just the existence of $C$, $C'$, $\glQuote$, $\glQuote'$, and the equations $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$ and $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$. Each further iteration of applying $\introF$ to something which already exists internal to $C$ might as well be an application of $\glQuote$ instead, by the fact that $\introF$ and $\glQuote$ have the same action.
 
 This brings us to the compact definition of a GL-category:
 
@@ -55,17 +55,15 @@ In usual abuse of language, we may name simply $C$ to refer to this entire GL-ca
 \end{definition}
 
 \begin{construction}
-The lexcategory $T$ representing the theory of GL-categories can naturally be equipped as an introspective theory $\langle T, C, \introS, \introN \rangle$. That is, every GL-category has an internal GL-category and a GL-category homomorphism into it.
+The lexcategory $\GLCatTheory$ representing the theory of GL-categories can naturally be equipped as an introspective theory $\langle \GLCatTheory, C, \introS, \introN \rangle$. That is, every GL-category has an internal GL-category and a GL-category homomorphism into it.
 
-Specifically, we of course take $C$ as the underlying strict lexcategory $C$ of the generic GL-category within $T$.
+Specifically, we of course take $C$ as the underlying strict lexcategory $C$ of the generic GL-category within $\GLCatTheory$.
 
-We define $\introS$ by sending $\langle C, C', \glQuote, \glQuote' \rangle$ to $\langle C', C'', \glQuote', \glQuote'' \rangle$. We are allowed to do this because $T$ itself is the initial lexcategory with an internal GL-category, so we simply need to verify that $\langle C', C'', \glQuote', \glQuote'' \rangle$ satisfies the necessary properties to be a GL-category. For axioms 1, 2, and 3 to hold in $C'$ is precisely the stipulation of axioms 1', 2', and 3' of $C$, respectively. And for axioms 1', 2', and 3' to hold in $C'$ is obtained by applying $\glQuote$ to the corresponding structures witnessing axioms 1', 2', and 3' in $C$. Thus, $\introS$ is well-defined.
+We define $\introS$ by sending the generic GL-category within $\GLCatTheory$ to $\langle C', C'', \glQuote', \glQuote'' \rangle$. This defines a lexfunctor out of $\GLCatTheory$ because $\GLCatTheory$ is the initial lexcategory with an internal GL-category, so we simply need to verify that $\langle C', C'', \glQuote', \glQuote'' \rangle$ satisfies the necessary properties to be a GL-category. For axioms 1, 2, and 3 to hold in $C'$ is precisely the stipulation of axioms 1', 2', and 3' of $C$, respectively. And for axioms 1', 2', and 3' to hold in $C'$ is obtained by applying $\glQuote$ to the corresponding structures witnessing axioms 1', 2', and 3' in $C$. Thus, $\introS$ is well-defined.
 
-Finally, we obtain the action of $\introN$ from $\glQuote$ itself. We validate its naturality by \TODO.
+Finally, we obtain the action of $\introN$ from $\glQuote$ itself. In more detail \TODOinline{make this readable}: The only essential 0-cells/stuff in $\GLCatTheory$ to worry about is $\Mor(C)$ itself, and so we can define the action of $\introN$ just on $\Mor(C)$, where it is given by $\glQuote$. This takes care of $\introN$ with respect to axiom 1. With respect to axiom 1', this introduces 1-cells/structure into $\GLCatTheory$, which now means naturality squares $\introN$ must satisfy. These naturality squares amount to demanding that $\glQuote[C'] = C''$, which we've imposed by definition of $C''$. Similarly for axiom 2', which introduces 1-cells/structure into $\GLCatTheory$, which amount to naturality squares demanding that $\glQuote[J'] = J''$, which we've imposed by definition of $\glQuote''$. Axiom 2 introduces 1-cells/structure into $\GLCatTheory$ whose naturality squares amount to the demand that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, which automatically holds by axiom 3 in $\GLCatTheory$. Finally, axioms 3 and 3' introduce 2-cells into $\GLCatTheory$, which do not impose any demands on the natural transformation we are constructing. \qed
 
-\TODOinline{Make the observations about where the necessity of strict structure, preservation of limits on the nose, etc, come in}
-
-\TODOinline{Write up all the details here, and word it all better, more followably. This whole chapter is perhaps the prime example of the sort of thing which had previously been considered a mess in the 2016 notes. Well, who knows?}
+\TODOinline{Again, make this readable. This whole chapter is perhaps the prime example of the sort of thing which had previously been considered a mess in the 2016 notes. Well, who knows? Perhaps the thing to do is to take Theorem 3.4 from the 2016 notes and prove it as a $C$-indexed theorem. Oh, but this probably won't work, because it probably doesn't hold in such indexed form.}.
 \end{construction}
 
 \begin{theorem}
@@ -86,17 +84,13 @@ Repeat all these constructions and proofs also for the analogs dealing only with
 \end{TODOblock}
 
 \begin{TODOblock}
-Write out how we can sort of re-extract from a GL-category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms X -> []X within $C$, and the former meaning either the theory of GL-categories itself or the free lex theory with an internal model of $C$. There's some profunctor between introspective theories and GL-categories to consider here.
+Write out how we can sort of re-extract from a GL-category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of GL-categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and GL-categories to consider here.
 \end{TODOblock}
 
 \begin{TODOblock}
 Observe that GL-categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a GL-category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any GL-category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points.
 
 But a GL-category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic GL-category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors.
-\end{TODOblock}
-
-\begin{TODOblock}
-Note somewhere that a GL-category $\langle C, C', J, \glQuote' \rangle$ gives rise by repeated application of $\glQuote$ to $C^{(n)}$ and $\glQuote^{(n)}$ for all $\introN$, each $C^{(n + 1)}$ being a strict lexcategory internal to $C^{(n)}$, each $\glQuote^{(n)}$ being a strit lexfunctor from $C^{(n)}$ to $\Hom_{C^{(n)}}(1, C^{(n + 1)})$, and all the $\glQuote$s commuting with each other in the appropriate sense. Well, perhaps this is perfectly obvious. Well, everything is perfectly obvious, eventually, that's the nature of thought.
 \end{TODOblock}
 
 \subsection{Preliminaries}

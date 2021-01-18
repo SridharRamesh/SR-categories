@@ -28,3 +28,5 @@ https://www.sciencedirect.com/science/article/abs/pii/S0019357717301167 (Lewis m
 https://arxiv.org/pdf/1708.05607.pdf (Constructive Modalities with Provability Smack). This is useful not directly, but because it has references to the existing work on unique propositional fixed points for GL modal logic. It also discusses SL modal logic.
 
 Perhaps see "Note on Some Fixed Point Constructions in Provability Logic" by Lindstrom.
+
+https://arxiv.org/pdf/1712.09302.pdf (On the Semantics of Intensionality and Intensional Recursion, by Kavvos)
