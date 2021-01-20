@@ -1,24 +1,7 @@
 \section{Geminal Categories}
 \TODOinline{This chapter isn't really ready for consumption yet. Just scribbles full of TODOs to myself.}
 
-\subsection{Pedantries, cautions}
-\TODOinline{A lot of this has perhaps already been covered in, or should be moved to, the Preliminaries chapter}
-
-In this chapter, we will develop the free introspective theory, and relate it to introspective theories in general. \TODOinline{Write and word this introductory section properly.}
-
-Alas, there will be some finicky preliminary definition laying down in this chapter. The great bother is that we must be careful now about matters such as lexcategories (where one cannot ask about equality of objects, only isomorphism) vs. strict lexcategories (where one can ask about equality of objects, and basic limits are defined not merely up to isomorphism but with a particular chosen representing object), and lexfunctors (which preserve finite limits only up to isomorphism) vs. strict lexfunctors (which preserve chosen basic limits on the nose), and so on.
-
-In category theory, we ordinarily like to ignore all such strictness. There is talk of it as \quote{evil} and so on. However, internal notions like internal lexcategory, living internally to a 1-category, automatically carry strict structure (as a 1-category comes with a notion of equality between parallel morphisms, not merely a notion of isomorphism, and the objects of a $T$-internal lexcategory $C$ amount to morphisms in $T$ into $\Ob(C)$). This has the consequence that we must distinguish between internal lexfunctors vs. internal strict lexfunctors, the latter carrying extra coherence demands.
-
-Because part of the structure of an introspective theory $\langle T, C, \ldots \rangle$ is a way to view $C$ as an internal lexcategory internal to $T$, all of these pedantic strictness issues will become of some unfortunately necessary concern to us as we construct the free introspective theory.
-
-But simply keep in mind the definitions of various notions of strictness from the Preliminaries, and introspective theories vs. inner-strict introspective theories vs. strict introspective theories when those distinctions are called upon, and then all arguments are formulated in a way where one need hardly notice the extent to which strictness is being used.
-
-(This bother is all because the lexcategories we are working with are 1-categorical. We could work with lex 2-categories to serve as the $T$ of our introspective theories, but this only allows the internal $C$ to act like 1-categories, which is still one dimension off from $T$ itself, and which still means we get into the realm of strict lexcategories once we start looking at structures internal to $C$, as we will be doing. The only way to avoid this bother is to step up all the way to $(\infty, 1)$-categories, in some sense the natural home for this work, but we save doing so for future work. For now, we'd rather deal with bothers around strictness than bothers around $(\infty, 1)$-categories with internal $(\infty, 1)$-categories.)
-
-The actually interesting content of this chapter will be giving a more explicit description of the initial introspective theory (the theory of geminal categories), and also showing that any strict introspective theory can itself be equipped in a natural way as a model of the initial introspective theory. We will also discuss a partial converse, a way to extract an introspective theory from a geminal category.
-
-\TODOinline{I'll figure out the order of the subsections in this chapter later. Let me move a more interesting or more motivational bit up front for now.}
+The content of this chapter will be giving a more explicit description of the initial introspective theory (the theory of geminal categories), and also showing that any strict introspective theory can itself be equipped in a natural way as a model of the initial introspective theory. We will also discuss a partial converse, a way to extract an introspective theory from a geminal category.
 
 \subsection{Arriving at geminal categories}
 \begin{observation}\label{IntrospContainsGLObservation}
@@ -28,15 +11,15 @@ Now it may be that $C$ carries more structure internal to $T$ than just that of 
 
 At any rate, pick some lexly defined theory with an underlying lexcategory, such that $C$ can be seen as the underlying lexcategory of a model of such a theory internal to $T$ (which we may also name $C$, in usual abuse of language). This amounts to choosing some lexcategory $L$ with an internal strict lexcategory $L_C$, and a lexfunctor $\ell: L \to T$ taking $L_C$ to $C$. If models of $L$ are called gadgets, then in this way, we can see $C$ as an internal gadget within $T$ (we can abuse language in the usual way and refer to this entire gadget by the name of $C$, even though there may be many more sorts involved in $L$ than just the sorts of $L_C$).
 
-Now make the following observation: We have $C$ as an internal gadget in $T$. But by applying $\introS$ to the diagram in $T$ specifying $C$ (that is, by composing $\ell$ with $\introS$), we also get some gadget $C' = \introS[C]$ internal to $C$ itself (that is, internal to the global aspect of the underlying lexcategory of the gadget we are calling $C$). In fact, we can iterate this process repeatedly. There is some diagram in $T$ specifying $C'$ as an gadget internal to $C$. We can apply $\introS$ to this in turn to get some gadget $C''$ internal to the global aspect of $C'$ (where the global aspect of $C'$ is defined in the \TODO obvious way). And we can go on forever in this way, continuing to iterate applications of $\introS$ as we like.
+Now make the following observation: We have $C$ as an internal gadget in $T$. But by applying $\introS$ to the diagram in $T$ specifying $C$ (that is, by composing $\ell$ with $\introS$), we also get some gadget $C' = \introS[C]$ internal to $C$ itself (that is, internal to the global aspect of the underlying lexcategory of the internal gadget we are calling $C$). In fact, we can iterate this process repeatedly. There is some diagram in $T$ specifying $C'$ as an gadget internal to $C$. We can apply $\introS$ to this in turn to get some gadget $C''$ internal to the global aspect of $C'$ (where the global aspect of $C'$ is defined in the \TODO obvious way). And we can go on forever in this way, continuing to iterate applications of $\introS$ as we like.
 
-What's more, the natural transformation $\introN$ on $T$ then gives us an gadget homomorphism from $C$ to $\introF[C] = C'$ (that is, by whiskering $\ell$ along $\introN$, we get a natural transformation from $\ell$ to $\Hom_C(1, S(\ell(-)))$). More precisely, we get internal to $T$ an gadget-homomorphism $\glQuote$ from $C$ to the gadget given as the global aspect of $C'$ (that is, whose objects are given by $\Hom_C(1, \Ob(C'))$, whose morphisms are given by $\Hom_C(1, \Mor(C'))$, and whose composition structure and chosen basic limits act on these in the straightforward fashion, and so on for any other gadget structure).
+What's more, the natural transformation $\introN$ on $T$ then gives us a gadget homomorphism from $C$ to $\introF[C] = C'$ (that is, by whiskering $\ell$ along $\introN$, we get a natural transformation from $\ell$ to $\Hom_C(1, S(\ell(-)))$). More precisely, we get internal to $T$ a gadget-homomorphism $\glQuote$ from $C$ to the gadget given as the global aspect of $C'$ (that is, whose objects are given by $\Hom_C(1, \Ob(C'))$, whose morphisms are given by $\Hom_C(1, \Mor(C'))$, and whose composition structure and chosen basic limits act on these in the straightforward fashion, and so on for any other gadget structure).
 
 Note that the action of $\glQuote$ (defined as given by $\introN$) matches the action of $\introS$, by \parensref{SMatchesN}.
 
 What's more, just in the same way that we applied $\introS$ to $C$ to obtain $C'$, we can apply $\introS$ to this gadget-homomorphism $\glQuote$ too. We get, in a suitable sense, a gadget-homomorphism $\glQuote'$, internal to $C$, from $C'$ to $C''$. And again, we can go on forever, continuing to iterate applications of $\introS$ as we like.
 
-Observe also that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, in suitable sense, by the naturality squares for $\introN$ with respect to the morphisms in $T$ given by the components of $\introN$ themselves. And by applying $\introF$ to this once, we also get that $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$, in suitable sense. Again, we can continue iterating applications of $\introS$ forever to get further such equations.
+Observe also that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, in suitable sense, by the naturality squares for $\introN$ with respect to the morphisms in $T$ given by the components of $\introN$ themselves. And by applying $\introS$ to this once, we also get that $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$, in suitable sense. Again, we can continue iterating applications of $\introS$ forever to get further such equations.
 
 But all of the aforementioned structure follows from just the existence of $C$, $C'$, $\glQuote$, $\glQuote'$, and the equations $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$ and $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$. Each further iteration of applying $\introS$ to something which already exists internal to $C$ might as well be an application of $\glQuote$ instead, by the fact that $\introS$ and $\glQuote$ have the same action.
 \end{observation}
@@ -125,77 +108,4 @@ Write out how we can sort of re-extract from a geminal category $C$ some introsp
 Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points.
 
 But a geminal category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic geminal category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors.
-\end{TODOblock}
-
-
-\TODOinline{Most of the following probably no longer is needed in this chapter}
-
-\subsection{Preliminaries}
-Keep in mind throughout the following that the initial lexcategory is the same as the terminal category, 1. This is initial in the sense that there is a unique (up to natural isomorphism) lexfunctor from it to any other lexcategory.
-
-\subsection{Introspective Theory Homomorphisms}
-The theory of introspective theories is essentially lex (\quote{essentially} because of complications about how categories do not actually have sets of objects, etc \TODO), so in the usual way, we get notions of homomorphisms between introspective theories, and free constructions of introspective theories, and so on. Let us observe what the notion of homomorphism is for now.
-
-\begin{definition}\label{PreIntrospHomo}
-Given a pre-introspective theory $\langle T_1, C_1, F_1 \rangle$ and a pre-introspective theory $\langle T_2, C_2, F_2 \rangle$, we will say a \defined{pre-introspective theory homomorphism} between them is a lexfunctor $H_T : T_1 \to T_2$ (note that this automatically gives us a way to view any $T_2$-indexed structure as $T_1$-indexed, and also gives us a $T_1$-indexed lexfunctor between $T_1$'s self-indexing and $T_2$'s self-indexing reconstrued as a $T_1$-indexing via $H_T$ itself), a $T_1$-indexed lexfunctor $H_C$ between $C_1$ and $C_2$ (the latter construed as $T_1$-indexed via $H_T$), and a $T_1$-indexed natural isomorphism $H_F$ between $H_C \circ F_1$ and $F_2 \circ H_T$ (both of which are $T_1$-indexed lexfunctors from $T_1$ to $C_2$, the latter again construed as $T_1$-indexed via $H_T$). \TODOinline{Write out more clearly how and when $T_2$-indexed structures are transported into $T_1$-indexed structures along $H_T$ here}
-
-Two such homomorphisms are \defined{naturally isomorphic} if they are related by isomorphisms between their $H_T$ and $H_C$ components in a coherent way. \TODO
-
-These admit a notion of \defined{composition} in a straightforward way, respecting this notion of equivalence. \TODO
-\end{definition}
-
-Note that the initial pre-introspective theory is not very interesting:
-
-\begin{theorem}
-The initial pre-introspective theory is $\langle 1, 1, !\rangle$ (meaning, its first component is the initial lexcategory, its second component is the initial lexcategory construed as a constant indexed lexcategory, and its third component is the unique and trivial indexed lexfunctor from the self-indexing of the former to the latter), in the sense that there is a unique (up to natural isomorphism) pre-introspective theory homomorphism from this to any other pre-introspective theory.
-\end{theorem}
-\begin{proof}
-This follows routinely from the initiality of the component lexcategories.
-\end{proof}
-
-The reason nothing very interesting happens here is because, without some kind of $T$-smallness condition, there is no feedback in a pre-introspective theory $\langle T, C, F \rangle$ from which structure in $C$ induces corresponding structure in $T$, to which $\introF$ can be applied to produce further structure in $C$, in turn yielding further structure in $T$, ad infinitum. Things become more interesting in precisely this way as we turn to free locally introspective theories.
-
-Recall that a locally introspective theory $\langle T, C, F \rangle$ is one for which $\Hom_C(c, d)$ is $T$-small for all generalized elements $c, d$ of $\Ob(C)$; that is, representable by an object in the appropriate slice category of $T$. While an introspective theory is a locally introspective theory for which furthermore $\Ob(C)$ is representable in the same fashion. The additional structure of these representing objects is now something which our homomorphisms should respect as well. (This is in the same way that the notion of a homomorphism between pointed categories is more restrictive than the notion of homomorphism between discrete fibrations, even when the discrete fibrations involved are all representable)
-
-\begin{definition}
-A \defined{locally introspective theory homomorphism} between locally introspective theories $\langle T_1, C_1, F_1 \rangle$ and $\langle T_2, C_2, F_2 \rangle$ is a homomorphism $\langle H_T, H_C, H_F \rangle$ between their pre-introspective theory structures, satisfying the property that $H_T(\Hom_{C_1}(c, d))$ is isomorphic to $\Hom_{C_2}(H_T(c), H_T(d))$.
-
-\TODOinline{Do we need a condition expressing that $H_T$ and $H_C$ act coherently here, or is that automatic?}
-
-(As a locally introspective theory is defined by the condition that certain presheaves are representable, but without making any particular choice of representing object, this last statement can be equally evalauted for any choice of representing object in $T/t$ for the representable presheaf $\Hom_{C_1}(c, d)$. This phenomenon that representers of a presheaf are only defined up to isomorphism is why we do not here concern ourselves with choosing any particular isomorphism, simply with the property that some isomorphism exists.)
-\end{definition}
-
-\begin{definition}
-A \defined{introspective theory homomorphism} between introspective theories $\langle T_1, C_1, F_1 \rangle$ and $\langle T_2, C_2, F_2 \rangle$ is a homomorphism $\langle H_T, H_C, H_F \rangle$ between their locally introspective theory structures, satisfying the property that $H_T(\Ob(C_1))$ is $\Ob(C_2)$.
-\end{definition}
-
-\begin{theorem}
-The notions of pre-introspective theory homomorphism, locally introspective theory homomorphism, and introspective theory homomorphism given above are equivalent to ones given in terms of $\langle T, C, S, N \rangle$ structure, like so: \TODO
-\end{theorem}
-\begin{proof}
-This follows from \cref{SNCorrespondence}.
-\end{proof}
-
-\begin{theorem}
-An introspective theory homomorphism $\langle H_T, H_C, H_F \rangle$ is entirely determined by $H_T$ and $H_F$. $H_C$ can be recovered from $H_T$ like so: \TODO. Thus, we can state the conditions to be an introspective theory homomorphism purely in terms of $H_T$ and $H_F$ like so: \TODO
-\end{theorem}
-
-\begin{TODOblock}
-Possibly in the above, just give the T, C, S, N formulation of the definitions of homomorphism if it makes things easier and don't bother about the T, C, F formulation. Or vice versa! Whichever makes writing the definitions and the proofs of the interesting results easier, we can just focus on giving those definitions. Since all the definitions are completely mechanical to generate, this isn't leaving anything out important.
-
-Similarly, we don't really do much with composition of these homomorphisms, so maybe there's no point mentioning it.
-
-There may be no point even mentioning free locally introspective theories. Only bother with it if it's easy and natural along the way. We can just mention free introspective theories.
-\end{TODOblock}
-
-\begin{TODOblock}
-On the other hand, maybe we should mention free locally introspective theories. More to the point, for any fixed set of objects Z, let's say an Z-category is a category whose objects are precisely Z, and a functor between Z-categories is a functor which acts as identity on objects.
-
-If we consider the set up of a finite product theory T, a T-indexed Z-(cartesian closed category) C which is locally small, and a $T$-indexed finite product preserving functor F from the simple self-indexing of T to C, we get a notion which is described by a finite product theory. (By \cref{IntrospGeneralDoctrine}, this can also be described in terms of the global aspect S of F, along with a natural transformation N, in the usual way).
-
-There is an initial model of this notion. That initial model amounts to the same thing as the finite product theory of a Kripke-4 category (in the terminology of Kavvos) whose objects are Z. The argument for this is exactly the same as the argument that the theory of geminal categories is the initial introspective theory.
-
-More generally, we can replace every instance of "cartesian closed" here by merely "has finite products", to get structure automatically exhibited by (but weaker than) introspective theories and geminal categories. The distinction is essentially in swapping out the relationship of "internal to" for the relationship of "enriched over".
-
-T (theory of some particular sort, whatever doctrine, lex, finite products, infinite limits, whatever), a T-indexed X called C, a map S from T to C, and a natural transformation N from t to $\Hom_C(1, S(t))$. This is the right concept for our geminal category writeup. We can bring up this concept in the Introspective theories section, note how locally introspective theories arise as a special case of it, and also note that while our fixation is generally on lex theories, we will occasionally note certain examples that are given by finite product theories. We will not bother specifying what doctrines amount to in full generality.
 \end{TODOblock}
