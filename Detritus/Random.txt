@@ -13,3 +13,50 @@ To prove that the initial arithmetic universe is an introspective theory, we can
 We are not particularly concerned about the details of arithmetic universes, so for us, a definition might as well be: A category with finite limits and finite colimits, in which every internal sketch induces an internal free lex theory, all pullback-stably (although the pullback stability does not even really matter for us; also, things like disjointness of coproducts and every equivalence relation being the kernel pair of its coequalizer and so on do not really matter for us. Note that the poset 0 -> 1 is a perfectly fine GL-category, for example!). From this, every finite sketch has an internal model, and also, this is a finite sketch theory, the two properties of note. Put another way, we need four operations: The free internal lex category at all (but this is trivial, this is the 1-object category), augmenting a lex category freely with an object, freely with a morphism, and freely with an equation between morphisms. We also need to be able to prove internally that the free Set-valued model is the one which arises from the lex theory's global elements, hm. All this freeness is really with respect to Set-valued models.
 
 Perhaps all it takes to have free models of arbitrary finitely presented lex theories is having a free locally cartesian closed category on 1 object. Because a free locally cartesian closed category on N objects is easily augmented to freely introduce morphisms or equations, in both cases by passing to an appropriate slice category. And a free lexcategory should sit within a free LCCC, and we can re-extract its free model as global sections. Finally, the free LCCC on N objects is itself given by a lex theory with only one sort, and thus should be generable from the free LCCC on 1 object.
+
+----
+
+Always presume X <= Y.
+
+Every (X, Y) introspective theory is also an (X', Y') introspective theory, for X' <= X, Y' <= Y. So in particular, an (X, X)-introspective theory.
+
+Where X is strong enough to define Y, and every Y is an X:
+
+Maybe X being strong enough to define Y isn't necessary for all of these? What happens with (category, pointed category)? What is the role of 1 (X must extend category, Y must extend pointed category?)?
+
+Every (X, Y) introspective theory is itself a GL-X.
+Every (X, Y) introspective theory contains an internal GL-Y.
+
+Every GL-Y has an underlying Y, and an internal GL-Y within that, and a homomorphism into that internal thing.
+
+The X-theory of GL-Ys is the underlying X-theory of the initial (X, Y) introspective theory.
+
+----
+For handling enriched uniformly with internal:
+Objects form an actual set.
+Morphisms live in the self-indexing above the objects.
+
+
+Set, C^x
+
+Objects live in X, morphisms live in Y
+
+Free such structure which admits a map from the self-indexing of X.
+
+And X, and a map from X to Ys, and a map from the self-indexing of X to C, but also C is suitably small.
+
+T is Set, and C is some Set-indexed category whose objects comprise a Set and morphisms above any object comprise a value in the self-indexing T.
+The self-indexing assigns to every Set s the category T^s. Hm.
+
+So we get a map from T^s to C^s for each s, in a natural way (thus, T to C).
+
+T-and-C-indexed category
+
+Free A-and-B-indexed category whose objects comprise an A and whose morphisms comprise a B above the objects^2, admitting a morphism from correspondingly indexed version of B. Simple self-indexing on B, raised to the power of A.
+
+(Given a and b in T/a, we get a category T/b)
+(Given a, and b in T^a, we get a category (T^a // b))
+
+So Ob(C) is a set, and Mor(C) lives in T^(Ob(C)^2), and for each (a, b), we get a prod-functor from (T^a // b) to the b-defined values of C^a.
+
+The free such thing has what in it? Well, we have (Ob(C) x Ob(C), Mor(C)). So T^(Ob(c) x Ob(c)) // Mor(C) has a functor to the Mor(C)-defined values of C^(Ob(c) x Ob(c)). One object in T^(Ob(C) x Ob(c)) is Mor(C) itself. So Mor(C) maps into C^(Ob(c) x Ob(c)). That is, for every pair of objects, we get map from their hom-object in T into an object in C.

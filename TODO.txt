@@ -10,17 +10,20 @@ DONE (on one account; another account should still be written up)
 DONE
 
 4. Write out proof that six axiom definition of GL categories is the initial introspective theory. [And more generally for GL-Xes]
+DONE
 
 5. Write out a particular lex formalization of S, N definition and discuss the issues involved in doing so; i.e., "strict" introspective theories.
+DONEish
 
 6. Write out proof that every strict introspective theory is a GL-category.
+DONE
 
 Definitely won't get that all done in a week, but whatever.
 
 Then:
 7. Back to categorical Löb's theorem. Things that are needed here: Deriving P(P(1)) |- P(1) from X nearly (but not necessarily exactly) a fixed point match for P(X) [P here is some presheaf such as [](- -> A)], constructing the near-fixed point needed to bootstrap this all and get the conclusion unconditionally, demonstrating that fixed points for functions that respect isos are unique, demonstrating that our fixed points for functors are initial algebras and terminal coalgebras.
 
-First parts DONE. Must still write up the uniqueness parts.
+First parts DONE. Must still write up the coalgebra stuff.
 
 8. Writing out all the examples of models in Models.tex.
 

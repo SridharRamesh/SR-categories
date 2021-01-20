@@ -90,7 +90,7 @@ Indeed, armed with the idea of this relationship, it becomes easy to deal with t
 
 We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. Any such slice above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Push forward (i.e., composition) and pullback along this injection will be our maps from $P'(\introS(Y))$ to and from $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that pushing forward and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
 
-The fixed point property we derive then tells us that, for any slice $Q$ above $\introS(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $\introN_{\Ob(C)}(c) : \Hom_C(1, \introS(\Ob(C)))$. \TODOinline{We should note the lemma that S and N have the same effect on global values, at some point. In the same way, a lemma that $\introS(P(X)) = P_1(S_1(X))$ will be useful, when dealing with $T, C, C_1$, etc.}
+The fixed point property we derive then tells us that, for any slice $Q$ above $\introS(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $\introN_{\Ob(C)}(c) : \Hom_C(1, \introS(\Ob(C)))$.
 
 In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ corresponding to some arbitrary $T$-small presheaf $Q'$ on $C$. Then the above invocation of our \Loeb's theorem tells us there is some object $c$ of $C$ which is isomorphic to $\introS(Q'(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb's theorem on the presheaf $Q'$ itself (in the form of \cref{RetractInC}).
 
@@ -125,6 +125,10 @@ Note that this means that the apparent dependence on which particular object $Y$
 \end{observation}
 
 A similar argument to \cref{UniqueFixedPoints} tells us that fixed points for endofunctors are unique, and even some initial algebra/terminal coalgebra properties for them: \TODO
+
+\begin{theorem}
+\TODO
+\end{theorem}
 
 \begin{TODOblock}
 Discuss uniqueness of the fixed point for presheaves on the core of $C$ (i.e., fixed points of isovariant functors), and the simultaneous initial algebra and terminal coalgebra properties for fixed points of covariant functors. Moreover, every coalgebra has a unique homomorphism into every algebra.

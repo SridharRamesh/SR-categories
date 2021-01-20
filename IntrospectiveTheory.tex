@@ -15,6 +15,14 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 
 We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$ or of the pair $\langle T, C \rangle$, when this would not cause confusion. We will frequently use the same name $\introF$ as though it applies to all introspective theories simultaneously, in the same way that notation like $+$ or $\times$ is overloaded as applying over all rings simultaneously.
 
+\begin{definition} \label{DefnIntrospIndexed}
+An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is small.
+\end{definition}
+
+The concept of an introspective theory is the fundamental object of our interest and study in these notes. We shall show that this simple definition already suffices to exhibit and capture all the fundamental phenomena of \Goedel\ codes, diagonalization, the \Goedel\ incompleteness theorems, and \Loeb's theorem. And we shall show that all the traditional instances of \Goedel's incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate some previously unrealized functorial fixed point results for this structure, and show some interesting applications of these.
+
+We shall also introduce some further generalizations of this concept, in order to be able to state results along the way in their fullest generality or point out connections to related work or interesting structures that are not quite introspective theories per se but are closely related. But throughout these notes, if at any time the abstractions seem daunting or distracting, remember that the concrete concept which matters most is the concept of an introspective theory as defined above.
+
 We shall now make an observation about an alternative but equivalent way to specify this data.
 
 \begin{theorem}\label{SNCorrespondence}
@@ -47,8 +55,8 @@ Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \cref{
 Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$) is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
 \end{proof}
 
-\begin{remark}
-It wasn't fundamentally important that we were dealing with lexcategories here. \Cref{Lemma1} only required a terminal object. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
+\begin{remark}\label{IntrospGeneralDoctrine}
+It wasn't fundamentally important that we were dealing with lexcategories here. \Cref{Lemma1} only required a terminal object. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
 \end{remark}
 
 As a result of \cref{SNCorrespondence}, we can give another definition essentially equivalent to \cref{DefnPreIntrospIndexed}.
@@ -59,9 +67,12 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 
 As before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, may refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all introspective theories (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
 
-\begin{TODOblock}
-Some good notational/terminological convention for how to sometimes refer to pre-introspective theories using the structure of the one definition, sometimes refer to them using the structure of the other definition, and sometimes introduce them with the structure of one definition but then refer to their structure as in the other sense.
-\end{TODOblock}
+\begin{lemma}[$\introS$ Matches $\introN$]\label{SMatchesN}
+Within a pre-introspective theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
+\end{lemma}
+\begin{proof}
+Apply the naturality square for $\introN$ to the morphism from $1$ to $t$ representing $x$. One path around the square will be the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The other path around the square will be the unique identity morphism in $T$ from $1$ to $\Hom_C(1, 1)$ representing the identity morphism on $1$, followed by the morphism from $\Hom_C(1, 1)$ to $\Hom_C(1, \introS(t))$ representing composition in $C$ with the morphism in $C$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, this is also the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$.
+\end{proof}
 
 As the name \quote{pre-introspective theory} suggests, there are some further definitions to build atop this.
 
