@@ -3,68 +3,96 @@
 
 The content of this chapter will be giving a more explicit description of the initial introspective theory (the theory of geminal categories), and also showing that any strict introspective theory can itself be equipped in a natural way as a model of the initial introspective theory. We will also discuss a partial converse, a way to extract an introspective theory from a geminal category.
 
+\TODOinline{Caution to the reader: Before reading the following, refresh your understanding of multiply-indexed structures from the Preliminaries}
+
 \subsection{Arriving at geminal categories}
 \begin{observation}\label{IntrospContainsGLObservation}
-Let $\langle T, C, \introF\rangle$ be an inner-strict introspective theory. Recall that inner strictness means we've fixed a particular representation for $C$ as an internal strict lexcategory.
+\TODOinline{Perhaps bring back doubly-indexed categories to discuss the latter}
 
-Now it may be that $C$ carries more structure internal to $T$ than just that of a strict lexcategory. For example, perhaps $C$ is furthermore an internal strict locally cartesian closed category. Or perhaps $C$ is the underlying strict lexcategory of some larger structure internal to $T$. At the extreme end, the lexcategory $T$ defines some species of gadget, and $C$ can be considered an underlying category of the generic internal gadget of this sort within $T$.
+Let $\langle T, C \rangle$ be an inner-strict introspective theory. Recall that inner strictness means we've fixed a particular representation for $C$ as an internal strict lexcategory.
 
-At any rate, pick some lexly defined theory with an underlying lexcategory, such that $C$ can be seen as the underlying lexcategory of a model of such a theory internal to $T$ (which we may also name $C$, in usual abuse of language). This amounts to choosing some lexcategory $L$ with an internal strict lexcategory $L_C$, and a lexfunctor $\ell: L \to T$ taking $L_C$ to $C$. If models of $L$ are called gadgets, then in this way, we can see $C$ as an internal gadget within $T$ (we can abuse language in the usual way and refer to this entire gadget by the name of $C$, even though there may be many more sorts involved in $L$ than just the sorts of $L_C$).
+Now it may be that $C$ carries more structure internal to $T$ than just that of a strict lexcategory. For example, perhaps $C$ is furthermore an internal strict locally cartesian closed category. Or perhaps $C$ is the underlying strict lexcategory of some larger structure internal to $T$. At the extreme end, the lexcategory $T$ itself defines some species of gadget, and $C$ can be considered an underlying strict lexcategory of the generic internal gadget of this sort within $T$.
 
-Now make the following observation: We have $C$ as an internal gadget in $T$. But by applying $\introS$ to the diagram in $T$ specifying $C$ (that is, by composing $\ell$ with $\introS$), we also get some gadget $C' = \introS[C]$ internal to $C$ itself (that is, internal to the global aspect of the underlying lexcategory of the internal gadget we are calling $C$). In fact, we can iterate this process repeatedly. There is some diagram in $T$ specifying $C'$ as an gadget internal to $C$. We can apply $\introS$ to this in turn to get some gadget $C''$ internal to the global aspect of $C'$ (where the global aspect of $C'$ is defined in the \TODO obvious way). And we can go on forever in this way, continuing to iterate applications of $\introS$ as we like.
+At any rate, pick some lexly defined theory whose models come with an underlying strict lexcategory, such that $C$ can be seen as the underlying strict lexcategory of a model of such a theory internal to $T$. This amounts to choosing some lexcategory $L$ with an internal strict lexcategory $C_L$, and a lexfunctor $\ell: L \to T$ taking $C_L$ to $C$. If models of $L$ are called gadgets, then in this way, we have a gadget $G$ internal to $T$, with underlying strict lexcategory $|G| = C$. (For any gadget, I will use such bars to signify its underlying strict lexcategory)
 
-What's more, the natural transformation $\introN$ on $T$ then gives us a gadget homomorphism from $C$ to $\introF[C] = C'$ (that is, by whiskering $\ell$ along $\introN$, we get a natural transformation from $\ell$ to $\Hom_C(1, S(\ell(-)))$). More precisely, we get internal to $T$ a gadget-homomorphism $\glQuote$ from $C$ to the gadget given as the global aspect of $C'$ (that is, whose objects are given by $\Hom_C(1, \Ob(C'))$, whose morphisms are given by $\Hom_C(1, \Mor(C'))$, and whose composition structure and chosen basic limits act on these in the straightforward fashion, and so on for any other gadget structure).
+Now make the following observation: We have $G$ as an internal gadget in $T$ (that is, a $T$-indexed gadget which is $T$-small, thus specified by a diagram within $T$). But by applying $\introS$ to the diagram in $T$ specifying $G$ (that is, by composing $\ell$ with $\introS$), we also get some gadget $G' = \introS[G]$ internal to $C = |G|$. (That is, a $(T, |G|)$-indexed gadget which is $|G|$-small).
 
-Note that the action of $\glQuote$ (defined as given by $\introN$) matches the action of $\introS$, by \parensref{SMatchesN}.
+It was key here that $G$ was in fact $T$-small, so that the data defining $G$ lived in $T$, thus within the domain of applicability of $\introS$.
 
-What's more, just in the same way that we applied $\introS$ to $C$ to obtain $C'$, we can apply $\introS$ to this gadget-homomorphism $\glQuote$ too. We get, in a suitable sense, a gadget-homomorphism $\glQuote'$, internal to $C$, from $C'$ to $C''$. And again, we can go on forever, continuing to iterate applications of $\introS$ as we like.
+In fact, we can iterate this process repeatedly. There is some diagram in $T$ specifying $G'$ as a gadget internal to $|G|$. We can apply $\introS$ to this in turn to get some gadget $G''$ internal to $G'$. (This $G''$ amounts to a $(T, |G|, |G'|)$-indexed gadget which is $|G'|$-small). And we can go on forever in this way, continuing to iterate applications of $\introS$ as we like.
 
-Observe also that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, in suitable sense, by the naturality squares for $\introN$ with respect to the morphisms in $T$ given by the components of $\introN$ themselves. And by applying $\introS$ to this once, we also get that $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$, in suitable sense. Again, we can continue iterating applications of $\introS$ forever to get further such equations.
+What's more, the natural transformation $\introN$ on $T$ then gives us a gadget homomorphism $\introN_G : G \to \Hom_{|G|}(1, \introS[G]) = \Hom_{|G|}(1, G')$ (that is, by whiskering $\ell$ along $\introN$, we get a natural transformation from $\ell$ [corresponding to $G$] to $\Hom_C(1, S(\ell(-)))$ [corresponding to $\Hom_{|G|}(1, G')$]).
 
-But all of the aforementioned structure follows from just the existence of $C$, $C'$, $\glQuote$, $\glQuote'$, and the equations $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$ and $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$. Each further iteration of applying $\introS$ to something which already exists internal to $C$ might as well be an application of $\glQuote$ instead, by the fact that $\introS$ and $\glQuote$ have the same action.
+Here, by $\Hom_{|G|}(1, G')$, I mean the gadget whose data at any particular sort, defined over $t$ in $T$, is given by the data of that particular sort in $G'$, defined over $t$ in $T$ and $1$ in $|G|$. That is, its data at any particular sort is given by the morphisms in $|G|$ from $1$ to the corresponding sort of $G'$. That is, it is the global aspect of the $G$-internal gadget $G'$.
+
+What's more, just in the same way that we applied $\introS$ to $G$ to obtain $G'$, we can apply $\introS$ to the data of this gadget-homomorphism $\introN_G$ too (as this data is just certain morphisms in $T$). We get a gadget-homomorphism $\introN'_{G'} = S[\introN_G]$, internal to $G$, from $G'$ to $\Hom_{|G'|}(1, G'')$. Note that the data of $\introN'_{G'}$ amounts to a collection of globally defined elements of $\Mor(G)$.
+
+And again, we can go on forever, continuing to iterate applications of $\introS$ as we like. Thus, we may define $\introN''_{G''} = \introS[\introN'_{G'}]$. Note that, by \parensref{SMatchesN}, $\introS$ and $\introN_G$ have the same action on globally defined elements, so $\introN''_{G''}$ is equivalently $\introN_G(\introN'_{G'})$.
+
+Now observe that we can consider the following diagram within $T$:
+
+\[\begin{tikzcd}
+	G && {\Hom_{|G|}(1, G')} \\
+	\\
+	{\Hom_{|G|}(1, G')} && {\Hom_{|G|}(1, \Hom_{|G'|}(1, G''))}
+	\arrow["\introN_G", from=1-1, to=3-1]
+	\arrow["\introN_G"', from=1-1, to=1-3]
+	\arrow["\introN_{\Hom_{|G|}(1, G')}"', from=1-3, to=3-3]
+	\arrow["{\Hom_{|G|}(1, \introN'_{G'})}", from=3-1, to=3-3]
+\end{tikzcd}\]
+
+Note that this diagram commutes, as it is the naturality square for $\introN$ applied to the morphisms comprising $\introN_G$ themselves.
+
+That is, for any element $g$ of of any of the sorts comprising $G$, defined over object $t$ in $T$, we can consider $\introN_G(g)$ as a generalized element of $G'$, defined over $t$ in $T$ and $1$ in $|G|$. We can then apply our direct homomorphism $\introN'_{G'}$ to this, to get $\introN'_{G'}(\introN_G(g))$ as a generalized element of $G''$, defined over $t$ in $T$ and $1$ in $|G|$ and $1$ in $|G'|$. Or we can construe $\introN_G(g)$ again as merely data within $|G|$, a particular morphism with domain $1$ in $|G|$, defined over $t$ in $T$, and then apply $\introN_G$ to this once more, to get a particular morphism with domain $1$ in $|G'|$, defined over $t$ in $T$ and $1$ in $|G|$, and then re-construe this as as a generalized element of $G''$ defined over $t$ in $T$ and $1$ in $|G|$ and $1$ in $|G'|$. Either way, we get the same result.
+
+In loose (perhaps too loose) language, we might say $\introN_G \circ \introN_G = \introN'_{G'} \circ \introN_G$.
+
+And by applying $\introS$ to this last diagram, we also get the same diagram with one more prime added everywhere. That is, we get that $\introN'_{G'} \circ \introN'_{G'} = \introN''_{G''} \circ \introN'_{G'}$, in the exact same (perhaps too loose) language. Again, we can continue iterating applications of $\introS$ forever to get further such equations.
+
+But all of the aforementioned structure follows from just the existence of gadget $G$, $G'$, $\introN_G$, $\introN'_{G'}$, and the equations loosely describable as $\introN_G \circ \introN_G = \introN'_{G'} \circ \introN_G$ and $\introN'_{G'} \circ \introN'_{G'} = \introN_G(\introN'_{G'}) \circ \introN'_{G'}$. Each further iteration of applying $\introS$ to something which already exists internal to $C$ might as well be an application of $\introN_{G}$ instead, by the fact that $\introS$ and $\introN_{G}$ have the same action.
 \end{observation}
 
 This brings us to the compact definition of a geminal gadget:
 
 \subsection{The free introspective theory: The theory of geminal categories}
 \begin{definition}
-For any particular lex theory whose models we call gadgets and whose models have underlying lexcategories, a \defined{geminal gadget} is a structure with the following six components and properties (note that the primed components are internal doppelgangers of the non-primed components):
+For any particular lex theory whose models we call gadgets and whose models $M$ have underlying lexcategories $|M|$, a \defined{geminal gadget} is a structure with the following six components and properties (note that the primed components are internal doppelgangers of the non-primed components):
 \begin{itemize}
-    \item 1: A gadget $C$.
-    \item 1': Internally to (the underlying lexcategory of) $C$, a gadget $C'$.
-    \item 2: An gadget-homomorphism $\glQuote$ from $C$ to $\Hom_C(1, C')$.
-    \item 2': Internally to $C$, a gadget-homomorphism $\glQuote'$ from $C'$ to $\Hom_{C'}(1, C'')$, where $C'' = \glQuote[C']$.
-    \item 3: Such that $\glQuote \circ \glQuote = \glQuote' \circ \glQuote$, in the appropriate sense.
+    \item 1: A gadget $G$.
+    \item 1': Internally to $|G|$, a gadget $G'$.
+    \item 2: A gadget-homomorphism $\introN_G$ from $G$ to $\Hom_{|G|}(1, G')$.
+    \item 2': Internally to $|G|$, a gadget-homomorphism $\introN'_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$, where $G'' = \introN[G']$.
+    \item 3: Such that $\introN_G \circ \introN_G = \introN'_{G'} \circ \introN_G$, in the appropriate sense described above.
     
-    That is, for any object or morphism or other datum $c$ in $C$, we have that $\glQuote(c)$ is a global datum of the same sort in $C'$. $\glQuote' (\glQuote(c))$ is then a global datum of that same sort in the global aspect of $C''$. We can also apply $\glQuote$ itself to the morphism in $C$ with domain $1$ representing $\glQuote(c)$, to get what we might call $\glQuote (\glQuote(c))$, again a global datum of that same sort in the global aspect of $C''$. And our demand now is that these last two datums be equal.
+    That is, for any object or morphism or other datum $g$ in $G$, we have that $\introN_G(g)$ is a globally defined datum of the same sort in $G'$. $\introN'_{G'} (\introN_G(g))$ is then a global datum of that same sort in the global aspect of $G''$. We can also apply $\introN_G$ itself to the morphism in $|G|$ with domain $1$ representing $\introN_G(g)$, to get what we might call $\introN_G (\introN_G(g))$, again a global datum of that same sort in the global aspect of $G''$. And our demand now is that these last two datums be equal.
     
-    \item 3': Such that $\glQuote' \circ \glQuote' = \glQuote'' \circ \glQuote'$, in the same sense as above, where $\glQuote'' = \glQuote[\glQuote']$.
+    \item 3': Such that $\introN'_{G'} \circ \introN'_{G'} = \introN''_{G''} \circ \introN'_{G'}$, in the same sense as above, where $\introN''_{G''} = \introN_{G}[\introN'_{G'}]$.
 \end{itemize}
 Thus, we may speak of \defined{geminal strict lexcategories}, \defined{geminal strict locally cartesian closed categories}, \defined{geminal strict elementary toposes}, and so on. Generally, we will drop the \quote{strict} when speaking of such geminal structures, as it can be presumed that any lexly defined notion is strict.
 
 Note also that, at a minimum, the notion of gadget used here is the notion of a strict lexcategory, and thus, for convenience, we may say \defined{geminal category} as shorthand for geminal strict lexcategory.
 
-In usual abuse of language, we may name simply $C$ or $\langle C, C' \rangle$ to refer to this entire structure. But when we are fully explicit, we may write out $\langle C, C', \glQuote, \glQuote' \rangle$. Where it causes no confusion, we will use the same names $\glQuote$ and $\glQuote'$ for reference to the corresponding structure across multiple geminal gadgets.
+In usual abuse of language, we may name simply $G$ or $\langle G, G' \rangle$ to refer to this entire structure. But when we are fully explicit, we may write out $\langle G, G', \introN_{G}, \introN'_{G'} \rangle$.
 
 \TODOinline{Word this all better, most clearly. Does framing things in terms of indexed categories help here? One difficulty is that we need to talk about strict category structure, so that we can talk about preservation of limits on the nose, which actually is necessary for the theory of geminal categories to comprise an introspective theory.}
 
-A \defined{homomorphism} between geminal gadgets is a gadget-homomorphism between their underlying gadgets $C$ (thus, preserving all the structure specified in Axiom 1) which further preserves all the further specified structure of axioms 1', 2, and 2'.
+A \defined{homomorphism} between geminal gadgets is a gadget-homomorphism between their underlying gadgets $G$ (thus, preserving all the structure specified in Axiom 1) which further preserves all the further specified structure of axioms 1', 2, and 2'.
 \end{definition}
 
 \begin{theorem}\label{IntrospContainsGL}
-Every (inner-strict) introspective theory $\langle T, C, \introF \rangle$ such that $C$ is an internal gadget contains an internal geminal-gadget with underlying gadget the $C$ of our introspective theory, with $C'$ given by $\introF C$, with $\glQuote$ given by the action of $\introF$, and with $\glQuote'$ given by $\introF \glQuote$.
+Every inner-strict introspective theory $\langle T, C, \introS, \introN \rangle$ such that $C$ is the underlying strict lexcategory of a $T$-internal gadget $G$ contains a $T$-internal geminal-gadget with underlying gadget the $G$ of our introspective theory, with $G'$ given by $\introF[G]$, with $\introN_{G}$ of the geminal gadget structure given (as the coinciding names suggest) by the action of $\introN$ on the components of $G$, and with $\introN'_{G'}$ given by $\introS[\introN_{G}]$.
 \end{theorem}
 \begin{proof}
 This was the essential content of the discussion at \cref{IntrospContainsGLObservation} which we used to motivate the definition of a geminal gadget in the first place.
 \end{proof}
 
 \begin{theorem}\label{GLContainsGL}
-Every geminal gadget $C = \langle C, C', \glQuote, \glQuote'\rangle$ has an internal geminal gadget $C' = \langle C', C'', \glQuote',$ $\glQuote''\rangle$ where $C''$ is defined as $\glQuote[C']$ and $\glQuote''$ is defined as $\glQuote[\glQuote']$. Furthermore, $\glQuote$ acts as a geminal gadget homomorphism from $C$ into the global aspect of $C'$.
+Every geminal gadget $G = \langle G, G', \introN_{G}, \introN'_{G'}\rangle$ has an internal geminal gadget $G' = \langle G', G'', \introN'_{G'},$ $\introN''_{G''}\rangle$ where $G''$ is defined as $\introN_{G}[G']$ and $\introN''_{G''}$ is defined as $\introN_{G}[\introN'_{G'}]$. Furthermore, $\introN_{G}$ acts as a geminal gadget homomorphism from $G$ into the global aspect of $G'$.
 \end{theorem}
 \begin{proof}
-First, in order to show that $C'$ is an internal geminal gadget with the specified structure, we must show that it satisfies the six axioms of a geminal gadget. Axioms 1, 2, and 3 follow for $C'$ as equivalent to axioms 1', 2', and 3' for $C$ itself. And axioms 1', 2', and 3' follow for $C'$ by application of $\glQuote$ to the structure of axioms 1, 2, and 3 for $C'$. (This argument should perhaps strictly be carried out in order 1, 1', 2, 2', 3, and 3', but that is the idea).
+First, in order to show that $G'$ is an internal geminal gadget with the specified structure, we must show that it satisfies the six axioms of a geminal gadget. Axiom 1 for $G'$ follows as equivalent to axiom 1' for $G$ itself, and then axiom 1' for $G'$ follows by application of $\introN_{G}$ to axiom 1 for $G'$. In the same way, axiom 2 for $G'$ follows as equivalent to axiom 2' for $G$ itself, and then axiom 2' for $G'$ follows by application of $\introN_{G}$ to axiom 2 for $G'$. In the same way, axiom 3 for $G'$ follows as equivalent to axiom 3' for $G$ itself, and then axiom 3' for $G'$ follows by application of $\introN_{G}$ to axiom 3 for $G'$.
 
-Next, in order to see that $\glQuote$ furnishes a geminal gadget homomorphism from $C$ to $C'$, we need to observe that it is a strict lexfunctor (this is given by axiom 2 for $C$), and that it preserves the structure of axioms 1', 2, and 2'. It preserves the structure of 1' and 2' by definition, as we have defined these components of the geminal gadget $C'$ to be $\glQuote$ applied to the corresponding components of the geminal gadget $C$. And the fact that $\glQuote$ preserves the structure of axiom 2 is the content of axiom 3 for $C$.
+Next, in order to see that $\introN_{G}$ furnishes a geminal gadget homomorphism from $G$ to $G'$, we need to observe that it is a gadget homomorphism (this is given by axiom 2 for $G$), and that it preserves the structure of axioms 1', 2, and 2'. It preserves the structure of 1' and 2' by definition, as we have defined these components of the geminal gadget $G'$ to be $\introN_{G}$ applied to the corresponding components of the geminal gadget $G$. And the fact that $\introN_{G}$ preserves the structure of axiom 2 is the content of axiom 3 for $G$.
 \end{proof}
 
 \begin{corollary}\label{GLCatTheoryIsIntrosp}
@@ -74,13 +102,15 @@ The free lexcategory $\GLCatTheory$ with an internal geminal gadget (for some fi
 This is equivalent to \cref{GLContainsGL}, via the yoga of functorial semantics.
 \end{proof}
 
+\TODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory}
+
 \TODOinline{Before the following theorem, write out the straightforward definition of introspective theory homomorphism, and updated to arbitrary gadgets}
 
 \begin{theorem}
 The introspective theory from \cref{GLCatTheoryIsIntrosp} is the free introspective theory with an internal gadget whose underlying lexcategory is $C$, in the sense that there is a unique (up to natural isomorphism) introspective theory homomorphism from this to any other introspective theory $\langle T, D \rangle$ with an internal gadget whose underlying lexcategory is $D$.
 \end{theorem}
 \begin{proof}
-Let $\langle T, D \rangle$ be as specified. By \cref{IntrospContainsGL}, we get a unique (up to natural isomorphism) lexfunctor $H$ from $\GLCatTheory$ to $T$ taking the internal gadget $C$ in $\GLCatTheory$ to the internal gadget $D$ in $T$. To show that this $H$ is an introspective theory homomorphism, we must show that it moreover preserves the structure of $\introS$ and $\introN$. For preserving the structure of $\introN$, recall that $\introN$ on $\GLCatTheory$ was defined as the action of $\glQuote$ on $C$, and $H$ must take this action to the action of $\glQuote$ on $D$, which was defined as the action of $\introN$ on $T$. For preserving the structure of $\introS$, recall that $\introS$ on $\GLCatTheory$ was defined as the passage from $C$ to its internal gadget $C'$ within $\GLCatTheory$, and $H$ must take this action to the passage from $D$ to its internal gadget $D'$ within $T$, which was defined as the action of $\introS$ within $T$.
+Let $\langle T, D \rangle$ be as specified. By \cref{IntrospContainsGL}, we get a unique (up to natural isomorphism) lexfunctor $H$ from $\GLCatTheory$ to $T$ taking the internal gadget $G$ in $\GLCatTheory$ to the internal gadget $K$ in $T$. To show that this $H$ is an introspective theory homomorphism, we must show that it moreover preserves the structure of $\introS$ and $\introN$. For preserving the structure of $\introN$, recall that $\introN$ on $\GLCatTheory$ was defined as the action of $\introN_{G}$ on $G$, and $H$ must take this action to the action of $\introN_{K}$ on $K$, which was defined as the action of $\introN$ on $T$. For preserving the structure of $\introS$, recall that $\introS$ on $\GLCatTheory$ was defined as the passage from $G$ to its internal gadget $G'$ within $\GLCatTheory$, and $H$ must take this action to the passage from $K$ to its internal gadget $K'$ within $T$, which was defined as the action of $\introS$ within $T$.
 \end{proof}
 \begin{corollary}
 The initial introspective theory is the theory of geminal strict lexcategories; i.e., the theory of geminal categories.
@@ -89,16 +119,16 @@ The initial introspective theory is the theory of geminal strict lexcategories; 
 \TODOinline{Before the following, write out the definition of a strict (not merely inner-strict) introspective theory and observe how every introspective theory can be refined further from an inner-strict introspective theory into a strict introspective theory.}
 
 \begin{construction}
-Every strict introspective theory $\langle T, D \rangle$ can itself be naturally equipped as a geminal category (i.e., geminal strict lexcategory) $\langle T, D, \introS, \glQuote_D \rangle$, where $\glQuote_D$ refers to the structure defining $\glQuote$ for the internal geminal category $D$ within $T$, as given by \cref{IntrospContainsGL}. Note that the geminal category we are describing here is such that the structure $D$ internal to the introspective theory is playing the role of the internal $C'$, not the role of the external $C$, when we construe this as a geminal category.
+Every strict introspective theory $\langle T, D \rangle$ can itself be naturally equipped as a geminal category (i.e., geminal strict lexcategory) $\langle T, D, \introS, \introN_{D} \rangle$, where $\introN_{D}$ refers to the structure defining $\introN_{G}$ for the internal geminal category $D$ within $T$, as given by \cref{IntrospContainsGL}. Note that the geminal category we are describing here is such that the structure $D$ internal to the introspective theory is playing the role of the internal $C'$, not the role of the external $C$, when we construe this as a geminal category.
 
 That this structure satisfies axioms 1, 1', and 2 of a geminal category is immediate. These are simply the sort of data of $T$, $D$, and $\introS$, respectively. Also, that this structure satisfies axioms 1', 2', and 3' is immediate, because these correspond to the internal geminal category $D$ within $T$ satisfying axioms 1, 2, and 3, respectively.
 
-The only thing remaining to verify is axiom 3 of a geminal category, that $\introS \circ \introS = \glQuote_D \circ \introS$ in the appropriate sense. By \parensref{SMatchesN}, we have that $\introS \circ \introS = \introN \circ \introS$ in suitable sense. And $\glQuote_D$ was defined to match $\introN$. This completes the verification.
+The only thing remaining to verify is axiom 3 of a geminal category, that $\introS \circ \introS = \introN_{D} \circ \introS$ in the appropriate sense. By \parensref{SMatchesN}, we have that $\introS \circ \introS = \introN \circ \introS$ in suitable sense. And $\introN_{D}$ was defined to match $\introN$. This completes the verification.
 \end{construction}
 
 Note that nothing we've done so far in this chapter really depends specifically on the nature of lex theories. The only key fact about lex theories is that the theory of (strict) lexcategories is itself given by a lexcategory, in a suitable sense. If lex theories, (strict) lexcategories, and (strict) lexfunctors were replaced throughout by some other notion of theory which had the analogous property, all the same results would hold (e.g., using theories with limits of cardinality up to some particular infinite cardinal). Our fixation on lex theories is because these are the weakest natural theory satisfying this property and in which one can speak about internal categories. It also turns out in practice that so many of the structures mathematicians are interested in are given by lex theories (in jargon, "essentially algebraic").
 
-There are analogues of all the above results where we use finite product theories instead, and talk about enriched structures rather than internal structures. This can be made to work because finite product structure suffices to discuss enriched category structure and even enriched category-with-finite-product structure once the structure of the objects themselves has been fixed. We decline for now to formalize this, as it is a bit off the path of our main interest in introspective theories. \TODOinline{Formalize this, unify this with the above, show how Kripke-4 categories are the enriched analogue of a geminal cartesian closed category. Note how a geminal lex cartesian closed category always gives rise to such an enriched-geminal cartesian closed category. Discuss the weaker notion of enriched-geminal categories which do not presume cartesian closed structure as well, and note how any geminal category gives rise to such an enriched-geminal category.}
+There are analogues of all the above results where we use finite product theories instead, and talk about enriched structures rather than internal structures. This can be made to work because finite product structure suffices to discuss enriched category structure and even enriched category-with-finite-product structure once the structure of the objects themselves has been fixed. We decline for now to formalize this, as it is a bit off the path of our main interest in introspective theories. \TODOinline{Formalize this, as free locally introspective theories (consider both the finite limit and finite product cases) unify this with the above, show how Kripke-4 categories are the enriched analogue of a geminal cartesian closed category. Note how a geminal lex cartesian closed category always gives rise to such an enriched-geminal cartesian closed category. Discuss the weaker notion of enriched-geminal categories which do not presume cartesian closed structure as well, and note how any geminal category gives rise to such an enriched-geminal category.}
 
 \begin{TODOblock}
 Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
@@ -108,4 +138,8 @@ Write out how we can sort of re-extract from a geminal category $C$ some introsp
 Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points.
 
 But a geminal category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic geminal category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors.
+\end{TODOblock}
+
+\begin{TODOblock}
+Write out that Geminal Ys are the same as Geminal (Geminal Y)s.
 \end{TODOblock}

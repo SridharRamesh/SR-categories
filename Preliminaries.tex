@@ -47,10 +47,22 @@ Suppose $T$ is some category and $C$ is some category indexed over $T$. What doe
 
 What this means is that, for every object $t$ in $T$ and every $t$-defined object $c$ in $C$, we have some corresponding set of $P$ (the $t$-defined $c$-defined elements of $P$), and we also have a coherent system of pullback maps between these: Along any map $f : s \to t$ in $T$, we can pull back a $t$-defined $c$-defined element of $P$ to an $s$-defined $c$-defined element of $P$ (where the latter $c$ is implicitly the pullback along $f$ of the former $c$). And for any fixed $t$, given a $t$-defined map $g : d \to c$ in $C$, we can pull back a $t$-defined $c$-defined element of $P$ along this to a $t$-defined $d$-defined element of $P$. Both of these systems of pullbacks are functorial, and they also interact with each other \quote{commutatively} in the sense that pulling back along a map $g$ in $C$ and then pulling back along a map $f$ in $T$ is the same as pulling back along the map $f$ in $T$ and then pulling back along the map $g$ in $C$ (where, again, the latter, $g$ is implicitly the pullback along $f$ of the former $g$).
 
-This all amounts to saying that $P$ is in fact indexed over the Grothendieck construction corresponding to $C$.
+This all amounts to saying that $P$ is in fact indexed over the Grothendieck construction corresponding to $C$. We shall say $P$ is $(T, C)$-indexed.
 
 What about maps between such doubly-indexed sets? Well, this is the same as the notion we get again by thinking of these as in fact singly-indexed over the Grothendieck construction. A natural transformation in that context.
 
 Now that we understand doubly-indexed sets and maps between them, we can also understand doubly-indexed structures in general. Including doubly-indexed strict categories, and everything about doubly-indexed categorical structures works in basically the same fashion.
 
-That all being said, we won't really need any of that just yet. All we will really be using of this is the concept of doubly-indexed sets, and of maps between them.
+This all extends in the same way to triple indexing and so on. Given a $(T, C)$-indexed category $D$, we we have that $D$ is indexed over the Grothendieck construction corresponding to $C$, and thus there is also a further category given by the Grothendieck construction corresponding to $D$. Structures indexed over this last construction, we may refer to as $(T, C, D)$-indexed. If we write $(T, C)$ for the Grothendieck construction corresponding to $C$, a $(T, C, D)$-category is the same as a $((T, C), D)$-indexed category. This amounts to structures which can be reindexed across morphisms in $T$, or  morphisms in $C$, or morphisms in $D$, all in a coherent way.
+
+\TODOinline{Discuss the concept of being $C$-small when $(T, C)$-indexed}
+
+Note also that any structure singly-indexed over $T$ can automatically be thought of as doubly-indexed over $T$ and $C$, where the indexing over $C$ is trivial. This is basically by the fact that the Grothendieck construction for $T$ and $C$ comes with a projection functor to $T$, so that all $T$-indexed structures thus induce, via this functor, a $T$-and-$C$-indexed structure. Thus, we can readily speak of maps between $T$-indexed structures and $(T, C)$-indexed structures, by treating the former as implicitly $(T, C)$-indexed themselves.
+
+Indeed, more generally in the multiply indexed context, any structure indexed over some prefix of a string of categories is automatically indexed over the full string of categories. And in the same way, this allows us to speak of maps between structures indexed by different strings of categories. This is the main reason for us to bring all this up, just so that we can speak of maps between structures at different levels of indexing.
+
+(Keep in mind also that an honest-to-goodness actual structure, living in $\Set$, is like the zero-ary case of indexing; it's indexed by the empty string of categories $()$, but can be seen in a trivial way as $T$-indexed for any category $T$).
+
+Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
+
+\TODOinline{Word all this better}
