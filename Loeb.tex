@@ -115,7 +115,7 @@ Conjecture: Every locally introspective theory with the Loeb property can be emb
 The fixed points produced by \parensref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(\introS(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ pulled back along $\introN$ of itself), we have that $a = b$.
 \end{theorem}
 \begin{proof}
-By passing to the appropriate slice introspective theory $T/t$, we can assume without loss of generality that all relevant values in the following are globally defined. \TODOinline{Expand on this, after we've gotten our head straight about the details of slice introspective theories. Note also that $\introN$ and $\introS$ match in their effect on global values.}
+By passing to the appropriate slice introspective theory $T/t$, we can assume without loss of generality that all relevant values in the following are globally defined; i.e., without loss of generality, we can presume $t = 1$.
 
 Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there were a map from $1$ to $E$, then $a$ and $b$ would be equal. In just the same way, taking this equalizer diagram's image under the lexfunctor $\introS$, we see that any value in $\Hom_C(1, \introS(E))$ would lead to $\introS(a)$ and $\introS(b)$ being equal, thus corresponding to equal maps from $1$ to $\introS(P(1))$ in $C$. Pulling $f$ back along these two would yield equal values, therefore. But pulling $f$ back along these two yields $a$ and $b$ respectively, so we would have that $a$ and $b$ are equal. This argument yields a morphism from $\Hom_C(1, \introS(E))$ to $E$ in $T$. Applying $\introS$ to this, we have a morphism in $C$, which lives in $Q(\introS(Q(1)))$, where $Q$ is the presheaf on $C$ represented by $\introS(E)$. Applying \parensref{LoebInIntrosp} to this, we get an element of $Q(1)$, which is to say, a global element of $\introS(E)$ in $C$. This makes $\introS(a)$ and $\introS(b)$ equal as global points of $\introS(P(1))$ in $C$. And by pulling $f$ back along these, we conclude as before that $a$ and $b$ are equal. \TODOinline{Word this all better}
 \end{proof}
@@ -125,19 +125,65 @@ Note that this argument made essential use of the structure (notably, equalizers
 \end{observation}
 
 \begin{observation}
-Note that this means that the apparent dependence on which particular object $Y$ and retraction from $P(\introS(Y))$ into $Y$ is used in the diagonalization theorem doesn't actually matter, in this context. We get the same result no matter what. \TODOinline{Word better}
+Note that this means that the apparent dependence on which particular object $Y$ and retraction from $P(\introS(Y))$ into $Y$ is used in the diagonalization theorem doesn't actually matter, in this context. We get the same result no matter what.
 \end{observation}
 
 A similar argument to \cref{UniqueFixedPoints} tells us that fixed points for endofunctors are unique, and even some initial algebra/terminal coalgebra properties for them: \TODO
 
-\begin{theorem}
-Suppose $K$ is any category internal to $T$, and $Q$ is a covariant presheaf on $K$ internal to $T$. 
+\begin{theorem}\label{CoalgToAlgExist}
+Suppose $Q$ is a $T$-small presheaf on the opposite category of $C$. (That is, a $T$-indexed covariant functor from $C$ to the self-indexing of $T$ whose category of elements is $T$-small). This induces a covariant endofunctor $Q(\introS(-))$ on $T$. Suppose $a : A \to Q(\introS(A))$ is a coalgebra for this functor within $T$ and $b : Q(\introS(B)) \to B$ is an algebra for this functor within $T$. Then there is some coalgebra-to-algebra morphism $g$ from $\introS(a)$ to $\introS(b)$ within $C$. That is, there is some $g : \introS(a) \to \introS(b)$ within $C$ such that $g = \introS(a) \circ \introS(Q(g)) \circ \introS(b)$.
 \end{theorem}
+\begin{proof}
+Note that the action of $Q$ gives us a morphism from $\Hom_C(\introS(A), \introS(B)) \times Q(\introS(A))$ to $Q(\introS(B))$ within $T$. By pre- and post-composing this with $a$ and $b$, respectively, we get a morphism from $\Hom_C(\introS(A), \introS(B)) \times A$ to $B$ within $T$. By applying $\introS$ to this, we get a globally defined morphism within $C$ from $\introS(\Hom_C(\introS(A), \introS(B))) \times \introS(A)$ to $\introS(B)$. This morphism is of type $P(S(P(1)))$, where $P$ is the $T$-small presheaf upon $C$ defined by $P(-) = \Hom_C(- \times \introS(A), \introS(B))$.
+
+Thus, we can apply our fixed point theorem \parensref{LoebInIntrosp} to this value. The result a value $g$ in $P(1)$ (i.e., in $\Hom_C(\introS(A), \introS(B))$) which is equal to $\introS(a \circ Q(g) \circ b)$, as desired.
+
+\TODOinline{Write diagrams to make this all clearer}
+\end{proof}
+
+\begin{theorem}
+The theorem \cref{CoalgToAlgExist} can be strengthened to not only produce a coalgebra-to-algebra morphism, but also to conclude that such a coalgebra-to-algebra morphism is unique.
+\end{theorem}
+\begin{proof}
+After applying \cref{CoalgToAlgExist} with a suitable presheaf $Q$ to get existence, apply \cref{UniqueFixedPoints} with that same presheaf to get uniqueness.
+\end{proof}
+
+Essentially identical arguments work when dealing with presheaves on the opposite category of the core of $C$ (that is, its subcategory including only its isomorphisms), thus establishing the uniqueness of our functorial fixed points:
+
+\begin{theorem}\label{CoreCoalgToAlgExist}
+Suppose $Q$ is a $T$-small presheaf on the opposite category of the core of $C$. This induces a covariant endofunctor $Q(\introS(-))$ on the core of $T$. Suppose $a : A \iso Q(\introS(A))$ is a coalgebra for this functor within the core of $T$ and $b : Q(\introS(B)) \iso B$ is an algebra for this functor within the core of $T$. Then there is some coalgebra-to-algebra isomorphism $g$ from $\introS(a)$ to $\introS(b)$ within $C$. That is, there is some $g : \introS(a) \iso \introS(b)$ within $C$ such that $g = \introS(a) \circ \introS(Q(g)) \circ \introS(b)$.
+\end{theorem}
+\begin{proof}
+Note that the action of $Q$ gives us a morphism from $\Iso_{C}(\introS(A), \introS(B)) \times Q(\introS(A))$ to $Q(\introS(B))$ within $T$. Actually, this satisfies a stronger property, of corresponding to a morphism from $\Iso_{C}(\introS(A), \introS(B))$ to $\Iso_T(Q(\introS(A)), Q(\introS(B)))$.
+
+By pre- and post-composing this with $a$ and $b$, respectively, we get a morphism from $\Iso_C(\introS(A), \introS(B)) \times A$ to $B$ within $T$, that corresponds to a morphism from $\Iso_C(\introS(A), \introS(B))$ to $\Iso_T(A, B)$.
+
+By applying $\introS$ to this, we get a globally defined morphism within $C$ from $\introS(\Iso_C(\introS(A), \introS(B))) \times \introS(A)$ to $\introS(B)$, that corresponds to a morphism from $\introS(\Iso_C(\introS(A), \introS(B)))$ to $\Iso_C(\introS(A), \introS(B))$.
+
+This morphism is of type $P(S(P(1)))$, where $P$ is the $T$-small presheaf upon the core of $C$ defined by $P(c)$ amounting to $c$-defined isomorphisms from $\introS(A)$ to $\introS(B)$.
+
+Thus, we can apply our fixed point theorem \parensref{LoebInIntrosp} to this value. The result a value $g$ in $P(1)$ (i.e., in $\Iso_C(\introS(A), \introS(B))$) which is equal to $\introS(a \circ Q(g) \circ b)$, as desired.
+
+\TODOinline{Write diagrams to make this all clearer}
+\end{proof}
+
+\begin{theorem}
+The theorem \cref{CoreCoalgToAlgExist} can be strengthened to not only produce a coalgebra-to-algebra isomorphism, but also to conclude that such a coalgebra-to-algebra isomorphism is unique.
+\end{theorem}
+\begin{proof}
+After applying \cref{CoreCoalgToAlgExist} with a suitable presheaf $Q$ to get existence, apply \cref{UniqueFixedPoints} with that same presheaf to get uniqueness.
+\end{proof}
+
+It is worth noting that the proofs of \cref{UniqueFixedPoints}, of \cref{CoalgToAlgExist}, and of \cref{CoreCoalgToAlgExist} can all be unified, seen as different instances of one general theorem. \TODOinline{Do this, and then having done so, the above cleans up a lot.}
 
 \begin{TODOblock}
-Discuss uniqueness of the fixed point for presheaves on the core of $C$ (i.e., fixed points of isovariant functors), and the simultaneous initial algebra and terminal coalgebra properties for fixed points of covariant functors. Moreover, every coalgebra has a unique homomorphism into every algebra.
+Discuss how we may conclude that our functorial fixed points are both initial algebras and terminal coalgebras.
 \end{TODOblock}
 
 \begin{TODOblock}
 Discuss how we get \Loeb's theorem not just for globally defined objects of $C$, but for arbitrary objects of $C$, by working within the introspective theory $T/\Ob(C)$. And this transfers into $C$ itself (such that $C$ holds \Loeb's theorem to be true for arbitrary objects of $\introS(C) = C_1$) via $\introS$. Write up details for this, including making sure we have the right slice-introspective theory construction.
+\end{TODOblock}
+
+\begin{TODOblock}
+Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on |G'|, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.
 \end{TODOblock}

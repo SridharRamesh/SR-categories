@@ -41,15 +41,15 @@ Now observe that we can consider the following diagram within $T$:
 	\arrow["{\Hom_{|G|}(1, \introN'_{G'})}", from=3-1, to=3-3]
 \end{tikzcd}\]
 
-Note that this diagram commutes, as it is the naturality square for $\introN$ applied to the morphisms comprising $\introN_G$ themselves.
+Note that this diagram commutes, as it is the naturality square for $\introN$ instantiated at the morphisms comprising $\introN_G$ themselves.
 
-That is, for any element $g$ of of any of the sorts comprising $G$, defined over object $t$ in $T$, we can consider $\introN_G(g)$ as a generalized element of $G'$, defined over $t$ in $T$ and $1$ in $|G|$. We can then apply our direct homomorphism $\introN'_{G'}$ to this, to get $\introN'_{G'}(\introN_G(g))$ as a generalized element of $G''$, defined over $t$ in $T$ and $1$ in $|G|$ and $1$ in $|G'|$. Or we can construe $\introN_G(g)$ again as merely data within $|G|$, a particular morphism with domain $1$ in $|G|$, defined over $t$ in $T$, and then apply $\introN_G$ to this once more, to get a particular morphism with domain $1$ in $|G'|$, defined over $t$ in $T$ and $1$ in $|G|$, and then re-construe this as as a generalized element of $G''$ defined over $t$ in $T$ and $1$ in $|G|$ and $1$ in $|G'|$. Either way, we get the same result.
+That is, for any generalized element $g$ of of any of the sorts comprising $G$, defined over object $t$ in $T$, we can consider $\introN_G(g)$ as a generalized element of $G'$, defined over $t$ in $T$ and $1$ in $|G|$. We can then apply our direct homomorphism $\introN'_{G'}$ to this, to get $\introN'_{G'}(\introN_G(g))$ as a generalized element of $G''$, defined over $t$ in $T$ and $1$ in $|G|$ and $1$ in $|G'|$. Or we can construe $\introN_G(g)$ again as merely data within $|G|$, a particular morphism with domain $1$ in $|G|$, defined over $t$ in $T$, and then apply $\introN_G$ to this once more, to get a particular morphism with domain $1$ in $|G'|$, defined over $t$ in $T$ and $1$ in $|G|$, and then re-construe this as as a generalized element of $G''$ defined over $t$ in $T$ and $1$ in $|G|$ and $1$ in $|G'|$. Either way, we get the same result.
 
 In loose (perhaps too loose) language, we might say $\introN_G \circ \introN_G = \introN'_{G'} \circ \introN_G$.
 
 And by applying $\introS$ to this last diagram, we also get the same diagram with one more prime added everywhere. That is, we get that $\introN'_{G'} \circ \introN'_{G'} = \introN''_{G''} \circ \introN'_{G'}$, in the exact same (perhaps too loose) language. Again, we can continue iterating applications of $\introS$ forever to get further such equations.
 
-But all of the aforementioned structure follows from just the existence of gadget $G$, $G'$, $\introN_G$, $\introN'_{G'}$, and the equations loosely describable as $\introN_G \circ \introN_G = \introN'_{G'} \circ \introN_G$ and $\introN'_{G'} \circ \introN'_{G'} = \introN_G(\introN'_{G'}) \circ \introN'_{G'}$. Each further iteration of applying $\introS$ to something which already exists internal to $C$ might as well be an application of $\introN_{G}$ instead, by the fact that $\introS$ and $\introN_{G}$ have the same action.
+But all of the aforementioned structure follows from just the existence of gadget $G$, $G'$, $\introN_G$, $\introN'_{G'}$, and the equations loosely describable as $\introN_G \circ \introN_G = \introN'_{G'} \circ \introN_G$ and $\introN'_{G'} \circ \introN'_{G'} = \introN_G(\introN'_{G'}) \circ \introN'_{G'}$. Each further iteration of applying $\introS$ to something which already exists internal to $|G|$ might as well be an application of $\introN_{G}$ instead, by the fact that $\introS$ and $\introN_{G}$ have the same action.
 \end{observation}
 
 This brings us to the compact definition of a geminal gadget:
@@ -102,15 +102,15 @@ The free lexcategory $\GLCatTheory$ with an internal geminal gadget (for some fi
 This is equivalent to \cref{GLContainsGL}, via the yoga of functorial semantics.
 \end{proof}
 
-\TODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory}
+\TODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory. The difficulty with turning this into an introspective theory is that the property we really depend on from the free lexcategory $L$ with an internal gadget of some sort is not just the 1-categorical property that it has a unique homomorphism to every other gadget, but the 2-categorical property that the category of homomorphisms from it to another lexcategory and natural transformations between those is equivalent to the 1-category of internal gadgets within that codomain lexcategory. This is true for lexcategories, but not necessarily for other doctrines, and I believe this is related to how $\Hom(1, -)$ is always a lexfunctor (thus turning internal models into genuine models,) but not always an X-functor. The subtle role of this in the above proof should be highlighted.}
 
 \TODOinline{Before the following theorem, write out the straightforward definition of introspective theory homomorphism, and updated to arbitrary gadgets}
 
 \begin{theorem}
-The introspective theory from \cref{GLCatTheoryIsIntrosp} is the free introspective theory with an internal gadget whose underlying lexcategory is $C$, in the sense that there is a unique (up to natural isomorphism) introspective theory homomorphism from this to any other introspective theory $\langle T, D \rangle$ with an internal gadget whose underlying lexcategory is $D$.
+The introspective theory from \cref{GLCatTheoryIsIntrosp} is the free introspective theory with an internal gadget whose underlying lexcategory is $C$, in the sense that there is a unique (up to natural isomorphism) introspective theory homomorphism from this to any other introspective theory $\langle T, D \rangle$ with an internal gadget $K$ whose underlying lexcategory is $D$.
 \end{theorem}
 \begin{proof}
-Let $\langle T, D \rangle$ be as specified. By \cref{IntrospContainsGL}, we get a unique (up to natural isomorphism) lexfunctor $H$ from $\GLCatTheory$ to $T$ taking the internal gadget $G$ in $\GLCatTheory$ to the internal gadget $K$ in $T$. To show that this $H$ is an introspective theory homomorphism, we must show that it moreover preserves the structure of $\introS$ and $\introN$. For preserving the structure of $\introN$, recall that $\introN$ on $\GLCatTheory$ was defined as the action of $\introN_{G}$ on $G$, and $H$ must take this action to the action of $\introN_{K}$ on $K$, which was defined as the action of $\introN$ on $T$. For preserving the structure of $\introS$, recall that $\introS$ on $\GLCatTheory$ was defined as the passage from $G$ to its internal gadget $G'$ within $\GLCatTheory$, and $H$ must take this action to the passage from $K$ to its internal gadget $K'$ within $T$, which was defined as the action of $\introS$ within $T$.
+Let $\langle T, D \rangle$ be as specified. By \cref{IntrospContainsGL} and the freeness of $\GLCatTheory$, we get a unique (up to natural isomorphism) lexfunctor $H$ from $\GLCatTheory$ to $T$ taking the internal gadget $G$ in $\GLCatTheory$ to the internal gadget $K$ in $T$. To show that this $H$ is an introspective theory homomorphism, we must show that it moreover preserves the structure of $\introS$ and $\introN$. For preserving the structure of $\introN$, recall that $\introN$ on $\GLCatTheory$ was defined as the action of $\introN_{G}$ on $G$, and $H$ (by virtue of inducing a homomorphism between global aspects of internal geminal gadgets) must take this action to the action of $\introN_{K}$ on $K$, which defines the action of $\introN$ on $T$. Thus, $H$ preserves the structure of $\introN$, as a map between these introspective theories. For preserving the structure of $\introS$, recall that $\introS$ on $\GLCatTheory$ was defined as the passage from $G$ to its internal gadget $G'$ within $\GLCatTheory$, and $H$ (again, by virtue of inducing a homomorphism between global aspects of internal geminal gadgets) must take this action to the passage from $K$ to its internal gadget $K'$ within $T$, which defines the action of $\introS$ within $T$.
 \end{proof}
 \begin{corollary}
 The initial introspective theory is the theory of geminal strict lexcategories; i.e., the theory of geminal categories.
@@ -137,9 +137,13 @@ Write out how we can sort of re-extract from a geminal category $C$ some introsp
 \begin{TODOblock}
 Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points.
 
-But a geminal category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic geminal category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors.
+But a geminal category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic geminal category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors. (It is worth observing this specific failure with an example.)
 \end{TODOblock}
 
 \begin{TODOblock}
-Write out that Geminal Ys are the same as Geminal (Geminal Y)s.
+Write out that Geminal Ys are the same as Geminal (Geminal Y)s. More to the point, (geminal Ys)-extending-X, for a specific geminal Y structure called X, are the same as geminal (Geminal-Ys-extending-X).
+
+Thus, every specific geminal structure (for one kind of gadget) is an initial geminal structure (for another kind of gadget).
+
+One consequence of this is that every geminal structure indeed arises as the global aspect of some gadget-with-underlying-category C internal to some introspective theory (as it is easy, essentially tautological, to see that the free geminal gadget is the one which arises as the global sections of the introspective theory of geminal gadgets).
 \end{TODOblock}

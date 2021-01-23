@@ -14,6 +14,7 @@ We are not particularly concerned about the details of arithmetic universes, so 
 
 Perhaps all it takes to have free models of arbitrary finitely presented lex theories is having a free locally cartesian closed category on 1 object. Because a free locally cartesian closed category on N objects is easily augmented to freely introduce morphisms or equations, in both cases by passing to an appropriate slice category. And a free lexcategory should sit within a free LCCC, and we can re-extract its free model as global sections. Finally, the free LCCC on N objects is itself given by a lex theory with only one sort, and thus should be generable from the free LCCC on 1 object.
 
+Does the free theory with free models of arbitrarily finitely presented lex theories have the property of being an introspective theory and not just a geminal category, like the initial AU? Note that, if so, we can then situate every other initiality-flavored geminal category within it as a pushforward of its internal copy of itself.
 ----
 
 Always presume X <= Y.

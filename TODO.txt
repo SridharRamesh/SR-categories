@@ -1,35 +1,26 @@
 What to do next:
 
-1. Write out T-indexed definition of introspective theories
-DONE
-
-2. Write out proof that slices categories of introspective theories are introspective theories, using above definition.
+1. Write out proof that slices categories of introspective theories are introspective theories, using above definition.
 DONE (on one account; another account should still be written up)
 
-3. Write out proof that this is equivalent to S, N definition (formalized not lexly).
-DONE
+* Writing out slice introspective theories.
 
-4. Write out proof that six axiom definition of GL categories is the initial introspective theory. [And more generally for GL-Xes]
-DONE
+* Writing out all the uniqueness results for Loeb's theorem, and unifying them
 
-5. Write out a particular lex formalization of S, N definition and discuss the issues involved in doing so; i.e., "strict" introspective theories.
-DONEish
+* Writing out geminal (geminal Ys) result.
 
-6. Write out proof that every strict introspective theory is a GL-category.
-DONE
+* Writing out locally geminal categories results.
 
-Definitely won't get that all done in a week, but whatever.
+* Writing out X -> []X extraction of introspective theories from geminal categories.
 
-Then:
-7. Back to categorical Löb's theorem. Things that are needed here: Deriving P(P(1)) |- P(1) from X nearly (but not necessarily exactly) a fixed point match for P(X) [P here is some presheaf such as [](- -> A)], constructing the near-fixed point needed to bootstrap this all and get the conclusion unconditionally, demonstrating that fixed points for functions that respect isos are unique, demonstrating that our fixed points for functors are initial algebras and terminal coalgebras.
+* Finish uniqueness aspects of Loeb's theorem
 
-First parts DONE. Must still write up the coalgebra stuff.
-
-8. Writing out all the examples of models in Models.tex.
+* Writing out all the examples of models in Models.tex:
+- Well-founded models
+- Models given by initial models of theories with internal initial models of themselves
+- Sigma_1 models relative to sigma_1 extensions of PA/ZF/etc
 
 9. Writing out relationship to GL modal logic (K4 is easy, and then 6 gives Löb's theorem; the fact that the logic we get doesn't go beyond GL modal logic I don't know off the top of my head a good clean way to see directly. It would be nice. We can derive it from the PA model and known relationship between the PA model and GL logic). The GLS modal logic can also be discussed, and the relationship between GL logic, GLS logic, GL categories, and introspective theories [there is also a logic GLT, with A |- []A as proper internalizable axiom |- [](A -> []A), but where unmodalized negation and implication are not around as operators; this should correspond to introspective theories]. It's worth noting that we have []~A even when we don't have 0, by virtue of the non-representable total limit presheaf.
-
-...
 
 100. Write out naive set theory thing. [And also naive untyped lambda calculus]. For naive set theory, it may be useful to consider notions like A isomorphic to []P(A x A) rather than A isomorphic to []P(A) or such things, just because ordered pairs are a pain in this world.
 ----
