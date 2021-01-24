@@ -138,3 +138,26 @@ There is another way to equip $T/t$ as an introspective theory, in which we use 
 \begin{TODOblock}
 Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way.
 \end{TODOblock}
+
+\subsection{Convenient notation}
+The following notation will be very convenient for us going forward. It is also suggestive of the connections with modal logic we will explore in a later chapter.
+
+Let $\langle T, C \rangle$ be a locally introspective theory.
+
+We say a presheaf on $C$ is locally $T$-small if the map from its category of elements to $C$ has $T$-small fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$.
+
+Note that the category of locally-$T$-small presheaves on $C$ is itself a $T$-indexed category. \TODOinline{Expand on this. Actually, in the following, all we mostly need is that $P(1)$ is $T$-small, although we occasionally make use of more when exponentiating presheaves.}
+
+We will write $\Box$ for the $T$-indexed lexfunctor from locally $T$-small presheaves on $C$ to $C$, which sends the presheaf $P$ to the presheaf $\introF(P(1))$.
+
+As $C$ itself is canonically a full subcategory of the $T$-small presheaves on $C$ (identifying each object $c$ of $C$ with the presheaf it represents under the Yoneda embedding), this $\Box$ is automatically also an endofunctor on $C$. In this sense, $\Box c = \introF(\Hom_C(1, c))$.
+
+We will ALSO use $\Box$ in a separate but related sense, for the $T$-indexed lexfunctor from the self-indexing of $T$ to itself, given by $\Hom_C(1, \introF(-))$.
+
+Note that, having set up these two notions of $\Box$, we find that $\introF$ preserves $\Box$, in that both $\introF(\Box(-))$ and $\Box(\introF(-))$ yield the same $T$-indexed functor from the self-indexing of $T$ to $C$. This is readily seen by unwinding their definitions: These are both $\introF(\Hom_C(1, \introF(-)))$.
+
+We also have that taking $\Hom_C(1, -)$ preserves $\Box$ in the same way. $\Hom_C(1, \Box(-)) = \Box(\Hom_C(1, -)) = \Hom_C(1, \introF(\Hom_C(1, -)))$. More generally, consider the map $G$ which assigns to every locally $T$-small presheaf $P$ upon $C$ its object of global elements $P(1)$. Then $G$ preserves $\Box$ in the same way: $G(\Box P) = \Box(G(P)) = \Hom_C(1, \introF(P(1)))$, where we make sense of $G(\Box P)$ by identifying $\Box P$ within $c$ with the presheaf it represents.
+
+Given object $c$ of $C$, and locally $T$-small presheaf $P$ on $C$, we will write $c \implies P$ to indicate the exponential presheaf $P^c$. That is, the presheaf $P(- \times c)$. We may also write $c \implies d$ where $d$ is an object of $C$ as well, to mean $c \implies P$ for the presheaf $P = \Hom_C(-, d)$ represented by $d$. Thus, $c \implies d$ is the presheaf $\Hom_C(- \times c, d)$.
+
+Note that for any locally $T$-small presheaf $P$ on $C$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, by considering the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
