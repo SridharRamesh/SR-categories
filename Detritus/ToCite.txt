@@ -30,3 +30,14 @@ https://arxiv.org/pdf/1708.05607.pdf (Constructive Modalities with Provability S
 Perhaps see "Note on Some Fixed Point Constructions in Provability Logic" by Lindstrom.
 
 https://arxiv.org/pdf/1712.09302.pdf (On the Semantics of Intensionality and Intensional Recursion, by Kavvos)
+
+https://arxiv.org/pdf/1606.05223.pdf (Guarded Cubical Type Theory:
+Path Equality for Guarded Recursion, by Birkedal et al)
+
+https://arxiv.org/pdf/1501.02925.pdf (Programming and Reasoning with
+Guarded Recursion for Coinductive Types, Birkedal et al)
+
+https://users-cs.au.dk/birke/papers/sgdtuniverse-conf.pdf (Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes, Birkedal et al)
+
+https://pure.itu.dk/portal/files/82370381/gdtt.pdf (Guarded Dependent Type Theory
+with Coinductive Types, Birkedal et al)

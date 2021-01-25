@@ -38,7 +38,7 @@ Pulling $f$ back along $\introN_{P(1)}(L(f)) : \Hom_C(1, \introS(P(1)))$ yields 
 \begin{proof}
 Recall that $L(f)$ is $W(y) : P(1)$, which is $d(y)$ pulled back along $\introN_Y(y) : \Hom_C(1, \introS(Y))$; that is, $L(f) = W(y) = \introN_Y(y)^* d(y)$. By the naturality of our relation $R$ over $P$, the relationship between $\introS(W)^*f$ and $d(y)$ pulls back to a relationship between $\introN_Y(y)^* \introS(W)^*f = (\introS(W) \circ \introN_Y(y))^* f$ and $\introN_Y(y)^* d(y) = L(f)$.
 
-Finally, note that $\introN_Y(y) : \Hom_C(1, \introS(Y))$ composed with $\introS(W) : \Hom_C(\introS(Y), \introS(P(1)))$ is $\introN_{P(1)}(W(y))$ (by the naturality of $\introN$), which is to say, $\introN_{P(1)}(L(f))$. This completes the proof.
+Finally, note that $\introN_Y(y) : \Hom_C(1, \introS(Y))$ composed with $\introS(W) : \Hom_C(\introS(Y),$ $ \introS(P(1)))$ is $\introN_{P(1)}(W(y))$ (by the naturality of $\introN$), which is to say, $\introN_{P(1)}(L(f))$. This completes the proof.
 \end{proof}
 
 Note that $R$ here can be any kind of relation at all. When $R$ specifically represents an equivalence relation (e.g., as when the maps defining $R$ are taken to be the domain and codomain projections from morphisms to objects for some groupoid structure whose objects are given by $P$), this result is naturally thought of as a fixed point property. We will only be looking at such $R$ for now in this document, though it is worth thinking about more general $R$ in future work.
@@ -68,7 +68,7 @@ If $\introS(P(X))$ is a retract of $X$ in $C$, then by applying the contravarian
 \end{proof}
 
 \begin{observation}[The Y Combinator]\label{YCombinator}
-One application of these corollaries is to the untyped lambda calculus. It is well-known that the untyped lambda calculus (in full generality not presuming the $\eta$-conversion rule) is modelled by a cartesian closed category $T$ with an object $Y$ such that $Y^Y$ is a retract of $Y$. More generally, let us consider any cartesian closed category $T$ with objects $Y$ and $A$ such that $A^Y$ is a retract of $Y$. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, with $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type, and let $P$ be the presheaf $\Hom_C(-, A)$, which amounts to $A^{-}$. As we have presumed $A^Y$ to be a retract of $Y$, we can apply either of our above corollaries (\cref{RetractInT} and \cref{RetractInC} amount to the same as each other in this case, as $T$ matches the global aspect of $C$), and find ourselves with a fixed point combinator from $P(\introS(P(1))) \iso A^A$ to $P(1) \iso A$. In the particular case where $Y$ and $A$ are the same object so we model the untyped lambda calculus in the ordinary way, the fixed point combinator we obtain is essentially the familiar \quote{Y combinator} (no pun intended on the Y).
+One application of these corollaries is to the untyped lambda calculus. It is well-known that the equational theory of the untyped lambda calculus (in full generality not presuming the $\eta$-conversion rule) is modelled by a cartesian closed category $T$ with an object $Y$ such that $Y^Y$ is a retract of $Y$. More generally, let us consider any cartesian closed category $T$ with objects $Y$ and $A$ such that $A^Y$ is a retract of $Y$. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, with $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type, and let $P$ be the presheaf $\Hom_C(-, A)$, which amounts to $A^{-}$. As we have presumed $A^Y$ to be a retract of $Y$, we can apply either of our above corollaries (\cref{RetractInT} and \cref{RetractInC} amount to the same as each other in this case, as $T$ matches the global aspect of $C$), and find ourselves with a fixed point combinator from $P(\introS(P(1))) \iso A^A$ to $P(1) \iso A$. In the particular case where $Y$ and $A$ are the same object so we model the untyped lambda calculus in the ordinary way, the fixed point combinator we obtain is essentially the familiar \quote{Y combinator} (no pun intended on the Y).
 \end{observation}
 
 In a sense, all we have shown so far are some very familiar results. Diagonalization is quite old hat. Its formalization in terms of cartesian closed structure to yield Lawvere's fixed point theorem, with \nameref{CantorsTheorem} and \nameref{YCombinator} as special cases of this, is well known. Cf. Lawvere's and Yonofsky's existing papers on diagonal arguments, fixed point theorems, and cartesian closed categories. \TODOinline{Write whatever should be written here, make whatever citations.}
@@ -158,7 +158,7 @@ Note that the action of $Q$ gives us a morphism from $\Iso_{C}(\introS(A), \intr
 
 By pre- and post-composing this with $a$ and $b$, respectively, we get a morphism from $\Iso_C(\introS(A), \introS(B)) \times A$ to $B$ within $T$, that corresponds to a morphism from $\Iso_C(\introS(A), \introS(B))$ to $\Iso_T(A, B)$.
 
-By applying $\introS$ to this, we get a globally defined morphism within $C$ from $\introS(\Iso_C(\introS(A), \introS(B))) \times \introS(A)$ to $\introS(B)$, that corresponds to a morphism from $\introS(\Iso_C(\introS(A), \introS(B)))$ to $\Iso_C(\introS(A), \introS(B))$.
+By applying $\introS$ to this, we get a globally defined morphism within $C$ from $\introS(\Iso_C($ $\introS(A), \introS(B))) \times \introS(A)$ to $\introS(B)$, that corresponds to a morphism from $\introS(\Iso_C(\introS(A), \introS(B)))$ to $\Iso_C(\introS(A), \introS(B))$.
 
 This morphism is of type $P(S(P(1)))$, where $P$ is the $T$-small presheaf upon the core of $C$ defined by $P(c)$ amounting to $c$-defined isomorphisms from $\introS(A)$ to $\introS(B)$.
 
@@ -177,7 +177,7 @@ After applying \cref{CoreCoalgToAlgExist} with a suitable presheaf $Q$ to get ex
 It is worth noting that the proofs of \cref{UniqueFixedPoints}, of \cref{CoalgToAlgExist}, and of \cref{CoreCoalgToAlgExist} can all be unified, seen as different instances of one general theorem. \TODOinline{Do this, and then having done so, the above cleans up a lot.}
 
 \begin{TODOblock}
-Discuss how we may conclude that our functorial fixed points are both initial algebras and terminal coalgebras.
+Discuss how we may conclude that our functorial fixed points are both initial algebras and terminal coalgebras. Note that Loeb's theorem itself is the initial algebra property for []1 |- 1.
 \end{TODOblock}
 
 \begin{TODOblock}
