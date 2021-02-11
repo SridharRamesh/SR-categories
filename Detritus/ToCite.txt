@@ -41,3 +41,11 @@ https://users-cs.au.dk/birke/papers/sgdtuniverse-conf.pdf (Intensional Type Theo
 
 https://pure.itu.dk/portal/files/82370381/gdtt.pdf (Guarded Dependent Type Theory
 with Coinductive Types, Birkedal et al)
+
+https://arxiv.org/pdf/1208.3596.pdf (FIRST STEPS IN SYNTHETIC GUARDED DOMAIN THEORY, Birkedal et al)
+
+https://golem.ph.utexas.edu/category/2014/04/on_two-dimensional_monad_theory.html (For strictifying constructions)
+
+https://www.sciencedirect.com/science/article/pii/0022404989901606 (Two-dimensional monad theory, by Blackwell et al, for strictifying constructions)
+
+https://arxiv.org/pdf/math/0702535.pdf (A 2-CATEGORIES COMPANION, by Lack, for strictifying constructions)

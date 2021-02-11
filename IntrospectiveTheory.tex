@@ -147,18 +147,43 @@ Let $\langle T, C \rangle$ be a locally introspective theory.
 
 We say a presheaf on $C$ is locally $T$-small if the map from its category of elements to $C$ has $T$-small fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$.
 
-Note that the category of locally-$T$-small presheaves on $C$ is itself a $T$-indexed category. \TODOinline{Expand on this. Actually, in the following, all we mostly need is that $P(1)$ is $T$-small, although we occasionally make use of more when exponentiating presheaves.}
+Note that the category of locally-$T$-small presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$. \TODOinline{Expand on this. Actually, in the following, all we mostly need is that $P(1)$ is $T$-small, although we occasionally make use of more when exponentiating presheaves.}
 
-We will write $\Box$ for the $T$-indexed lexfunctor from locally $T$-small presheaves on $C$ to $C$, which sends the presheaf $P$ to the presheaf $\introF(P(1))$.
+Thus, we have three $T$-indexed lexcategories of note: $T$ itself (considered as a $T$-indexed category through the self-indexing $T/-$), $C$, and $\Psh{C}$.
 
-As $C$ itself is canonically a full subcategory of the $T$-small presheaves on $C$ (identifying each object $c$ of $C$ with the presheaf it represents under the Yoneda embedding), this $\Box$ is automatically also an endofunctor on $C$. In this sense, $\Box c = \introF(\Hom_C(1, c))$.
+Between these, we also have a cycle of $T$-indexed lexfunctors, like so:
 
-We will ALSO use $\Box$ in a separate but related sense, for the $T$-indexed lexfunctor from the self-indexing of $T$ to itself, given by $\Hom_C(1, \introF(-))$.
+\[\begin{tikzcd}
+	&& {T/-} \\
+	\\
+	C &&&& {\Psh{C}}
+	\arrow["\introF"', from=1-3, to=3-1]
+	\arrow["{c \; \mapsto \Hom_{C}(-, c)}"', from=3-1, to=3-5]
+	\arrow["{P \mapsto P(1)}"', from=3-5, to=1-3]
+\end{tikzcd}\]
 
-Note that, having set up these two notions of $\Box$, we find that $\introF$ preserves $\Box$, in that both $\introF(\Box(-))$ and $\Box(\introF(-))$ yield the same $T$-indexed functor from the self-indexing of $T$ to $C$. This is readily seen by unwinding their definitions: These are both $\introF(\Hom_C(1, \introF(-)))$.
+Here, the bottom arrow is the Yoneda embedding, sending each object of $C$ to the corresponding representable presheaf. The right arrow takes a presheaf to its global elements. The left arrow is the $\introF$ which is part of the structure of an introspective theory.
+
+In general, we will write $\Box$ for a roundtrip around this diagram, starting from any of its three nodes.
+
+Thus, we will write $\Box$ for the $T$-indexed lexfunctor from $T$ to itself given by $t \mapsto \Hom_C(1, \introF(t))$.
+
+We will ALSO write $\Box$ for the $T$-indexed lexfunctor from $C$ to itself given by $c \mapsto \introF(\Hom_C(1, c))$.
+
+And we will ALSO write $\Box$ for the $T$-indexed lexfunctor from $\Psh{C}$ to $\Psh{C}$, which sends the presheaf $P$ to the presheaf represented by $\introF(P(1))$.
+
+As the Yoneda embedding is naturally thought of as the inclusion of a full subcategory, identifying $C$ with the corresponding representable presheaves within $\Psh{C}$, we may also think of this last instance of $\Box$ as a $T$-indexed lexfunctor from $\Psh{C}$ to $C$.
+
+Note that, having set up these various notions of $\Box$, we find that $\Box$ and each of the maps in the diagram \quote{commutes} in the appropriate sense; that is, they can be seen as preserving each other.
+
+For example, $\introF$ preserves $\Box$, in that both $\introF(\Box(-))$ and $\Box(\introF(-))$ yield the same $T$-indexed functor from the self-indexing of $T$ to $C$. This is readily seen by unwinding their definitions: These are both $\introF(\Hom_C(1, \introF(-)))$.
 
 We also have that taking $\Hom_C(1, -)$ preserves $\Box$ in the same way. $\Hom_C(1, \Box(-)) = \Box(\Hom_C(1, -)) = \Hom_C(1, \introF(\Hom_C(1, -)))$. More generally, consider the map $G$ which assigns to every locally $T$-small presheaf $P$ upon $C$ its object of global elements $P(1)$. Then $G$ preserves $\Box$ in the same way: $G(\Box P) = \Box(G(P)) = \Hom_C(1, \introF(P(1)))$, where we make sense of $G(\Box P)$ by identifying $\Box P$ within $c$ with the presheaf it represents.
 
 Given object $c$ of $C$, and locally $T$-small presheaf $P$ on $C$, we will write $c \implies P$ to indicate the exponential presheaf $P^c$. That is, the presheaf $P(- \times c)$. We may also write $c \implies d$ where $d$ is an object of $C$ as well, to mean $c \implies P$ for the presheaf $P = \Hom_C(-, d)$ represented by $d$. Thus, $c \implies d$ is the presheaf $\Hom_C(- \times c, d)$.
 
 Note that for any locally $T$-small presheaf $P$ on $C$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, by considering the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
+
+The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all descends to corresponding structure on their global aspects as well. Keep in mind, in the global aspect context, $\introF$ is the same as $\introS$, so wherever in the above we discussed $\introF$, a corresponding statement holds as well for $\introS$, when considering just the global aspect.
+
+The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in a later chapter. \TODO

@@ -11,4 +11,26 @@ And perhaps the naive set theory thing I can do is the clearest illustration of 
 
 Aaaah, actually, the functorial fixed points, there's a lot of work by Birkedal on this.
 
-Perhaps my contributions are simply this: Realizing that internal categories in a suitable fashion give rise to this Loeb's theorem structure including functorial fixed point structure. Giving an abstraction abstract enough to cover both the lines of work on arithmetic universes and on guarded recursion, and perhaps minimally abstract (not even presuming cartesian closure) for our purposes. And giving the relationships between the separate but related notions of introspective theories and geminal categories, including the theory of the latter demonstrated as the free instance of the former.
+Perhaps my contributions are simply this: Realizing that internal categories in a suitable fashion give rise to this Loeb's theorem structure including functorial fixed point structure. (This differentiates our work from most work on guarded recursion, which does not use internal categories and thus must take recursion as given by fiat). Giving an abstraction abstract enough both to cover the lines of work on arithmetic universes and to automatically induce the structure of guarded recursion (or, perhaps our contribution is simply recognizing that this abstraction covers both these cases; that the guarded fixed points also exist in the arithmetic universes style work), and perhaps minimally abstract (not even presuming cartesian closure) for our purposes. And giving the relationships between the separate but related notions of introspective theories and geminal categories, including the theory of the latter demonstrated as the free instance of the former. Perhaps also some of the recognition of the relationship between Lob's theorem and presheaves.
+
+***
+
+I think my original contributions are now reduced to these:
+
+Showing that this setup using internal categories automatically gives rise to the setup Birkedal et al investigate for guarded recursion. This is my one strong contribution, highlighting the value of internal categories and the "bootstrapping" they provide. This one theorem is valuable to write up, certainly.
+
+Showing that therefore guarded recursion arises even in arithmetic universes, the initial topos with NNO, PA with Godel codes, ZF with Godel codes, and other such traditional contexts for Goedel's incompleteness theorem.
+
+Noting that this particularly minimal setup suffices even without presuming cartesian closure.
+
+Noting the relationship between Lob's theorem and presheaves.
+
+Setting out cleanly the relationships between the distinct concepts of introspective theories and geminal categories.
+
+The first two of these seem like strong results people could be surprised by, the other three like trivia. I'm going to continue writing it up in the way I intended to for my personal closure, and I will send it to Dana once I do and see what happens. If two results does not suffice for a PhD, I am resigned back to the possibility this may not yield the outcome I desired and was momentarily again hopeful for. C'est la vie. But even if they do not justify a PhD, those two results do at least justify a paper.
+
+Can also make some observations about naive set theory, though it's a curio and does not really use the bulk of our theory here.
+
+----
+
+Note that in the well-founded sheaf-theoretic models of GL + X |- []X, a la Birkedal et al, we always get |- ~~[]False. Every node is such that from every node it reaches, there is some terminal node further reachable. Purely axiomatically, ~[]False |- []~[]False |- []False; ergo, |- ~~[]False.

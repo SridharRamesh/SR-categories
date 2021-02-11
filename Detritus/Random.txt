@@ -61,3 +61,7 @@ Free A-and-B-indexed category whose objects comprise an A and whose morphisms co
 So Ob(C) is a set, and Mor(C) lives in T^(Ob(C)^2), and for each (a, b), we get a prod-functor from (T^a // b) to the b-defined values of C^a.
 
 The free such thing has what in it? Well, we have (Ob(C) x Ob(C), Mor(C)). So T^(Ob(c) x Ob(c)) // Mor(C) has a functor to the Mor(C)-defined values of C^(Ob(c) x Ob(c)). One object in T^(Ob(C) x Ob(c)) is Mor(C) itself. So Mor(C) maps into C^(Ob(c) x Ob(c)). That is, for every pair of objects, we get map from their hom-object in T into an object in C.
+
+----
+
+Note that in the well-founded sheaf-theoretic models of GL + X |- []X, a la Birkedal et al, we always get |- ~~[]False. Every node is such that from every node it reaches, there is some terminal node further reachable. Purely axiomatically, ~[]False |- []~[]False |- []False; ergo, |- ~~[]False.

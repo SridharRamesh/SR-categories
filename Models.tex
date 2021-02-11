@@ -1,10 +1,51 @@
 \section{Models}
+\TODOinline{As with everything, this chapter is a work in progress, the organization and wording is rough, etc}
 
-Let $T$ be a theory with an internal model of itself
+\subsection{Automatic consistency results without models as such}
+We already know that the theory of geminal categories is an introspective theory. And because every introspective theory is itself a geminal category, we know that the theory of introspective theories only prove $\Box A$ if it furthermore proves $A$.
 
-Let $T$ be any lexcategory. There is an algebraish theory of lexcategories with an initial internal model of $T$, but this theory may not specifically be lex. It is lex if $T$ is finitely axiomatizable over a finite language. In general, it may use limits of size as large as needed to express the theory $T$ (whatever size is needed for a sketch generating $T$, where a sketch is taken to be a directed graph and some equations over that graph in the language of lexcategories). Regardless, within this algebraish theory describing an initial model of $T$, there is such an initial model of $T$, which may have more structure around than simply demanded by $T$, and we are interested in extracting that structure. We do so now. \TODOinline{Word this all better}
+Finally, we know that every lexcategory can be equipped as a geminal category in a trivial way, by taking its internal geminal category to be trivially $1$, even when the outer lexcategory needn't be trivial. From this, we can conclude that the theory of introspective theories is nontrivial in the sense that it does not prove its internal geminal category to be trivial. Thus, it does not prove $\Box A$ for all $A$. Furthermore, combining this with the previous paragraph, we have the stronger consistency result that for every $n$, the theory of introspective theories does not prove $\Box^n A$ for all $A$.
 
-Let $T$ be any lexcategory. There is of course the identity lexfunctor from $T$ to itself, but there may be others as well.
+In this way, simply by consideration of the freeness properties already established in the chapter on geminal categories, we already know the theory of introspective theories to have highly nontrivial content, even without needing to find any models of it \quote{in the wild}.
 
-Let $T$ be any lextheory with an internal initial model of itself; that is, with an internal category $C$, a functor $S$ from $T$ to the global aspect of $C$, and a unique natural transformation from $S$ to $Z$ for any 
+\TODOinline{Word this whole section better. Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
+\subsection{Finitely axiomatizable lex theories}
+A concept that will often be useful to us in the following.
+
+\begin{definition}
+A \defined{finitely axiomatizable lex theory} is a lex theory for which the corresponding lexcategory can be freely generated as a lexcategory in finitely many steps starting from the initial lexcategory of free augmentation with an object, free augmentation with a morphism between existing objects, or freely making two parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}. \TODOinline{Word this all better}
+\end{definition}
+
+\begin{TODOblock}
+Discuss the concept of a lexcategory having initial internal models of ALL finitely axiomatizable lex theories.
+
+As a bit of trivia, observe how this follows simply from having an internal free locally cartesian closed category on one object (verify the details on this). 
+
+Relate this also to the concept of arithmetic universes.
+\end{TODOblock}
+
+\subsection{Theories with free internal models of themselves}
+Fix some lex theory extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose every gadget $G$ contains an initial internal gadget $G'$ (in the sense that $G'$ is a gadget internal to the underlying lexcategory $|G|$ of $G$, and for any other gadget $H$ internal to $|G|$, there is a unique $|G|$-internal gadget homomorphism from $G'$ to $H$).
+
+In particular, then, this all applies to the actual initial gadget $G$. Internal to this initial gadget $G$'s underlying lexcategory $|G|$, we get a $G'$ as above. Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
+
+This setup is thus a geminal gadget (with axioms 3 and 3' of a geminal gadget automatically satisfied by the uniqueness observations in the previous paragraph).
+
+This immediately gives us models of our theory of geminal gadgets. For example, consider the theory of strict elementary toposes with natural numbers objects (let us call this an \defined{NNO-topos}, to make it less of a mouthful). This is indeed a lex theory in a straightforward way; indeed, a finitely axiomatizable lex theory. Furthermore, every NNO-topos has an internal initial model of every finitely axiomatizable lex theory. Thus, in particular, every NNO-topos has an internal initial NNO-topos, and thus, by the above, the initial NNO-topos is equipped as a geminal NNO-topos.
+
+\TODOinline{It is important to observe that the initial NNO-topos is NOT an introspective theory. It is merely a geminal category.}
+
+In the same way, the initial arithmetic universe is equipped as a geminal arithmetic universe. This is the structure discussed by Joyal and others after Joyal (e.g., Dijk and Oldenziel). \TODOinline{Give proper citations here}
+
+\TODOinline{The initial arithmetic universe actually IS an introspective theory, via reasoning about Freyd covers that does not generalize to other examples of this section's phenomena. Discuss this further.}
+
+\begin{TODOblock}
+Extend the above discussion of initiality to discuss corresponding introspective theories, beyond just the discussion of geminality. Although, e.g., the initial NNO-topos is not itself an introspective theory, there is nonetheless a corresponding introspective theory of note capturing the initiality properties. Furthermore, even any lex theory that does not automatically come with internal initial models of itself can be freely bumped up to do so, in a suitable sense, and we get a corresponding introspective theory as well.
+\end{TODOblock}
+
+\subsection{Models based on sigma-1 or arbitrary extensions of PA, or ZFC, or etc}
+\TODO
+
+\subsection{Models based on well-founded trees/well-founded posets}
+There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb's theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). \TODO

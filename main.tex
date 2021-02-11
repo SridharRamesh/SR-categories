@@ -17,19 +17,17 @@
 \begin{abstract}
 The aim of these notes is to identify and draw attention to a certain simple and categorically natural kind of mathematical structure which both serves as an abstract environment for the reasoning used in establishing \Loeb's theorem in its traditional instances, and furthermore allows this and the associated theorems and fixed-point results of the \Goedel-\Loeb\ modal logic to be vastly generalized.
 
-Several such \Loeb-style fixed point results have been explored in the literature before, but these notes aim to highlight a particularly minimal, simple, general abstraction that covers several threads of work in the literature, abstracting both the work on the \Goedel-\Loeb\ incompleteness theorems via arithmetic universes a la Joyal, and the work on \Loeb's theorem as a guarded fixed point combinator and on guarded (co)inductive types.
+Several such \Loeb-style fixed point results have been explored in the literature before, but these notes aim to highlight a particularly minimal, simple, general abstraction that covers several threads of work in the literature, abstracting both the work on the \Goedel-\Loeb\ incompleteness theorems via arithmetic universes a la Joyal, and the work on \Loeb's theorem as a guarded fixed point combinator and on guarded (co)inductive types by Birkedal et al.
 
-Notably, as differentiated from much other work in the literature on guarded fixed points, we do not take the existence of a guarded fixed points as a presumption of our framework by fiat, but rather achieve them as derived from the framework.
+Notably, as differentiated from much other work in the literature on type theories with guarded fixed points, we do not take the existence of guarded fixed points as a presumption of our framework by fiat, but rather achieve them as derived from the framework.
 
 The core idea is the identification of those essentially algebraic theories satisfying the property that every model of these theories contains also, as part of its structure, a homomorphism into an internal model of the same theory.
 
-This structure turns out to be viewable as a categorification of the Hilbert-Bernays derivability conditions of provability logic. In particular, it induces a bifunctor on each model of such a theory which is formally similar to the $\Box(A \implies B)$ operator of the \Goedel-\Loeb\ modal logic. Furthermore, as mentioned, various fixed-point theorems within these categories will be demonstrated, both at the level of terms and at the level of types. From these, the traditional instances of \Loeb's theorem in the context of provability of propositions falls out as a special case.
+This structure turns out to be viewable as a categorification of the Hilbert-Bernays derivability conditions of provability logic. In particular, it induces a bifunctor on each model of such a theory which is formally similar to the $\Box(A \implies B)$ operator of the \Goedel-\Loeb\ modal logic. Furthermore, as mentioned, various fixed-point theorems within these categories will be demonstrated, both at the level of terms and at the level of types. From these, the traditional instances of \Loeb's theorem in the context of provability of propositions falls out as a special case. Along the way, the relationship between \Loeb's theorem and presheaves is also highlighted.
 
-Because of the level of abstraction of our framework, we are also able to discuss free constructions fitting the framework, and we explore the nature of these free constructions in some detail.
+Our abstract framework admits free instances, and we establish the nature of these free instances in some detail. In so doing, the distinction and yet also close relationship between categorical models of provability logic which do and don't validate $X \vdash \Box X$ in general is formally clarified.
 
-Along the way, the relationship between \Loeb's theorem and presheaves is also highlighted, and the distinction and yet also relationship between categorical models of provability logic which do and don't validate $X \vdash \Box X$ in general is formally clarified.
-
-It should be noted that this work was originally developed during my time in graduate school from 2006 to 2013, but I did not write it up at that time. Since that time, there has been much independent development of related ideas by others. My hope is that there remains some valuable original contribution in the ideas here, at least in the particularly minimal framework and abstract presentation.
+It should be noted that this work was originally developed during my time in graduate school from 2006 to 2013, but I did not write it up at that time. Since that time, there has been much independent development of related ideas published by others. My hope is that there remains some valuable original contribution in the ideas here, at least in the particularly minimal framework and abstract presentation.
 \end{abstract}
 
 \tableofcontents
@@ -49,7 +47,7 @@ It should be noted that this work was originally developed during my time in gra
 
 % \include{Modal}
 
-% \include{Models}
+\include{Models}
 
 % \include{Applications}
 
