@@ -49,3 +49,9 @@ https://golem.ph.utexas.edu/category/2014/04/on_two-dimensional_monad_theory.htm
 https://www.sciencedirect.com/science/article/pii/0022404989901606 (Two-dimensional monad theory, by Blackwell et al, for strictifying constructions)
 
 https://arxiv.org/pdf/math/0702535.pdf (A 2-CATEGORIES COMPANION, by Lack, for strictifying constructions)
+
+https://mathoverflow.net/questions/346687/free-models-of-finitely-presented-essentially-algebraic-theories-in-elementary-t (Free models of finite lex theories)
+
+Partial Horn logic and cartesian categories (Palmgren and Vickers), at https://core.ac.uk/download/pdf/82110032.pdf [referenced by the above MathOverflow question]
+
+Power-Set Functors and Saturated Trees (Adamek et al, https://core.ac.uk/download/pdf/62916431.pdf). Perhaps of note for the von Neumann/cumulative hierarchy style model.

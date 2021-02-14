@@ -26,8 +26,10 @@
 \raggedbottom               % No more underfull vbox errors
 \usepackage{quiver}         % Commutative diagrams
 \usepackage{indentfirst}    % Indent first paragraph in a section
+\usepackage{imakeidx}       % Indexing
+  \makeindex[intoc]         % Include index in table of contents
 \usepackage[colorlinks=true, linkcolor=blue]
-  {hyperref}                % Hyper-linked references
+  {hyperref}                % Hyper-linked references (note that certain packages need to be loaded before this instead of after this, such as indexing)
 \usepackage[capitalize, nameinlink]
   {cleveref}                % References named by type and number
 \newcommand*{\parensref}[1]{\hyperref[{#1}]{\nameref*{#1} (\cref*{#1})}}              % References named by explicit name and parenthesized type and number

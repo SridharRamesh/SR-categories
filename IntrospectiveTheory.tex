@@ -36,7 +36,7 @@ As preparation for the proof of \cref{SNCorrespondence}, we will need two lemmas
 If $T$ is a category with terminal object, then a map from $D$ to $C$ as $T$-indexed Xes amounts to the same thing as a map $\introS$ from $D(1)$ to $C(1)$ along with a map from $D$ to $C$ as $T$-indexed (Xes under\footnote{In the sense of co-slices.} $D(1)$), where the map $\introS$ is used to treat $C$ as an X under $D(1)$.
 \end{lemma}
 \begin{proof}
-This is straightforward. If $T$ already has a terminal object, then $T$ is the same as $T$ freely augmented with a new object, a cone from all of $T$ to the new object, and then localizing the map from the old terminal object to the new terminal object. We can then see what functor categories out of this amount to. \TODO
+This is straightforward. If $T$ already has a terminal object, then $T$ is the same as $T$ freely augmented with a new object, a cone from all of $T$ to the new object, and then freely making the cone map from the old terminal object to the new terminal object an isomorphism. We can then see what functor categories out of this amount to. \TODO
 \end{proof}
 
 In order to state the next lemma, some terminology: If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory under $T$ augmented with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory under $T$. \TODOinline{Move this and \cref{Lemma2} itself to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with.}
@@ -68,9 +68,9 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 
 As before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, may refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all introspective theories (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
 
-\begin{lemma}[$\introS$ Matches $\introN$]\label{SMatchesN}
+\beginMathNamed{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
 Within a pre-introspective theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
-\end{lemma}
+\closeNamed{lemma}
 \begin{proof}
 Apply the naturality square for $\introN$ to the morphism from $1$ to $t$ representing $x$. One path around the square will be the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The other path around the square will be the unique identity morphism in $T$ from $1$ to $\Hom_C(1, 1)$ representing the identity morphism on $1$, followed by the morphism from $\Hom_C(1, 1)$ to $\Hom_C(1, \introS(t))$ representing composition in $C$ with the morphism in $C$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, this is also the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$.
 \end{proof}
@@ -88,10 +88,10 @@ While it is sometimes easier to prove theorems about (pre-)introspective theorie
 Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
 
 \begin{definition}
-By an \defined{inner-strict introspective theory}, we mean a pre-introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as a small indexed strict lexcategory.
+By an \defined{inner-strict introspective theory}, we mean a pre-introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, as a small indexed strict lexcategory.
 \end{definition}
 
-Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available.
+Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
 
 We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
 
@@ -147,7 +147,7 @@ Let $\langle T, C \rangle$ be a locally introspective theory.
 
 We say a presheaf on $C$ is locally $T$-small if the map from its category of elements to $C$ has $T$-small fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$.
 
-Note that the category of locally-$T$-small presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$. \TODOinline{Expand on this. Actually, in the following, all we mostly need is that $P(1)$ is $T$-small, although we occasionally make use of more when exponentiating presheaves.}
+Note that the category of locally $T$-small presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$.
 
 Thus, we have three $T$-indexed lexcategories of note: $T$ itself (considered as a $T$-indexed category through the self-indexing $T/-$), $C$, and $\Psh{C}$.
 
