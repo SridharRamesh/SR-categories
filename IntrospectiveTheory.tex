@@ -64,7 +64,7 @@ What's more, because of how $Z$ was constructed by freely augmenting $Y$ with a 
 	\arrow[""{name=0, anchor=center}, from=2-1, to=2-3]
 	\arrow[Rightarrow, from=1-2, to=0]
 \end{tikzcd}\]
-there is a unique\footnote{In the usual higher-categorical sense of there being a contractible space of choices, considered up to suitable isomorphism.} functor from $Z$ to $Z'$ commutatively relating the two diagrams. In jargon, this universal property is summarized by saying $Z$ (along with the data of $0_Z$ and $i$) is the co-comma of the unique functor from $Y$ to $1$ and the identity functor from $Y$ to $Y$.
+there is a unique functor from $Z$ to $Z'$ commutatively relating the two diagrams. In jargon, this universal property is summarized by saying $Z$ (along with the data of $0_Z$ and $i$) is the co-comma of the unique functor from $Y$ to $1$ and the identity functor from $Y$ to $Y$.
 
 Now, observe that $i$ has a left adjoint, the functor $q : Z \to Y$ such that $q \circ i$ is the identity on $Y$ and such that $q$ of the initiality co-cone for $0_Z$ in $Z$ is the initiality co-cone for $0$ in $Y$. That is, $q$ is the functor obtained by the co-comma property for $Z$ as applied to this diagram expressing the initiality co-cone of $0$ in $Y$:
 
@@ -97,13 +97,72 @@ such that the rightmost arrow of this diagram corresponds to some arrow $\introS
 
 \TODOinline{Phew! That made a mountain out of a molehill. But perhaps people sometimes appreciate such written-out detail.}
 
-In order to state the next lemma, some terminology: If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory under $T$ augmented with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory under $T$. \TODOinline{Move this and \cref{Lemma2} itself to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with. And we should do the same for finite product categories and the simple self-indexing.}
+In order to state the next lemma, some terminology: If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory extending $T$ with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory-under-$T$. \TODOinline{Move this and \cref{Lemma2} itself to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with. And we should do the same for finite product categories and the simple self-indexing.}
 
 \begin{lemma}\label{Lemma2}
-$T[1 \to -]$ is $T/-$, as a $T$-indexed lexcategory under $T$.
+$T[1 \to -]$ is $T/-$, as a $T$-indexed lexcategory-under-$T$.
 \end{lemma}
 \begin{proof}
-This is a standard observation, and also simple enough to show. \TODO
+This is a standard observation \TODOinline{There is surely some resource to cite here}, and also simple enough to show.
+
+To start off, we construe $T/-$ as not merely a $T$-indexed lexcategory, but furthermore a $T$-indexed lexcategory-under-$T$ (equivalently, $T/1$) by appeal to the first half of \cref{Lemma1} as applied to $T/- : \op{T} \to \LexCat$. Note that, for any particular object $t$ of $T$, this identifies $T/1$ inside $T/t$ via pullback along the unique map from $t$ to $1$; thus, $T$ is identified as the subcategory of \quote{constant} data within $T/t$. We may explicitly refer to this inclusion lexfunctor as $i_t : T \to T/t$. (Beware that in general, $i_t$ is faithful but not full!)
+
+Now, what we want to show that given any fixed diagram in $\LexCat$ of this form
+\[\begin{tikzcd}
+	& T \\
+	{T/t} && V
+	\arrow["{i_t}"', from=1-2, to=2-1]
+	\arrow["f", from=1-2, to=2-3]
+\end{tikzcd}\]
+there is a correspondence between commutative triangles extending this diagram with a lexfunctor from $T/t$ to $V$, and elements of $\Hom_V(1, f(t))$.
+
+Well, suppose given $m : 1 \to f(t)$ in $V$. Consider now how the action of $f$ on arrows induces a functor $f' : T/t \to V/f(t)$. Because $f$ preserves finite limits, and finite limits in a category determine the finite limits in its slice categories, this functor $f'$ also preserves finite limits. Furthermore, by pullback along $m$, we get a lexfunctor $m^* : V/f(t) \to V$. Thus, altogether, we get a lexfunctor $m^* \circ f' : T/t \to V$. What's more, the following diagram commutes:
+
+\[\begin{tikzcd}
+	& T \\
+	{T/t} && V \\
+	& {V/f(t)}
+	\arrow["{i_t}"', from=1-2, to=2-1]
+	\arrow["f", from=1-2, to=2-3]
+	\arrow["{f'}"', from=2-1, to=3-2]
+	\arrow["{m^*}"', from=3-2, to=2-3]
+\end{tikzcd}\]
+
+To see that this diagram commutes, observe that it can be decomposed like so:
+
+\[\begin{tikzcd}
+	& T \\
+	{T/t} & V & V \\
+	& {V/f(t)}
+	\arrow["{i_t}"', from=1-2, to=2-1]
+	\arrow["f", from=1-2, to=2-3]
+	\arrow["{f'}"', from=2-1, to=3-2]
+	\arrow["{m^*}"', from=3-2, to=2-3]
+	\arrow["f"', from=1-2, to=2-2]
+	\arrow["{i_{f(t)}}"', from=2-2, to=3-2]
+\end{tikzcd}\]
+
+Here, $i_{f(t)}$ is the inclusion lexfunctor from $V$ into $V/f(t)$ in the analogous way to $i_t : T \to T/t$. The left half of this diagram commutes because, $f$ being a lexfunctor, the operations \quote{Pull back along the map from $t$ to $1$ and then apply $f$ to the resulting slice} and \quote{Apply $f$ and then pull back along the map from $f(t)$ to $1$} are the same. The right half of this diagram commutes because $m^* \circ i_{f(t)}$ is identity, because this amounts to pulling back along two morphisms in a row, ultimately pulling back along a path from $1$ to $1$, and any morphism from $1$ to $1$ is the identity. \TODOinline{Phraes this better?}
+
+Thus, every element of $\Hom_V(1, f(t))$ induces a corresponding commutative triangle of lexfunctors from $i_t : T \to T/t$ to $f : T \to V$.
+
+Conversely, any such commutative triangle induces an element of $\Hom_V(1, f(t))$. To see this, we just need to see that there is some global element of $i_t(t)$ already in $T/t$.
+
+Note that $i_t(t)$ is one of the projections from $t \times t$ to $t$. Furthermore, the terminal object in $T/t$ is the identity slice from $t$ to $t$. So the following commutative triangle serves as a global element of $i_t(t)$ within $T/t$:
+
+\[\begin{tikzcd}
+	t && {t \times t} \\
+	& t
+	\arrow["id"', from=1-1, to=2-2]
+	\arrow["{i_t(t)}", from=1-3, to=2-2]
+	\arrow["{\langle \id, \id \rangle}", from=1-1, to=1-3]
+\end{tikzcd}\]
+
+Let us use the name $g_t$ for this global element of $i_t(t)$ within $T/t$.
+
+Now, we need to show that these two processes are inverse. \TODO
+
+Finally, we must show that the re-indexings within $T$
 \end{proof}
 
 Now, we shall prove \cref{SNCorrespondence}.
@@ -115,7 +174,7 @@ Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcatego
 \end{proof}
 
 \begin{remark}\label{IntrospGeneralDoctrine}
-It wasn't fundamentally important that we were dealing with lexcategories here. \Cref{Lemma1} only required a terminal object. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
+It wasn't fundamentally important that we were dealing with lexcategories here. \Cref{Lemma1} only required a terminal object. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory $T//t$ of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
 \end{remark}
 
 As a result of \cref{SNCorrespondence}, we can give another definition essentially equivalent to \cref{DefnPreIntrospIndexed}.
@@ -198,7 +257,7 @@ There is another way to equip $T/t$ as an introspective theory, in which we use 
 Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way.
 \end{TODOblock}
 
-\subsection{Convenient notation}
+\subsection{The box operator}
 The following notation will be very convenient for us going forward. It is also suggestive of the connections with modal logic we will explore in a later chapter.
 
 Let $\langle T, C \rangle$ be a locally introspective theory.

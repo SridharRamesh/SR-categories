@@ -3,18 +3,18 @@
 % Remember: \newtheorem{command name}{displayed name}[parent counter] makes a theorem whose counter is subordinate to counter, but \newtheorem{command name}[shared counter]{displayed name} makes a theorem which shares the counter. Also remember that there is automatically a counter available named "section".
 
 % Playing around
-\newtheoremstyle{bluestyle}
+\newtheoremstyle{envstyle}
   {\topsep}
   {\topsep}
   {}
   {}
-  {\scshape \color{blue}}
+  {\scshape \color{purple}}
   {}
   {.5em}
   {}
 
 %\theoremstyle{plain}
-\theoremstyle{bluestyle}
+\theoremstyle{envstyle}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{construction}[theorem]{Construction}
@@ -23,7 +23,7 @@
 \newtheorem{corollarytoproof}[theorem]{Corollary (to proof)}
 
 %\theoremstyle{definition}
-\theoremstyle{bluestyle}
+\theoremstyle{envstyle}
 \newtheorem{definition}[theorem]{Definition}
 
 \newcommand{\defined}[1]{\textbf{#1}\index{#1}} % For indicating the defined term in a definition
@@ -34,7 +34,7 @@
 \newcommand{\closeNamed}[1]{\end{#1}}
 
 %\theoremstyle{remark}
-\theoremstyle{bluestyle}
+\theoremstyle{envstyle}
 \newtheorem*{remark}{Remark}
 
 % This doesn't quite work yet. The word "Proof" is bolded?
