@@ -103,7 +103,7 @@ In order to state the next lemma, some terminology: If $T$ is a lexcategory, the
 $T[1 \to -]$ is $T/-$, as a $T$-indexed lexcategory-under-$T$.
 \end{lemma}
 \begin{proof}
-This is a standard observation \TODOinline{There is surely some resource to cite here}, and also simple enough to show.
+This is a standard observation \TODOinline{Cite 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof}, and also simple enough to show. \TODOinline{This whole proof is not really necessary, once the cite is given}
 
 To start off, we construe $T/-$ as not merely a $T$-indexed lexcategory, but furthermore a $T$-indexed lexcategory-under-$T$ (equivalently, $T/1$) by appeal to the first half of \cref{Lemma1} as applied to $T/- : \op{T} \to \LexCat$. Note that, for any particular object $t$ of $T$, this identifies $T/1$ inside $T/t$ via pullback along the unique map from $t$ to $1$; thus, $T$ is identified as the subcategory of \quote{constant} data within $T/t$. We may explicitly refer to this inclusion lexfunctor as $i_t : T \to T/t$. (Beware that in general, $i_t$ is faithful but not full!)
 
@@ -142,7 +142,7 @@ To see that this diagram commutes, observe that it can be decomposed like so:
 	\arrow["{i_{f(t)}}"', from=2-2, to=3-2]
 \end{tikzcd}\]
 
-Here, $i_{f(t)}$ is the inclusion lexfunctor from $V$ into $V/f(t)$ in the analogous way to $i_t : T \to T/t$. The left half of this diagram commutes because, $f$ being a lexfunctor, the operations \quote{Pull back along the map from $t$ to $1$ and then apply $f$ to the resulting slice} and \quote{Apply $f$ and then pull back along the map from $f(t)$ to $1$} are the same. The right half of this diagram commutes because $m^* \circ i_{f(t)}$ is identity, because this amounts to pulling back along two morphisms in a row, ultimately pulling back along a path from $1$ to $1$, and any morphism from $1$ to $1$ is the identity. \TODOinline{Phraes this better?}
+Here, $i_{f(t)}$ is the inclusion lexfunctor from $V$ into $V/f(t)$ in the analogous way to $i_t : T \to T/t$. The left half of this diagram commutes because, $f$ being a lexfunctor, the operations \quote{Pull back along the map from $t$ to $1$ and then apply $f$ to the resulting slice} and \quote{Apply $f$ and then pull back along the map from $f(t)$ to $1$} are the same. The right half of this diagram commutes because $m^* \circ i_{f(t)}$ is identity, because this amounts to pulling back along two morphisms in a row, ultimately pulling back along a path from $1$ to $1$, and any morphism from $1$ to $1$ is the identity. \TODOinline{Phrase this better?}
 
 Thus, every element of $\Hom_V(1, f(t))$ induces a corresponding commutative triangle of lexfunctors from $i_t : T \to T/t$ to $f : T \to V$.
 
@@ -251,6 +251,8 @@ When we abuse language and speak of $T/t$ as an introspective theory, the above 
 
 \begin{TODOblock}
 There is another way to equip $T/t$ as an introspective theory, in which we use as our internal category the slice category $C/t$ so to speak. \Cref{IntrospSlice} is actually equivalent to doing this and then applying \cref{IntrospInternalMap} to the internal forgetful lexfunctor from $C/t$ to $C$. This equivalence is easier to see once we see how the natural transformation taking $t$ to $\Hom_C(1, t)$ works. (Which we now have sketched at \cref{SNCorrespondence}). Perhaps it's also true that in the other direction, we apply \cref{IntrospInternalMap} to the constant lexfunctor from $C$ to $C/t$? Huh, and in the first case, I might have thought the relevant lexfunctor from $C/t$ to $C$ was pullback along the generic global element of $t$? Hm. Anyway, let us think about this more later.
+
+Having thought about it more, I think none of this is really worth mentioning. The point is that we can use \cref{IntrospInternalMap} in conjunction with any of the following functors: The forgetful (i.e., summation) functor from $C/t$ to $C$, the "instantiation" pullback from $C/t$ to $C$ along the generic global element of $t$ within $T/t$, or the "delta"/"constant" functor from $C$ to $C/t$. And going from $C$ to $C/t$ and then back to $C$ via delta and instantiation is the same as identity. I think that's all any of this amounts to, but it's not of interest. The interesting thing for introspective theories is just the category noted above.
 \end{TODOblock}
 
 \begin{TODOblock}
@@ -258,6 +260,8 @@ Make the useful observations that the theory of introspective theories is essent
 \end{TODOblock}
 
 \subsection{The box operator}
+\TODOinline{Think and write about this for pre-introspective theories too}
+
 The following notation will be very convenient for us going forward. It is also suggestive of the connections with modal logic we will explore in a later chapter.
 
 Let $\langle T, C \rangle$ be a locally introspective theory.

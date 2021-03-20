@@ -55,3 +55,5 @@ https://mathoverflow.net/questions/346687/free-models-of-finitely-presented-esse
 Partial Horn logic and cartesian categories (Palmgren and Vickers), at https://core.ac.uk/download/pdf/82110032.pdf [referenced by the above MathOverflow question]
 
 Power-Set Functors and Saturated Trees (Adamek et al, https://core.ac.uk/download/pdf/62916431.pdf). Perhaps of note for the von Neumann/cumulative hierarchy style model.
+
+"Categorical Logic and Type Theory", by Bart Jacobs, for stuff about simple slice categories, fibrations, etc.
