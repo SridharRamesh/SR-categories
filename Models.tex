@@ -47,5 +47,27 @@ Extend the above discussion of initiality to discuss corresponding introspective
 \subsection{Models based on sigma-1 or arbitrary extensions of PA, or ZFC, or etc}
 \TODO
 
+I will write this section in a sloppy way for now and then improve it later.
+
+Consider a sigma-1 theory $\tau$ extending PA (or ZFC, or any such thing). Actually, for now, let's just consider PA simpliciter.
+
+Consider the category $T$ whose objects are the sigma-1 formulas $\phi(n, m)$ in the language of PA which define binary relations on the natural numbers which PA proves to be partial equivalence relations (i.e., symmetric and transitive). Given any two such formulas $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a sigma-1 formula $F(n, m)$ on the natural numbers which PA proves to correspond to the graph of a function between the subquotients of $\mathbb{N}$ corresponding to $\phi$ and to $\psi$, respectively. That is, such that PA proves the universal closures of the following:
+
+$F(n, m) \implies \phi(n, n) \wedge \psi(m, m)$
+
+$\phi(n_1, n_2) \wedge \psi(m_1, m_2) \wedge F(n_1, m_1) \implies F(n_2, m_2)$
+
+$\phi(n, n) \implies \exists m [F(n, m)]$
+
+$F(n, m_1) \wedge F(n, m_2) \implies \psi(m_1, m_2)$.
+
+Two such formulas $F(n, m)$ and $F'(n, m)$ are considered to be equal as morphisms from $\phi$ to $\psi$ if PA proves them to be equivalent (that is, if PA proves $F(n, m) \implies F'(n, m)$ and $F'(n, m) \implies F(n, m)$).
+
+Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we define their composition in the usual way of composing functions represented as graphs, as $(F \circ G)(n, m) = \exists p [G(n, p) \wedge F(p, m)]$.
+
+This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
+
+\TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
+
 \subsection{Models based on well-founded trees/well-founded posets}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb's theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). \TODO
