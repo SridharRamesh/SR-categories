@@ -162,7 +162,7 @@ Let us use the name $g_t$ for this global element of $i_t(t)$ within $T/t$.
 
 Now, we need to show that these two processes are inverse. \TODO
 
-Finally, we must show that the re-indexings within $T$
+Finally, we must show that the re-indexings within $T$ \TODO
 \end{proof}
 
 Now, we shall prove \cref{SNCorrespondence}.
@@ -185,7 +185,7 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 
 As before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, may refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all introspective theories (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
 
-\beginNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
+\openNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
 Within a pre-introspective theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
 \closeNamed{lemma}
 \begin{proof}
@@ -232,7 +232,7 @@ Of course, this yields an introspective or locally introspective theory just in 
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
 \end{construction}
 \begin{proof}[Details]
-Consider the forgetful functor $\Sigma : T/t \to T$. Composition and whiskering with this gives us the triple $\langle T/t, \Sigma C, \Sigma \introF \rangle$, like so:
+Consider the forgetful functor $\Sigma : T/t \to T$ (i.e., the domain projection functor). Composition and whiskering with this gives us the triple $\langle T/t, \Sigma C, \Sigma \introF \rangle$, like so:
 
 \[\begin{tikzcd}
 	{\op{\left(T/t\right)}} & {\op{T}} && {\LexCat}

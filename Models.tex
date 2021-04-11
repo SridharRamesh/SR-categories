@@ -67,7 +67,15 @@ Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we defi
 
 This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
 
+\TODOinline{Perhaps instead of imposing PERs from the beginning, we start only with the category of RE sets, and then take its ex/lex completion or some such thing. Like so:}
+
+Consider the category $T'$ whose objects are the sigma-1 formulas $\phi(n)$ in the language of PA, and such that a morphism from $\phi(n)$ to $\psi(m)$ is a sigma-1 formula $F(n, m)$ such that $PA$ proves $\forall n, m . F(n, m) \implies (\phi(n) \wedge \psi(m))$ and $\forall n . \phi(n) \implies \exists! m . F(n, m)$. Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case PA proves $\forall n, m . F(n, m) \biimplies G(n, m)$. Morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
+
+This category $T'$ is regular but not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
+
 \TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
+
+\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that we have somewhat distinct concepts of sigma-1 categories as meaning objects are given by all standard codes for sigma-1 sets, vs the larger sigma-1 categories as meaning as meaning objects are given by all internally definable codes for sigma-1 sets, in which the former is a full subcategory}
 
 \subsection{Models based on well-founded trees/well-founded posets}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb's theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). \TODO

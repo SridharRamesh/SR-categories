@@ -29,8 +29,8 @@
 \newcommand{\defined}[1]{\textbf{#1}\index{#1}} % For indicating the defined term in a definition
 \newcommand{\definedManualIndexSort}[2]{\textbf{#1}\index{#2@#1}}
 
-\newcommand{\beginNamed}[2]{\begin{#1}[#2]\index{#2}}
-\newcommand{\beginNamedManualIndexSort}[3]{\begin{#1}[#2]\index{#3@#2}}
+\newcommand{\openNamed}[2]{\begin{#1}[#2]\index{#2}}
+\newcommand{\openNamedManualIndexSort}[3]{\begin{#1}[#2]\index{#3@#2}}
 \newcommand{\closeNamed}[1]{\end{#1}}
 
 %\theoremstyle{remark}
@@ -89,4 +89,5 @@
 \newcommand{\outertheory}{X}
 \newcommand{\innertheory}{Y}
 
-\renewcommand{\implies}{\supset}
+\renewcommand{\implies}{\Rightarrow}
+\newcommand{\biimplies}{\iff}
