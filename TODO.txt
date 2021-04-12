@@ -1,10 +1,5 @@
 What to do next:
 
-1. Write out proof that slices categories of introspective theories are introspective theories, using above definition.
-DONE (on one account; another account should still be written up)
-
-* Writing out slice introspective theories.
-
 * Writing out all the uniqueness results for Loeb's theorem, and unifying them
 
 * Writing out geminal (geminal Ys) result.
