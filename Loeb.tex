@@ -1,6 +1,6 @@
 \section{\Loeb's theorem}
 
-\subsection{Some preliminaries}
+\subsection{Convenient terminology}
 Let us introduce some evocative terminology. By a relation on object $B$, we mean any morphism $r : R \to B \times B$ (i.e., any parallel pair of morphisms into $B$). For any two generalized elements $b_1, b_2 : D \to B$ of $B$, we say they are related by relation $r$ if $\langle b_1, b_2 \rangle : D \to B \times B$ factors through $r$.
 
 For any map $q: Q \to B$, and any generalized element $b_1 : D \to B$ of $B$, we will say \quote{$b_1$ is in the range of $q$ with respect to relation $r$} if there is some $b_2 : D \to B$ such that $b_1$ and $b_2$ are related by relation $r$ and $b_2$ factors through $q$.
@@ -18,45 +18,45 @@ This was all quite general, and we will use it now to observe a very general con
 \closeNamed{construction}
 Let $T$ be a category, let $C$ be a $T$-indexed pointed category (\quote{pointed} meaning it comes with a designated object $1$, not presumed terminal for now), let $\introS$ be a functor from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, and let $\introN$ be a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
 
-(In particular, any introspective theory carries this structure, but we wish for a moment to allow ourselves to note that the following construction can be carried out in some greater generality.)
+(In particular, any introspective theory carries this structure, but we wish for a moment to allow ourselves to note that the following construction can be carried out in some greater generality. \TODOinline{We could define this structure as something like a \quote{pre-pre-introspective theory}. It is like a pre-introspective theory without presuming lex structure. We could define box notation as applying at this level of generality. Any category with finite products $T$ yields an instance of this structure using the simple self-indexing for $C$, the terminal object for $1$, and the canonical isomorphisms of the appropriate type for $\introS$ and $\introN$.})
 
 Consider now a $T$-indexed presheaf $P$ on $C$. Suppose also given some object $Y$ in $T$ and map $d : Y \to P(\introS(Y))$.
 
-From these, we can define a map $W$ from $Y$ to $P(1)$ like so: For any $y$ in $Y$, $W(y)$ is $d(y) : P(\introS(Y))$ pulled back\footnote{By \quote{pulled back} here, I do not mean any kind of limit. I am simply using this language for the contravariant action of the presheaf $P$ on the morphisms of $C$.} via the presheaf action of $P$ along the value $\introN_Y(y) : \Hom_C(1, \introS(Y))$, to yield a value inside $P(1)$.
+From these, we can define a map $W$ from $Y$ to $P(1)$ like so: For any $y$ in $Y$, $W(y)$ is $d(y) : P(\introS(Y))$ transported via the presheaf action of $P$ along the value $\introN_Y(y) : \Hom_C(1, \introS(Y))$, to yield a value inside $P(1)$.
 
 Now, let us suppose $P(1)$ is $T$-small, so that it will make sense to speak of $\introS(P(1))$ and $\introS(W)$.
 
 Furthermore, let us make a relational surjectivity assumption on $d$. Specifically, suppose we are given a relation $R$ on $P$ (that is, another presheaf on $C$, and two parallel maps from it into $P$), and let us suppose $d$ is surjective with respect to relation $R(\introS(Y))$ over some domain of definition $D$.
 
-Observe now that, from any $D$-defined generalized element $f$ of $P(\introS(P(1)))$, we can obtain a $D$-defined element of $P(1)$, like so: By pulling $f$ back along $\introS(W) : \Hom_C(\introS(Y), \introS(P(1)))$, we get an element $\introS(W)^*f$ of $P(\introS(Y))$. By applying our surjectivity presumption on $d$, we obtain a $D$-defined element $y$ of $Y$ such that this $\introS(W)^*f$ is related to $d(y)$. And applying $W$ to $y$, we end up with an element of $P(1)$. For sake of a name, let us call this final value $L(f)$ for now\footnote{Though technically, which value $L(f)$ we end up with depends not just on $f$ but also on which particular choice of $y$ we make.}.
+Observe now that, from any $D$-defined generalized element $f$ of $P(\introS(P(1)))$, we can obtain a $D$-defined element of $P(1)$, like so: By transporting $f$ back along $\introS(W) : \Hom_C(\introS(Y), \introS(P(1)))$, we get an element $\introS(W)^*f$ of $P(\introS(Y))$. By applying our surjectivity presumption on $d$, we obtain a $D$-defined element $y$ of $Y$ such that this $\introS(W)^*f$ is related to $d(y)$. And applying $W$ to $y$, we end up with an element of $P(1)$. For sake of a name, let us call this final value $L(f)$ for now\footnote{Though technically, which value $L(f)$ we end up with depends not just on $f$ but also on which particular choice of $y$ we make.}.
 
-This process of turning $f: P(\introS(P(1)))$ into $L(f): P(1)$ will ultimately represent \Loeb's theorem. When we apply $\introS$ to this, we get, in our box symbolism (in the context of an introspective theory), a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general. Let us observe the fixed point properties of this construction in full generality for now, then we will specialize to introspective theories and investigate further.
+This process of turning $f: P(\introS(P(1)))$ into $L(f): P(1)$ will ultimately represent \Loeb's theorem. In our box symbolism, this process turns $f : P(\Box P)$ into $L(f) : P(1)$, and when we apply $\introS$ to this, we get a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general. Let us observe the fixed point properties of this construction in full generality for now, then we will specialize to introspective theories and investigate further.
 
 \subsection{The fixed point/related point property}
 Recall that $f$ is a generalized element of $P(\introS(P(1)))$ and $L(f)$ is a similarly generalized element of $P(1)$.
 \begin{theorem}\label{GeneralDiagThm}
-Pulling $f$ back along $\introN_{P(1)}(L(f)) : \Hom_C(1, \introS(P(1)))$ yields a value related to $L(f)$.
+Transporting $f$ back along $\introN_{P(1)}(L(f)) : \Hom_C(1, \introS(P(1)))$ yields a value related (by our chosen relation $R$) to $L(f)$.
 \end{theorem}
 \begin{proof}
-Recall that $L(f)$ is $W(y) : P(1)$, which is $d(y)$ pulled back along $\introN_Y(y) : \Hom_C(1, \introS(Y))$; that is, $L(f) = W(y) = \introN_Y(y)^* d(y)$. By the naturality of our relation $R$ over $P$, the relationship between $\introS(W)^*f$ and $d(y)$ pulls back to a relationship between $\introN_Y(y)^* \introS(W)^*f = (\introS(W) \circ \introN_Y(y))^* f$ and $\introN_Y(y)^* d(y) = L(f)$.
+Recall that $L(f)$ is $W(y) : P(1)$, which is $d(y)$ transported back along $\introN_Y(y) : \Hom_C(1, \introS(Y))$; that is, $L(f) = W(y) = \introN_Y(y)^* d(y)$. By the naturality of our relation $R$ over $P$, the relationship between $\introS(W)^*f$ and $d(y)$ transports back to a relationship between $\introN_Y(y)^* \introS(W)^*f = (\introS(W) \circ \introN_Y(y))^* f$ and $\introN_Y(y)^* d(y) = L(f)$.
 
 Finally, note that $\introN_Y(y) : \Hom_C(1, \introS(Y))$ composed with $\introS(W) : \Hom_C(\introS(Y),$ $ \introS(P(1)))$ is $\introN_{P(1)}(W(y))$ (by the naturality of $\introN$), which is to say, $\introN_{P(1)}(L(f))$. This completes the proof.
 \end{proof}
 
-Note that $R$ here can be any kind of relation at all. When $R$ specifically represents an equivalence relation (e.g., as when the maps defining $R$ are taken to be the domain and codomain projections from morphisms to objects for some groupoid structure whose objects are given by $P$), this result is naturally thought of as a fixed point property. We will only be looking at such $R$ for now in this document, though it is worth thinking about more general $R$ in future work.
+Note that $R$ here can be any kind of relation at all. When $R$ specifically represents an equivalence relation (e.g., as when the maps defining $R$ are taken to be the domain and codomain projections from morphisms to objects for some groupoid structure whose objects are given by $P$), this result is naturally thought of as a fixed point property. We will only be looking at such $R$ for now in this document.
 
 Before specializing to introspective theories, let us observe some corollaries of this general result we can already see. First, a couple traditional special cases:
 
 \openNamed{observation}{Lawvere's Fixed Point Theorem}\label{LawveresTheorem}
-Let $T$ be a cartesian closed category. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, let its designated object $1$ be its terminal object, and let $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type. Let $P$ be the presheaf represented by an object $\Omega$ of $T$, and let the relation $R$ on $P$ be actual equality (that is, the relation given by the diagonal map). 
+Let $T$ be a category with finite products. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, let its designated object $1$ be its terminal object, and let $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type. Let $P$ be the presheaf represented by an object $\Omega$ of $T$, and let the relation $R$ on $P$ be actual equality (that is, the relation given by the diagonal map). 
 
-Furthermore, suppose given an object $Y$ with a map $d : Y \to \Omega^Y$ which is surjective over domain of definition $D$.
+Furthermore, suppose given an object $Y$ with a map $d : Y \to P(\introS(Y))$ (i.e., a map of $T$-indexed sets from $Y$ to $\Omega^Y$) which is surjective over domain of definition $D$.
 
 Then $P(\introS(P(1))) \iso \Omega^{\Omega}$ while $P(1) \iso \Omega$. In this context, what \cref{GeneralDiagThm} tells us is that every $D$-defined map from $\Omega$ to $\Omega$ admits a $D$-defined element of $\Omega$ as a fixed point. In particular, this is commonly applied with $D$ taken to be $1$. \qed
 \closeNamed{observation}
 
 \openNamed{observation}{Cantor's Theorem}\label{CantorsTheorem}
-One familiar special case of \nameref{LawveresTheorem} is Cantor's theorem, in the form of the claim that there is no set $X$ with a surjection onto $\Omega^X$, where $\Omega$ is a set on which there is an endofunction with no fixed points (for example, taking $\Omega$ to be the set of truth values and the endofunction to be logical negation. Or taking $\Omega$ to be the two element set and the endofunction to be the one which swaps the two elements.).
+One very familiar special case of \nameref{LawveresTheorem} is Cantor's theorem, in the form of the claim that there is no set $X$ with a surjection onto $\Omega^X$, where $\Omega$ is a set on which there is an endofunction with no fixed points (for example, taking $\Omega$ to be the set of truth values and the endofunction to be logical negation. Or taking $\Omega$ to be the two element set and the endofunction to be the one which swaps the two elements.).
 \closeNamed{observation}
 
 Returning to \nameref{GeneralDiag} and \cref{GeneralDiagThm} in general, we also have the following corollaries:
@@ -66,14 +66,14 @@ Note that if the domain of definition $D$ over which $d$ is relationally surject
 \end{corollary}
 
 \begin{corollary}\label{RetractInT}
-If $T$, $C$, $\introS$, $\introN$, and $P$ are given as in \nameref{GeneralDiag} such that there is an object $Y$ in $T$ with $P(\introS(Y))$ being a retract of $Y$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
+If $T$, $C$, $\introS$, $\introN$, and $P$ are given as in \nameref{GeneralDiag} such that there is an object $Y$ in $T$ with $P(\introS(Y))$ being a retract of $Y$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
 \end{corollary}
 \begin{proof}
 Apply \cref{RetractDiag} with the relation $R$ being true equality; that is, given by two parallel identity maps from $P$ to itself. The retraction from $Y$ onto $P(\introS(Y))$ will play the role of $d$ as above, and the section from $P(\introS(Y))$ into $Y$ will witness the required surjectivity of $d$.
 \end{proof}
 
 \begin{corollary}\label{RetractInC}
-If $T$, $C$, $\introS$, $\introN$, and $P$ are given as in \nameref{GeneralDiag} such that there is an object $X$ in the global aspect of $C$ with $\introS(P(X))$ being a retract of $X$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
+If $T$, $C$, $\introS$, $\introN$, and $P$ are given as in \nameref{GeneralDiag} such that there is an object $X$ in the global aspect of $C$ with $\introS(P(X))$ being a retract of $X$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
 \end{corollary}
 \begin{proof}
 If $\introS(P(X))$ is a retract of $X$ in $C$, then by applying the contravariant functor $P$, we find that $P(\introS(P(X)))$ is a retract of $P(X)$ in $T$. Thus, taking $Y = P(X)$, we can apply \cref{RetractInT}.
@@ -91,7 +91,7 @@ As we have presumed $\Omega^Y$ to be a retract of $Y$, we can apply either of ou
 In the particular case where $Y$ and $\Omega$ are the same object so we model the untyped lambda calculus in the ordinary way, the fixed point combinator we obtain is essentially the familiar \quote{Y combinator} (no pun intended on the $Y$). \qed
 \closeNamed{observation}
 
-In a sense, all we have shown so far are some very familiar results. Diagonalization is quite old hat. Its formalization in terms of cartesian closed structure to yield \nameref{LawveresTheorem}, with \nameref{CantorsTheorem} and \nameref{YCombinator} as special cases of this, is well known. Cf. Lawvere's and Yonofsky's existing papers on diagonal arguments, fixed point theorems, and cartesian closed categories. \TODOinline{Write whatever should be written here, make whatever citations. Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how we are correcting this.}
+In a sense, all we have shown so far are some very familiar results. Diagonalization is quite old hat. Its formalization in terms of cartesian closed structure to yield \nameref{LawveresTheorem}, with \nameref{CantorsTheorem} and \nameref{YCombinator} as special cases of this, is well known. Cf. Lawvere's and Yonofsky's existing papers on diagonal arguments, fixed point theorems, and cartesian closed categories. \TODOinline{Write whatever should be written here, make whatever citations. Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how our more general formulation allows us to correct this.}
 
 But the value of \nameref{GeneralDiag} is that we have now formalized it at a particularly general level of abstraction, even more general than \nameref{LawveresTheorem}, which will allow us to move beyond cartesian closed structure as such, into suitably modalized exponentials. Instead of only producing the traditional Y combinator, what we produce in general will be a suitably modalized Y combinator, as is necessary for the context we now turn to, of introspective theories.
 
@@ -102,11 +102,11 @@ We will now show how to bootstrap away this precondition, in the context of an i
 
 Essentially, our plan is to apply \cref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
 
-There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
+There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids\footnote{If we assumed $T$ to be an effective regular category, we could quotient any setoid internal to $T$ into a corresponding plain object of $T$, but we do not wish to require this assumption.}. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
 
 But supposing we take care of that, we will at any rate naturally want to impose upon this $P$ the relation given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with its two projections to $\Ob(C/c)$ being the domain and codomain maps.
 
-Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism from $x$ to $y$, and an element of $P(y)$, with the pullback action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. We then impose upon this presheaf $P$ the relation $R$ under which two elements of $P$ are related by any relationship in $R'$ between the corresponding elements-up-to-isomorphism of $P'$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). \TODOinline{Write this out in a detailed way.}
+Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism from $x$ to $y$, and an element of $P(y)$, with the transport-back action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. We then impose upon this presheaf $P$ the relation $R$ under which two elements of $P$ are related by any relationship in $R'$ between the corresponding elements-up-to-isomorphism of $P'$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). \TODOinline{Write this out in a detailed way.}
 
 We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. Any such slice above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Push forward (i.e., composition) and pullback along this injection will be our maps from $P'(\introS(Y))$ to and from $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that pushing forward and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
 
@@ -117,7 +117,7 @@ In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ c
 Thus, in the context of an introspective theory, we can run the \Loeb's fixed point theorem on ALL presheaves, unconditionally. That is, we have proven the following:
 
 \openNamed{corollary}{Introspective \Loeb's theorem}\label{LoebInIntrosp}
-If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $P$ is any $T$-small presheaf upon $C$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the appropriate fixed point property.
+If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $P$ is any $T$-small presheaf upon $C$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
 \closeNamed{corollary}
 
 \begin{observation}
@@ -132,12 +132,12 @@ Conjecture: Every locally introspective theory with the Loeb property can be emb
 \end{TODOblock}
 
 \begin{theorem}\label{UniqueFixedPoints}
-The fixed points produced by \parensref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(\introS(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ pulled back along $\introN$ of itself), we have that $a = b$.
+The fixed points produced by \parensref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(\introS(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ transported back along $\introN$ of itself), we have that $a = b$.
 \end{theorem}
 \begin{proof}
 By passing to the appropriate slice introspective theory $T/t$, we can assume without loss of generality that all relevant values in the following are globally defined; i.e., without loss of generality, we can presume $t = 1$.
 
-Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there were a map from $1$ to $E$, then $a$ and $b$ would be equal. In just the same way, taking this equalizer diagram's image under the lexfunctor $\introS$, we see that any value in $\Hom_C(1, \introS(E))$ would lead to $\introS(a)$ and $\introS(b)$ being equal, thus corresponding to equal maps from $1$ to $\introS(P(1))$ in $C$. Pulling $f$ back along these two would yield equal values, therefore. But pulling $f$ back along these two yields $a$ and $b$ respectively, so we would have that $a$ and $b$ are equal. This argument yields a morphism from $\Hom_C(1, \introS(E))$ to $E$ in $T$. Applying $\introS$ to this, we have a morphism in $C$, which lives in $Q(\introS(Q(1)))$, where $Q$ is the presheaf on $C$ represented by $\introS(E)$. Applying \parensref{LoebInIntrosp} to this, we get an element of $Q(1)$, which is to say, a global element of $\introS(E)$ in $C$. This makes $\introS(a)$ and $\introS(b)$ equal as global points of $\introS(P(1))$ in $C$. And by pulling $f$ back along these, we conclude as before that $a$ and $b$ are equal. \TODOinline{Word this all better}
+Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there were a map from $1$ to $E$, then $a$ and $b$ would be equal. In just the same way, taking this equalizer diagram's image under the lexfunctor $\introS$, we see that any value in $\Hom_C(1, \introS(E))$ would lead to $\introS(a)$ and $\introS(b)$ being equal, thus corresponding to equal maps from $1$ to $\introS(P(1))$ in $C$. Transporting $f$ back along these two would yield equal values, therefore. But transporting $f$ back along these two yields $a$ and $b$ respectively, so we would have that $a$ and $b$ are equal. This argument yields a morphism from $\Hom_C(1, \introS(E))$ to $E$ in $T$. Applying $\introS$ to this, we have a morphism in $C$, which lives in $Q(\introS(Q(1)))$, where $Q$ is the presheaf on $C$ represented by $\introS(E)$. Applying \parensref{LoebInIntrosp} to this, we get an element of $Q(1)$, which is to say, a global element of $\introS(E)$ in $C$. This makes $\introS(a)$ and $\introS(b)$ equal as global points of $\introS(P(1))$ in $C$. And by transporting $f$ back along these, we conclude as before that $a$ and $b$ are equal. \TODOinline{Word this all better}
 \end{proof}
 
 \begin{observation}
@@ -182,7 +182,7 @@ By applying $\introS$ to this, we get a globally defined morphism within $C$ fro
 
 This morphism is of type $P(S(P(1)))$, where $P$ is the $T$-small presheaf upon the core of $C$ defined by $P(c)$ amounting to $c$-defined isomorphisms from $\introS(A)$ to $\introS(B)$.
 
-Thus, we can apply our fixed point theorem \parensref{LoebInIntrosp} to this value. The result a value $g$ in $P(1)$ (i.e., in $\Iso_C(\introS(A), \introS(B))$) which is equal to $\introS(a \circ Q(g) \circ b)$, as desired.
+Thus, we can apply our fixed point theorem \parensref{LoebInIntrosp} to this value. The result is a value $g$ in $P(1)$ (i.e., in $\Iso_C(\introS(A), \introS(B))$) which is equal to $\introS(a \circ Q(g) \circ b)$, as desired.
 
 \TODOinline{Write diagrams to make this all clearer}
 \end{proof}

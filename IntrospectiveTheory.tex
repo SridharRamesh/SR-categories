@@ -32,15 +32,22 @@ Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a $T$-inde
 
 As preparation for the proof of \cref{SNCorrespondence}, we will need two lemmas. Both of these lemmas should be understood as obvious, folklore, etc, but we will write out proofs of them for self-containedness.
 
-\begin{lemma}\label{Lemma1}
+\begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{Lemma1}
 If $Y$ is a category with initial object $0$ and $X$ is a (2-)category, then to any functor $f : Y \to X$, we can associate a corresponding functor $f'$ from $Y$ to the slice category $f(0)/X$.
 
 Furthermore, if $D$ and $C$ are parallel functors from $Y$ to $X$, then a natural transformation from $D$ to $C$ amounts to the same thing as a map $\introS$ from $D(0)$ to $C(0)$ along with a natural transformation from $D'$ to $\introS^{*} \circ C'$, where $\introS^{*} : C(0)/X \to D(0)/X$ is the functor between these slice categories given by composition with $\introS$.
-\end{lemma}
+\end{theoremEnd}
 \begin{proof}
 The first half of the lemma is thoroughly straightforward. $f : Y \to X$ induces a functor between the arrow category of $Y$ and the arrow category of $X$, and since $Y$ sits inside its arrow category as the slice category $0/Y$, this gives us a functor from $Y$ to the arrow category of $X$, which when followed by the domain projection back to $X$ is constantly $f(0)$. This is our $f'$.
 
-The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), so that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data. Throughout the remainder of this proof, all references to \quote{category}, \quote{functor}, etc, are in the sense of whatever dimension of higher-categories encapsulates both $Y$ and $X$.
+The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), so that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data.
+
+See \hyperref[proof:prAtEnd\pratendcountercurrent]{full proof} on page~\pageref{proof:prAtEnd\pratendcountercurrent}.
+\end{proof}
+\begin{proofEnd}[no link to proof]
+We pick up from where we left off previously in the proof of \cref{Lemma1}.
+
+Throughout the remainder of this proof, all references to \quote{category}, \quote{functor}, etc, are in the sense of whatever dimension of higher-categories encapsulates both $Y$ and $X$.
 
 Let $Z$ be the category obtained by augmenting $Y$ with a new object $0_Z$ and unique maps from $0_Z$ to each object of $Y$. We have an inclusion functor $i : Y \to Z$, and this inclusion is fully faithful, in the sense that the induced map $\Hom_Y(y_1, y_2) \to \Hom_Z(i(y_1), i(y_2))$ is an equivalence for all $y_1, y_2 \in \Ob(Y)$.
 
@@ -93,18 +100,23 @@ Finally, let us consider what a natural transformation between $D \circ q$ and $
 \end{tikzcd}\]
 
 such that the rightmost arrow of this diagram corresponds to some arrow $\introS$ in $X$ whose domain is $(D \circ q)(0_Z) = D(0)$ and whose codomain is $(C \circ q)(0_Z) = C(0)$, and such that the bottom arrow of this diagram corresponds to a natural transformation from $D \circ q \circ i \iso D$ to $C \circ q \circ i \iso C$. The 2-cell in the above diagram then corresponds to the remaining data necessary for us to construe this natural transformation from $D$ to $C$ as simply the codomain projection of a natural transformation between $D'$ and $\introS^{*} \circ C'$, the functors from $Y$ to $D(0)/X$ as mentioned in the statement of this lemma.
-\end{proof}
 
 \TODOinline{Phew! That made a mountain out of a molehill. But perhaps people sometimes appreciate such written-out detail.}
+\end{proofEnd}
 
-In order to state the next lemma, some terminology: If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory extending $T$ with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory-under-$T$. \TODOinline{Move this and \cref{Lemma2} itself to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with. And we should do the same for finite product categories and the simple self-indexing.}
+In order to state the next lemma, some terminology:
 
-\begin{lemma}\label{Lemma2}
+\begin{definition}
+If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory extending $T$ with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory-under-$T$. \TODOinline{Move this and \cref{Lemma2} to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with. And we should do the same for finite product categories and the simple self-indexing.}
+\end{definition}
+
+\begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{Lemma2}
 $T[1 \to -]$ is $T/-$, as a $T$-indexed lexcategory-under-$T$.
-\end{lemma}
+\end{theoremEnd}
 \begin{proof}
-This is a standard observation \TODOinline{Cite 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof}, and also simple enough to show. \TODOinline{This whole proof is not really necessary, once the cite is given}
-
+This is a standard observation (see 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof), and also simple enough to show. See \hyperref[proof:prAtEnd\pratendcountercurrent]{full proof} on page~\pageref{proof:prAtEnd\pratendcountercurrent}.
+\end{proof}
+\begin{proofEnd}[no link to proof]
 To start off, we construe $T/-$ as not merely a $T$-indexed lexcategory, but furthermore a $T$-indexed lexcategory-under-$T$ (equivalently, $T/1$) by appeal to the first half of \cref{Lemma1} as applied to $T/- : \op{T} \to \LexCat$. Note that, for any particular object $t$ of $T$, this identifies $T/1$ inside $T/t$ via pullback along the unique map from $t$ to $1$; thus, $T$ is identified as the subcategory of \quote{constant} data within $T/t$. We may explicitly refer to this inclusion lexfunctor as $i_t : T \to T/t$. (Beware that in general, $i_t$ is faithful but not full!)
 
 Now, what we want to show that given any fixed diagram in $\LexCat$ of this form
@@ -163,7 +175,7 @@ Let us use the name $g_t$ for this global element of $i_t(t)$ within $T/t$.
 Now, we need to show that these two processes are inverse. \TODO
 
 Finally, we must show that the re-indexings within $T$ \TODO
-\end{proof}
+\end{proofEnd}
 
 Now, we shall prove \cref{SNCorrespondence}.
 
@@ -180,23 +192,55 @@ It wasn't fundamentally important that we were dealing with lexcategories here. 
 As a result of \cref{SNCorrespondence}, we can give another definition essentially equivalent to \cref{DefnPreIntrospIndexed}.
 
 \begin{definition}\label{DefnPreIntrospSN}
-A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a map $\introN$ from $t$ to $\Hom_C(1, S(t))$, natural in $t$ in $T$.
+A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 \end{definition}
 
-As before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, may refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all introspective theories (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
+\begin{definition}\label{DefnPreIntrospSNGeneralized}
+More generally, for any notion of categorical structure extending the concept of a category-with-terminal-object, we may consider the situation of a category $T$ with such structure, a $T$-indexed category $C$ with such structure, a functor $\introS$ from $T$ to the global aspect of $C$ preserving such structure, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. In this way, we could speak of \defined{pre-introspective X theories} for various X; pre-introspective finite product theories, pre-introspective terminal object theories, pre-introspective countable limit theories, and so on. But when we leave the nature of the theory unqualified, we always mean finite limits by default.
 
-\openNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
-Within a pre-introspective theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
-\closeNamed{lemma}
-\begin{proof}
-Apply the naturality square for $\introN$ to the morphism from $1$ to $t$ representing $x$. One path around the square will be the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The other path around the square will be the unique identity morphism in $T$ from $1$ to $\Hom_C(1, 1)$ representing the identity morphism on $1$, followed by the morphism from $\Hom_C(1, 1)$ to $\Hom_C(1, \introS(t))$ representing composition in $C$ with the morphism in $C$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, this is also the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$.
-\end{proof}
+Note that whenever every instance of structure X is also an instance of structure Y, we will have that every pre-introspective X theory is also a pre-introspective Y theory.
 
-As the name \quote{pre-introspective theory} suggests, there are some further definitions to build atop this.
+Finally, on rare occasion it is even worthwhile to observe the extreme generality where we do not demand a terminal object. That is, a category $T$, a $T$-indexed category $C$, a functor $\introS$ from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, a designated object $1$ in the global aspect of $C$ (not presumed terminal), and a map $\introN$ from $t$ to $\Hom_C(1, \introS(t))$, natural in $t$ in $T$. We shall call this a \defined{pre-introspective unary theory}.
+
+Note that every pre-introspective terminal object theory can canonically be equipped as a pre-introspective unary theory by taking the designated object in $C$ to be its terminal object.
+\end{definition}
+
+As before, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will refer to a pre-introspective (whatever flavor of) theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all such structures (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
+
+As the \quote{pre-} naming suggests, there are some further definitions to build atop these.
 
 \begin{definition}\label{DefnIntrosp}
-If $\langle T, C \rangle$ is a pre-introspective theory and $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively.
+If $\langle T, C \rangle$ is a pre-introspective theory and $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively. And in the same way, for any of the generalized notions of pre-introspective X theory, we may replace \quote{pre-introspective} with \quote{introspective} or \quote{locally introspective} to designated that $C$ is small or locally small, respectively.
 \end{definition}
+
+Again, we remind the reader that our main object of interest is introspective theories (the case where the relevant categorical structure is finite limits and where the indexed category is small). Every other concept we've attached a name to is just for observing the further generality of some results, but if the zoo of other concepts ever grows intimidating, think always of introspective theories as the North Star.
+
+Speaking of general results, though, here is a useful one:
+
+\openNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
+Within a pre-introspective terminal object theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
+\closeNamed{lemma}
+\begin{proof}
+Apply the naturality square for $\introN$ to the morphism $X$ from $1$ to $t$ representing $x$, as in the top square of this diagram.
+
+\[\begin{tikzcd}
+	1 && t \\
+	\\
+	{\Hom_C(1, \introS(1))} && {\Hom_C(1, \introS(t))} \\
+	\\
+	{\Hom_C(1, 1)}
+	\arrow["{* \mapsto x}", from=1-1, to=1-3]
+	\arrow["{\introN_t}", from=1-3, to=3-3]
+	\arrow["{\Hom_C(1, \introS(* \mapsto x))}", from=3-1, to=3-3]
+	\arrow["{\Hom_C(1, \iso)}"', tail reversed, from=3-1, to=5-1]
+	\arrow["{(* \mapsto S(x)) \circ -}"', from=5-1, to=3-3]
+	\arrow["{\introN_1}"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \introS(1)) \iso \Hom_C(1, 1) \iso 1$, as in the three objects on the left of this diagram. These are all terminal objects of $T$, all isomorphic with unique morphisms to each other.
+
+The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
+\end{proof}
 
 While it is sometimes easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will usually be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The value of this new definition is that there is much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
@@ -301,4 +345,9 @@ Note that for any locally $T$-small presheaf $P$ on $C$ and object $c$ of $C$, w
 
 The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all descends to corresponding structure on their global aspects as well. Keep in mind, in the global aspect context, $\introF$ is the same as $\introS$, so wherever in the above we discussed $\introF$, a corresponding statement holds as well for $\introS$, when considering just the global aspect.
 
-The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in a later chapter. \TODO
+The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in a later chapter.
+
+\subsection{Proofs of lemmas}
+Here, we give proofs previously delayed of a couple lemmas.
+
+\printProofs[IntrospLemmas]

@@ -26,13 +26,22 @@
 \raggedbottom               % No more underfull vbox errors
 \usepackage{quiver}         % Commutative diagrams
 \usepackage{indentfirst}    % Indent first paragraph in a section
+\usepackage{csquotes}       % Quotation marks without needing `` and ''
+\renewcommand{\quote}{\textquote} % I have no use for the existing \quote command in LaTeX, and would like that short name for this instead
+\renewcommand\qedsymbol{$\blacksquare$} % Change QED symbol to black square so it is not confused with the modal box
+
+% The following are packages that might need to be loaded before hyperref
 \usepackage{imakeidx}       % Indexing
   \makeindex[intoc]         % Include index in table of contents
+  
+% And now, hyperref!
 \usepackage[colorlinks=true, linkcolor=blue]
   {hyperref}                % Hyper-linked references (note that certain packages need to be loaded before this instead of after this, such as indexing)
+  
+% And now... Packages that might need to be loaded after hyperref.
 \usepackage[capitalize, nameinlink]
   {cleveref}                % References named by type and number
 \newcommand*{\parensref}[1]{\hyperref[{#1}]{\nameref*{#1} (\cref*{#1})}}              % References named by explicit name and parenthesized type and number
 % It's not ideal that I have to manually keep track of when to use \cref vs. when to use \parensref, alas. Or occasionally \nameref.
-\usepackage{csquotes}       % Quotation marks without needing `` and ''
-\renewcommand{\quote}{\textquote} % I have no use for the existing \quote command in LaTeX, and would like that short name for this instead
+\usepackage[conf={restate}]
+  {proof-at-the-end}        % Allows for moving proofs of theorems to later in the document, with auto-linking, restating, etc

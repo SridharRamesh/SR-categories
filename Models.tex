@@ -10,6 +10,39 @@ In this way, simply by consideration of the freeness properties already establis
 
 \TODOinline{Word this whole section better. Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
+\subsection{Models based on sigma-1 or arbitrary extensions of PA, or ZFC, or etc}
+\TODO
+
+I will write this section in a sloppy way for now and then improve it later.
+
+Consider a sigma-1 theory $\tau$ extending PA (or ZFC, or any such thing). Actually, for now, let's just consider PA simpliciter.
+
+Consider the category $T$ whose objects are the sigma-1 formulas $\phi(n, m)$ in the language of PA which define binary relations on the natural numbers which PA proves to be partial equivalence relations (i.e., symmetric and transitive). Given any two such formulas $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a sigma-1 formula $F(n, m)$ on the natural numbers which PA proves to correspond to the graph of a function between the subquotients of $\mathbb{N}$ corresponding to $\phi$ and to $\psi$, respectively. That is, such that PA proves the universal closures of the following:
+
+$F(n, m) \implies \phi(n, n) \wedge \psi(m, m)$
+
+$\phi(n_1, n_2) \wedge \psi(m_1, m_2) \wedge F(n_1, m_1) \implies F(n_2, m_2)$
+
+$\phi(n, n) \implies \exists m [F(n, m)]$
+
+$F(n, m_1) \wedge F(n, m_2) \implies \psi(m_1, m_2)$.
+
+Two such formulas $F(n, m)$ and $F'(n, m)$ are considered to be equal as morphisms from $\phi$ to $\psi$ if PA proves them to be equivalent (that is, if PA proves $F(n, m) \implies F'(n, m)$ and $F'(n, m) \implies F(n, m)$).
+
+Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we define their composition in the usual way of composing functions represented as graphs, as $(F \circ G)(n, m) = \exists p [G(n, p) \wedge F(p, m)]$.
+
+This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
+
+\TODOinline{Perhaps instead of imposing PERs from the beginning, we start only with the category of RE sets, and then take its ex/lex completion or some such thing. Like so:}
+
+Consider the category $T'$ whose objects are the sigma-1 formulas $\phi(n)$ in the language of PA, and such that a morphism from $\phi(n)$ to $\psi(m)$ is a sigma-1 formula $F(n, m)$ such that $PA$ proves $\forall n, m . F(n, m) \implies (\phi(n) \wedge \psi(m))$ and $\forall n . \phi(n) \implies \exists! m . F(n, m)$. Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case PA proves $\forall n, m . F(n, m) \biimplies G(n, m)$. Morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
+
+This category $T'$ is regular but not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
+
+\TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
+
+\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that we have somewhat distinct concepts of sigma-1 categories as meaning objects are given by all standard codes for sigma-1 sets, vs the larger sigma-1 categories as meaning as meaning objects are given by all internally definable codes for sigma-1 sets, in which the former is a full subcategory}
+
 \subsection{Finitely axiomatizable lex theories}
 A concept that will often be useful to us in the following.
 
@@ -43,39 +76,6 @@ In the same way, the initial arithmetic universe is equipped as a geminal arithm
 \begin{TODOblock}
 Extend the above discussion of initiality to discuss corresponding introspective theories, beyond just the discussion of geminality. Although, e.g., the initial NNO-topos is not itself an introspective theory, there is nonetheless a corresponding introspective theory of note capturing the initiality properties. Furthermore, even any lex theory that does not automatically come with internal initial models of itself can be freely bumped up to do so, in a suitable sense, and we get a corresponding introspective theory as well.
 \end{TODOblock}
-
-\subsection{Models based on sigma-1 or arbitrary extensions of PA, or ZFC, or etc}
-\TODO
-
-I will write this section in a sloppy way for now and then improve it later.
-
-Consider a sigma-1 theory $\tau$ extending PA (or ZFC, or any such thing). Actually, for now, let's just consider PA simpliciter.
-
-Consider the category $T$ whose objects are the sigma-1 formulas $\phi(n, m)$ in the language of PA which define binary relations on the natural numbers which PA proves to be partial equivalence relations (i.e., symmetric and transitive). Given any two such formulas $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a sigma-1 formula $F(n, m)$ on the natural numbers which PA proves to correspond to the graph of a function between the subquotients of $\mathbb{N}$ corresponding to $\phi$ and to $\psi$, respectively. That is, such that PA proves the universal closures of the following:
-
-$F(n, m) \implies \phi(n, n) \wedge \psi(m, m)$
-
-$\phi(n_1, n_2) \wedge \psi(m_1, m_2) \wedge F(n_1, m_1) \implies F(n_2, m_2)$
-
-$\phi(n, n) \implies \exists m [F(n, m)]$
-
-$F(n, m_1) \wedge F(n, m_2) \implies \psi(m_1, m_2)$.
-
-Two such formulas $F(n, m)$ and $F'(n, m)$ are considered to be equal as morphisms from $\phi$ to $\psi$ if PA proves them to be equivalent (that is, if PA proves $F(n, m) \implies F'(n, m)$ and $F'(n, m) \implies F(n, m)$).
-
-Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we define their composition in the usual way of composing functions represented as graphs, as $(F \circ G)(n, m) = \exists p [G(n, p) \wedge F(p, m)]$.
-
-This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
-
-\TODOinline{Perhaps instead of imposing PERs from the beginning, we start only with the category of RE sets, and then take its ex/lex completion or some such thing. Like so:}
-
-Consider the category $T'$ whose objects are the sigma-1 formulas $\phi(n)$ in the language of PA, and such that a morphism from $\phi(n)$ to $\psi(m)$ is a sigma-1 formula $F(n, m)$ such that $PA$ proves $\forall n, m . F(n, m) \implies (\phi(n) \wedge \psi(m))$ and $\forall n . \phi(n) \implies \exists! m . F(n, m)$. Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case PA proves $\forall n, m . F(n, m) \biimplies G(n, m)$. Morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
-
-This category $T'$ is regular but not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
-
-\TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
-
-\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that we have somewhat distinct concepts of sigma-1 categories as meaning objects are given by all standard codes for sigma-1 sets, vs the larger sigma-1 categories as meaning as meaning objects are given by all internally definable codes for sigma-1 sets, in which the former is a full subcategory}
 
 \subsection{Models based on well-founded trees/well-founded posets}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb's theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). \TODO
