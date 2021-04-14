@@ -16,9 +16,9 @@ This was all quite general, and we will use it now to observe a very general con
 \subsection{The general construction}
 \openNamed{construction}{General Diagonalization}\label{GeneralDiag}
 \closeNamed{construction}
-Let $T$ be a category, let $C$ be a $T$-indexed pointed category (\quote{pointed} meaning it comes with a designated object $1$, not presumed terminal for now), let $\introS$ be a functor from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, and let $\introN$ be a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
+Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary theory. As a reminder to the reader, this means, let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $1$ be an object in the global aspect of $C$ (not necessarily a terminal object), and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 
-(In particular, any introspective theory carries this structure, but we wish for a moment to allow ourselves to note that the following construction can be carried out in some greater generality. \TODOinline{We could define this structure as something like a \quote{pre-pre-introspective theory}. It is like a pre-introspective theory without presuming lex structure. We could define box notation as applying at this level of generality. Any category with finite products $T$ yields an instance of this structure using the simple self-indexing for $C$, the terminal object for $1$, and the canonical isomorphisms of the appropriate type for $\introS$ and $\introN$.})
+(In particular, any introspective theory carries this structure, but we wish for a moment to allow ourselves to note that the following construction can be carried out in some greater generality. \TODOinline{Note that any category with finite products $T$ yields an instance of this structure using the simple self-indexing for $C$, the terminal object for $1$, and the canonical isomorphisms of the appropriate type for $\introS$ and $\introN$.})
 
 Consider now a $T$-indexed presheaf $P$ on $C$. Suppose also given some object $Y$ in $T$ and map $d : Y \to P(\introS(Y))$.
 
@@ -45,7 +45,19 @@ Finally, note that $\introN_Y(y) : \Hom_C(1, \introS(Y))$ composed with $\introS
 
 Note that $R$ here can be any kind of relation at all. When $R$ specifically represents an equivalence relation (e.g., as when the maps defining $R$ are taken to be the domain and codomain projections from morphisms to objects for some groupoid structure whose objects are given by $P$), this result is naturally thought of as a fixed point property. We will only be looking at such $R$ for now in this document.
 
-Before specializing to introspective theories, let us observe some corollaries of this general result we can already see. First, a couple traditional special cases:
+Similarly, although we observed that the above construction works at the level of generality of pre-introspective unary theories, every example we consider in this document will be at least a pre-introspective finite product theory.
+
+If it is not clear in what sense \cref{GeneralDiagThm} amounts to a fixed point theorem, consider the identification under the Yoneda lemma of $P(x)$ with $\Hom(x, P)$, and apply \cref{GeneralDiagThm} where the relation $R$ is equality and where $f$ is globally defined. Then what this theorem says is that, for our $f : \Hom(\Box P, P)$, we obtain $L(f) : \Hom(1, P)$ such that the following diagram commutes:
+
+\[\begin{tikzcd}
+	1 & {} & {\introS(P(1)) = \Box P} && P \\
+	& {}
+	\arrow["{\introN_{P(1)}(L(f)) = \Box L(f)}", from=1-1, to=1-3]
+	\arrow["f", from=1-3, to=1-5]
+	\arrow["{L(f)}"', shift right=4, from=1-1, to=1-5]
+\end{tikzcd}\]
+
+Before specializing all the way to introspective theories, let us observe some corollaries of this general result we can already see. First, a couple traditional special cases:
 
 \openNamed{observation}{Lawvere's Fixed Point Theorem}\label{LawveresTheorem}
 Let $T$ be a category with finite products. For such a $T$, let $C$ be the $T$-indexed category defined by the simple self-indexing, let its designated object $1$ be its terminal object, and let $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type. Let $P$ be the presheaf represented by an object $\Omega$ of $T$, and let the relation $R$ on $P$ be actual equality (that is, the relation given by the diagonal map). 
@@ -66,14 +78,14 @@ Note that if the domain of definition $D$ over which $d$ is relationally surject
 \end{corollary}
 
 \begin{corollary}\label{RetractInT}
-If $T$, $C$, $\introS$, $\introN$, and $P$ are given as in \nameref{GeneralDiag} such that there is an object $Y$ in $T$ with $P(\introS(Y))$ being a retract of $Y$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
+If $\langle T, C, \introS, \introN, 1 \rangle$ and $P$ are given as in \nameref{GeneralDiag} such that there is an object $Y$ in $T$ with $P(\introS(Y))$ being a retract of $Y$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
 \end{corollary}
 \begin{proof}
 Apply \cref{RetractDiag} with the relation $R$ being true equality; that is, given by two parallel identity maps from $P$ to itself. The retraction from $Y$ onto $P(\introS(Y))$ will play the role of $d$ as above, and the section from $P(\introS(Y))$ into $Y$ will witness the required surjectivity of $d$.
 \end{proof}
 
 \begin{corollary}\label{RetractInC}
-If $T$, $C$, $\introS$, $\introN$, and $P$ are given as in \nameref{GeneralDiag} such that there is an object $X$ in the global aspect of $C$ with $\introS(P(X))$ being a retract of $X$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
+If $\langle T, C, \introS, \introN, 1 \rangle$ and $P$ are given as in \nameref{GeneralDiag} such that there is an object $X$ in the global aspect of $C$ with $\introS(P(X))$ being a retract of $X$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
 \end{corollary}
 \begin{proof}
 If $\introS(P(X))$ is a retract of $X$ in $C$, then by applying the contravariant functor $P$, we find that $P(\introS(P(X)))$ is a retract of $P(X)$ in $T$. Thus, taking $Y = P(X)$, we can apply \cref{RetractInT}.

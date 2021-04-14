@@ -213,10 +213,23 @@ As the \quote{pre-} naming suggests, there are some further definitions to build
 If $\langle T, C \rangle$ is a pre-introspective theory and $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively. And in the same way, for any of the generalized notions of pre-introspective X theory, we may replace \quote{pre-introspective} with \quote{introspective} or \quote{locally introspective} to designated that $C$ is small or locally small, respectively.
 \end{definition}
 
-Again, we remind the reader that our main object of interest is introspective theories (the case where the relevant categorical structure is finite limits and where the indexed category is small). Every other concept we've attached a name to is just for observing the further generality of some results, but if the zoo of other concepts ever grows intimidating, think always of introspective theories as the North Star.
+Again, we remind the reader that our main object of interest is introspective theories (the case where the relevant categorical structure is finite limits and where the indexed category is small). Every other concept we've attached a name to is just for observing the further generality of some results, but if this zoo of other named concepts ever grows intimidating, think always of introspective theories as the North Star.
 
-Speaking of general results, though, here is a useful one:
+While it is sometimes easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will usually be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The value of this new definition is that there is much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
+\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of the same theory (this is the role of $\introS$).
+
+Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
+
+\begin{definition}
+By an \defined{inner-strict introspective theory}, we mean a pre-introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, as a small indexed strict lexcategory.
+\end{definition}
+
+Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
+
+We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
+
+\subsection{Some useful constructions}
 \openNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
 Within a pre-introspective terminal object theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
 \closeNamed{lemma}
@@ -242,21 +255,6 @@ Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \
 The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
 \end{proof}
 
-While it is sometimes easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will usually be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The value of this new definition is that there is much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
-
-\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of the same theory (this is the role of $\introS$).
-
-Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
-
-\begin{definition}
-By an \defined{inner-strict introspective theory}, we mean a pre-introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, as a small indexed strict lexcategory.
-\end{definition}
-
-Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
-
-We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
-
-\subsection{Some useful constructions}
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
 
@@ -297,8 +295,16 @@ When we abuse language and speak of $T/t$ as an introspective theory, the above 
 Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way.
 \end{TODOblock}
 
+\begin{construction}\label{TrivialPreintrosp}
+If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category \TODOinline{This last statement is harder to show than the rest, perhaps leave it without proof here}.
+
+In the same way, if $T$ is any category with finite products, it can be equipped as a pre-introspective finite product theory, taking $C$ to be given by the simple self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. This will be a locally introspective finite product theory just in case $T$ is cartesian closed.
+
+\TODOinline{The constructions of the last two paragraphs are trivial and in a way a distraction, because our goal is introspective theories in the end, and these do not give us that. However, this way of looking at categories with finite products/CCCs/LCCCs is useful for drawing traditional corollaries of our general results.}
+\end{construction}
+
 \subsection{The box operator}
-\TODOinline{Think and write about this for pre-introspective theories too}
+\TODOinline{Think and write about this for pre-introspective theories too.}
 
 The following notation will be very convenient for us going forward. It is also suggestive of the connections with modal logic we will explore in a later chapter.
 
