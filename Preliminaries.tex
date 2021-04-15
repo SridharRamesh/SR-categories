@@ -44,7 +44,7 @@ As a final bit of terminology, given any kind of indexed data $P$, indexed over 
 
 More generally, we may refer to the data of a presheaf at any object $t$ of the category over which it is indexed as its data \defined{defined over $t$}, or which is \definedManualIndexSort{$t$-indexed}{t-indexed}. Note that data defined over $t$ is automatically transferred to corresponding data defined over $s$ by any morphism from $s$ to $t$ in $T$, by the action of the presheaf. In contexts where it would cause no confusion to speak in this way, we use the same name of the data over $t$ again for the corresponding data over $s$, especially when $t$ is the terminal object. \TODOinline{Do we actually do this often?}
 
-\subsection{The basics of double indexing}
+\subsection{Double or multiple indexing}
 Suppose $T$ is some category and $C$ is some category indexed over $T$. What does it mean to speak of a $T$-indexed $C$-indexed structure? For example, a $T$-indexed $C$-indexed set. That is, a $T$-indexed $C$-indexed presheaf $P$.
 
 What this means is that, for every object $t$ in $T$ and every $t$-defined object $c$ in $C$, we have some corresponding set of $P$ (the $t$-defined $c$-defined elements of $P$), and we also have a coherent system of pullback maps between these: Along any map $f : s \to t$ in $T$, we can pull back a $t$-defined $c$-defined element of $P$ to an $s$-defined $c$-defined element of $P$ (where the latter $c$ is implicitly the pullback along $f$ of the former $c$). And for any fixed $t$, given a $t$-defined map $g : d \to c$ in $C$, we can pull back a $t$-defined $c$-defined element of $P$ along this to a $t$-defined $d$-defined element of $P$. Both of these systems of pullbacks are functorial, and they also interact with each other \quote{commutatively} in the sense that pulling back along a map $g$ in $C$ and then pulling back along a map $f$ in $T$ is the same as pulling back along the map $f$ in $T$ and then pulling back along the map $g$ in $C$ (where, again, the latter, $g$ is implicitly the pullback along $f$ of the former $g$).
@@ -66,5 +66,3 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 (Keep in mind also that an honest-to-goodness actual structure, living in $\Set$, is like the zero-ary case of indexing; it's indexed by the empty string of categories $()$, but can be seen in a trivial way as $T$-indexed for any category $T$).
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
-
-\TODOinline{Word all this better}
