@@ -158,6 +158,8 @@ Essentially, our plan is to apply \cref{RetractInT} taking $P$ to be the preshea
 
 There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids\footnote{If we assumed $T$ to be an effective regular category, we could quotient any setoid internal to $T$ into a corresponding plain object of $T$, but we do not wish to require this assumption.}. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
 
+\TODOinline{If we worked in an effective regular T, we would simply look at the quotient set of slices in C/c up to isomorphism. And essentially that's what we will do in arbitrary T, taking advantage of the ability to use relation R to impose an arbitrary quotient}
+
 But supposing we take care of that, we will at any rate naturally want to impose upon this $P$ the relation given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with its two projections to $\Ob(C/c)$ being the domain and codomain maps.
 
 Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism from $x$ to $y$, and an element of $P(y)$, with the transport-back action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. We then impose upon this presheaf $P$ the relation $R$ under which two elements of $P$ are related by any relationship in $R'$ between the corresponding elements-up-to-isomorphism of $P'$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). \TODOinline{Write this out in a detailed way.}
@@ -191,7 +193,7 @@ Thus, the $\Box$-algebra with carrier $1$ is weakly initial within $\Psh{C}$, in
 Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. However, we shall see later on that there are some natural examples of locally introspective theories that happen to have this property as well, and we shall see in a second a number of corollaries of this property that work just as well for locally introspective theories as for introspective theories. Thus, let us make this useful definition:
 
 \begin{definition}
-A \defined{locally \Loeb\ theory} is a locally introspective theory with otherwise the same properties of \cref{LoebInIntrosp}.
+A \defined{locally \Loeb\ theory} is a locally introspective theory $T$ such that each of its slice locally introspective theories $T/t$ has the same properties of \cref{LoebInIntrosp}, save for being locally introspective rather than fully introspective.
 \end{definition}
 
 \begin{conjecture}
