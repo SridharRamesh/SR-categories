@@ -83,7 +83,7 @@ Recall that $W(y) : P(1)$ is $d(y)$ transported back along $\introN_Y(y) : \Hom_
 	\arrow["{\introN_Y}"', from=1-1, to=4-1]
 	\arrow["{\introN_{P(1)}}", from=1-4, to=4-4]
 	\arrow["W", from=1-1, to=1-4]
-	\arrow["{\Hom_C(1, \introS(W)) \; [\text{i.e., } \introS(W) \circ -]}"', from=4-1, to=4-4]
+	\arrow["{\introS(W) \circ -}"', from=4-1, to=4-4]
 	\arrow[maps to, from=2-2, to=3-2]
 	\arrow[maps to, from=2-2, to=2-3]
 	\arrow[maps to, from=2-3, to=3-3]
@@ -158,15 +158,21 @@ Essentially, our plan is to apply \cref{RetractInT} taking $P$ to be the preshea
 
 There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids\footnote{If we assumed $T$ to be an effective regular category, we could quotient any setoid internal to $T$ into a corresponding plain object of $T$, but we do not wish to require this assumption.}. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
 
-\TODOinline{If we worked in an effective regular T, we would simply look at the quotient set of slices in C/c up to isomorphism. And essentially that's what we will do in arbitrary T, taking advantage of the ability to use relation R to impose an arbitrary quotient}
+\TODOinline{If we worked in an effective regular T, we would simply look at the quotient set of slices in C/c up to isomorphism. And essentially that's what we will do in arbitrary T, taking advantage of the ability to use relation R to impose an arbitrary quotient.}
 
 But supposing we take care of that, we will at any rate naturally want to impose upon this $P$ the relation given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with its two projections to $\Ob(C/c)$ being the domain and codomain maps.
 
-Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism from $x$ to $y$, and an element of $P(y)$, with the transport-back action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. We then impose upon this presheaf $P$ the relation $R$ under which two elements of $P$ are related by any relationship in $R'$ between the corresponding elements-up-to-isomorphism of $P'$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). \TODOinline{Write this out in a detailed way.}
+Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism $m$ from $x$ to $y$, and an element $e$ of $P(y)$, with the transport-back action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. There a clear inclusion $i$ of $P'(x)$ into $P(x)$ via sending each element $e$ of $P'(x)$ to the element $\langle x, \id_x, e \rangle$ of $P(x)$, and a corresponding retraction $f$ from $P(x)$ onto $P'(x)$, taking an element $\langle y, m : x \to y, e \rangle$ of $P'(y)$ to the transport $m^* e$ or $P(m) e$ of $e$ back along $m$ via the action of $P$.
+
+We then impose upon this presheaf $P$ the relation $R$ under which two elements $(p, q)$ of $P$ are related by any relationship in $R'$ between elements $(p', q')$ of $P'$, along with an isomorphism between $p'$ and $f(p)$ and an isomorphism between $q'$ and $f(q)$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). It is straightforward to verify that this relation $R$ has a groupoid structure itself, and that its projection maps to $P$ are indeed natural transformations between presheaves. \TODOinline{Write this out in a detailed way.}
 
 We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. Any such slice above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
 
-The fixed point property we derive then tells us that, for any slice $Q$ above $\introS(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $\introN_{\Ob(C)}(c) : \Hom_C(1, \introS(\Ob(C)))$.
+The fixed point property we derive then tells us:
+
+\begin{theorem}\label{ObjectToSetFixedPoint}
+For any slice $Q$ above $\introS(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $\introN_{\Ob(C)}(c) : \Hom_C(1, \introS(\Ob(C)))$.
+\end{theorem}
 
 In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ corresponding to some arbitrary $T$-small presheaf $Q'$ on $C$. Then the above invocation of our \Loeb's theorem tells us there is some object $c$ of $C$ which is isomorphic to $\introS(Q'(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb's theorem on the presheaf $Q'$ itself (in the form of \cref{RetractInC}).
 
@@ -205,7 +211,7 @@ Although we above observed that in any introspective theory there is an object $
 \end{observation}
 
 \subsection{Uniqueness, initiality, and terminality for fixed points}
-Throughout this section, we work in the context of a locally \Loeb\ theory $\langle T, C \rangle$.
+Throughout this section, we work in the context of an introspective theory $\langle T, C \rangle$. \TODOinline{Figure out how much of this works for a locally \Loeb\ theory, possibly tweaking the definition of a locally \Loeb\ theory as needed}
 
 \begin{theorem}\label{UniqueFixedPoints}
 The fixed points produced by \nameref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(\introS(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ transported back along $\introN$ of itself), we have that $a = b$.
@@ -224,7 +230,7 @@ Note that this argument made essential use of the structure (notably, equalizers
 Note that this means that the apparent dependence on which particular object $Y$ and retraction from $P(\introS(Y))$ into $Y$ is used in the diagonalization theorem doesn't actually matter, in this context. We get the same result no matter what.
 \end{observation}
 
-A similar argument to \cref{UniqueFixedPoints} tells us that fixed points for endofunctors are unique, and even some initial algebra/terminal coalgebra properties for them: \TODO
+A similar argument to \cref{UniqueFixedPoints} tells us that fixed points for endofunctors are unique, and even some initial algebra/terminal coalgebra properties for them:
 
 \begin{theorem}\label{CoalgToAlgExist}
 Suppose $Q$ is a $T$-small presheaf on the opposite category of $C$. (That is, a $T$-indexed covariant functor from $C$ to the self-indexing of $T$ whose category of elements is $T$-small). This induces a covariant endofunctor $Q(\introS(-))$ on $T$. Suppose $a : A \to Q(\introS(A))$ is a coalgebra for this functor within $T$ and $b : Q(\introS(B)) \to B$ is an algebra for this functor within $T$. Then there is some coalgebra-to-algebra morphism $g$ from $\introS(a)$ to $\introS(b)$ within $C$. That is, there is some $g : \introS(a) \to \introS(b)$ within $C$ such that $g = \introS(a) \circ \introS(Q(g)) \circ \introS(b)$.
@@ -237,14 +243,23 @@ Thus, we can apply our fixed point theorem \parensref{LoebInIntrosp} to this val
 \TODOinline{Write diagrams to make this all clearer}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{CoalgToAlgUnique}
 The theorem \cref{CoalgToAlgExist} can be strengthened to not only produce a coalgebra-to-algebra morphism, but also to conclude that such a coalgebra-to-algebra morphism is unique.
 \end{theorem}
 \begin{proof}
 After applying \cref{CoalgToAlgExist} with a suitable presheaf $Q$ to get existence, apply \cref{UniqueFixedPoints} with that same presheaf to get uniqueness.
 \end{proof}
 
-Essentially identical arguments work when dealing with presheaves on the opposite category of the core of $C$ (that is, its subcategory including only its isomorphisms), thus establishing the uniqueness of our functorial fixed points:
+\begin{theorem}
+Given $Q$ as in \cref{CoalgToAlgExist}, there exists a unique (up to isomorphism) fixed point of $Q(\introS(-))$, in the sense of a unique (up to isomorphism) object $A$ and isomorphism $a : A \to Q(\introS(A))$. This fixed point is both a terminal coalgebra and (its inverse is) an initial algebra.
+\end{theorem}
+\begin{proof}
+We get the existence of an object $A$ and isomorphism $a : A \to Q(\introS(A))$ directly from \cref{ObjectToSetFixedPoint}.
+
+Furthermore, by \cref{CoalgToAlgUnique}, any coalgebra has a unique map into any algebra, from which it follows that any inverse morphism of a coalgebra (or algebra) is in fact an initial algebra (or terminal coalgebra). Since initial (or terminal) objects are all isomorphic to each other, we immediately have the uniqueness up to isomorphism we seek.
+\end{proof}
+
+Essentially identical arguments work when dealing with presheaves on the opposite category of the core of $C$ (that is, its subcategory including only its isomorphisms):
 
 \begin{theorem}\label{CoreCoalgToAlgExist}
 Suppose $Q$ is a $T$-small presheaf on the opposite category of the core of $C$. This induces a covariant endofunctor $Q(\introS(-))$ on the core of $T$. Suppose $a : A \to Q(\introS(A))$ is a coalgebra for this functor within the core of $T$ and $b : Q(\introS(B)) \to B$ is an algebra for this functor within the core of $T$. Then there is some coalgebra-to-algebra isomorphism $g$ from $\introS(a)$ to $\introS(b)$ within $C$. That is, there is some $g : \introS(a) \to \introS(b)$ within $C$ such that $g = \introS(a) \circ \introS(Q(g)) \circ \introS(b)$.

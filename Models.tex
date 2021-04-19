@@ -44,7 +44,7 @@ This category $T'$ is regular but not exact (that is, not every equivalence rela
 A concept that will often be useful to us in the following.
 
 \begin{definition}
-A \defined{finitely axiomatizable lex theory} is a lex theory which, qua lexcategory, can be generated in finitely many steps of the following form, starting from the initial lexcategory: free augmentation with an object, free augmentation with a morphism between existing objects, or freely making two parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}. \TODOinline{Word this all better}
+A \defined{finitely axiomatizable lex theory} is a lex theory which, qua lexcategory, can be generated in finitely many steps of the following form, starting from the initial lexcategory: free augmentation with an object, free augmentation with a morphism between existing objects, or freely making two existing parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}. \TODOinline{Word this all better}
 \end{definition}
 
 \begin{TODOblock}
@@ -52,7 +52,7 @@ Discuss the concept of a lexcategory having initial internal models of ALL finit
 
 As a bit of trivia, observe how this follows simply from having an internal free locally cartesian closed category on one object (verify the details on this; or perhaps from having internal free lex categories and the ability to freely augment internal lex categories with a new cell). Regardless of whether those details work out, conjecture that there are finitely many finitely axiomatizable lex theories such that having internal initial models of those implies having internal initial models of all finitely axiomatizable lex theories, so that the latter is itself a finitely axiomatizable condition.
 
-Relate this also to the concept of arithmetic universes. Conjecturally, being an arithmetic universe is equivalent to the condition of the previous paragraph (but there seems to be some hesitance in the literature to claim this? Understand that better).
+Relate this also to the concept of arithmetic universes. Conjecturally, being an arithmetic universe is equivalent to something like having free internal models for sketches indexed by finite unions of internal objects (but there seems to be some hesitance in the literature to claim this? Understand that better). At any rate, an arithmetic universe should have internal initial models of all finitely axiomatizable lex theories.
 
 This section basically only exists in order to claim that finitely axiomatizable lex theories which extend the theory of arithmetic universes are automatically examples of the next section.
 \end{TODOblock}
@@ -74,6 +74,12 @@ In the same way, the initial arithmetic universe is equipped as a geminal arithm
 
 \begin{TODOblock}
 Extend the above discussion of initiality to discuss corresponding introspective theories, beyond just the discussion of geminality. Although, e.g., the initial NNO-topos is not itself an introspective theory, there is nonetheless a corresponding introspective theory of note capturing the initiality properties. Furthermore, even any lex theory that does not automatically come with internal initial models of itself can be freely bumped up to do so, in a suitable sense, and we get a corresponding introspective theory as well.
+
+Specifically, let us say a theory is sigma1esque if the identity lex endofunctor on it is initial with respect to all lex endofunctors on it. Any lex theory $T$ has a free sigma1esque extension, in the sense of a sigma1esque lex theory $T'$ under $T$ with a unique map into any other sigma1esque lex theory under $T$. This $T'$ also comes with a unique map into the global points of any internal initial model of $T$ in any lex category.
+
+If $T$ has an internal initial model of $T$, then the theory $T'$ also contains an internal initial model of $T$, and thus this theory $T'$ comes with a lexfunctor $\introS$ into that internal initial model of $T$. Furthermore, because $T'$ is sigma1esque, it then comes with a natural transformation $\introN$ from its identity functor to the global sections of that $\introS$. This equips said $T'$ as an introspective theory. And, as noted, this $T'$ is modelled by any initial model of $T$ internal to any category.
+
+Thus, for example, if $T$ is the theory of elementary toposes with NNO, we obtain some introspective theory $T'$ extending $T$ which has the initial elementary topos with NNO as a model.
 \end{TODOblock}
 
 \subsection{Models based on well-founded trees/well-founded posets}
