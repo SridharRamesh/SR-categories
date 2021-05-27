@@ -14,10 +14,20 @@ We say an indexed set is \defined{small} (or \definedManualIndexSort{$T$-small}{
 
 (It is perhaps a bit misleading to use the terminology \quote{small} here, as this notion is not closed under subobjects, and indeed, what might be considered the smallest indexed set, the one which constantly takes the value of the empty set, is never small in this technical representability sense. But the analogy to the familiar distinction between sets and proper classes is often a fruitful one, and so we stick with this terminology all the same.)
 
-When $T$ is a lexcategory, we may also define more generally the concept of a function $f : A \to B$ between $T$-indexed sets having \defined{small fibers}: This is defined as every fiber of $f$ over every $t$-indexed element of $B$ being a representable presheaf over $T/t$.
+When $T$ is a lexcategory, we may also define more generally the concept of a function $f : A \to B$ between $T$-indexed sets having \defined{small fibers}: This is defined as every fiber of $f$ over every $t$-indexed element of $B$ being a representable presheaf over $T/t$. Equivalently, the pullback of $f$ along any map into $B$ from a small set is itself small. That is, in any pullback diagram of the following sort, if $t$ is small, then so is $s$.
+
+\[\begin{tikzcd}
+	s & A \\
+	t & B
+	\arrow["f", from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+\end{tikzcd}\]
 
 \begin{TODOblock}
-Make sure this is the right definition of small fibers and word it the best way. The definition can equally be given as $f$ being the pullback of the slice of global sections of the self-indexing above the self-indexing (though what we mean by pullback here is a pullback of a discrete fibration along a function, which is technically slightly distinct from a pullback of functions. Whatever.).
+Make sure this is the right definition of small fibers and word it the best way. The definition can equally be given as $f$ being a pullback of the slice of global sections of the self-indexing above the objects of the self-indexing (though what we mean by pullback here is a pullback of a discrete fibration along a function, which is technically slightly distinct from a pullback of functions. Whatever.).
 \end{TODOblock}
 
 We can talk about any kind of $T$-indexed structure or $T$-indexed maps between such structures, as the appropriate diagram of $T$-indexed sets and functions; e.g., $T$-indexed groups and group homomorphisms between them. When the $T$-indexed sets involved (the sorts within the structure, including the domains and codomains of all the maps within the structure) are all small, we say the entire structure is \defined{small}, or equivalently, we say it is \defined{internal} to $T$. By the Yoneda lemma, this amounts to a diagram of objects and morphisms within $T$ itself.
@@ -41,6 +51,8 @@ We will now say an indexed category is \defined{small} or \defined{locally small
 The self-indexing $T/-$ of a lexcategory $T$ is not in general small, nor even locally small. Given two globally defined objects $A$ and $B$ of the self-indexed category, their corresponding hom-set $\Hom_{T/-}(A, B)$ amounts to the presheaf $\Hom_{T}(A \times -, B)$ on $T$, which is to say, the exponential $B^A$ within the presheaves over $T$. This indexed set is small just in case an exponential object $B^A$ already exists within $T$. This extends in the same way to non-globally-defined objects of the self-indexed category (considered as globally defined over some slice category of $T$ instead), and so the self-indexing of $T$ is locally small just in case $T$ is locally cartesian closed. Even if we do not have local cartesian closure in full, note that when $A = 1$, the exponential $B^A$ always is given by $B$ itself, so that hom-sets whose domain is $1$ are always small within the self-indexed category, with $\Hom_{T/-}(1, B)$ being the same as $B$ itself. In this way, the global sections presheaf upon the self-indexed category yields the canonical equivalence between the self-indexed category and the category of small sets.
 
 As a final bit of terminology, given any kind of indexed data $P$, indexed over a category $T$ with a terminal object, we may refer to the data of this presheaf at that terminal object as its \defined{global aspect}. By the Yoneda lemma, this global aspect data $P(1)$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. Thus, even if a category does not have a terminal object, we may still speak of the global aspect of presheaves over that category, and thus of indexed structures more generally (which are given by presheaves and maps between them).
+
+\TODOinline{Define "global" and "aspect" more generally, more explicitly}
 
 More generally, we may refer to the data of a presheaf at any object $t$ of the category over which it is indexed as its data \defined{defined over $t$}, or which is \definedManualIndexSort{$t$-indexed}{t-indexed}. Note that data defined over $t$ is automatically transferred to corresponding data defined over $s$ by any morphism from $s$ to $t$ in $T$, by the action of the presheaf. In contexts where it would cause no confusion to speak in this way, we use the same name of the data over $t$ again for the corresponding data over $s$, especially when $t$ is the terminal object. \TODOinline{Do we actually do this often?}
 

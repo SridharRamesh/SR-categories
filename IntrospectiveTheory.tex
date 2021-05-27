@@ -1,7 +1,7 @@
 \section{Introspective theories}
 
 % Non-evil definition
-\subsection{Definition}
+\subsection{First definition}
 
 \begin{definition} \label{DefnPreIntrospIndexed}
 A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, and a lexfunctor $\introF$ from the self-indexing of $T$ to $C$, like so:
@@ -24,10 +24,20 @@ The concept of an introspective theory is the fundamental object of our interest
 
 We shall also introduce some further generalizations of this concept, in order to be able to state results along the way in their fullest generality or point out connections to related work or interesting structures that are not quite introspective theories per se but are closely related. But throughout these notes, if at any time the abstractions seem daunting or distracting, remember that the concrete concept which matters most is the concept of an introspective theory as defined above.
 
-We shall now make an observation about an alternative but equivalent way to specify this data.
+The example-oriented reader may immediately demand an example of a pre-introspective theory, to orient themselves. I am not a particularly example-oriented thinker or writer, but let us at least note the simplest example (or class of examples) of a pre-introspective theory:
+
+\begin{example} \label{TrivialIntrosp}
+Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a pre-introspective theory can be made from this where we take $\introF$ to be the identity (with $C$ as the self-indexing of $T$).
+\end{example}
+
+Alas, this simple example of a pre-introspective theory is almost never an introspective theory (that is to say, a lexcategory's self-indexing is almost never small). We will give an archetypal example of an introspective theory soon enough, but let us first develop some further machinery on how pre-introspective theories may be presented.
+
+\subsection{Second definition}
+
+We shall now make an observation about an alternative but equivalent way to specify the data of a pre-introspective theory.
 
 \begin{theorem}\label{SNCorrespondence}
-Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$ is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, as well as specifying a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
+Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 \end{theorem}
 
 As preparation for the proof of \cref{SNCorrespondence}, we will need two lemmas. Both of these lemmas should be understood as obvious, folklore, etc, but we will write out proofs of them for self-containedness.
@@ -186,7 +196,7 @@ Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcatego
 \end{proof}
 
 \begin{remark}\label{IntrospGeneralDoctrine}
-It wasn't fundamentally important that we were dealing with lexcategories here. \Cref{Lemma1} only required a terminal object. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory $T//t$ of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
+It wasn't fundamentally important that we were dealing with lexcategories here. The use of \Cref{Lemma1} as applied to $\op{C}$ only required a terminal object in $C$. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory $T//t$ of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
 \end{remark}
 
 As a result of \cref{SNCorrespondence}, we can give another definition essentially equivalent to \cref{DefnPreIntrospIndexed}.
@@ -213,7 +223,7 @@ As the \quote{pre-} naming suggests, there are some further definitions to build
 If $\langle T, C \rangle$ is a pre-introspective theory and $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively. And in the same way, for any of the generalized notions of pre-introspective X theory, we may replace \quote{pre-introspective} with \quote{introspective} or \quote{locally introspective} to designated that $C$ is small or locally small, respectively.
 \end{definition}
 
-Again, we remind the reader that our main object of interest is introspective theories (the case where the relevant categorical structure is finite limits and where the indexed category is small). Every other concept we've attached a name to is just for observing the further generality of some results, but if this zoo of other named concepts ever grows intimidating, think always of introspective theories as the North Star.
+Again, we remind the reader that our main object of interest is introspective theories (the case where the relevant categorical structure is finite limits and where the indexed category is small). Every other concept we've attached a name to is just for observing the further generality of some results. But if this zoo of other named concepts ever grows intimidating, think always of introspective theories as the North Star.
 
 \TODOinline{Give a very quick example of an introspective theory, or a link to the sigma-1 example from the Models chapter}
 
@@ -306,3 +316,20 @@ In the same way, if $T$ is any category with finite products, it can be equipped
 
 \TODOinline{The constructions of the last two paragraphs are trivial and in a way a distraction, because our goal is introspective theories in the end, and these do not give us that. However, this way of looking at categories with finite products/CCCs/LCCCs is useful for drawing traditional corollaries of our general results.}
 \end{construction}
+
+\begin{observation}
+The last construction can be much further generalized. Here we do so, using a number of observations:
+\TODOinline{Move these wherever they actually belong}
+
+Given a lex endofunctor $\Box$ under identity (that is, equipped with a natural transformation $\introN$ from identity to $\Box$) on a lex category $T$, we can automatically extend $\Box$ to a $T$-indexed lex endofunctor under identity on the self-indexing of $T$, taking the action on objects of $\Box_X$ on a slice $f : Y \to X$ above $X$ to be given by applying $\Box$ to $f$ to achieve a slice $\Box f : \Box Y \to \Box X$, then pulling this back along $\introN_Y : X \to \Box X$ to get another slice above $X$. The action on morphisms and the lexness of this construction are straightforward if tedious to show, as are the relevant functoriality and naturality conditions for this $\Box$ to be a well-defined $T$-indexed endofunctor \TODO.
+
+This construction also works replacing lexness throughout by finite product structure and using the simple self-indexing correspondingly.
+
+Furthermore, if $T$ is a cartesian closed category and $\Box$ is a finite product preserving endofunctor on $T$, we can obtain another cartesian closed category with the same objects as $T$ but in which a morphism from $A$ to $B$ is what had originally been a global section of $\Box (A \implies B)$, with the obvious composition structure.
+
+The end result of these observations is that a pre-introspective cartesian closed theory in which $\introF$ is essentially surjective on objects amounts to essentially the same thing as a cartesian closed category $T$, a finite product preserving endofunctor $\Box$ on $T$, and a natural transformation $\introN$ from identity to $\Box$ on $T$. We take our category $C$ to be given by the construction of the last paragraph (taken as $T$-indexed by performing this relative to each aspect of the simple self-indexing of $T$), and we obtain $\introS$ by noting that a morphism from $A$ to $B$ in (any aspect of) $T$ corresponds to a global section of $A \implies B$, which can then be hit with $\Box$ to obtain a global section of $\Box (A \implies B)$. The result is automatically locally introspective.
+
+Some version of this should apply as well to locally cartesian closed categories, but there's some bother about defining what the objects in the construction from two paragraphs ago should be, when they are given by equalizers in $C$ that don't already exist in $T$.
+
+However, locally introspective (locally) cartesian closed theories cannot be fully introspective, or even just have the \Loeb property, except in a somewhat degenerate sense. $((\Box A) \implies A) \implies A$ will automatically be inhabited, as we have $(\Box A \implies A) \vdash \Box (\Box A \implies A)$ by $\introN$, which in turn entails $\Box A$ by \Loeb, and thus $(\Box A) \implies A \vdash A$. When $A$ is thought of as falsehood $0$, this amounts to $\neg \neg \Box 0$, asserting the double-negation of the inconsistency of $C$. In a Boolean context, this forces $C$ to be trivial.
+\end{observation}
