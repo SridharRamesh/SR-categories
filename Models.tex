@@ -12,6 +12,8 @@ In this way, simply by consideration of the freeness properties already establis
 \subsection{Models based on sigma-1 or arbitrary extensions of PA, or ZFC, or etc}
 \TODOinline{I will write this section in a sloppy way for now and then improve it later.}
 
+\begin{construction}\label{Sigma1Model}
+
 Consider a sigma-1 theory $\tau$ extending PA (or ZFC, or any such thing). Actually, for now, let's just consider PA simpliciter.
 
 Consider the category $T$ whose objects are the sigma-1 formulas $\phi(n, m)$ in the language of PA which define binary relations on the natural numbers which PA proves to be partial equivalence relations (i.e., symmetric and transitive). Given any two such formulas $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a sigma-1 formula $F(n, m)$ on the natural numbers which PA proves to correspond to the graph of a function between the subquotients of $\mathbb{N}$ corresponding to $\phi$ and to $\psi$, respectively. That is, such that PA proves the universal closures of the following:
@@ -37,8 +39,9 @@ Consider the category $T'$ whose objects are the sigma-1 formulas $\phi(n)$ in t
 This category $T'$ is regular but not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
 
 \TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
+\end{construction}
 
-\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that we have somewhat distinct concepts of sigma-1 categories as meaning objects are given by all standard codes for sigma-1 sets, vs the larger sigma-1 categories as meaning as meaning objects are given by all internally definable codes for sigma-1 sets, in which the former is a full subcategory. Also, as concerns ZFC, we can also consider categories of definable subsets of naturals, or of definable sets in general, or of definable classes.}
+\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that as concerns ZFC, we can also consider for $C$ not just categories of definable subsets of naturals, but also of definable sets in general, or of definable classes.}
 
 \subsection{Finitely axiomatizable lex theories}
 A concept that will often be useful to us in the following.
