@@ -26,7 +26,7 @@ We shall also introduce some further generalizations of this concept, in order t
 
 The example-oriented reader may immediately demand an example of a pre-introspective theory, to orient themselves. I am not a particularly example-oriented thinker or writer, but let us at least note the simplest example (or class of examples) of a pre-introspective theory:
 
-\begin{example} \label{TrivialIntrosp}
+\begin{example} \label{TrivialPreIntrospIndexed}
 Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a pre-introspective theory can be made from this where we take $\introF$ to be the identity (with $C$ as the self-indexing of $T$).
 \end{example}
 
@@ -199,40 +199,28 @@ Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcatego
 It wasn't fundamentally important that we were dealing with lexcategories here. The use of \Cref{Lemma1} as applied to $\op{C}$ only required a terminal object in $C$. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory $T//t$ of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality up to some regular cardinal, say.
 \end{remark}
 
-As a result of \cref{SNCorrespondence}, we can give another definition essentially equivalent to \cref{DefnPreIntrospIndexed}.
+As a result of \cref{SNCorrespondence}, we can give an alternative definition equivalent to \cref{DefnPreIntrospIndexed}:
 
 \begin{definition}\label{DefnPreIntrospSN}
 A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 \end{definition}
 
-\begin{definition}\label{DefnPreIntrospSNGeneralized}
-More generally, for any notion of categorical structure extending the concept of a category-with-terminal-object, we may consider the situation of a category $T$ with such structure, a $T$-indexed category $C$ with such structure, a functor $\introS$ from $T$ to the global aspect of $C$ preserving such structure, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. In this way, we could speak of \defined{pre-introspective X theories} for various X; pre-introspective finite product theories, pre-introspective terminal object theories, pre-introspective countable limit theories, and so on. But when we leave the nature of the theory unqualified, we always mean finite limits by default.
+Much as before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, will refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all such structures (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
 
-Note that whenever every instance of structure X is also an instance of structure Y, we will have that every pre-introspective X theory is also a pre-introspective Y theory.
+The definition of an introspective theory remains exactly as before (\cref{DefnIntrospIndexed}) regardless of how one thinks of pre-introspective theories, but for reminder's sake:
 
-Finally, on rare occasion it is even worthwhile to observe the extreme generality where we do not demand a terminal object. That is, a category $T$, a $T$-indexed category $C$, a functor $\introS$ from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, a designated object $1$ in the global aspect of $C$ (not presumed terminal), and a map $\introN$ from $t$ to $\Hom_C(1, \introS(t))$, natural in $t$ in $T$. We shall call this a \defined{pre-introspective unary theory}.
-
-Note that every pre-introspective terminal object theory can canonically be equipped as a pre-introspective unary theory by taking the designated object in $C$ to be its terminal object.
+\begin{definition} \label{DefnIntrospSN}
+An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is small.
 \end{definition}
 
-As before, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will refer to a pre-introspective (whatever flavor of) theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all such structures (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
-
-As the \quote{pre-} naming suggests, there are some further definitions to build atop these.
-
-\begin{definition}\label{DefnIntrosp}
-If $\langle T, C \rangle$ is a pre-introspective theory and $C$ is small or locally small, then we say this is an \defined{introspective theory} or \defined{locally introspective theory}, respectively. And in the same way, for any of the generalized notions of pre-introspective X theory, we may replace \quote{pre-introspective} with \quote{introspective} or \quote{locally introspective} to designated that $C$ is small or locally small, respectively.\TODOinline{It is usually only worth discussing introspective X theories such that X-homorphisms preserve the structure of Xes internal to Xes (in particular, X must extend the concept of lex categories), or locally introspective X theories such that X-homomorphisms preserve the structure of an X enriched over an X (in particular, X must extend the concept of a category with finite products). This all may therefore be too much or too unwieldy generality to introduce. We really just need the cases where X is lex, finite product, or unary. There is also a comment about the case where X is (locally) cartesian closed, at the end of this chapter.}
-\end{definition}
-
-Again, we remind the reader that our main object of interest is introspective theories (the case where the relevant categorical structure is finite limits and where the indexed category is small). Every other concept we've attached a name to is just for observing the further generality of some results. But if this zoo of other named concepts ever grows intimidating, think always of introspective theories as the North Star.
-
-While it is sometimes easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will usually be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The value of this new definition is that there is much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
+While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The value of this new definition is that there is much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
 \Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of the same theory (this is the role of $\introS$).
 
 \subsection{A concrete example}
 
 \begin{construction}\label{SigmaModelSimple}
-Let us now finally give the example-oriented reader an archetypal example of an introspective theory by which to orient themselves. The following construction will be discussed in more detail later at \cref{Sigma1Model}.
+Let us now finally give the example-oriented reader an archetypal example of an introspective theory by which to orient themselves. (On the other hand, the reader who is perfectly happy to consider abstract definitions without needing to see a worked out example of a highly concrete flavor may skip this section at this introductory time if they find its details a distraction). The following construction will be discussed in more detail later at \cref{Sigma1Model}.
 \end{construction}
 
 Let us start with the first-order logical theory ZF-Finite: the theory ZF but with the axiom of infinity replaced by its negation\footnote{This theory happens to be equivalent to Peano Arithmetic in a suitable sense, but it will be more convenient for us to speak in terms of ZF-Finite so as not to fret about codings of a sort every modern mathematician readily takes for granted in a ZF-style context.}. The universe this theory describes is the hereditarily finite sets. Throughout this construction, whenever we speak of formulae, we mean formulae in the language of ZF-Finite, and whenever we speak of provability, we mean provable within ZF-Finite.
@@ -281,7 +269,7 @@ The other objects of $T$ are subquotients of that object (and similarly for the 
 
 This is where the $\Sigma_1$-ness of $\phi$ plays a vital role. For any $\Sigma_1$ property $\phi$, we can prove that whenever $\phi$ holds of $x$, it furthermore provably holds of $x$ (in the sense that the particular term $\code{x}$, when substituted into the argument of the formula $\phi$, yields a sentence which is provable). \TODOinline{Do we need to go into more detail as to why this is true? It's a classical fact. One first establishes it for every $\Sigma_0$ property (we show that every atomic relation has this property both for itself and its negation, and thus so do Boolean combinations of these, and we also have the same closure under bounded quantification), and then shows that if $\phi(x, \ldots)$ has this \quote{Truth entails Provability} property, so does $\exists x. \phi(x, \ldots)$, given that any existential witness $x$ induces a term $\code{x}$ that serves as witness in a proof}
 
-Finally, let us observe the naturality of this $\introN$. Consider a putative naturality square:
+Finally, let us observe the naturality of this $\introN$. Consider the general form of its naturality squares:
 
 \[\begin{tikzcd}
 	\phi & \psi \\
@@ -292,7 +280,7 @@ Finally, let us observe the naturality of this $\introN$. Consider a putative na
 	\arrow["{\introS(m) \circ -}"', from=2-1, to=2-2]
 \end{tikzcd}\]
 
-Thus, we must have that, for any definable unary formula $m(x)$, it is provably the case that for every $x$, we have that applying the function $m$ to $x$ and then constructing the term encoding the result ($\code{m(x)}$) is a provably equivalent term to taking the term representing $x$ and substituting it into the argument of the formula defining $m$ (what might be called $m(\code{x})$). That is, whatever the actual result of the function $m$ on the input $x$ is, we must have that this is also provably the same as applying $m$ to the input $x$. Here, again, the $\Sigma_1$-ness of the formula defining $m$ comes to our rescue, telling us that truth entails provability in the appropriate way.
+This says that, for any definable unary formula $m(x)$, it is provably the case that for every $x$, we have that applying the function $m$ to $x$ and then constructing the term encoding the result ($\code{m(x)}$) is a provably equivalent term to taking the term representing $x$ and substituting it into the argument of the formula defining $m$ (what might be called $m(\code{x})$ or perhaps $\code{m}(\code{x})$ or at any rate $\introS(m)(\code{x})$). To be clear, by the provable equivalence of terms here, we do not mean syntactic identity as symbol-strings; rather, we mean that there is a provable equality sentence whose left and right sides are comprised of these terms. That is, whatever the actual result of the function $m$ on the input $x$ is, we must have that this is also provably the same as applying $m$ to the input $x$. Here, again, the $\Sigma_1$-ness of the formula defining $m$ comes to our rescue, telling us that truth entails provability in the appropriate way.
 
 Thus, we obtain an introspective theory $\langle T, D, \introS, \introN \rangle$. This concludes our first example of an instrospective theory!
 
@@ -313,8 +301,30 @@ Summarizing, we get an introspective theory $\langle T, C, \introS, \introN \ran
 
 Phew! What a long walk it was to get to describing that example! All the better, then, that we have formalized introspective theories so abstractly, and can work with them without having to fuss about such concrete details as in that example. But this is indeed the archetypal example it will be best to keep in mind to guide the reader's intuition throughout all further discussion.
 
-\subsection{Inner-strictness}
-Returning to our zoo of definitions of slight variants of the concept of an introspective theory, there is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
+\subsection{Variations}
+There are some slight variations on the concept of a (pre-)introspective theory which will occasionally be of use to us in future chapters, for technical reasons or for showing the greater generality of some results. In this section, we discuss such variations. But we remind the reader that our main object of interest is introspective theories. If ever this zoo of other named concepts grows intimidating, think always of introspective theories as the North Star.
+
+\begin{definition}\label{DefnPreIntrospSNGeneralized}
+Recall that a pre-introspective theory is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. Note how lex structure (that is, finite limit structure) is used throughout this definition.
+
+More generally, for any notion of categorical structure extending the concept of a category-with-terminal-object, we may consider the situation of a category $T$ with such structure, a $T$-indexed category $C$ with such structure, a functor $\introS$ from $T$ to the global aspect of $C$ preserving such structure, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. In this way, we could speak of \defined{pre-introspective X theories} for various X; pre-introspective finite product theories, pre-introspective terminal object theories, pre-introspective countable limit theories, and so on.
+
+But when we leave the nature of the theory unqualified, we always mean finite limits by default.
+
+Note that whenever every instance of structure X is also an instance of structure Y, we will have that every pre-introspective X theory is also a pre-introspective Y theory.
+
+Finally, on rare occasion it is even worthwhile to observe the extreme generality where we do not demand a terminal object. That is, a category $T$, a $T$-indexed category $C$, a functor $\introS$ from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, a designated object $1$ in the global aspect of $C$ (not presumed terminal), and a map $\introN$ from $t$ to $\Hom_C(1, \introS(t))$, natural in $t$ in $T$. We shall call this a \defined{pre-introspective unary theory}.
+
+Note that every pre-introspective terminal object theory can canonically be equipped as a pre-introspective unary theory by taking the designated object in $C$ to be its terminal object.
+
+As ever, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will usually say $\langle T, C \rangle$ to describe a pre-introspective X theory.
+
+When $C$ is small, we may call this an \defined{introspective X theory}. (We will only do this in contexts where it makes sense to speak of Xes internal to Xes. The minimal such context is when X is finite limit theories). 
+
+When $C$ is locally small, we may call this a \defined{locally introspective X theory}. The most notable example of this is to speak of \defined{locally introspective finite product theories}. (Indeed, we will only use this terminology in contexts where a $T$-indexed locally small $X$ is taken to an $S$-indexed locally small $X$ by any $X$-homomorphism from $T$ to $S$, and the minimal such context is when X is finite product theories).
+\end{definition}
+
+There is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
 
 \begin{definition}
 By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
@@ -325,6 +335,8 @@ Thus, an introspective theory can always be construed as some inner-strict intro
 We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
 
 \subsection{Some useful constructions}
+Now let us discuss some constructions for building new (pre-)introspective theories from old ones, or general tools for reasoning about (pre-)introspective theories.
+
 \openNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
 Within a pre-introspective terminal object theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
 \closeNamed{lemma}
@@ -390,10 +402,10 @@ When we abuse language and speak of $T/t$ as an introspective theory, the above 
 Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way.
 \end{TODOblock}
 
-\begin{construction}\label{TrivialPreintrosp}
-If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. This will be a locally introspective theory just in case $T$ is locally cartesian closed.
+\begin{construction}\label{TrivialPreIntrosp}
+If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
 
-\TODOinline{However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. But showing this last statement is harder to show than the rest, perhaps leave it without proof here}.
+This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. This will follow from the categorical \Loeb's theorem we develop in the next chapter.
 
 In the same way, if $T$ is any category with finite products, it can be equipped as a pre-introspective finite product theory, taking $C$ to be given by the simple self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. This will be a locally introspective finite product theory just in case $T$ is cartesian closed.
 
