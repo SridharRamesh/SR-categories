@@ -1,7 +1,7 @@
 \section{Introspective theories}
 
 % Non-evil definition
-\subsection{First definition (indexed)}
+\subsection{First definition (indexed style)}
 
 \begin{definition} \label{DefnPreIntrospIndexed}
 A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, and a lexfunctor $\introF$ from the self-indexing of $T$ to $C$, like so:
@@ -32,7 +32,7 @@ Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a p
 
 Alas, this simple example of a pre-introspective theory is almost never an introspective theory (that is to say, a lexcategory's self-indexing is almost never small; indeed, the only case in which this happens is the trivial one where $T$ is the terminal category\footnote{This can be seen as a consequence of our categorical \Loeb's theorem established in the next chapter.}). We will give an archetypal example of an introspective theory soon enough, but let us first develop some further machinery on how pre-introspective theories may be presented.
 
-\subsection{Second definition (non-indexed)}
+\subsection{Second definition (non-indexed style)}
 
 We shall now make an observation about an alternative but equivalent way to specify the data of a pre-introspective theory.
 
@@ -229,15 +229,15 @@ While it is sometimes easier to prove theorems about (pre-)introspective theorie
 
 \Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of the same theory (this is the role of $\introS$).
 
-\subsection{An example}
+\subsection{A concrete example}
 
 \begin{construction}\label{SigmaModelSimple}
 Let us now finally give the example-oriented reader an archetypal example of an introspective theory by which to orient themselves. The following construction will be discussed in more detail later at \cref{Sigma1Model}.
 \end{construction}
 
-Let us start with the first-order logical theory ZF-Finite: the theory ZF but with the axiom of infinity replaced by its negation\footnote{This theory happens to be equivalent to Peano Arithmetic in a suitable sense, but it will be more convenient for us to speak in terms of ZF-Finite so as not to fret about codings of a sort every modern mathematician readily takes for granted in a ZF-style context.}. The universe of this theory amounts to the collection of all hereditarily finite sets. Throughout the following, whenever we speak of formulae, we mean formulae in the language of ZF-Finite, and whenever we speak of provability, we mean provable within ZF-Finite.
+Let us start with the first-order logical theory ZF-Finite: the theory ZF but with the axiom of infinity replaced by its negation\footnote{This theory happens to be equivalent to Peano Arithmetic in a suitable sense, but it will be more convenient for us to speak in terms of ZF-Finite so as not to fret about codings of a sort every modern mathematician readily takes for granted in a ZF-style context.}. The universe this theory describes is the hereditarily finite sets. Throughout this construction, whenever we speak of formulae, we mean formulae in the language of ZF-Finite, and whenever we speak of provability, we mean provable within ZF-Finite.
 
-Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers, after which all other quantifiers are bounded (ranging only over finite sets that have previously been introduced).
+Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers (ranging over the entire universe), after which all other quantifiers are bounded (ranging only over the elements of some particular definable finite set).
 
 Now let us define a category $T'$ whose objects are the $\Sigma_1$ formulae with one free variable. Such formulae amount to certain definable subsets of the universe.
 
@@ -247,15 +247,15 @@ Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case $\f
 
 Finally, morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
 
-We omit here the straightforward details of verifying that this structure $T'$ we have just described does indeed satisfy the rules to be a category. Indeed, it is furthermore a regular category (that is, it has finite limits and image factorization; it has finite products because of the definability of ordered pairs in ZF-Finite, and it furthermore has equalizers and image factorization using suitable instances of Separation in ZF-Finite). However, it is not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
+We omit here the straightforward details of verifying that this structure $T'$ we have just described does indeed satisfy the rules to be a category. Indeed, it is furthermore a regular category (that is, it has finite limits and image factorization; it has finite products because of the definability of ordered pairs in ZF-Finite, and it furthermore has equalizers and image factorization using suitable instances of Separation in ZF-Finite). However, it is not an exact category (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
 
 (There is not in general any need for the categories involved in an introspective theory to be exact, or even regular. They need only have finite limits. However, for the particular construction we are outlining now, this ex/reg completion is the $T$ we need to look at.)
 
 More explicitly, we can describe $T$ like so:
 
-Its objects are the $\Sigma_1$ binary relations $\phi(n, m)$ which are provably partial equivalence relations (i.e., symmetric and transitive), thus corresponding to certain subquotients of the universe.
+Its objects are the $\Sigma_1$ binary relations $\phi(n, m)$ which can be proven to be partial equivalence relations (i.e., symmetric and transitive), thus corresponding to certain subquotients of the universe.
 
-Given any two such formulae $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a $\Sigma_1$ formula $F(n, m)$ which provably corresponds to the graph of a function between the corresponding subquotients of the universe. That is, such that the universal closures of all the following are provable:
+Given any two such formulae $\phi(n_1, n_2)$ and $\psi(m_1, m_2)$, a morphism in $T$ from $\phi$ to $\psi$ is a $\Sigma_1$ formula $F(n, m)$ which provably corresponds to the graph of a function between the corresponding subquotients of the universe. That is, such that the universal closures of all the following are provable:
 
 $F(n, m) \implies \phi(n, n) \wedge \psi(m, m)$
 
@@ -267,35 +267,51 @@ $F(n, m_1) \wedge F(n, m_2) \implies \psi(m_1, m_2)$.
 
 Two such formulae $F(n, m)$ and $F'(n, m)$ are considered to be equal as morphisms from $\phi$ to $\psi$ if they are provably equivalent (that is, if both $\forall n, m . F(n, m) \implies F'(n, m)$ and $\forall n, m . F'(n, m) \implies F(n, m)$ are provable).
 
-Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we again define their composition in the usual way of composing functions represented as graphs, as $(F \circ G)(n, m) = \exists p [G(n, p) \wedge F(p, m)]$.
+Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we again define their composition in the usual way of composing functions represented as graphs, as $(G \circ F)(n, m) = \exists p [F(n, p) \wedge G(p, m)]$.
 
-This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
+This all describes the category $T$, which one can verify is indeed a category and moreso, an exact category.
 
-Note that our construction of $T$ is such that the objects of $T$, the morphisms of $T$, the equivalence relation on morphisms of $T$, the composition structure of $T$, the finite limit structure of $T$, etc, are all definable within the language of ZF-Finite; indeed, all definable by $\Sigma_1$ formulae. Thus, there is a lexcategory $D$ internal to $T$ which corresponds to this very same construction we have just described. And we have a lexfunctor $\introF$ from $T$ to the global aspect of $D$ which sends each piece of the construction of $T$ to the corresponding piece of the construction of $D$. This is all straightforward.
+Note that our construction of $T$ is such that the objects of $T$, the morphisms of $T$, the equality relation on morphisms of $T$, the composition structure of $T$, the finite limit structure of $T$, etc, are all definable within the language of ZF-Finite; indeed, all definable by $\Sigma_1$ formulae. (In particular, keep in mind that provability in ZF-Finite is itself a $\Sigma_1$ property). Thus, there is a lexcategory $D$ internal to $T$ which corresponds to this very same construction of $T$ we have just described. And we have a lexfunctor $\introS$ from $T$ to the global aspect of $D$ which sends each piece of the construction of $T$ to the corresponding piece of the construction of $D$. This is all straightforward.
 
-And we even have a natural transformation $\introN$ from the identity endofunctor on $T$ to the endofunctor $\Hom_D(1, \introF(-))$ on $T$. Essentially, to every hereditarily finite set $x$, we can assign it a code $\code{x}$, which is an explicit term in the language of ZF-Finite denoting that set. The easy way to do this is to recursively assign to each set $\{a, b, c, \ldots\}$ the term describing a finite set whose members are explicitly enumerated by the terms assigned to $a, b, c, \ldots$. We thus send a set such as $\{\{\}, \{\{\}\}\}$ to the term in the language of ZF-Finite which might be called \quote{$\{\{\}, \{\{\}\}\}$}, and so on.
+As the last bit of introspective theory structure, we must build a natural transformation $\introN$ from the identity endofunctor on $T$ to the endofunctor $\Hom_D(1, \introS(-))$ on $T$. The core idea behind this $\introN$ is simple. Essentially, to every hereditarily finite set $x$, we can assign it a code $\code{x}$, which is an explicit term in the language of ZF-Finite denoting that set. The easy way to do this is to recursively assign to each set $\{a, b, c, \ldots\}$ the term describing a finite set whose members are explicitly enumerated by the terms assigned to $a, b, c, \ldots$. We thus send a set such as $\{\{\}, \{\{\}\}\}$ to the term in the language of ZF-Finite which might be called \quote{$\{\{\}, \{\{\}\}\}$}, and so on.
 
-This gives us a function $\code{-}$ from hereditarily finite sets to terms in the language of ZF-Finite which describe hereditarily finite sets. This function $\code{-}$ is itself definable by a $\Sigma_1$ formula and thus gives a morphism in $T$, which serves as the component of $\introN$ at the object $V$ of $T$ describing ALL hereditarily finite sets. 
+This gives us a function $\code{-}$ from hereditarily finite sets to terms in the language of ZF-Finite which describe hereditarily finite sets. This function $\code{-}$ is definable by a $\Sigma_1$ formula and thus gives a morphism in $T$. This serves as the component of $\introN$ at the object of $T$ describing ALL hereditarily finite sets. 
 
-The other objects of $T$ are subquotients of that object (and similarly for the objects of $D$), and therefore the components of the natural transformation $\introN$ at those other objects are uniquely determined from $\introN_{V}$ as certain factorizations, supposing those factorizations to exist at all. And because of the $\Sigma_1$-ness of the objects of $T$, these factorizations will indeed all exist, such that $\introN$ is fully defined. The $\Sigma_1$-ness is important here, however! The $\Sigma_1$-ness of a formula $\phi$ guarantees that whenever $x$ satisfies $\phi$, the term $\code{x}$ provably satisfies $\phi$ (because the fact that $x$ satisfies $\phi$ is witnessed by particular choices for the unbounded existential quantifiers in $\phi$, and those witnesses can themselves be encoded as terms by $\code{-}$, which can be used to construct a proof in ZF-Finite of $\phi(\code{x})$). If this had failed, we would not have the appropriate factorization.
+The other objects of $T$ are subquotients of that object (and similarly for the objects of $D$), and therefore the components of the natural transformation $\introN$ at these other objects can now be obtained uniquely so long as certain factorizations exist. That is to say, the component of $\introN$ at any object $\phi(n_1, n_2)$ of $T$ will also be given by the action of $\code{-}$, but for this to indeed work to map $t$ into $\Hom_D(1, \introS(t))$, we need to know that $\code{-}$ when acting on individuals which are related by the partial equivalence relation $\phi$ produces terms which provably describe individuals related by $\phi$.
 
-More generally, the naturality squares for $\introN$ in general depend on the morphisms in $T$ being given by $\Sigma_1$ formulae, again because of the property that when such formulae are true, they are provably true. \TODOinline{Write this out more clearly}
+This is where the $\Sigma_1$-ness of $\phi$ plays a vital role. For any $\Sigma_1$ property $\phi$, we can prove that whenever $\phi$ holds of $x$, it furthermore provably holds of $x$ (in the sense that the particular term $\code{x}$, when substituted into the argument of the formula $\phi$, yields a sentence which is provable). \TODOinline{Do we need to go into more detail as to why this is true? It's a classical fact. One first establishes it for every $\Sigma_0$ property (we show that every atomic relation has this property both for itself and its negation, and thus so do Boolean combinations of these, and we also have the same closure under bounded quantification), and then shows that if $\phi(x, \ldots)$ has this \quote{Truth entails Provability} property, so does $\exists x. \phi(x, \ldots)$, given that any existential witness $x$ induces a term $\code{x}$ that serves as witness in a proof}
 
-Thus, we obtain an introspective theory $\langle T, D, F, N \rangle$.
+Finally, let us observe the naturality of this $\introN$. Consider a putative naturality square:
 
-However, $\langle T, D, F, N \rangle$ is not actually the most typical introspective theory! It has special properties which we should not expect of a general introspective theory. Its internal $D$ acts as a perfect mirror image of $T$, and can thus itself be equipped as an internal introspective theory. The internal $D$ has in some sense no further objects (or morphisms, or equations) outside the range of $F$. All of this is not typical for introspective theory.
+\[\begin{tikzcd}
+	\phi & \psi \\
+	{\Hom_D(1, \introS(\phi))} & {\Hom_D(1, \introS(\psi))}
+	\arrow["{\code{-}}"', from=1-1, to=2-1]
+	\arrow["m", from=1-1, to=1-2]
+	\arrow["{\code{-}}", from=1-2, to=2-2]
+	\arrow["{\introS(m) \circ -}"', from=2-1, to=2-2]
+\end{tikzcd}\]
 
+Thus, we must have that, for any definable unary formula $m(x)$, it is provably the case that for every $x$, we have that applying the function $m$ to $x$ and then constructing the term encoding the result ($\code{m(x)}$) is a provably equivalent term to taking the term representing $x$ and substituting it into the argument of the formula defining $m$ (what might be called $m(\code{x})$). That is, whatever the actual result of the function $m$ on the input $x$ is, we must have that this is also provably the same as applying $m$ to the input $x$. Here, again, the $\Sigma_1$-ness of the formula defining $m$ comes to our rescue, telling us that truth entails provability in the appropriate way.
+
+Thus, we obtain an introspective theory $\langle T, D, \introS, \introN \rangle$. This concludes our first example of an instrospective theory!
+
+\bigskip
+However, $\langle T, D, \introS, \introN \rangle$ is not actually the most typical introspective theory! It has special properties which we should not expect of a general introspective theory. Its internal $D$ acts as a perfect mirror image of $T$, and can thus itself be equipped as an internal introspective theory. The internal $D$ has in some informal sense no further objects (or morphisms, or equations) beyond the range of $\introS$. All of this is not typical for introspective theory.
+
+\begin{construction}
 Let us describe now a more archetypal introspective theory, to guide the reader's intuitions better for how general introspective theories act.
+\end{construction}
 
 Throughout the construction of $T$, we have imposed a $\Sigma_1$ constraint on formulae. If we drop all such $\Sigma_1$ constraints and allow arbitrary formulae, we get by the same construction an analogous category $S$. $T$ sits inside $S$ as a subcategory (but not a full subcategory! The inclusion from $T$ into $S$ is faithful, but not full).
 
-Just as the construction of $T$ could itself be carried out in ZF-Finite, to get a $D$ internal to $T$, so too can the construction of $S$ can be carried out in ZF-Finite, to get a $C$ internal to $T$. Yes, this $C$ is internal to $T$, not just internal to $S$! Even though $S$ includes as its objects and morphisms formulae which are not $\Sigma_1$, the description of $S$ (as a category whose objects are symbol-strings for which certain other symbol-strings exist, whose morphisms are symbol-strings for which certain other symbol-strings exist, and so on) is $\Sigma_1$.
+Just as the construction of $T$ could itself be carried out in ZF-Finite to get a $D$ internal to $T$, so too can the construction of $S$ can be carried out in ZF-Finite, to get a $C$ internal to $T$. Yes, this $C$ is internal to $T$, not just internal to $S$! Even though $S$ includes as its objects and morphisms formulae which are not $\Sigma_1$, the description of $S$ (as a category whose objects are symbol-strings for which certain other symbol-strings exist, and whose morphisms are symbol-strings for which certain other symbol-strings exist, and so on) is $\Sigma_1$.
 
-Finally, the inclusion of $T$ into $S$ yields, analogously, an inclusion from $D$ into $C$, internal to $T$. This means the functor $\introF$ from $T$ into the global aspect of $D$ can just as well be thought of as having a codomain of $C$, and similarly the natural transformation $\introN$ can just be well as thought of in this context.
+Finally, the inclusion of $T$ into $S$ yields, analogously, an inclusion from $D$ into $C$, internal to $T$. This means the functor $\introS$ from $T$ into the global aspect of $D$ can just as well be thought of as having $C$ for its codomain, and similarly the natural transformation $\introN$ can just be well as thought of in this context.
 
-In this way, we get an introspective theory $\langle T, C, \introF, \introN$, where $T$ amounts to the $\Sigma_1$-definable sets of hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence, $C$ is the arbitrary definable sets and arbitrary definable functions between them, $\introF$ assigns to each piece of $T$ the straightforwardly corresponding piece of $C$, and $\introN$ is the definable function which sends a hereditarily finite set to the canonical term describing it, as well as witnessing the entailment from truth to provability for $\Sigma_1$ formulae.
+Summarizing, we get an introspective theory $\langle T, C, \introS, \introN \rangle$, where $T$ is the category of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence, $C$ is the ($T$-internal) category of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence, $\introS$ assigns to each piece of $T$ the corresponding (globally defined) piece of $C$, and $\introN$ is the definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
 
-Phew! What a long walk it was to describe that example! All the better, then, that we have formalized introspective theories so abstractly, and can work with them without having to fuss about such concrete details as in that example. But this is indeed the archetypal example it will be best to keep in mind to guide the reader's intuition throughout all further discussion.
+Phew! What a long walk it was to get to describing that example! All the better, then, that we have formalized introspective theories so abstractly, and can work with them without having to fuss about such concrete details as in that example. But this is indeed the archetypal example it will be best to keep in mind to guide the reader's intuition throughout all further discussion.
 
 \subsection{Inner-strictness}
 Returning to our zoo of definitions of slight variants of the concept of an introspective theory, there is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
