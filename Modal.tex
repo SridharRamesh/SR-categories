@@ -2,11 +2,11 @@
 \subsection{The box operator}
 The following notation will be very convenient for us going forward. It is also suggestive of connections with modal logic we will eventually explore.
 
-Let $\langle T, C \rangle$ be a locally introspective theory. \TODOinline{Allow this notation for pre-introspective theories too?}
+Let $\langle T, C \rangle$ be a locally introspective theory.
 
-We say a presheaf on $C$ is locally $T$-small if the map from its total space of elements to $\Ob(C)$ has $T$-small fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$.
+We say a presheaf on $C$ is locally $T$-small if the map from its total space of elements to $\Ob(C)$ has $T$-small fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$. Put another way, such a presheaf is a $T$-indexed functor between the $T$-indexed categories $\op{C}$ and $T/-$.
 
-Note that the category of locally $T$-small presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$.
+Note that the category of locally $T$-small presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$. \TODOinline{Clarify in detail what the objects and morphisms of each aspect of this $T$-indexed category are? Basically, both $C$ and the self-indexing $T/-$ exist as categories internal to the topos $\Set^{\op{T}}$, and thus so does the contravariant functor category from the former to the latter.}
 
 Thus, we have three $T$-indexed lexcategories of note: $T$ itself (considered as a $T$-indexed category through the self-indexing $T/-$), $C$, and $\Psh{C}$.
 
@@ -36,6 +36,11 @@ When we want to clarify precisely the domain we are operating on, we may write $
 As the Yoneda embedding is naturally thought of as the inclusion of a full sub-lexcategory, identifying $C$ with the corresponding representable presheaves within $\Psh{C}$, we may also think of $\Box_{\Psh{C}}$ as a $T$-indexed lexfunctor from $\Psh{C}$ to $C$.
 
 The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all (and the rest of this chapter as well) descends to corresponding structure on their global aspects as well. Keep in mind, in the global aspect context, $\introF$ is the same as $\introS$, so wherever in the above we discussed $\introF$, a corresponding statement holds as well for $\introS$, when considering just the global aspect.
+
+\bigskip
+(Incidentally, the reason we restricted attention here to locally $T$-small presheaves, rather than arbitrary presheaves, is so that the map $P \mapsto P(1)$ can indeed be taken as always landing back within $T$ and not within $T$-indexed sets more generally.
+
+Similarly, the reason we restricted attention to locally introspective theories (i.e., the case where $C$ is locally $T$-small) and not to pre-introspective theories more generally is so that the Yoneda embedding $c \mapsto \Hom_C(-, c)$ does indeed land within the locally $T$-small presheaves, rather than arbitrary presheaves.)
 
 \subsection{Box preservation}
 Note that, having set up these various notions of $\Box$, we find that $\Box$ and each of the maps in the diagram \quote{commutes} in the appropriate sense; that is, they can be seen as preserving each other.

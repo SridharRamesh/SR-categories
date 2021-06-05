@@ -17,7 +17,79 @@ This was all quite general, and we will use it now to observe a very general con
 Some note about how we will also make use in diagrams in this chapter liberally of the identification of $P(c)$ with $\Hom(c, P)$, when $P$ is a presheaf. If one likes, this can be seen as invoking the Yoneda lemma to draw diagrams in $\Psh{C}$ (although invoking the Yoneda lemma is actually a bit overkill for the mere fact that we can draw diagrams of presheaf elements and presheaf actions in this way, which is simply working within the appropriate collage, aka cocomma category).
 \end{TODOblock}
 
-\subsection{The general construction}
+\subsection{Lawvere's fixed point theorem}
+Let us refresh the reader on Lawvere's fixed point theorem, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure \TODOinline{cite: "Diagonal Arguments and Cartesian Closed Categories" by Lawvere}. We shall first present a proof of Lawvere's fixed point theorem in a more or less traditional way (very slightly generalized, but more or less traditional), and then we will vastly generalize the argument to produce a much more general result applicable in the context of general pre-introspective theories. Then we will specialize back down to introspective theories, and observe a wonderful \quote{bootstrapping} phenomenon which arises there, which shall ultimately provide us with a form of \Loeb's theorem in that context.
+
+\openNamed{theorem}{Lawvere's Fixed Point Theorem}\label{LawvereFPT}
+Let $T$ be a cartesian closed category. Let $P$ be any object in $T$. Suppose also given some object $Y$ in $T$ and map $d : Y \to P^Y$ (equivalent to the data of a morphism $: Y \times Y \to P$).
+
+If $d$ is surjective (in the sense of being relationally surjective with respect to the equality relation on $P^Y$, over the domain of definition $1$), then from any endomorphism $f: P \to P$, we obtain a global point $L(f) : 1 \to P$ such that $f \circ L(f) = L(f)$.
+
+More generally, if $d$ is relationally surjective with respect to relation $R$ over domain of definition $1$, then from any endomorphism $f: P \to P$, we obtain a global point $L(f) : 1 \to P$ such that $f \circ L(f)$ is related by $R$ to $L(f)$.
+\closeNamed{theorem}
+\begin{proof}
+Observe that we can define a map $W: Y \to P$ in the internal logic of this category like so: For any element $y$ in $Y$, $W(y)$ is $d(y) : P^Y$ applied to $y : Y$ itself, to yield an element of $P$. Thus, when we identify points in $Y$ with maps from $1$ to $Y$, we can illustrate $W(y) : P$ like so:
+
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCIxIl0sWzEsMCwiWSJdLFsyLDAsIlAiXSxbMCwxLCJ5IiwyXSxbMSwyLCJkKHkpIiwyXV0=
+\[\begin{tikzcd}
+	1 & Y & P
+	\arrow["y"', from=1-1, to=1-2]
+	\arrow["{d(y)}"', from=1-2, to=1-3]
+\end{tikzcd}\]
+
+As with all such definitions in internal logic, we may interpret this in terms of generalized elements (so that $y$ is a generalized element of $Y$, and the above diagram is interpreted in the corresponding aspect of the simple self-indexing $T//-$; in particular, we may do this with $y$ as the generic generalized element given by the identity on $Y$) to obtain a genuine morphism $W : Y \to P$.
+
+Observe now that from any endomorphism $f : P \to P$, we obtain a global element $f: 1 \to P$ like so: By composing $f$ with $W$, we get a map $f \circ W : Y \to P$, which is to say, a global element of $P^Y$. By applying our relational surjectivity presumption on $d$, we obtain a global element $y$ of $Y$ such that this $f \circ W$ is related to $d(y)$.
+
+% https://q.uiver.app/?q=WzAsMyxbMCwyLCJZIl0sWzMsMCwiUCJdLFs2LDIsIlAiXSxbMCwxLCJXIl0sWzEsMiwiZiJdLFswLDIsImQoeSkiLDJdLFsxLDUsIlxcdGV4dHtyZWxhdGVkIGJ5IH1SIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XV0=
+% Manually tweaked the shorten bit to be <=7pt, rather than >=7pt. This fixed some weirdness with the arrowhead.
+\[\begin{tikzcd}
+	&&& P \\
+	\\
+	Y &&&&&& P
+	\arrow["W", from=3-1, to=1-4]
+	\arrow["f", from=1-4, to=3-7]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{d(y)}"', from=3-1, to=3-7]
+	\arrow["{\text{related by }R}"', shorten <=7pt, Rightarrow, squiggly, from=1-4, to=0]
+\end{tikzcd}\]
+
+And applying $W$ to such a $y$, we end up with a global element $W(y)$ of $P$.
+
+Now let us demonstrate that this $W(y)$ actually has the required related point property.
+
+Observe that the relation between $f \circ W$ and $d(y)$ yields also a relation between $f(W(y))$ and $d(y)(y) = W(y)$, like so:
+
+% https://q.uiver.app/?q=WzAsNCxbMSwyLCJZIl0sWzQsMCwiUCJdLFs3LDIsIlAiXSxbMCwyLCIxIl0sWzAsMSwiVyJdLFsxLDIsImYiXSxbMCwyLCJkKHkpIiwyXSxbMywwLCJ5IiwyXSxbMSw2LCJcXHRleHR7cmVsYXRlZCBieSB9UiIsMix7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In19fV1d
+\[\begin{tikzcd}
+	&&&& P \\
+	\\
+	1 & Y &&&&&& P
+	\arrow["W", from=3-2, to=1-5]
+	\arrow["f", from=1-5, to=3-8]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{d(y)}"', from=3-2, to=3-8]
+	\arrow["y"', from=3-1, to=3-2]
+	\arrow["{\text{related by }R}"', shorten >=7pt, Rightarrow, squiggly, from=1-5, to=0]
+\end{tikzcd}\]
+
+Keeping in mind that the bottom path here is the definition of $W(y)$, this shows that $f(W(y))$ is related to $W(y)$ as desired, completing the proof.
+
+\end{proof}
+
+\begin{corollary}\label{LawvereFPTGeneralDomain}
+If the surjectivity assumption on $d$ above is modified to being relationally surjective over domain of definition $D$ rather than domain of definition $1$, we still obtain from any $D$-defined endomorpism $f$ of $Y$ (i.e., any morphism $f : D \times Y \to Y$) a $D$-defined point $L(f)$ of $Y$ (i.e., a morphism $L(f) : D \to Y$) such that, within $T//D$ (the $D$-defined aspect of the simple self-indexing of $T$), we have that $f \circ L(f)$ is related by $R$ to $L(f)$.
+\end{corollary}
+\begin{proof}
+$D$-defined values in $T$ are the same as globally defined values in $T//D$, so we may simply apply the original result to $T//D$.
+\end{proof}
+
+\begin{corollary}
+All the above results apply just as well for a category with finite products, even if it lacks cartesian closed structure (taking the data of $d$ to be equivalently given by the data of a morphism $: Y \times Y \to P$).
+\end{corollary}
+\begin{proof}
+Any category with finite products embeds as a full sub-category-with-finite-products of a cartesian closed category. For example, we may use the Yoneda embedding into its topos of presheaves. (Indeed, via the Yoneda embedding, any category at all embeds as a full subcategory of a topos, in a manner preserving any limit or exponential structure already present). Thus, we may simply apply the original result to this expanded category.
+\end{proof}
+
+\subsection{The general construction for pre-introspective theories}
 \openNamed{construction}{General Diagonalization}\label{GeneralDiag}
 \closeNamed{construction}
 Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary theory. As a reminder to the reader, this means, let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $1$ be an object in the global aspect of $C$ (not necessarily a terminal object), and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
@@ -210,7 +282,7 @@ Every locally \Loeb\ theory can be embedded into an introspective theory.
 Although we above observed that in any introspective theory there is an object $Y$ such that the object of slices in $C$ above $\introS(Y)$ was merely a retract-up-to-isomorphism of $Y$, we can now reapply \cref{LoebInIntrosp} to construct an object $Y'$ such that the object of slices in $C$ above $\introS(Y')$ is in fact isomorphic-up-to-isomorphism to $Y'$. \TODOinline{Word this better and verify the details. Actually, I think this isn't true when we don't have regularity. I should remove this observation, after verifying that.}
 \end{observation}
 
-\subsection{Uniqueness, initiality, and terminality for fixed points}
+\subsection{Uniqueness and initiality/terminality for fixed points}
 Throughout this section, we work in the context of an introspective theory $\langle T, C \rangle$. \TODOinline{Figure out how much of this works for a locally \Loeb\ theory, possibly tweaking the definition of a locally \Loeb\ theory as needed}
 
 \begin{theorem}\label{UniqueFixedPoints}

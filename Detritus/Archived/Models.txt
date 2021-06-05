@@ -17,4 +17,8 @@ Even though many of these models make use of some kind of initiality, it's worth
 
 ----
 
-Note that although we get Loeb's theorem and G2IT from that, we do not get Rosser's strengthening of G1IT. That is, there are 2-valued GL-categories; most simply, the GL-category whose underlying category is the 2-element Boolean algebra and whose internal GL-category is trivial (i.e., the terminal object 1). This is in the same way that there are models of GL modal logic which are 2-valued.
+Note that although we get Loeb's theorem and G2IT from that, we do not get Rosser's strengthening of G1IT. That is, there are 2-valued GL-categories; most simply, the GL-category whose underlying category is the 2-element Boolean algebra and whose internal GL-category is trivial (i.e., the terminal object 1). This is in the same way that ther
+
+----
+
+I think there was once some thought about making models based on arbitrary PCAs, PCAs with oracles, etc?
