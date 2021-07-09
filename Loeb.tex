@@ -18,7 +18,7 @@ Some note about how we will also make use in diagrams in this chapter liberally 
 \end{TODOblock}
 
 \subsection{Lawvere's fixed point theorem}
-Let us refresh the reader on Lawvere's fixed point theorem, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure \TODOinline{cite: "Diagonal Arguments and Cartesian Closed Categories" by Lawvere}. We shall first present a proof of Lawvere's fixed point theorem in a more or less traditional way (very slightly generalized, but more or less traditional), and then we will vastly generalize the argument to produce a much more general result applicable in the context of general pre-introspective theories. Then we will specialize back down to introspective theories, and observe a wonderful \quote{bootstrapping} phenomenon which arises there, which shall ultimately provide us with a form of \Loeb's theorem in that context.
+Let us refresh the reader on Lawvere's fixed point theorem, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure \TODOinline{cite: "Diagonal Arguments and Cartesian Closed Categories" by Lawvere}. We shall first present a proof of Lawvere's fixed point theorem in a more or less traditional way (very slightly generalized, but more or less traditional). Then in the next section we will vastly generalize the argument to produce a result applicable in the context of general pre-introspective theories. Then we will specialize back down to introspective theories, and observe a wonderful \quote{bootstrapping} phenomenon which arises there, which shall ultimately provide us with a form of \Loeb's theorem in that context.
 
 \openNamed{theorem}{Lawvere's Fixed Point Theorem}\label{LawvereFPT}
 Let $T$ be a cartesian closed category. Let $P$ be any object in $T$. Suppose also given some object $Y$ in $T$ and map $d : Y \to P^Y$ (equivalent to the data of a morphism $: Y \times Y \to P$).
@@ -28,6 +28,8 @@ If $d$ is surjective (in the sense of being relationally surjective with respect
 More generally, if $d$ is relationally surjective with respect to relation $R$ over domain of definition $1$, then from any endomorphism $f: P \to P$, we obtain a global point $L(f) : 1 \to P$ such that $f \circ L(f)$ is related by $R$ to $L(f)$.
 \closeNamed{theorem}
 \begin{proof}
+\TODOinline{We're a bit glib in all our writing when we swap between thinking of $y$ as an element in $Y$, vs a map from $1$ to $Y$, or similarly in swapping between a presheaf $P^Y$ and values in $P(Y)$ and morphisms from $Y$ to $P$, etc. Perhaps we should introduce some explicit notation for these kinds of conversions, to make everything perfectly clear.}
+
 Observe that we can define a map $W: Y \to P$ in the internal logic of this category like so: For any element $y$ in $Y$, $W(y)$ is $d(y) : P^Y$ applied to $y : Y$ itself, to yield an element of $P$. Thus, when we identify points in $Y$ with maps from $1$ to $Y$, we can illustrate $W(y) : P$ like so:
 
 % https://q.uiver.app/?q=WzAsMyxbMCwwLCIxIl0sWzEsMCwiWSJdLFsyLDAsIlAiXSxbMCwxLCJ5IiwyXSxbMSwyLCJkKHkpIiwyXV0=
@@ -60,6 +62,7 @@ Now let us demonstrate that this $W(y)$ actually has the required related point 
 Observe that the relation between $f \circ W$ and $d(y)$ yields also a relation between $f(W(y))$ and $d(y)(y) = W(y)$, like so:
 
 % https://q.uiver.app/?q=WzAsNCxbMSwyLCJZIl0sWzQsMCwiUCJdLFs3LDIsIlAiXSxbMCwyLCIxIl0sWzAsMSwiVyJdLFsxLDIsImYiXSxbMCwyLCJkKHkpIiwyXSxbMywwLCJ5IiwyXSxbMSw2LCJcXHRleHR7cmVsYXRlZCBieSB9UiIsMix7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6InNxdWlnZ2x5In19fV1d
+% Manually tweaked the shorten bit to be <=7pt, rather than >=7pt. This fixed some weirdness with the arrowhead.
 \[\begin{tikzcd}
 	&&&& P \\
 	\\
@@ -68,7 +71,7 @@ Observe that the relation between $f \circ W$ and $d(y)$ yields also a relation 
 	\arrow["f", from=1-5, to=3-8]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{d(y)}"', from=3-2, to=3-8]
 	\arrow["y"', from=3-1, to=3-2]
-	\arrow["{\text{related by }R}"', shorten >=7pt, Rightarrow, squiggly, from=1-5, to=0]
+	\arrow["{\text{related by }R}"', shorten <=7pt, Rightarrow, squiggly, from=1-5, to=0]
 \end{tikzcd}\]
 
 Keeping in mind that the bottom path here is the definition of $W(y)$, this shows that $f(W(y))$ is related to $W(y)$ as desired, completing the proof.
@@ -90,6 +93,8 @@ Any category with finite products embeds as a full sub-category-with-finite-prod
 \end{proof}
 
 \subsection{The general construction for pre-introspective theories}
+Now that we've gone over the traditional Lawvere's fixed point theorem, let us generalize it to the level of pre-introspective theories.
+
 \openNamed{construction}{General Diagonalization}\label{GeneralDiag}
 \closeNamed{construction}
 Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary theory. As a reminder to the reader, this means, let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $1$ be an object in the global aspect of $C$ (not necessarily a terminal object), and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
@@ -356,6 +361,8 @@ The theorem \cref{CoreCoalgToAlgExist} can be strengthened to not only produce a
 \begin{proof}
 After applying \cref{CoreCoalgToAlgExist} with a suitable presheaf $Q$ to get existence, apply \cref{UniqueFixedPoints} with that same presheaf to get uniqueness.
 \end{proof}
+
+\TODOinline{Thus, not only is there an essentially unique fixed point for isovariant functors from C to T, but furthermore, this unique fixed point is rigid}
 
 It is worth noting that the proofs of \cref{UniqueFixedPoints}, of \cref{CoalgToAlgExist}, and of \cref{CoreCoalgToAlgExist} can all be unified, seen as different instances of one general theorem. \TODOinline{Do this, and then having done so, the above cleans up a lot.}
 

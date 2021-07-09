@@ -57,3 +57,11 @@ Partial Horn logic and cartesian categories (Palmgren and Vickers), at https://c
 Power-Set Functors and Saturated Trees (Adamek et al, https://core.ac.uk/download/pdf/62916431.pdf). Perhaps of note for the von Neumann/cumulative hierarchy style model.
 
 "Categorical Logic and Type Theory", by Bart Jacobs, for stuff about simple slice categories, fibrations, etc.
+
+"A Very Modal Model of a Modern, Major, General Type System": Lambda calculus that seems closely related, which could be useful for defining the models over well-founded relations. This cites Nakano, and Nakano continues to endorse X |- []X (or |> X in the notation of this paper). This paper does not use the analogue of X |- []X, though. However, it seems to be based on preorders and not more general categories, in the sense that types are sets of values compared by inclusion; meet is intersection rather than Cartesian product and so on.
+
+Similarly, see the following two Nakano papers:
+
+Nakano. A modality for recursion
+
+Nakano. Fixed-point logic with the approximation modality and its Kripke completeness.

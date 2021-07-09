@@ -106,6 +106,26 @@ This is equivalent to \cref{GLContainsGL}, via the yoga of functorial semantics.
 
 \TODOinline{Before the following theorem, write out the straightforward definition of introspective theory homomorphism, and updated to arbitrary gadgets}
 
+\begin{definition}\TODOinline{Clean this up, maybe index under "homomorphism" rather than under "introspective theory homomorphism"}
+Let $\langle T_1, C_1 \rangle$ and $\langle T_2, C_2 \rangle$ be introspective theories (not presumed inner-strict). Then an \defined{introspective theory homomorphism} between these is a lexfunctor $H : T_1 \to T_2$, such that for any one (and therefore for all) particular representation of $C_1$ as a lexcategory internal to $T_1$, we have that $H(C_1)$ is a representation of $C_2$ internal to $T_2$, and such that furthermore $\introF \circ H = H \circ \introF$ in an appropriate sense.
+
+\[\begin{tikzcd}
+	{T_1} && {T_2} \\
+	\\
+	{C_1} && {C_2}
+	\arrow["{\introF_1}", from=1-1, to=3-1]
+	\arrow["H"', from=1-1, to=1-3]
+	\arrow["{\introF_2}"', from=1-3, to=3-3]
+	\arrow["{H_C}", from=3-1, to=3-3]
+\end{tikzcd}\]
+
+This last condition is equivalent to saying that $\introS \circ H = H \circ \introS$ in an appropriate sense along with the condition that $\introN$ whiskered along $H$ on either side is equal to $\introN$ whiskered along $H$ on the other side, so to speak. \TODOinline{Clarify all this, draw a diagram}
+
+When dealing with inner-strict introspective theories, we furthermore ask of the relevant notion of homomorphism that $H(C_1) = C_2$ on-the-nose for the chosen representations.
+
+\TODOinline{Generalize all this to introspective X theories. Does it make sense to talk about this for pre-introspective theories? We don't have the internality of $C$ for $H$ to act directly on $C$, so perhaps not, and yet it seems like there should perhaps be some relevant notion, perhaps by asking for extra mapping structure beyond just what is given by $H$. We probably don't need this for anything, but see if it would be useful.}
+\end{definition}
+
 \begin{theorem}
 The introspective theory from \cref{GLCatTheoryIsIntrosp} is the free introspective theory with an internal gadget whose underlying lexcategory is $C$, in the sense that there is a unique (up to natural isomorphism) introspective theory homomorphism from this to any other introspective theory $\langle T, D \rangle$ with an internal gadget $K$ whose underlying lexcategory is $D$.
 \end{theorem}
