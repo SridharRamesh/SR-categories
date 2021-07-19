@@ -153,6 +153,57 @@ There are analogues of all the above results where we use finite product theorie
 
 \begin{TODOblock}
 Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
+
+Actually, I believe this is what we should look at: Consider a geminal category $\langle G, G'\rangle$ living internally to ambient lexcategory $S$.
+
+Then we can make an introspective theory $T$ whose objects are quadruples $\langle s, g, a, b \rangle$ where $s$ is an object of $S$, $g$ is a globally defined object of $G$, $a : s \to \Hom_G(1, g)$ is a morphism of $S$, and $b$ is a global element of $\Hom_G(g, \Hom_G'(1, \introN_G g))$, such that the following diagram commutes:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJzIl0sWzAsMiwiXFxIb21fRygxLCBnKSJdLFsyLDAsIlxcSG9tX0coMSwgZykiXSxbMiwyLCJcXEhvbV9HKDEsIFxcSG9tX3tHJ30oMSwgXFxpbnRyb05fRyBnKSkiXSxbMCwxLCJhIiwyXSxbMCwyLCJhIl0sWzIsMywiYiBcXGNpcmMgLSJdLFsxLDMsIlxcaW50cm9OX0ciLDJdXQ==
+\[\begin{tikzcd}
+	s && {\Hom_G(1, g)} \\
+	\\
+	{\Hom_G(1, g)} && {\Hom_G(1, \Hom_{G'}(1, \introN_G g))}
+	\arrow["a"', from=1-1, to=3-1]
+	\arrow["a", from=1-1, to=1-3]
+	\arrow["{b \circ -}", from=1-3, to=3-3]
+	\arrow["{\introN_G}"', from=3-1, to=3-3]
+\end{tikzcd}\].
+
+This corresponds to the naturality square for $\introN$ as applied to itself. $a$ is meant to be a component of $\introN$, and $b$ is $\introS(a)$, with $g$ similarly as $\introS(s)$. So to speak.
+
+A morphism between two such objects is a pair $\langle m : s_1 \to s_2 \in S, n : g_1 \to g_2 \in G$ such that the following commutes:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJzXzEiXSxbMCwyLCJcXEhvbV9HKDEsIGdfMSkiXSxbMiwwLCJzXzIiXSxbMiwyLCJcXEhvbV9HKDEsIGdfMikiXSxbMCwxLCJhXzEiXSxbMCwyLCJtIiwyXSxbMiwzLCJhXzIiLDJdLFsxLDMsIm4gXFxjaXJjIC0iXV0=
+\[\begin{tikzcd}
+	{s_1} && {s_2} \\
+	\\
+	{\Hom_G(1, g_1)} && {\Hom_G(1, g_2)}
+	\arrow["{a_1}", from=1-1, to=3-1]
+	\arrow["m"', from=1-1, to=1-3]
+	\arrow["{a_2}"', from=1-3, to=3-3]
+	\arrow["{n \circ -}", from=3-1, to=3-3]
+\end{tikzcd}\]
+
+And also, the following commutes (living within the global aspect of $G$): % https://q.uiver.app/?q=WzAsNCxbMCwwLCJnXzEiXSxbMCwyLCJcXEhvbV9HJygxLCBcXGludHJvTl9HIGdfMSkiXSxbMiwwLCJnXzIiXSxbMiwyLCJcXEhvbV9HJygxLCBcXGludHJvTl9HIGdfMikiXSxbMCwxLCJiXzEiXSxbMCwyLCJuIiwyXSxbMiwzLCJiXzIiLDJdLFsxLDMsIlxcaW50cm9OX0cobikgXFxjaXJjIC0iXV0=
+\[\begin{tikzcd}
+	{g_1} && {g_2} \\
+	\\
+	{\Hom_G'(1, \introN_G g_1)} && {\Hom_G'(1, \introN_G g_2)}
+	\arrow["{b_1}", from=1-1, to=3-1]
+	\arrow["n"', from=1-1, to=1-3]
+	\arrow["{b_2}"', from=1-3, to=3-3]
+	\arrow["{\introN_G(n) \circ -}", from=3-1, to=3-3]
+\end{tikzcd}\]
+
+Check that this really does yield a lexcategory. Limits are probably taken component-wise everywhere.
+
+That defines $T$. Within $T$, how do we define $C$? Well, for example, $\Ob(C)$ is the quadruple $\langle \Ob(G), \Ob(G'), \introN_G, \introN'_{G'} \rangle$ and so on for $\Mor(C)$ and everything else. This probably works out, write out the tedious details.
+
+Now, how do we define $\introS$? Well, for its action on objects, for any quadruple $\langle s, g, a, b \rangle$, you can take it to $\langle g, \introN_G g, b, \introN_G b\rangle$; similarly, for its action on morphisms, for any pair $\langle m, n\rangle$, you can take it to $\langle n, \introN_G n \rangle$.
+
+Finally, how do we define $\introN$? Well, for its component at $\langle s, g, a, b \rangle$, we define the morphism to be given by $\langle a, b \rangle$. Check that the naturality and everything works.
+
+And how do we map this introspective theory into $S$ to re-yield our original geminal gadget? Send $\langle s, g, a, b \rangle$ to $s$, and send $\langle m, n \rangle$ to $m$.
 \end{TODOblock}
 
 \begin{TODOblock}
@@ -168,3 +219,5 @@ Thus, every specific geminal structure (for one kind of gadget) is an initial ge
 
 One consequence of this is that every geminal structure indeed arises as the global aspect of some gadget-with-underlying-category C internal to some introspective theory (as it is easy, essentially tautological, to see that the free geminal gadget is the one which arises as the global sections of the introspective theory of geminal gadgets).
 \end{TODOblock}
+
+\TODOinline{Perhaps some kind of box notation for geminal categories will be useful?}
