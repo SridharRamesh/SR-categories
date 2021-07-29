@@ -204,6 +204,8 @@ Now, how do we define $\introS$? Well, for its action on objects, for any quadru
 Finally, how do we define $\introN$? Well, for its component at $\langle s, g, a, b \rangle$, we define the morphism to be given by $\langle a, b \rangle$. Check that the naturality and everything works.
 
 And how do we map this introspective theory into $S$ to re-yield our original geminal gadget? Send $\langle s, g, a, b \rangle$ to $s$, and send $\langle m, n \rangle$ to $m$.
+
+For any other introspective theory $\langle T', C' \rangle$ giving rise to $G$ via lexfunctor $M$ into $S$, we obtain a lexfunctor from $T'$ to $T$ which sends object $t$ in $T'$ to $\langle M(t), M(\introS(t)), M(\introN_t), M(\introS(\introN_t))\rangle$ and sends morphism $m$ in $T'$ to $\langle M(m), M(\introS(m))\rangle$. This will act as an introspective theory homomorphism.
 \end{TODOblock}
 
 \begin{TODOblock}
