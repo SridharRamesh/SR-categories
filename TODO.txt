@@ -46,3 +46,7 @@ Sigma-1 construction can be seen as simple thing followed by Ex/Lex construction
 Needn't have an NNO in models, I think. At any rate, the arithmetic content is clearly low, since arithmetic is not visible in the theory of GL-categories in any direct way.
 
 Write out non-lex 2-theory of introspective theories.
+
+Make the observation that any theorem which holds in all geminal categories also holds in all introspective theories, and conversely, any theorem which holds in all geminal categories also holds in all internal geminal categories, and such things, so that []^n A is true iff []^m A is true, except for that a thing may hold in all introspective theories without holding in all geminal categories. That thing. This belongs in "Automatic consistnecy results without models".
+
+Show models that are uncountable, uncomputable, etc, but otherwise similar to PA model. Establishing that GIT does not have to do with naturals, computability, etc.
