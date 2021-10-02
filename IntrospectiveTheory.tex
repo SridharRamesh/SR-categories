@@ -261,13 +261,13 @@ This all describes the category $T$, which one can verify is indeed a category a
 
 Note that our construction of $T$ is such that the objects of $T$, the morphisms of $T$, the equality relation on morphisms of $T$, the composition structure of $T$, the finite limit structure of $T$, etc, are all definable within the language of ZF-Finite; indeed, all definable by $\Sigma_1$ formulae. (In particular, keep in mind that provability in ZF-Finite is itself a $\Sigma_1$ property). Thus, there is a lexcategory $D$ internal to $T$ which corresponds to this very same construction of $T$ we have just described. And we have a lexfunctor $\introS$ from $T$ to the global aspect of $D$ which sends each piece of the construction of $T$ to the corresponding piece of the construction of $D$. This is all straightforward.
 
-As the last bit of introspective theory structure, we must build a natural transformation $\introN$ from the identity endofunctor on $T$ to the endofunctor $\Hom_D(1, \introS(-))$ on $T$. The core idea behind this $\introN$ is simple. Essentially, to every hereditarily finite set $x$, we can assign it a code $\code{x}$, which is an explicit term in the language of ZF-Finite denoting that set. The easy way to do this is to recursively assign to each set $\{a, b, c, \ldots\}$ the term describing a finite set whose members are explicitly enumerated by the terms assigned to $a, b, c, \ldots$. We thus send a set such as $\{\{\}, \{\{\}\}\}$ to the term in the language of ZF-Finite which might be called \quote{$\{\{\}, \{\{\}\}\}$}, and so on.
+As the last bit of introspective theory structure, we must build a natural transformation $\introN$ from the identity endofunctor on $T$ to the endofunctor $\Hom_D(1, \introS(-))$ on $T$. The core idea behind this $\introN$ is simple. Essentially, to every hereditarily finite set $x$, we can assign it a code $\code{x}$, which is an explicit term in the language of ZF-Finite denoting that set. The easy way to do this is to recursively assign to each set $\{a, b, c, \ldots\}$ the term describing a finite set whose members are explicitly enumerated by the terms assigned to $a, b, c, \ldots$. We thus send a set such as $\{\{\}, \{\{\}\}\}$ to the term in the language of ZF-Finite which might be called \quote{$\{\{\}, \{\{\}\}\}$}, and so on. \TODOinline{This is actually an initial algebra catamorphism, keep in mind.}
 
 This gives us a function $\code{-}$ from hereditarily finite sets to terms in the language of ZF-Finite which describe hereditarily finite sets. This function $\code{-}$ is definable by a $\Sigma_1$ formula and thus gives a morphism in $T$. This serves as the component of $\introN$ at the object of $T$ describing ALL hereditarily finite sets. 
 
 The other objects of $T$ are subquotients of that object (and similarly for the objects of $D$), and therefore the components of the natural transformation $\introN$ at these other objects can now be obtained uniquely so long as certain factorizations exist. That is to say, the component of $\introN$ at any object $\phi(n_1, n_2)$ of $T$ will also be given by the action of $\code{-}$, but for this to indeed work to map $t$ into $\Hom_D(1, \introS(t))$, we need to know that $\code{-}$ when acting on individuals which are related by the partial equivalence relation $\phi$ produces terms which provably describe individuals related by $\phi$.
 
-This is where the $\Sigma_1$-ness of $\phi$ plays a vital role. For any $\Sigma_1$ property $\phi$, we can prove that, for all $x$, whenever $\phi$ holds of $x$, it furthermore provably holds of $x$ (in the sense that the particular term $\code{x}$, when substituted into the argument of the formula $\phi$, yields a sentence which is provable). \TODOinline{Do we need to go into more detail as to why this is true? It's a classical fact. One first establishes it for every $\Sigma_0$ property (we show that every atomic relation has this property both for itself and its negation, and thus so do Boolean combinations of these, and we also have the same closure under bounded quantification), and then shows that if $\phi(x, \ldots)$ has this \quote{Truth entails Provability} property, so does $\exists x. \phi(x, \ldots)$, given that any existential witness $x$ induces a term $\code{x}$ that serves as witness in a proof. Alex says he thinks we don't need to go into detail on this.}
+This is where the $\Sigma_1$-ness of $\phi$ plays a vital role. For any $\Sigma_1$ property $\phi$, we can prove that, for all $x$, whenever $\phi$ holds of $x$, it furthermore provably holds of $x$ (in the sense that the particular term $\code{x}$, when substituted into the argument of the formula $\phi$, yields a sentence which is provable). \TODOinline{Do we need to go into more detail as to why this is true? It's a classical fact. One first establishes it for every $\Sigma_0$ property (we show that every atomic relation is truly and provably Boolean-valued and has this "Truth implies provability" property both for itself and its negation, and thus so do all combinations of atomic relations under propositional connectives (which reduces to Boolean combinations), and we also have the same closure under bounded quantification), and then shows that if $\phi(x, \ldots)$ has this \quote{Truth entails Provability} property, so does $\exists x. \phi(x, \ldots)$, given that any existential witness $x$ induces a term $\code{x}$ that serves as witness in a proof (that is, as the domain over which we are quantifying (the natural numbers or hereditarily finite sets or whatever) has a suitable map from "Actual values to coded values", typically by an initial algebra property of that domain). Alex says he thinks we don't need to go into detail on this.}
 
 Finally, let us observe the naturality of this $\introN$. Consider the general form of its naturality squares:
 
@@ -381,7 +381,7 @@ Of course, this yields an introspective or locally introspective theory just in 
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
 \end{construction}
 \begin{proof}[Details]
-Consider the forgetful functor $\Sigma : T/t \to T$ (i.e., the domain projection functor). Composition and whiskering with this gives us the triple $\langle T/t, \Sigma C, \Sigma \introF \rangle$, like so:
+Consider the forgetful functor $\Sigma : T/t \to T$ (i.e., the domain projection functor). Composition and whiskering with this gives us the triple $\langle T/t, C \Sigma, \introF \Sigma \rangle$, like so:
 
 \[\begin{tikzcd}
 	{\op{\left(T/t\right)}} & {\op{T}} && {\LexCat}
@@ -393,14 +393,40 @@ Consider the forgetful functor $\Sigma : T/t \to T$ (i.e., the domain projection
 
 This is a pre-introspective theory as the top composite is the same as the self-indexing $(T/t)/-$ of $T/t$ (that is, slice categories within slice categories are obtained by first applying the forgetful functor into the ambient category and then taking the ordinary slice category).
 
-When $C$ is small or locally small, then so respectively is $\Sigma C$. The representing objects for $\Sigma C$ will simply be those for $C$, mapped into $T/t$ via $\Sigma$'s right adjoint (i.e., pulled back along the unique morphism from $t$ to $1$).
+When $C$ is small or locally small, then so respectively is $C \Sigma$. The representing objects for $C \Sigma$ will simply be those for $C$, mapped into $T/t$ via $\Sigma$'s right adjoint (i.e., pulled back along the unique morphism from $t$ to $1$).
 \end{proof}
+
+% It is perhaps a little confusing that we use $\sigma$ here both for the map from $T/t$ to $T$ and the map from $\op{T/t}$ to $\op{T}$. In particular, when we speak of its right adjoint, we mean the right adjoint in the former sense of $\Sigma$, but this may be confusing since we're really using the latter sense of $\Sigma$, with respect to which the adjoint we are talking about is the left adjoint.
 
 When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean.
 
 \begin{TODOblock}
-Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way.
+Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way. (We could also take limits of strict introspective theories more generally, but that involves talking about object equality, which we don't really want to do.). We can also take sub-introspective theories generated as the hull of subsets of their objects and morphisms, or other such free constructions.
 \end{TODOblock}
+
+\begin{construction}\label{SubPreIntrosp}
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory\footnote{That is, a full subcategory whose inclusion functor is a lexfunctor.} of $T$, then $\langle S, C, \introF \rangle$ is a pre-introspective theory, where we now consider $\introF$ as restricted to acting on $S$. This will be a locally introspective theory just in case all the hom-sets of $C$ lie within $S$, and similarly will be an introspective theory just in case $C$ itself lies within $S$.
+\end{construction}
+\begin{proof}[Details]
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1N9Il0sWzIsMCwiXFxvcHtUfSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzEsMiwiVC8tIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJob29rIiwic2lkZSI6InRvcCJ9fX1dLFswLDIsIlMvLSIsMCx7Im9mZnNldCI6LTUsImN1cnZlIjotM31dLFszLDQsIlxcaW50cm9GIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs2LDEsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
+\[\begin{tikzcd}
+	{\op{S}} && {\op{T}} && \LexCat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{T/-}", shift left=2, from=1-3, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-3, to=1-5]
+	\arrow[hook, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{S/-}", shift left=5, curve={height=-18pt}, from=1-1, to=1-5]
+	\arrow["\introF"', shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
+	\arrow[shorten <=3pt, Rightarrow, from=2, to=1-3]
+\end{tikzcd}\]
+
+The unlabelled arrows here are inclusions. Note that the inclusion of $S$ into $T$ followed by the self-indexing $T/-$ does not yield the same thing as the self-indexing $S/-$; however, the latter is canonically included in the former (as an indexed full sub-lexcategory).
+\end{proof}
+
+\begin{construction}\label{SubCPreIntrosp}
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a full sub-lexcategory of $C$ containing the range of $\introF$, then $\langle T, D, \introF \rangle$ is a pre-introspective theory (where $\introF$ is now taken to have codomain $D$).
+\end{construction}
+
+The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$.
 
 \begin{construction}\label{TrivialPreIntrosp}
 If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
