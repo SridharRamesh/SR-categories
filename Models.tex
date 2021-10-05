@@ -92,42 +92,41 @@ Thus, for example, if $T$ is the theory of elementary toposes with NNO, we obtai
 \subsection{Models based on well-founded trees/well-founded posets}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb's theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). \TODO
 
-\begin{TODOblock}
-Related to \cref{CartesianClosedLocallyIntrosp} is the following construction: Given finite product category $T$, cartesian closed category $D$, a finite product preserving functor $f : T \to D$, a finite product preserving functor $g: D \to T$, we can turn $D$ into a $T$-enriched category $C$ whose set of objects is $\Ob(D)$ and such that $\Hom_C(c, d) = g(c \Rightarrow d)$. As a $T$-enriched category, it can also be thought of as a $T$-indexed category with a constant set of objects. If we furthermore have a natural transformation $\introN$ from $t$ in $T$ to $g(f(t))$, this gives rise to a locally introspective finite product theory $\langle T, C, \introS, \introN \rangle$ where $\introS$ matches $f$ on objects and takes morphism $m : t \to s$ to $g(f(m))$, where $f(m)$ is treated as a global element of $f(t) \Rightarrow f(s)$ and thus $g(f(m))$ is treated as a global element of $g(f(t) \Rightarrow f(s)) = \Hom_D(f(t), f(s))$. Note that $\introN_t : t \to \Hom_D(1, f(t)) = g(f(t))$.
+Previous iterations of this document at this point gave an overly complicated as a way of describing something simple (though still good to understand): Let $f : Disc \to Struct$ be an arbitrary functor between arbitrary categories. This induces by composition a functor $f^* : \Psh{Struct} \to \Psh{Disc}$. This $f^*$ preserves pullbacks (as it has a left adjoint, given by left Kan extension); it also has a right adjoint (right Kan extension).
 
-We can extend this construction further. Suppose we have lex category $T$ and lex category $D$, a lex functor $f: T \to D$, and a lex functor $g: D \to T$
-
-(Some analogue of the above holds as well using lex in place of finite product structure throughout, and allowing for the set of objects to vary. But I don't have this on the tip of my tongue right now. The following example will be illustrative to think about for working it out.)
-
-A particular case of the above arises with presheaf categories and Kan extensions. Let $F : A \to B$ be any functor between small categories. This induces by composition a corresponding functor $f : \Psh{B} \to \Psh{A}$. This $f$ preserves all limits and colimits (because they are computed component-wise in presheaf categories), and also has both left and right adjoints (these are the left and right Kan extension operations). In particular, let its right adjoint be $g$. Then $g$ and $f$ satisfy the conditions from above (note that we get our natural transformation from $t$ to $g(f(t))$ as the unit of this adjunction), and so we get a locally introspective theory.
-
-A particular case of THIS arises when $B$ is a poset, $A$ is its underlying discrete set, and $F$ is the corresponding inclusion functor. The introspective theory we get is something like Kripke semantics for a K4 theory. But, hm...
-
-What we want to note is that this construction can be generalized to where $B$ is not a poset, but just a transitive relation. That is, when $B$ is an arbitrary relation on underlying set $A$, we have both the category $\Psh{B}$ of presheaves on the reflexive transitive closure of $B$, as well as the category $\Set^A$, an obvious forgetful functor from the former to the latter, and also a functor from the latter to the former which takes an $A$-indexed set $S$ to the presheaf whose value at any object $x$ is the product (or limit? Well, if we use trees rather than arbitrary posets, there's nothing to worry about here) of the values of $S$ at all objects accessible from $x$. This is basically Kripke semantics. When $B$ is transitive, this should work to give an introspective theory as above. Something something. I need to think this through a little more. But the main idea is, our category $T$ is presheaves on the reflexive closure of $B$, our category $C$ is presheaves on the discrete set underlying $B$, there's an obvious forgetful functor in one direction and the functor in the other direction is given by defining the box operator analogously to Kripke semantics.
-
-Anyway, when $B$ is also well-founded, we should get a local version of Loeb's theorem, in the usual way that well-founded transitive relations correspond under Kripke semantics to GL modal logic. We can impose a size constraint to get introspective theories rather than locally introspective theories. These will become our Kripke models of introspective theories/geminal categories based on well-founded relations, analogous to Birkedal's model of guarded recursion based on the topos of trees.
-
-No, wait, maybe scratch all that about Kan extensions. I don't think that's the right thing to say here anymore. Anyway, look at my discussion of modal logic at https://nforum.ncatlab.org/discussion/6352/necessity-and-possibility/, comment 51114.
-
-Add in thoughts about precategories. Let $F : A \to B$ be any functor between small precategories. This induces by composition a corresponding functor $f : \Psh{B} \to \Psh{A}$, where $\Psh{A}$ means the obvious thing even for precategories. Furthermore, we also have a "prebox" functor from $\Psh{A}$ to $\Psh{B}$ like so: The presheaf $p$ on $A$ is mapped to the presheaf on $B$ which sends each object $b$ to the set of natural transformations from $\Hom_B(b, F(-))$ to $p$, so to speak. That is, ways to choose, for each morphism $m$ in $B$ such that $\dom(m) = b$, an element of $p$ at (one? all? elements of) $F^{-1}(\cod(m))$, such that these choices are natural in the sense that pushing forward the element of $p$ along a morphism $n$ yields the same value as is associated to $F(n) \circ m$.
-
-If $F$ is an identity functor between actual categories, this prebox functor is also the identity. HOWEVER, for identity functors between precategories, this need not hold. An illustrative example is taking the precategory to be the natural numbers, where the morphisms correspond to strict inequality. This corresponds to the notion of box used for step-indexing in the topos of trees.
-
-[Note to self: Is Psh(C) cartesian closed if C is merely a precategory? Yes, because it's the same as Psh(C') where C' is the free category (with identity morphisms) extending C'.
-
-The other thing is, if you take a category C' and view it as a precategory C, and then look at Psh(C) qua precategory vs Psh(C') qua category, these might not exactly line up, because presheaves on C don't have to send identity morphisms to identity functions. But Psh(C') is at any rate a full subcategory of Psh(C), and probably a full subcategory closed under finite limits and perhaps even under exponentials? Anyway, this isn't important for us, we only care about Psh here in the qua precategory sense.]
-
-It is also illustrative, though, to consider the case where $A$ is discrete (no morphisms) and $B$ is a transitive relation on the same objects. This yields the standard appropriate semantics for box as concerns ordinary Kripke models of K4. When B is furthermore well-founded, we get GL. Actually, it is good to consider $B$ to the relation of interest on the same objects PLUS an added object with a unique map to each normal object. This $B$ yields an introspective theory such that the global sections functor takes its geminal category directly corresponding to $\Set^A$.
-\end{TODOblock}
-
-\begin{TODOblock}
-All the above was overly complicated as a way of describing something simple (though still good to understand): Let $f : Disc \to Struct$ be an arbitrary functor between arbitrary categories. This induces by composition a functor $f^* : \Psh{Struct} \to \Psh{Disc}$. This $f^*$ preserves pullbacks (as it has a left adjoint, given by left Kan extension); it also has a right adjoint (right Kan extension).
-
-By using \cref{TrivialPreIntrosp}, we have a pre-introspective theory $\langle \Psh{Disc}. \Psh{Disc}/-, \id \rangle$. In fact, this is a locally introspective theory, as $\Psh{Disc}$ is locally cartesian closed.
+By using \cref{TrivialPreIntrosp}, we have a pre-introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$. In fact, this is a locally introspective theory, as $\Psh{Disc}$ is locally cartesian closed.
 
 By now using \cref{IntrospPullback} with our functor $f^*$ (which, remember, preserves pullbacks), we get a pre-introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*\rangle$. Indeed, this is a locally introspective theory (as the previous paragraph described a locally introspective theory, and $f^*$ has a right adjoint).
 
 This is ALMOST the locally introspective theory we are interested in for Kripke semantics. But it needs to be massaged a bit more, in a manner requiring some further assumptions.
 
-Let us now suppose that $Disc$ is in fact the free category adding identities to some semicategory $Disc^-$. Then we have a bifunctor $Hom_{Disc^-} : \op{Disc} \times \Disc \to \Set$, as the morphisms of $Disc^-$ are not only closed under composition with each other, but also (trivially) under composition with identities. This bifunctor acts as a profunctor from $Disc$ to $Disc$, which is over the identity functor. It induces by profunctor composition (with profunctors from 1 to Disc; is this exactly the composition I have in mind?) correspondingly a functor from $\Psh{Disc}$ to $\Psh{Disc}$ which is over the identity functor. This functor has a right adjoint (right Kan lift of a profunctor along a profunctor), which is therefore under the identity functor. And this is the last ingredient we need for proper Kripke semantics for irreflexive frames. TODO: Clarify this last part in the morning.
-\end{TODOblock}
+First, a lemmatic construction. Suppose given any arbitrary profunctor $H : X \profuncTo Y$. This $H$ induces by profunctor composition (with profunctors $:1 \profuncTo X$, which correspond to presheaves on $X$) correspondingly an ordinary functor $H \circ - : \Psh{X} \to \Psh{Y}$. Note that this functor $H \circ -$ has a right adjoint (right Kan lift of a profunctor along a profunctor).
+
+If given two such $H_1, H_2$ and a transformation $n : H_1 \to H_2$, this extends also to a transformation $n \circ -$ from $H_1 \circ -$ to $H_2 \circ -$ as ordinary functors $: \Psh{X} \to \Psh{Y}$.
+
+Let us now suppose that $Struct$ (from before) is in fact the free category adding identities to some semicategory $Struct^-$. Then we have a bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$, as the morphisms of $Struct^-$ are not only closed under composition with each other, but also (trivially) under composition with identities on either side, and thus closed under composition on either side with the morphisms of Struct. 
+
+This bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$ comes with an inclusion transformation to the bifunctor $\Hom_{Struct} : \op{Struct} \times Struct$. These bifunctors can both be read as profunctors from Struct to Struct; the latter is in fact the identity bifunctor on Struct, and the former is what we will take to be our $H$ as above. The inclusion transformation thus will become an inclusion transformation $i$ from $H \circ -$ to identity as functors $: \Psh{Struct} \to \Psh{Struct}$.
+
+These comprised the last ingredients we needed for proper Kripke semantics for irreflexive frames. Remember, we already had a locally introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*\rangle$ from above. Let us call this $\langle \Psh{Struct}, C \rangle$ for convenience. We now modify it like so using: \cref{IntrospInternalMap}.
+
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1xcUHNoe1N0cnVjdH19Il0sWzIsMCwiXFxMZXhDYXQiXSxbMSwyLCJcXG9we1xcUHNoe1N0cnVjdH19Il0sWzAsMSwiXFxQc2h7U3RydWN0fS8tIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMCwyLCJIIFxcY2lyYyAtIiwyXSxbMiwxLCJDIiwyXSxbMyw0LCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsMiwiQyBcXG9we2l9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	{\op{\Psh{Struct}}} && \LexCat \\
+	\\
+	& {\op{\Psh{Struct}}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Psh{Struct}/-}", shift left=2, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-1, to=1-3]
+	\arrow["{H \circ -}"', from=1-1, to=3-2]
+	\arrow["C"', from=3-2, to=1-3]
+	\arrow[shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
+	\arrow["{C \op{i}}"{description}, shorten <=7pt, Rightarrow, from=1, to=3-2]
+\end{tikzcd}\]
+
+Keeping in mind that $H \circ - : \Psh{Struct} \to \Psh{Struct}$ has a right adjoint, we may conclude that the result is a locally introspective theory. This is the one which corresponds to Kripke semantics on a presumed transitive but not presumed reflexive frame, with the semicategory Struct- corresponding to the Kripke frame.
+
+The result will be locally Loeb when the order on the objects of Struct- given by its morphisms is a converse well-founded order. \TODOinline{Expand on this}. We can then impose a suitable size constraint to get it to be fully introspective.
+
+\TODOinline{Clarify the size constraint}.
+
+\TODOinline{LaTeXify the above better}

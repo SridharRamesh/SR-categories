@@ -362,6 +362,23 @@ Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \
 The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism in $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
 \end{proof}
 
+\begin{observation}\label{ReindexSmallAdjoint}
+If $C$ is a $T$-indexed structure, and $\Sigma : U \to T$ is any functor, then $C \Sigma$ is a $U$-indexed structure, like so:
+
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1V9Il0sWzIsMCwiXFxvcHtUfSJdLFs0LDAsIlxcYnVsbGV0Il0sWzAsMSwiXFxvcHtcXFNpZ21hfSJdLFsxLDIsIkMiXV0=
+\[\begin{tikzcd}
+	{\op{U}} && {\op{T}} && \bullet
+	\arrow["{\op{\Sigma}}", from=1-1, to=1-3]
+	\arrow["C", from=1-3, to=1-5]
+\end{tikzcd}\]
+
+Furthermore, if $\Sigma$ has a right adjoint, then if $C$ is small or locally small, then so respectively will be $C \Sigma$, as the representing objects for $C \Sigma$ will simply be the image of those for $C$, as mapped into $U$ via $\Sigma$'s right adjoint.
+\end{observation}
+
+\begin{TODOblock}
+It might be slightly confusing to call the above $C \Sigma$ when it is strictly speaking $C \op{\Sigma}$. Or it might be slightly confusing to speak about how $\Sigma$ should have a right adjoint, when $\op{\Sigma}$ is the real thing in play; the condition on $\op{\Sigma}$ is correspondingly for it to have a left adjoint. Notation/terminology is always such a bother...
+\end{TODOblock}
+
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
 
@@ -394,10 +411,8 @@ If $\langle T, C, \introF \rangle$ is a pre-introspective theory, $U$ is any lex
 
 The 2-cell labelled $\Sigma$ above indicates the action of $\Sigma$ when acting as a functor from $U/u$ to $T/(\Sigma u)$ for each object $u$ in $U$.
 
-If $\Sigma$ has a right adjoint, we can further observe that if $C$ is small or locally small, then so respectively will be $C \Sigma$. The representing objects for $C \Sigma$ will simply be those for $C$, mapped into $U$ via $\Sigma$'s right adjoint.
+By \cref{{ReindexSmallAdjoint}}, if $\Sigma$ has a right adjoint, we can further observe that if $C$ is small or locally small, then so respectively will be $C \Sigma$.
 \end{proof}
-
-% Note that it's the right adjoint of $\Sigma$ which is of importance, but that this acts as the left adjoint of $\op{Sigma}$, the latter being the functor that actually appears in the diagram above.
 
 A particular special case of the above which is often of importance is the following:
 
