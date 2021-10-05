@@ -67,7 +67,7 @@ This section basically only exists in order to claim that finitely axiomatizable
 \subsection{Theories with free internal models of themselves}
 Fix some lex theory extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose every gadget $G$ contains an initial internal gadget $G'$ (in the sense that $G'$ is a gadget internal to the underlying lexcategory $|G|$ of $G$, and for any other gadget $H$ internal to $|G|$, there is a unique $|G|$-internal gadget homomorphism from $G'$ to $H$).
 
-In particular, then, this all applies to the actual initial gadget $G$. Internal to this initial gadget $G$'s underlying lexcategory $|G|$, we get a $G'$ as above. Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
+In particular, then, this all applies to the actual initial gadget $G$. Internal to its underlying lexcategory $|G|$, we get a $G'$ as above. Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
 
 This setup is thus a geminal gadget (with axioms 3 and 3' of a geminal gadget automatically satisfied by the uniqueness observations in the previous paragraph).
 
@@ -94,6 +94,8 @@ There are two flavors of models here: Those which give introspective theories (t
 
 \begin{TODOblock}
 Related to \cref{CartesianClosedLocallyIntrosp} is the following construction: Given finite product category $T$, cartesian closed category $D$, a finite product preserving functor $f : T \to D$, a finite product preserving functor $g: D \to T$, we can turn $D$ into a $T$-enriched category $C$ whose set of objects is $\Ob(D)$ and such that $\Hom_C(c, d) = g(c \Rightarrow d)$. As a $T$-enriched category, it can also be thought of as a $T$-indexed category with a constant set of objects. If we furthermore have a natural transformation $\introN$ from $t$ in $T$ to $g(f(t))$, this gives rise to a locally introspective finite product theory $\langle T, C, \introS, \introN \rangle$ where $\introS$ matches $f$ on objects and takes morphism $m : t \to s$ to $g(f(m))$, where $f(m)$ is treated as a global element of $f(t) \Rightarrow f(s)$ and thus $g(f(m))$ is treated as a global element of $g(f(t) \Rightarrow f(s)) = \Hom_D(f(t), f(s))$. Note that $\introN_t : t \to \Hom_D(1, f(t)) = g(f(t))$.
+
+We can extend this construction further. Suppose we have lex category $T$ and lex category $D$, a lex functor $f: T \to D$, and a lex functor $g: D \to T$
 
 (Some analogue of the above holds as well using lex in place of finite product structure throughout, and allowing for the set of objects to vary. But I don't have this on the tip of my tongue right now. The following example will be illustrative to think about for working it out.)
 
