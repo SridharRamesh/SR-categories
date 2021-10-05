@@ -119,3 +119,15 @@ The other thing is, if you take a category C' and view it as a precategory C, an
 
 It is also illustrative, though, to consider the case where $A$ is discrete (no morphisms) and $B$ is a transitive relation on the same objects. This yields the standard appropriate semantics for box as concerns ordinary Kripke models of K4. When B is furthermore well-founded, we get GL. Actually, it is good to consider $B$ to the relation of interest on the same objects PLUS an added object with a unique map to each normal object. This $B$ yields an introspective theory such that the global sections functor takes its geminal category directly corresponding to $\Set^A$.
 \end{TODOblock}
+
+\begin{TODOblock}
+All the above was overly complicated as a way of describing something simple (though still good to understand): Let $f : Disc \to Struct$ be an arbitrary functor between arbitrary categories. This induces by composition a functor $f^* : \Psh{Struct} \to \Psh{Disc}$. This $f^*$ preserves pullbacks (as it has a left adjoint, given by left Kan extension); it also has a right adjoint (right Kan extension).
+
+By using \cref{TrivialPreIntrosp}, we have a pre-introspective theory $\langle \Psh{Disc}. \Psh{Disc}/-, \id \rangle$. In fact, this is a locally introspective theory, as $\Psh{Disc}$ is locally cartesian closed.
+
+By now using \cref{IntrospPullback} with our functor $f^*$ (which, remember, preserves pullbacks), we get a pre-introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*\rangle$. Indeed, this is a locally introspective theory (as the previous paragraph described a locally introspective theory, and $f^*$ has a right adjoint).
+
+This is ALMOST the locally introspective theory we are interested in for Kripke semantics. But it needs to be massaged a bit more, in a manner requiring some further assumptions.
+
+Let us now suppose that $Disc$ is in fact the free category adding identities to some semicategory $Disc^-$. Then we have a bifunctor $Hom_{Disc^-} : \op{Disc} \times \Disc \to \Set$, as the morphisms of $Disc^-$ are not only closed under composition with each other, but also (trivially) under composition with identities. This bifunctor acts as a profunctor from $Disc$ to $Disc$, which is over the identity functor. It induces by profunctor composition (with profunctors from 1 to Disc; is this exactly the composition I have in mind?) correspondingly a functor from $\Psh{Disc}$ to $\Psh{Disc}$ which is over the identity functor. This functor has a right adjoint (right Kan lift of a profunctor along a profunctor), which is therefore under the identity functor. And this is the last ingredient we need for proper Kripke semantics for irreflexive frames. TODO: Clarify this last part in the morning.
+\end{TODOblock}
