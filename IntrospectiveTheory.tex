@@ -372,7 +372,7 @@ If $C$ is a $T$-indexed structure, and $\Sigma : U \to T$ is any functor, then $
 	\arrow["C", from=1-3, to=1-5]
 \end{tikzcd}\]
 
-Furthermore, if $\Sigma$ has a right adjoint, then if $C$ is small or locally small, then so respectively will be $C \Sigma$, as the representing objects for $C \Sigma$ will simply be the image of those for $C$, as mapped into $U$ via $\Sigma$'s right adjoint.
+Furthermore, if $\Sigma$ has a right adjoint, then if $C$ is small or locally small, then so respectively will be $C \Sigma$, as the representing objects for $C \Sigma$ will simply be the image of those for $C$, as mapped into $U$ via $\Sigma$'s right adjoint. \TODOinline{Make this whole observation in the preliminaries. Also, write out that this right adjoint business really works for maps with small fibers/locally small structures. Note that the definition of having small fibers only makes proper sense when indexed over a category with pullbacks.}
 \end{observation}
 
 \begin{TODOblock}
@@ -426,7 +426,7 @@ By the previous construction (\cref{IntrospPullback}), using the forgetful funct
 When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean.
 
 \begin{construction}\label{SubPreIntrosp}
-If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory\footnote{That is, a full subcategory whose inclusion functor is a lexfunctor.} of $T$, then $\langle S, C, \introF \rangle$ is a pre-introspective theory, where we now consider $\introF$ as restricted to acting on $S$. This will be a locally introspective theory just in case all the hom-sets of $C$ lie within $S$, and similarly will be an introspective theory just in case $C$ itself lies within $S$.
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory\footnote{That is, a full subcategory whose inclusion functor is a lexfunctor.} of $T$, then $\langle S, C, \introF \rangle$ is a pre-introspective theory, where we now consider $\introF$ as restricted to acting on $S$. This will be an introspective theory if $C$ itself lies within $S$.
 \end{construction}
 \begin{proof}[Details]
 By \cref{IntrospPullback} again, taking $\Sigma$ to be the inclusion functor.

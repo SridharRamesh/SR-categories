@@ -29,7 +29,7 @@ Perhaps we can turn any semilattice model of GL modal logic into a corresponding
 
 The right result of the above sort should be that given any GLS lattice T' and GL lattice C', with a meet and [] preserving homomorphism from the former to the latter, we can create a corresponding <T, C, ...> introspective theory.
 
-Actually, it may be easy to do something of the above sort for well-founded orders directly, and then appeal to the known relationship between GL and well-founded orders. To think about well-founded orders, it's something like working within the corresponding presheaf topos, but not quite. Let's think about the linear orders case first, then build on top of that.
+Actually, it may be easy to do something of the above sort for well-founded orders directly, and then appeal to the known relationship between GL and well-founded orders. To think about well-founded orders, it's something like working within the corresponding presheaf topos, but not quite. (Yes, this has now been worked out in the document.)
 
 In T-indexed world, it's like there are large sets (actual sets, arbitrary presheaves), and small sets (objects of T, representable presheaves). All arguments are just like that. An enriched category is like a large but locally small category, an internal category is like a small category. Many of our arguments do not depend on the smallness of C, just its local smallness.
 
@@ -50,3 +50,7 @@ Write out non-lex 2-theory of introspective theories.
 Make the observation that any theorem which holds in all geminal categories also holds in all introspective theories, and conversely, any theorem which holds in all geminal categories also holds in all internal geminal categories, and such things, so that []^n A is true iff []^m A is true, except for that a thing may hold in all introspective theories without holding in all geminal categories. That thing. This belongs in "Automatic consistnecy results without models".
 
 Show models that are uncountable, uncomputable, etc, but otherwise similar to PA model. Establishing that GIT does not have to do with naturals, computability, etc.
+
+Note that we model GIT/G2IT/Loeb, but we do not model Rosser's theorem directly (the sharpening of GIT people often have in mind). The bother is as to the possibility of a consistent theory which proves []0 (we only rule out the possibility of a consistent theory proving ~[]0). We can rule this possibility if we restrict attention to geminal categories G for which there is a homomorphism to Set which takes G' to G. Then G cannot prove []0 without proving 0.
+
+Is there a notion of Artin gluing for introspective theories?

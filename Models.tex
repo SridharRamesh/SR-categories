@@ -102,15 +102,19 @@ There are two flavors of models here: Those which give introspective theories (t
 
 Previous iterations of this document at this point gave an overly complicated as a way of describing something simple (though still good to understand):
 
-First of all, let $Disc$ be an arbitrary category. This gives rise also to the category $\Psh{Disc}$ of presheaves on $Disc$, which is automatically a lexcategory, and indeed locally cartesian closed. By the observation of \cref{TrivialPreIntrosp}, this yields a locally introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$.
+First of all, let $Disc$ be an arbitrary (set-sized) category. This gives rise also to the category $\Psh{Disc}$ of presheaves on $Disc$, which is automatically a lexcategory, and indeed locally cartesian closed. By the observation of \cref{TrivialPreIntrosp}, this yields a locally introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$.
 
-Now, let $f : Disc \to Struct$ be an arbitrary functor from $Disc$ into an arbitrary category $Struct$. This induces by composition a functor $f^* : \Psh{Struct} \to \Psh{Disc}$. This $f^*$ preserves pullbacks (as pullbacks are computed pointwise in presheaf categories. Indeed, $f^*$ furthermore preserves all limits, as it has a left adjoint given by left Kan extension). This $f^*$ also has a right adjoint (given by right Kan extension).
+Now, let $f : Disc \to Struct$ be an arbitrary functor from $Disc$ into an arbitrary (also set-sized) category $Struct$. This induces by composition a functor $f^* : \Psh{Struct} \to \Psh{Disc}$. This $f^*$ preserves pullbacks (as pullbacks are computed pointwise in presheaf categories. Indeed, $f^*$ furthermore preserves all limits, as it has a left adjoint given by left Kan extension). This $f^*$ also has a right adjoint (given by right Kan extension).
 
 By now using \cref{IntrospPullback} with our functor $f^*$ as applied to our first locally introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$, we get a second locally introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*, \ldots \rangle$.
 
-This is ALMOST the locally introspective theory we are interested in for Kripke semantics. But it needs to be massaged a bit more, in a manner requiring some further assumptions.
+This is ALMOST the locally introspective theory we are interested in for Kripke semantics. But it needs to be massaged a bit more, in a manner requiring some further assumptions. \TODOinline{Note that if we stop right here, we get a natural notion of model corresponding to S4 Kripke frames.}
 
 First, a lemmatic construction. Suppose given any arbitrary profunctor $H : X \profuncTo Y$. This $H$ induces by profunctor composition (with profunctors $:1 \profuncTo X$, which correspond to presheaves on $X$) correspondingly an ordinary functor $H \circ - : \Psh{X} \to \Psh{Y}$. Note that this functor $H \circ -$ has a right adjoint (right Kan lift of a profunctor along a profunctor).
+
+(Alternatively, we can think of the above like so: Given (set-sized) categories $X$ and $Y$ and any arbitrary functor $H : X \to \Psh{Y}$, this extends uniquely to a (set-sized-)colimit preserving functor $: \Psh{X} \to \Psh{Y}$, as $\Psh$ is the free cocompletion (with respect to set sized colimits). This functor is the one we call $H \circ -$, and by the Special Adjoint Functor Theorem, it will have a right adjoint.)
+
+\TODOinline{Wherever above I put a set-sized constraint on a category, it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too small: they must include presheaves of sufficiently high cardinality relative to the original category.}
 
 If given two such $H_1, H_2$ and a transformation $n : H_1 \to H_2$, this extends also to a transformation $n \circ -$ from $H_1 \circ -$ to $H_2 \circ -$ as ordinary functors $: \Psh{X} \to \Psh{Y}$.
 
@@ -137,7 +141,7 @@ Keeping in mind that $H \circ - : \Psh{Struct} \to \Psh{Struct}$ has a right adj
 
 The result will be locally Loeb when the order on the objects of Struct- given by its morphisms is a converse well-founded order. \TODOinline{Expand on this}. We can then impose a suitable size constraint to get it to be fully introspective.
 
-\TODOinline{Clarify the size constraint}.
+\TODOinline{Clarify the size constraint. Note that it is very common in mathematics to take the relative point of view on Set, in terms of Grothendieck universes or the like, so as to consider the topos $Set^K$ as built up from a bunch of full subtoposes defined by a global cardinality constraint: those presheaves whose cardinality at each object is constrained by an upper bound, and this upper bound is the same at each object. But there is no reason we must only consider such constant upper bounds. We can just as well consider all kinds of varying upper bounds. And by allowing the the upper bounds to vary in the appropriate way, growing sufficiently fast, we get that $Set^K$ is built up from a bunch of full subtoposes which are all introspective theories. It is like a shift of frame of reference, to allow the upper bounds to vary with suitable \quote{slope} instead of having to be constant. But it serves all the same purposes as the very standard move in mathematics, of taking a relative point of view on Set.}.
 
 \TODOinline{The above results immediately imply that the theorems of modal logic which hold for all locally introspective theories are no stronger than those which hold for all transitive Kripke frames, and the theorems which hold for all introspective theories or the theorems which hold in all locally Loeb theories are no stronger than those which hold for all transitive converse well-founded Kripke frames. From this, we can readily conclude that the theorems which hold in all locally introspective theories are K4 and the theorems which hold in all introspective theories or the theorems which hold in all locally Loeb theories are GL. Does the last two of these coinciding help us embed every locally introspective theory into an introspective theory, in the same way as we did for the unconstrained vs constrained presheaf models of GL Kripke frames?}
 
