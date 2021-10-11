@@ -97,3 +97,12 @@
 \newcommand{\biimplies}{\iff}
 
 \newcommand{\code}[1]{\lceil #1 \rceil}
+
+\newcommand{\pullAlong}[1]{#1^*}
+
+% Should maybe use the word "representable" for this?
+% Hack to define a command name whose name has to end with a 
+% slash, thus preventing spacing problems. (Otherwise, space 
+% automatically gets swallowed after invoking the command.)
+% TODO: Use this same hack for Goedel and Loeb.
+\def\repsmall/{repsmall}
