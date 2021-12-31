@@ -1,3 +1,21 @@
+NEW TODO NOTES:
+
+1. Replace "small" with "repsmall" throughout document.
+
+2. Write up size constraint thing for well-founded models of introspective theories.
+
+
+
+
+
+
+
+
+
+
+OLD TODO NOTES:
+
+
 What to do next:
 
 * Writing out all the uniqueness results for Loeb's theorem, and unifying them
@@ -5,6 +23,7 @@ What to do next:
 * Writing out geminal (geminal Ys) result.
 
 * Writing out locally geminal categories results.
+(This must've been about comparison with Kavvos's GL categories)
 
 * Writing out X -> []X extraction of introspective theories from geminal categories.
 
@@ -15,7 +34,7 @@ What to do next:
 - Models given by initial models of theories with internal initial models of themselves
 - Sigma_1 models relative to sigma_1 extensions of PA/ZF/etc
 
-9. Writing out relationship to GL modal logic (K4 is easy, and then 6 gives Löb's theorem; the fact that the logic we get doesn't go beyond GL modal logic I don't know off the top of my head a good clean way to see directly. It would be nice. We can derive it from the PA model and known relationship between the PA model and GL logic). The GLS modal logic can also be discussed, and the relationship between GL logic, GLS logic, GL categories, and introspective theories [there is also a logic GLT, with A |- []A as proper internalizable axiom |- [](A -> []A), but where unmodalized negation and implication are not around as operators; this should correspond to introspective theories]. It's worth noting that we have []~A even when we don't have 0, by virtue of the non-representable total limit presheaf.
+9. Writing out relationship to GL modal logic (K4 is easy, and then 6 gives Löb's theorem; the fact that the logic we get doesn't go beyond GL modal logic follows easily from our well-founded models and the relationship between GL and well-founded models). The GLS modal logic can also be discussed, and the relationship between GL logic, GLS logic, GL categories, and introspective theories [there is also a logic GLT, with A |- []A as proper internalizable axiom |- [](A -> []A), but where unmodalized negation and implication are not around as operators; this should correspond to introspective theories]. It's worth noting that we have the ability to express []~A even when we don't have the presumption of a 0 object, by virtue of the non-representable total limit presheaf.
 
 100. Write out naive set theory thing. [And also naive untyped lambda calculus]. For naive set theory, it may be useful to consider notions like A isomorphic to []P(A x A) rather than A isomorphic to []P(A) or such things, just because ordered pairs are a pain in this world.
 ----
