@@ -9,7 +9,7 @@ In this way, simply by consideration of the freeness properties already establis
 
 \TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
-\subsection{Models based on sigma-1 or arbitrary extensions of PA, or ZFC, or etc}
+\subsection{Models based on \texorpdfstring{$\Sigma_1$}{Sigma-1} or arbitrary extensions of PA, or ZFC, or etc}
 \TODOinline{I will write this section in a sloppy way for now and then improve it later.}
 
 This section reviews and builds upon the construction previously seen at \cref{SigmaModelSimple}.
@@ -112,15 +112,15 @@ This is ALMOST the locally introspective theory we are interested in for Kripke 
 
 First, a lemmatic construction. Suppose given any arbitrary profunctor $H : X \profuncTo Y$. This $H$ induces by profunctor composition (with profunctors $:1 \profuncTo X$, which correspond to presheaves on $X$) correspondingly an ordinary functor $H \circ - : \Psh{X} \to \Psh{Y}$. Note that this functor $H \circ -$ has a right adjoint (right Kan lift of a profunctor along a profunctor).
 
-(Alternatively, we can think of the above like so: Given (set-sized) categories $X$ and $Y$ and any arbitrary functor $H : X \to \Psh{Y}$, this extends uniquely to a (set-sized-)colimit preserving functor $: \Psh{X} \to \Psh{Y}$, as $\Psh$ is the free cocompletion (with respect to set sized colimits). This functor is the one we call $H \circ -$, and by the Special Adjoint Functor Theorem, it will have a right adjoint.)
+(Alternatively, we can think of the above like so: Given (set-sized) categories $X$ and $Y$ and any arbitrary functor $H : X \to \Psh{Y}$, this extends uniquely to a (set-sized-)colimit preserving functor $: \Psh{X} \to \Psh{Y}$, as $\Psh{X}$ is the free cocompletion of $X$ (with respect to set sized colimits). This functor is the one we call $H \circ -$, and by the Special Adjoint Functor Theorem, it will have a right adjoint.)
 
 \TODOinline{Wherever above I put a set-sized constraint on a category, it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too small: they must include presheaves of sufficiently high cardinality relative to the original category.}
 
 If given two such $H_1, H_2$ and a transformation $n : H_1 \to H_2$, this extends also to a transformation $n \circ -$ from $H_1 \circ -$ to $H_2 \circ -$ as ordinary functors $: \Psh{X} \to \Psh{Y}$.
 
-Let us now suppose that $Struct$ (from before) is in fact the free category adding identities to some semicategory $Struct^-$. Then we have a bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$, as the morphisms of $Struct^-$ are not only closed under composition with each other, but also (trivially) under composition with identities on either side, and thus closed under composition on either side with the morphisms of Struct. 
+Let us now suppose that $Struct$ (from before) is in fact the free category adding identities to some semicategory $Struct^-$. Then we have a bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$, as the morphisms of $Struct^-$ are not only closed under composition with each other, but also (trivially) under composition with identities on either side, and thus closed under composition on either side with the morphisms of $Struct$. 
 
-This bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$ comes with an inclusion transformation to the bifunctor $\Hom_{Struct} : \op{Struct} \times Struct$. These bifunctors can both be read as profunctors from Struct to Struct; the latter is in fact the identity bifunctor on Struct, and the former is what we will take to be our $H$ as above. The inclusion transformation thus will become an inclusion transformation $i$ from $H \circ -$ to identity as functors $: \Psh{Struct} \to \Psh{Struct}$.
+This bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$ comes with an inclusion transformation to the bifunctor $\Hom_{Struct} : \op{Struct} \times Struct \to \Set$. These bifunctors can both be read as profunctors from Struct to Struct; the latter is in fact the identity bifunctor on Struct, and the former is what we will take to be our $H$ as above. The inclusion transformation thus will become an inclusion transformation $i$ from $H \circ -$ to identity as functors $: \Psh{Struct} \to \Psh{Struct}$.
 
 These comprised the last ingredients we needed for proper Kripke semantics for irreflexive frames. Remember, we already had a locally introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*\rangle$ from above. Let us call this $\langle \Psh{Struct}, C \rangle$ for convenience. We now modify it like so using: \cref{IntrospInternalMap}.
 

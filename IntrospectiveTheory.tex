@@ -362,19 +362,6 @@ Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \
 The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism in $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
 \end{proof}
 
-\begin{observation}\label{ReindexSmallAdjoint}
-If $C$ is a $T$-indexed structure, and $\Sigma : U \to T$ is any functor, then $C \Sigma$ is a $U$-indexed structure, like so:
-
-% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1V9Il0sWzIsMCwiXFxvcHtUfSJdLFs0LDAsIlxcYnVsbGV0Il0sWzAsMSwiXFxvcHtcXFNpZ21hfSJdLFsxLDIsIkMiXV0=
-\[\begin{tikzcd}
-	{\op{U}} && {\op{T}} && \bullet
-	\arrow["{\op{\Sigma}}", from=1-1, to=1-3]
-	\arrow["C", from=1-3, to=1-5]
-\end{tikzcd}\]
-
-Furthermore, if $\Sigma$ has a right adjoint, then if $C$ is small or locally small, then so respectively will be $C \Sigma$, as the representing objects for $C \Sigma$ will simply be the image of those for $C$, as mapped into $U$ via $\Sigma$'s right adjoint. \TODOinline{Make this whole observation in the preliminaries. Also, write out that this right adjoint business really works for maps with small fibers/locally small structures. Note that the definition of having small fibers only makes proper sense when indexed over a category with pullbacks.}
-\end{observation}
-
 \begin{TODOblock}
 It might be slightly confusing to call the above $C \Sigma$ when it is strictly speaking $C \op{\Sigma}$. Or it might be slightly confusing to speak about how $\Sigma$ should have a right adjoint, when $\op{\Sigma}$ is the real thing in play; the condition on $\op{\Sigma}$ is correspondingly for it to have a left adjoint. Notation/terminology is always such a bother...
 \end{TODOblock}
@@ -395,7 +382,7 @@ Of course, this yields an introspective or locally introspective theory just in 
 \end{construction}
 
 \begin{construction}\label{IntrospPullback}
-If $\langle T, C, \introF \rangle$ is a pre-introspective theory, $U$ is any lexcategory, and $\Sigma: U \to T$ is any functor which preserves pullbacks (we do not require for $\Sigma$ to preserve the terminal object), then $\langle U, C\Sigma \rangle$ can naturally be equipped as an introspective theory, like so:
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, $U$ is any lexcategory, and $\Sigma: U \to T$ is any functor which preserves pullbacks (we do not require $\Sigma$ to preserve the terminal object), then $\langle U, \pullAlong{\Sigma} C \rangle$ can naturally be equipped as an introspective theory, like so:
 \end{construction}
 \begin{proof}[Details]
 % https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1V9Il0sWzIsMCwiXFxvcHtUfSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzEsMiwiVC8tIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCJcXG9we1xcU2lnbWF9Il0sWzAsMiwiVS8tIiwwLHsib2Zmc2V0IjotNSwiY3VydmUiOi0zfV0sWzMsNCwiXFxpbnRyb0YiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzYsMSwiXFxTaWdtYSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
@@ -411,7 +398,7 @@ If $\langle T, C, \introF \rangle$ is a pre-introspective theory, $U$ is any lex
 
 The 2-cell labelled $\Sigma$ above indicates the action of $\Sigma$ when acting as a lexfunctor from $U/u$ to $T/(\Sigma u)$ for each object $u$ in $U$. (Note that, as finite limits in slice categories are given by pullbacks in the underlying category, and as $\Sigma$ preserves pullbacks, we do indeed have that this functor from $U/u$ to $T/(\Sigma u)$ preserves finite limits.)
 
-By \cref{{ReindexSmallAdjoint}}, if $\Sigma$ has a right adjoint, we can further observe that if $C$ is small or locally small, then so respectively will be $C \Sigma$.
+By \cref{RepsmallRightAdjoint} or \cref{RepSmallRightAdjointFibers}, if $\Sigma$ has a right adjoint, we can further observe that if $C$ is small or locally small, then so respectively will be $\pullAlong{\Sigma} C$.
 \end{proof}
 
 A particular special case of the above which is often of importance is the following:
@@ -420,7 +407,7 @@ A particular special case of the above which is often of importance is the follo
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
 \end{construction}
 \begin{proof}[Details]
-By the previous construction (\cref{IntrospPullback}), using the forgetful functor $\Sigma : T/t \to t$, which preserves pullbacks and has a right adjoint.
+By the previous construction (\cref{IntrospPullback}), using the forgetful functor $\Sigma : T/t \to T$, which preserves pullbacks and has a right adjoint.
 \end{proof}
 
 When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean.

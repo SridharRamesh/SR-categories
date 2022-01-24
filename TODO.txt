@@ -10,7 +10,12 @@ NEW TODO NOTES:
 
 
 
+---
+Discuss "super-introspective" theories: Introspective theories whose internal category is equipped not just as a geminal category but furthermore as an introspective theory, and satisfying the coherence axiom that for any X, when you internalize the map from X to []X, you get the internal introspective theory's map from (internalization of X) to [](internalization of X).
 
+These are the same as geminal introspective theories such that the two underlying geminal category structures (from being a geminal X and from being an introspective theory) coincide.
+
+An example is given by a Sigma_1 theory with an internal version of itself, the same Sigma_1 theory. The internal thing being Sigma_1, it is not merely geminal but furthermore introspective.
 
 
 OLD TODO NOTES:
