@@ -31,7 +31,7 @@ We say an indexed set is \defined{\repsmall/} (or \definedManualIndexSort{$T$-\r
 (It is perhaps a bit misleading to use \quote{small}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the smallest indexed set, the one which constantly takes the value of the empty set, is never \repsmall/ in this technical representability sense. But the analogy to the familiar distinction between \quote{small} sets and non-\quote{small} proper classes is often a fruitful one, and so we stick with this terminology all the same for now. When the indexing category $T$ has finite limits (or even just splittings of idempotents), this notion of \repsmall/ is equivalent to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.)
 
 \begin{convention}
-Via the Yoneda embedding, we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $y(t)$ or any such thing.
+Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$.
 \end{convention}
 
 \begin{theorem}
@@ -50,6 +50,40 @@ That is, from a $T$-indexed set $P$, we may construct the following $S$-indexed 
 	\arrow["P", from=1-3, to=1-5]
 \end{tikzcd}\]
 \end{definition}
+
+\begin{theorem}\label{YonedaPullalong}
+Given $f : S \to T$ and an object $s$ in $S$ and a $T$-indexed set $P$, we have that $\Hom(s, \pullAlong{f}P) = \Hom(f(s), P)$, with this correspondence being natural in both $s$ and $P$.
+\end{theorem}
+\begin{proof}
+Keep in mind that in these \quote{Hom}s, $s$ and $f(s)$ have implicitly been construed as $S$-indexed sets via the Yoneda embedding, so we can apply the Yoneda lemma to both sides of the equation to reduce it to $(\pullAlong{f}P)(s) = P(f(s))$, which is the definition of $\pullAlong{f}$.
+
+This completes the proof. (In more explicit terms, we have demonstrated that $\yoneda \circ f : S \to \Psh{T}$ is the relative left adjoint of $\pullAlong{f} : \Psh{T} \to \Psh{S}$, relative to the Yoneda embedding $\yoneda : S \to \Psh{S}$.)
+\end{proof}
+
+\begin{lemma}\label{YonedaPullalongLemma}
+Given $f : S \to T$ and an object $s$ in $S$ and a $T$-indexed set $P$, we have that every morphism $m : s \to \pullAlong{f} P$ factors as $m = \pullAlong{f}(m') \circ \eta$ for some $m' : f(s) \to P$ and $\eta : s \to \pullAlong{f}(f(s))$.
+\end{lemma}
+\begin{proof}
+This is corollary to \cref{YonedaPullalong} by the general yoga of relative adjoints.
+
+Specifically, consider the following naturality diagram for the correspondence in \cref{YonedaPullalong}, where $m'$ is the morphism in $\Hom(f(s), P)$ corresponding to $m \in \Hom(s, \pullAlong{f}P)$ and $\eta$ is the morphism in $\Hom(s, \pullAlong{f}f(s))$ corresponding to $\id_{f(s)} \in \Hom(f(s), f(s))$.
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEhvbShmKHMpLCBmKHMpKSJdLFszLDAsIlxcSG9tKGYocyksIFApIl0sWzAsMywiXFxIb20ocywgXFxwdWxsQWxvbmd7Zn1mKHMpKSJdLFszLDMsIlxcSG9tKHMsIFxccHVsbEFsb25ne2Z9UCkiXSxbMSwxLCJcXGlkX3tmKHMpfSJdLFsyLDEsIm0nIl0sWzEsMiwiXFxldGEiXSxbMiwyLCJcXHB1bGxBbG9uZ3tmfShtJykgXFxjaXJjIFxcZXRhID0gbSJdLFswLDEsIm0nIFxcY2lyYyAtIl0sWzIsMywiXFxwdWxsQWxvbmd7Zn0obScpIFxcY2lyYyAtIl0sWzIsMCwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw2LCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs1LDcsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+\[\begin{tikzcd}
+	{\Hom(f(s), f(s))} &&& {\Hom(f(s), P)} \\
+	& {\id_{f(s)}} & {m'} \\
+	& \eta & {\pullAlong{f}(m') \circ \eta = m} \\
+	{\Hom(s, \pullAlong{f}f(s))} &&& {\Hom(s, \pullAlong{f}P)}
+	\arrow["{m' \circ -}", from=1-1, to=1-4]
+	\arrow["{\pullAlong{f}(m') \circ -}", from=4-1, to=4-4]
+	\arrow[Rightarrow, no head, from=4-1, to=1-1]
+	\arrow[Rightarrow, no head, from=4-4, to=1-4]
+	\arrow[maps to, from=2-2, to=2-3]
+	\arrow[maps to, from=2-2, to=3-2]
+	\arrow[maps to, from=3-2, to=3-3]
+	\arrow[maps to, from=2-3, to=3-3]
+\end{tikzcd}\]
+\end{proof}
 
 \begin{theorem}\label{RepsmallRightAdjoint}
 If $f$ has a right adjoint $g$, then $\pullAlong{f}$ takes \repsmall/ sets to \repsmall/ sets. Specifically, $\pullAlong{f}(t) = g(t)$.
@@ -80,7 +114,7 @@ A function $f : A \to B$ between $T$-indexed sets has \defined{\repsmall/ fibers
 \end{tikzcd}\]
 \end{definition}
 
-(Beware that, though this notion can be used regardless, it is best behaved when $T$ has pullbacks. When $T$ does not have pullbacks, this definition does not have the properties which might be expected. In particular, we might expect that any morphism between $T$-\repsmall/ sets should have $T$-\repsmall/ fibers, which would not be true if $T$ itself did not have pullbacks. If $T$ does not have binary products, it will not even be true that a map into the terminal object $1$ has \repsmall/ fibers whenever its domain is \repsmall/.)
+(Beware that, though this notion can be used regardless, it is best behaved when $T$ has finite limits. When $T$ does not have finite limits, this definition does not have the properties which might be expected. In particular, we might expect that any morphism between $T$-\repsmall/ sets should have $T$-\repsmall/ fibers, which would not be true if $T$ itself did not have pullbacks. If $T$ does not have binary products, it will not even be true that a map into the terminal object $1$ has \repsmall/ fibers whenever its domain is \repsmall/.)
 
 The following two theorems follow from the composition of pullback squares into larger pullback squares: \TODOinline{Include a diagram}
 
@@ -96,7 +130,30 @@ Maps with \repsmall/ fibers are closed under pullback along arbitrary maps.
 If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullbacks, and $f$ is a map between $T$-indexed sets with $T$-\repsmall/ fibers, then $\pullAlong{L} f$ has $Q$-\repsmall/ fibers.
 \end{theorem}
 \begin{proof}
-Let us say $L \adjointTo R$ and let us say $f: A \to B$. By \cref{RepsmallRightAdjoint}, $\pullAlong{L}$ and $R$ agree on objects of $T$ (construed as \repsmall/ $T$-indexed sets in the former case). Next, observe that any map from an object $q$ of $Q$ to $\pullAlong{L}(B)$ factors, via the unit of the adjunction $: q \to R(L(q)) = \pullAlong{L}(L(q))$, through a map in the range of $\pullAlong{L}$ (specifically, a map $m: q \to \pullAlong{L}(B)$ corresponds to a map $m': L(q) \to B$, which then induces a map $\pullAlong{L}(m'): \pullAlong{L}(L(q)) \to \pullAlong{L}(B)$ in the range of $\pullAlong{L}$). Thus, pullback along a map $: q \to \pullAlong{B}$ is first pullback along a map in the range of $\pullAlong{L}$. Pulling $f$ back along $m'$ yields a $T$-\repsmall/ object, as $f$ has $T$-repsmall fibers. The pullback of $\pullAlong{L}(f)$ along $\pullAlong{L}(m')$ is thus $\pullAlong{L}$ of this $T$-\repsmall/ object (as $\pullAlong{L}$ preserves limits), which is $g$ of this $T$-\repsmall/ object, and is thus a $Q$-\repsmall/ object. Finally, we pull this $Q$-repsmall object back along the unit of our adjunction (another morphism in $Q$), to get the full pullback we are interested in, which is now shown to be a $Q$-\repsmall/ object (as $Q$ has pullbacks), as desired. \TODOinline{Draw out diagram. Actually write out the last details around the adjunction stuff ($m : q \to \pullAlong{L}(B) =$ etc).}
+Let us say $f: A \to B$, and let an arbitrary map $m : q \to \pullAlong{L}(B)$ be given, where $q$ is an object of $Q$. We must show that the pullback of $\pullAlong{L} f$ along $m$ is also an object of $Q$ (i.e., $Q$-\repsmall/).
+
+First, observe via \cref{YonedaPullalongLemma} that $m$ factors as $\pullAlong{L}(m') \circ \eta$ for some $m' : L(q) \to B$ and $\eta : q \to \pullAlong{L}L(q)$.
+
+Thus, the pullback we are interested in can be decomposed as follows:
+
+% https://q.uiver.app/?q=WzAsNixbMiwwLCJcXHB1bGxBbG9uZ3tMfUEiXSxbMiwxLCJcXHB1bGxBbG9uZ3tMfUIiXSxbMSwxLCJcXHB1bGxBbG9uZ3tMfUwocSkiXSxbMSwwLCJcXHB1bGxBbG9uZ3tMfShmIFxcdGltZXNfe0J9IG0nKSJdLFswLDEsInEiXSxbMCwwLCJcXHB1bGxBbG9uZ3tMfWYgXFx0aW1lc197XFxwdWxsQWxvbmd7TH1CfSBtIl0sWzAsMSwiXFxwdWxsQWxvbmd7TH1mIl0sWzIsMSwiXFxwdWxsQWxvbmd7TH0obScpIiwyXSxbMywwXSxbNCwyLCJcXGV0YSIsMl0sWzUsM10sWzUsNF0sWzMsMl0sWzQsMSwibSIsMSx7Im9mZnNldCI6NSwiY3VydmUiOjJ9XSxbMiwxMywiIiwxLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDksIiIsMSx7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XSxbMyw3LCIiLDEseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+\[\begin{tikzcd}
+	{\pullAlong{L}f \times_{\pullAlong{L}B} m} & {\pullAlong{L}(f \times_{B} m')} & {\pullAlong{L}A} \\
+	q & {\pullAlong{L}L(q)} & {\pullAlong{L}B}
+	\arrow["{\pullAlong{L}f}", from=1-3, to=2-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\pullAlong{L}(m')}"', from=2-2, to=2-3]
+	\arrow[from=1-2, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\eta"', from=2-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "m"{description}, shift right=5, curve={height=12pt}, from=2-1, to=2-3]
+	\arrow[shorten >=3pt, Rightarrow, no head, from=2-2, to=2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=0]
+\end{tikzcd}\]
+
+Pulling $f$ back along $m'$ yields a $T$-\repsmall/ object, as $f$ has $T$-repsmall fibers. The pullback of $\pullAlong{L}(f)$ along $\pullAlong{L}(m')$ is thus $\pullAlong{L}$ of this $T$-\repsmall/ object (as $\pullAlong{L}$ preserves limits), which is therefore a $Q$-\repsmall/ object by \cref{RepsmallRightAdjoint}. Finally, we pull this $Q$-repsmall object back along the unit of our adjunction (another morphism in $Q$), to get the full pullback we are interested in, which is now shown to be a $Q$-\repsmall/ object (as $Q$ has pullbacks), as desired. \TODOinline{Draw out diagram. Actually write out the last details around the adjunction stuff ($m : q \to \pullAlong{L}(B) =$ etc).}
 \end{proof}
 
 \begin{definition}\label{IndexedStructuresDefn}
