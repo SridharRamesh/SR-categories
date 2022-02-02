@@ -8,11 +8,11 @@ Similarly, if we ever describe diagrams involving functors between categories as
 \subsection{Indexed, \repsmall/, and locally \repsmall/ structures}
 We assume familiarity with sets, functions, categories, functors, categories having finite limits (also known as lexcategories), functors preserving finite limits (also known as lexfunctors), natural transformations, presheaves, internal categories, etc, all in the ordinary sense.
 
-\TODOinline{State convention that all categories used as domains of functors are small.}
+We will take all categories to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc, but wherever this is important we will make some explicit note.
 
 We will now give a series of related definitions. The notions being described in this section are all relatively old hat, none of them are newly invented by us, but we wish to pin them down with particular names for our purposes. Some of them lack standard names, and in other cases we are using a new name with different connotations than the standard name. The purpose of these definitions is to establish a convenient and useful vocabulary for easily talking about the things we wish to talk about in the rest of this document.
 
-\TODOinline{Clean this up by removing any definitions we don't end up using often.}
+\UnprintedTODO{Clean this up by removing any definitions we don't end up using often.}
 
 The key notion upon which everything else builds is the following:
 
@@ -21,7 +21,7 @@ Let $T$ be an arbitrary category. By a \definedManualIndexSort{$T$-indexed set}{
 \end{definition}
 
 \begin{definition}
-The category of $T$-indexed sets and maps between them is thus the presheaf category $\Set^{\op{T}}$. We may also refer to this as $\Psh{T}$ or as $\Indexed{T}$.
+The category of $T$-indexed sets and maps between them is thus the presheaf category $\Set^{\op{T}}$. We may also refer to this as $\Psh{T}$.
 \end{definition}
 
 \begin{definition}
@@ -60,9 +60,9 @@ Keep in mind that in these \quote{Hom}s, $s$ and $f(s)$ have implicitly been con
 This completes the proof. (In more explicit terms, we have demonstrated that $\yoneda \circ f : S \to \Psh{T}$ is the relative left adjoint of $\pullAlong{f} : \Psh{T} \to \Psh{S}$, relative to the Yoneda embedding $\yoneda : S \to \Psh{S}$.)
 \end{proof}
 
-\begin{lemma}\label{YonedaPullalongLemma}
-Given $f : S \to T$ and an object $s$ in $S$ and a $T$-indexed set $P$, we have that every morphism $m : s \to \pullAlong{f} P$ factors as $m = \pullAlong{f}(m') \circ \eta$ for some $m' : f(s) \to P$ and $\eta : s \to \pullAlong{f}(f(s))$.
-\end{lemma}
+\begin{corollary}\label{YonedaPullalongLemma}
+Given $f$, etc, as in \cref{YonedaPullalong}, we have that every morphism $m : s \to \pullAlong{f} P$ factors as $m = \pullAlong{f}(m') \circ \eta$ for some $m' : f(s) \to P$ and $\eta : s \to \pullAlong{f}(f(s))$.
+\end{corollary}
 \begin{proof}
 This is corollary to \cref{YonedaPullalong} by the general yoga of relative adjoints.
 
@@ -103,42 +103,82 @@ We also define more generally the concept of a function between indexed sets hav
 \begin{definition}
 A function $f : A \to B$ between $T$-indexed sets has \defined{\repsmall/ fibers} if the pullback of $f$ along any map into $B$ from a \repsmall/ set is itself \repsmall/ (thus, lives within a slice category of $T$). That is, we say $f$ has \repsmall/ fibers just in case for every pullback diagram of the following sort within the category of $T$-indexed sets, if $t$ is \repsmall/, then so is $s$:
 
+% https://q.uiver.app/?q=WzAsNCxbMSwwLCJBIl0sWzEsMSwiQiJdLFswLDAsInMiXSxbMCwxLCJ0Il0sWzAsMSwiZiJdLFsyLDBdLFsyLDNdLFszLDFdLFsyLDEsIiIsMix7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
 \[\begin{tikzcd}
 	s & A \\
 	t & B
 	\arrow["f", from=1-2, to=2-2]
-	\arrow[from=2-1, to=2-2]
-	\arrow[from=1-1, to=2-1]
 	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
 \end{tikzcd}\]
 \end{definition}
 
 (Beware that, though this notion can be used regardless, it is best behaved when $T$ has finite limits. When $T$ does not have finite limits, this definition does not have the properties which might be expected. In particular, we might expect that any morphism between $T$-\repsmall/ sets should have $T$-\repsmall/ fibers, which would not be true if $T$ itself did not have pullbacks. If $T$ does not have binary products, it will not even be true that a map into the terminal object $1$ has \repsmall/ fibers whenever its domain is \repsmall/.)
 
-The following two theorems follow from the composition of pullback squares into larger pullback squares: \TODOinline{Include a diagram}
+The following two theorems follow from the composition of pullback squares into larger pullback squares (or pullback rectangles, one might say):
 
 \begin{theorem}
 Maps with \repsmall/ fibers are closed under composition.
 \end{theorem}
+\begin{proof}
+% https://q.uiver.app/?q=WzAsNixbMSwwLCJBIl0sWzEsMSwiQiJdLFswLDAsInMiXSxbMCwxLCJ0Il0sWzEsMiwiQyJdLFswLDIsInUiXSxbMCwxLCJmIl0sWzIsMF0sWzIsM10sWzMsMV0sWzIsMSwiIiwyLHsic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV0sWzEsNCwiZyJdLFszLDVdLFs1LDRdLFszLDQsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
+\[\begin{tikzcd}
+	s & A \\
+	t & B \\
+	u & C
+	\arrow["f", from=1-2, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow["g", from=2-2, to=3-2]
+	\arrow[from=2-1, to=3-1]
+	\arrow[from=3-1, to=3-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=2-1, to=3-2]
+\end{tikzcd}\]
+
+When we presume $g$ to have small fibers, we find that $t$ is small. Then when we presume $f$ to have small fibers, we find that $s$ is small. The composition of the individual pullback squares yields a pullback rectangle, which allows us to conclude that the composition $g \circ f$ has small fibers.
+
+The above illustrates the argument for binary composition, by simply composing pullbacks. The argument for $n$-ary composition for any finite $n$ works in the same way.
+\end{proof}
 
 \begin{theorem}
 Maps with \repsmall/ fibers are closed under pullback along arbitrary maps.
 \end{theorem}
+\begin{proof}
+% https://q.uiver.app/?q=WzAsNixbMiwwLCJBIl0sWzIsMSwiQiJdLFsxLDAsIkQiXSxbMSwxLCJDIl0sWzAsMSwidCJdLFswLDAsInMiXSxbMCwxLCJmIl0sWzIsMF0sWzIsMywiZiciXSxbMywxXSxbMiwxLCIiLDIseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XSxbNCwzXSxbNSw0XSxbNSwyXSxbNSwzLCIiLDAseyJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+\[\begin{tikzcd}
+	s & D & A \\
+	t & C & B
+	\arrow["f", from=1-3, to=2-3]
+	\arrow[from=1-2, to=1-3]
+	\arrow["{f'}", from=1-2, to=2-2]
+	\arrow[from=2-2, to=2-3]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=2-3]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+\end{tikzcd}\]
+
+Any pullback of $f'$ (along some arbitrary map) is a pullback of $f$ itself (along an extended map with the same domain). Thus, if $f$ has yields small objects whenever pulled back along a map with small domain, so does its pullback $f'$.
+\end{proof}
 
 \begin{theorem}\label{RepSmallRightAdjointFibers}
 If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullbacks, and $f$ is a map between $T$-indexed sets with $T$-\repsmall/ fibers, then $\pullAlong{L} f$ has $Q$-\repsmall/ fibers.
 \end{theorem}
 \begin{proof}
-Let us say $f: A \to B$, and let an arbitrary map $m : q \to \pullAlong{L}(B)$ be given, where $q$ is an object of $Q$. We must show that the pullback of $\pullAlong{L} f$ along $m$ is also an object of $Q$ (i.e., $Q$-\repsmall/).
+Let us say $f: A \to B$, and let an arbitrary map $m : q \to \pullAlong{L}(B)$ be given, where $q$ is an object of $Q$. We must show that the pullback of $\pullAlong{L} f$ along $m$ is also an object of $Q$ (i.e., $Q$-\repsmall/). For sake of a name, let us call this pullback $P$.
 
 First, observe via \cref{YonedaPullalongLemma} that $m$ factors as $\pullAlong{L}(m') \circ \eta$ for some $m' : L(q) \to B$ and $\eta : q \to \pullAlong{L}L(q)$.
 
-Thus, the pullback we are interested in can be decomposed as follows:
+Thus, the pullback yielding $P$ we are interested in can be decomposed as follows:
 
-% https://q.uiver.app/?q=WzAsNixbMiwwLCJcXHB1bGxBbG9uZ3tMfUEiXSxbMiwxLCJcXHB1bGxBbG9uZ3tMfUIiXSxbMSwxLCJcXHB1bGxBbG9uZ3tMfUwocSkiXSxbMSwwLCJcXHB1bGxBbG9uZ3tMfShmIFxcdGltZXNfe0J9IG0nKSJdLFswLDEsInEiXSxbMCwwLCJcXHB1bGxBbG9uZ3tMfWYgXFx0aW1lc197XFxwdWxsQWxvbmd7TH1CfSBtIl0sWzAsMSwiXFxwdWxsQWxvbmd7TH1mIl0sWzIsMSwiXFxwdWxsQWxvbmd7TH0obScpIiwyXSxbMywwXSxbNCwyLCJcXGV0YSIsMl0sWzUsM10sWzUsNF0sWzMsMl0sWzQsMSwibSIsMSx7Im9mZnNldCI6NSwiY3VydmUiOjJ9XSxbMiwxMywiIiwxLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDksIiIsMSx7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XSxbMyw3LCIiLDEseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+% https://q.uiver.app/?q=WzAsNixbMiwwLCJcXHB1bGxBbG9uZ3tMfUEiXSxbMiwxLCJcXHB1bGxBbG9uZ3tMfUIiXSxbMSwxLCJcXHB1bGxBbG9uZ3tMfUwocSkiXSxbMSwwLCJcXHB1bGxBbG9uZ3tMfShmIFxcdGltZXNfe0J9IG0nKSJdLFswLDEsInEiXSxbMCwwLCJQIl0sWzAsMSwiXFxwdWxsQWxvbmd7TH1mIl0sWzIsMSwiXFxwdWxsQWxvbmd7TH0obScpIiwyXSxbMywwXSxbNCwyLCJcXGV0YSIsMl0sWzUsM10sWzUsNF0sWzMsMl0sWzQsMSwibSIsMSx7Im9mZnNldCI6NSwiY3VydmUiOjJ9XSxbMiwxMywiIiwxLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs1LDksIiIsMSx7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XSxbMyw3LCIiLDEseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
 \[\begin{tikzcd}
-	{\pullAlong{L}f \times_{\pullAlong{L}B} m} & {\pullAlong{L}(f \times_{B} m')} & {\pullAlong{L}A} \\
+	P & {\pullAlong{L}(f \times_{B} m')} & {\pullAlong{L}A} \\
 	q & {\pullAlong{L}L(q)} & {\pullAlong{L}B}
 	\arrow["{\pullAlong{L}f}", from=1-3, to=2-3]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{\pullAlong{L}(m')}"', from=2-2, to=2-3]
@@ -148,12 +188,42 @@ Thus, the pullback we are interested in can be decomposed as follows:
 	\arrow[from=1-1, to=2-1]
 	\arrow[from=1-2, to=2-2]
 	\arrow[""{name=2, anchor=center, inner sep=0}, "m"{description}, shift right=5, curve={height=12pt}, from=2-1, to=2-3]
-	\arrow[shorten >=3pt, Rightarrow, no head, from=2-2, to=2]
+	\arrow[shorten >=2pt, Rightarrow, no head, from=2-2, to=2]
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=1]
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=0]
 \end{tikzcd}\]
 
-Pulling $f$ back along $m'$ yields a $T$-\repsmall/ object, as $f$ has $T$-repsmall fibers. The pullback of $\pullAlong{L}(f)$ along $\pullAlong{L}(m')$ is thus $\pullAlong{L}$ of this $T$-\repsmall/ object (as $\pullAlong{L}$ preserves limits), which is therefore a $Q$-\repsmall/ object by \cref{RepsmallRightAdjoint}. Finally, we pull this $Q$-repsmall object back along the unit of our adjunction (another morphism in $Q$), to get the full pullback we are interested in, which is now shown to be a $Q$-\repsmall/ object (as $Q$ has pullbacks), as desired. \TODOinline{Draw out diagram. Actually write out the last details around the adjunction stuff ($m : q \to \pullAlong{L}(B) =$ etc).}
+The right half of the above diagram is the lexfunctor $\pullAlong{L}$ applied to the following pullback diagram in $\Psh{T}$:
+
+% https://q.uiver.app/?q=WzAsNCxbMSwwLCJBIl0sWzEsMSwiQiJdLFswLDEsIkwocSkiXSxbMCwwLCJmIFxcdGltZXNfe0J9IG0nIl0sWzAsMSwiZiJdLFsyLDEsIm0nIiwyXSxbMywyXSxbMywwXSxbMyw1LCIiLDAseyJsZXZlbCI6MSwic3R5bGUiOnsibmFtZSI6ImNvcm5lciJ9fV1d
+\[\begin{tikzcd}
+	{f \times_{B} m'} & A \\
+	{L(q)} & B
+	\arrow["f", from=1-2, to=2-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{m'}"', from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
+\end{tikzcd}\]
+
+Note that, as $f$ has $T$-\repsmall/ fibers and $L(q)$ is an object of $T$ (i.e., $T$-\repsmall/), we find that $f \times_{B} m'$ is also $T$-\repsmall/.
+
+By \cref{RepsmallRightAdjoint}, it follows that $\pullAlong{L}(f \times_{B} m')$ is $Q$-\repsmall/, as is $\pullAlong{L}L(q)$.
+
+Thus, the left half of our above diagram is a pullback of morphisms within $Q$:
+
+% https://q.uiver.app/?q=WzAsNCxbMSwxLCJcXHB1bGxBbG9uZ3tMfUwocSkiXSxbMSwwLCJcXHB1bGxBbG9uZ3tMfShmIFxcdGltZXNfe0J9IG0nKSJdLFswLDEsInEiXSxbMCwwLCJQIl0sWzIsMCwiXFxldGEiLDJdLFszLDFdLFszLDJdLFsxLDBdLFszLDQsIiIsMSx7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
+\[\begin{tikzcd}
+	P & {\pullAlong{L}(f \times_{B} m')} \\
+	q & {\pullAlong{L}L(q)}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "\eta"', from=2-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=0]
+\end{tikzcd}\]
+
+As $Q$ is closed under finite limits, it follows that $P$ is itself an object of $Q$ (i.e., is $Q$-\repsmall/), completing our proof.
 \end{proof}
 
 \begin{definition}\label{IndexedStructuresDefn}
