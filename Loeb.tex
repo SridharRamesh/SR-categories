@@ -1,15 +1,53 @@
 \section{\Loeb's theorem}
 
 \subsection{Convenient terminology}
-Let us introduce some evocative terminology. By a relation on object $B$, we mean any morphism $R : r \to B \times B$ (i.e., any parallel pair of morphisms into $B$). For any two generalized elements $b_1, b_2 : D \to B$ of $B$, we say they are related by relation $R$ if $\langle b_1, b_2 \rangle : D \to B \times B$ factors through $R$.
+Let us introduce some evocative terminology. By a \defined{relation} between objects $A$ and $B$, we mean any pair of morphisms $r_A : R \to A$ and $r_B : R \to B$ with a common domain.
 
-For any map $q: Q \to B$, and any generalized element $b_1 : D \to B$ of $B$, we will say \quote{$b_1$ is in the range of $q$ with respect to relation $R$} if there is some $b_2 : D \to B$ such that $b_1$ and $b_2$ are related by relation $R$ and $b_2$ factors through $q$.
+% https://q.uiver.app/?q=WzAsMyxbMSwwLCJSIl0sWzAsMSwiQSJdLFsyLDEsIkIiXSxbMCwxLCJyX0EiXSxbMCwyLCJyX0IiLDJdXQ==
+\[\begin{tikzcd}
+	& R \\
+	A && B
+	\arrow["{r_A}", from=1-2, to=2-1]
+	\arrow["{r_B}"', from=1-2, to=2-3]
+\end{tikzcd}\]
 
-This terminology is most reasonable when relation $R$ has the properties of an equivalence relation (such as symmetry), and we will ultimately restrict our attention to such situations, but we do not for now make any such assumptions. Of note, we also do not make any monicity assumptions.
+Equivalently, such a relation $\langle r_A, r_B \rangle$ can be thought of as a single morphism $r : R \to A \times B$. Note that we do not make any presumption that $r$ be monic, which is to say, we do not make any presumption that $r_a$ and $r_b$ be jointly monic.
 
-Finally, let us say that any $q : Q \to B$ is \quote{surjective with respect to relation $R$ over domain of definition $D$} if, for this particular $D$, every generalized element $b : D \to B$ is in the range of $q$ with respect to relation $R$.
+For any generalized elements $a : D \to A$ and $b : D \to B$ of $A$ and $B$ respectively, we say they are \defined{related by} relation $\langle r_A, r_B \rangle: R \to A \times B$ if $\langle a, b \rangle : D \to A \times B$ factors through $\langle r_A, r_B \rangle$. That is, some diagram of the following form commutes:
 
-If a relation $R$ is not specified when using this surjectivity terminology, it is presumed to be the equality relation; that is, the relation given by the diagonal morphism from $B$ to $B \times B$.
+% https://q.uiver.app/?q=WzAsNCxbMSwxLCJSIl0sWzAsMiwiQSJdLFsyLDIsIkIiXSxbMSwwLCJEIl0sWzAsMSwicl9BIl0sWzAsMiwicl9CIiwyXSxbMywwXSxbMywxLCJhIiwxXSxbMywyLCJiIiwxXV0=
+\[\begin{tikzcd}
+	& D \\
+	& R \\
+	A && B
+	\arrow["{r_A}", from=2-2, to=3-1]
+	\arrow["{r_B}"', from=2-2, to=3-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow["a"{description}, from=1-2, to=3-1]
+	\arrow["b"{description}, from=1-2, to=3-3]
+\end{tikzcd}\]
+
+For any map $q: Q \to A$, and any generalized element $b : D \to B$ of $B$, we will say \quote{$b$ is in the range of $q$ with respect to relation $r = \langle r_a, r_b \rangle$} if there is some $a : D \to A$ such that $a$ and $b$ are related by relation $r$ and $a$ factors through $q$. That is, some diagram of the following form commutes:
+
+% https://q.uiver.app/?q=WzAsNSxbMSwxLCJSIl0sWzAsMiwiQSJdLFsyLDIsIkIiXSxbMSwwLCJEIl0sWzAsMCwiUSJdLFswLDEsInJfQSJdLFswLDIsInJfQiIsMl0sWzMsMF0sWzMsMSwiYSIsMV0sWzMsMiwiYiIsMV0sWzQsMSwicSIsMV0sWzMsNF1d
+\[\begin{tikzcd}
+	Q & D \\
+	& R \\
+	A && B
+	\arrow["{r_A}", from=2-2, to=3-1]
+	\arrow["{r_B}"', from=2-2, to=3-3]
+	\arrow[from=1-2, to=2-2]
+	\arrow["a"{description}, from=1-2, to=3-1]
+	\arrow["b"{description}, from=1-2, to=3-3]
+	\arrow["q"{description}, from=1-1, to=3-1]
+	\arrow[from=1-2, to=1-1]
+\end{tikzcd}\]
+
+Our interest in this notion will often be in situations where $A$ and $B$ coincide, and often our relation $r$ will have the properties of an equivalence relation (such as symmetry). But we do not for now make any such assumptions.
+
+Finally, let us say that any $q : Q \to A$ is \quote{\defined{surjective with respect to relation} $r$ over domain of definition $D$} if, for this particular $D$, every generalized element $b : D \to B$ is in the range of $q$ with respect to relation $r$.
+
+If a relation $r$ is not specified when using this surjectivity terminology, it is presumed to be the equality relation; that is, the relation given by two identity morphisms on some same object $A$. In this case, the surjectivity of $q : Q \to A$ over domain of definition $D$ is equivalent to the corresponding function $\Hom(D, q) : \Hom(D, Q) \to \Hom(D, A)$ in $\Set$ being surjective in the ordinary sense.
 
 This was all quite general, and we will use it now to observe a very general construction, which we will then specialize to introspective theories.
 
@@ -241,7 +279,7 @@ Indeed, armed with the idea of this relationship, it becomes easy to deal with t
 
 We then impose upon this presheaf $P$ the relation $R$ under which two elements $(p, q)$ of $P$ are related by any relationship in $R'$ between elements $(p', q')$ of $P'$, along with an isomorphism between $p'$ and $f(p)$ and an isomorphism between $q'$ and $f(q)$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). It is straightforward to verify that this relation $R$ has a groupoid structure itself, and that its projection maps to $P$ are indeed natural transformations between presheaves. \TODOinline{Write this out in a detailed way.}
 
-We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. Any such slice above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
+We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. The collection of such slices above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
 
 The fixed point property we derive then tells us:
 

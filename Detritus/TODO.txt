@@ -78,3 +78,11 @@ Show models that are uncountable, uncomputable, etc, but otherwise similar to PA
 Note that we model GIT/G2IT/Loeb, but we do not model Rosser's theorem directly (the sharpening of GIT people often have in mind). The bother is as to the possibility of a consistent theory which proves []0 (we only rule out the possibility of a consistent theory proving ~[]0). We can rule this possibility if we restrict attention to geminal categories G for which there is a homomorphism to Set which takes G' to G. Then G cannot prove []0 without proving 0.
 
 Is there a notion of Artin gluing for introspective theories?
+
+------------
+Note that in "Gödel’s Incompleteness after Joyal", Lemma 6.12 appears to have an error. They should only get a modalized fixed point (like us), not an actual fixed point. The mistaken assertion appears to be " By construction we have f(t, n) = g(t)", when they should actually have f(t, n) = []g(t). This doesn't significantly affect their proof of Lob's theorem, however, as the Lob sentence they use is readily seen to be defined by a modalized fixed point.
+
+Note that the PA/ZFC/etc introspective theories can be seen to come from the introspective theory of the initial arithmetic universe like so: Within the initial AU, we have internal categories corresponding to all computably enumerable categories, such as sigma1 PA or arbitrary PA or the like. For any computably enumerable category C which is also manifestly an arithmetic universe, we also get an internal lexfunctor from the initial AU's internal AU to its internal C. This lets us equip (initial AU, C) as an introspective theory, and therefore C is a geminal category internal to AU; under the global points functor into Set, we get that C is a bonafide geminal category. We can then extract the maximal introspective theory within which C sits, to get an introspective theory (maximal, C). And when C is PA or Sigma1 PA or the like, we can see that Sigma1 PA sits within this maximal introspective theory as a suitable subcategory still containing C, so we can pull back to (Sigma 1 PA, C) as an introspective theory.
+
+Compare our generaliezd Lawvere fixed point theorem to the one in "substructural fixed-point theorems and the diagonal argument" by David Michael Roberts
+
