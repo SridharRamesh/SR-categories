@@ -55,6 +55,44 @@ This was all quite general, and we will use it now to observe a very general con
 Some note about how we will also make use in diagrams in this chapter liberally of the identification of $P(c)$ with $\Hom(c, P)$, when $P$ is a presheaf. If one likes, this can be seen as invoking the Yoneda lemma to draw diagrams in $\Psh{C}$ (although invoking the Yoneda lemma is actually a bit overkill for the mere fact that we can draw diagrams of presheaf elements and presheaf actions in this way, which is simply working within the appropriate collage, aka cocomma category).
 \end{TODOblock}
 
+\subsection{Very general diagonalization}
+\TODOinline{This revamp is in progress, a way of making the next couple sections cleaner and easier to follow.}
+
+\begin{theorem}\label{Theorem1}
+Let $T$ be an arbitrary category, and let $P \in \Psh{T}$ and $P_2 \in \Psh{T \times T}$. Suppose given also a map $\omega : \pullAlong{\Delta}P_2 \to P$ where $\Delta : T \to T \times T$ is the diagonal functor. (That is, $\omega$ comprises a system of maps $\omega_t : P_2(t, t) \to P(t)$ for each object $t$ in $T$, natural in $t$).
+
+Also, suppose given an object $point$ in $T$ and a binary relation $R$ on the set $P(point)$. (We do not presume $R$ to be an equivalence relation or symmetric or any such thing.)
+
+Let us now suppose given an object $s$ of $T$ and an $App \in P_2(s, s)$ such that $App$ has the pointwise surjectivity-like property that, for every $F \in P(s)$, there is an $f \in \Hom(point, s)$ such that for every $x \in \Hom(point, s)$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R$ to $F(x) \in P(point)$.
+
+Then there is an element of $P(point)$ which is related by $R$ to itself.
+
+Specifically, take the supposition two sentences ago and consider the particular case where $F = \omega_s(App) \in P(s)$ and $x = f$. This tells us that $\omega_{point}( App(f, f) )$ is related by $R$ to $\omega_s(App)(f)$. But by naturality, $\omega_s(App)(f) = \omega_{point}( App(f, f) )$. Thus, this is a value which is related to itself.
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJQXzIocywgcykiXSxbMCwzLCJQKHMpIl0sWzMsMCwiUF8yKHBvaW50LCBwb2ludCkiXSxbMywzLCJQKHBvaW50KSJdLFsxLDEsIkFwcCJdLFsyLDEsIkFwcChmLCBmKSJdLFsxLDIsIlxcb21lZ2FfcyhBcHApIl0sWzIsMiwiXFxvbWVnYV9zKEFwcCkoZikgPSBcXG9tZWdhX3twb2ludH0oQXBwKGYsIGYpKSJdLFswLDEsIlxcb21lZ2FfcyIsMl0sWzAsMiwiUChmLCBmKSJdLFsxLDMsIlAoZikiLDJdLFsyLDMsIlxcb21lZ2Ffe3BvaW50fSJdLFs0LDUsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw2LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs1LDcsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
+\[\begin{tikzcd}
+	{P_2(s, s)} &&& {P_2(point, point)} \\
+	& App & {App(f, f)} \\
+	& {\omega_s(App)} & {\omega_s(App)(f) = \omega_{point}(App(f, f))} \\
+	{P(s)} &&& {P(point)}
+	\arrow["{\omega_s}"', from=1-1, to=4-1]
+	\arrow["{P(f, f)}", from=1-1, to=1-4]
+	\arrow["{P(f)}"', from=4-1, to=4-4]
+	\arrow["{\omega_{point}}", from=1-4, to=4-4]
+	\arrow[maps to, from=2-2, to=2-3]
+	\arrow[maps to, from=2-2, to=3-2]
+	\arrow[maps to, from=3-2, to=3-3]
+	\arrow[maps to, from=2-3, to=3-3]
+\end{tikzcd}\]
+\end{theorem}
+
+\begin{corollary}\label{Theorem2}
+Let all values be given as in \cref{Theorem1}. Furthermore, let the map $n : P \to P$ be given. Then there is an element $e$ of $P(point)$ such that $e$ is related by $R$ to $n(e)$.
+\end{corollary}
+\begin{proof}
+Consider the relation $R'(e_1, e_2) = R(e_1, n(e_2))$. Now suppose given an arbitrary $F \in P(s)$ and let $F' = n(F) \in P(s)$. By the presumed pointwise surjectivity of $App$ with respect to $R$ as applied to $F'$, there is an $f \in \Hom(point, s)$ such that for every $x \in \Hom(point, s)$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R$ to $F'(x) = n(F(x)) \in P(point)$. In other words, for all $x$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R'$ to $F(x)$. This demonstrates the pointwise surjectivity of $App$ with respect to $R'$ for arbitrary $F$. Thus, we can invoke \cref{Theorem1} with $R'$ in place of $R$, to obtain some $e$ which is related by $R'$ to itself. Which is to say, $e$ is related by $R$ to $n(e)$, as desired.
+\end{proof}
+
 \subsection{Lawvere's fixed point theorem}
 Let us refresh the reader on Lawvere's fixed point theorem \autocite{lawvere1969diagonal}, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure. We shall first present a proof of Lawvere's fixed point theorem in a more or less traditional way (very slightly generalized, but more or less traditional). Then in the next section we will vastly generalize the argument to produce a result applicable in the context of general pre-introspective theories. Then we will specialize back down to introspective theories, and observe a wonderful \quote{bootstrapping} phenomenon which arises there, which shall ultimately provide us with a form of \Loeb's theorem in that context.
 
@@ -151,7 +189,7 @@ From these, we can define a map $W$ from $Y$ to $P(1)$ like so: For any $y$ in $
 
 Now, let us suppose $P(1)$ is $T$-small, so that it will make sense to speak of $\introS(P(1))$ and $\introS(W)$.
 
-Furthermore, let us make a relational surjectivity assumption on $d$. Specifically, suppose we are given a relation $R$ on $P$ (that is, another presheaf on $C$, and two parallel maps from it into $P$), and let us suppose $d$ is surjective with respect to relation $R$ (that is, with respect to to the aspect of $R$ at $\introS(Y)$) over some domain of definition $D$.
+Furthermore, let us make a relational surjectivity assumption on $d$. Specifically, suppose we are given a relation $R$ on $P$ (that is, another presheaf on $C$, and two parallel maps from it into $P$), and let us suppose $d$ is surjective with respect to relation $R$ (that is, with respect to the aspect of $R$ at $\introS(Y)$) over some domain of definition $D$.
 
 Observe now that, from any $D$-defined generalized element $f$ of $P(\introS(P(1)))$, we can obtain a $D$-defined element of $P(1)$, like so: By transporting $f$ back along $\introS(W) : \Hom_C(\introS(Y), \introS(P(1)))$, we get an element $\introS(W)^*f$ of $P(\introS(Y))$. By applying our surjectivity presumption on $d$, we obtain a $D$-defined element $y$ of $Y$ such that this $\introS(W)^*f$ is related to $d(y)$.
 

@@ -86,3 +86,10 @@ Note that the PA/ZFC/etc introspective theories can be seen to come from the int
 
 Compare our generaliezd Lawvere fixed point theorem to the one in "substructural fixed-point theorems and the diagonal argument" by David Michael Roberts
 
+Our construction of introspective theories for the theory of initial toposes, etc, should come from something like this: Consider a general set up where we have two categories A (the free lexcat with an internal topos) and B (the free lexcat with an internal initial topos). We have a functor from A to B, and a functor from B to an internal category in A. This gives a functor from B to an internal category within itself. Furthermore, B is sigma1esque in some suitable sense as to give a natural transformation; the relevant thing is that we obviously get a natural transformation from the inclusion of A into B to (the inclusion of A into B followed by our endolexfunctor on B), by the fact that the inclusion of A into B is supposed to be the initial topos within B. If the inclusion of A into B is therefore "dense" enough, we then get a natural tranfsormation from identity to the endolexfunctor on B.
+
+For the initial arithmetic universe, we can take A = B = the initial arithmetic universe and an identity functor. Our sigma1esqueness follows from the comma category/gluing concerns.
+
+The sigma1 models of PA, ZFC, etc, can be seen as coming from the initial arithmetic universe by freely adjoining inverses to some morphisms (i.e., localizing, but for lexcategories) and this presumably makes the map from the initial arithmetic universe into sigma1PA "dense" in the suitable sense.
+
+One kind of model we can consider that others haven't is a coproduct qua introspective theory of a logicky introspective theory (e.g., sigma1 PA) with a presheafy introspective theory (e.g., presheaves over omega).
