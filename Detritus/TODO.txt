@@ -93,3 +93,7 @@ For the initial arithmetic universe, we can take A = B = the initial arithmetic 
 The sigma1 models of PA, ZFC, etc, can be seen as coming from the initial arithmetic universe by freely adjoining inverses to some morphisms (i.e., localizing, but for lexcategories) and this presumably makes the map from the initial arithmetic universe into sigma1PA "dense" in the suitable sense.
 
 One kind of model we can consider that others haven't is a coproduct qua introspective theory of a logicky introspective theory (e.g., sigma1 PA) with a presheafy introspective theory (e.g., presheaves over omega).
+
+Any topos with countable coproducts has an internal initial topos with countable coproducts. This gives us a geminal topos-with-countable-coproducts, which is both uncountable and contains all kinds of uncomputable structure (e.g., all maps from N to 2).
+
+Investigate relativizing our well-founded introspective theory construction to a Set which is itself an introspective theory

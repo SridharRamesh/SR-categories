@@ -27,6 +27,9 @@
 \usepackage{quiver}         % Commutative diagrams
 \usepackage{indentfirst}    % Indent first paragraph in a section
 \usepackage{csquotes}       % Quotation marks without needing `` and ''
+\usepackage[style=authoryear]{biblatex}
+\bibliography{references}   % Uses the file `references.bib` for bibliography information.
+
 \renewcommand{\quote}{\textquote} % I have no use for the existing \quote command in LaTeX, and would like that short name for this instead
 \renewcommand\qedsymbol{$\blacksquare$} % Change QED symbol to black square so it is not confused with the modal box
 \newcommand{\profuncTo}{\nrightarrow} % Profunctor \to arrows
@@ -40,12 +43,18 @@
   {hyperref}                % Hyper-linked references (note that certain packages need to be loaded before this instead of after this, such as indexing)
   
 % And now... Packages that might need to be loaded after hyperref.
+\usepackage[conf={restate}]
+  {proof-at-the-end}        % Allows for moving proofs of theorems to later in the document, with auto-linking, restating, etc
 \usepackage[capitalize, nameinlink]
   {cleveref}                % References named by type and number
 \newcommand*{\parensref}[1]{\hyperref[{#1}]{\nameref*{#1} (\cref*{#1})}}              % References named by explicit name and parenthesized type and number
+
 % It's not ideal that I have to manually keep track of when to use \cref vs. when to use \parensref, alas. Or occasionally \nameref.
-\usepackage[conf={restate}]
-  {proof-at-the-end}        % Allows for moving proofs of theorems to later in the document, with auto-linking, restating, etc
-  
-\usepackage[style=authoryear]{biblatex}
-\bibliography{references}
+% The following solution is based on https://tex.stackexchange.com/a/66096/231784.
+\newcommand{\magicref}[1]{%
+  \if\vcenter\getrefbykeydefault{#1}{name}{}\vcenter
+    \ref{#1}%
+  \else
+    \nameref{#1}%
+  \fi
+}
