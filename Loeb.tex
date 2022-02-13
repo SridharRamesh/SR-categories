@@ -1,3 +1,6 @@
+\documentclass[./main.tex]{subfiles}
+\begin{document}
+
 \section{\Loeb's theorem}
 
 \subsection{Convenient terminology}
@@ -58,7 +61,7 @@ Some note about how we will also make use in diagrams in this chapter liberally 
 \subsection{Very general diagonalization}
 \TODOinline{This revamp is in progress, a way of making the next couple sections cleaner and easier to follow.}
 
-\begin{theorem}\label{Theorem1}
+\begin{theorem}\label{VeryGeneralSelfRelated}
 Let $T$ be an arbitrary category, and let $P \in \Psh{T}$ and $P_2 \in \Psh{T \times T}$. Suppose given also a map $\omega : \pullAlong{\Delta}P_2 \to P$ where $\Delta : T \to T \times T$ is the diagonal functor. (That is, $\omega$ comprises a system of maps $\omega_t : P_2(t, t) \to P(t)$ for each object $t$ in $T$, natural in $t$).
 
 Also, suppose given an object $point$ in $T$ and a binary relation $R$ on the set $P(point)$. (We do not presume $R$ to be an equivalence relation or symmetric or any such thing.)
@@ -86,11 +89,22 @@ Specifically, take the supposition two sentences ago and consider the particular
 \end{tikzcd}\]
 \end{theorem}
 
-\begin{corollary}\label{Theorem2}
-Let all values be given as in \cref{Theorem1}. Furthermore, let the map $n : P \to P$ be given. Then there is an element $e$ of $P(point)$ such that $e$ is related by $R$ to $n(e)$.
+\begin{corollary}\label{VeryGeneralFixedModuloRelation}
+Let all values be given as in \cref{VeryGeneralSelfRelated}. Furthermore, let the map $n : P \to P$ be given. Then there is an element $e$ of $P(point)$ such that $e$ is related by $R$ to $n(e)$.
 \end{corollary}
 \begin{proof}
-Consider the relation $R'(e_1, e_2) = R(e_1, n(e_2))$. Now suppose given an arbitrary $F \in P(s)$ and let $F' = n(F) \in P(s)$. By the presumed pointwise surjectivity of $App$ with respect to $R$ as applied to $F'$, there is an $f \in \Hom(point, s)$ such that for every $x \in \Hom(point, s)$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R$ to $F'(x) = n(F(x)) \in P(point)$. In other words, for all $x$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R'$ to $F(x)$. This demonstrates the pointwise surjectivity of $App$ with respect to $R'$ for arbitrary $F$. Thus, we can invoke \cref{Theorem1} with $R'$ in place of $R$, to obtain some $e$ which is related by $R'$ to itself. Which is to say, $e$ is related by $R$ to $n(e)$, as desired.
+Consider the relation $R'(e_1, e_2) = R(e_1, n(e_2))$. Now suppose given an arbitrary $F \in P(s)$ and let $F' = n(F) \in P(s)$. By the presumed pointwise surjectivity of $App$ with respect to $R$ as applied to $F'$, there is an $f \in \Hom(point, s)$ such that for every $x \in \Hom(point, s)$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R$ to $F'(x) = n(F(x)) \in P(point)$. In other words, for all $x$, we have that $\omega_{point}( App(f, x) ) \in P(point)$ is related by $R'$ to $F(x)$. This demonstrates the pointwise surjectivity of $App$ with respect to $R'$ for arbitrary $F$. Thus, we can invoke \cref{VeryGeneralSelfRelated} with $R'$ in place of $R$, to obtain some $e$ which is related by $R'$ to itself. Which is to say, $e$ is related by $R$ to $n(e)$, as desired.
+\end{proof}
+
+\begin{corollary}
+Let $T$ be an arbitrary category with objects $point$ and $p$, and let $B : T \times T \to T$ be a bifunctor on $T$ such that we have a transformation $\delta_t : t \to B(t, t)$ natural in objects $t$ of $T$.
+
+Suppose given an object $s$ of $T$ and an $App : B(s, s) \to p$ with the pointwise surjectivity property that for every $F : s \to p$, there is an $f : point \to s$, such that for every $x : point \to s$, we have that $App \circ B(f, x) \circ \delta_{point} : point \to p$ equals $F \circ x : point to p$.
+
+Then every $m : p \to p$ has a fixed point, in the sense of an $e : point \to p$ such that $m \circ e = e$.
+\end{corollary}
+\begin{proof}
+This is the instance of \cref{VeryGeneralFixedModuloRelation} where 
 \end{proof}
 
 \subsection{Lawvere's fixed point theorem}
@@ -451,3 +465,5 @@ Discuss how we get \Loeb's theorem not just for globally defined objects of $C$,
 \begin{TODOblock}
 Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on |G'|, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.
 \end{TODOblock}
+
+\end{document}

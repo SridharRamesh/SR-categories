@@ -4,6 +4,9 @@
 
 \include{commands}
 
+\usepackage{subfiles} % Best loaded last in the preamble
+% The above line is following the instructions from https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
+
 \title{Abstract Provability Structures}
 
 \author{
@@ -26,28 +29,28 @@ It should be noted that the bulk of this work was originally developed during my
 \setcounter{page}{1}
 \tableofcontents
 
-\include{Introduction}
+\newpage \subfile{Introduction}
 
-\include{Preliminaries}
+\newpage \subfile{Preliminaries}
 
-\include{IntrospectiveTheory}
+\newpage \subfile{IntrospectiveTheory}
 
-\include{Modal}
+\newpage \subfile{Modal}
 
-\include{Loeb}
+\newpage \subfile{Loeb}
 
-\include{GLCategory}
+\newpage \subfile{GLCategory}
 
-\include{Models}
+\newpage \subfile{Models}
 
-\section{Modally naive material set theory}
+\newpage \section{Modally naive material set theory}
 \TODO
 
 % Future work
 
-\include{Appendix}
+\newpage \subfile{Appendix}
 
-\section{Bibliography}
+\newpage \section{Bibliography}
 \printbibliography
 
 \printindex
