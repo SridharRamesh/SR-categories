@@ -4,8 +4,12 @@
 
 \include{commands}
 
+\subfilesfalse
+
+\ifsubfiles
 \usepackage{subfiles}
 % The above line is following the instructions from https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
+\fi
 
 \title{Abstract Provability Structures}
 
@@ -29,25 +33,27 @@ It should be noted that the bulk of this work was originally developed during my
 \setcounter{page}{1}
 \tableofcontents
 
-\newpage \subfile{Introduction}
+\fileinclude{Introduction}
 
-\newpage \subfile{Preliminaries}
+\fileinclude{Preliminaries}
 
-\newpage \subfile{IntrospectiveTheory}
+\fileinclude{IntrospectiveTheory}
 
-\newpage \subfile{Modal}
+\fileinclude{Modal}
 
-\newpage \subfile{Loeb}
+\fileinclude{Loeb}
 
-\newpage \subfile{GLCategory}
+\fileinclude{GLCategory}
 
-\newpage \subfile{Models}
+\fileinclude{Models}
 
 %\newpage \section{Modally naive material set theory}
 
 % Future work
 
-\newpage \subfile{Appendix}
+% \fileinclude{Detritus/test}
+
+\fileinclude{Appendix}
 
 \newpage \section{Bibliography}
 \printbibliography

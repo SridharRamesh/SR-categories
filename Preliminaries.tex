@@ -1,5 +1,4 @@
-\documentclass[./main.tex]{subfiles}
-\begin{document}
+\filestart
 
 \section{Category-theoretic preliminaries}
 
@@ -66,12 +65,12 @@ This completes the proof. (In fancy categorical jargon, we have demonstrated tha
 \end{proof}
 
 \begin{corollary}\label{YonedaPullalongLemma}
-Given $f$, $s$, and $P$ as in \cref{YonedaPullalong}, we have that every morphism $m : s \to \pullAlong{f} P$ factors through a morphism in the range of $\pullAlong{f}$. That is, $m = \pullAlong{f}(m') \circ \eta$ for some $m' : f(s) \to P$ and $\eta : s \to \pullAlong{f}(f(s))$.
+Given $f$, $s$, and $P$ as in \magicref{YonedaPullalong}, we have that every morphism $m : s \to \pullAlong{f} P$ factors through a morphism in the range of $\pullAlong{f}$. That is, $m = \pullAlong{f}(m') \circ \eta$ for some $m' : f(s) \to P$ and $\eta : s \to \pullAlong{f}(f(s))$.
 \end{corollary}
 \begin{proof}
-This is corollary to \cref{YonedaPullalong} by the general yoga of relative adjoints.
+This is corollary to \magicref{YonedaPullalong} by the general yoga of relative adjoints.
 
-Specifically, consider the following naturality diagram for the correspondence in \cref{YonedaPullalong}, where $m'$ is the morphism in $\Hom(f(s), P)$ corresponding to $m \in \Hom(s, \pullAlong{f}P)$ and $\eta$ is the morphism in $\Hom(s, \pullAlong{f}f(s))$ corresponding to $\id_{f(s)} \in \Hom(f(s), f(s))$.
+Specifically, consider the following naturality diagram for the correspondence in \magicref{YonedaPullalong}, where $m'$ is the morphism in $\Hom(f(s), P)$ corresponding to $m \in \Hom(s, \pullAlong{f}P)$ and $\eta$ is the morphism in $\Hom(s, \pullAlong{f}f(s))$ corresponding to $\id_{f(s)} \in \Hom(f(s), f(s))$.
 
 % https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEhvbShmKHMpLCBmKHMpKSJdLFszLDAsIlxcSG9tKGYocyksIFApIl0sWzAsMywiXFxIb20ocywgXFxwdWxsQWxvbmd7Zn1mKHMpKSJdLFszLDMsIlxcSG9tKHMsIFxccHVsbEFsb25ne2Z9UCkiXSxbMSwxLCJcXGlkX3tmKHMpfSJdLFsyLDEsIm0nIl0sWzEsMiwiXFxldGEiXSxbMiwyLCJcXHB1bGxBbG9uZ3tmfShtJykgXFxjaXJjIFxcZXRhID0gbSJdLFswLDEsIm0nIFxcY2lyYyAtIl0sWzIsMywiXFxwdWxsQWxvbmd7Zn0obScpIFxcY2lyYyAtIl0sWzIsMCwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDUsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw2LCIiLDEseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwxLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs1LDcsIiIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XV0=
 \[\begin{tikzcd}
@@ -94,7 +93,7 @@ Specifically, consider the following naturality diagram for the correspondence i
 Let $\Sigma$ be the forgetful functor from a slice category $T/t$ to its ambient category $T$. Then the $t$-aspect of a $T$-indexed set $P$ is in correspondence with the global aspect of $\pullAlong{\Sigma} P$.
 \end{theorem}
 \begin{proof}
-This is corollary to \cref{YonedaPullalong}, which tells us $\Hom_{\Psh{T/t}}(1_{T/t}, \pullAlong{\Sigma} P)$ is in correspondence with $\Hom_{\Psh{T}}(\Sigma 1_{T/t}, P)$, where $1_{T/t}$ is the terminal object in $T/t$. As this terminal object is given by the identity morphism into $t$, we have that $\Sigma 1_{T/t} = t$. Thus, this equation is telling us that the global aspect of $\pullAlong{\Sigma} P$ corresponds to the $t$-aspect of $P$, as desired.
+This is corollary to \magicref{YonedaPullalong}, which tells us $\Hom_{\Psh{T/t}}(1_{T/t}, \pullAlong{\Sigma} P)$ is in correspondence with $\Hom_{\Psh{T}}(\Sigma 1_{T/t}, P)$, where $1_{T/t}$ is the terminal object in $T/t$. As this terminal object is given by the identity morphism into $t$, we have that $\Sigma 1_{T/t} = t$. Thus, this equation is telling us that the global aspect of $\pullAlong{\Sigma} P$ corresponds to the $t$-aspect of $P$, as desired.
 \end{proof}
 
 \begin{theorem}\label{RepsmallRightAdjoint}
@@ -195,7 +194,7 @@ Let us say $f: A \to B$, and let an arbitrary map $m : q \to \pullAlong{L}(B)$ b
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
 \end{tikzcd}\]
 
-First, observe via \cref{YonedaPullalongLemma} that $m$ factors as $\pullAlong{L}(m') \circ \eta$ for some $m' : L(q) \to B$ and $\eta : q \to \pullAlong{L}L(q)$.
+First, observe via \magicref{YonedaPullalongLemma} that $m$ factors as $\pullAlong{L}(m') \circ \eta$ for some $m' : L(q) \to B$ and $\eta : q \to \pullAlong{L}L(q)$.
 
 % https://q.uiver.app/?q=WzAsMyxbMiwwLCJcXHB1bGxBbG9uZ3tMfUIiXSxbMSwwLCJcXHB1bGxBbG9uZ3tMfUwocSkiXSxbMCwwLCJxIl0sWzEsMCwiXFxwdWxsQWxvbmd7TH0gbSciLDJdLFsyLDEsIlxcZXRhIiwyXSxbMiwwLCJtIiwxLHsib2Zmc2V0Ijo1LCJjdXJ2ZSI6Mn1dLFsxLDUsIiIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
@@ -225,7 +224,7 @@ Thus, the pullback yielding $P$ we are interested in can be decomposed as follow
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-2, to=0]
 \end{tikzcd}\]
 
-The right half of the above diagram is $\pullAlong{L}$ (known to preserve pullbacks by \cref{PullalongIsLex}) applied to the following pullback diagram in $\Psh{T}$:
+The right half of the above diagram is $\pullAlong{L}$ (known to preserve pullbacks by \magicref{PullalongIsLex}) applied to the following pullback diagram in $\Psh{T}$:
 
 % https://q.uiver.app/?q=WzAsNCxbMSwwLCJBIl0sWzEsMSwiQiJdLFswLDEsIkwocSkiXSxbMCwwLCJBIFxcdGltZXNfe0J9IEwocSkiXSxbMCwxLCJmIl0sWzIsMSwibSciLDJdLFszLDJdLFszLDBdLFszLDUsIiIsMCx7ImxldmVsIjoxLCJzdHlsZSI6eyJuYW1lIjoiY29ybmVyIn19XV0=
 \[\begin{tikzcd}
@@ -240,7 +239,7 @@ The right half of the above diagram is $\pullAlong{L}$ (known to preserve pullba
 
 Note that, as $f$ has $T$-\repsmall/ fibers and $L(q)$ is an object of $T$ (i.e., $T$-\repsmall/), we find that $A \times_{B} L(q)$ is also $T$-\repsmall/.
 
-By \cref{RepsmallRightAdjoint}, it follows that $\pullAlong{L}(A \times_{B} L(q))$ is $Q$-\repsmall/, as is $\pullAlong{L}L(q)$.
+By \magicref{RepsmallRightAdjoint}, it follows that $\pullAlong{L}(A \times_{B} L(q))$ is $Q$-\repsmall/, as is $\pullAlong{L}L(q)$.
 
 Thus, the left half of our above diagram is a pullback of morphisms within $Q$:
 
@@ -262,7 +261,7 @@ As $Q$ is closed under pullbacks, it follows that $P$ is $Q$-\repsmall/, complet
 We can talk about any kind of $T$-indexed structure or $T$-indexed maps between such structures, as the appropriate diagram of $T$-indexed sets and functions. For example, we can talk about $T$-indexed groups and group homomorphisms between them. When the $T$-indexed sets involved (the sorts within the structure, including the domains and codomains of all the maps defining the structure) are all \repsmall/, we say the entire structure is \defined{\repsmall/}, or equivalently, we say it is \defined{internal} to $T$\footnote{This \quote{$T$-internal gadgets} terminology makes most sense when $T$ is thought of as a kind of structure such that structure-preserving maps from $T$ to $S$ take $T$-internal gadgets to $S$-internal gadgets. Thus, if the definition of gadgets invokes maps whose domains are defined using finite limits, we will use this terminology of $T$-internal gadgets only in contexts where we are taking $T$ as a category with finite limits (for example, when speaking of internal categories). If the definiton of gadgets invokes maps whose domains are defined using finite products, we will use this terminology of $T$-internal gadgets only in contexts where we are taking $T$ as a category with finite products (for example, when speaking of internal groups). If the definition of gadgets invokes maps whose domains are defined using countably infinite products, then to speak of $T$-internal gadgets, $T$ must be carrying countably infinite product structure, etc.}. By the Yoneda lemma, this amounts to a diagram of objects and morphisms within $T$ itself.
 \end{definition}
 
-Observe that, as $\pullAlong{f}$ for an arbitrary functor $f : S \to T$ preserves finite limits (by \cref{PullalongIsLex}), it not only takes $T$-indexed sets to $S$-indexed sets but also acts as a functor from $T$-indexed structures to $S$-indexed structures more generally, for any notion of structure definable using finite limits. For example, $\pullAlong{f}$ takes $T$-indexed groups to $S$-indexed groups, and so on. Furthermore, by \cref{RepsmallRightAdjoint}, if $f$ has a right adjoint, then $\pullAlong{f}$ will take \repsmall/ structures to \repsmall/ structures.
+Observe that, as $\pullAlong{f}$ for an arbitrary functor $f : S \to T$ preserves finite limits (by \magicref{PullalongIsLex}), it not only takes $T$-indexed sets to $S$-indexed sets but also acts as a functor from $T$-indexed structures to $S$-indexed structures more generally, for any notion of structure definable using finite limits. For example, $\pullAlong{f}$ takes $T$-indexed groups to $S$-indexed groups, and so on. Furthermore, by \magicref{RepsmallRightAdjoint}, if $f$ has a right adjoint, then $\pullAlong{f}$ will take \repsmall/ structures to \repsmall/ structures.
 
 \subsection{Indexed categories}
 \begin{definition}
@@ -295,7 +294,7 @@ So in general, when we wish to talk about the appropriate notion of \quote{stric
 None of the results in this work are ever particularly sensitive to what choice of basic such operations we take. We shall simply suppose some such choice has been made whenever needed, and refer to its operations as our basic limits. For convenience, if ever it should matter, we can presume there are only finitely many basic limit operations involved in defining a strict lexcategory (or any such finitely axiomatizable thing). If the reader simply cannot be put at peace without us making a concrete choice, let us say a strict lexcategory is defined by having a chosen terminal object, a chosen binary product operator, and a chosen (binary) equalizer operator.
 
 \begin{definition}
-Of course, we can speak of \defined{indexed strict categories} now (or indexed strict lexcategories, indexed strict categories with finite products, etc), straightforwardly via \cref{IndexedStructuresDefn}, as the appropriate diagram of indexed sets and functions between them. And we can speak of such indexed strict categories as being \repsmall/, just in case their indexed sets of objects and of morphisms are both \repsmall/.
+Of course, we can speak of \defined{indexed strict categories} now (or indexed strict lexcategories, indexed strict categories with finite products, etc), straightforwardly via \magicref{IndexedStructuresDefn}, as the appropriate diagram of indexed sets and functions between them. And we can speak of such indexed strict categories as being \repsmall/, just in case their indexed sets of objects and of morphisms are both \repsmall/.
 \end{definition}
 
 \begin{definition}
@@ -303,7 +302,7 @@ We also say an indexed strict category is \defined{locally \repsmall/} if the ma
 \end{definition}
 
 \begin{definition}
-We will now say an indexed category is \defined{\repsmall/} or \defined{locally \repsmall/}\footnote{We could have defined the notion of an indexed category being locally \repsmall/ in a direct way, instead of circuitously through considering an equivalent indexed strict category, as the difficulties with indexed categories not having a well-defined set of objects do not apply to the individual hom-sets of morphisms an indexed category. However, writing out the theory of maps between indexed categories whose fibers can be treated as indexed sets, and then re-proving such facts as that this property is preserved in the manner of \cref{RepSmallRightAdjointFibers}, seemed more time-consuming and further afield from our ultimate interests in these notes than simply giving the definition of \quote{locally \repsmall/} in this way.} if it is equivalent to some indexed strict category which is \repsmall/ or locally \repsmall/, respectively. Note that we do not demand that, as part of its structure, any particular such strict category is selected; merely, that it is possible to do so. However, we may use the terminology \defined{internal category}, to mean the selection of a specific \repsmall/ indexed strict category; similarly, an \defined{internal lexcategory} will mean the selection of a specific \repsmall/ indexed strict lexcategory (including chosen basic limits), and so on.
+We will now say an indexed category is \defined{\repsmall/} or \defined{locally \repsmall/}\footnote{We could have defined the notion of an indexed category being locally \repsmall/ in a direct way, instead of circuitously through considering an equivalent indexed strict category, as the difficulties with indexed categories not having a well-defined set of objects do not apply to the individual hom-sets of morphisms an indexed category. However, writing out the theory of maps between indexed categories whose fibers can be treated as indexed sets, and then re-proving such facts as that this property is preserved in the manner of \magicref{RepSmallRightAdjointFibers}, seemed more time-consuming and further afield from our ultimate interests in these notes than simply giving the definition of \quote{locally \repsmall/} in this way.} if it is equivalent to some indexed strict category which is \repsmall/ or locally \repsmall/, respectively. Note that we do not demand that, as part of its structure, any particular such strict category is selected; merely, that it is possible to do so. However, we may use the terminology \defined{internal category}, to mean the selection of a specific \repsmall/ indexed strict category; similarly, an \defined{internal lexcategory} will mean the selection of a specific \repsmall/ indexed strict lexcategory (including chosen basic limits), and so on.
 \end{definition}
 
 We note without detailed proof (\TODOinline{Give or cite proofs}) some strictification results which will be useful to us later.
@@ -316,7 +315,7 @@ Every category is equivalent to some strict category.
 Every lexcategory is equivalent to some strict lexcategory.
 \end{theorem}
 \begin{proof}
-One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \cref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limits for each basic limit within $C'$. This is readily done using the Axiom of Choice. (In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate choice of $C'$ rather than an arbitrary one, but can still be carried out.)
+One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \magicref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limits for each basic limit within $C'$. This is readily done using the Axiom of Choice. (In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate choice of $C'$ rather than an arbitrary one, but can still be carried out.)
 \end{proof}
 
 \begin{theorem}\label{StrictifyLexfunctor}
@@ -381,4 +380,4 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
-\end{document}
+\fileend

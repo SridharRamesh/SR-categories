@@ -1,5 +1,4 @@
-\documentclass[./main.tex]{subfiles}
-\begin{document}
+\filestart
 
 \section{Models}
 
@@ -100,7 +99,7 @@ The initial arithmetic universe $U$ probably satisfies a property slightly stron
 We now know that we have at least one such functor (the unique AU map from $A$ to $(A/f)$). But how do we see uniqueness (qua functor, not uniqueness qua AU map)? Perhaps a more careful analysis of the gluing construction will tell us that a functor into the comma category is an AU map just in case both its projections are? That is, the forgetful functor from the comma category to the product category creates (i.e., preserves AND reflects) AU structure. [Is this what we want? Is creating structure the same as saying that the forgetful functor composed with any other functor preserves and reflects the property of AU-structure-preservingness in the other functor? Yes, I think so.] This should be relatively straightforward to show for limits and colimits, by general comma category properties, and then also for list objects. \TODO
 \end{TODOblock}
 
-\subsection{Models based on well-founded trees/well-founded posets}
+\subsection{Models based on well-founded posets/well-founded semicategories}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb's theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
 
 Previous iterations of this document at this point gave an overly complicated as a way of describing something simple (though still good to understand):
@@ -156,4 +155,4 @@ Note that while typical categorical arguments work within structural set theory,
 
 \TODOinline{Give topos of trees example as well. This is what happens when we take $f$ as the identity functor and $Struct = Disc$ as the free category on some semicategory (in particular, the semicategory of natural numbers with strict reverse ordering). Note that this is an example of an introspective theory in which the functor from the introspective theory to the global aspect of the geminal category is an equivalence of categories (probably an equivalence of geminal categories, even? Thus, what we were calling a GLS-category...). Our $\Box$ operator becomes, on this category, what Birkedal et al call the step operator.}
 
-\end{document}
+\fileend
