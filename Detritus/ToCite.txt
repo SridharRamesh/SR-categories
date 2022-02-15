@@ -69,3 +69,10 @@ Nakano. Fixed-point logic with the approximation modality and its Kripke complet
 Non-Well-Foundedness of Well-Orderable Power Sets. T. E. Forster and J. K. Truss. This mentions, in passing in its introduction, that there cannot be an infinite decreasing sequence of cardinals, each at least as large as the powerset of the next, even without presumptions about Choice or Foundation. This is also a consequence of our introspective theories based on well-founded sets: this is precisely the condition that stops us from generalizing such introspective theories to non-well-founded sets (as is necessary, as otherwise Loeb's theorem within these introspective theories would prove the underlying poset to be well-founded after all). See also discussion of "Specker trees".
 
 "Notes on Type Systems" by Voevodsky discusses distinction between categories in strict and non-strict sense (with different terminology) in its introduction. It also apparently discusses the process of splitting fibrations somewhere, but I can't quite see where that is.
+
+Investigate connections to Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes and the like.
+
+THE GUARDED LAMBDA-CALCULUS by Birkedal, Bizjak, et al
+
+Denotational semantics for guarded dependent
+type theory by Bizjak, MØGELBERG, et al.

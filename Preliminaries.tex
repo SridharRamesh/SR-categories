@@ -59,7 +59,7 @@ That is, from a $T$-indexed set $P$, we may construct the following $S$-indexed 
 Given $f : S \to T$ and an object $s$ in $S$ and a $T$-indexed set $P$, we have that $\Hom(s, \pullAlong{f}P) = \Hom(f(s), P)$, with this correspondence being natural in both $s$ and $P$.
 \end{theorem}
 \begin{proof}
-Keep in mind that in these \quote{Hom}s, $s$ and $f(s)$ have implicitly been construed as $S$-indexed sets via the Yoneda embedding, so we can apply the Yoneda lemma to both sides of the equation to reduce it to $(\pullAlong{f}P)(s) = P(f(s))$, which is the definition of $\pullAlong{f}$.
+Keep in mind that in these Hom-expressions, $s$ and $f(s)$ have implicitly been construed as $S$-indexed sets via the Yoneda embedding, so we can apply the Yoneda lemma to both sides of the equation to reduce it to $(\pullAlong{f}P)(s) = P(f(s))$, which is the definition of $\pullAlong{f}$.
 
 This completes the proof. (In fancy categorical jargon, we have demonstrated that $\yoneda \circ f : S \to \Psh{T}$ is the relative left adjoint of $\pullAlong{f} : \Psh{T} \to \Psh{S}$, relative to the Yoneda embedding $\yoneda : S \to \Psh{S}$. Equivalently, we have demonstrated that left Kan extension along $f$ takes representable functors to representable functors by application of $f$ on their representing objects.)
 \end{proof}
@@ -315,7 +315,7 @@ Every category is equivalent to some strict category.
 Every lexcategory is equivalent to some strict lexcategory.
 \end{theorem}
 \begin{proof}
-One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \magicref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limits for each basic limit within $C'$. This is readily done using the Axiom of Choice. (In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate choice of $C'$ rather than an arbitrary one, but can still be carried out.)
+One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \magicref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limits for each basic limit within $C'$. This is readily done using the Axiom of Choice. (In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate choice of $C'$ rather than an arbitrary one, but can still be carried out. In particular, we can create the free strict lexcategory $D$ extending $C'$ while preserving all basic limit cones (in the weaker, non-on-the-nose sense, as $C'$ does not itself have chosen limits). The map from $C'$ into this $D$ will be full, faithful, and essentially surjective on objects; thus, an equivalence of categories.)
 \end{proof}
 
 \begin{theorem}\label{StrictifyLexfunctor}

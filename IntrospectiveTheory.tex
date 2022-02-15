@@ -227,7 +227,7 @@ Let us now finally give the example-oriented reader an archetypal example of an 
 
 Let us start with the first-order logical theory ZF-Finite: the theory ZF but with the axiom of infinity replaced by its negation\footnote{This theory happens to be equivalent to Peano Arithmetic in a suitable sense, but it will be more convenient for us to speak in terms of ZF-Finite so as not to fret about codings of a sort every modern mathematician readily takes for granted in a ZF-style context.}. The universe this theory describes is the hereditarily finite sets. Throughout this construction, whenever we speak of formulae, we mean formulae in the language of ZF-Finite, and whenever we speak of provability, we mean provable within ZF-Finite.
 
-Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers (ranging over the entire universe), after which all other quantifiers are bounded (ranging only over the elements of some particular definable finite set).
+Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers (ranging over the entire universe), after which all other quantifiers are bounded (ranging only over the elements of some particular definable finite set\footnote{Definable in the sense that it is given by a term in the language of ZF, when this language is taken to include the standard constructors of ZF-Finite (e.g., powerset, pairing, etc) as function symbols. This term may contain parameters given by previously quantified variables. We trust the reader understands the standard notion of $\Sigma_1$ formulae in the ZF context and will not go into exacting detail.}).
 
 Now let us define a category $T'$ whose objects are the $\Sigma_1$ formulae with one free variable. Such formulae amount to certain definable subsets of the universe.
 
@@ -336,6 +336,12 @@ Thus, an introspective theory can always be construed as some inner-strict intro
 
 We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
 
+Also, it is convenient to have the following terminology:
+\begin{definition}
+By a \defined{geminal category}, we mean the internal category $C$ of an introspective theory $\langle T, C \rangle$, or the image of $C$ under any lexfunctor into any other lexcategory (in particular, into $\Set$).
+\end{definition}
+We will be studying the general structure of geminal categories much more in \parensref{GeminalChapter}.
+
 \subsection{Some useful constructions}
 Now let us discuss some constructions for building new (pre-)introspective theories from old ones, or general tools for reasoning about (pre-)introspective theories.
 
@@ -380,7 +386,7 @@ If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfun
 	\arrow[Rightarrow, "{G}"', from=1, to=2]
 \end{tikzcd}\]
 
-Of course, this yields an introspective or locally introspective theory just in case $D$ is small or locally small, respectively.
+Of course, this yields an introspective or locally introspective theory just in case $D$ is \repsmall/ or locally \repsmall/, respectively.
 \end{construction}
 
 \begin{construction}\label{IntrospPullback}

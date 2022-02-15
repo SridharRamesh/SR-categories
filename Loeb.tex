@@ -137,95 +137,126 @@ Now that we've gone over the traditional Lawvere's fixed point theorem, let us g
 
 \TODOinline{This revamp is in progress, a way of making the sections before and after this cleaner and easier to follow.}
 
+\newcommand{\point}{\star}
+\newcommand{\App}{App}
+\newcommand{\Bipresheaf}{Q_2}
+\newcommand{\Unipresheaf}{Q_1}
+\newcommand{\surjSource}{\sigma}
+
 \begin{theorem}\label{VeryGeneralSelfRelated}
-Let $T$ be an arbitrary category, and let $P_1 \in \Psh{T}$ and $P_2 \in \Psh{T \times T}$. Suppose given also a map $\omega : \pullAlong{\Delta}P_2 \to P_1$ where $\Delta : T \to T \times T$ is the diagonal functor. (That is, $\omega$ comprises a system of maps $\omega_t : P_2(t, t) \to P_1(t)$ for each object $t$ in $T$, natural in $t$).
+Let $T$ be an arbitrary category, and let $\Unipresheaf \in \Psh{T}$ and $\Bipresheaf \in \Psh{T \times T}$. Suppose given also a map $\omega : \pullAlong{\Delta}\Bipresheaf \to \Unipresheaf$ where $\Delta : T \to T \times T$ is the diagonal functor. (That is, $\omega$ comprises a system of maps $\omega_t : \Bipresheaf(t, t) \to \Unipresheaf(t)$ for each object $t$ in $T$, natural in $t$).
 
-Also, suppose given an object $point$ in $T$ and a binary relation $R$ on the set $P_1(point)$. (We do not presume $R$ to be an equivalence relation or symmetric or any such thing.)
+Also, suppose given an object $\point$ in $T$ and a binary relation $R$ on the set $\Unipresheaf(\point)$. (We do not presume $R$ to be an equivalence relation or symmetric or any such thing.)
 
-Let us now suppose given an object $s$ of $T$ and an $App \in P_2(s, s)$ such that $App$ has the pointwise surjectivity-like property that, for every $F \in P_1(s)$, there is an $f \in \Hom(point, s)$ such that for every $x \in \Hom(point, s)$, we have that $\omega_{point}( App(f, x) ) \in P_1(point)$ is related by $R$ to $F(x) \in P_1(point)$.
+Let us now suppose given an object $\surjSource$ of $T$ and an $\App \in \Bipresheaf(\surjSource, \surjSource)$ such that $\App$ has the pointwise surjectivity-like property that, for every $F \in \Unipresheaf(\surjSource)$, there is an $f \in \Hom(\point, \surjSource)$ such that for every $x \in \Hom(\point, \surjSource)$, we have that $\omega_{\point}( \App(f, x) ) \in \Unipresheaf(\point)$ is related by $R$ to $F(x) \in \Unipresheaf(\point)$.
 
-% https://q.uiver.app/?q=WzAsMyxbMSwxLCIocywgcykiXSxbMiwwLCJQXzIiXSxbMCwwLCIocG9pbnQsIHBvaW50KSJdLFswLDEsIkFwcCIsMl0sWzIsMCwiZiBcXHRpbWVzIHgiLDJdLFsyLDEsIkFwcChmLCB4KSJdLFs1LDAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+% https://q.uiver.app/?q=WzAsMyxbMSwwLCIoXFxzdXJqU291cmNlLCBcXHN1cmpTb3VyY2UpIl0sWzIsMSwiXFxCaXByZXNoZWFmIl0sWzAsMSwiKFxccG9pbnQsIFxccG9pbnQpIl0sWzAsMSwiXFxBcHAiXSxbMiwwLCIoZiwgeCkiXSxbMiwxLCJcXEFwcChmLCB4KSIsMl0sWzUsMCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 \[\begin{tikzcd}
-	{(point, point)} && {P_2} \\
-	& {(s, s)}
-	\arrow["App"', from=2-2, to=1-3]
-	\arrow["{f \times x}"', from=1-1, to=2-2]
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{App(f, x)}", from=1-1, to=1-3]
-	\arrow[shorten <=3pt, Rightarrow, no head, from=0, to=2-2]
+	& {(\surjSource, \surjSource)} \\
+	{(\point, \point)} && \Bipresheaf
+	\arrow["\App", from=1-2, to=2-3]
+	\arrow["{(f, x)}", from=2-1, to=1-2]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\App(f, x)}"', from=2-1, to=2-3]
+	\arrow[shorten <=3pt, Rightarrow, no head, from=0, to=1-2]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsMyxbMCwwLCJwb2ludCJdLFsyLDAsIlBfMSJdLFsxLDEsInMiXSxbMCwxLCJcXG9tZWdhX3twb2ludH0oQXBwKGYsIHgpKSJdLFswLDIsIngiLDJdLFsyLDEsIkYiLDJdLFszLDIsIlIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dXQ==
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXHBvaW50Il0sWzIsMCwiXFxVbmlwcmVzaGVhZiJdLFsxLDEsIlxcc3VyalNvdXJjZSJdLFswLDEsIlxcb21lZ2Ffe1xccG9pbnR9KFxcQXBwKGYsIHgpKSJdLFswLDIsIngiLDJdLFsyLDEsIkYiLDJdLFszLDIsIlIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9LCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJzcXVpZ2dseSJ9fX1dXQ==
 \[\begin{tikzcd}
-	point && {P_1} \\
-	& s
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{\omega_{point}(App(f, x))}", from=1-1, to=1-3]
+	\point && \Unipresheaf \\
+	& \surjSource
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\omega_{\point}(\App(f, x))}", from=1-1, to=1-3]
 	\arrow["x"', from=1-1, to=2-2]
 	\arrow["F"', from=2-2, to=1-3]
 	\arrow["R", shorten <=3pt, Rightarrow, squiggly, from=0, to=2-2]
 \end{tikzcd}\]
 
-Then there is an element of $P_1(point)$ which is related by $R$ to itself.
+Then there is an element of $\Unipresheaf(\point)$ which is related by $R$ to itself.
 \end{theorem}
 \begin{proof}
-Specifically, take the supposition two sentences ago and consider the particular case where $F = \omega_s(App) \in P_1(s)$ and $x = f$. This tells us that $\omega_{point}( App(f, f) )$ is related by $R$ to $\omega_s(App)(f)$. But by naturality, $\omega_s(App)(f) = \omega_{point}( App(f, f) )$ as well. Thus, this is a value which is related to itself.
+Take the pointwise surjectivity-like supposition and consider the particular case where $F = \omega_{\surjSource}(\App) \in \Unipresheaf(\surjSource)$ and $x = f$. This tells us that $\omega_{\point}( \App(f, f) )$ is related by $R$ to $\omega_{\surjSource}(\App)(f)$. But by the naturality of $\omega$ with respect to $f$, we have that $\omega_{\surjSource}(\App)(f) = \omega_{\point}( \App(f, f) )$ as well. Thus, this is a value which is related to itself.
 
-% https://q.uiver.app/?q=WzAsOCxbMCwwLCJQXzIocywgcykiXSxbMCwzLCJQXzEocykiXSxbMywwLCJQXzIocG9pbnQsIHBvaW50KSJdLFszLDMsIlBfMShwb2ludCkiXSxbMSwxLCJBcHAiXSxbMiwxLCJBcHAoZiwgZikiXSxbMSwyLCJcXG9tZWdhX3MoQXBwKSJdLFsyLDIsIlxcb21lZ2FfcyhBcHApKGYpID0gXFxvbWVnYV97cG9pbnR9KEFwcChmLCBmKSkiXSxbMCwxLCJcXG9tZWdhX3MiLDJdLFswLDIsIlBfMihmLCBmKSJdLFsxLDMsIlBfMShmKSIsMl0sWzIsMywiXFxvbWVnYV97cG9pbnR9Il0sWzQsNSwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDYsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNiw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzUsNywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dXQ==
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEJpcHJlc2hlYWYoXFxzdXJqU291cmNlLCBcXHN1cmpTb3VyY2UpIl0sWzAsMywiXFxVbmlwcmVzaGVhZihcXHN1cmpTb3VyY2UpIl0sWzMsMCwiXFxCaXByZXNoZWFmKFxccG9pbnQsIFxccG9pbnQpIl0sWzMsMywiXFxVbmlwcmVzaGVhZihcXHBvaW50KSJdLFsxLDEsIlxcQXBwIl0sWzIsMSwiXFxBcHAoZiwgZikiXSxbMSwyLCJcXG9tZWdhX3tcXHN1cmpTb3VyY2V9KFxcQXBwKSJdLFsyLDIsIlxcb21lZ2Ffe1xcc3VyalNvdXJjZX0oXFxBcHApKGYpID0gXFxvbWVnYV97XFxwb2ludH0oXFxBcHAoZiwgZikpIl0sWzAsMSwiXFxvbWVnYV97XFxzdXJqU291cmNlfSIsMl0sWzAsMiwiXFxCaXByZXNoZWFmKGYsIGYpIl0sWzEsMywiXFxVbmlwcmVzaGVhZihmKSIsMl0sWzIsMywiXFxvbWVnYV97XFxwb2ludH0iXSxbNCw1LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzQsNiwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs2LDcsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDIseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV1d
 \[\begin{tikzcd}
-	{P_2(s, s)} &&& {P_2(point, point)} \\
-	& App & {App(f, f)} \\
-	& {\omega_s(App)} & {\omega_s(App)(f) = \omega_{point}(App(f, f))} \\
-	{P_1(s)} &&& {P_1(point)}
-	\arrow["{\omega_s}"', from=1-1, to=4-1]
-	\arrow["{P_2(f, f)}", from=1-1, to=1-4]
-	\arrow["{P_1(f)}"', from=4-1, to=4-4]
-	\arrow["{\omega_{point}}", from=1-4, to=4-4]
+	{\Bipresheaf(\surjSource, \surjSource)} &&& {\Bipresheaf(\point, \point)} \\
+	& \App & {\App(f, f)} \\
+	& {\omega_{\surjSource}(\App)} & {\omega_{\surjSource}(\App)(f) = \omega_{\point}(\App(f, f))} \\
+	{\Unipresheaf(\surjSource)} &&& {\Unipresheaf(\point)}
+	\arrow["{\omega_{\surjSource}}"', from=1-1, to=4-1]
+	\arrow["{\Bipresheaf(f, f)}", from=1-1, to=1-4]
+	\arrow["{\Unipresheaf(f)}"', from=4-1, to=4-4]
+	\arrow["{\omega_{\point}}", from=1-4, to=4-4]
 	\arrow[maps to, from=2-2, to=2-3]
 	\arrow[maps to, from=2-2, to=3-2]
 	\arrow[maps to, from=3-2, to=3-3]
 	\arrow[maps to, from=2-3, to=3-3]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsMyxbMCwwLCJwb2ludCJdLFsyLDAsIlBfMSJdLFsxLDEsInMiXSxbMCwxLCJcXG9tZWdhX3twb2ludH0oQXBwKGYsIGYpKSJdLFswLDIsImYiLDJdLFsyLDEsIlxcb21lZ2FfcyhBcHApIiwyXSxbMywyLCJSIiwwLHsib2Zmc2V0IjotMiwic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XSxbMywyLCIiLDAseyJvZmZzZXQiOjIsInNob3J0ZW4iOnsic291cmNlIjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXHBvaW50Il0sWzIsMCwiXFxVbmlwcmVzaGVhZiJdLFsxLDEsIlxcc3VyalNvdXJjZSJdLFswLDEsIlxcb21lZ2Ffe1xccG9pbnR9KFxcQXBwKGYsIGYpKSJdLFswLDIsImYiLDJdLFsyLDEsIlxcb21lZ2Ffe1xcc3VyalNvdXJjZX0oXFxBcHApIiwyXSxbMywyLCJSIiwwLHsib2Zmc2V0IjotMiwic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoic3F1aWdnbHkifX19XSxbMywyLCIiLDAseyJvZmZzZXQiOjIsInNob3J0ZW4iOnsic291cmNlIjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
-	point && {P_1} \\
-	& s
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{\omega_{point}(App(f, f))}", from=1-1, to=1-3]
+	\point && \Unipresheaf \\
+	& \surjSource
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\omega_{\point}(\App(f, f))}", from=1-1, to=1-3]
 	\arrow["f"', from=1-1, to=2-2]
-	\arrow["{\omega_s(App)}"', from=2-2, to=1-3]
+	\arrow["{\omega_{\surjSource}(\App)}"', from=2-2, to=1-3]
 	\arrow["R", shift left=2, shorten <=3pt, Rightarrow, squiggly, from=0, to=2-2]
 	\arrow[shift right=2, shorten <=3pt, Rightarrow, no head, from=0, to=2-2]
 \end{tikzcd}\]
+This completes the proof.
+
+\TODOinline{Notationally, we should perhaps write $\pullAlong{f}\omega$ instead of $\omega(f)$ and the like.}
 \end{proof}
 
-This leads immediately to a generalization of itself as corollary, which is most often the form we are interested in:
+We have given our generalization of Lawvere's fixed point theorem in such a general form above for comparison to other generalizations of Lawvere's fixed point theorem. See the related work section at the end. However, we will now specialize this generalization back down to a more specific form, more suited to our particular needs in thinking about introspective theories and their brethren.
 
-\begin{corollary}\label{VeryGeneralFixedModuloRelation}
-Let all values be given as in \magicref{VeryGeneralSelfRelated}. Furthermore, suppose we have some additional relation $S$ on $P_1(point)$ such that for every $F \in P_1(s)$, there is some $G \in P_1(s)$, such that for every $x : point \to s$, we have that $F(x)$ and $G(x)$ are related by $S$. Then there are a pair of elements $x, y \in P_1(point)$ such that $x$ and $y$ are simultaneously related by both $R$ and $S$.
-\end{corollary}
-\begin{proof}
-Consider the relation $RandS(x_1, x_2) = $ \quote{There exists a $y$ such that $R(x_1, y)$ and $S(x_2, y)$}. Now suppose given an arbitrary $F \in P_1(s)$ and let $G \in P_1(s)$ be chosen accordingly in keeping with our presumption. By the presumed pointwise surjectivity of $App$ with respect to $R$ as applied to $G$, there is an $f \in \Hom(point, s)$ such that for every $x \in \Hom(point, s)$, we have that $\omega_{point}( App(f, x) ) \in P_1(point)$ is related by $R$ to $G(x) \in P_1(point)$. As $F(x)$ is automatically related by $S$ to $G(x)$, it follows that $\omega_{point}( App(f, x) )$ is related by $RandS$ to $F(x)$. This demonstrates the pointwise surjectivity of $App$ with respect to $RandS$ for arbitrary $F$. Thus, we can invoke \magicref{VeryGeneralSelfRelated} with $RandS$ in place of $R$, to obtain some $x$ which is related by $RandS$ to itself. Which is to say, there is some $y$ such that $x$ is related to $y$ by both $R$ and $S$, as desired.
-\end{proof}
+\subsection{Presheaf diagonalization for pre-introspective theories}
+\begin{theorem}\label{RevampedPreintroLawvere}
+Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary theory. As a reminder to the reader, this means, let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $1$ be an object in the global aspect of $C$ (not necessarily a terminal object), and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 
-The corollary we will need will be more suited to our use of introspective theories. It is like so:
+(In particular, any pre-introspective finite product theory carries this structure, which covers all the applications we will be interested in (including any introspective theory), but we wish for a moment to make it clear that the following construction does not rely on any extra structure.)
 
-\begin{corollary}
-Let $\langle T, C, \introS, \introN \rangle$ be a pre-introspective theory with finite products.\footnote{We do not actually use any of the finite product structure in this proof, beyond the assumption that the $D$-defined aspect of $C$ has some particular object $1$ available to us. Even the terminality of this object $1$ is not important in the proof. But we state things in terms of pre-introspective theories with finite products anyway, as every application we are interested in has this structure.}
-
-Consider now a $T$-indexed presheaf $P$ on $C$. Suppose also given some object $Y$ in $T$ and map $d : Y \to P(\introS(Y))$.
+Consider now a $T$-indexed presheaf $P$ on $C$ \TODOinline{We may need to clarify in the preliminaries what this amounts to, in the double-indexing section}. Suppose also given some object $\surjSource$ in $T$ and map $\App : \surjSource \to P(\introS(\surjSource))$.
 
 Now, let us suppose $P(1)$ is $T$-small, so that it will make sense to speak of $\introS(P(1))$.
 
-Furthermore, let us make a relational surjectivity assumption on $d$. Specifically, suppose we are given a relation $R$ on $P$ (that is, another presheaf on $C$, and two parallel maps from it into $P$), and let us suppose $d$ is surjective with respect to relation $R$ (that is, with respect to the aspect of $R$ at $\introS(Y)$) over some domain of definition $D$.
+Furthermore, let us make a relational surjectivity assumption on $\App$. Specifically, suppose we are given a relation $E$ on $P$ (that is, another presheaf on $C$, and two parallel maps from it into $P$), and let us suppose $\App$ is surjective with respect to relation $E$ (that is, with respect to the aspect of $E$ at $\introS(\surjSource)$) over some domain of definition $\point \in \Ob(T)$.
 
-Then from any $D$-defined generalized element $f$ of $P(\introS(P(1)))$, we obtain a $D$-defined element $L(f)$ of $P(1)$, such that transporting $f$ back along $\introN_{P(1)}(L(f))$ yields a value related by $R$ to $L(f)$.
-\end{corollary}
+Then from any $\point$-defined element $j$ of $P(\introS(P(1)))$, we obtain a $\point$-defined element $L(j)$ of $P(1)$, such that transporting $j$ back along $\introN_{P(1)}(L(j))$ yields a value related by $E$ to $L(j)$.
+\end{theorem}
 \begin{proof}
-This is the instance of \magicref{VeryGeneralFixedModuloRelation} where we take $P_2(t_1, t_2) = \Hom(t_1, P(\introS(t_2)))$ and $P_1(t) = \Hom(t, P(1))$. Furthermore, $\omega_t(b)$ is given by taking $\introN_t : t \to \Hom(1, \introS(t))$ and combining it with $b : t \to P(\introS(t))$ using the presheaf action of $P$, to get $\omega_t(b) : t \to P(1)$. Finally, we take $n$ to be given by \TODO. The relational surjectivity is ensured by \TODO.
+\TODOinline{Make names match up in everything referencing this theorem later}.
+
+This is an instance of \magicref{VeryGeneralSelfRelated}. We take $\Bipresheaf(t_1, t_2) = \Hom(t_1, P(\introS(t_2)))$ and $\Unipresheaf(t) = \Hom(t, P(1))$.
+
+Furthermore, we define the natural transformation $\omega_t : \Hom(t, P(\introS(t))) \to \Hom(t, P(1))$ like so:
+First observe that the presheaf action of $P$ gives us a map $: P(\introS(t')) \times \Hom_C(1, \introS(t')) \to P(1)$ extranatural in $t'$, and therefore, by applying $\Hom(t, -)$, we have a transformation $: \Hom(t, P(\introS(t'))) \times \Hom(t, \Hom_C(1, \introS(t'))) \to \Hom(t, P(1))$, separately natural in $t$ and extranatural in $t'$. We specialize $t' = t$ and we compose onto the second factor of the input the extranatural transformation $: 1 \to \Hom(t, \Hom_C(1, \introS(t)))$ induced by $\introN$, to get our natural transformation $\omega_t : \Hom(t, P(\introS(t))) \to \Hom(t, P(1))$.
+\TODOinline{Draw diagram}
+
+In the following, given a $T$-indexed set $B$, we write the annotation $b \in B$ to indicate that $b$ is an element of $B(\point)$ specifically:
+
+Given $j \in P(\introS(P(1)))$, we take the binary relation $R$ on the $\point$-aspect of $P(1)$ to be given by $R(a, b) = E_{\point}(a, \pullAlong{( \introN_{P(1)}(b) )} j)$, where $\pullAlong{( \introN_{P(1)}(b) )} j$ refers to $j \in P(\introS(P(1)))$ transported back via the presheaf action of $P$ along $\introN_{P(1)}(b) \in \Hom(1, \introS(P(1)))$.
+
+The relational surjectivity requirement for invoking \magicref{VeryGeneralSelfRelated} with respect to $R$ is ensured by the following demonstration: Let an arbitrary $F : \Hom(\surjSource, P(1))$ be given. Consider pulling our $j \in P(\introS(P(1)))$ back along $\introS(F) : \Hom(\introS(\surjSource), \introS(P(1)))$ to yield $\pullAlong{\introS(F)}j \in P(\introS(\surjSource))$. Our relational surjectivity presupposition with respect to $E$ then gives us $f \in \surjSource$ such that $\App(f) \in P(\introS(\surjSource))$ is related by $E_{\introS(\surjSource)}$ to $\pullAlong{\introS(F)}j \in P(\introS(\surjSource))$.
+
+Now suppose given an arbitrary $x \in \surjSource$. We have that $\omega_{\point} (\App(f, x))$ is related by $E_{\point}$ to $(\pullAlong{\introS(F)}j)(x) \in P(1)$. \TODOinline{Why? Use definition of $\omega$; we're pulling back both sides of previous line along the same thing}. Note that $(\pullAlong{\introS(F)}j)(x) \in P(1)$ here is by definition the pullback of $(\pullAlong{\introS(F)}j)$ along the action of $P$ on $\introN_{\surjSource}(x) \in \Hom(1, \introS(\surjSource))$. Thus, $\pullAlong{\introN_{\surjSource}(x)}\pullAlong{\introS(F)}j$, which equals $\pullAlong{( \introS(F) \circ \introN_{\surjSource}(x) )}j$. But $\introS(F) \circ \introN_{\surjSource}(x) = \introN_{P(1)}(F(x))$ by the naturality of $\introN$ with respect to $F$.
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXHN1cmpTb3VyY2UiXSxbMCwxLCJcXEhvbV9DKDEsIFxcaW50cm9TKFxcc3VyalNvdXJjZSkpIl0sWzEsMSwiXFxIb21fQygxLCBcXGludHJvUyhQKDEpKSkiXSxbMSwwLCJQKDEpIl0sWzAsMSwiXFxpbnRyb05fe1xcc3VyalNvdXJjZX0iLDJdLFsxLDIsIlxcaW50cm9TKEYpIFxcY2lyYyAtIiwyXSxbMCwzLCJGIl0sWzMsMiwiXFxpbnRyb05fe1AoMSl9Il1d
+\[\begin{tikzcd}
+	\surjSource & {P(1)} \\
+	{\Hom_C(1, \introS(\surjSource))} & {\Hom_C(1, \introS(P(1)))}
+	\arrow["{\introN_{\surjSource}}"', from=1-1, to=2-1]
+	\arrow["{\introS(F) \circ -}"', from=2-1, to=2-2]
+	\arrow["F", from=1-1, to=1-2]
+	\arrow["{\introN_{P(1)}}", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+Thus, we have shown that $\omega_{\point} (\App(f, x))$ is related by $E_{\point}$ to $\pullAlong{\introN_{P(1)}(F(x))}j$. This means $\omega_{\point} (\App(f, x))$ is related by $R$ to $F(x)$. This was exactly the pointwise surjectivity presumption we needed to establish in order to invoke \magicref{VeryGeneralSelfRelated} and so we are now done. Note that the conclusion of this invocation of \magicref{VeryGeneralSelfRelated} is exactly the conclusion we sought to establish.
+
+\TODOinline{Clean up the above, add diagrams}
 \end{proof}
 
 This process of turning $f: P(\introS(P(1)))$ into $L(f): P(1)$ will ultimately represent \Loeb's theorem. In our box symbolism, this process turns $f : P(\Box P)$ into $L(f) : P(1)$, and when we apply $\introS$ to such a map, we get a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general, in the modalized context of a pre-introspective theory with finite products. Let us observe the fixed point properties of this construction in such generality for now, then we will specialize to specifically introspective theories and investigate further.
 
-\subsection{The general construction for pre-introspective theories}
+\subsection{Old version of presheaf diagonalization for pre-introspective theories}
 Now that we've gone over the traditional Lawvere's fixed point theorem, let us generalize it to the level of pre-introspective theories.
 
 \openNamed{construction}{General Diagonalization}\label{GeneralDiag}
@@ -361,7 +392,7 @@ But the value of \nameref{GeneralDiag} is that we have now formalized it at a pa
 
 In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from \magicref{RetractInT} and \magicref{RetractInC}, to get an unconditional version of \Loeb's theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(\introS(Y))$ always exists.
 
-\subsection{Bootstrapping}
+\subsection{Bootstrapping to \Loeb's theorem for introspective theories}
 We will now show how to bootstrap away this precondition, in the context of an introspective theory:
 
 Essentially, our plan is to apply \magicref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice. Put another way, we can take ourselves to be working with an inner-strict introspective theory, as every introspective theory can be equipped as such.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
@@ -433,6 +464,8 @@ Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there 
 \begin{observation}
 Note that this argument made essential use of the structure (notably, equalizers) available in an introspective theory, and thus does not apply in such full generality as \parensref{GeneralDiag} does. For example, we saw in \parensref{YCombinator} that we get fixed points for arbitrary functions in the untyped lambda calculus, but as a cartesian closed category in general is not an introspective theory, we cannot conclude that fixed points of functions in the untyped lambda calculus are unique (and indeed, they will not be, as one such function is the identity function, whose fixed points are all values!).
 \end{observation}
+
+\TODOinline{Show that the equalizer from X to []X to X equalized against $\id_X$ is $1$}
 
 \begin{observation}
 Note that this means that the apparent dependence on which particular object $Y$ and retraction from $P(\introS(Y))$ into $Y$ is used in the diagonalization theorem doesn't actually matter, in this context. We get the same result no matter what.
@@ -512,23 +545,23 @@ Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G f
 \subsection{Related work}
 \subsubsection{Related work to our generalization of Lawvere's fixed point theorem}
 One instance of \magicref{VeryGeneralSelfRelated} above is the generalization of Lawvere's fixed point theorem given by David Michael Roberts in \quote{Substructural fixed-point theorems and the diagonal argument: theme and variations}. \TODOinline{Cite properly}. We will not need this particular corollary, but we note it in passing.
-\begin{corollary}
-Let $T$ be an arbitrary category with objects $point$ and $p$, and let $B : T \times T \to T$ be a bifunctor on $T$ such that we have a transformation $\delta_t : t \to B(t, t)$ natural in objects $t$ of $T$.
+\begin{corollary}\label{DavidMichaelRoberts}
+Let $T$ be an arbitrary category with objects $\point$ and $p$, and let $B : T \times T \to T$ be a bifunctor on $T$ such that we have a transformation $\delta_t : t \to B(t, t)$ natural in objects $t$ of $T$.
 
-Suppose given an object $s$ of $T$ and an $App : B(s, s) \to p$ with the pointwise surjectivity property that for every $F' : s \to p$, there is an $f : point \to s$, such that for every $x : point \to s$, we have that $App \circ B(f, x) \circ \delta_{point} : point \to p$ equals $F' \circ x : point \to p$.
+Suppose given an object $s$ of $T$ and an $\App : B(s, s) \to p$ with the pointwise surjectivity property that for every $F' : s \to p$, there is an $f : \point \to s$, such that for every $x : \point \to s$, we have that $\App \circ B(f, x) \circ \delta_{\point} : \point \to p$ equals $F' \circ x : \point \to p$.
 
-Then every $m : p \to p$ has a fixed point, in the sense of an $e : point \to p$ such that $m \circ e = e$.
+Then every $m : p \to p$ has a fixed point, in the sense of an $e : \point \to p$ such that $m \circ e = e$.
 \end{corollary}
 \begin{proof}
-This is the instance of \magicref{VeryGeneralSelfRelated} where we take $P_2(t) = \Hom(B(t, t), p)$, $P_1(t) = \Hom(t, p)$, and $\omega_t(-) = - \circ \delta_t$, and we take $R(a, b)$ to be that $b$ equals $m \circ a$.
+This is the instance of \magicref{VeryGeneralSelfRelated} where we take $\Bipresheaf(t) = \Hom(B(t, t), p)$, $\Unipresheaf(t) = \Hom(t, p)$, and $\omega_t(-) = - \circ \delta_t$, and we take $R(a, b)$ to be that $b$ equals $m \circ a$.
 
-To establish the required pointwise surjectivity condition for $R$ in invoking \magicref{VeryGeneralSelfRelated}, let an arbitrary $F : s \to p$ be given and consider the presumed pointwise surjectivity condition for $F' = m \circ F$. This gives us an $f : point \to s$ such that for every $x : point \to s$, we have that $\omega_{point} (App \circ B(f, x))$ equals $F' \circ x = m \circ F \circ x$. This is precisely to say that $\omega_{point} (App \circ B(f, x))$ is related by $R$ to $F(x)$, as required.
+To establish the required pointwise surjectivity condition for $R$ in invoking \magicref{VeryGeneralSelfRelated}, let an arbitrary $F : s \to p$ be given and consider the presumed pointwise surjectivity condition for $F' = m \circ F$. This gives us an $f : \point \to s$ such that for every $x : \point \to s$, we have that $\omega_{\point} (\App \circ B(f, x))$ equals $F' \circ x = m \circ F \circ x$. This is precisely to say that $\omega_{\point} (App \circ B(f, x))$ is related by $R$ to $F(x)$, as required.
 \end{proof}
 Lawvere's fixed point theorem is of course the special case of this where \TODO.
 
-Many of the other theorems in the David Michael Roberts paper can also be seen as instances of our \magicref{VeryGeneralSelfRelated}. However, I have not been able to see conversely that our next theorem is an instance of any of the David Michael Roberts theorems (though of course the possibility exists t), even the special case of our next theorem when $R$ is restricted to identity. Nor conversely have I been able to establish the David Michael Roberts theorem from our next theorem. These appear to be incomparable points in the space of theorems between Lawvere's fixed point theorem and our very general \magicref{VeryGeneralSelfRelated}.
+Many of the other theorems in the David Michael Roberts paper can also be seen as instances of our \magicref{VeryGeneralSelfRelated}. However, I have not been able to see conversely that our \magicref{RevampedPreintroLawvere} (or even its special case when $R$ is restricted to identity) is an instance of any of the David Michael Roberts theorems. Nor conversely have I been able to establish \magicref{DavidMichaelRoberts} from our \magicref{RevampedPreintroLawvere} (or even its generalization where we do not demand for $T$ and $C$ to have finite product structure). These appear to be incomparable points in the space of theorems between Lawvere's fixed point theorem and our very general \magicref{VeryGeneralSelfRelated}.
 
 \subsubsection{Related work to our discussion of of uniqueness and initiality/terminality for fixed points within an introspective theory}
-\TODOinline{Discuss the relationship to models of guarded recursion, and the Birkedal et al paper on \quote{First steps in synthetic...}, where the initiality/terminality argument for contractive functors is presented}
+\TODOinline{Discuss the relationship to models of guarded recursion, and the Birkedal et al paper on \quote{First steps in synthetic...}, where the initiality/terminality argument for contractive functors is presented. Basically, Birkedal's definition 7.2 and lemma 7.6 do the work for us, but we can use contractive internal categories, rather than locally contractive enriched categories. We could consider indexed categories too?}
 
 \fileend

@@ -90,10 +90,14 @@ Our construction of introspective theories for the theory of initial toposes, et
 
 For the initial arithmetic universe, we can take A = B = the initial arithmetic universe and an identity functor. Our sigma1esqueness follows from the comma category/gluing concerns.
 
-The sigma1 models of PA, ZFC, etc, can be seen as coming from the initial arithmetic universe by freely adjoining inverses to some morphisms (i.e., localizing, but for lexcategories) and this presumably makes the map from the initial arithmetic universe into sigma1PA "dense" in the suitable sense.
+The sigma1 models of PA, ZFC, etc, can be seen as coming from the initial arithmetic universe by freely adjoining inverses to some morphisms (i.e., localizing, but for lexcategories) and this presumably makes the map from the initial arithmetic universe into sigma1PA "dense" in the suitable sense to conclude these are super-introspective theories.
 
 One kind of model we can consider that others haven't is a coproduct qua introspective theory of a logicky introspective theory (e.g., sigma1 PA) with a presheafy introspective theory (e.g., presheaves over omega).
 
-Any topos with countable coproducts has an internal initial topos with countable coproducts. This gives us a geminal topos-with-countable-coproducts, which is both uncountable and contains all kinds of uncomputable structure (e.g., all maps from N to 2).
+Any topos with countable coproducts has an internal initial topos with countable coproducts. (Indeed, an initial internal model of any theory given by countably or finitely many operations of countable or finite arity. The key thing is to be able to represent countably or finitely branching labelled well-founded trees. Here, the fact that any countably or finitely branching well-founded tree has countable or less many objects (because N x N injects into N) lets us represent these trees as subsets of N along with a suitable edge relation and a function from that subset to the labels. This is a W-type for a certain infinitary constructor. The presence of countable coproducts ensures that the internal notion of "a countable collection of Xes" suitably matches the external one; thus, any model of a countable theory internal to the topos as far as the external univerese is concerned is also one recognized internally to the topos as a model of said theory, in the sense of yielding appropriate diagrams in the slice category over N.). This gives us a geminal topos-with-countable-coproducts, which is both uncountable and contains all kinds of uncomputable structure (e.g., all maps from N to 2).
 
-Investigate relativizing our well-founded introspective theory construction to a Set which is itself an introspective theory
+Investigate relativizing our well-founded introspective theory construction to a Set which is itself an introspective theory.
+
+The difference between our well-founded models which have geminal categories which do not validate ~~[]0, and the ones which do validate ~~[]0, is like the difference between "strong induction" and "ordinary induction" so far as the Lob principle's interpretation goes.
+
+Our introspective theories are like extensional dependent type theory with sigma and identity types and guarded recursion with also a universe U (with u : U leading to el(U) : Type) such that []U and [](Sigma x : U, y : U. el(x) -> el(y)) are both coded by elements of U. When universes are presumed to be cartesian closed, our presumption is something like that [](Sigma x : U. el(x)) is coded by an element of U.

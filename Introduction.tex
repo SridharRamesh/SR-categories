@@ -1,14 +1,17 @@
 \filestart
 
 \section{Introduction}
-\TODOinline{Rewrite and expand all of this}
 The aim of these notes is to identify and draw attention to a certain simple and categorically natural kind of mathematical structure which both serves as an abstract environment for the reasoning used in establishing \Loeb's theorem in its traditional instances, and furthermore allows this and the associated theorems and fixed-point results of the \Goedel-\Loeb\ modal logic to be vastly generalized.
 
 Some such \Loeb-style fixed point phenomena have been explored in the literature before, but these notes aim to highlight a particularly minimal, simple, general abstraction that covers several threads of work in the literature, abstracting both the work on the \Goedel-\Loeb\ incompleteness theorems via arithmetic universes a la Joyal, and the work on \Loeb's theorem as a guarded fixed point combinator and on guarded (co)inductive types by Birkedal et al.
 
-Notably, as differentiated from much other work in the literature on type theories with guarded fixed points, we do not take the existence of guarded fixed points as a presumption of our framework by fiat, but rather achieve them as nontrivially derived from the framework. Also, in keeping with provability logic but as differentiated from much existing work on guarded fixed points, our models do not generally validate or have an inhabitant of the type $\neg \neg \Box 0$ (where $0$ stands for falsehood or the empty set, and $\neg$ stands for exponentiation with $0$ as base).
+We discover an interpretation of guarded recursion (with guarded fixed points at both the term and type level) within the traditional logical incarnations of \Godel's incompleteness theorem, such as within the initial arithmetic universe a la Joyal or within categorical structures corresponding directly to the definable functional relations modulo provable equality of Peano Arithmetic or ZF. I believe this is the first demonstration of the fact that these logical theories serve as models of guarded recursion not just at the level of propositions, but also for general terms and types.
 
-The core idea is the identification of those essentially algebraic theories satisfying the property that every model of these theories contains also, as part of its structure, a homomorphism into an internal model of the same theory.
+Our axiomatic framework also admits presheaf models, such as those already studied for general recursion, but a wider variety of presheaf-based models than those as well. In keeping with provability logic but as differentiated from much existing work on guarded fixed points, our models do not generally validate or have an inhabitant of the type $\neg \neg \Box 0$ (where $0$ stands for falsehood or the empty set, and $\neg$ stands for exponentiation with $0$ as base).
+
+Notably, as differentiated from much other work in the literature on guarded recursion, we do not take the existence of guarded fixed points (at either the term or type levels) as a presumption of our axiomatic framework by fiat, but rather achieve them as nontrivially derived from the framework.
+
+The core idea of this work is the identification of those essentially algebraic theories satisfying the property that every model of these theories contains also, as part of its structure, a homomorphism into an internal model of the same theory.
 
 This structure turns out to be viewable as a categorification of the Hilbert-Bernays derivability conditions of provability logic. In particular, it induces a bifunctor on each model of such a theory which is formally similar to the $\Box(A \implies B)$ operator of the \Goedel-\Loeb\ modal logic. Furthermore, as mentioned, various fixed-point theorems within these categories will be demonstrated, both at the level of terms and at the level of types. From these, the traditional instances of \Loeb's theorem in the context of provability of propositions falls out as a special case. Along the way, the relationship between \Loeb's theorem and presheaves is also highlighted, which has previously gone unremarked upon.
 
