@@ -7,4 +7,55 @@ Here, we give proofs previously delayed of a couple lemmas.
 
 \printProofs[IntrospLemmas]
 
+\subsection{Related work}
+Although not important for our main narrative, we note in passing that another interesting generalization of \magicref{LawveresFixedPointTheorem} was recently remarked upon in \autocite{roberts2021substructural}. The following (or rather, its contrapositive) was given as Theorem 11 there.
+
+\openNamed{theorem}{Magmoidal Fixed Point Theorem}\label{MagmoidalFixedPointTheorem}
+Let $T$ be an arbitrary category with objects $\point$ and $\Omega$, and let $B : T \times T \to T$ be a bifunctor on $T$ such that we have a transformation $\delta_t : t \to B(t, t)$ natural in $t$ from $T$. As ever, use \quote{point of} to mean \quote{element of the $\point$-aspect of}.
+
+Suppose given an object $X$ of $T$ and an $\alpha : B(X, X) \to \Omega$ with the pointwise surjectivity property that for every $F : X \to \Omega$, there is a point $f$ of $X$, such that for every point $x$ of $X$, we have that the following diagram commutes:
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXHBvaW50Il0sWzEsMCwiQihcXHBvaW50LCBcXHBvaW50KSJdLFsyLDAsIkIoWCwgWCkiXSxbMywwLCJcXE9tZWdhIl0sWzEsMSwiWCJdLFswLDEsIlxcZGVsdGFfe1xccG9pbnR9Il0sWzEsMiwiQihmLCB4KSJdLFsyLDMsIlxcYWxwaGEiXSxbMCw0LCJ4IiwyXSxbNCwzLCJGIiwyXV0=
+\[\begin{tikzcd}
+	\point & {B(\point, \point)} & {B(X, X)} & \Omega \\
+	& X
+	\arrow["{\delta_{\point}}", from=1-1, to=1-2]
+	\arrow["{B(f, x)}", from=1-2, to=1-3]
+	\arrow["\alpha", from=1-3, to=1-4]
+	\arrow["x"', from=1-1, to=2-2]
+	\arrow["F"', from=2-2, to=1-4]
+\end{tikzcd}\]
+
+Then for every $g : \Omega \to \Omega$, there is a point $\omega$ of $\Omega$ such that $\omega = g(\omega)$. That is to say, a fixed point of $g$.
+\closeNamed{theorem}
+\begin{proof}
+Take $\App : X \times X \to \Omega$ to be defined like so: For each object $t$ of $T$, we define $\App_t : \Hom(t, X) \times \Hom(t, X) \to \Hom(t, \Omega)$ by giving $\App_t(m, n)$ as the following composition:
+
+% https://q.uiver.app/?q=WzAsNCxbMSwwLCJCKHQsIHQpIl0sWzAsMCwidCJdLFszLDAsIkIoWCwgWCkiXSxbNCwwLCJcXE9tZWdhIl0sWzEsMCwiXFxkZWx0YV97dH0iXSxbMCwyLCJCKG0sIG4pIl0sWzIsMywiXFxhbHBoYSJdXQ==
+\[\begin{tikzcd}
+	t & {B(t, t)} && {B(X, X)} & \Omega
+	\arrow["{\delta_{t}}", from=1-1, to=1-2]
+	\arrow["{B(m, n)}", from=1-2, to=1-4]
+	\arrow["\alpha", from=1-4, to=1-5]
+\end{tikzcd}\]
+
+That this definition of $\App_t$ is natural in $t$ follows from the naturality of $\delta$ and the functoriality of $B$. Specifically, naturality with respect to $h: s \to t$ is seen as follows:
+
+% https://q.uiver.app/?q=WzAsNixbMSwwLCJCKHQsIHQpIl0sWzAsMCwidCJdLFszLDAsIkIoWCwgWCkiXSxbNCwwLCJcXE9tZWdhIl0sWzAsMSwicyJdLFsxLDEsIkIocywgcykiXSxbMSwwLCJcXGRlbHRhX3t0fSJdLFswLDIsIkIobSwgbikiXSxbMiwzLCJcXGFscGhhIl0sWzQsNSwiXFxkZWx0YV9zIiwyXSxbNCwxLCJoIl0sWzUsMCwiQihoLCBoKSIsMV0sWzUsMiwiQihtIGgsIG4gaCkiLDJdXQ==
+\[\begin{tikzcd}
+	t & {B(t, t)} && {B(X, X)} & \Omega \\
+	s & {B(s, s)}
+	\arrow["{\delta_{t}}", from=1-1, to=1-2]
+	\arrow["{B(m, n)}", from=1-2, to=1-4]
+	\arrow["\alpha", from=1-4, to=1-5]
+	\arrow["{\delta_s}"', from=2-1, to=2-2]
+	\arrow["h", from=2-1, to=1-1]
+	\arrow["{B(h, h)}"{description}, from=2-2, to=1-2]
+	\arrow["{B(m h, n h)}"', from=2-2, to=1-4]
+\end{tikzcd}\]
+
+The desired result now follows by \magicref{LawveresFixedPointTheorem}.
+\end{proof}
+\magicref{LawveresFixedPointTheorem} is of course the special case of \magicref{MagmoidalFixedPointTheorem} where $B$ is the familiar cartesian product and $\delta$ is the familiar diagonal transformation. Thus, in \autocite{roberts2021substructural} this is considered as a generalization of Lawvere's fixed point theorem. But as we've just seen, it is also a special case of Lawvere's fixed point theorem, appropriately construed (as in our formulation of \magicref{LawveresFixedPointTheorem} which removes the $\point = 1$ constraint), despite the seeming mismatch between general bifunctors and specifically cartesian products. As noted before, it is ok for $X \times X$ to not be $T$-\repsmall/, and if such closure of our underlying category is insisted upon, we can just as well always pass to $\Psh{T}$ first.
+
 \fileend
