@@ -1,6 +1,6 @@
 \filestart
 
-\section{\Loeb's theorem}
+\section{\Loeb/'s theorem}
 
 \subsection{Convenient terminology}
 \begin{TODOblock}
@@ -12,7 +12,7 @@ We're a bit glib in all our writing when we swap between thinking of $x$ as an e
 \subsection{Lawvere's fixed point theorem}
 Let us refresh the reader on Lawvere's fixed point theorem \autocite{lawvere1969diagonal}, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure. We shall first review a proof of Lawvere's fixed point theorem close in spirit to Lawvere's framing of his result.
 
-Then we will note a slight generalization for which essentially the same argument applies. Then in the next section we will turn this generalization into a result in the context of general pre-introspective theories. Then we will specialize further down to introspective theories, and observe a wonderful \quote{bootstrapping} phenomenon which arises there, which shall ultimately provide us with a form of \Loeb's theorem in that context, which is our main result.
+Then we will note a slight generalization for which essentially the same argument applies. Then in the next section we will turn this generalization into a result in the context of general pre-introspective theories. Then we will specialize further down to introspective theories, and observe a wonderful \quote{bootstrapping} phenomenon which arises there, which shall ultimately provide us with a form of \Loeb/'s theorem in that context, which is our main result.
 
 (Although not important for our main narrative, we note in passing that another interesting generalization of \magicref{LawveresFixedPointTheorem} was recently remarked upon in \autocite{roberts2021substructural}. We will not need that particular result, but we remark upon its relation to our formulation of \magicref{LawveresFixedPointTheorem} in our Appendix at \magicref{MagmoidalFixedPointTheorem}.)
 
@@ -100,13 +100,19 @@ Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary the
 
 (In particular, any pre-introspective finite product theory carries this structure, which covers all the applications we will be interested in (including any introspective theory), but we wish for a moment to make it clear that the following construction does not rely on any extra structure.)
 
-Consider now a $T$-indexed almost-presheaf $P$ on $C$ \TODOinline{We will need to clarify in the preliminaries what this amounts to, in the double-indexing section or some such place. We mean a presheaf along with an equivalence relation such that pullback isn't strictly functorial, but only functorial up to the relation, and also is relation-preserving. The equivalence relation itself does not need to satisfy any coherences.}. Suppose also given some object $X$ in $T$ and map $\alpha : X \to P(\introS(X))$.
+Consider now a $T$-indexed presheaf $P$ on $C$ \TODOinline{We will need to clarify in the preliminaries what this amounts to, in the double-indexing section or some such place.}, and let the relation $E$ be equality.
+
+(Or, more generally (if you are ready for such generalization, which we will only need in one instance), we do not need for $P$ to be a fully proper presheaf. It suffices that we have a $T$-indexed $\Ob(C)$-indexed set $P$, and furthermore have a reindexing action from $P(d)$ to $P(c)$ for each morphism in $C$ from $c$ to $d$. We do NOT demand that these reindexing actions compose functorially in accordance with composition in $C$; we only demand that the composition of reindexing along a composable pair of morphisms is related by $E$ to reindexing along the composite morphism. Furthermore, we impose upon each $P(c)$ a binary relation $E(c)$ which is transitive, and we require that each reindexing action preserve this relation $E$.
+
+In particular, we get this structure from any $T$-indexed laxly $C$-indexed strict category $\mathcal{P}$ (as in \magicref{LaxlyIndexedStrictCategory}), taking $P$ to be the set of objects of $\mathcal{P}$, with corresponding reindexing action, and taking two objects of $P(c)$ to be related by $E$ just in case there is a morphism from the first object to the second object within $\mathcal{P}(c)$.)
+
+Suppose also given some object $X$ in $T$ and map $\alpha : X \to P(\introS(X))$.
 
 Now, let us suppose $P(1)$ is $T$-small, so that it will make sense to speak of $\introS(P(1))$. Furthermore, let us suppose we have some $j$ in the global aspect of $P(\introS(P(1)))$.
 
 Furthermore, suppose given an object $\point$ of $T$. As ever, we use \quote{point of} as shorthand for \quote{element of the $\point$-aspect of}.
 
-Now, let us make a surjectivity-like assumption on $\alpha$. Specifically, suppose we are given a relation $E$ on $P$ \TODOinline{Actually, let us suppose in particular that $E$ is the equivalence relation of the almost-presheaf $P$?}, and let us suppose that for every global element of $P(\introS(X))$, there is a point of $X$ such that \TODO.
+Now, let us make a surjectivity-like assumption on $\alpha$. Specifically, let us suppose that for every global element $p$ of $P(\introS(X))$, there is a point $x$ of $X$ such that $E(\alpha(x), p)$.
 
 Then we obtain a point $\omega$ of $P(1)$, such that $E(\omega, \pullAlong{\introN_{P(1)}(\omega)} j)$.
 \closeNamed{theorem}
@@ -117,8 +123,6 @@ We take $\Omega = P(1)$. Note that by supposition this is \repsmall/ so it will 
 
 We now define $\App : X \times X \to \Omega$ like so: Consider the two projection maps $\pi_1, \pi_2 : X \times X \to X$, as two $(X \times X)$-defined elements of $X$. We thus obtain also $(X \times X)$-defined elements $\alpha(\pi_1)$ of $P(\introS(X))$ and $\introN_{X}(\pi_2)$ of $\Hom_C(1, \introS(X))$. Combining these via the presheaf action of $P$, we get $\pullAlong{( \introN_{X}(\pi_2) )} ( \alpha(\pi_1) )$ as an $(X \times X)$-defined element of $P(1)$. We take this to be our $\App : X \times X \to \Omega$.
 
-We define $g : \Omega \to \Omega$ like so: The pullback action of $j$ (which is in the global aspect of $P(\introS(\Omega))$) gives us a map from $\Hom_C(c, \introS(\Omega))$ to $P(c)$ for each $c$. In particular, we get a map from $\Hom_C(1, \introS(\Omega))$ to $P(1) = \Omega$. Now compose this with $\introN_{\Omega} : \Omega \to \Hom_C(1, \introS(\Omega))$ to get our $g$. We have by definition that $g(\omega) = \pullAlong{\introN_{\Omega}(\omega)} j$ for all generalized elements $\omega$ of $\Omega$.
-
 We must now establish an appropriate surjectivity supposition on $\App$ for invoking \magicref{SelfRelatedPointTheorem}. 
 
 Let an arbitrary $F : X \to \Omega$ be given. We then have that $\introS(F)$ is a global element of $\Hom_C(\introS(X), \introS(\Omega))$. We can pull $j$ (a global element of $P(\introS(\Omega))$) back along this to obtain a global element $F'$ of $P(\introS(X))$. By the surjectivity-like assumption on $\alpha$ we made, we now have a corresponding point $f$ in $X$, such that $E(\alpha(f), F')$.
@@ -127,18 +131,27 @@ Because the pullback action of $P$ preserves the relation $E$, this means that f
 
 Consider what $\App(f, x)$ comes out to. By the definition of $\App$, this is $\pullAlong{( \introN_{X}(x) )} ( \alpha(f) )$.
 
-Now consider what $\pullAlong{\introN_{X}(x)} F'$ comes out to. This is $\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j$. We want this to be $\pullAlong{\introN_{\Omega}(F(x))} j$. Well, the composition inside $C$ of $S(F)$ and $\introN_{X}(x)$ should be $\introN_{\Omega}(F(x)$, by the naturality of $\introN$. Thus, this relationship should hold up to the pseudofunctoriality of $P$. \TODO
+Now consider what $\pullAlong{\introN_{X}(x)} F'$ comes out to. This is $\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j$.
 
-If we define $E_j(\omega_1, \omega_2)$ as $E(\omega_1, \pullAlong{\introN_{\Omega}(\omega_2)} j)$ accordingly, we have shown the surjectivity requirement to invoke \magicref{SelfRelatedPointTheorem} with $R = E_j$, and thus we get a point which is related by $E_j$ to itself, which is what we desired.
+Thus, we have $E(\App(f, x), \pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j)$.
+
+Note that by \magicref{SWithN}, we have that $\introS(F) \circ_C \introN_{X}(x) = \introN_{\Omega}(F(x))$. Thus, by the lax functoriality of $P$, we have that $E(\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j, \pullAlong{\introN_{\Omega}(F(x))} j)$.
+
+Combining these last two paragraphs by the transitivity of $E$, we have that $E(\App(f, x), \pullAlong{\introN_{\Omega}(F(x))} j)$.
+
+If we define $E_j(\omega_1, \omega_2)$ as $E(\omega_1, \pullAlong{\introN_{\Omega}(\omega_2)} j)$ accordingly, we have shown the surjectivity requirement to invoke \magicref{SelfRelatedPointTheorem} with $R = E_j$. From this, we get a point which is related by $E_j$ to itself, which is what we desired, ending the proof.
 
 \TODOinline{Add diagrams?}
+
+\TODOinline{Write out version for proper presheaves first, as it is simpler. Then write out version for lax indexed strict categories afterwards, with the first having served as preparation to understand it.}
 \end{proof}
 
-This process of turning $f: P(\introS(P(1)))$ into $L(f): P(1)$ will ultimately represent \Loeb's theorem. In our box symbolism, this process turns $f : P(\Box P)$ into $L(f) : P(1)$, and when we apply $\introS$ to such a map, we get a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general, in the modalized context of a pre-introspective theory with finite products. Let us observe the fixed point properties of this construction in such generality for now, then we will specialize to specifically introspective theories and investigate further.
+This process of turning $j: P(\introS(P(1)))$ into $\omega: P(1)$ will ultimately represent \Loeb/'s theorem. In our box symbolism, this process turns $j : P(\Box P)$ into $\omega : P(1)$, and when we apply $\introS$ to such a map, we get a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general, in the modalized context of a pre-introspective theory with finite products. Let us observe the fixed point properties of this construction in such generality for now, then we will specialize to specifically introspective theories and investigate further.
 
-\TODOinline{Perhaps first give a proof of the introspective theory diagonalization for strict presheaves with no imposed relation, then give the relational version}
+\TODOinline{Comment on how we could've imposed further relations here, a la \magicref{SelfRelatedPointTheorem}, but we have no need for this complication so we decline to state this in detail. Or don't bother making this comment, whatever.}
 
 \subsection{Corollaries}
+\TODOinline{Change names in the following to line up with revised names in the former}
 Before specializing all the way to introspective theories, let us observe some corollaries of this general result we can already see. First, a couple traditional special cases:
 
 \openNamed{observation}{Lawvere's Fixed Point Theorem}\label{LawveresTheoremViaPreIntrospective}
@@ -192,9 +205,9 @@ In a sense, all we have shown so far are some very familiar results. Diagonaliza
 
 But the value of \nameref{GeneralDiag} is that we have now formalized it at a particularly general level of abstraction, even more general than \nameref{LawveresTheorem}, which will allow us to move beyond cartesian closed structure as such, into suitably modalized exponentials. Instead of only producing the traditional Y combinator, what we produce in general will be a suitably modalized Y combinator, as is necessary for the context we now turn to, of introspective theories.
 
-In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from \magicref{RetractInT} and \magicref{RetractInC}, to get an unconditional version of \Loeb's theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(\introS(Y))$ always exists.
+In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from \magicref{RetractInT} and \magicref{RetractInC}, to get an unconditional version of \Loeb/'s theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(\introS(Y))$ always exists.
 
-\subsection{Bootstrapping to \Loeb's theorem for introspective theories}
+\subsection{Bootstrapping to \Loeb/'s theorem for introspective theories}
 We will now show how to bootstrap away this precondition, in the context of an introspective theory:
 
 Essentially, our plan is to apply \magicref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice. Put another way, we can take ourselves to be working with an inner-strict introspective theory, as every introspective theory can be equipped as such.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
@@ -207,7 +220,7 @@ Indeed, armed with the idea of this relationship, it becomes easy to deal with t
 
 We then impose upon this presheaf $P$ the relation $R$ under which two elements $(p, q)$ of $P$ are related by any relationship in $R'$ between elements $(p', q')$ of $P'$, along with an isomorphism between $p'$ and $f(p)$ and an isomorphism between $q'$ and $f(q)$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). It is straightforward to verify that this relation $R$ has a groupoid structure itself, and that its projection maps to $P$ are indeed natural transformations between presheaves. \TODOinline{Write this out in a detailed way.}
 
-We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb's theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. The collection of such slices above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
+We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb/'s theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. The collection of such slices above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
 
 The fixed point property we derive then tells us:
 
@@ -215,11 +228,11 @@ The fixed point property we derive then tells us:
 For any slice $Q$ above $\introS(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $\introN_{\Ob(C)}(c) : \Hom_C(1, \introS(\Ob(C)))$.
 \end{theorem}
 
-In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ corresponding to some arbitrary $T$-small presheaf $Q'$ on $C$. Then the above invocation of our \Loeb's theorem tells us there is some object $c$ of $C$ which is isomorphic to $\introS(Q'(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb's theorem on the presheaf $Q'$ itself (in the form of \magicref{RetractInC}).
+In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ corresponding to some arbitrary $T$-small presheaf $Q'$ on $C$. Then the above invocation of our \Loeb/'s theorem tells us there is some object $c$ of $C$ which is isomorphic to $\introS(Q'(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb/'s theorem on the presheaf $Q'$ itself (in the form of \magicref{RetractInC}).
 
-Thus, in the context of an introspective theory, we can run the \Loeb's fixed point theorem on ALL presheaves, unconditionally. That is, we have proven the following:
+Thus, in the context of an introspective theory, we can run the \Loeb/'s fixed point theorem on ALL presheaves, unconditionally. That is, we have proven the following:
 
-\openNamed{corollary}{Introspective \Loeb's theorem}\label{LoebInIntrosp}
+\openNamed{corollary}{Introspective \Loeb/'s theorem}\label{LoebInIntrosp}
 If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $P$ is any $T$-small presheaf upon $C$, then there is a map $L : P(\introS(P(1))) \to P(1)$ in $T$ satisfying the fixed point property that for every generalized element $f$ of $P(\introS(P(1)))$, we have that $L(f)$ equals the result of transporting $f$ back via the action of $P$ along $\introN_{P(1)}(L(f))$.
 
 Using our $\Box$ symbolism and the Yoneda lemma identification of elements of $P(c)$ with maps from $c$ to $P$, we can phrase this fixed point property of $L(f)$ as the following morphism of $\Box$-algebras within (the appropriate aspect of) $\Psh{C}$:
@@ -240,11 +253,11 @@ Thus, the $\Box$-algebra with carrier $1$ is weakly initial within $\Psh{C}$, in
 Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. However, we shall see later on that there are some natural examples of locally introspective theories that happen to have this property as well, and we shall see in a second a number of corollaries of this property that work just as well for locally introspective theories as for introspective theories. Thus, let us make this useful definition:
 
 \begin{definition}
-A \defined{locally \Loeb\ theory} is a locally introspective theory $T$ such that each of its slice locally introspective theories $T/t$ has the same properties of \magicref{LoebInIntrosp}, save for being locally introspective rather than fully introspective.
+A \defined{locally \Loeb/\ theory} is a locally introspective theory $T$ such that each of its slice locally introspective theories $T/t$ has the same properties of \magicref{LoebInIntrosp}, save for being locally introspective rather than fully introspective.
 \end{definition}
 
 \begin{conjecture}
-Every locally \Loeb\ theory can be embedded into an introspective theory.
+Every locally \Loeb/\ theory can be embedded into an introspective theory.
 \end{conjecture}
 
 \begin{observation}
@@ -252,7 +265,7 @@ Although we above observed that in any introspective theory there is an object $
 \end{observation}
 
 \subsection{Uniqueness and initiality/terminality for fixed points}
-Throughout this section, we work in the context of an introspective theory $\langle T, C \rangle$. \TODOinline{Figure out how much of this works for a locally \Loeb\ theory, possibly tweaking the definition of a locally \Loeb\ theory as needed}
+Throughout this section, we work in the context of an introspective theory $\langle T, C \rangle$. \TODOinline{Figure out how much of this works for a locally \Loeb/\ theory, possibly tweaking the definition of a locally \Loeb/\ theory as needed}
 
 \begin{theorem}\label{UniqueFixedPoints}
 The fixed points produced by \nameref{LoebInIntrosp} are unique, in the sense that for any $t$-defined point $f$ of $P(\introS(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ transported back along $\introN$ of itself), we have that $a = b$.
@@ -337,7 +350,7 @@ Discuss how we may conclude that our functorial fixed points are both initial al
 \end{TODOblock}
 
 \begin{TODOblock}
-Discuss how we get \Loeb's theorem not just for globally defined objects of $C$, but for arbitrary objects of $C$, by working within the locally introspective theory $T/D$ for suitable base of definition $D$, or within $T/\Ob(C)$ generically in an introspective theory. And this transfers into $C$ itself (such that $C$ holds \Loeb's theorem to be true for arbitrary objects of $\introS(C) = C_1$) via $\introS$. Write up details for this, including making sure we have the right slice-introspective theory construction.
+Discuss how we get \Loeb/'s theorem not just for globally defined objects of $C$, but for arbitrary objects of $C$, by working within the locally introspective theory $T/D$ for suitable base of definition $D$, or within $T/\Ob(C)$ generically in an introspective theory. And this transfers into $C$ itself (such that $C$ holds \Loeb/'s theorem to be true for arbitrary objects of $\introS(C) = C_1$) via $\introS$. Write up details for this, including making sure we have the right slice-introspective theory construction.
 \end{TODOblock}
 
 \begin{TODOblock}

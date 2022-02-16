@@ -380,4 +380,21 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
+\subsection{Laxly indexed strict categories}
+\begin{definition}\label{LaxlyIndexedStrictCategory}
+Given a strict category $C$, we define the notion of a \defined{laxly indexed strict category} on it. This is the concept of a lax functor from $\op{C}$ to the category of strict categories. In detail it is, like so: A lax indexed strict category $L$ indexed by $C$ consists of the following data: A strict category $L(c)$ for each object $c$ of $C$. Furthermore, a strict functor $L(m) : L(d) \to L(c)$ for each morphism $m : c \to d$ in $C$. Furthermore, a natural transformation from $\id_{L(c)}$ to $L(\id_c)$ for each object $c$ in $C$. Furthermore, a natural transformation from $L(n) \circ L(m)$ to $L(m \circ n)$ for each composable pair of morphisms $n : b \to c$ and $m: c \to d$ in $C$. Furthermore, there are some coherence conditions it is customary to impose on these natural transformations, but they do not matter for our purposes so we do not bother stating them. These are the conditions which would ensure that, if these natural transformations were in fact invertible, this comprised a pseudofunctor.
+\end{definition}
+
+In fact, absolutely none of the conditions here which concern equalities between elements of any $\Mor(L(c))$ for any object $c$ in $C$ matter to us. It doesn't matter for our purposes that composition in any category $L(c)$ of a laxly indexed strict category be associative or satisfy the identity law or any of that. All that matters to us is that certain operations form elements of $\Mor(L(c))$ with the appropriate domains and codomains.
+
+We only need this notion for one example in one situation. It is the following construction:
+
+\begin{construction}\label{CoreOfSelfIndexing}
+Given any strict lexcategory $C$, there is a straightforward way to create a laxly indexed strict category indexed by $C$ where $L(c)$ is the core of the slice category $C/c$ (that is, the subcategory of $C/c$ containing all its objects, but only those of its morphisms which are isomorphisms), while $L(m)$ is given by pullback along $m$ (the chosen pullbacks of our strict lexcategory $C$). Call this the \defined{core of the self-indexing} of $C$. The universal property of pullbacks ensures that this is pseudofunctorially indexed, and thus a fortiori laxly indexed. However, as chosen pullbacks satisfy no further demanded coherence beyond just being pullbacks, there is no reason to expect the natural transformations witnessing pseudofunctoriality here to in fact be strict identities (that is, chosen pullback along a composition of morphisms needn't strictly match the composition of chosen pullbacks along the individual morphisms).
+
+Note that, when $C$ is internal to lexcategory $T$, this construction can be carried out internal to $T$ as well.
+\end{construction}
+
+There are methods by which one can work to strictify a pseudofunctor in such situations, but we do not need these methods for the one instance in which we deal with this. Just the bare minimum structure of a laxly indexed strict category, sans even the coherence conditions on its indexed morphisms, suffices for us.
+
 \fileend

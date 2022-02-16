@@ -22,7 +22,7 @@ We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-intros
 An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/.
 \end{definition}
 
-The concept of an introspective theory is the fundamental object of our interest and study in these notes. We shall show that this simple definition already suffices to exhibit and capture all the fundamental phenomena of \Goedel\ codes, diagonalization, the \Goedel\ incompleteness theorems, and \Loeb's theorem. And we shall show that all the traditional instances of \Goedel's incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
+The concept of an introspective theory is the fundamental object of our interest and study in these notes. We shall show that this simple definition already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
 
 We shall also introduce some further generalizations of this concept, in order to be able to state results along the way in their fullest generality or point out connections to related work or interesting structures that are not quite introspective theories per se but are closely related. But throughout these notes, if at any time the abstractions seem daunting or distracting, remember that the concrete concept which matters most is the concept of an introspective theory as defined above.
 
@@ -32,7 +32,7 @@ The example-oriented reader may immediately demand an example of a pre-introspec
 Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a pre-introspective theory can be made from this where we take $\introF$ to be the identity (with $C$ as the self-indexing of $T$).
 \end{example}
 
-Alas, this simple example of a pre-introspective theory is almost never an introspective theory (that is to say, a lexcategory's self-indexing is almost never \repsmall/; indeed, the only case in which this happens is the trivial one where $T$ is the terminal category\footnote{This can be seen as a consequence of our categorical \Loeb's theorem established in the next chapter.}). We will give an archetypal example of an introspective theory soon enough, but let us first develop some further machinery on how pre-introspective theories may be presented.
+Alas, this simple example of a pre-introspective theory is almost never an introspective theory (that is to say, a lexcategory's self-indexing is almost never \repsmall/; indeed, the only case in which this happens is the trivial one where $T$ is the terminal category\footnote{This can be seen as a consequence of our categorical \Loeb/'s theorem established in the next chapter.}). We will give an archetypal example of an introspective theory soon enough, but let us first develop some further machinery on how pre-introspective theories may be presented.
 
 \subsection{Second definition (non-indexed style)}
 
@@ -457,7 +457,7 @@ Make the useful observations that the theory of introspective theories is essent
 \begin{construction}\label{TrivialPreIntrosp}
 If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
 
-This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. This will follow from the categorical \Loeb's theorem we develop in the next chapter.
+This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. This will follow from the categorical \Loeb/'s theorem we develop in the next chapter.
 
 In the same way, if $T$ is any category with finite products, it can be equipped as a pre-introspective finite product theory, taking $C$ to be given by the simple self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. This will be a locally introspective finite product theory just in case $T$ is cartesian closed.
 
@@ -478,7 +478,7 @@ The end result of these observations is that a pre-introspective cartesian close
 
 Some version of this should apply as well to locally cartesian closed categories, but there's some bother about defining what the objects in the construction from two paragraphs ago should be, when they are given by equalizers in $C$ that don't already exist in $T$.
 
-However, locally introspective (locally) cartesian closed theories cannot be fully introspective, or even just have the \Loeb\ property, except in a somewhat degenerate sense. $((\Box A) \implies A) \implies A$ will automatically be inhabited, as we have $(\Box A \implies A) \vdash \Box (\Box A \implies A)$ by $\introN$, which in turn entails $\Box A$ by \Loeb, and thus $(\Box A) \implies A \vdash A$. When $A$ is thought of as falsehood $0$, this amounts to $\neg \neg \Box 0$, asserting the double-negation of the inconsistency of $C$. In a Boolean context, this forces $C$ to be trivial.
+However, locally introspective (locally) cartesian closed theories cannot be fully introspective, or even just have the \Loeb/\ property, except in a somewhat degenerate sense. $((\Box A) \implies A) \implies A$ will automatically be inhabited, as we have $(\Box A \implies A) \vdash \Box (\Box A \implies A)$ by $\introN$, which in turn entails $\Box A$ by \Loeb/, and thus $(\Box A) \implies A \vdash A$. When $A$ is thought of as falsehood $0$, this amounts to $\neg \neg \Box 0$, asserting the double-negation of the inconsistency of $C$. In a Boolean context, this forces $C$ to be trivial.
 
 \TODOinline{Write the analogue of this for geminal categories}
 \end{observation}

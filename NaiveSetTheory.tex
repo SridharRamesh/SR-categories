@@ -1,0 +1,18 @@
+\filestart
+
+\section{Modally naive material set theory}
+\begin{TODOblock}
+Discuss how, from a fixed point for X = []Subobjects(X) (which exists already in a regular geminal category, which we can furthermore assume has classical logic if we like, and which we can furthermore assume to be a Boolean topos or have the Axiom of Replacement or any such thing), we obtain a model of near-naive material set theory, where we don't quite have a binary membership relation but something sort of like it except for modalities on some types, and we don't quite have unrestricted comprehension therefore but we have something like it except for modalities on some types again, and same for extensionality. And the simultaneous initial algebra and terminal coalgebra properties ensure that we have both something like the Axiom of Foundation and something like Aczel's Axiom of Anti-Foundation at the same time.
+
+We can give an axiomatic characterization of such a modally naive set theory, and our models then prove the consistency of this theory (not just ordinary consistency, but also the fact that it does not derive $\Box^n 0$ for any $n$, whenever it derives $\Box X$ it derives $X$, and other such things, same as with the consistency properties of our notions of introspective theories or geminal categories in general).
+
+If we attempt to derive Russell's paradox from the comprehension scheme here, instead of getting a contradiction, what comes out of it is \Goedel/'s second incompleteness theorem, in the language of our modal logic.
+
+We can witness exactly what this model amounts to in simple cases such as our classical model using the discrete into structured topology on a well-founded poset such as N. (We see pretty quickly that it is not a very strong set theory by default, as this model based on N will be such that we would consider all its sets finite. For that matter, we cannot hope to even consistently disprove the assertion that all sets are equal in this theory, as this would amount to a proof of consistency, which is forbidden by G2IT.
+
+But this kind of model of modally naive material set theory can also be constructed relative to the initial arithmetic universe or any such thing.
+
+In the same way, we might consider modally naive models of the untyped lambda calculus, but the direct equation $D = \Box(D \to D)$ will always have the trivial solution $D = 1$. To make it more interesting, we must demand $D = \Box(1 + D \to D)$ or such things.
+\end{TODOblock}
+
+\fileend

@@ -56,12 +56,8 @@
 \theoremstyle{redstyle}
 \newtheorem*{TODOblock}{TO DO}
 
-% Warning! LaTeX will swallow the following space stupidly in all of these commands. You may have to place a backslash-space after them instead.
+% Warning! LaTeX will swallow the following space stupidly in this command. You may have to place a backslash-space after it instead.
 \newcommand{\TODO}{{\color{red} TO DO}}
-\newcommand{\Goedel}{G\"odel}
-\newcommand{\Godel}{\Goedel}
-\newcommand{\Loeb}{L\"ob}
-\newcommand{\Lob}{\Loeb}
 
 \newcommand{\TODOinline}[1]{\TODO\ {\color{red} #1}}
 \newcommand{\UnprintedTODO}[1]{}
@@ -109,9 +105,12 @@
 % Hack to define a command name whose name has to end with a 
 % slash, thus preventing spacing problems. (Otherwise, space 
 % automatically gets swallowed after invoking the command.)
-% TODO: Use this same hack for Goedel and Loeb.
 \def\repsmall/{repsmall}
 \def\setsmall/{set-sized}
+\def\Goedel/{G\"odel}
+\def\Godel/{\Goedel/}
+\def\Loeb/{L\"ob}
+\def\Lob/{\Loeb/}
 
 \newcommand{\adjointTo}{\dashv}
 \newcommand{\yoneda}{\mathrm{yoneda}}
