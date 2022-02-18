@@ -7,6 +7,8 @@
 Some note about how we will also make use in diagrams in this chapter liberally of the identification of $P(c)$ with $\Hom(c, P)$, when $P$ is a presheaf. If one likes, this can be seen as invoking the Yoneda lemma to draw diagrams in $\Psh{C}$ (although invoking the Yoneda lemma is actually a bit overkill for the mere fact that we can draw diagrams of presheaf elements and presheaf actions in this way, which is simply working within the appropriate collage, aka cocomma category).
 
 We're a bit glib in all our writing when we swap between thinking of $x$ as an element in $X$, vs a map from $1$ to $X$, or similarly in swapping between a presheaf $\Omega^X$ and values in $\Omega(X)$ and morphisms from $X$ to $\Omega$, etc. Perhaps we should introduce some explicit notation for these kinds of conversions, to make everything perfectly clear.
+
+Can move these notes to the Preliminaries.
 \end{TODOblock}
 
 \subsection{Lawvere's fixed point theorem}
@@ -19,7 +21,7 @@ Then we will note a slight generalization for which essentially the same argumen
 \openNamed{theorem}{Lawvere's Fixed Point Theorem}\label{LawveresFixedPointTheorem}
 Let $T$ be an arbitrary category. Let $\point$ and $X$ be objects of $T$ and let $\Omega$ be any $T$-indexed set. Suppose also given some map $\App' : X \to \Omega^X$ (equivalent to the data of a map $\App : X \times X \to \Omega$).
 
-By a \quote{point} of a $T$-indexed set, we shall mean an element of its aspect at $\point$ (equivalent to the data of a map into it from $\point$).\footnote{Lawvere takes $\point$ to always be a terminal object, and for our needs that will ultimately suffice as well. But we shall see in the argument and the post-argument discussion that there is no need for such a restriction, so we do not impose it here.}
+By a \quote{point} of a $T$-indexed set, we shall mean an element of its aspect at $\point$ (equivalent to the data of a map into it from $\point$).\footnote{Lawvere takes $\point$ to always be a terminal object, and for our goals that will ultimately suffice as well. But we shall see in the argument and the post-argument discussion that there is no need for such a restriction, so we do not impose it here.}
 
 Suppose $\App'$ has the surjectivity-like property that, for every morphism $F : X \to \Omega$, there is a point $f$ of $X$, such that for every point $x$ of $X$, we have that $\App'(f)(x) = F(x)$ (in slight but straightforward notational abuse). That is to say, $\App(f, x) = F(x)$.
 
@@ -129,9 +131,9 @@ Let an arbitrary $F : X \to \Omega$ be given. We then have that $\introS(F)$ is 
 
 Because the pullback action of $P$ preserves the relation $E$, this means that for every point $x$ of $X$, we get that $E(\pullAlong{\introN_{X}(x)} \alpha(f), \pullAlong{\introN_{X}(x)} F')$.
 
-Consider what $\App(f, x)$ comes out to. By the definition of $\App$, this is $\pullAlong{( \introN_{X}(x) )} ( \alpha(f) )$.
+Consider what $\App(f, x)$ comes out to. By the definition of $\App$, this is $\pullAlong{( \introN_{X}(x) )} \alpha(f)$.
 
-Now consider what $\pullAlong{\introN_{X}(x)} F'$ comes out to. This is $\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j$.
+Now consider what $\pullAlong{\introN_{X}(x)} F'$ comes out to. By the definition of $F'$, this is $\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j$.
 
 Thus, we have $E(\App(f, x), \pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} j)$.
 
@@ -139,7 +141,7 @@ Note that by \magicref{SWithN}, we have that $\introS(F) \circ_C \introN_{X}(x) 
 
 Combining these last two paragraphs by the transitivity of $E$, we have that $E(\App(f, x), \pullAlong{\introN_{\Omega}(F(x))} j)$.
 
-If we define $E_j(\omega_1, \omega_2)$ as $E(\omega_1, \pullAlong{\introN_{\Omega}(\omega_2)} j)$ accordingly, we have shown the surjectivity requirement to invoke \magicref{SelfRelatedPointTheorem} with $R = E_j$. From this, we get a point which is related by $E_j$ to itself, which is what we desired, ending the proof.
+If we define $E_j(\omega_1, \omega_2)$ as $E(\omega_1, \pullAlong{\introN_{\Omega}(\omega_2)} j)$ accordingly, we have now established the surjectivity supposition required in order to invoke \magicref{SelfRelatedPointTheorem} with $R = E_j$. From this invocation, we get a point of $\Omega$ which is related by $E_j$ to itself, which is just what we desired, ending the proof.
 
 \TODOinline{Add diagrams?}
 
@@ -147,8 +149,6 @@ If we define $E_j(\omega_1, \omega_2)$ as $E(\omega_1, \pullAlong{\introN_{\Omeg
 \end{proof}
 
 This process of turning $j: P(\introS(P(1)))$ into $\omega: P(1)$ will ultimately represent \Loeb/'s theorem. In our box symbolism, this process turns $j : P(\Box P)$ into $\omega : P(1)$, and when we apply $\introS$ to such a map, we get a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general, in the modalized context of a pre-introspective theory with finite products. Let us observe the fixed point properties of this construction in such generality for now, then we will specialize to specifically introspective theories and investigate further.
-
-\TODOinline{Comment on how we could've imposed further relations here, a la \magicref{SelfRelatedPointTheorem}, but we have no need for this complication so we decline to state this in detail. Or don't bother making this comment, whatever.}
 
 \subsection{Corollaries}
 \TODOinline{Change names in the following to line up with revised names in the former}
@@ -261,7 +261,7 @@ Every locally \Loeb/\ theory can be embedded into an introspective theory.
 \end{conjecture}
 
 \begin{observation}
-Although we above observed that in any introspective theory there is an object $Y$ such that the object of slices in $C$ above $\introS(Y)$ was merely a retract-up-to-isomorphism of $Y$, we can now reapply \magicref{LoebInIntrosp} to construct an object $Y'$ such that the object of slices in $C$ above $\introS(Y')$ is in fact isomorphic-up-to-isomorphism to $Y'$. \TODOinline{Word this better and verify the details. Actually, I think this isn't true when we don't have regularity. I should remove this observation, after verifying that.}
+Although we above observed that in any introspective theory there is an object $Y$ such that the object of slices in $C$ above $\introS(Y)$ was merely a retract-up-to-isomorphism of $Y$, we can now reapply \magicref{LoebInIntrosp} to construct an object $Y'$ such that the object of slices in $C$ above $\introS(Y')$ is in fact isomorphic-up-to-isomorphism to $Y'$. \TODOinline{Word this better and verify the details. Actually, I think this isn't true when we don't have effective regularity. I should remove this observation, after verifying that.}
 \end{observation}
 
 \subsection{Uniqueness and initiality/terminality for fixed points}
@@ -360,7 +360,9 @@ Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G f
 \begin{TODOblock}
 Related work to our discussion of of uniqueness and initiality/terminality for fixed points within an introspective theory.
 
-Discuss the relationship to models of guarded recursion, and the Birkedal et al paper on \quote{First steps in synthetic...}, where the initiality/terminality argument for contractive functors is presented. Basically, Birkedal's definition 7.2 and lemma 7.6 do the work for us, but we can use contractive internal categories, rather than locally contractive enriched categories. We could consider indexed categories too?
+Discuss the relationship to models of guarded recursion, and the Birkedal et al paper on \quote{First steps in synthetic...}, where the initiality/terminality argument for contractive functors is presented. Basically, Birkedal's definition 7.2 and lemma 7.6 do the work for us in establishing initality/terminality, but we can use contractive internal categories, rather than locally contractive enriched categories. We could consider indexed categories too? Also, the establishment of the existence of fixed points from fixed points on the universe is done in "Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes", and the uniqueness of fixed points following from Loeb's theorem is given there too. So essentially everything in this subsection is anticipated by those. Except that we can comment on the implications when the distinction between T and C is drawn, and when there is no cartesian closure presumption, etc. Note that C doesn't correspond to the universe U, but rather to []U (or some other category into which []U has a lexfunctor; in a super-introspective theory, perhaps C is particularly close to just []U itself). Our T is like the U-small sets. The assumption we make that others do not is that []U is itself U-small. By dropping the cartesian closure assumption, we are also able to encompass the initial arithmetic universe as a model.
+
+Roughly speaking, the difference between our theory and the theory such as in "Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes" is all about cartesian closure and the smallness of []U. A super-introspective theory which happens to be locally cartesian closed (on both the levels of T and C, though the [] operator needn't preserve exponentials) corresponds to a model of guarded recursive types with universes where []U and [](sigma u, v : U. El(u) -> El(v)) are U-small. We do not bother making this correspondence formal, but leave it for future work. The dropping of cartesian closure from the presumptions allows us to encompass the initial arithmetic universe and its ilk as models, while adding the presumption of []U etc as U-small allows us to derive \Loeb/'s theorem from this instead of having to presume it by fiat. (More generally, it allows us to show how \Loeb/'s theorem applies not just to objects of C but also to non-representable presheaves on C in the form P(S(P(1))) |- P(1)).
 \end{TODOblock}
 
 \fileend

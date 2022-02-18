@@ -38,7 +38,7 @@
   \makeindex[intoc]         % Include index in table of contents
   
 % And now, hyperref!
-\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue]
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=teal]
   {hyperref}                % Hyper-linked references (note that certain packages need to be loaded before this instead of after this, such as indexing)
   
 % And now... Packages that might need to be loaded after hyperref.
@@ -71,7 +71,8 @@
 
 \newcommand{\filestart}{
     \ifsubfiles
-    \documentclass[./main.tex]{subfiles}
+    %\documentclass[./main.tex]{subfiles}
+    % Commented out while we don't use subfiles as this appearance of the documentclass command is making Overleaf think of this prelude as an individually compilable file. See https://www.overleaf.com/learn/how-to/Set_Main_Document
     \begin{document}
     \fi
 }

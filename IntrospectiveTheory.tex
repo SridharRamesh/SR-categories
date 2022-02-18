@@ -187,6 +187,8 @@ Let us use the name $g_t$ for this global element of $i_t(t)$ within $T/t$.
 Now, we need to show that these two processes are inverse. \TODO
 
 Finally, we must show that the re-indexings given by morphisms in $T$ via the definition of $T[1 \to -]$ correspond to the same reindexings as defined via $T/-$. \TODO
+
+\TODOinline{The details of this are probably in Uemura, and we can just cite that on top of Bart Jacobs and be done}
 \end{proofEnd}
 
 Now, we shall prove \cref{SNCorrespondence}.
@@ -338,7 +340,7 @@ We call this \quote{inner strict} to emphasize that we've taken every choice con
 
 Also, it is convenient to have the following terminology:
 \begin{definition}
-By a \defined{geminal category}, we mean the internal category $C$ of an introspective theory $\langle T, C \rangle$, or the image of $C$ under any lexfunctor into any other lexcategory (in particular, into $\Set$).
+By a \defined{geminal category}, we mean the image of the internal category $C$ of any introspective theory $\langle T, C \rangle$ under a lexfunctor into $\Set$. More generally, if this lexfunctor is into some lexcategory other than $\Set$, we consider the resulting image of $C$ a geminal category internal to this other lexcategory.
 \end{definition}
 We will be studying the general structure of geminal categories much more in \parensref{GeminalChapter}.
 
@@ -389,7 +391,7 @@ Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \
 The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism in $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
 \end{proof}
 
-\TODOinline{Some note somewhere about how we will not generally be explicit about noting distinctions between $\introS(a \times b)$ and $\introS(a) \times \introS(b)$, etc., but shall write with the ordinary fluency for working with lexfunctors}
+We will not generally be explicit about making distinctions between $\introS(a \times b)$ and $\introS(a) \times \introS(b)$, etc, but shall instead write with the ordinary fluency for working with limit-preserving functors. \TODOinline{Move some comment like this to the preliminaries. Our general principle should be clarity rather than distracting fussiness in writing/notation, though everything we write is perfectly rigorous, suitably construed.}
 
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
@@ -426,6 +428,8 @@ The 2-cell labelled $\Sigma$ above indicates the action of $\Sigma$ when acting 
 By \cref{RepsmallRightAdjoint} or \cref{RepSmallRightAdjointFibers}, if $\Sigma$ has a right adjoint, we can further observe that if $C$ is small or locally small, then so respectively will be $\pullAlong{\Sigma} C$.
 \end{proof}
 
+\TODOinline{Note that functors between lexcategories preserving pullbacks and having right adjoints are commonly studied; this is the same as the notion of a geometric functor into a slice category. So there is a panoply of examples of this construction.}
+
 A particular special case of the above which is often of importance is the following:
 
 \begin{construction}\label{IntrospSlice}
@@ -436,6 +440,11 @@ By the previous construction (\cref{IntrospPullback}), using the forgetful funct
 \end{proof}
 
 When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean.
+
+\TODOinline{This freely augments $T$ with a single global point of $t$. There should be some generalization of the above that freely augments $T$ with as many global points of as many types as we like; that is, given a lexfunctor $M$ from $T$ to $\Set$ serving as a particular model of $T$, we should be able to freely augment $T$ to $T[M]$ such that all $T[M]$'s models extend $M$. I believe this amounts to Definition 7.14 of "A General Framework for the Semantics of Type
+Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete Type Theories").
+
+Perhaps more generally, whenever we have a lexfunctor from $T$ to $S$, we can left Kan extend along this lexfunctor to turn a (pre)(locally)(actual)introspective theory structure on $T$ into such structure on $S$? Using the fact that left Kan extension along lexfunctors is lex, and left Kan extension along arbitrary functors takes representables to representables. The slice category construction is then also the special case of this where we consider the lex map from $T$ into $T/t$.}
 
 \begin{construction}\label{SubPreIntrosp}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory\footnote{That is, a full subcategory whose inclusion functor is a lexfunctor.} of $T$, then $\langle S, C, \introF \rangle$ is a pre-introspective theory, where we now consider $\introF$ as restricted to acting on $S$. This will be an introspective theory if $C$ itself lies within $S$.

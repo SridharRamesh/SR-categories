@@ -70,9 +70,17 @@ Non-Well-Foundedness of Well-Orderable Power Sets. T. E. Forster and J. K. Truss
 
 "Notes on Type Systems" by Voevodsky discusses distinction between categories in strict and non-strict sense (with different terminology) in its introduction. It also apparently discusses the process of splitting fibrations somewhere, but I can't quite see where that is.
 
-Investigate connections to Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes and the like.
-
 THE GUARDED LAMBDA-CALCULUS by Birkedal, Bizjak, et al
 
 Denotational semantics for guarded dependent
 type theory by Bizjak, MØGELBERG, et al.
+
+"Unifying Recursive and Co-recursive Definitions in Sheaf Categories" by Pietro Di Gianantonio Marino Miculan.
+
+"UNIVALENCE FOR INVERSE DIAGRAMS AND HOMOTOPY
+CANONICITY" by Shulman seems to anticipate our construction of universes on well-founded semicategories (called there "inverse categories").
+
+This is then used in "Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes" by Birkedal et al. Theorem V.8. there also seems to anticipate our proof of the uniqueness of fixed points.
+
+Definition 7.14 of "A General Framework for the Semantics of Type
+Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete Type Theories"

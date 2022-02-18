@@ -3,9 +3,11 @@
 \section{Category-theoretic preliminaries}
 
 \subsection{Higher categorical terminology pedantry}
-We will speak frequently of category-valued presheaves (i.e., contravariant functors into the category of categories) and natural transformations between these. Technically, what we mean by these are not \quote{functors} and \quote{natural transformations} in the traditional sense, but what some call "pseudofunctors" and \quote{pseudonatural transformations}, or \quote{2-functors} and \quote{2-natural transformations}, as the category of categories should be viewed as a 2-category, lacking a notion of equality between its 1-cells and only having a notion of isomorphism between them instead. That is, wherever one might traditionally ask for an (automatically coherent) system of equalities, this is replaced by a coherent system of isomorphisms. We take the convention that this is what terminology such as \quote{functor} and \quote{natural transformation} already means, in such a context. But we will try our best to construct arguments in such a way as that this is mostly not a bother that needs to be explicitly worried about.
+We will speak frequently of category-valued presheaves (i.e., contravariant functors into the category of categories) and natural transformations between these. Technically, what we mean by these are not \quote{functors} and \quote{natural transformations} in the traditional sense, but what some call "pseudofunctors" and \quote{pseudonatural transformations}, or \quote{2-functors} and \quote{2-natural transformations}, as the category of categories should be viewed as a 2-category (in the non-strict sense some call \quote{bicategory}), lacking a notion of equality between its 1-cells and only having a notion of isomorphism between them instead. That is, wherever one might traditionally ask for an (automatically coherent) system of equalities, this is replaced by a coherent system of isomorphisms. We take the convention that this is what terminology such as \quote{functor} and \quote{natural transformation} already means, in such a context. But we will try our best to construct arguments in such a way as that this is mostly not a bother that needs to be explicitly worried about.
 
-Similarly, if we ever describe diagrams involving functors between categories as commuting, we really mean that these diagrams commute up to natural isomorphism. If we make claims about uniqueness in such a context, we mean the space of choices is contractible up to the relevant isomorphisms. And so on. Again, our convention is that this is what such terminology already means, in any categorical context where one has such concepts of isomorphism around, unless we have taken care to say we are working with stricter notions instead (see more on strictness below).
+Similarly, if we ever describe diagrams involving functors between categories as commuting, we really mean that these diagrams commute up to natural isomorphism. If we make claims about uniqueness in such a context, we mean the space of choices with the relevant isomorphisms is contractible. And so on. Again, our convention is that this is what such terminology already means, in any categorical context where one has such concepts of isomorphism around, unless we have taken care to say we are working with stricter notions instead (see more on strictness below).
+
+Nothing we do is higher-dimensional than 2-categorical, so everything can be strictified to one's heart's content if so desired.
 
 \subsection{Indexed, \repsmall/, and locally \repsmall/ structures}
 We assume familiarity with sets, functions, categories, functors, categories having finite limits (also known as lexcategories), functors preserving finite limits (also known as lexfunctors), natural transformations, presheaves, internal categories, etc, all in the ordinary sense.
@@ -331,14 +333,14 @@ Any indexed lexcategory is equivalent to some indexed strict lexcategory.
 \end{theorem}
 
 \begin{theorem}\label{StrictifyInternalCategoryToInternalLexcategory}
-Any internal category which has finite limits (qua indexed category) can be further equipped as an internal lexcategory.
+Any internal category which has finite limits (qua indexed category) can be further equipped as an internal lexcategory (without modifying the internal category structure).
 \end{theorem}
 \begin{proof}
 Let the internal category $C$, internal to $T$, be given, and suppose its $t$-aspect has finite limits for each object $t$ of $T$. That is, the category whose objects are $\Hom(t, \Ob(t))$ and whose morphisms are $\Hom(t, \Mor(t))$, with suitable composition structure from the diagram internal to $T$ defining $C$, has finite limits.
 
 Then in particular, for each basis finite limit shape, we can consider the case where $t$ is taken to be the set of diagrams of such shape within $C$ (for example, for binary products, we can consider $t = \Ob(C) \times \Ob(C)$, or for binary equalizers, we can consider $t$ taken to be the kernel pair (that is, pullback along itself) of $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$). There will then be, within the $t$-aspect of $C$, a corresponding generic diagram of this shape, which will have some limit within $C$ as $C$ has finite limits. The selection of any particular such limit (that is, a particular value in $\Hom(t, \Ob(C))$ to serve as the apex of the limit cone, and particular further values in $\Hom(t, \Mor(C))$ to serve as the projection morphisms of the limit cone) gives us the morphisms within $T$ which serve as a limit-assigning operation on $C$ for this particular shape of basic limit. After making such a choice for each of the basic limit operations (of which we can presume there are only finitely many), we ultimately have equipped $C$ as an internal lexcategory.
 \end{proof}
-Note that it is NOT true that any indexed strict category which has finite limits (qua indexed category) can furthermore be equipped as an indexed strict lexcategory! The former has reindexing functors which need only preserve finite limits in a non-strict-sense, while the latter's chosen basic limits must be such that all reindexing functors preserve basic limits on-the-nose. So it is rather remarkable that we get this for free once our indexed strict category is furthermore repsmall.
+Note that it is NOT true that any indexed strict category which has finite limits (qua indexed category) can furthermore be equipped as an indexed strict lexcategory (without modification to the indexed strict category structure)! The former has reindexing functors which need only preserve finite limits in a non-strict-sense, while the latter's chosen basic limits must be such that all reindexing functors preserve basic limits on-the-nose. So it is rather remarkable that we get this for free once our indexed strict category is furthermore repsmall.
 
 \subsection{Self-indexing}
 \begin{definition}
@@ -351,6 +353,8 @@ The self-indexing $T/-$ of a lexcategory $T$ is not in general \repsmall/, nor e
 
 \begin{definition}
 In the same way, we can also speak of an \defined{indexed category with finite products}, and indeed, from any category with finite products $T$ (or even just a category with binary products), we obtain a $T$-indexed category with finite products by considering the functor $T//-$ which assigns to each object $t$ of $T$ the full subcategory of $T/t$ consisting of projection slices (slices given by the projection $: t \times s \to t$ for some object $s$ of $T$), and whose action on morphisms is again given by pullback. We refer to this as the \defined{simple self-indexing} of $T$. Note that $T//t$ can also be thought of as the Kleisli category for the $t \times -$ comonad; that is, the objects of $T//t$ are the same as the objects of $T$, while a morphism $: s_1 \to s_2$ in $T//t$ is the same as a morphism $: t \times s_1 \to s_2$ in $T$, with suitable composition structure.
+
+For a category with finite limits (or just pullbacks and binary products), the simple self-indexing can be thought of as a full subcategory of the self-indexing; specifically, the full subcategory whose objects in each aspect are restricted to those of $T$ itself.
 \end{definition}
 
 By analogous reasoning to before, the simple self-indexing $T//-$ of a category with finite products $T$ is locally \repsmall/ just in case $T$ is cartesian closed.
@@ -380,14 +384,16 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
-\subsection{Laxly indexed strict categories}
+\subsection{Unorganized category-theoretic lemmas}
+
+\subsubsection{Laxly indexed strict categories}
 \begin{definition}\label{LaxlyIndexedStrictCategory}
-Given a strict category $C$, we define the notion of a \defined{laxly indexed strict category} on it. This is the concept of a lax functor from $\op{C}$ to the category of strict categories. In detail it is, like so: A lax indexed strict category $L$ indexed by $C$ consists of the following data: A strict category $L(c)$ for each object $c$ of $C$. Furthermore, a strict functor $L(m) : L(d) \to L(c)$ for each morphism $m : c \to d$ in $C$. Furthermore, a natural transformation from $\id_{L(c)}$ to $L(\id_c)$ for each object $c$ in $C$. Furthermore, a natural transformation from $L(n) \circ L(m)$ to $L(m \circ n)$ for each composable pair of morphisms $n : b \to c$ and $m: c \to d$ in $C$. Furthermore, there are some coherence conditions it is customary to impose on these natural transformations, but they do not matter for our purposes so we do not bother stating them. These are the conditions which would ensure that, if these natural transformations were in fact invertible, this comprised a pseudofunctor.
+Given a strict category $C$, we define the notion of a \defined{laxly indexed strict category} on it. This is the concept of a lax functor from $\op{C}$ to the category of strict categories. In detail it is, like so: A laxly $C$-indexed strict category $L$ consists of the following data: A strict category $L(c)$ for each object $c$ of $C$. Furthermore, a strict functor $L(m) : L(d) \to L(c)$ for each morphism $m : c \to d$ in $C$. Furthermore, a natural transformation from $\id_{L(c)}$ to $L(\id_c)$ for each object $c$ in $C$. Furthermore, a natural transformation from $L(n) \circ L(m)$ to $L(m \circ n)$ for each composable pair of morphisms $n : b \to c$ and $m: c \to d$ in $C$. Furthermore, there are some coherence conditions to impose on these natural transformations, but they do not matter for our purposes so we do not bother stating them. These are the conditions which would ensure that, if these natural transformations were in fact invertible, this comprised a pseudofunctor.
 \end{definition}
 
 In fact, absolutely none of the conditions here which concern equalities between elements of any $\Mor(L(c))$ for any object $c$ in $C$ matter to us. It doesn't matter for our purposes that composition in any category $L(c)$ of a laxly indexed strict category be associative or satisfy the identity law or any of that. All that matters to us is that certain operations form elements of $\Mor(L(c))$ with the appropriate domains and codomains.
 
-We only need this notion for one example in one situation. It is the following construction:
+We only need this notion for one example in one situation. The one example we use is the following construction:
 
 \begin{construction}\label{CoreOfSelfIndexing}
 Given any strict lexcategory $C$, there is a straightforward way to create a laxly indexed strict category indexed by $C$ where $L(c)$ is the core of the slice category $C/c$ (that is, the subcategory of $C/c$ containing all its objects, but only those of its morphisms which are isomorphisms), while $L(m)$ is given by pullback along $m$ (the chosen pullbacks of our strict lexcategory $C$). Call this the \defined{core of the self-indexing} of $C$. The universal property of pullbacks ensures that this is pseudofunctorially indexed, and thus a fortiori laxly indexed. However, as chosen pullbacks satisfy no further demanded coherence beyond just being pullbacks, there is no reason to expect the natural transformations witnessing pseudofunctoriality here to in fact be strict identities (that is, chosen pullback along a composition of morphisms needn't strictly match the composition of chosen pullbacks along the individual morphisms).
@@ -396,5 +402,59 @@ Note that, when $C$ is internal to lexcategory $T$, this construction can be car
 \end{construction}
 
 There are methods by which one can work to strictify a pseudofunctor in such situations, but we do not need these methods for the one instance in which we deal with this. Just the bare minimum structure of a laxly indexed strict category, sans even the coherence conditions on its indexed morphisms, suffices for us.
+
+A laxly $C$-indexed discrete strict category is the same as a $C$-indexed set, and thus we also get degenerate examples of laxly $C$-indexed strict categories from any $C$-indexed set.
+
+\subsubsection{Comma categories}
+
+\begin{theorem}\label{CommasCreateInitials}
+Suppose, within some 2-category $C$, we have the following comma object and left Kan extensions:
+
+% https://q.uiver.app/?q=WzAsNyxbNCwyLCJYIl0sWzQsNCwiXFxvbWVnYSJdLFsyLDQsIlkiXSxbMiwyLCIoZl9YL2ZfWSkiXSxbMSwxLCJBIl0sWzAsMCwiQiJdLFs1LDFdLFswLDEsImZfWCJdLFsyLDEsImZfWSIsMl0sWzMsMiwiXFxwaV9ZIiwyXSxbMywwLCJcXHBpX1giXSxbMCwyLCJcXGdhbW1hIiwyLHsibGV2ZWwiOjJ9XSxbNCwzLCJzIiwxXSxbNCw1LCJxIiwxXSxbNSwwLCJcXExhbl9xIChzOyBcXHBpX1gpIl0sWzUsMiwiXFxMYW5fcShzOyBcXHBpX1kpIiwyXSxbMywxNCwiXFxlcHNpbG9uX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzMsMTUsIlxcZXBzaWxvbl9ZIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	B \\
+	& A &&&& {} \\
+	&& {(f_X/f_Y)} && X \\
+	\\
+	&& Y && \omega
+	\arrow["{f_X}", from=3-5, to=5-5]
+	\arrow["{f_Y}"', from=5-3, to=5-5]
+	\arrow["{\pi_Y}"', from=3-3, to=5-3]
+	\arrow["{\pi_X}", from=3-3, to=3-5]
+	\arrow["\gamma"', Rightarrow, from=3-5, to=5-3]
+	\arrow["s"{description}, from=2-2, to=3-3]
+	\arrow["q"{description}, from=2-2, to=1-1]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Lan_q (s; \pi_X)}", from=1-1, to=3-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\Lan_q(s; \pi_Y)}"', from=1-1, to=5-3]
+	\arrow["{\epsilon_X}"{description}, shorten <=3pt, Rightarrow, from=3-3, to=0]
+	\arrow["{\epsilon_Y}"{description}, shorten <=4pt, Rightarrow, from=3-3, to=1]
+\end{tikzcd}\]
+
+Furthermore, suppose $f_X$ preserves the Kan extension $\Lan_q (s; \pi_X)$. (We notably do NOT make any such assumption on $f_Y$).
+
+Then $\Lan_q s : B \to (f_X / f_Y)$ exists and furthermore is preserved by both $\pi_X$ and $\pi_Y$.
+\end{theorem}
+\begin{proof}
+We may compute as follows: By the universal property of the comma object $(f_X / f_Y)$, the set of 1-cells from $B$ to this comma object whose projections match our two Kan extensions is given by the set of 2-cells $[B, \omega](\Lan_q(s; \pi_X); f_X, \Lan_q(s; \pi_Y); f_Y) = [B, \omega](\Lan_q(s; \pi_X; f_X), \Lan_q(s; \pi_Y); f_Y) = [A, \omega]( (s; \pi_X; f_X) , (q; \Lan_q(s; \pi_Y); f_Y) )$. Such a 2-cell as asked for at the end of this equation is given by the composition of $\gamma$ and $\epsilon_Y$.
+
+Thus, we do indeed get a 1-cell $m : B \to (f_X / f_Y)$ whose composition with each projection $\pi$ matches $\Lan_q(s; \pi)$. What remains is only to show that $m$ is indeed $\Lan_q s$.
+
+Let an arbitrary $k : B \to (f_X/f_Y)$ be given. By the universal property of the comma category again, we have that 2-cells from $m$ to $k$ are in correspondence with choices of 2-cells from $m ; \pi$ to $k ; \pi$ for each projection $\pi$, such that both resulting composite 2-cells from $m; \pi_X; f_X$ to $k ; \pi_y; f_Y$ are equal. But each $m ; \pi = \Lan_q(s; \pi)$, so a 2-cell from this to $k ; \pi$ amounts to a 2-cell from $s; \pi$ to $q; k ; \pi$. A coherent choice of such 2-cells is, again by the universal property of the comma category $(f_X / f_Y)$, the same thing as a 2-cell from $s$ to $q; k$. Thus, we have shown $\Hom(m, k) = \Hom(s, (q; k))$, which establishes $m$ as satisfying the universal property defining $\Lan_q s$. This completes the proof.
+\end{proof}
+
+Dually, we can turn all 2-cells around in this theorem, replacing the left Kan extensions with right Kan extensions and now having a condition that the functor on the codomain side of our comma category must preserve the corresponding Kan extension.
+
+\begin{corollary}\label{CommaCategoryColimits}
+Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have finite colimits and $f_X$ preserves finite colimits, then $(f_X / f_Y)$ has finite colimits, preserved by both projections $\pi_X$ and $\pi_Y$.
+
+Furthermore, an arbitrary functor into $(f_X / f_Y)$ then preserves finite colimits iff its composition with both projections preserves finite colimits.
+
+(Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
+\end{corollary}
+\begin{proof}
+The first statement follows from \label{CommasCreateInitials} by taking $A$ to be a finite category and taking $B$ to be the terminal category.
+
+The right-to-left direction of the second statement then follows from the fact that a functor into a 2-limit is uniquely determined by its compositions with the projections (so if these compositions are all limit-preserving, so is the original functor). \TODOinline{Is this true?} The left-to-right direction of the second statement is trivial.
+\end{proof}
 
 \fileend
