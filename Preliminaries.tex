@@ -3,18 +3,20 @@
 \section{Category-theoretic preliminaries}
 
 \subsection{Higher categorical terminology pedantry}
-We will speak frequently of category-valued presheaves (i.e., contravariant functors into the category of categories) and natural transformations between these. Technically, what we mean by these are not \quote{functors} and \quote{natural transformations} in the traditional sense, but what some call "pseudofunctors" and \quote{pseudonatural transformations}, or \quote{2-functors} and \quote{2-natural transformations}, as the category of categories should be viewed as a 2-category (in the non-strict sense some call \quote{bicategory}), lacking a notion of equality between its 1-cells and only having a notion of isomorphism between them instead. That is, wherever one might traditionally ask for an (automatically coherent) system of equalities, this is replaced by a coherent system of isomorphisms. We take the convention that this is what terminology such as \quote{functor} and \quote{natural transformation} already means, in such a context. But we will try our best to construct arguments in such a way as that this is mostly not a bother that needs to be explicitly worried about.
+We will speak frequently of category-valued presheaves (i.e., contravariant functors into the category of categories) and natural transformations between these. Technically, what we mean by these are not \quote{functors} and \quote{natural transformations} in the traditional sense, but what some call "pseudofunctors" and \quote{pseudonatural transformations}, or \quote{2-functors} and \quote{2-natural transformations}, as the category of categories should be viewed as a 2-category (by which we mean the non-strict concept some call \quote{bicategory}), lacking a notion of equality between its 1-cells and only having a notion of isomorphism between them instead. That is, wherever one might traditionally ask for an (automatically coherent) system of equalities, this is replaced by a coherent system of isomorphisms. We take the convention that this is what terminology such as \quote{functor} and \quote{natural transformation} already means, in such a context. But we will try our best to construct arguments in such a way as that this is mostly not a bother that needs to be explicitly worried about.
 
 Similarly, if we ever describe diagrams involving functors between categories as commuting, we really mean that these diagrams commute up to natural isomorphism. If we make claims about uniqueness in such a context, we mean the space of choices with the relevant isomorphisms is contractible. And so on. Again, our convention is that this is what such terminology already means, in any categorical context where one has such concepts of isomorphism around, unless we have taken care to say we are working with stricter notions instead (see more on strictness below).
 
 Nothing we do is higher-dimensional than 2-categorical, so everything can be strictified to one's heart's content if so desired.
 
 \subsection{Indexed, \repsmall/, and locally \repsmall/ structures}
-We assume familiarity with sets, functions, categories, functors, categories having finite limits (also known as lexcategories), functors preserving finite limits (also known as lexfunctors), natural transformations, presheaves, internal categories, etc, all in the ordinary sense.
+We assume familiarity with sets, functions, categories, functors, categories having finite limits (also known as lexcategories), functors preserving finite limits (also known as lexfunctors), natural transformations, presheaves, internal categories, 2-categories, etc, all in the ordinary sense.
 
 We will take all categories to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc, but wherever this is important we will make some explicit note.
 
 We will now give a series of related definitions. The notions being described in this section are all relatively old hat, none of them are newly invented by us, but we wish to pin them down with particular names for our purposes. Some of them lack standard names, and in other cases we are using a new name with different connotations than the standard name. The purpose of these definitions is to establish a convenient and useful vocabulary for easily talking about the things we wish to talk about in the rest of this document.
+
+As we give these definitions, we will also observe a basic stock of theorems about them which, though all old hat, it may be useful to remind the reader of, and which at any rate it will be useful to give labels to for reference later.
 
 \UnprintedTODO{Clean this up by removing any definitions we don't end up using often.}
 
@@ -45,7 +47,7 @@ Note that \repsmall/ sets are closed under any limits which exist in $T$. In par
 \end{theorem}
 
 \begin{definition}
-Note that given an arbitrary functor $f : S \to T$, this induces by composition a functor $\pullAlong{f}$ from $T$-indexed sets to $S$-indexed sets.
+Note that given an arbitrary functor $f : S \to T$, this induces by composition a functor $\pullAlong{f} : \Psh{T} \to \Psh{S}$.
 
 That is, from a $T$-indexed set $P$, we may construct the following $S$-indexed set $\pullAlong{f} P$:
 
@@ -61,9 +63,9 @@ That is, from a $T$-indexed set $P$, we may construct the following $S$-indexed 
 Given $f : S \to T$ and an object $s$ in $S$ and a $T$-indexed set $P$, we have that $\Hom(s, \pullAlong{f}P) = \Hom(f(s), P)$, with this correspondence being natural in both $s$ and $P$.
 \end{theorem}
 \begin{proof}
-Keep in mind that in these Hom-expressions, $s$ and $f(s)$ have implicitly been construed as $S$-indexed sets via the Yoneda embedding, so we can apply the Yoneda lemma to both sides of the equation to reduce it to $(\pullAlong{f}P)(s) = P(f(s))$, which is the definition of $\pullAlong{f}$.
+Keep in mind that in these Hom-expressions, $s$ and $f(s)$ have implicitly been construed as $S$-indexed sets via the Yoneda embedding. We are really claiming $\Hom(\yoneda(s), \pullAlong{f}P) = \Hom(\yoneda(f(s)), P)$. To establish this claim, we can apply the Yoneda lemma to both sides of the equation to reduce it to $(\pullAlong{f}P)(s) = P(f(s))$, which is the definition of $\pullAlong{f}$.
 
-This completes the proof. (In fancy categorical jargon, we have demonstrated that $\yoneda \circ f : S \to \Psh{T}$ is the relative left adjoint of $\pullAlong{f} : \Psh{T} \to \Psh{S}$, relative to the Yoneda embedding $\yoneda : S \to \Psh{S}$. Equivalently, we have demonstrated that left Kan extension along $f$ takes representable functors to representable functors by application of $f$ on their representing objects.)
+This completes the proof. (In fancy categorical jargon, we have demonstrated that $\yoneda \circ f : S \to \Psh{T}$ is the relative left adjoint of $\pullAlong{f} : \Psh{T} \to \Psh{S}$, relative to the Yoneda embedding $\yoneda : S \to \Psh{S}$.)
 \end{proof}
 
 \begin{corollary}\label{YonedaPullalongLemma}
@@ -98,6 +100,13 @@ Let $\Sigma$ be the forgetful functor from a slice category $T/t$ to its ambient
 This is corollary to \magicref{YonedaPullalong}, which tells us $\Hom_{\Psh{T/t}}(1_{T/t}, \pullAlong{\Sigma} P)$ is in correspondence with $\Hom_{\Psh{T}}(\Sigma 1_{T/t}, P)$, where $1_{T/t}$ is the terminal object in $T/t$. As this terminal object is given by the identity morphism into $t$, we have that $\Sigma 1_{T/t} = t$. Thus, this equation is telling us that the global aspect of $\pullAlong{\Sigma} P$ corresponds to the $t$-aspect of $P$, as desired.
 \end{proof}
 
+\begin{theorem}\label{KanExtensionOfAdjoint}
+If $f \adjointTo g$, then $\pullAlong{f} \adjointTo \pullAlong{g}$. Thus $\pullAlong{f} = \Lan_{\op{g}}$, while $\pullAlong{g} = \Ran_{\op{f}}$.
+\end{theorem}
+\begin{proof}
+\TODOinline{This is simply the fact that adjunction is preserved by 2-functors and reversed by co or op. Actually, it's confusing to use this notation, because we are really pulling back along $\op{f}$, etc.}
+\end{proof}
+
 \begin{theorem}\label{RepsmallRightAdjoint}
 If $f$ has a right adjoint $g$, then $\pullAlong{f}$ takes \repsmall/ sets to \repsmall/ sets. Specifically, $\pullAlong{f}(t) = g(t)$.
 \end{theorem}
@@ -109,7 +118,7 @@ $\pullAlong{f}$ takes any representable presheaf with representing object $t$ in
 Any functor of the form $\pullAlong{f}$ preserves finite limits.
 \end{theorem}
 \begin{proof}
-This can be seen in several ways. Perhaps most familiarly, this can be seen from the fact that (co)limits in a a functor category are computed pointwise where the pointwise (co)limits exist, and of course set-sized (co)limits all exist in $\Set$. Secondly, when the domain of $f$ is a small category, it can be seen from the fact that $\pullAlong{f}$ has left and right adjoints, known as left and right Kan extension, so that $\pullAlong{f}$ in fact preserves ALL (co)limits that happen to exist, regardless of size. We can also note that $\pullAlong{f}(P) = \Hom(f(-), P)$, which is manifestly limit preserving (though this argument does not generalize as easily to colimit-preservation).
+This can be seen in several ways. Perhaps most familiarly, this can be seen from the fact that (co)limits in a a functor category are computed pointwise where the pointwise (co)limits exist, and of course set-sized (co)limits all exist in $\Set$. Secondly, when the domain of $f$ is a small category, it can be seen from the fact that $\pullAlong{f}$ has left and right adjoints (the left and right Kan extensions along $\op{f}$), so that $\pullAlong{f}$ in fact preserves ALL (co)limits that happen to exist, regardless of size. We can also note that $\pullAlong{f}(P) = \Hom(f(-), P)$, which is manifestly limit preserving (though this argument does not generalize as easily to colimit-preservation).
 \end{proof}
 
 We also define more generally the concept of a function between indexed sets having \repsmall/ fibers:
@@ -407,7 +416,7 @@ A laxly $C$-indexed discrete strict category is the same as a $C$-indexed set, a
 
 \subsubsection{Comma categories}
 
-\begin{theorem}\label{CommasCreateInitials}
+\begin{theorem}[The Comma-Kan Lemma] \label{CommasCreateInitials}
 Suppose, within some 2-category $C$, we have the following comma object and left Kan extensions:
 
 % https://q.uiver.app/?q=WzAsNyxbNCwyLCJYIl0sWzQsNCwiXFxvbWVnYSJdLFsyLDQsIlkiXSxbMiwyLCIoZl9YL2ZfWSkiXSxbMSwxLCJBIl0sWzAsMCwiQiJdLFs1LDFdLFswLDEsImZfWCJdLFsyLDEsImZfWSIsMl0sWzMsMiwiXFxwaV9ZIiwyXSxbMywwLCJcXHBpX1giXSxbMCwyLCJcXGdhbW1hIiwyLHsibGV2ZWwiOjJ9XSxbNCwzLCJzIiwxXSxbNCw1LCJxIiwxXSxbNSwwLCJcXExhbl9xIChzOyBcXHBpX1gpIl0sWzUsMiwiXFxMYW5fcShzOyBcXHBpX1kpIiwyXSxbMywxNCwiXFxlcHNpbG9uX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzMsMTUsIlxcZXBzaWxvbl9ZIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
@@ -452,9 +461,14 @@ Furthermore, an arbitrary functor into $(f_X / f_Y)$ then preserves finite colim
 (Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
 \end{corollary}
 \begin{proof}
-The first statement follows from \label{CommasCreateInitials} by taking $A$ to be a finite category and taking $B$ to be the terminal category.
+The first statement follows from \magicref{CommasCreateInitials} by taking $A$ to be a finite category and taking $B$ to be the terminal category.
 
-The right-to-left direction of the second statement then follows from the fact that a functor into a 2-limit is uniquely determined by its compositions with the projections (so if these compositions are all limit-preserving, so is the original functor). \TODOinline{Is this true?} The left-to-right direction of the second statement is trivial.
+The right-to-left direction of the second statement then follows from the fact that a functor into a 2-limit is uniquely determined by its compositions with the projections (so if these compositions are all limit-preserving, so is the original functor). The left-to-right direction of the second statement is trivial.
 \end{proof}
+
+\subsection{TODO}
+\begin{TODOblock}\label{ModelTerminology}
+We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
+\end{TODOblock}
 
 \fileend

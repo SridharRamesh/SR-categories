@@ -103,3 +103,12 @@ Investigate relativizing our well-founded introspective theory construction to a
 The difference between our well-founded models which have geminal categories which do not validate ~~[]0, and the ones which do validate ~~[]0, is like the difference between "strong induction" and "ordinary induction" so far as the Lob principle's interpretation goes. The relationship between these two forms of induction gives us a relationship between morphisms []A |- A for the two different box operators we might consider.
 
 Our introspective theories are like extensional dependent type theory with sigma and identity types and guarded recursion with also a universe U (with u : U leading to el(U) : Type) such that []U and [](Sigma x : U, y : U. el(x) -> el(y)) are both coded by elements of U. When universes are presumed to be cartesian closed, our presumption is something like that [](Sigma x : U. el(x)) is coded by an element of U.
+
+-------------
+
+1. Models based on initiality
+2. Lob's theorem uniqueness
+3. Presheaf models
+4. Geminal categories
+5. Cleanup
+6. Modally naive set theory
