@@ -144,6 +144,24 @@ Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of 
 
 \subsubsection{The theory of initial models as an introspective theory}
 
+Let $T$ be a lexcategory. Let us an object $f : T \to S$ of the slice 2-category $T/\LexCat$ is a $T$-initializer if $f$ is initial within $\LexCat(T, S)$. Let us say the 2-category of $T$-initializers is $T/\LexCat$ restricted to just having the $T$-initializers as objects. (N.B. In this slice 2-category, we take the 1-cells to be triangles which commute up to invertible 2-cells, not up to lax 2-cells)
+
+\begin{theorem}
+For every (\setsmall/) lexcategory $T$, there is an initial object within the 2-category of $T$-initializers.
+\end{theorem}
+\begin{proof}
+This is by some general initial object of small algebraish theories theorem  we should establish somewhere, that we will be using over and over. \TODO
+\end{proof}
+
+\begin{theorem}
+If $f : T \to S$ is the initial $T$-initializer, then for any other $T$-initializer $g : T \to U$, we get that $!$ is initial within $\LexCat(S, U)$, where $!$ is the lexfunctor from $S$ to $U$ given by $f$ being the initial $T$-initializer.
+\end{theorem}
+\begin{proof}
+\TODO (By our Comma-Kan lemma \magicref{CommaKan}, with $X$ and $Y$ as $S$, with $\omega$ as $U$, with $f_X$ as $!$ and $f_Y$ is an arbitrary lexfunctor, with $A$ as the initial lexcategory and $B$ as $T$, we get that $(!/f_Y)$ has an initial lexfunctor into it from $T$, and this is preserved by the projections out of the comma category. There is therefore a unique lexfunctor from $S$ to $(!/f_Y)$ preserving initiality of the maps from $T$. Following this up with the projections also preserves that initiality, so this unique lexfunctor from $S$ to $(!/f_Y)$ has both projections yielding identity; any other lexfunctor from $S$ to $(!/f_Y)$ with both projections yielding identity also has to be equal to this one. This gives us a unique natural transformation of the sort we have in mind. \TODOinline{Check this, clean this up}
+\end{proof}
+
+Therefore, the identity endolexfunctor on the initial $T$-initializer is initial among its endolexfunctors. In this way, we get an introspective theory on the initial $T$-initializer once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...).
+
 \TODOinline{The initial arithmetic universe actually IS an introspective theory, via reasoning about Freyd covers that does not generalize to other examples of this section's phenomena. Discuss this further. This introspective theory extends the geminal arithmetic universe of the previous construction with a suitable natural transformation; furthermore, as its internalization functor preserves AU structure and thus takes its internal initial AU to ITS internal initial AU, the internal geminal AU in this introspective theory is also the internalization of the previous geminal gadget construction. This last part generalizes to any geminal gadget constructed in the previous way: Its internal geminal gadget will also have been constructed by the internalization of the previous construction.}
 
 \begin{TODOblock}

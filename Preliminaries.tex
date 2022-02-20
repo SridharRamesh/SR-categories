@@ -492,7 +492,7 @@ A laxly $C$-indexed discrete strict category is the same as a $C$-indexed set, a
 
 \subsubsection{Comma categories}
 
-\begin{theorem}[The Comma-Kan Lemma] \label{CommasCreateInitials}
+\begin{theorem}[The Comma-Kan Lemma] \label{CommaKan}
 Suppose, within some 2-category $C$, we have the following comma object and left Kan extensions:
 
 % https://q.uiver.app/?q=WzAsNyxbNCwyLCJYIl0sWzQsNCwiXFxvbWVnYSJdLFsyLDQsIlkiXSxbMiwyLCIoZl9YL2ZfWSkiXSxbMSwxLCJBIl0sWzAsMCwiQiJdLFs1LDFdLFswLDEsImZfWCJdLFsyLDEsImZfWSIsMl0sWzMsMiwiXFxwaV9ZIiwyXSxbMywwLCJcXHBpX1giXSxbMCwyLCJcXGdhbW1hIiwyLHsibGV2ZWwiOjJ9XSxbNCwzLCJzIiwxXSxbNCw1LCJxIiwxXSxbNSwwLCJcXExhbl9xIChzOyBcXHBpX1gpIl0sWzUsMiwiXFxMYW5fcShzOyBcXHBpX1kpIiwyXSxbMywxNCwiXFxlcHNpbG9uX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzMsMTUsIlxcZXBzaWxvbl9ZIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
@@ -537,7 +537,7 @@ Furthermore, an arbitrary functor into $(f_X / f_Y)$ then preserves colimits of 
 (Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
 \end{corollary}
 \begin{proof}
-The first statement follows from \magicref{CommasCreateInitials} by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits (/respectively limits) correspond to left (/respectively right) Kan extensions along such a functor.
+The first statement follows from \magicref{CommaKan} by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits (/respectively limits) correspond to left (/respectively right) Kan extensions along such a functor.
 
 The right-to-left direction of the second statement then follows from the fact that a functor into a 2-limit is uniquely determined by its compositions with the projections (so if these compositions are all limit-preserving, so is the original functor). The left-to-right direction of the second statement is trivial.
 \end{proof}

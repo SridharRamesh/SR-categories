@@ -88,3 +88,5 @@ Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete
 Realising Intensional S4 and GL Modalities
 
 "Can Modalities Save Naive Set Theory?" by Dana Scott et al
+
+"GENERALISED ALGEBRAIC THEORIES AND CONTEXTUAL CATEGORIES" by Cartmell (under Dana Scott) discusses the appropriate notion of essentially algebraic theory where some types are indexed by non-set-types (as in the theory of categories).
