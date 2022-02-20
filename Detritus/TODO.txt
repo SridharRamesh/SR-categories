@@ -112,3 +112,5 @@ Our introspective theories are like extensional dependent type theory with sigma
 4. Geminal categories
 5. Cleanup
 6. Modally naive set theory
+
+If something is off narrative, feel free to skim instead of going into detail. A clean story is better than a messy attempt at exhaustiveness. Write the way you would write in chat, and we can fill in more bureaucracy as requested later.

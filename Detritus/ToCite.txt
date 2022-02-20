@@ -86,3 +86,5 @@ Definition 7.14 of "A General Framework for the Semantics of Type
 Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete Type Theories"
 
 Realising Intensional S4 and GL Modalities
+
+"Can Modalities Save Naive Set Theory?" by Dana Scott et al
