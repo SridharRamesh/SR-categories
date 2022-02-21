@@ -49,11 +49,11 @@ We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish t
 (It is perhaps a bit misleading to use \quote{small}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the smallest indexed set, the one which constantly takes the value of the empty set, is never \repsmall/ in this technical representability sense. But the analogy to the familiar distinction between \quote{small} sets and non-\quote{small} proper classes is often a fruitful one, motivating this terminology. When the indexing category $T$ has finite limits (or even just splittings of idempotents), this notion of \repsmall/ is equivalent to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.)
 
 \begin{convention}
-Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$.
+Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$. And conversely, given a \repsmall/ $T$-indexed set $P$, we freely write also $P$ to name an object in $T$ representing $P$, rather than explicitly writing $\yoneda^{-1}(P)$.
 \end{convention}
 
 \begin{theorem}
-Note that \repsmall/ sets are closed under any limits which exist in $T$. In particular, if $T$ is a lexcategory, \repsmall/ sets are closed under finite limits. (This is essentially the observation that the Yoneda embedding preserves limits.)
+Note that \repsmall/ sets, construed as objects of $\Psh{T}$, are closed under any limits which exist in $T$. In particular, if $T$ is a lexcategory, \repsmall/ sets are closed under finite limits. (This is essentially the observation that the Yoneda embedding preserves limits.)
 \end{theorem}
 
 \begin{definition}
@@ -469,7 +469,9 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
-\subsection{Unorganized category-theoretic lemmas}
+\subsection{Unorganized draft category-theoretic lemmas}
+
+\TODOinline{Everything from here on out in the preliminaries is in a draft state, not yet readable}
 
 \subsubsection{Laxly indexed strict categories}
 \begin{definition}\label{LaxlyIndexedStrictCategory}
@@ -542,7 +544,7 @@ The first statement follows from \magicref{CommaKan} by taking $A$ to be the gen
 The right-to-left direction of the second statement then follows from the fact that a functor into a 2-limit is uniquely determined by its compositions with the projections (so if these compositions are all limit-preserving, so is the original functor). The left-to-right direction of the second statement is trivial.
 \end{proof}
 
-\subsection{Theories, models, functors, etc}
+\subsubsection{Theories, models, functors, etc}
 \begin{TODOblock}\label{ModelTerminology}
 We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
 \end{TODOblock}
@@ -557,7 +559,7 @@ Given a category $T$ and a $T$-indexed (or $T$-internal) category $C$, we may sp
 
 \TODOinline{Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.}
 
-\subsection{Interpreting essentially algebraic theories into strict lexcategories}
+\subsubsection{Interpreting essentially algebraic theories into strict lexcategories}
 \TODOinline{Clean this section up, motivate it, use it}
 
 Consider the free/forgetful adjunction between strict categories and strict lexcategories. For any strict lexcategory, we can consider the unit of this adjunction at it. If this unit is injective on objects, we say this strict lexcategory \defined{imposes no equations on objects}. When we say \defined{strict lex theory}, we mean a strict lexcategory that imposes no equations on objects. That is, it does not have an object $X$ such that $X \times X = X$ strictly, or any such thing. These are the appropriate strict lexcategories to model essentially algebraic theory for interpretation into other strict lexcategories, in the following sense: 
@@ -601,4 +603,17 @@ Let us say the category of sketches is the minimal subcategory of the category o
 A sketch has the desired property of imposing no equations.
 
 \TODOinline{Perhaps we should mark somehow those theorems which are specific to $\Set$ and perhaps use Choice vs those theorems which are meant to internalize}
+
+\subsubsection{Existence of initial structures in $\Set$, $\LexCat$, etc}
+\TODO
+
+Some general theorem here which we will invoke in $\Set$, $\LexCat$ etc. Not to be invoked internal to toposes or anything, mind you, where different arguments are necessary than the following.
+
+\begin{theorem}\label{Adamek}
+The general theorem would presumably be the transfinite construction of initial algebras for pointed endofunctors preserving colimits indexed by ordinal $k$, on a category with colimits indexed by any ordinal $\leq k$. (For non-pointed endofunctors, we can do the same as long as we also have finite coproducts)
+\end{theorem}
+
+In our metatheory, we assume such a theorem and also we assume that initial small instances of some variety of category also always have unique homomorphsms into $\Set$ itself, if $\Set$ is that variety of category. (This is as opposed to the kind of initial algebras we get internal to a topos, arithmetic universe, etc, where $\Set$ is too large for the initiality to apply with respect to it)
+
+"Partial Horn logic and cartesian categories" by Palmgren and Vickers discusses the proof (internalizable to toposes, etc, and also adaptable to the infinitary case) that free models of essentially algebraic theories exist.
 \fileend
