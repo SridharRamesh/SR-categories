@@ -42,165 +42,14 @@ We shall now make an observation about an alternative but equivalent way to spec
 Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 \end{theorem}
 
-As preparation for the proof of \cref{SNCorrespondence}, we will need two lemmas. Both of these lemmas should be understood as obvious, folklore, etc, but we will write out proofs of them for self-containedness.
-
-\begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{Lemma1}
-If $Y$ is a category with initial object $0$ and $X$ is a (2-)category, then to any functor $f : Y \to X$, we can associate a corresponding functor $f'$ from $Y$ to the slice category $f(0)/X$.
-
-Furthermore, if $D$ and $C$ are parallel functors from $Y$ to $X$, then a natural transformation from $D$ to $C$ amounts to the same thing as a map $\introS$ from $D(0)$ to $C(0)$ along with a natural transformation from $D'$ to $\introS^{*} \circ C'$, where $\introS^{*} : C(0)/X \to D(0)/X$ is the functor between these slice categories given by composition with $\introS$.
-\end{theoremEnd}
 \begin{proof}
-The first half of the lemma is thoroughly straightforward. $f : Y \to X$ induces a functor between the arrow category of $Y$ and the arrow category of $X$, and since $Y$ sits inside its arrow category as the slice category $0/Y$, this gives us a functor from $Y$ to the arrow category of $X$, which when followed by the domain projection back to $X$ is constantly $f(0)$. This is our $f'$.
+Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \magicref{Lemma1} (keeping in mind the contravariance of the functors defining indexed structures), a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$). The map $\introS$ will be used to treat $C$ as a lexcategory under $T$.
 
-The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), so that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data.
-
-See \hyperref[proof:prAtEnd\pratendcountercurrent]{full proof} on page~\pageref{proof:prAtEnd\pratendcountercurrent}.
-\end{proof}
-\begin{proofEnd}[no link to proof]
-We pick up from where we left off previously in the proof of \cref{Lemma1}.
-
-Throughout the remainder of this proof, all references to \quote{category}, \quote{functor}, etc, are in the sense of whatever dimension of higher-categories encapsulates both $Y$ and $X$.
-
-Let $Z$ be the category obtained by augmenting $Y$ with a new object $0_Z$ and unique maps from $0_Z$ to each object of $Y$. We have an inclusion functor $i : Y \to Z$, and this inclusion is fully faithful, in the sense that the induced map $\Hom_Y(y_1, y_2) \to \Hom_Z(i(y_1), i(y_2))$ is an equivalence for all $y_1, y_2 \in \Ob(Y)$.
-
-The unique maps from $0_Z$ to each object in the range of $i$ constitute a diagram of this form:
-
-\[\begin{tikzcd}
-	& 1 \\
-	Y && Z
-	\arrow["\unique", from=2-1, to=1-2]
-	\arrow["{0_Z}", from=1-2, to=2-3]
-	\arrow[""{name=0, anchor=center}, "i"', from=2-1, to=2-3]
-	\arrow[Rightarrow, from=1-2, to=0]
-\end{tikzcd}\]
-
-What's more, because of how $Z$ was constructed by freely augmenting $Y$ with a new object and co-cone from it to the inclusion of $Y$, this diagram satisfies the universal property that for any other similar diagram
-\[\begin{tikzcd}
-	& 1 \\
-	Y && Z'
-	\arrow["\unique", from=2-1, to=1-2]
-	\arrow[from=1-2, to=2-3]
-	\arrow[""{name=0, anchor=center}, from=2-1, to=2-3]
-	\arrow[Rightarrow, from=1-2, to=0]
-\end{tikzcd}\]
-there is a unique functor from $Z$ to $Z'$ commutatively relating the two diagrams. In jargon, this universal property is summarized by saying $Z$ (along with the data of $0_Z$ and $i$) is the co-comma of the unique functor from $Y$ to $1$ and the identity functor from $Y$ to $Y$.
-
-Now, observe that $i$ has a left adjoint, the functor $q : Z \to Y$ such that $q \circ i$ is the identity on $Y$ and such that $q$ of the initiality co-cone for $0_Z$ in $Z$ is the initiality co-cone for $0$ in $Y$. That is, $q$ is the functor obtained by the co-comma property for $Z$ as applied to this diagram expressing the initiality co-cone of $0$ in $Y$:
-
-\[\begin{tikzcd}
-	& 1 \\
-	Y && Y
-	\arrow["\unique", from=2-1, to=1-2]
-	\arrow["{0}", from=1-2, to=2-3]
-	\arrow[""{name=0, anchor=center}, "\id"', from=2-1, to=2-3]
-	\arrow[Rightarrow, from=1-2, to=0]
-\end{tikzcd}\]
-
-It is straightforward to verify that this $q$ is indeed left adjoint to $i$, as any data in $Z$ is either from the fully faithful inclusion of $Y$ or from the initiality co-cone for $0_Z$, and $\Hom_Y(q(i(y_1)), y_2) \iso \Hom_Y(y_1, y_2) \iso \Hom_Z(i(y_1), i(y_2))$ naturally in $y_1, y_2$ from $Y$, and $\Hom_Y(q(0_Z), y) = \Hom_Y(0, y) \iso 1 \iso \Hom_Z(0_Z, i(y))$ naturally in $y$ from $Y$.
-
-Now consider any two parallel functors $D, C : Y \to X$. Because $q \circ i$ is the identity on $Y$, we have that $\Nat(D, C) \iso \Nat(D \circ q \circ i, C)$, where $\Nat$ denotes the space of natural transformations between these functors. But because $q \dashv i$, we in turn have that $\Nat(D \circ q \circ i, C) \iso \Nat(D \circ q, C \circ q)$.
-
-Finally, let us consider what a natural transformation between $D \circ q$ and $C \circ q$ amounts to. This is the same as a functor from $Z$ to the arrow category of $X$ whose domain and codomain projections to $X$ yield $D \circ q$ and $C \circ q$. But by the co-comma property of $Z$, this functor out of $Z$ corresponds to data of the following form:
-
-\[\begin{tikzcd}
-	& 1 \\
-	Y && {\arrowcat{X}}
-	\arrow["\unique", from=2-1, to=1-2]
-	\arrow[from=1-2, to=2-3]
-	\arrow[""{name=0, anchor=center}, from=2-1, to=2-3]
-	\arrow[Rightarrow, from=1-2, to=0]
-\end{tikzcd}\]
-
-such that the rightmost arrow of this diagram corresponds to some arrow $\introS$ in $X$ whose domain is $(D \circ q)(0_Z) = D(0)$ and whose codomain is $(C \circ q)(0_Z) = C(0)$, and such that the bottom arrow of this diagram corresponds to a natural transformation from $D \circ q \circ i \iso D$ to $C \circ q \circ i \iso C$. The 2-cell in the above diagram then corresponds to the remaining data necessary for us to construe this natural transformation from $D$ to $C$ as simply the codomain projection of a natural transformation between $D'$ and $\introS^{*} \circ C'$, the functors from $Y$ to $D(0)/X$ as mentioned in the statement of this lemma.
-
-\TODOinline{Phew! That made a mountain out of a molehill. But perhaps people sometimes appreciate such written-out detail.}
-\end{proofEnd}
-
-In order to state the next lemma, some terminology:
-
-\begin{definition}
-If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory extending $T$ with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed lexcategory-under-$T$. \TODOinline{Move this and \cref{Lemma2} to Preliminaries. It should be mentioned at the same time that we grant $T/-$ the name \quote{self-indexing} to begin with. And we should do the same for finite product categories and the simple self-indexing.}
-\end{definition}
-
-\begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{Lemma2}
-$T[1 \to -]$ is $T/-$, as a $T$-indexed lexcategory-under-$T$.
-\end{theoremEnd}
-\begin{proof}
-This is a standard observation (see 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof), and also simple enough to show. See \hyperref[proof:prAtEnd\pratendcountercurrent]{full proof} on page~\pageref{proof:prAtEnd\pratendcountercurrent}.
-\end{proof}
-\begin{proofEnd}[no link to proof]
-To start off, we construe $T/-$ as not merely a $T$-indexed lexcategory, but furthermore a $T$-indexed lexcategory-under-$T$ (equivalently, $T/1$) by appeal to the first half of \cref{Lemma1} as applied to $T/- : \op{T} \to \LexCat$. Note that, for any particular object $t$ of $T$, this identifies $T/1$ inside $T/t$ via pullback along the unique map from $t$ to $1$; thus, $T$ is identified as the subcategory of \quote{constant} data within $T/t$. We may explicitly refer to this inclusion lexfunctor as $i_t : T \to T/t$. (Beware that in general, $i_t$ is faithful but not full!)
-
-Now, what we want to show that given any fixed diagram in $\LexCat$ of this form
-\[\begin{tikzcd}
-	& T \\
-	{T/t} && V
-	\arrow["{i_t}"', from=1-2, to=2-1]
-	\arrow["f", from=1-2, to=2-3]
-\end{tikzcd}\]
-there is a correspondence between commutative triangles extending this diagram with a lexfunctor from $T/t$ to $V$, and elements of $\Hom_V(1, f(t))$.
-
-Well, suppose given $m : 1 \to f(t)$ in $V$. Consider now how the action of $f$ on arrows induces a functor $f' : T/t \to V/f(t)$. Because $f$ preserves finite limits, and finite limits in a category determine the finite limits in its slice categories, this functor $f'$ also preserves finite limits. Furthermore, by pullback along $m$, we get a lexfunctor $m^* : V/f(t) \to V$. Thus, altogether, we get a lexfunctor $m^* \circ f' : T/t \to V$. What's more, the following diagram commutes:
-
-\[\begin{tikzcd}
-	& T \\
-	{T/t} && V \\
-	& {V/f(t)}
-	\arrow["{i_t}"', from=1-2, to=2-1]
-	\arrow["f", from=1-2, to=2-3]
-	\arrow["{f'}"', from=2-1, to=3-2]
-	\arrow["{m^*}"', from=3-2, to=2-3]
-\end{tikzcd}\]
-
-To see that this diagram commutes, observe that it can be decomposed like so:
-
-\[\begin{tikzcd}
-	& T \\
-	{T/t} & V & V \\
-	& {V/f(t)}
-	\arrow["{i_t}"', from=1-2, to=2-1]
-	\arrow["f", from=1-2, to=2-3]
-	\arrow["{f'}"', from=2-1, to=3-2]
-	\arrow["{m^*}"', from=3-2, to=2-3]
-	\arrow["f"', from=1-2, to=2-2]
-	\arrow["{i_{f(t)}}"', from=2-2, to=3-2]
-\end{tikzcd}\]
-
-Here, $i_{f(t)}$ is the inclusion lexfunctor from $V$ into $V/f(t)$ in the analogous way to $i_t : T \to T/t$. The left half of this diagram commutes because, $f$ being a lexfunctor, the operations \quote{Pull back along the map from $t$ to $1$ and then apply $f$ to the resulting slice} and \quote{Apply $f$ and then pull back along the map from $f(t)$ to $1$} are the same. The right half of this diagram commutes because $m^* \circ i_{f(t)}$ is identity, because this amounts to pulling back along two morphisms in a row, ultimately pulling back along a path from $1$ to $1$, and any morphism from $1$ to $1$ is the identity. \TODOinline{Phrase this better?}
-
-Thus, every element of $\Hom_V(1, f(t))$ induces a corresponding commutative triangle of lexfunctors from $i_t : T \to T/t$ to $f : T \to V$.
-
-Conversely, any such commutative triangle induces an element of $\Hom_V(1, f(t))$. To see this, we just need to see that there is some global element of $i_t(t)$ already in $T/t$.
-
-Note that $i_t(t)$ is one of the projections from $t \times t$ to $t$. Furthermore, the terminal object in $T/t$ is the identity slice from $t$ to $t$. So the following commutative triangle serves as a global element of $i_t(t)$ within $T/t$:
-
-\[\begin{tikzcd}
-	t && {t \times t} \\
-	& t
-	\arrow["id"', from=1-1, to=2-2]
-	\arrow["{i_t(t)}", from=1-3, to=2-2]
-	\arrow["{\langle \id, \id \rangle}", from=1-1, to=1-3]
-\end{tikzcd}\]
-
-Let us use the name $g_t$ for this global element of $i_t(t)$ within $T/t$.
-
-Now, we need to show that these two processes are inverse. \TODO
-
-Finally, we must show that the re-indexings given by morphisms in $T$ via the definition of $T[1 \to -]$ correspond to the same reindexings as defined via $T/-$. \TODO
-
-\TODOinline{The details of this are probably in Uemura, and we can just cite that on top of Bart Jacobs and be done}
-\end{proofEnd}
-
-Now, we shall prove \cref{SNCorrespondence}.
-
-\begin{proof}
-Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \cref{Lemma1} (keeping in mind the contravariance of the functors defining indexed structures), a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$). The map $\introS$ will be used to treat $C$ as a lexcategory under $T$.
-
-Next we apply \cref{Lemma2}. The map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$) is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
+Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$) is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
 \end{proof}
 
 \begin{remark}\label{IntrospGeneralDoctrine}
-It wasn't fundamentally important that we were dealing with lexcategories here. The use of \Cref{Lemma1} as applied to $\op{C}$ only required a terminal object in $C$. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, for categories-with-finite-products, there is also a simple independent account of the free structure $T[1 \to t]$, amounting to the full subcategory $T//t$ of $T/t$ on just those slices which are projections from some $t \times s$ to $t$ (the so-called \quote{simple self-indexing}). So we get the same result if we replace throughout \quote{lexcategory} and \quote{lexfunctor} by finite-product structure, and replace $T/-$ by this simple self-indexing. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks. For example, toposes or locally cartesian closed categories or cartesian closed categories or categories with finite products and finite coproducts over which they distribute or etc. Even infinitary notions could be used; categories with all limits of cardinality below some regular cardinal, say.
+It wasn't fundamentally important that we were dealing with lexcategories here. The use of \Cref{Lemma1} as applied to $\op{C}$ only required a terminal object in $C$. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, we get a completely analogous result if we replace throughout all references to lexcategories with references to categories with finite products. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks (a la \magicref{SelfIndexingIsFreeCorollary}). Even infinitary notions could be used; categories with all limits of cardinality below some regular cardinal, say.
 \end{remark}
 
 As a result of \cref{SNCorrespondence}, we can give an alternative definition equivalent to \cref{DefnPreIntrospIndexed}:
@@ -394,8 +243,6 @@ Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \
 
 The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism in $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
 \end{proof}
-
-We will not generally be explicit about making distinctions between $\introS(a \times b)$ and $\introS(a) \times \introS(b)$, etc, but shall instead write with the ordinary fluency for working with limit-preserving functors. \TODOinline{Move some comment like this to the preliminaries. Our general principle should be clarity rather than distracting fussiness in writing/notation, though everything we write is perfectly rigorous, suitably construed.}
 
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
