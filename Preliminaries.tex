@@ -353,19 +353,19 @@ Note that a \repsmall/ strict category indexed over a category with finite limit
 We note without detailed proof (\TODOinline{Give or cite proofs}) some strictification results which will be useful to us later.
 
 \begin{theorem}\label{StrictifyCategory}
-Every category is equivalent to some strict category.
+Every category admits a presentation by some strict category.
 \end{theorem}
 \begin{proof}
-In traditional foundations, this is tautology, as categories are defined as presented by strict categories. In other foundations, any results of ours dependent on this should be interpreted or modified accordingly.
+In traditional foundations, this is tautology, as categories are defined as presented by strict categories. In non-traditional foundations (e.g., as in the perspective of Homotopy Type Theory, where a groupoid may be given primitively instead of in terms of specifying additional structure upon a discrete set of objects), in the absence of Choice principles, this may or may not be true. Any results of ours dependent on this should be interpreted or modified accordingly in such contexts.
 \end{proof}
 
 \begin{theorem}\label{StrictifyLexcategory}
 Every lexcategory is equivalent to some strict lexcategory.
 \end{theorem}
 \begin{proof}
-One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \magicref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limits for each basic limit within $C'$. This is readily done using the Axiom of Choice.
+One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \magicref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limit for each basic diagram within $C'$. This is readily done using the Axiom of Choice.
 
-In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate choice of $C'$ rather than an arbitrary one, but can still be carried out. In particular, we can create the free strict lexcategory $D$ extending $C'$ while preserving all basic limit cones (in the weaker, non-on-the-nose sense, as $C'$ does not itself have chosen limits). The map from $C'$ into this $D$ will be full, faithful, and essentially surjective on objects; thus, an equivalence of categories.
+In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate selection of $C'$ rather than an arbitrary one, but can still be carried out (so long as \magicref{StrictifyCategory} is available to begin with!). In particular, we can create the free strict lexcategory $D$ extending the strict category $C'$ while sending all limit cones for basic diagrams to limit cones (this is limit preservation in the weaker, non-on-the-nose sense, as $C'$ does not itself have chosen limits). The map from $C'$ into this $D$ will be full, faithful, and essentially surjective on objects; thus, an equivalence of categories.
 \end{proof}
 
 \begin{theorem}\label{StrictifyLexfunctor}
@@ -562,9 +562,11 @@ Finally, we must show that the re-indexings given by morphisms in $T$ via the de
 \TODOinline{The details of this are probably in Uemura, and we can just cite that on top of Bart Jacobs and be done}
 \end{proofEnd}
 
-\begin{corollary}\label{SelfIndexingIsFreeCorollary}
-The analogues of \magicref{SelfIndexingIsFree} automatically also follow for any categorical structure extending the structure of a lexcategory which is automatically transferred to slice categories and preserved by pullback; that is, any structure which automatically transfers from an instance that structure also to its self-indexing (e.g., for the concepts of locally cartesian closed categories or for elementary toposes or for regular categories). And in just the same way also for any categorical structure extending the structure of a category with finite limits, which automatically transfers from an instance of that structure to its simple self-indexing (e.g., for cartesian closed categories).
-\end{corollary}
+\begin{observation}\label{SelfIndexingIsFreeCorollary}
+The analogues of \magicref{SelfIndexingIsFree} automatically also follow for $T[1 \to -]$ for any categorical structure extending the structure of a lexcategory which is automatically transferred to slice categories and preserved by pullback; that is, any structure which automatically transfers from an instance of that structure also to its self-indexing (e.g., for the concepts of locally cartesian closed categories, or for elementary toposes, or for categories with finite and countably infinite limits).
+
+And in just the same way also for $T[[1 \to -]]$ for any categorical structure extending the structure of a category with finite products which automatically transfers from an instance of that structure to its simple self-indexing (e.g., for cartesian closed categories).
+\end{observation}
 
 \subsection{Double or multiple indexing}
 \TODOinline{Reader beware, this section is only needed for understanding some of the discussion at the beginning of the chapter on Geminal Categories. Apart from that, this section does not come up significantly. TODO: Emphasize the notion of multiply internal structures, the main thing this section is used to discuss.}
@@ -800,7 +802,7 @@ In our metatheory, we assume such a theorem and also we assume that initial smal
 
 Actually, we don't really need all that explicitly.
 
-"Partial Horn logic and cartesian categories" by Palmgren and Vickers discusses the proof (internalizable to toposes, etc, and also adaptable to the infinitary case) that free models of essentially algebraic theories exist. Their construction makes it very clear that what is needed for the free model of a quasi-equational theory to exist is just an effective regular category with suitable W-types for modeling the terms (including partial terms) and equations of the theory. It is clear how quasi-equational theories generalize to arbitrary arity and the initial model construction as well.
+\autocite{palmgrenvickers} discusses the proof (internalizable to toposes, etc, and also adaptable to the infinitary case) that free models of essentially algebraic theories exist. Their construction makes it very clear that what is needed for the free model of a quasi-equational theory to exist is just an effective regular category with suitable W-types for modeling the terms (including partial terms) and equations of the theory. It is clear how quasi-equational theories generalize to arbitrary arity and the initial model construction as well.
 
 This also discusses how to turn a quasi-equational theory T into the quasi-equational theory of a strict lexcategory with an internal model of T.
 

@@ -43,13 +43,13 @@ Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-intr
 \end{theorem}
 
 \begin{proof}
-Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \magicref{Lemma1} (keeping in mind the contravariance of the functors defining indexed structures), a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$). The map $\introS$ will be used to treat $C$ as a lexcategory under $T$.
+Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \magicref{Lemma1} (keeping in mind the contravariance of the functors defining indexed structures), a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ (where the map $\introS$ is used to treat $C$ as a $T$-indexed object of $T/\LexCat$).
 
-Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed (lexcategories under $T$) is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
+Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
 \end{proof}
 
 \begin{remark}\label{IntrospGeneralDoctrine}
-It wasn't fundamentally important that we were dealing with lexcategories here. The use of \Cref{Lemma1} as applied to $\op{C}$ only required a terminal object in $C$. And for any algebraish notion extending categories-with-global-elements, there is some free construction $T[1 \to -]$. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, we get a completely analogous result if we replace throughout all references to lexcategories with references to categories with finite products. The same also holds for for any notion extending the notion of lexcategories which is automatically inherited by slice categories and preserved by pullback, or any notion extending the notion of finite-product-categories which is automatically inherited by these reduced slice categories and preserved by their pullbacks (a la \magicref{SelfIndexingIsFreeCorollary}). Even infinitary notions could be used; categories with all limits of cardinality below some regular cardinal, say.
+It wasn't fundamentally important that we were dealing with lexcategories here. The use of \magicref{Lemma1} as applied to $\op{C}$ only required a terminal object in $C$. And for the invocation of \magicref{SelfIndexingIsFree}, we only needed that there is some free construction of adjoining global elements. (Even the role terminality plays here is to some degree eliminable, though we have no interest for now in eliminating it). In particular, we get a completely analogous result when lexcategories are replaced throughout by any of the structures noted in \magicref{SelfIndexingIsFreeCorollary}, including for categories with finite products using the simple self-indexing.
 \end{remark}
 
 As a result of \cref{SNCorrespondence}, we can give an alternative definition equivalent to \cref{DefnPreIntrospIndexed}:
@@ -68,17 +68,22 @@ An \defined{introspective theory} is a pre-introspective theory $\langle T, C \r
 
 While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The reduction of the full indexed lexfunctor $\introF$ to just its global aspect ($\introS$) and a natural transformation between 1-functors means much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
-\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of the same theory (this is the role of $\introS$).
+\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory (which thus has an underlying lexcategory $|C|$ interpreting $C$) is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model in its underlying lexcategory of the same theory (this is the role of $\introS$). In short, every model has a homomorphism into an interior model.
 
 \subsection{A concrete example}
 
-\begin{construction}\label{SigmaModelSimple}
-Let us now finally give the example-oriented reader an archetypal example of an introspective theory by which to orient themselves. (On the other hand, the reader who is happy to consider abstract definitions without needing to see a worked out example of a highly concrete flavor may skip this section at this introductory time if they find its details a distraction.). The following construction will be discussed in more detail later at \cref{Sigma1Model}.
-\end{construction}
+Let us now finally give the example-oriented reader a nontrivial example of an introspective theory by which to orient themselves. (On the other hand, the reader who prefers to consider abstract definitions without immediately diving into a worked out example of a highly concrete flavor may skip this section at this introductory time if they find its details a distraction. To each reader at their own taste!).
 
+In fact, we will give two closely related examples. The first example we present is somewhat atypical of general introspective theories, but important nonetheless. It is very similar to the arithmetic universe constructions considered by Joyal in his account of \Godel/'s incompleteness theorem (Joyal himself never published this work, but a detailed account has been given in \autocite{van2020g}, building off the formalization of the initial arithmetic universe given in \autocite{maietti10a}). 
+
+Although very similar, the category we use in this first example is not exactly the same as the initial arithmetic universe considered in \autocite{van2020g} and \autocite{maietti10a}. The variant and presentation we give is intended to feel natural to an audience of traditional logicians. The connection of this construction to the initial arithmetic universe will be discussed in more detail later at \magicref{Sigma1Model}. 
+
+After having given this first example, we will then tweak it slightly into another introspective theory which provides much better intuition for the general nature of introspective theories.
+
+\begin{construction}\label{SigmaModelSimple}
 Let us start with the first-order logical theory ZF-Finite: the theory ZF but with the axiom of infinity replaced by its negation\footnote{This theory happens to be equivalent to Peano Arithmetic in a suitable sense, but it will be more convenient for us to speak in terms of ZF-Finite so as not to fret about codings of a sort every modern mathematician readily takes for granted in a ZF-style context.}. The universe this theory describes is the hereditarily finite sets. Throughout this construction, whenever we speak of formulae, we mean formulae in the language of ZF-Finite, and whenever we speak of provability, we mean provable within ZF-Finite.
 
-Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers (ranging over the entire universe), after which all other quantifiers are bounded (ranging only over the elements of some particular definable finite set\footnote{Definable in the sense that it is given by a term in the language of ZF, when this language is taken to include the standard constructors of ZF-Finite (e.g., powerset, pairing, etc) as function symbols. This term may contain parameters given by previously quantified variables. We trust the reader understands the standard notion of $\Sigma_1$ formulae in the ZF context and will not go into exacting detail.}).
+Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers (ranging over the entire universe), after which all other quantifiers are bounded (ranging only over the elements of some particular definable finite set\footnote{Definable in the sense that it is given by a term in the language of ZF, when this language is taken to include the standard constructors of ZF-Finite (e.g., powerset, pairing, etc) as function symbols. This term may contain parameters given by previously quantified variables. We trust the reader understands the standard notion of $\Sigma_1$ formulae in the ZF-Finite context or equivalent Peano Arithmetic context.}).
 
 Now let us define a category $T'$ whose objects are the $\Sigma_1$ formulae with one free variable. Such formulae amount to certain definable subsets of the universe.
 
@@ -86,7 +91,7 @@ Given two such objects $\phi(n)$ and $\psi(m)$, we take as morphisms between the
 
 Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case $\forall n, m . F(n, m) \biimplies G(n, m)$ is provable. 
 
-Finally, morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
+Finally, morphisms compose in the expected way for graphs of functions; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
 
 We omit here the straightforward details of verifying that this structure $T'$ we have just described does indeed satisfy the rules to be a category. Indeed, it is furthermore a regular category (that is, it has finite limits and pullback-stable image factorization; it has finite products because of the definability of ordered pairs in ZF-Finite, and it furthermore has equalizers and image factorization using suitable instances of Separation in ZF-Finite). However, it is not an exact category (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
 
@@ -116,13 +121,13 @@ Note that our construction of $T$ is such that the objects of $T$, the morphisms
 
 As the last bit of introspective theory structure, we must build a natural transformation $\introN$ from the identity endofunctor on $T$ to the endofunctor $\Hom_D(1, \introS(-))$ on $T$. The core idea behind this $\introN$ is simple. Essentially, to every hereditarily finite set $x$, we can assign it a code $\code{x}$, which is an explicit term in the language of ZF-Finite denoting that set. The easy way to do this is to recursively assign to each set $\{a, b, c, \ldots\}$ the term describing a finite set whose members are explicitly enumerated by the terms assigned to $a, b, c, \ldots$. We thus send a set such as $\{\{\}, \{\{\}\}\}$ to the term in the language of ZF-Finite which might be called \quote{$\{\{\}, \{\{\}\}\}$} within quotation marks, and so on.
 
-This gives us a function $\code{-}$ from hereditarily finite sets to terms in the language of ZF-Finite which describe hereditarily finite sets. This function $\code{-}$ is definable by a $\Sigma_1$ formula and thus gives a morphism in $T$. This serves as the component of $\introN$ at the object of $T$ describing ALL hereditarily finite sets. 
+This gives us a function $\code{-}$ from hereditarily finite sets to terms in the language of ZF-Finite which describe hereditarily finite sets. This function $\code{-}$ is definable by a $\Sigma_1$ formula and thus gives a morphism in $T$. This serves as the component of $\introN$ at the object of $T$ describing the collection of ALL hereditarily finite sets. 
 
-\TODOinline{This is actually an initial algebra catamorphism, keep in mind.}
+(The categorically oriented reader may think of this recursive definition of $\code{-}$ as a catamorphism, where the collection of all hereditarily finite sets is understood as the initial algebra for the covariant finite powerset functor.)
 
-The other objects of $T$ are subquotients of that object (and similarly for the objects of $D$), and therefore the components of the natural transformation $\introN$ at these other objects can now be obtained uniquely so long as certain factorizations exist. That is to say, the component of $\introN$ at any object $\phi(n_1, n_2)$ of $T$ will also be given by the action of $\code{-}$, but for this to indeed work to map $t$ into $\Hom_D(1, \introS(t))$, we need to know that $\code{-}$ when acting on individuals which are related by the partial equivalence relation $\phi$ produces terms which provably describe individuals related by $\phi$.
+All the other objects of $T$ are subquotients of that object (and similarly for the objects of $D$), and therefore the components of the natural transformation $\introN$ at these other objects can now be obtained uniquely so long as certain factorizations exist. That is to say, the component of $\introN$ at any object $\phi(n_1, n_2)$ of $T$ will also be given by the action of $\code{-}$, but for this to indeed work to map $t$ into $\Hom_D(1, \introS(t))$, we need to know that $\code{-}$ when acting on individuals which are related by the partial equivalence relation $\phi$ produces terms which provably describe individuals related by $\phi$.
 
-This is where the $\Sigma_1$-ness of $\phi$ plays a vital role. For any $\Sigma_1$ property $\phi$, we can prove that, for all $x$, whenever $\phi$ holds of $x$, it furthermore provably holds of $x$ (in the sense that the particular term $\code{x}$, when substituted into the argument of the formula $\phi$, yields a sentence which is provable). \TODOinline{Do we need to go into more detail as to why this is true? It's a classical fact. One first establishes it for every $\Sigma_0$ property (we show that every atomic relation is truly and provably Boolean-valued and has this "Truth implies provability" property both for itself and its negation, and thus so do all combinations of atomic relations under propositional connectives (which reduces to Boolean combinations), and we also have the same closure under bounded quantification), and then shows that if $\phi(x, \ldots)$ has this \quote{Truth entails Provability} property, so does $\exists x. \phi(x, \ldots)$, given that any existential witness $x$ induces a term $\code{x}$ that serves as witness in a proof (that is, as the domain over which we are quantifying (the natural numbers or hereditarily finite sets or whatever) has a suitable map from "Actual values to coded values", typically by an initial algebra property of that domain). Alex says he thinks we don't need to go into detail on this.}
+This is where the $\Sigma_1$-ness of $\phi$ plays a vital role. For any $\Sigma_1$ property $\phi$, we can prove that, for all $x$, whenever $\phi$ holds of $x$, it furthermore provably holds of $x$ (in the sense that the particular term $\code{x}$, when substituted into the argument of the formula $\phi$, yields a sentence which is provable).
 
 Finally, let us observe the naturality of this $\introN$. Consider the general form of its naturality squares:
 
@@ -138,75 +143,35 @@ Finally, let us observe the naturality of this $\introN$. Consider the general f
 This says that, for any definable unary formula $m(x)$, it is provably the case that for every $x$, we have that applying the function $m$ to $x$ and then constructing the term encoding the result ($\code{m(x)}$) is a provably equivalent term to taking the term representing $x$ and substituting it into the argument of the formula defining $m$ (what might be called $m(\code{x})$ or perhaps $\code{m}(\code{x})$ or at any rate $\introS(m)(\code{x})$). To be clear, by the provable equivalence of terms here, we do not mean syntactic identity as symbol-strings; rather, we mean that there is a provable equality sentence whose left and right sides are comprised of these terms. That is, whatever the actual result of the function $m$ on the input $x$ is, we must have that this is also provably the same as applying $m$ to the input $x$. Here, again, the $\Sigma_1$-ness of the formula defining $m$ comes to our rescue, telling us that truth entails provability in the appropriate way.
 
 Thus, we obtain an introspective theory $\langle T, D, \introS, \introN \rangle$. This concludes our first example of an instrospective theory!
+\end{construction}
 
 \bigskip
 However, $\langle T, D, \introS, \introN \rangle$ is not actually the most typical introspective theory! It has special properties which we should not expect of a general introspective theory. Its internal $D$ acts as a perfect mirror image of $T$, and can thus itself be equipped as an internal introspective theory. The internal $D$ has in some informal sense no further objects (or morphisms, or equations) beyond the range of $\introS$. All of this is not typical for an introspective theory.
 
 \begin{construction}
 Let us describe now a more archetypal introspective theory, to guide the reader's intuitions better for how general introspective theories act.
-\end{construction}
 
 Throughout the construction of $T$, we have imposed a $\Sigma_1$ constraint on formulae. If we drop all such $\Sigma_1$ constraints and allow arbitrary formulae, we get by the same construction an analogous category $Z$. $T$ sits inside $Z$ as a subcategory (but not a full subcategory! The inclusion from $T$ into $Z$ is faithful, but not full).
 
 Just as the construction of $T$ could itself be carried out in ZF-Finite to get a $D$ internal to $T$, so too can the construction of $Z$ can be carried out in ZF-Finite, to get a $C$ internal to $T$. Yes, this $C$ is internal to $T$, not just internal to $Z$! Even though $Z$ includes as its objects and morphisms formulae which are not $\Sigma_1$, the description of $Z$ (as a category whose objects are symbol-strings for which certain other symbol-strings exist, and whose morphisms are symbol-strings for which certain other symbol-strings exist, and so on) is $\Sigma_1$.
 
-Finally, the inclusion of $T$ into $Z$ yields, analogously, an inclusion from $D$ into $C$, internal to $T$. This means the functor $\introS$ from $T$ into the global aspect of $D$ can just as well be thought of as having $C$ for its codomain, and similarly the natural transformation $\introN$ can just be well as thought of in this context.
+Finally, the inclusion of $T$ into $Z$ yields, analogously, an inclusion from $D$ into $C$, internal to $T$. This means the functor $\introS$ from $T$ into the global aspect of $D$ can just as well be thought of as having $C$ for its codomain, and similarly the natural transformation $\introN$ can just be well as thought of in this context. (This way of making one introspective theory from another is an instance of the general construction \magicref{IntrospInternalMap}.)
 
-\TODOinline{Rename variables above, using $Th(ZF-Finite_{\Sigma_1})$, etc, instead of T}
-
-Summarizing, we get an introspective theory $\langle T, C, \introS, \introN \rangle$, where $T$ is the category of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence, $C$ is the ($T$-internal) category of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence, $\introS$ assigns to each piece of $T$ the corresponding (globally defined) piece of $C$, and $\introN$ is the definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
+Summarizing, we get an introspective theory $\langle T, C, \introS, \introN \rangle$, where $T$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, $C$ is the ($T$-internal) lexcategory of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite, $\introS$ assigns to each piece of $T$ the corresponding (globally defined) piece of $C$, and $\introN$ is the definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
+\end{construction}
 
 Phew! What a long walk it was to get to describing that example! All the better, then, that we have formalized introspective theories so abstractly, and can work with them without having to fuss about such concrete details as in that example. But this is indeed the archetypal example it will be best to keep in mind to guide the reader's intuition throughout all further discussion.
 
-\subsection{Variations from our core definition}
-There are some slight variations on the concept of a (pre-)introspective theory which will occasionally be of use to us in future chapters, for technical reasons or for showing the greater generality of some results. In this section, we discuss such variations. But we remind the reader that our main object of interest is introspective theories. If ever this zoo of other named concepts grows intimidating, think always of introspective theories as the North Star.
-
-\begin{definition}\label{DefnPreIntrospSNGeneralized}
-Recall that a pre-introspective theory is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. Note how lex structure (that is, finite limit structure) is used throughout this definition.
-
-More generally, for any notion of categorical structure extending the concept of a category-with-terminal-object, we may consider the situation of a category $T$ with such structure, a $T$-indexed category $C$ with such structure, a functor $\introS$ from $T$ to the global aspect of $C$ preserving such structure, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. In this way, we could speak of \defined{pre-introspective X theories} for various X; pre-introspective finite product theories, pre-introspective terminal object theories, pre-introspective countable limit theories, and so on.
-
-But when we leave the nature of the theory unqualified, we always mean finite limits by default.
-
-Note that whenever every instance of structure X is also an instance of structure Y, we will have that every pre-introspective X theory is also a pre-introspective Y theory.
-
-Finally, on rare occasion it is even worthwhile to observe the extreme generality where we do not demand a terminal object. That is, a category $T$, a $T$-indexed category $C$, a functor $\introS$ from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, a designated object $1$ in the global aspect of $C$ (not presumed terminal), and a map $\introN$ from $t$ to $\Hom_C(1, \introS(t))$, natural in $t$ in $T$. We shall call this a \defined{pre-introspective unary theory}.
-
-Note that every pre-introspective terminal object theory can canonically be equipped as a pre-introspective unary theory by taking the designated object in $C$ to be its terminal object.
-
-As ever, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will usually say $\langle T, C \rangle$ to describe a pre-introspective X theory.
-
-When $C$ is small, we may call this an \defined{introspective X theory}. (We will only do this in contexts where it makes sense to speak of Xes internal to Xes. The minimal such context is when X is finite limit theories). 
-
-When $C$ is locally small, we may call this a \defined{locally introspective X theory}. The most notable example of this is to speak of \defined{locally introspective finite product theories}. (Indeed, we will only use this terminology in contexts where a $T$-indexed locally small $X$ is taken to an $S$-indexed locally small $X$ by any $X$-homomorphism from $T$ to $S$, and the minimal such context is when X is finite product theories).
-\end{definition}
-
-There is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
-
-\begin{definition}
-By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
-\end{definition}
-
-Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
-
-We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
-
-Also, it is convenient to have the following terminology:
-\begin{definition}
-By a \defined{geminal category}, we mean the image of the internal category $C$ of any introspective theory $\langle T, C \rangle$ under a lexfunctor into $\Set$. More generally, if this lexfunctor is into some lexcategory other than $\Set$, we consider the resulting image of $C$ a geminal category internal to this other lexcategory.
-\end{definition}
-We will be studying the general structure of geminal categories much more in \parensref{GeminalChapter}.
-
-\subsection{Some useful constructions}
+\subsection{Some useful lemmas and constructions}
 Now let us discuss some constructions for building new (pre-)introspective theories from old ones, or general tools for reasoning about (pre-)introspective theories.
 
-First, some useful lemmas.
+First, two frequently useful lemmas.
 
 \openNamedManualIndexSort{lemma}{$\introS$ With $\introN$}{S With N}\label{SWithN}
-Within a pre-introspective theory $\langle T, C \rangle$, let $F : X \to t$ be a morphism of $T$, and let $x$ be a generalized element of $X$. We have that $\introN_t(F(x)) = \introS(F) \circ_C \introN_X(x)$.
+Within a pre-introspective theory $\langle T, C \rangle$, let $F : X \to t$ be a morphism of $T$, and let $x$ be any generalized element of $X$. We have that $\introN_t(F(x)) = \introS(F) \circ_C \introN_X(x)$.
 \closeNamed{lemma}
 \begin{proof}
-This is the naturality square for $\introN$ with respect to $F$.
+This is just the naturality square for $\introN$ with respect to $F$.
 
 % https://q.uiver.app/?q=WzAsNCxbMCwwLCJYIl0sWzAsMSwiXFxIb21fQygxLCBcXGludHJvUyhYKSkiXSxbMSwxLCJcXEhvbV9DKDEsIFxcaW50cm9TKHQpKSJdLFsxLDAsInQiXSxbMCwxLCJcXGludHJvTl97WH0iLDJdLFsxLDIsIlxcaW50cm9TKEYpIFxcY2lyY19DIC0iLDJdLFswLDMsIkYiXSxbMywyLCJcXGludHJvTl97dH0iXV0=
 \[\begin{tikzcd}
@@ -220,28 +185,39 @@ This is the naturality square for $\introN$ with respect to $F$.
 \end{proof}
 
 \openNamedManualIndexSort{lemma}{$\introS$ Matches $\introN$}{S Matches N}\label{SMatchesN}
-Within a pre-introspective terminal object theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $x$ be some globally defined element of $t$. Then $\introS(x)$ and $\introN_t(x)$ yield equal global elements of $S(t)$ within the global aspect of $C$.
+Within a pre-introspective terminal object theory $\langle T, C \rangle$, let $t$ be some object of $T$ and let $\epsilon : 1 \to t$ in $T$ be taken as defining a global element $e$ of $t$. Then the global element $\introS(\epsilon)$ of $\Hom_C(\introS(1), \introS(t))$ is equal to the the global element $\introN_t(e)$ of $\Hom_C(1, \introS(t))$ under the canonical identification of $\Hom_C(\introS(1), \introS(t))$ with $\Hom_C(1, \introS(t))$.
+
+In short, $\introS$ and $\introN$ take global elements in $T$ to equal global elements of $C(1)$.
 \closeNamed{lemma}
 \begin{proof}
-Apply the naturality square for $\introN$ to the morphism $X$ from $1$ to $t$ representing $x$, as in the top square of this diagram.
+Consider the following diagram
 
+% https://q.uiver.app/?q=WzAsNyxbMiwwLCIxIl0sWzMsMCwidCJdLFszLDEsIlxcSG9tX0MoMSwgXFxpbnRyb1ModCkpIl0sWzIsMSwiXFxIb21fQygxLCBcXGludHJvUygxKSkiXSxbMywyLCJcXEhvbV9DKFxcaW50cm9TKDEpLCBcXGludHJvUyh0KSkiXSxbMiwyLCJcXEhvbV9DKFxcaW50cm9TKDEpLCBcXGludHJvUygxKSkiXSxbMCwyLCIxIl0sWzAsMywiXFxpbnRyb05fMSIsMl0sWzMsMiwiXFxpbnRyb1MoXFxlcHNpbG9uKSBcXGNpcmMgLSJdLFsxLDIsIlxcaW50cm9OX3QiXSxbMCwxLCIqIFxcbWFwc3RvIGUiXSxbMiw0LCItIFxcY2lyYyAhIl0sWzMsNSwiLSBcXGNpcmMgISIsMl0sWzUsNCwiXFxpbnRyb1MoXFxlcHNpbG9uKSBcXGNpcmMgLSJdLFs2LDAsIiIsMSx7ImN1cnZlIjotNSwibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNiw1LCIqIFxcbWFwc3RvIFxcaWRfe1xcaW50cm9TKDEpfSJdLFs2LDQsIiogXFxtYXBzdG8gXFxpbnRyb1MoXFxlcHNpbG9uKSIsMix7ImN1cnZlIjo1fV1d
 \[\begin{tikzcd}
-	1 && t \\
-	\\
-	{\Hom_C(1, \introS(1))} && {\Hom_C(1, \introS(t))} \\
-	\\
-	{\Hom_C(1, 1)}
-	\arrow["{* \mapsto x}", from=1-1, to=1-3]
-	\arrow["{\introN_t}", from=1-3, to=3-3]
-	\arrow["{\Hom_C(1, \introS(* \mapsto x))}", from=3-1, to=3-3]
-	\arrow["{\Hom_C(1, \iso)}"', tail reversed, from=3-1, to=5-1]
-	\arrow["{(* \mapsto S(x)) \circ -}"', from=5-1, to=3-3]
-	\arrow["{\introN_1}"', from=1-1, to=3-1]
+	&& 1 & t \\
+	&& {\Hom_C(1, \introS(1))} & {\Hom_C(1, \introS(t))} \\
+	1 && {\Hom_C(\introS(1), \introS(1))} & {\Hom_C(\introS(1), \introS(t))}
+	\arrow["{\introN_1}"', from=1-3, to=2-3]
+	\arrow["{\introS(\epsilon) \circ -}", from=2-3, to=2-4]
+	\arrow["{\introN_t}", from=1-4, to=2-4]
+	\arrow["{* \mapsto e}", from=1-3, to=1-4]
+	\arrow["{- \circ !}", from=2-4, to=3-4]
+	\arrow["{- \circ !}"', from=2-3, to=3-3]
+	\arrow["{\introS(\epsilon) \circ -}", from=3-3, to=3-4]
+	\arrow[curve={height=-30pt}, Rightarrow, no head, from=3-1, to=1-3]
+	\arrow["{* \mapsto \id_{\introS(1)}}", from=3-1, to=3-3]
+	\arrow["{* \mapsto \introS(\epsilon)}"', curve={height=30pt}, from=3-1, to=3-4]
 \end{tikzcd}\]
 
-Keep in mind, as $\introS$ preserves terminal objects, we have that $\Hom_C(1, \introS(1)) \iso \Hom_C(1, 1) \iso 1$, as in the three objects on the left of this diagram. These are all terminal objects of $T$, all isomorphic with unique morphisms to each other.
+The top arrow is $\epsilon : 1 \to t$, thought of as sending the unique element of $1$ to $e$. The top rectangle is the naturality square for $\introN$ with respect to $\epsilon$.
 
-The path around the square along the top and right yields the morphism in $T$ from $1$ to $\Hom_C(1, \introS(t))$ representing $\introN_t(x)$. The path down the left of the diagram is the unique one from $1$ to $\Hom_C(1, 1)$, essentially picking out the identity morphism in $C$ on its terminal object. Finally, the bottom morphism of this diagram is the one which represents composition in $C$ with the morphism in $\Hom_C(1, \introS(t))$ representing $S(x)$ as a global element of $S(t)$. As composition with identity leaves values unchanged, the total path along the left and bottom of this diagram is the morphism from $1$ to $\Hom_C(1, \introS(t))$ representing $S(x)$. Thus, we may conclude that $S(x) = \introN_t(x)$.
+The bottom rectangle is the associativity square for composition in $C$, on one side composing with $\introS(\epsilon) : \introS(1) \to \introS(t)$ and on the other side composing with the unique morphism $! : \introS(1) \to 1$. Note that the right morphism of this associativity rectangle is the canonical identification given by $\introS(1)$ being a terminal object of $C$.
+
+The bottom wedge is the identity law in $C$ for composition after the identity on $\introS(1)$.
+
+Finally, the left triangle commutes because, as $\introS(1)$ is a terminal object of $C$, we have also that $\Hom_C(\introS(1), \introS(1))$ is a terminal object.
+
+Now consider the composites around this commutative diagram along the two outermost paths. Along the left and bottom, the unique element of $1$ is sent to $\introS(\epsilon)$. Along the top and right, it is sent to $\introN_t(e)$ and then along the canonical identification. This completes the proof.
 \end{proof}
 
 \begin{construction}\label{IntrospInternalMap}
@@ -342,5 +318,44 @@ However, locally introspective (locally) cartesian closed theories cannot be ful
 
 \TODOinline{Write the analogue of this for geminal categories}
 \end{observation}
+
+\subsection{Variations from our core definition}
+There are some slight variations on the concept of a (pre-)introspective theory which will occasionally be of use to us in future chapters, for technical reasons or for showing the greater generality of some results. In this section, we discuss such variations. But we remind the reader that our main object of interest is introspective theories. If ever this zoo of other named concepts grows intimidating, think always of introspective theories as the North Star.
+
+\begin{definition}\label{DefnPreIntrospSNGeneralized}
+Recall that a pre-introspective theory is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. Note how lex structure (that is, finite limit structure) is used throughout this definition.
+
+More generally, for any notion of categorical structure extending the concept of a category-with-terminal-object, we may consider the situation of a category $T$ with such structure, a $T$-indexed category $C$ with such structure, a functor $\introS$ from $T$ to the global aspect of $C$ preserving such structure, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. In this way, we could speak of \defined{pre-introspective X theories} for various X; pre-introspective finite product theories, pre-introspective terminal object theories, pre-introspective countable limit theories, and so on.
+
+But when we leave the nature of the theory unqualified, we always mean finite limits by default.
+
+Note that whenever every instance of structure X is also an instance of structure Y, we will have that every pre-introspective X theory is also a pre-introspective Y theory.
+
+Finally, on rare occasion it is even worthwhile to observe the extreme generality where we do not demand a terminal object. That is, a category $T$, a $T$-indexed category $C$, a functor $\introS$ from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, a designated object $1$ in the global aspect of $C$ (not presumed terminal), and a map $\introN$ from $t$ to $\Hom_C(1, \introS(t))$, natural in $t$ in $T$. We shall call this a \defined{pre-introspective unary theory}.
+
+Note that every pre-introspective terminal object theory can canonically be equipped as a pre-introspective unary theory by taking the designated object in $C$ to be its terminal object.
+
+As ever, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will usually say $\langle T, C \rangle$ to describe a pre-introspective X theory.
+
+When $C$ is small, we may call this an \defined{introspective X theory}. (We will only do this in contexts where it makes sense to speak of Xes internal to Xes. The minimal such context is when X is finite limit theories). 
+
+When $C$ is locally small, we may call this a \defined{locally introspective X theory}. The most notable example of this is to speak of \defined{locally introspective finite product theories}. (Indeed, we will only use this terminology in contexts where a $T$-indexed locally small $X$ is taken to an $S$-indexed locally small $X$ by any $X$-homomorphism from $T$ to $S$, and the minimal such context is when X is finite product theories).
+\end{definition}
+
+There is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
+
+\begin{definition}
+By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
+\end{definition}
+
+Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
+
+We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
+
+Also, it is convenient to have the following terminology:
+\begin{definition}
+By a \defined{geminal category}, we mean the image of the internal category $C$ of any introspective theory $\langle T, C \rangle$ under a lexfunctor into $\Set$. More generally, if this lexfunctor is into some lexcategory other than $\Set$, we consider the resulting image of $C$ a geminal category internal to this other lexcategory.
+\end{definition}
+We will be studying the general structure of geminal categories much more in \parensref{GeminalChapter}.
 
 \fileend
