@@ -302,7 +302,7 @@ One might have thought our definition of $T$-indexed category-like structures wo
 
 Still, all the same notational conventions apply to indexed categories. E.g., given a $T$-indexed category $C$, we write $C(t)$ (or $C_t$) for the category which is the $t$-aspect of $C$ at an object $t$ of $T$, we write $C(m) : C(t) \to C(s)$ (or $C_m$) for the functor induced by a morphism $m: s \to t$ in $T$, we may write $\pullAlong{m}$ instead of $C(m)$ in contexts where it is clear that we are referring to the action of $C$, etc.
 
-We now might like to speak about a category being \repsmall/, in the sense that its collection of objects and its collection of morphisms are both \repsmall/. This is the essence of the definition we will indeed adopt (at \magicref{RepsmallCategoryDefn}) but there is one pitfall to be aware of here, related to the just mentioned subtlety. We generally speak about categories in such a way as that they do not come with a particular notion of their set of objects, as such. That is, two categories may be equivalent (in the technical sense of \quote{equivalent} within the 2-category $\Cat$) though presented with different ostensible sets of objects. For example, a category presented as comprised of one terminal object, and a category presented as comprised of two isomorphic terminal objects, are equivalent categories; there is no pseudofunctor from the 2-category of categories, functors, and natural isomorphisms to $\Set$ which would send the first of these to a one-element set and the second to a two-element set. We are to treat them as the \quote{same} category. So to speak about a category as having a particular set of objects, we must imagine it as carrying more fine-grained equality structure on its objects than we normally do.
+We now might like to speak about an indexed category being \repsmall/, in the sense that its collection of objects and its collection of morphisms are both \repsmall/. This is the essence of the definition we will indeed adopt (at \magicref{RepsmallCategoryDefn}) but there is one pitfall to be aware of here, related to the just mentioned subtlety. We generally speak about categories in such a way as that they do not come with a particular notion of their set of objects, as such. That is, two categories may be equivalent (in the technical sense of \quote{equivalent} within the 2-category $\Cat$) though presented with different ostensible sets of objects. For example, a category presented as comprised of one terminal object, and a category presented as comprised of two isomorphic terminal objects, are equivalent categories; there is no pseudofunctor from the 2-category of categories, functors, and natural isomorphisms to $\Set$ which would send the first of these to a one-element set and the second to a two-element set. We are to treat them as the \quote{same} category. So to speak about a category as having a particular set of objects, we must imagine it as carrying more fine-grained equality structure on its objects than we normally do.
 
 Though a category does not have a well-defined set of objects, it \emph{does} have a well-defined set of morphisms between any two given objects. Thus, there is no such difficulty in defining when an indexed category is locally small.
 \begin{definition}\label{LocallyRepmallDefn}
@@ -315,28 +315,24 @@ Note that this is the same as saying that $\langle \cod, \dom \rangle : \Mor(C) 
 These bothers around the ill-defined set of objects of a general indexed category shall take us down some technical digressions for a bit, before we return to our big picture ideas. (Please keep in mind, the nuances of this section mostly do not matter for a big picture understanding. The main part of this document where such details might matter is in being rigorous in our chapter on geminal categories. We recommend that on a first read, the reader ignore all discussion of strictification or distinction between strict and non-strict concepts, in order to pick up the big picture ideas. The reader can then pay attention to these details on later more scrupulous re-reads as desired.)
 
 \begin{definition}\label{StrictCategoryDefn}
-Specifically, let us say a \defined{strict category} is a set of objects (including the ability to speak about equality of objects in a potentially finer-grained sense than isomorphism) and a set of morphisms, with the usual operations and satisfying the usual equations.\footnote{In certain contexts where quotient sets are not available, it is sometimes useful to allow strict categories to also come with a sort for 2-cell isomorphisms between their objects; that is, to take the collection of morphisms between any two objects in a strict category to comprise a setoid rather than a set. That is the more flexible and in some sense morally superior definition, but we will not need its extra complexity for now.} We may also speak of a \defined{strict functor}, meaning a homomorphism of such structure that preserves all of it on-the-nose. Strict categories and the strict functors between them comprise the 1-category $\StrictCat$.
+Specifically, let us say a \defined{strict category} is a set of objects (including the ability to speak about equality of objects in a potentially finer-grained sense than isomorphism) and a set of morphisms, with the usual operations and satisfying the usual equations. We may also speak of a \defined{strict functor}, meaning a homomorphism of such structure that preserves all of it on-the-nose. Strict categories and the strict functors between them comprise the 1-category $\StrictCat$.
 
 We can speak straightforwardly of natural transformations between strict functors, and with those in mind we can also create a 2-category $\StrictCatTwo$ of strict categories, strict functors, and natural transformations.
 
 But when we speak of equality of parallel strict functors, we will always mean equality in the 1-category $\StrictCat$, not merely isomorphism in the 2-category $\StrictCatTwo$.
-
-We can in the same way speak also of strict counterparts of any other categorical notion. Note that we can also straightforwardly talk about functors from strict categories to categories.
 \end{definition}
 
-Every strict category [or functor or etc], gives rise to a category [or functor or etc] in whatever ordinary sense one would like to think of these. We may say the strict category [or etc] presents the category [or etc] which results. Beware, non-isomorphic strict categories can both present the same (up to equivalence) category! That is, the relation \quote{strict structure $S$ presents non-strict-structure $C$} is invariant up to isomorphism of strict structures $S$ but invariant more broadly up to equivalence of non-strict structures $C$.
+Every strict category [or functor or etc], gives rise to a category [or functor or etc] in whatever ordinary sense one would like to think of these. We may say the strict category [or etc] presents the category [or etc] which results. Beware, non-isomorphic strict categories can both present the same (up to equivalence) category!
 
-Just as every strict category presents a non-strict category, conversely, one would ordinarily say every category is presented by at least one strict category.\footnote{The situation is more nuanced for turning functors between arbitrary categories equivalent to given strict categories into strict functors between the given strict categories, but that will not concern us for now.} One might, if one likes, say that the only distinction between categories and strict categories is that we gather categories up into a 2-category and speak of categories up to equivalence in such, while we gather strict categories up into a 1-category and speak of strict categories up to isomorphism in such.
-
-Given a strict category named $C$, we will adopt the natural convention of also using the same name $C$ again for the non-strict category presented by $C$.
-
-However, we cannot do this in reverse; given a name $C$ first defined as a non-strict-category, this does not pin down some particular strict category presenting it to also call $C$, by the cautions noted above.
+Just as every strict category presents a non-strict category, conversely, one would ordinarily say every category is presented by at least one strict category.\footnote{In certain non-traditional foundations, this may not be true. For example, in Homotopy Type Theory, a groupoid may come primitively with no particular discrete set of objects. If said groupoid was found in the wild instead of constructed by hand and there is furthermore no presumption of an Axiom of Choice, there may be no way to turn it into a strict category. But for our purposes, this sort of thing does not matter. Even in set-theoretic foundations without the Axiom of Choice, the situation becomes more nuanced for turning functors between arbitrary categories equivalent to given strict categories into strict functors between the given strict categories, but again, that will not concern us for now.} One might, if one likes, say that the only distinction between categories and strict categories is that we gather categories up into a 2-category and speak of categories up to equivalence in such, while we gather strict categories up into a 1-category and speak of strict categories up to isomorphism in such.
 
 \begin{definition}
 We now go further in defining a \defined{strict lexcategory}. Here, we mean more than just a strict category for which finite limits exist. We also mean that, when taking special \quote{basic limits}, the relevant limit is not merely defined up to isomorphism, but is given as a particular object (in keeping with the fact that objects can be distinguished more finely-grained than up to isomorphism, within a strict category). A \defined{strict lexfunctor} is accordingly one which preserves these chosen basic limits not merely up to isomorphism, but on-the-nose. Strict lexcategories and the strict lexfunctors between them comprise the 1-category $\StrictLexCat$. Strict lexcategories, the strict lexfunctors between them, and the natural transformations between those comprise the 2-category $\StrictLexCatTwo$.
 
 In the same way, we can also speak of a \defined{strict category with finite products}, or any similar such categorical structure.
 \end{definition}
+
+It is important for us to make this demand of chosen basic limits and their preservation on the nose in order to ensure that $\StrictLexCat$ is the category of models and homomorphisms of an essentially algebraic theory. This will be important to us later (see section \TODO).
 
 This business of \defined{basic limits} will require more explanation, another technical subtlety. What I mean by this is like so: Consider for example the concept of a category with a terminal object. And now consider the concept of a category with a pair of terminal objects, a terminal object A and a terminal object B. Ordinarily, we would like to say these are equivalent concepts or equivalent theories. They give rise to equivalent 2-categories (of categories with terminal objects, functors taking terminal objects to terminal objects, and natural transformations between these). However, the concept of a strict category with a single chosen terminal object, and the concept of a strict category with two chosen terminal objects A and B, are not equivalent concepts. We can ask questions in the one case that we cannot in the other; for example, in the latter case, we can distinguish between those models in which A and B are equal objects and those models in which A and B are not equal objects, merely isomorphic. This is reflected also in these giving rise to non-equivalent categories of models (of strict categories with the designated terminal objects, and functors preserving designated terminal objects on the nose). So when we seek to strictify the concept of a category with a terminal object, we really must make a choice as to how we choose to designate the terminal object; once or multiply.
 
@@ -364,23 +360,15 @@ We can repeat in this language the observation made at the end of \magicref{Loca
 Note that a \repsmall/ strict category indexed over a category with finite limits is a fortiori locally \repsmall/, as expected, as the collection of morphisms between any particular pair of objects is given by an equalizer between sets already presumed \repsmall/ in a \repsmall/ strict category.
 \end{definition}
 
+In the same way as all the above, we adopt the following convention even for non-indexed categories, which can be thought of as categories indexed by the terminal category $1$.
+
+\begin{definition}
+We say \defined{\catsmall/ category} to mean a category which is presented by some (\setsmall/) strict category. And we say \defined{\catsmall/ lexcategory} to mean a lexcategory which is presented by some (\setsmall/) strict lexcategory. In particular, it is for us true by definition that all \catsmall/ lexcategories admit presentations with chosen basic limits.
+\end{definition}
+
+Note that all the ordinary constructions of category theory which produce \setsmall/ categories or lexcategories from other such data in fact furthermore produce \catsmall/ categories or \catsmall/ lexcategories from analogous inputs. So this convention does not change very much, except it saves us some pedantry in the scope of some claims we make which might otherwise fail in contexts without the Axiom of Choice (where a random category found in the wild, instead of constructed by hand, could conceivably have finite limits without admitting any presentation with chosen basic limits, or some such pathology).
+
 We note without detailed proof (\TODOinline{Give or cite proofs}) some strictification results which will be useful to us later.
-
-\begin{theorem}\label{StrictifyCategory}
-Every category admits a presentation by some strict category.
-\end{theorem}
-\begin{proof}
-In traditional foundations, this is tautology, as categories are defined as presented by strict categories. In non-traditional foundations (e.g., as in the perspective of Homotopy Type Theory, where a groupoid may be given primitively instead of in terms of specifying additional structure upon a discrete set of objects), in the absence of Choice principles, this may or may not be true. Any results of ours dependent on this should be interpreted or modified accordingly in such contexts.
-\end{proof}
-
-\begin{theorem}\label{StrictifyLexcategory}
-Every lexcategory is equivalent to some strict lexcategory.
-\end{theorem}
-\begin{proof}
-One way to see this is by first noting that, for a given category $C$ with finite limits, we first of all have that $C$ is equivalent to some strict category $C'$ by \magicref{StrictifyCategory}. To further equip $C'$ as a strict lexcategory, we just need to make some choice of designated limit for each basic diagram within $C'$. This is readily done using the Axiom of Choice.
-
-In contexts without Choice, this theorem needs to be approached more carefully, with a more deliberate selection of $C'$ rather than an arbitrary one, but can still be carried out (so long as \magicref{StrictifyCategory} is available to begin with!). In particular, we can create the free strict lexcategory $D$ extending the strict category $C'$ while sending all limit cones for basic diagrams to limit cones (this is limit preservation in the weaker, non-on-the-nose sense, as $C'$ does not itself have chosen limits). The map from $C'$ into this $D$ will be full, faithful, and essentially surjective on objects; thus, an equivalence of categories.
-\end{proof}
 
 \begin{theorem}\label{StrictifyLexfunctor}
 Given a strict lexcategory $D$, a lexcategory $C$, and a lexfunctor $f : C \to D$, there is some strict lexcategory $C'$ and strict lexfunctor $f' : C' \to D$ such that $f$ and $f'$ are equivalent within the slice 2-category $\Cat/D$.
@@ -755,15 +743,15 @@ Many slightly different formalizations of such theory presentations have been gi
 
 In \autocite{palmgrenvickers}, the concept of a \defined{model} of a quasi-equational theory $\theoryT$ within a lexcategory or strict lexcategory $S$ is defined, as well as the notion of \defined{homomorphism} between such models.
 
-These are given by suitable diagrams within $S$; specifically, a model is given by the selection of an object in $S$ for each sort in $\theoryT$ and morphisms in $S$ with appropriate domain and codomain for each operation in $\theoryT$, simultaneously satisfying a corresponding condition for each law of $\theoryT$, while a homomorphism between two such models is given by the selection of a morphism in $S$ with appropriate domain and codomain for every sort in $\theoryT$, simultaneously satisfying an appropriate condition for each operation of $\theoryT$. In particular, if $\theoryT$ is finitely specified, then specifying a model or homomorphism only involves specifying finitely much data subject to finitely many conditions.
+These are given by suitable diagrams within $S$; specifically, a model is given by the selection of an object in $S$ for each sort in $\theoryT$, along with the selection of morphisms in $S$ with appropriate domain and codomain for each operation in $\theoryT$, required to satisfy a corresponding condition on such morphisms for each law of $\theoryT$. While a homomorphism between two such models is given by the selection of a morphism in $S$ with appropriate domain and codomain for every sort in $\theoryT$, required to satisfy an appropriate condition for each operation of $\theoryT$. In particular, if $\theoryT$ is finitely specified, then specifying a model or homomorphism only involves specifying finitely much data subject to finitely many conditions. (And similarly if \quote{finite} is replaced by \quote{less than $\kappa$} for some infinite cardinal $\kappa$.)
 
 The collection of models of $\theoryT$ within lexcategory $S$, along with homomorphisms between them, comprises a category, which we will call $\modelsIn{\theoryT}{S}$. When $S$ is a strict lexcategory, then in the same way we get a strict category $\modelsIn{\theoryT}{S}$. (Indeed, if strict lexcategory $S$ presents the non-strict lexcategory $S'$, then the strict category $\modelsIn{\theoryT}{S}$ will present the non-strict category $\modelsIn{\theoryT}{S'}$. That is, any model of $T$ in non-strict $S'$ can be presented by some model of $T$ in strict $S$, regardless of what choices $S$ makes for how to impose or refrain from imposing equations on its objects.)
 
 This is all suitably functorial. Any lexfunctor $F: S \to S'$ takes models of $\theoryT$ in $S$ to models $F(S)$ of $\theoryT$ in $S'$, and similarly for actions of $F$ upon homomorphisms between such models. Furthermore, natural transformations between lexfunctors also induce homomorphisms between the corresponding models. In this way, $\modelsIn{\theoryT}{-}$ acts as a 2-endofunctor on $\LexCat$, as well as a 1-endofunctor on $\StrictLexCat$, as well as a 2-endofunctor on $\StrictLexCatTwo$.
 
-It is shown in \autocite{palmgrenvickers} how there is a quasi-equational theory which they call $\theoryT_{\mathrm{cart}}$ but which we shall call $\TheoryOfLexCat$, such that models of $\TheoryOfLexCat$ in $S$ correspond to internal lexcategories in $S$, and homomorphisms between these correpond to internal lexfunctors.
+It is shown in \autocite{palmgrenvickers} how there is a quasi-equational theory (which they call $\theoryT_{\mathrm{cart}}$ but which we shall call $\TheoryOfLexCat$) such that models of $\TheoryOfLexCat$ in $S$ correspond to internal lexcategories in $S$, and homomorphisms between these correpond to internal lexfunctors.
 
-More generally, they show how to associate to any quasi-equational $\theoryT$ another corresponding quasi-equational theory which they call $\operatorname{Cart}\varpi \theoryT$ but which we shall call $\cartwith{\theoryT}$ such that a model of $\cartwith{\theoryT}$ in $S$ corresponds to an $S$-internal lexcategory $L$, along with a model of $T$ in the global aspect of $L$. 
+More generally, they show how to associate to any quasi-equational $\theoryT$ another corresponding quasi-equational theory (which they call $\operatorname{Cart}\varpi \theoryT$ but which we shall call $\cartwith{\theoryT}$) such that a model of $\cartwith{\theoryT}$ in $S$ corresponds to an $S$-internal lexcategory $L$, along with a model of $T$ in the global aspect of $L$. 
 
 It is shown in \autocite{palmgrenvickers} how to associate to any quasi-equational theory $\theoryT$ a corresponding strict lexcategory $\classifying{\theoryT}$ called its classifying category. We may also use the name $\classifying{\theoryT}$ again for the (non-strict) lexcategory this presents.
 
@@ -794,27 +782,6 @@ We can use interior vs. included.
 \end{TODOblock}
 
 \TODOinline{Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.}
-
-\subsubsection{Existence of initial structures in $\Set$, $\LexCat$, etc}
-\TODO
-
-Some general theorem here which we will invoke in $\Set$, $\LexCat$ etc. Not to be invoked internal to toposes or anything, mind you, where different arguments are necessary than the following.
-
-\begin{theorem}\label{Adamek}
-The general theorem would presumably be the transfinite construction of initial algebras for pointed endofunctors preserving colimits indexed by ordinal $k$, on a category with colimits indexed by any ordinal $\leq k$. (For non-pointed endofunctors, we can do the same as long as we also have finite coproducts)
-\end{theorem}
-
-In our metatheory, we assume such a theorem and also we assume that initial small instances of some variety of category also always have unique homomorphsms into $\Set$ itself, if $\Set$ is that variety of category. (This is as opposed to the kind of initial algebras we get internal to a topos, arithmetic universe, etc, where $\Set$ is too large for the initiality to apply with respect to it)
-
-Actually, we don't really need all that explicitly.
-
-\autocite{palmgrenvickers} discusses the proof (internalizable to toposes, etc, and also adaptable to the infinitary case) that free models of essentially algebraic theories exist. Their construction makes it very clear that what is needed for the free model of a quasi-equational theory to exist is just an effective regular category with suitable W-types for modeling the terms (including partial terms) and equations of the theory. It is clear how quasi-equational theories generalize to arbitrary arity and the initial model construction as well.
-
-This also discusses how to turn a quasi-equational theory T into the quasi-equational theory of a strict lexcategory with an internal model of T.
-
-Applying the initial model to this gives us an initial strict lexcategory with an internal model of T; the strict lexcategory presented by T, we may say.
-
-They also show, in essence, that the lexcategory this presents has the right universal property in $\LexCat$. And they show every lexcategory is presented by some quasi-equational theory (as is every strict lexcategory). So every result we might care about of this sort is implicit in there.
 
 \subsubsection{Scribbles}
 So, for example, let us try constructing, for a lexcategory $T$, the initial lexcategory with an internal initial model of $T$. We find some quasi-equational theory $Th(T)$ presenting $T$. This theory is k-sized, so we work from now on in k-ary quasi-equational theories. We now make the k-ary quasi-equational theory of a strict lexcategory with an internal initial model of $Th(T)$, and apply the initial algebra theorem. We get an initial strict lexcategory with an internal initial model of $Th(T)$; call this $S$.

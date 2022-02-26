@@ -122,8 +122,8 @@ If something is off narrative, feel free to skim instead of going into detail. A
 2. Add stuff to preliminaries or elsewhere on strictifying initializing lexcategories
 3. Discuss models based on arithmetic universes. Discuss here the business of localizing arithmetic universes.
 4. Discuss models based on initializing lexcategories.
-5. Lob's theorem initiality section cleanup.
-6. Lob's theorem full cleanup.
+5. Loeb's theorem initiality section cleanup. (Make note about us using inner-strict introspective theories here. There's absolutely no difficulty in inner-strictifying, it's just making a choice of an internal category, a choice we are definitionally presumed to be able to make)
+6. Loeb's theorem full cleanup. (Including Yonofsky bit)
 7. Cartesian closed categories and modal logic.
 8. Soundnesses (basic theory, + results for models based on initiality or arithmetic universes).
 9. Set as a strict universe, initiality results extending to maps into Set

@@ -65,3 +65,6 @@ The free such thing has what in it? Well, we have (Ob(C) x Ob(C), Mor(C)). So T^
 ----
 
 Note that in the well-founded sheaf-theoretic models of GL + X |- []X, a la Birkedal et al, we always get |- ~~[]False. Every node is such that from every node it reaches, there is some terminal node further reachable. Purely axiomatically, ~[]False |- []~[]False |- []False; ergo, |- ~~[]False.
+
+-------
+In a topos, we can always define well-founded labelled trees of branching arity blah blah as suitable partial functions from finite lists of branch-indices to labels. We can characterize well-foundedness by an impredicative intersection, and similarly characterize well-formedness of the trees (in terms of labels appropriately corresponding to branch arity). And in general, we can define inductive subsets of an X (and use this for inductive proof or recursive function definition) again by impredicative intersection. [This impredicative intersection is obtaining an initial algebra as the total limit over all algebras]
