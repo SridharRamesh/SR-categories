@@ -47,6 +47,8 @@ Thus, taking $\omega = \App(f, f)$, we have that $\omega = g(\omega)$ as desired
 
 \TODOinline{Remarks on not requiring $T$ be to cartesian closed or $\Omega$ to be \repsmall/. Remarks on still taking $X$ to be \repsmall/. Remarks on letting $\point$ not be $1$.}
 
+\TODOinline{Remarks on Cantor's theorem, Liar's paradox, and Y combinator as examples of Lawvere's fixed point theorem. Cantor's theorem is a contrapositive statement using surjection. Liar's paradox is a contrapositive statement using a retraction/isomorphism. Y combinator is a positive statement using a retraction, and also involves passing to a slice category. Y combinator is the best set up for what we do in the next section. Note that the reason we presume in Cantor's theorem that Omega has no fixed points is because of another instance of Lawvere's fixed point theorem, via Liar's paradox!}
+
 In a similar vein, we put forward the following generalization:
 
 \openNamed{theorem}{Self-Related Point Theorem}\label{SelfRelatedPointTheorem}
@@ -100,7 +102,7 @@ Now we can see that \magicref{LawveresFixedPointTheorem} is of course the instan
 \openNamed{theorem}{Pre-introspective Diagonalization}\label{RevampedPreintroLawvere}
 Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary theory. As a reminder to the reader, this means, let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $1$ be an object in the global aspect of $C$ (not necessarily a terminal object), and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 
-(In particular, any pre-introspective finite product theory carries all this structure, which covers all the applications we will be interested in, but we wish for a moment to make it clear that the following construction does not rely on such extra structure, as this might make the argument easier to follow.)
+(In particular, any pre-introspective finite product theory carries all this structure, which covers all the applications we will be interested in, but we wish for a moment to make it clear that the following construction does not rely on such extra structure, just as we noted that \magicref{LawveresFixedPointTheorem} did not require exponential or product structure.)
 
 Furthermore, let $\point$ be an object of $T$. As ever, we use \quote{point of} as shorthand for \quote{element of the $\point$-aspect of}.
 
@@ -110,7 +112,9 @@ Consider now a $T$-indexed presheaf $P$ on $C$, aka a $(T, C)$-indexed set \TODO
 
 Suppose also given some object $X$ in $T$ and map $\alpha : X \to P(\introS(X))$.
 
-Now suppose given some $T$-small object $\Omega$ with a map $quotient : \Omega \to P(1)$ such that $quotient$ is surjective on the $X \times X$ aspect. Furthermore, let us suppose we have some $j$ in the global aspect of $P(\introS(\Omega))$.
+Now suppose given some $T$-\repsmall/ object $\Omega$ with a map $quotient : \Omega \to P(1)$ such that $quotient$ is surjective on the $X \times X$ aspect. Furthermore, let us suppose we have some $j$ in the global aspect of $P(\introS(\Omega))$. (Note that $\introS(\Omega)$ is well-defined because $\Omega$ is $T$-\repsmall/).
+
+\TODOinline{Ordinarily, we would take $\Omega = P(1)$ and quotient as identity. But when we do our slice construction, we take $P$ to be the self-indexing construed as a set-valued presheaf, the sets of ISOMORPHISM CLASSES of the slice categories. While $\Omega$ will be the non-quotiented object $Mor(C)$.}
 
 Now, let us make a surjectivity-like assumption on $\alpha$. Specifically, let us suppose that for every global element $p$ of $P(\introS(X))$, there is a point $x$ of $X$ such that $\alpha(x) = p$ (more precisely, by $p$ in this equation, we mean its reinterpretation from a global element into a point).
 
