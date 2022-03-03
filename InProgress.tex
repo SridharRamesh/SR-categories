@@ -1,0 +1,102 @@
+\filestart
+
+\section{Scratch work in progress}
+
+\subsection{Unorganized draft category-theoretic lemmas}
+
+\subsubsection{Initial algebra constructions}
+\TODO
+
+\subsubsection{Theories, models, functors, etc}
+\begin{TODOblock}\label{ModelTerminology}
+We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
+
+We can use interior vs. included.
+\end{TODOblock}
+
+\TODOinline{Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.}
+
+\subsubsection{Scribbles}
+So, for example, let us try constructing, for a lexcategory $T$, the initial lexcategory with an internal initial model of $T$. We find some quasi-equational theory $Th(T)$ presenting $T$. This theory is k-sized, so we work from now on in k-ary quasi-equational theories. We now make the k-ary quasi-equational theory of a strict lexcategory with an internal initial model of $Th(T)$, and apply the initial algebra theorem. We get an initial strict lexcategory with an internal initial model of $Th(T)$; call this $S$.
+
+Suppose we have three quasi-equational theories:
+Th(T)
+Th(Init-T')
+Th(D)
+
+These present strict lexcategories
+T'
+Init-T'
+D'
+
+These present lexcategories
+T
+Init-T
+D
+
+Th(T) is chosen to present T, with T' arising from this.
+Th(Init-T') is chosen to present Init-T' as the free strict lexcategory with an internal initial model of Th(T). Init-T then arises from this.
+Th(D) is chosen to present D, with D' arising from this.
+
+For any initial model of Th(T) in D', we get a unique map from Init-T' to D' which restricts to the corresponding map from T' to D'.
+
+Given two strict maps f, g from Init-T' to D' which both take T' to initial models in D', we want a unique transform from f to g. Transforms from f to g correspond by lemma 55 (even without the strictness assumption on f, g) to transforms between the corresponding models of Th(Init-T') in D'. We want [TODO] to show that these correspond to transforms between the corresponding models of Th(T) in D'. If we can do that, then since those models are initial, we get a unique map between them, as desired.
+
+\TODOinline{Perhaps we should mark with asterisks those theorems which are specific to $\Set$ and perhaps use Choice vs those theorems which are meant to internalize broadly}
+
+\subsubsection{Cartesian closure and \Loeb/'s theorem}
+\begin{theorem}
+Suppose $\langle T, C \rangle$ is a locally introspective simple theory (i.e., locally introspective finite product theory). Furthermore, suppose we have an object $0$ of $T$ such that all exponentials $0^t$ exist in $T$ (as in when $T$ is cartesian closed), and furthermore, there is a morphism in $T$ of type $\Box ((\Box 0) \implies 0) \vdash \Box 0$ (a \Loeb/ morphism). Let us refer to $0^X$ as $\neg X$. We then get a morphism in $T$ of type $1 \vdash \neg \neg \Box 0$; equivalently, a morphism of type $\neg \Box 0 \vdash 0$.
+\end{theorem}
+\begin{proof}
+In $T$, we have $(\neg \Box 0) \times (\Box 0) \vdash 0$. There is also a general principle that if $T$ contains a morphism $X \times Y \vdash Z$, then $T$ also contains a morphism $X \vdash \Box (Y \implies Z)$ (by using $\introS$ to get $\Box X \vdash \Box(Y \implies Z)$, and then using $\introN$ to get $X \vdash \Box X$ and composing these).
+
+Applying that general principle to this particular morphism, we find in $T$ a morphism $\neg \Box 0 \vdash \Box (\Box 0) \implies 0$. The right-hand side here combines with our \Loeb/ morphism; the result of this composition is $\neg \Box 0 \vdash \Box 0$. And from here we quickly get $\neg \Box 0 \vdash 0$, aka, $1 \vdash \neg \neg \Box 0$.
+\end{proof}
+
+The above shows the undesirability of using exponentiation in a cartesian closed $T$ to model ordinary implication, when using introspective theories to model ordinary provability logic, as this would imply a certain degree of incompatibility with Boolean logic. Specifically, in a Boolean context, when $0$ is actual falsehood so that $\neg \neg$ is supposed to be identity, the above would give us the rule $1 \vdash \Box 0$, asserting provable falsehood.
+
+The appropriate way to model provability logic complete with an implication operator is not to take $T$ to be cartesian closed, but rather, to take only $C$ to be an indexed cartesian closed category. Note that even if $T$ happens to be cartesian closed as well, we will in general not have that $\introF$ must preserve exponentials; that is, exponentials computed via $T$'s cartesian closed structure may well differ from exponentials computed via $C$'s cartesian closed structure (especially \TODOinline{Only?} if $C$ has objects not in the range of $\introF$). It is the latter which are most relevant for ordinary provability logic. Thus, although $T$ being cartesian closed will give us $\introS(\neg_T \Box 0_T) \vdash_C \introS(0_T)$, it will not give us $\neg_C \introS(\Box 0_T) \vdash_C \introS(0_T)$. We will see this explicitly in model \TODO and model \TODO.
+
+\subsubsection{Cartesian closed categories and locally introspective theories}
+\begin{theorem}
+We observe here that a locally introspective simple (i.e., finite product) theory in which $T$ and $C$ are cartesian closed and $\introF$ preserves cartesian closed structure and is essentially surjective on objects is the same as a cartesian closed theory $T$ along with a finite product preserving operator $\Box_T$ and natural transformation $\introN : \id_T \to \Box_T$.
+\end{theorem}
+\begin{proof}
+As a cartesian closed category, $T$ is enriched over $T$. A finite product preserving functor from $T_1$ to $T_2$ turns enrichments over $T_1$ into enrichments over $T_2$; using this, we can construe $T$ instead as a category $C$ enriched over $T$, where the objects of $C$ are those of $T$ but $\Hom_C(t, s) = \Box_T \Hom_T(t, s) = \Box_T s^t$.
+
+A category enriched over $T$ (with terminal object) is the same as a locally \repsmall/ $T$-indexed category such that every object in $C(t)$ is the pullback of some object in $C(1)$. Thus, the above has produced $C$ as a locally \repsmall/ $T$-indexed category. Since both $\Box$ and $-^t$ are product preserving endofunctors of $T$, it's easy to see that $\Hom_C(t, s_1 \times \ldots \times s_n) = \Hom_C(t, s_1) \times \ldots \times \Hom_C(t, s_n)$ so that $C$ furthermore has finite products. (We can also see that $C$ has exponentials, from \TODO).
+
+For $\introS$, we send each object to itself and send each morphism $m: t \to s$ in $T$ (equivalently, $: 1 \to s^t$) to the corresponding value in $: 1 \to \Box(t^s)$ given by applying our natural transformation from identity to $\Box$. It is readily verified this is functorial and product-preserving (\TODO).
+
+The required $\introN : t \to \Hom_C(1, \introS(t)) = \Box_T t$ is given by the supplied natural transformation as well. This completes this direction of the proof.
+
+Put more cleanly:
+
+% https://q.uiver.app/?q=WzAsNCxbMSwwLCJcXG9we1R9Il0sWzIsMCwiRmluUHJvZENhdCJdLFsxLDEsIlxcb3B7VH0iXSxbMCwwLCJcXG9we1R9Il0sWzAsMSwiVC8vLSJdLFsyLDEsIlxcTGFuX3tcXEJveH0oVC8vLSkiLDJdLFswLDIsIlxcQm94IiwyXSxbMywyLCJcXGlkIiwyXSxbMywwLCJcXGlkIl0sWzQsMiwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFswLDcsIiIsMix7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	{\op{T}} & {\op{T}} & FinProdCat \\
+	& {\op{T}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{T//-}", from=1-2, to=1-3]
+	\arrow["{\Lan_{\Box}(T//-)}"', from=2-2, to=1-3]
+	\arrow["\Box"', from=1-2, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\id"', from=1-1, to=2-2]
+	\arrow["\id", from=1-1, to=1-2]
+	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=0, to=2-2]
+	\arrow[shorten >=2pt, Rightarrow, from=1-2, to=1]
+\end{tikzcd}\]
+
+Plus the observation at https://sridharramesh.github.io/HowSridharThinks/math/IndexedEnrichedInternalCategories.html to ensure that the left Kan extension within $\Cat$ really does produce a category with finite products. Plus the verification that $\Hom_C(A, B) = \Box_T (B^A)$.
+
+In the other direction (introspective theory with eso $\introF$ is cartesian closed $T$ plus operator), \TODO.
+\end{proof}
+Similarly, some analogue of the above for locally introspective finite limit theories? \TODO
+
+\begin{TODOblock}
+Similarly, some analogue of both of the above for geminal categories? The simplest observation is that, from any cartesian closed category C' with endo-fp-functor Box s.t. we have a natural transformation from Box to $\Box^2$ s.t. the two induced paths from Box to $\Box^3$ are equal, we can construct an introspective finite product theory T such that the objects of $T$ are finite products of objects of the form $\Hom_C(A, B)$ for objects $A$ and $B$ in $C(1)$, while the objects of $C$ at every aspect are the objects of $C'$. And of course $\introS(\Hom_C(A, B)) = \Box(B^A)$, while $\introN$ corresponds to our Box to $\Box^2$ operator. Maybe this is simpler put in terms of the observation as to what a geminal (simple/fp theory) cartesian closed category on given objects is.
+\end{TODOblock}
+
+\subsection{Soundnesses}
+\TODO
+
+\fileend

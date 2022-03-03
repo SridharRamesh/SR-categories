@@ -120,7 +120,7 @@ If $f \adjointTo g$, then $\pullAlong{f} \adjointTo \pullAlong{g}$. Thus $\pullA
 \end{proof}
 
 \begin{theorem}\label{RepsmallRightAdjoint}
-If $f$ has a right adjoint $g$, then $\pullAlong{f}$ takes \repsmall/ sets to \repsmall/ sets. Specifically, $\pullAlong{f}(t) = g(t)$.
+If $f : S \to T$ has a right adjoint $g : T \to S$, then $\pullAlong{f} : \Psh{T} \to \Psh{S}$ takes \repsmall/ sets to \repsmall/ sets. Specifically, $\pullAlong{f}(t) = g(t)$.
 \end{theorem}
 \begin{proof}
 $\pullAlong{f}$ takes any representable presheaf with representing object $t$ in $T$ to the representable presheaf $\Hom_T(f(-), t) = \Hom_S(-, g(t))$.
@@ -499,70 +499,48 @@ $T[1 \to -]$ is equivalent to $T/-$, when the latter is viewed as a contravarian
 (And in just the same way, for a category with finite products $T$, we have that $T[[1 \to -]]$ is equivalent to $T//-$.)
 \end{theoremEnd}
 \begin{proof}
-This is a standard observation (see 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof), and also simple enough to show. See \hyperref[proof:prAtEnd\pratendcountercurrent]{full proof} on page~\pageref{proof:prAtEnd\pratendcountercurrent}.
+This is a standard observation (see 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof). \TODOinline{This is probably also in Uemura with details somewhere?}
+
+It is also simple enough to show, so we will write out the argument:
+
+\TODOinline{This is a bit messily written right now, but it gets the job done}
+Note that we have a lexfunctor $R$ from $T = T/1$ to $T/t$ given by pullback along the unique map $t$ to $1$; more explicitly, $R(x)$ is the projection slice from $t \times x$ to $t$, which projects out the first component. We also have a left adjoint to this, the forgetful functor $L : T/t \to T$.
+
+Keep in mind that any lexfunctor $f$ from $A$ to $B$ induces a lexfunctor from $A/a$ to $B/f(a)$, as the diagrams and limits in $A/a$ are just given by corresponding diagrams and limits in $A$. In particular, our $R$ induces also a lexfunctor $R'$ from $T/t$ to $(T/t)/R(t)$.
+
+Observe also that iterated slice categories can be reduced to slice categories. That is $(T/t)/x = T/L(x)$, where $x$ is an object of $T/t$. In particular, $(T/t)/R(t) = T/L(R(t)) = T/(t \times t)$. Thus, the observation of our last paragraph is that $R' : T/t \to T/(t \times t)$.
+
+Let $\pi_2 : t \times t \to t$ project out the second component. Note that the pullback action $\pullAlong{\pi_2} : T/t \to T/(t \times t)$ is the same as $R'$. These both send objects $f$ of $T/t$ to objects $t \times f$ of $T/(t \times t)$, as in the following diagram
+
+% https://q.uiver.app/?q=WzAsNCxbMCwxLCJ0IFxcdGltZXMgdCJdLFsxLDEsInQiXSxbMSwwLCJzIl0sWzAsMCwidCBcXHRpbWVzIHMiXSxbMCwxLCJcXHBpXzIiLDJdLFsyLDEsImYiXSxbMywwLCJ0IFxcdGltZXMgZiJdLFszLDJdLFszLDEsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
+\[\begin{tikzcd}
+	{t \times s} & s \\
+	{t \times t} & t
+	\arrow["{\pi_2}"', from=2-1, to=2-2]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow["{t \times f}", from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+\end{tikzcd}\]
+
+Finally, let $\Delta : t \to t \times t$ be the diagonal map. Observe that $\pi_2 \circ \Delta = \id_t$. Therefore, the pullback action $\pullAlong{(\pi_2 \circ \Delta)} = \pullAlong{\Delta} \circ \pullAlong{\pi_2} = \pullAlong{\Delta} \circ R' : T/t \to T/t$ is equivalent to the identity.
+
+Thus, every object or morphism in $T/t$ is given by $\pullAlong{\Delta}$ applied to some object or morphism in the range of $R'$.
+
+Note that $\Delta$ itself can be viewed as a morphism $g : 1_{T/t} \to R(t)$ in $T/t$, where $1_{T/t}$ is the terminal object of $T/t$.
+
+Thus, we have shown there is a lexfunctor $R : T \to T/t$, and a morphism $g$ in $T/t$ from its terminal object to $R(t)$, such that every other diagram in $T/t$ is the pullback along $g$ of a diagram in the range of $R$.
+
+This tells us that, for any lexcategory $X$, lexfunctor $F : T \to X$, and morphism $h : 1 \to F(t)$, there is at most one lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$.
+
+As for existence, suppose given an arbitrary lexfunctor $F: T \to X$ and also a morphism $h : 1_X \to F(t)$, where $1_X$ is the terminal object of $X$. This $F$ induces a lexfunctor $F' : T/t \to X/F(t)$. Composing this with the pullback action $\pullAlong{h} : X/F(t) \to X$, we get a lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. \TODOinline{Expand on this}
+
+Thus, we have established that $T/t$ is the free augmentation of $T$ with a global element of $t$.
+
+Finally, it is easy to verify that the pullback actions from $T/t$ to $T/s$ for arbitrary morphisms $m : s \to t$ correspond to reindexings from $T[1 \to t]$ to $T[1 \to s$ along $m$. \TODOinline{Expand on this}
+
+This completes the proof that $T/-$ is the same as $T[1 \to -]$. Note that the same argument, restricted to only those slices which are projections, shows that the simple self-indexing $T//-$ is the same as $T[[1 \to -]]$.
 \end{proof}
-\begin{proofEnd}[no link to proof]
-To start off, we construe $T/-$ as not merely a $T$-indexed lexcategory, but furthermore a $T$-indexed lexcategory-under-$T$ (equivalently, $T/1$) by appeal to the first half of \cref{Lemma1} as applied to $T/- : \op{T} \to \LexCat$. Note that, for any particular object $t$ of $T$, this identifies $T/1$ inside $T/t$ via pullback along the unique map from $t$ to $1$; thus, $T$ is identified as the subcategory of \quote{constant} data within $T/t$. We may explicitly refer to this inclusion lexfunctor as $i_t : T \to T/t$. (Beware that in general, $i_t$ is faithful but not full!)
-
-Now, what we want to show that given any fixed diagram in $\LexCat$ of this form
-\[\begin{tikzcd}
-	& T \\
-	{T/t} && V
-	\arrow["{i_t}"', from=1-2, to=2-1]
-	\arrow["f", from=1-2, to=2-3]
-\end{tikzcd}\]
-there is a correspondence between commutative triangles extending this diagram with a lexfunctor from $T/t$ to $V$, and elements of $\Hom_V(1, f(t))$.
-
-Well, suppose given $m : 1 \to f(t)$ in $V$. Consider now how the action of $f$ on arrows induces a functor $f' : T/t \to V/f(t)$. Because $f$ preserves finite limits, and finite limits in a category determine the finite limits in its slice categories, this functor $f'$ also preserves finite limits. Furthermore, by pullback along $m$, we get a lexfunctor $m^* : V/f(t) \to V$. Thus, altogether, we get a lexfunctor $m^* \circ f' : T/t \to V$. What's more, the following diagram commutes:
-
-\[\begin{tikzcd}
-	& T \\
-	{T/t} && V \\
-	& {V/f(t)}
-	\arrow["{i_t}"', from=1-2, to=2-1]
-	\arrow["f", from=1-2, to=2-3]
-	\arrow["{f'}"', from=2-1, to=3-2]
-	\arrow["{m^*}"', from=3-2, to=2-3]
-\end{tikzcd}\]
-
-To see that this diagram commutes, observe that it can be decomposed like so:
-
-\[\begin{tikzcd}
-	& T \\
-	{T/t} & V & V \\
-	& {V/f(t)}
-	\arrow["{i_t}"', from=1-2, to=2-1]
-	\arrow["f", from=1-2, to=2-3]
-	\arrow["{f'}"', from=2-1, to=3-2]
-	\arrow["{m^*}"', from=3-2, to=2-3]
-	\arrow["f"', from=1-2, to=2-2]
-	\arrow["{i_{f(t)}}"', from=2-2, to=3-2]
-\end{tikzcd}\]
-
-Here, $i_{f(t)}$ is the inclusion lexfunctor from $V$ into $V/f(t)$ in the analogous way to $i_t : T \to T/t$. The left half of this diagram commutes because, $f$ being a lexfunctor, the operations \quote{Pull back along the map from $t$ to $1$ and then apply $f$ to the resulting slice} and \quote{Apply $f$ and then pull back along the map from $f(t)$ to $1$} are the same. The right half of this diagram commutes because $m^* \circ i_{f(t)}$ is identity, because this amounts to pulling back along two morphisms in a row, ultimately pulling back along a path from $1$ to $1$, and any morphism from $1$ to $1$ is the identity. \TODOinline{Phrase this better?}
-
-Thus, every element of $\Hom_V(1, f(t))$ induces a corresponding commutative triangle of lexfunctors from $i_t : T \to T/t$ to $f : T \to V$.
-
-Conversely, any such commutative triangle induces an element of $\Hom_V(1, f(t))$. To see this, we just need to see that there is some global element of $i_t(t)$ already in $T/t$.
-
-Note that $i_t(t)$ is one of the projections from $t \times t$ to $t$. Furthermore, the terminal object in $T/t$ is the identity slice from $t$ to $t$. So the following commutative triangle serves as a global element of $i_t(t)$ within $T/t$:
-
-\[\begin{tikzcd}
-	t && {t \times t} \\
-	& t
-	\arrow["id"', from=1-1, to=2-2]
-	\arrow["{i_t(t)}", from=1-3, to=2-2]
-	\arrow["{\langle \id, \id \rangle}", from=1-1, to=1-3]
-\end{tikzcd}\]
-
-Let us use the name $g_t$ for this global element of $i_t(t)$ within $T/t$.
-
-Now, we need to show that these two processes are inverse. \TODO
-
-Finally, we must show that the re-indexings given by morphisms in $T$ via the definition of $T[1 \to -]$ correspond to the same reindexings as defined via $T/-$. \TODO
-
-\TODOinline{The details of this are probably in Uemura, and we can just cite that on top of Bart Jacobs and be done}
-\end{proofEnd}
 
 \begin{observation}\label{SelfIndexingIsFreeCorollary}
 The analogues of \magicref{SelfIndexingIsFree} automatically also follow for $T[1 \to -]$ for any categorical structure extending the structure of a lexcategory which is automatically transferred to slice categories and preserved by pullback; that is, any structure which automatically transfers from an instance of that structure also to its self-indexing (e.g., for the concepts of locally cartesian closed categories, or for elementary toposes, or for categories with finite and countably infinite limits).
@@ -747,47 +725,5 @@ More generally, given an arbitrary lexcategory $T'$, if we make a choice of stri
 \begin{observation}
 All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but also have $k$-ary products, for all $k$ drawn from some fixed set of cardinalities $K$. (Such categories in fact have all limits of cardinality $k$, by the usual reduction to $k$-ary products and binary equalizers.)
 \end{observation}
-
-\subsection{Unorganized draft category-theoretic lemmas}
-
-\subsubsection{Initial algebra constructions}
-\TODO
-
-\subsubsection{Theories, models, functors, etc}
-\begin{TODOblock}\label{ModelTerminology}
-We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
-
-We can use interior vs. included.
-\end{TODOblock}
-
-\TODOinline{Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.}
-
-\subsubsection{Scribbles}
-So, for example, let us try constructing, for a lexcategory $T$, the initial lexcategory with an internal initial model of $T$. We find some quasi-equational theory $Th(T)$ presenting $T$. This theory is k-sized, so we work from now on in k-ary quasi-equational theories. We now make the k-ary quasi-equational theory of a strict lexcategory with an internal initial model of $Th(T)$, and apply the initial algebra theorem. We get an initial strict lexcategory with an internal initial model of $Th(T)$; call this $S$.
-
-Suppose we have three quasi-equational theories:
-Th(T)
-Th(Init-T')
-Th(D)
-
-These present strict lexcategories
-T'
-Init-T'
-D'
-
-These present lexcategories
-T
-Init-T
-D
-
-Th(T) is chosen to present T, with T' arising from this.
-Th(Init-T') is chosen to present Init-T' as the free strict lexcategory with an internal initial model of Th(T). Init-T then arises from this.
-Th(D) is chosen to present D, with D' arising from this.
-
-For any initial model of Th(T) in D', we get a unique map from Init-T' to D' which restricts to the corresponding map from T' to D'.
-
-Given two strict maps f, g from Init-T' to D' which both take T' to initial models in D', we want a unique transform from f to g. Transforms from f to g correspond by lemma 55 (even without the strictness assumption on f, g) to transforms between the corresponding models of Th(Init-T') in D'. We want [TODO] to show that these correspond to transforms between the corresponding models of Th(T) in D'. If we can do that, then since those models are initial, we get a unique map between them, as desired.
-
-\TODOinline{Perhaps we should mark with asterisks those theorems which are specific to $\Set$ and perhaps use Choice vs those theorems which are meant to internalize broadly}
 
 \fileend
