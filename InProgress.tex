@@ -16,7 +16,7 @@ We can use interior vs. included.
 
 \TODOinline{Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.}
 
-\subsubsection{Scribbles}
+\subsubsection{Constructing initializers}
 So, for example, let us try constructing, for a lexcategory $T$, the initial lexcategory with an internal initial model of $T$. We find some quasi-equational theory $Th(T)$ presenting $T$. This theory is k-sized, so we work from now on in k-ary quasi-equational theories. We now make the k-ary quasi-equational theory of a strict lexcategory with an internal initial model of $Th(T)$, and apply the initial algebra theorem. We get an initial strict lexcategory with an internal initial model of $Th(T)$; call this $S$.
 
 Suppose we have three quasi-equational theories:
@@ -98,5 +98,9 @@ Similarly, some analogue of both of the above for geminal categories? The simple
 
 \subsection{Soundnesses}
 \TODO
+
+A global soundness is something like, given an introspective theory T, we can ask for a lexfunctor from T to Set which sends all of $\introN$'s components to isomorphisms.
+
+This might be the same as asking of the lexfunctor (construed as a model M of T with an internal model M' and a homomorphism N from M to $Hom_M(1, M')$) to be such that this homomorphism $N : M \to \Hom_M(1, M')$ is an isomorphism.
 
 \fileend

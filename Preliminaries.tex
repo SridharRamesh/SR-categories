@@ -7,7 +7,7 @@ We assume familiarity with sets, functions, categories, functors, natural transf
 
 We will take all categories to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc, but wherever this is important we will make some explicit note.
 
-We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We may occasionally write $n ; m$ to mean $m \circ n$.
+We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We may occasionally write $n ; m$ to mean $m \circ n$. We write $\id_X$ or just $\id$ for the identity morphism on an object $X$.
 
 We use the term \defined{lexcategory} for a category with finite limits. We use the term \defined{lexfunctor} for a functor preserving finite limits, whose domain and codomain are both lexcategories. By $\LexCat$, we mean the 2-category of lexcategories, lexfunctors, and natural transformations. We will not generally be explicit about making distinctions between $f(a \times b)$ and $f(a) \times f(b)$, etc, when $f$ is a lexfunctor, but shall instead write with the ordinary fluency for working with limit-preserving functors.
 
@@ -59,7 +59,7 @@ Note that \repsmall/ sets, construed as objects of $\Psh{T}$, are closed under a
 \end{theorem}
 
 \begin{definition}
-Note that given an arbitrary functor $f : S \to T$, this induces by composition a functor $\pullAlong{f} : \Psh{T} \to \Psh{S}$.
+Note that given an arbitrary functor $f : S \to T$, this induces by composition a functor $\pullAlong{f} : \Psh{T} \to \Psh{S}$.\footnote{I apologize for re-using this $\pullAlong{f}$ notation both for the action of a presheaf on a morphism $f$, AND for composition of a presheaf with a functor $f$, but this re-use of notation seems to be relatively standard. We can think of the second use of this notation as a kind of instance of the first, for the category-valued $\Hom(-, \Set)$ presheaf on $\Cat$.}
 
 That is, from a $T$-indexed set $P$, we may construct the following $S$-indexed set $\pullAlong{f} P$:
 
@@ -392,7 +392,7 @@ Then in particular, for each basis finite limit shape, we can consider the case 
 \end{proof}
 Note that it is NOT true that any indexed strict category which has finite limits (qua indexed category) can furthermore be equipped as an indexed strict lexcategory (without modification to the indexed strict category structure)! The former has reindexing functors which need only preserve finite limits in a non-strict-sense, while the latter's chosen basic limits must be such that all reindexing functors preserve basic limits on-the-nose. So it is rather remarkable that we get this for free once our indexed strict category is furthermore repsmall.
 
-\subsection{Self-indexing}
+\subsection{Self-indexing and slice categories}
 \begin{definition}
 Note that, from any lexcategory $T$ (or even just a category with pullbacks), we obtain a $T$-indexed lexcategory by considering the functor $T/-$ which assigns to each object $t$ of $T$ the slice category $T/t$, and whose action on morphisms is given by pullback. We refer to this as the \defined{self-indexing} of $T$.
 \end{definition}
@@ -409,6 +409,16 @@ For a category with finite limits (or just pullbacks and binary products), the s
 
 By analogous reasoning to before, the simple self-indexing $T//-$ of a category with finite products $T$ is locally \repsmall/ just in case $T$ is cartesian closed.
 
+\begin{observation}\label{FunctorsActOnSlices}
+Given any functor $f : A \to B$ between arbitrary categories $A$ and $B$, we get an induced functor $f' : A/a \to B/f(a)$ between slice categories for any object $a$ of $A$. If $f$ is a lexfunctor between lexcategories, then this induced functor $f'$ is also a lexfunctor between lexcategories.
+
+In the same way, there is also an induced functor $f'' : A//a \to B//f(a)$ between slice categories restricted to projections, and if $f$ is a finite product preserving functor between categories with finite products, then so is this $f''$.
+\end{observation}
+
+\begin{observation}\label{CategoryIsGlobalSlices}
+For any category $T$ with a terminal object $1$, we have an equivalence between $T$ and its slice category $T/1$.
+\end{observation}
+
 \begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{Lemma1}
 If $Y$ is a category with initial object $0$ and $X$ is a (2-)category, then to any functor $f : Y \to X$, we can associate a corresponding functor $f'$ from $Y$ to the slice category $f(0)/X$.
 
@@ -417,7 +427,7 @@ Furthermore, if $D$ and $C$ are parallel functors from $Y$ to $X$, then a natura
 (Dually, for contravariant functors $f : \op{Y} \to X$ (such as with indexed structures), acting on a category $Y$ with a terminal object $1$, we obtain a corresponding contravarint functor $f'$ from $Y$ to the co-slice category $X/f(1)$. And then the dual further result as well.)
 \end{theoremEnd}
 \begin{proof}
-The first half of the lemma is thoroughly straightforward. $f : Y \to X$ induces a functor between the arrow category of $Y$ and the arrow category of $X$, and since $Y$ sits inside its arrow category as the slice category $0/Y$, this gives us a functor from $Y$ to the arrow category of $X$, which when followed by the domain projection back to $X$ is constantly $f(0)$. This is our $f'$.
+The first half of the lemma is just the combination of \magicref{FunctorsActOnSlices} and \magicref{CategoryIsGlobalSlices}.
 
 The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), so that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data.
 
@@ -483,7 +493,7 @@ such that the rightmost arrow of this diagram corresponds to some arrow $\introS
 \TODOinline{Phew! That made a mountain out of a molehill. But perhaps people sometimes appreciate such written-out detail.}
 \end{proofEnd}
 
-In order to state the next lemma, some terminology:
+In order to state the next theorem, some terminology:
 
 \begin{definition}
 If $T$ is a lexcategory, then for each object of $t$, we can construct the free lexcategory extending $T$ with a global element of $t$. Call this $T[1 \to t]$. Also, for any $f : s \to t$ in $T$, we can get a map from $T[1 \to t]$ to $T[1 \to s]$ by sending the generic global element of $t$ in $T[1 \to t]$ to the result of applying $f$ to the generic global element of $s$ in $T[1 \to s]$. This action is clearly functorial. Thus, $T[1 \to -]$ comprises a $T$-indexed object of $T/\LexCat$.
@@ -493,24 +503,32 @@ We can replace all references to finite limit structure above with finite produc
 
 By \magicref{Lemma1}, we can see $T/-$ as a contravariant functor from a lexcategory $T$ to $\LexCat/T$. And similarly for $T//-$ in terms of finite product structure.
 
-\begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{SelfIndexingIsFree}
+\begin{theorem}\label{SelfIndexingIsFree}
 $T[1 \to -]$ is equivalent to $T/-$, when the latter is viewed as a contravariant functor from a lexcategory $T$ to $\LexCat/T$ via \magicref{Lemma1}.
 
 (And in just the same way, for a category with finite products $T$, we have that $T[[1 \to -]]$ is equivalent to $T//-$.)
-\end{theoremEnd}
+\end{theorem}
 \begin{proof}
 This is a standard observation (see 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof). \TODOinline{This is probably also in Uemura with details somewhere?}
 
 It is also simple enough to show, so we will write out the argument:
 
 \TODOinline{This is a bit messily written right now, but it gets the job done}
-Note that we have a lexfunctor $R$ from $T = T/1$ to $T/t$ given by pullback along the unique map $t$ to $1$; more explicitly, $R(x)$ is the projection slice from $t \times x$ to $t$, which projects out the first component. We also have a left adjoint to this, the forgetful functor $L : T/t \to T$.
+Applying $T/- : \op{T} \to \LexCat$ to the unique functor from object $t$ in $T$ to $1$, we get a lexfunctor $R$ from $T = T/1$ to $T/t$ given by pullback along the unique map $t$ to $1$; more explicitly, $R(x)$ is the projection slice from $t \times x$ to $t$, which projects out the first component. We also have a left adjoint to this, the forgetful functor $L : T/t \to T$.
 
-Keep in mind that any lexfunctor $f$ from $A$ to $B$ induces a lexfunctor from $A/a$ to $B/f(a)$, as the diagrams and limits in $A/a$ are just given by corresponding diagrams and limits in $A$. In particular, our $R$ induces also a lexfunctor $R'$ from $T/t$ to $(T/t)/R(t)$.
+Breaking down what our proposed theorem says, the claim we must show is that there is a morphism $g : R(1) \to R(t)$ in $T/t$ such that, for any lexcategory $X$, lexfunctor $F: T \to X$, and morphism $h: F(1) \to F(t)$ in $X$, there is a unique lexfunctor $E: T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. (More precisely, there is a contractible space of such lexfunctors such that $E \circ R$ is naturally isomorphic to $F$, and the induced action of that isomorphism as a map from $\Hom_X(E(R(1)), E(R(t)))$ to $\Hom_X(F(1), F(t))$ takes $E(g)$ to $h$. By a contractible space, we mean that such a lexfunctor $E$ exists, and for any two such lexfunctors $E_1$ and $E_2$, there is a unique natural isomorphism between them which, when whiskered along $R$ and then composed with the given isomorphism from $E_2 \circ R$ to $F$, yields the given isomorphism from $E_1 \circ R$ to $F$.) Furthermore, we must show that reindexing within $T[1 \to -]$ corresponds to pullback within $T/-$. \TODOinline{Expand on this}
 
-Observe also that iterated slice categories can be reduced to slice categories. That is $(T/t)/x = T/L(x)$, where $x$ is an object of $T/t$. In particular, $(T/t)/R(t) = T/L(R(t)) = T/(t \times t)$. Thus, the observation of our last paragraph is that $R' : T/t \to T/(t \times t)$.
+We will take our $g$ to be the map from $R(1)$ to $R(t)$ given by the diagonal map $\Delta : t \to t \times t$ (that is, such that $L(g) = \Delta$).
 
-Let $\pi_2 : t \times t \to t$ project out the second component. Note that the pullback action $\pullAlong{\pi_2} : T/t \to T/(t \times t)$ is the same as $R'$. These both send objects $f$ of $T/t$ to objects $t \times f$ of $T/(t \times t)$, as in the following diagram
+As for the existence aspect of the claim, suppose given an arbitrary lexfunctor $F: T \to X$ and also a morphism $h : 1_X \to F(t)$, where $1_X$ is any terminal object of $X$. This $F$ induces a lexfunctor $F' : T/t \to X/F(t)$ via \magicref{FunctorsActOnSlices}. Composing this with the pullback action $\pullAlong{h} : X/F(t) \to X/1_X$ and the equivalence of $X/1_X$ with $X$, we get a lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. \TODOinline{Expand on this}
+
+As for uniqueness, it will suffice to show that every diagram in $T/t$ is the pullback along $g$ of some diagram in the range of $R$. We show this now.
+
+By the observation of \magicref{FunctorsActOnSlices}, our $R$ induces also a lexfunctor $R'$ from $T/t$ to $(T/t)/R(t)$.
+
+Observe also that iterated slice categories can be reduced to slice categories. That is for any object $x$ of $T/t$, we have that the iterated slice category $(T/t)/x$ is equivalent to the slice category $T/L(x)$. In particular, $(T/t)/R(t) = T/L(R(t)) = T/(t \times t)$. Thus, the observation of our last paragraph is that the action of $R$ induces a lexfunctor $R' : T/t \to T/(t \times t)$.
+
+Let $\pi_2 : t \times t \to t$ be the projection of the second component. Note that the pullback action $\pullAlong{\pi_2} : T/t \to T/(t \times t)$ is the same as $R'$. These both send objects $f$ of $T/t$ to objects $t \times f$ of $T/(t \times t)$, as in the following diagram (and act accordingly on morphisms as well):
 
 % https://q.uiver.app/?q=WzAsNCxbMCwxLCJ0IFxcdGltZXMgdCJdLFsxLDEsInQiXSxbMSwwLCJzIl0sWzAsMCwidCBcXHRpbWVzIHMiXSxbMCwxLCJcXHBpXzIiLDJdLFsyLDEsImYiXSxbMywwLCJ0IFxcdGltZXMgZiJdLFszLDJdLFszLDEsIiIsMSx7InN0eWxlIjp7Im5hbWUiOiJjb3JuZXIifX1dXQ==
 \[\begin{tikzcd}
@@ -523,21 +541,13 @@ Let $\pi_2 : t \times t \to t$ project out the second component. Note that the p
 	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
 \end{tikzcd}\]
 
-Finally, let $\Delta : t \to t \times t$ be the diagonal map. Observe that $\pi_2 \circ \Delta = \id_t$. Therefore, the pullback action $\pullAlong{(\pi_2 \circ \Delta)} = \pullAlong{\Delta} \circ \pullAlong{\pi_2} = \pullAlong{\Delta} \circ R' : T/t \to T/t$ is equivalent to the identity.
+Finally, recall that $L(g) = \Delta : t \to t \times t$ is the diagonal map. Observe that $\pi_2 \circ \Delta = \id_t$. Therefore, the pullback action $\pullAlong{(\pi_2 \circ \Delta)} = \pullAlong{\Delta} \circ \pullAlong{\pi_2} = \pullAlong{\Delta} \circ R' : T/t \to T/t$ is equivalent to the identity.
 
-Thus, every object or morphism in $T/t$ is given by $\pullAlong{\Delta}$ applied to some object or morphism in the range of $R'$.
+Thus, every object or morphism in $T/t$ is given (as a diagram in $T$) by $\pullAlong{\Delta}$ applied to some object or morphism in the range of $R'$. Which is to say, every diagram in $T/t$ is given by $\pullAlong{g}$ applied to some diagram in the range of $R$, as desired.
 
-Note that $\Delta$ itself can be viewed as a morphism $g : 1_{T/t} \to R(t)$ in $T/t$, where $1_{T/t}$ is the terminal object of $T/t$.
+Thus, we have the uniqueness to complement existence, and have established that $T/t$ is the free augmentation of $T$ with a global element of $t$.
 
-Thus, we have shown there is a lexfunctor $R : T \to T/t$, and a morphism $g$ in $T/t$ from its terminal object to $R(t)$, such that every other diagram in $T/t$ is the pullback along $g$ of a diagram in the range of $R$.
-
-This tells us that, for any lexcategory $X$, lexfunctor $F : T \to X$, and morphism $h : 1 \to F(t)$, there is at most one lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$.
-
-As for existence, suppose given an arbitrary lexfunctor $F: T \to X$ and also a morphism $h : 1_X \to F(t)$, where $1_X$ is the terminal object of $X$. This $F$ induces a lexfunctor $F' : T/t \to X/F(t)$. Composing this with the pullback action $\pullAlong{h} : X/F(t) \to X$, we get a lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. \TODOinline{Expand on this}
-
-Thus, we have established that $T/t$ is the free augmentation of $T$ with a global element of $t$.
-
-Finally, it is easy to verify that the pullback actions from $T/t$ to $T/s$ for arbitrary morphisms $m : s \to t$ correspond to reindexings from $T[1 \to t]$ to $T[1 \to s$ along $m$. \TODOinline{Expand on this}
+Finally, it is easy to verify that the pullback actions from $T/t$ to $T/s$ for arbitrary morphisms $m : s \to t$ correspond to the reindexings from $T[1 \to t]$ to $T[1 \to s$ along $m$. \TODOinline{Expand on this}
 
 This completes the proof that $T/-$ is the same as $T[1 \to -]$. Note that the same argument, restricted to only those slices which are projections, shows that the simple self-indexing $T//-$ is the same as $T[[1 \to -]]$.
 \end{proof}
@@ -612,7 +622,10 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
-\subsection{Comma categories}
+\TODOinline{Set the following notational convention}
+Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except when objects of $T$ and globally defined objects of $C$ have the same name (as will often happen with terminal objects named $1$). Where there is ambiguity, it should be cleared up by context; in general, there is a strong presumption when saying $P(1)$ that the $1$ refers to the terminal object of $C$ rather than the terminal object of $T$, so that $P(1)$ means the object of $\Psh{T}$ (which may be \repsmall/ and thus in $T$ itself) given by $t \mapsto P(t, 1_C)$.
+
+\subsection{Comma objects and their interaction with Kan extensions}
 
 \begin{theorem}[The Comma-Kan Lemma] \label{CommaKan}
 Suppose, within some 2-category $C$, we have the following comma object and left Kan extensions:
