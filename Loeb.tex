@@ -173,20 +173,21 @@ The above shows how to obtain \magicref{LawveresFixedPointTheorem} as an instanc
 \begin{theorem}
 Suppose given a pre-introspective finite product theory $\langle T, C, \introS, \introN \rangle$ and a locally $T$-\repsmall/ presheaf $P$ \TODOinline{Standardize this terminology across this section, the modal logic section, and the preliminaries} on $C$.
 
-If there is any object $X$ of $T$ with an isomorphism from $X$ to $P(\introS(X))$, then for every $g : \Box P \to P$, we obtain an $\omega : 1 \to P$, such that $g \circ \omega' = \omega$, where $\omega' : 1 \to \Box P$ is given by $\introN_{P(1)}(\omega)$. \TODOinline{Clarify this notation}
+If there is any object $X$ of $T$ with an isomorphism from $X$ to $P(\introS(X))$, then for every globally defined $g : \Box P \to P$, we obtain an $\omega : 1 \to P$, such that $g \circ \omega' = \omega$, where the globally defined $\omega' : 1 \to \Box P$ is given by $\introN_{P(1)}(\omega)$. \TODOinline{Clarify this notation}
 
 We get the same result also if there is any object $Y$ in the global aspect of $C$ along with a globally defined isomorphism from $Y$ to $\introS(P(Y))$.
 \end{theorem}
 \begin{proof}
 Any isomorphism $\alpha : X \to P(\introS(X))$ (or even just a split epic) will automatically satisfy the surjectivitity-like assumption for us to invoke \magicref{PreIntrospDiagSpecialization}, with $\Omega$ as $P(1)$ and $\quotient$ as identity. Thus once we are given such an isomorphism, we can invoke \magicref{PreIntrospDiagSpecialization}, and its result is the fixed point result noted in this theorem.
 
-For the final remark, note that fixed points up to isomorphism of any endofunctor $F \circ G$ are in correspondence with fixed points up to isomorphism of the endofunctor $G \circ F$, with the functors $G$ and $F$ carrying out the two directions of the correspondence. (For that matter, we can also observe that values $X$ such that $F(G(X))$ is a retract of $X$ are in corresponence with values $Y$ such that $G(F(Y))$ is a retract of $Y$.). In this particular case, this means that fixed points up to isomorphism of the endofunctor $P(\introS(-))$ on $T$ are in correspondence with fixed points up to isomorphism of the endofunctor $\introS(P(-))$ on the global aspect of $C$.
+For the final remark, note that fixed points up to isomorphism of any endofunctor $F \circ G$ are in correspondence with fixed points up to isomorphism of the endofunctor $G \circ F$, with the functors $G$ and $F$ carrying out the two directions of the correspondence. (For that matter, we can also observe that values $X$ such that $F(G(X))$ is a retract of $X$ are in correspondence with values $Y$ such that $G(F(Y))$ is a retract of $Y$.). In this particular case, this means that fixed points up to isomorphism of the endofunctor $P(\introS(-))$ on $T$ are in correspondence with fixed points up to isomorphism of the endofunctor $\introS(P(-))$ on the global aspect of $C$.
 \end{proof}
 
 \subsection{Bootstrapping to \Loeb/'s theorem for introspective theories}
+\TODOinline{Rewrite this to the new structure from above}
 We will now show how to bootstrap away this precondition, in the context of an introspective theory:
 
-Essentially, our plan is to apply \magicref{RetractInT} taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice. Put another way, we can take ourselves to be working with an inner-strict introspective theory, as every introspective theory can be equipped as such.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
+Essentially, our plan is to apply RetractInT \TODO taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice. Put another way, we can take ourselves to be working with an inner-strict introspective theory, as every introspective theory can be equipped as such.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
 
 There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids\footnote{If we assumed $T$ to be an effective regular category, we could quotient any setoid internal to $T$ into a corresponding plain object of $T$, but we do not wish to require this assumption. Instead, we will take advantage of our ability to use relation $R$ in arbitrary $T$ to achieve the same end.}. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
 
@@ -204,7 +205,7 @@ The fixed point property we derive then tells us:
 For any slice $Q$ above $\introS(\Ob(C))$ in $C$, there is some object $c$ of $C$ which is isomorphic to $Q$ pulled back along $\introN_{\Ob(C)}(c) : \Hom_C(1, \introS(\Ob(C)))$.
 \end{theorem}
 
-In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ corresponding to some arbitrary $T$-small presheaf $Q'$ on $C$. Then the above invocation of our \Loeb/'s theorem tells us there is some object $c$ of $C$ which is isomorphic to $\introS(Q'(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb/'s theorem on the presheaf $Q'$ itself (in the form of \magicref{RetractInC}).
+In particular, let $Q$ be $\introS$ applied to the slice above $\Ob(C)$ in $T$ corresponding to some arbitrary $T$-small presheaf $Q'$ on $C$. Then the above invocation of our \Loeb/'s theorem tells us there is some object $c$ of $C$ which is isomorphic to $\introS(Q'(c))$; what we might call a \quote{fixed point} of $Q'$ in abuse of language. As an isomorphism is automatically a retract, this in turn provides the precondition needed to run our categorical \Loeb/'s theorem on the presheaf $Q'$ itself (in the form of RetractinC \TODO).
 
 Thus, in the context of an introspective theory, we can run the \Loeb/'s fixed point theorem on ALL presheaves, unconditionally. That is, we have proven the following:
 
@@ -253,7 +254,7 @@ Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there 
 \end{proof}
 
 \begin{observation}
-Note that this argument made essential use of the structure (notably, equalizers) available in an introspective theory, and thus does not apply in such full generality as \parensref{GeneralDiag} does. For example, we saw in \parensref{YCombinator} that we get fixed points for arbitrary functions in the untyped lambda calculus, but as a cartesian closed category in general is not an introspective theory, we cannot conclude that fixed points of functions in the untyped lambda calculus are unique (and indeed, they will not be, as one such function is the identity function, whose fixed points are all values!).
+Note that this argument made essential use of the structure (notably, equalizers) available in an introspective theory, and thus does not apply in such full generality as GeneralDig \TODO does. For example, we saw in \parensref{YCombinator} that we get fixed points for arbitrary functions in the untyped lambda calculus, but as a cartesian closed category in general is not an introspective theory, we cannot conclude that fixed points of functions in the untyped lambda calculus are unique (and indeed, they will not be, as one such function is the identity function, whose fixed points are all values!).
 \end{observation}
 
 \TODOinline{Show that the equalizer from X to []X to X equalized against $\id_X$ is $1$}
@@ -341,25 +342,23 @@ Discuss the relationship to models of guarded recursion, and the Birkedal et al 
 Roughly speaking, the difference between our theory and the theory such as in "Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes" is all about cartesian closure and the smallness of []U. A super-introspective theory which happens to be locally cartesian closed (on both the levels of T and C, though the [] operator needn't preserve exponentials) corresponds to a model of guarded recursive types with universes where []U and [](sigma u, v : U. El(u) -> El(v)) are U-small. We do not bother making this correspondence formal, but leave it for future work. The dropping of cartesian closure from the presumptions allows us to encompass the initial arithmetic universe and its ilk as models, while adding the presumption of []U etc as U-small allows us to derive \Loeb/'s theorem from this instead of having to presume it by fiat. (More generally, it allows us to show how \Loeb/'s theorem applies not just to objects of C but also to non-representable presheaves on C in the form P(S(P(1))) |- P(1)).
 \end{TODOblock}
 
-\subsection{Scratch}
-Combining \nameref{LawveresTheorem} and these last corollaries, we get the following:
+\subsection{Scratch/old material}
+Combining Lawvere's theorem and these last corollaries, we get the following:
 
 \openNamed{observation}{Y Combinator}\label{YCombinator}
 It is well-known that the equational theory of the untyped lambda calculus (in full generality not presuming the $\eta$-conversion rule, only $\alpha$- and $\beta$-conversion) is modelled by a cartesian closed category $T$ with an object $Y$ such that $Y^Y$ is a retract of $Y$. More generally, let us consider any cartesian closed category $T$ with objects $Y$ and $\Omega$ such that $\Omega^Y$ is a retract of $Y$.
 
-As in \nameref{LawveresTheorem}, let $C$ be the $T$-indexed category defined by the simple self-indexing, with $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type, and let $P$ be the presheaf $\Hom_C(-, \Omega)$, which amounts to $\Omega^{-}$.
+As in Lawvere's Theorem, let $C$ be the $T$-indexed category defined by the simple self-indexing, with $\introS$ and $\introN$ being the canonical isomorphisms of the appropriate type, and let $P$ be the presheaf $\Hom_C(-, \Omega)$, which amounts to $\Omega^{-}$.
 
-As we have presumed $\Omega^Y$ to be a retract of $Y$, we can apply either of our above corollaries (\magicref{RetractInT} and \magicref{RetractInC} amount to the same as each other in this case, as $T$ matches the global aspect of $C$), and find ourselves with a fixed point combinator from $P(\introS(P(1))) \iso \Omega^{\Omega}$ to $P(1) \iso \Omega$. 
+As we have presumed $\Omega^Y$ to be a retract of $Y$, we can apply either of our above corollaries (RetractinT and RetractInC amount to the same as each other in this case, as $T$ matches the global aspect of $C$), and find ourselves with a fixed point combinator from $P(\introS(P(1))) \iso \Omega^{\Omega}$ to $P(1) \iso \Omega$. 
 
 In the particular case where $Y$ and $\Omega$ are the same object so we model the untyped lambda calculus in the ordinary way, the fixed point combinator we obtain is essentially the familiar \quote{Y combinator} (no pun intended on the $Y$). \qed
 \closeNamed{observation}
 
-In a sense, all we have shown so far are some very familiar results. Diagonalization is quite old hat. Its formalization in terms of cartesian closed structure to yield \nameref{LawveresTheorem}, with \nameref{CantorsTheorem} and \nameref{YCombinator} as special cases of this, is well known. Cf. Lawvere's and Yonofsky's existing papers on diagonal arguments, fixed point theorems, and cartesian closed categories. \TODOinline{Write whatever should be written here, make whatever citations. Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how our more general formulation allows us to correct this.}
+In a sense, all we have shown so far are some very familiar results. Diagonalization is quite old hat. Its formalization in terms of cartesian closed structure to yield Lawvere's theorem, with Cantor's theorem and the Y combinator as special cases of this, is well known. Cf. Lawvere's and Yonofsky's existing papers on diagonal arguments, fixed point theorems, and cartesian closed categories. \TODOinline{Write whatever should be written here, make whatever citations. Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how our more general formulation allows us to correct this.}
 
-But the value of \nameref{GeneralDiag} is that we have now formalized it at a particularly general level of abstraction, even more general than \nameref{LawveresTheorem}, which will allow us to move beyond cartesian closed structure as such, into suitably modalized exponentials. Instead of only producing the traditional Y combinator, what we produce in general will be a suitably modalized Y combinator, as is necessary for the context we now turn to, of introspective theories.
+But the value of \magicref{PreIntrospDiagSpecialization} is that we have now formalized it at a particularly general level of abstraction, even more general than Lawvere's theorem, which will allow us to move beyond cartesian closed structure as such, into suitably modalized exponentials. Instead of only producing the traditional Y combinator, what we produce in general will be a suitably modalized Y combinator, as is necessary for the context we now turn to, of introspective theories.
 
-In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from \magicref{RetractInT} and \magicref{RetractInC}, to get an unconditional version of \Loeb/'s theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(\introS(Y))$ always exists.
-
-\TODOinline{Discuss Yonofsky}
+In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from RetractInT and RetractInC, to get an unconditional version of \Loeb/'s theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(\introS(Y))$ always exists.
 
 \fileend
