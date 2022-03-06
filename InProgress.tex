@@ -103,4 +103,27 @@ A global soundness is something like, given an introspective theory T, we can as
 
 This might be the same as asking of the lexfunctor (construed as a model M of T with an internal model M' and a homomorphism N from M to $Hom_M(1, M')$) to be such that this homomorphism $N : M \to \Hom_M(1, M')$ is an isomorphism.
 
+-----
+
+Note that we have a lexfunctor from T to (N -> T), because we have a functor from N to (T -lex-> T), which sends n to $Box^n$ and which sends the map from n to n + 1 to $\introN_{Box^n}$. (We want this map, not $\Box^n (\introN_{id})$)
+
+Therefore, for any model M : T -Lex-> Set, we get also by composition a lexfunctor from T to (N -> Set). At each n, this specializes to the (globalization of the) geminal category n-tuply internal to the original model, and at each n to n + 1 map, this is the self-internalizing homomorphism of that geminal category (NOT the action of the original geminal category's self-internalizer on its internal categories).
+
+But we also have a lexfunctor from (N -> Set) to Set given by taking colimits, since filtered colimits commute with finite limits.
+
+Composing these, we get a lexfunctor from T to Set which is the colimit of all those models and homomorphisms. It should be possible to check directly that this colimit model is such that each $\introN$ component within it is an isomorphism. Thus, it has a soundness in the above sense.
+
+----
+
+The initial AU and the related Sigma1 models has such a super strong soundness: It is an introspective theory, with its C furthermore equipped as an internal introspective theory, and it is equivalent qua introspective theory to the globalization of this internal introspective theory (though of course it does not internally claim that C is equivalent to the globalization of C', thanks to G2IT).
+
+\subsection{Convenient terminology}
+\begin{TODOblock}
+Some note about how we will also make use in diagrams in this chapter liberally of the identification of $P(c)$ with $\Hom(c, P)$, when $P$ is a presheaf. If one likes, this can be seen as invoking the Yoneda lemma to draw diagrams in $\Psh{C}$ (although invoking the Yoneda lemma is actually a bit overkill for the mere fact that we can draw diagrams of presheaf elements and presheaf actions in this way, which is simply working within the appropriate collage, aka cocomma category).
+
+We're a bit glib in all our writing when we swap between thinking of $x$ as an element in $X$, vs a map from $1$ to $X$, or similarly in swapping between a presheaf $\Omega^X$ and values in $\Omega(X)$ and morphisms from $X$ to $\Omega$, etc. Perhaps we should introduce some explicit notation for these kinds of conversions, to make everything perfectly clear.
+
+Can move these notes to the Preliminaries.
+\end{TODOblock}
+
 \fileend

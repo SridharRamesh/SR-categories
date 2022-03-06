@@ -2,15 +2,6 @@
 
 \section{\Loeb/'s theorem}
 
-\subsection{Convenient terminology}
-\begin{TODOblock}
-Some note about how we will also make use in diagrams in this chapter liberally of the identification of $P(c)$ with $\Hom(c, P)$, when $P$ is a presheaf. If one likes, this can be seen as invoking the Yoneda lemma to draw diagrams in $\Psh{C}$ (although invoking the Yoneda lemma is actually a bit overkill for the mere fact that we can draw diagrams of presheaf elements and presheaf actions in this way, which is simply working within the appropriate collage, aka cocomma category).
-
-We're a bit glib in all our writing when we swap between thinking of $x$ as an element in $X$, vs a map from $1$ to $X$, or similarly in swapping between a presheaf $\Omega^X$ and values in $\Omega(X)$ and morphisms from $X$ to $\Omega$, etc. Perhaps we should introduce some explicit notation for these kinds of conversions, to make everything perfectly clear.
-
-Can move these notes to the Preliminaries.
-\end{TODOblock}
-
 \subsection{Lawvere's fixed point theorem}
 Let us refresh the reader on Lawvere's fixed point theorem \autocite{lawvere1969diagonal}, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure. We shall first review a proof of Lawvere's fixed point theorem close in spirit to Lawvere's framing of his result.
 
@@ -23,7 +14,7 @@ Let $T$ be an arbitrary category. Let $X$ be an object of $T$ and let $\Omega$ b
 
 Let $\point$ be any object of $T$. By a \quote{point} of a $T$-indexed set, we shall mean an element of its aspect at $\point$ (equivalent to the data of a map into it from $\point$).\footnote{Lawvere takes $\point$ to always be a terminal object, and for our goals that will ultimately suffice as well. But we shall see in the argument and the post-argument discussion that there is no need for such a restriction, so we do not impose it here.}
 
-Suppose $\App'$ has the surjectivity-like property that, for every map $F : X \to \Omega$, there is a point $f$ of $X$, such that for every point $x$ of $X$, we have that $\App'(f)(x) = F(x)$ (in slight but straightforward notational abuse). That is to say, $\App(f, x) = F(x)$.
+Suppose $\App$ has the surjectivity-like property that, for every map $F : X \to \Omega$, there is a point $f$ of $X$, such that $\App(f, x) = F(x)$.
 
 Then for any map $g : \Omega \to \Omega$, there exists a point $\omega$ of $\Omega$ such that $\omega = g(\omega)$. That is to say, there is a fixed point of $g$.
 \closeNamed{theorem}
@@ -40,7 +31,7 @@ Let $F : X \to \Omega$ be the following composition:
 
 That is, for any generalized element $x$ of $X$, we have that $F(x) = g(\App(x, x))$.
 
-We know there exists a point $f$ of $X$ which corresponds with $F$ in the manner of our surjectivity-like supposition on $\App'$. Now consider the instance of this surjectivity-like supposition where $x = f$. This tells us that $\App(f, f) = F(f)$. But $F(f) = g(\App(f, f))$.
+We know there exists a point $f$ of $X$ which corresponds with $F$ in the manner of our surjectivity-like supposition on $\App$. Now consider the instance of this surjectivity-like supposition where $x = f$. This tells us that $\App(f, f) = F(f)$. But $F(f) = g(\App(f, f))$.
 
 Thus, taking $\omega = \App(f, f)$, we have that $\omega = g(\omega)$ as desired.
 \end{proof}
@@ -56,7 +47,7 @@ Let $T$ be an arbitrary category. Let $\point$ and $X$ be objects of $T$ and let
 
 As before, we shall use \quote{point of} as shorthand for \quote{element of the $\point$-aspect of}.
 
-Suppose also given a binary relation $R$ on the points of $\Omega$. (We do not presume $R$ to be symmetric or transitive or any such thing.). And suppose $\App$ has the surjectivity-like property that, for every morphism $F : X \to \Omega$, there is a point $f$ of $X$, such that for every point $x$ of $X$, we have $R(\App(f, x), F(x))$.
+Suppose also given a binary relation $R$ on the points of $\Omega$. (We needn't presume $R$ to be symmetric or transitive or any such thing.). And suppose $\App$ has the surjectivity-like property that, for every morphism $F : X \to \Omega$, there is a point $f$ of $X$, such that for every point $x$ of $X$, we have $R(\App(f, x), F(x))$.
 
 Then there exists a point $\omega$ of $\Omega$ such that $R(\omega, \omega)$. That is to say, there is a self-related point of $R$.
 \closeNamed{theorem}
@@ -94,83 +85,62 @@ As this holds for arbitrary $F : X \to \Omega$, this also holds when an arbitrar
 But this is precisely the surjectivity supposition we need in order to invoke \magicref{SelfRelatedPointTheorem} with $R_g$ in place of $R$. Doing so, we obtain a point $\omega$ of $\Omega$ such that $R_g(\omega, \omega)$, which is to say $R(\omega, g(\omega))$, as desired.
 \end{proof}
 
-Now we can see that \magicref{LawveresFixedPointTheorem} is of course the instance of \magicref{RelatedlyFixedPointTheorem} where the relation $R$ is taken to be equality. But \magicref{RelatedlyFixedPointTheorem} is strictly more general in allowing the use of an arbitrary relation. We shall find this added flexibility valuable in the next section.
+Now we can see that \magicref{LawveresFixedPointTheorem} is of course the instance of \magicref{RelatedlyFixedPointTheorem} where the relation $R$ is taken to be equality. But \magicref{RelatedlyFixedPointTheorem} is strictly more general in allowing the use of an arbitrary relation.
 
 (As for the relation between \magicref{RelatedlyFixedPointTheorem} and \magicref{SelfRelatedPointTheorem}, each is an instance of the other. We above obtained \magicref{RelatedlyFixedPointTheorem} as a corollary of \magicref{SelfRelatedPointTheorem}, while conversely, \magicref{SelfRelatedPointTheorem} is the special case of \magicref{RelatedlyFixedPointTheorem} where $g$ is taken to be $\id_{\Omega}$.)
 
+At any rate, we shall find the added flexibility of allowing a relation in place of equality to be valuable in the next sections, as we begin to specialize towards our application in introspective theories.
+
 \subsection{Presheaf diagonalization for pre-introspective theories}
-\openNamed{theorem}{Pre-introspective Diagonalization}\label{RevampedPreintroLawvere}
-Let $\langle T, C, \introS, \introN, 1 \rangle$ be a pre-introspective unary theory. As a reminder to the reader, this means, let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $1$ be an object in the global aspect of $C$ (not necessarily a terminal object), and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
+\openNamed{theorem}{Pre-introspective Diagonalization}\label{PreIntrospDiag}
+Let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $\point_C$ be any object in the global aspect of $C$, and let $\introN$ be a natural transformation from $t$ in $T$ to $\Hom_C(\point_C, \introS(t))$.
 
-(In particular, any pre-introspective finite product theory carries all this structure, which covers all the applications we will be interested in, but we wish for a moment to make it clear that the following construction does not rely on such extra structure, just as we noted that \magicref{LawveresFixedPointTheorem} did not require exponential or product structure.)
+(In particular, any pre-introspective finite product theory carries all this structure, with $\point_C$ as the terminal object of $C$, which covers all the applications we will be interested in, but we observe that the following construction does not rely on such extra structure.)
 
-Furthermore, let $\point$ be an object of $T$. As ever, we use \quote{point of} as shorthand for \quote{element of the $\point$-aspect of}.
+Furthermore, let $\point_T$ be an object of $T$. We use \quote{point of} as shorthand for \quote{element of the $\point_T$-aspect of}.
 
-(Again, our ultimate interest will only be in the case where $\point$ is taken as a terminal object.)
+(Again, our ultimate interest will only be in the case where $\point$ is a terminal object, but we observe that the following construction does not rely on this. We also do not need in the following construction any presumption that $\introS(\point_T)$ is isomorphic to $\point_C$.)
 
-Consider now a $T$-indexed presheaf $P$ on $C$, aka a $(T, C)$-indexed set. We will write in the following $P(c)$ for globally defined objects $c$ of $C$ to mean the $T$-indexed set $t \mapsto P(t, c)$. In particular, when we write $P(1)$, we mean the $T$-indexed set $t \mapsto P(t, 1)$, rather than the global aspect of $P$.
+Furthermore, let $P$ be a $(T, C)$-indexed set. We will write in the following $P(c)$ for globally defined objects $c$ of $C$ to mean the $T$-indexed set $t \mapsto P(t, c)$.
 
-Suppose also given some object $X$ in $T$ and map $\alpha : X \to P(\introS(X))$.
+Suppose also given some object $\Omega$ in $T$ with a map $\quotient : \Omega \to P(\point_C)$ such that the induced function $\quotient \circ - : \Hom(X \times X, \Omega) \to \Hom(X \times X, P(\point_C))$ is surjective.
 
-Now suppose given some $T$-\repsmall/ object $\Omega$ with a map $\quotient : \Omega \to P(1)$ such that $\quotient$ is surjective on the $X \times X$ aspect. Furthermore, let us suppose we have some $g$ in the global aspect of $P(\introS(\Omega))$. (Note that $\introS(\Omega)$ is well-defined because $\Omega$ is $T$-\repsmall/).
+Suppose also given some object $X$ in $T$ and map $\alpha : X \to P(\introS(X))$. We also make a surjectivity-like assumption on $\alpha$. Specifically, we suppose that for every global element $p$ of $P(\introS(X))$, there is a point $x$ of $X$ such that $\alpha(x) = p$.
 
-\TODOinline{Ordinarily, we would take $\Omega = P(1)$ and $\quotient$ as identity. But when we do our slice construction, we take $P$ to be the self-indexing construed as a set-valued presheaf, the sets of ISOMORPHISM CLASSES of the slice categories. While $\Omega$ will be the non-quotiented object $Mor(C)$.}
+(More precisely, by $p$ on the right side of this equation, we mean the reinterpretation of $p$ from a global element into a point. In other words, the induced function $\alpha \circ - : \Hom(\point_T, X) \to \Hom(\point_T, P(\introS(X)))$ has a range which includes the entire range of the function $- \circ ! : \Hom(1, P(\introS(X))) \to \Hom(\point, P(\introS(X)))$ induced by the unique map $! : \point_T \to 1)$, where $1$ is the terminal object of $\Psh{T}$.)
 
-Now, let us make a surjectivity-like assumption on $\alpha$. Specifically, let us suppose that for every global element $p$ of $P(\introS(X))$, there is a point $x$ of $X$ such that $\alpha(x) = p$ (more precisely, by $p$ in this equation, we mean its reinterpretation from a global element into a point).
+Finally, let $g$ be a globally defined element of $P(\introS(\Omega))$.
 
 Then we obtain a point $\omega$ of $\Omega$, such that $\quotient(\omega) = \pullAlong{\introN_{\Omega}(\omega)} g$.
 \closeNamed{theorem}
 \begin{proof}
 We shall show how this is an instance of \magicref{SelfRelatedPointTheorem}.
 
-We now define $\App : X \times X \to \Omega$ like so: Consider the two projection maps $\pi_1, \pi_2 : X \times X \to X$, as two $(X \times X)$-defined elements of $X$. We thus obtain also $(X \times X)$-defined elements $\alpha(\pi_1)$ of $P(\introS(X))$ and $\introN_{X}(\pi_2)$ of $\Hom_C(1, \introS(X))$. Combining these via the presheaf action of $P$, we get $\pullAlong{( \introN_{X}(\pi_2) )} ( \alpha(\pi_1) )$ as an $(X \times X)$-defined element of $P(1)$. By the surjectivity presumption on $\quotient$, we find a preimage of this $(X \times X)$-defined element of $P(1)$ under $\quotient$. We take this to be our $\App : X \times X \to \Omega$. \TODOinline{Reword this}
+We now define $\App : X \times X \to \Omega$ like so: Consider the two projection maps $\pi_1, \pi_2 : X \times X \to X$, as the two generic $(X \times X)$-defined elements of $X$. We thus obtain also $(X \times X)$-defined elements $\alpha(\pi_1)$ of $P(\introS(X))$ and $\introN_{X}(\pi_2)$ of $\Hom_C(\point_C, \introS(X))$. Combining these via the presheaf action of $P$, we get $\pullAlong{( \introN_{X}(\pi_2) )} ( \alpha(\pi_1) )$ as an $(X \times X)$-defined element of $P(\point_C)$. By the surjectivity presumption on $\quotient$, we find a preimage of this $(X \times X)$-defined element of $P(\point_C)$ under the action of $\quotient : \Omega \to P(\point_C)$. We take this preimage to be our $\App : X \times X \to \Omega$.
 
 We must now establish an appropriate surjectivity supposition on $\App$ for invoking \magicref{SelfRelatedPointTheorem}. 
 
-Let an arbitrary $F : X \to \Omega$ be given. We then have that $\introS(F)$ is a global element of $\Hom_C(\introS(X), \introS(\Omega))$. We can pull $g$ (a global element of $P(\introS(\Omega))$) back along this to obtain a global element $\pullAlong{\introS(F)} g$ of $P(\introS(X))$. By the surjectivity-like assumption on $\alpha$ we made, we now have a corresponding point $f$ in $X$, such that $\alpha(f) = \pullAlong{\introS(F)} g$ (the right side here being reinterpreted from a global element into a point of $P(\introS(X))$).
+Let an arbitrary $F : X \to \Omega$ be given. We then have that $\introS(F)$ is a global element of $\Hom_C(\introS(X), \introS(\Omega))$. We can pull $g$ (a global element of $P(\introS(\Omega))$) back along this to obtain a global element $\pullAlong{\introS(F)} g$ of $P(\introS(X))$. By the surjectivity-like assumption on $\alpha$ we made, we now have a corresponding point $f$ in $X$, such that $\alpha(f) = \pullAlong{\introS(F)} g$ (the right side here having been reinterpreted from a global element into a point).
 
 This means that for every point $x$ of $X$, we get that $\pullAlong{\introN_{X}(x)} \alpha(f) = \pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} g$.
 
 Note that by the definition of $\App$, we have that $\quotient(\App(f, x)) = \pullAlong{( \introN_{X}(x) )} \alpha(f)$.
 
-Note that by \magicref{SWithN}, we have that $\introS(F) \circ_C \introN_{X}(x) = \introN_{\Omega}(F(x))$. Thus, by the functoriality of $P$, we have that $\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} g =  \pullAlong{\introN_{\Omega}(F(x))} g$.
+Also note that by \magicref{SWithN}, we have that $\introS(F) \circ_C \introN_{X}(x) = \introN_{\Omega}(F(x))$. Thus, by the functoriality of $P$, we have that $\pullAlong{\introN_{X}(x)} \pullAlong{\introS(F)} g =  \pullAlong{\introN_{\Omega}(F(x))} g$.
 
 Combining these last three paragraphs, we have that $\quotient(\App(f, x)) =  \pullAlong{\introN_{\Omega}(F(x))} g$.
 
-If we define $E_g(\omega_1, \omega_2)$ as $\quotient(\omega_1) = \pullAlong{\introN_{\Omega}(\omega_2)} g$ accordingly, we have now established the surjectivity supposition required in order to invoke \magicref{SelfRelatedPointTheorem} with $R = E_g$. From this invocation, we get a point of $\Omega$ which is related by $E_g$ to itself, which is just what we desired, ending the proof.
+If we define the relation $R(\omega_1, \omega_2)$ as the equation $\quotient(\omega_1) = \pullAlong{\introN_{\Omega}(\omega_2)} g$ accordingly, we have now established the surjectivity supposition required in order to invoke \magicref{SelfRelatedPointTheorem}. From this invocation, we get a point of $\Omega$ which is related by $R$ to itself, which is just what we desired, completing the proof.
 
 \TODOinline{Add diagrams?}
 \end{proof}
 \begin{corollary}\label{PreIntrospDiagSpecialization}
-Although the above argument allowed for some greater generality in its stated presumptions, every instance we will be interested in is where $\langle T, C, \introS, \introN \rangle$ is given by a pre-introspective finite product theory, with the globally defined object $1$ of $C$ being its terminal object.
+Although the above argument allowed for some greater generality in its stated presumptions, every instance we will be interested in is where $\langle T, C, \introS, \introN \rangle$ is given by a pre-introspective finite product theory, with the globally defined object $\point_C$ of $C$ being its terminal object.
 
-In many cases we are interested in (though not all!), we furthermore take $P(1)$ to be $T$-\repsmall/ and take $\Omega$ to be $P(1)$, with $\quotient$ as the identity. We then automatically have that the component of $\quotient$ at ${X \times X}$ is surjective as required (keeping in mind that $X \times X$ is indeed an object of $T$, when $T$ has finite products).
+In many cases we are interested in (though not all!), we furthermore take $P(\point_C)$ to be $T$-\repsmall/ and take $\Omega$ to be $P(\point_C)$, with $\quotient : \Omega \to P(\point_C)$ as the identity map. We then automatically have that the aspect of $\quotient$ at ${X \times X}$ is surjective as required.
 \end{corollary}
 
-This process of turning $g: P(\introS(P(1)))$ into $\omega: P(1)$ will ultimately represent \Loeb/'s theorem. In our box symbolism, this process turns $g : P(\Box P)$ into $\omega : P(1)$, and when we apply $\introS$ to such a map, we get a map from $\Box((\Box P) \implies P)$ to $\Box P$. But this construction also captures diagonalization and associated fixed point arguments in general, in the modalized context of a pre-introspective theory with finite products. Let us observe the fixed point properties of this construction in such generality for now, then we will specialize to specifically introspective theories and investigate further.
-
-\subsection{Corollaries}
-
-\begin{observation}
-Observe that we can recover the special case of \magicref{LawveresFixedPointTheorem} from \magicref{RevampedPreintroLawvere}.
-\end{observation}
-\begin{proof}
-First, we handle the special case of \magicref{LawveresFixedPointTheorem} where $T$ has finite products and $\Omega$ is $T$-\repsmall/.
-
-This is the special case of \magicref{RevampedPreintroLawvere} where we furthermore take the pre-introspective finite product theory $\langle T, C \rangle$ to be the trivial one noted at \TODOinline{Cite earlier construction}, where $C$ is the simple self-indexing $T//-$, and $\introF$ is the identity.
-
-$\Omega$ is taken as an arbitrary object of $T$, and $P$ is then taken to be the $(T, C)$-indexed set represented by $\Omega$; that is, such that $P(t, c) = \Hom_T(t \times c, \Omega)$. Note that $P(\introS(t))$ for objects $t$ of $T$ is therefore the $T$-indexed set $\Omega^t$. In particular, $P(1)$ is thus isomorphic to $\Omega$; as in \magicref{PreIntrospDiagSpecialization} we can take $\quotient$ to be this isomorphism, and this will then automatically be surjective on its $X \times X$ component.
-
-We take $\alpha : X \to P(\introS(X)) = \Omega^X$ to be given by the map $\App' : X \to \Omega^X$ presumed in \magicref{LawveresFixedPointTheorem}. The surjectivity presumption from \magicref{LawveresFixedPointTheorem} then becomes the surjectivity presumption of \magicref{RevampedPreintroLawvere}. 
-
-And to give a $g$ in the global aspect of $P(\introS(\Omega)) = \Omega^\Omega$ is precisely the data presumed by the name $g$ in \magicref{LawveresFixedPointTheorem}.
-
-This matches all the presumptions of \magicref{RevampedPreintroLawvere} up with corresponding presumptions from \magicref{LawveresFixedPointTheorem}, and the conclusion we then obtain from \magicref{RevampedPreintroLawvere} is readily seen to be the same as the conclusion from \magicref{LawveresFixedPointTheorem}.
-
-The above shows how to obtain \magicref{LawveresFixedPointTheorem} as an instance of \magicref{RevampedPreintroLawvere} when $T$ is a finite product category and $\Omega$ is $T$-\repsmall/. We then obtain \magicref{LawveresFixedPointTheorem} in full (that is, for arbitrary categories $T$ and $T$-indexed sets $\Omega$) from this special case, by first replacing $T$ with $\Psh{T}$, as noted at \TODOinline{Cite our previous discussion}.
-\end{proof}
-
-\begin{theorem}
+\begin{theorem}\label{PreIntrospDiagFromIso}
 Suppose given a pre-introspective finite product theory $\langle T, C, \introS, \introN \rangle$ and a locally $T$-\repsmall/ presheaf $P$ \TODOinline{Standardize this terminology across this section, the modal logic section, and the preliminaries} on $C$.
 
 If there is any object $X$ of $T$ with an isomorphism from $X$ to $P(\introS(X))$, then for every globally defined $g : \Box P \to P$, we obtain an $\omega : 1 \to P$, such that $g \circ \omega' = \omega$, where the globally defined $\omega' : 1 \to \Box P$ is given by $\introN_{P(1)}(\omega)$. \TODOinline{Clarify this notation}
@@ -178,26 +148,29 @@ If there is any object $X$ of $T$ with an isomorphism from $X$ to $P(\introS(X))
 We get the same result also if there is any object $Y$ in the global aspect of $C$ along with a globally defined isomorphism from $Y$ to $\introS(P(Y))$.
 \end{theorem}
 \begin{proof}
-Any isomorphism $\alpha : X \to P(\introS(X))$ (or even just a split epic) will automatically satisfy the surjectivitity-like assumption for us to invoke \magicref{PreIntrospDiagSpecialization}, with $\Omega$ as $P(1)$ and $\quotient$ as identity. Thus once we are given such an isomorphism, we can invoke \magicref{PreIntrospDiagSpecialization}, and its result is the fixed point result noted in this theorem.
+Any isomorphism $\alpha : X \to P(\introS(X))$ (or even just a retraction) will automatically satisfy the surjectivitity-like assumption for us to invoke \magicref{PreIntrospDiagSpecialization}, with $\Omega$ as $P(1)$ and $\quotient$ as identity. Thus once we are given such an isomorphism, we can invoke \magicref{PreIntrospDiagSpecialization}, and its result is the fixed point result noted in this theorem.
 
-For the final remark, note that fixed points up to isomorphism of any endofunctor $F \circ G$ are in correspondence with fixed points up to isomorphism of the endofunctor $G \circ F$, with the functors $G$ and $F$ carrying out the two directions of the correspondence. (For that matter, we can also observe that values $X$ such that $F(G(X))$ is a retract of $X$ are in correspondence with values $Y$ such that $G(F(Y))$ is a retract of $Y$.). In this particular case, this means that fixed points up to isomorphism of the endofunctor $P(\introS(-))$ on $T$ are in correspondence with fixed points up to isomorphism of the endofunctor $\introS(P(-))$ on the global aspect of $C$.
+For the final remark, let $F$ and $G$ be arbitrary covariant or contravariant functors, not necessarily of the same variance as each other. Note that fixed points up to isomorphism of $F \circ G$ are in correspondence with fixed points up to isomorphism of $G \circ F$, with the functors $G$ and $F$ carrying out the two directions of the correspondence. (For that matter, we can also observe that values $X$ which retract onto $F(G(X))$ are in correspondence with values $Y$ which retract onto $G(F(Y))$). In this particular case, this means that fixed points up to isomorphism of the contravariant endofunctor $P(\introS(-))$ on $T$ are in correspondence with fixed points up to isomorphism of the contravariant endofunctor $\introS(P(-))$ on the global aspect of $C$.
 \end{proof}
 
 \subsection{Bootstrapping to \Loeb/'s theorem for introspective theories}
-\TODOinline{Rewrite this to the new structure from above}
-We will now show how to bootstrap away this precondition, in the context of an introspective theory:
+We can see in the types of this last theorem the outline of \Loeb/'s theorem. But to use this last theorem, we have the precondition of a certain isomorphism.
 
-Essentially, our plan is to apply RetractInT \TODO taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice. Put another way, we can take ourselves to be working with an inner-strict introspective theory, as every introspective theory can be equipped as such.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
+Incredibly, we can bootstrap away this isomorphism precondition, in the context of an introspective theory. That is, in the context of an introspective theory, we can use one particular instance of \magicref{PreIntrospDiag} itself to provide the very isomorphisms necessary in order to then re-invoke \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagFromIso}.
 
-There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids\footnote{If we assumed $T$ to be an effective regular category, we could quotient any setoid internal to $T$ into a corresponding plain object of $T$, but we do not wish to require this assumption. Instead, we will take advantage of our ability to use relation $R$ in arbitrary $T$ to achieve the same end.}. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
+Essentially, our plan is to consider the presheaf $P$ which assigns to every object $c$ of $C$ the set of isomorphism classes of the slice category $C/c$, with the action of $P$ on morphisms of $C$ being given by pullback. That is, $P(t, c)$ is the set of $t$-defined objects of $C/c$ modulo $t$-defined isomorphisms of $C/c$. \TODO
 
-But supposing we take care of that, we will at any rate naturally want to impose upon this $P$ the relation given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with its two projections to $\Ob(C/c)$ being the domain and codomain maps.
+We choose any internal category $C_{strict}$ in $T$ which presents $C$ (by definition, such an internal category exists in an introspective theory) and we take $\Omega$ to be $\Ob(C_{strict})$, with $\quotient : \Omega \to P(1)$ sending each object of $C$ to its isomorphism class. \TODOinline{This should be a well-defined map of indexed sets, and all of its components should be surjective functions in Set; thus, in particular, the component at $X \times X$ will be surjective, as necessary.}. 
 
-Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism $m$ from $x$ to $y$, and an element $e$ of $P(y)$, with the transport-back action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. There a clear inclusion $i$ of $P'(x)$ into $P(x)$ via sending each element $e$ of $P'(x)$ to the element $\langle x, \id_x, e \rangle$ of $P(x)$, and a corresponding retraction $f$ from $P(x)$ onto $P'(x)$, taking an element $\langle y, m : x \to y, e \rangle$ of $P'(y)$ to the transport $m^* e$ or $P(m) e$ of $e$ back along $m$ via the action of $P$.
+As for $X$, we choose any internal category $C_{strict}$ in $T$ which presents $C$ (by definition, such an internal category exists in an introspective theory), and we take $X$ to be the object of morphisms of $C_{strict}$ whose codomain is $\introS(\Mor(C_{strict}))$. That is, the object given by the equalizer diagram \TODO.
 
-We then impose upon this presheaf $P$ the relation $R$ under which two elements $(p, q)$ of $P$ are related by any relationship in $R'$ between elements $(p', q')$ of $P'$, along with an isomorphism between $p'$ and $f(p)$ and an isomorphism between $q'$ and $f(q)$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). It is straightforward to verify that this relation $R$ has a groupoid structure itself, and that its projection maps to $P$ are indeed natural transformations between presheaves. \TODOinline{Write this out in a detailed way.}
+Note that there is a monic map $i : X \to \Mor(C_{strict})$, and thus a monic map $\introS(i)$. For any global element $F$ of $P(\introS(X))$, we can choose some morphism $f$ in $C_{strict}$ with codomain $\introS(X)$ which presents $F$. Composing this $f$ with $\introS(i)$ gives us a morphism with codomain $\introS(\Mor(C_{strict}))$; i.e., an element of $X$. And if we pull this back along $\introS(i)$ and then take its isomorphism class, we get $F$ again, as composing with a monic and then pulling back along it gives a slice isomorphic to what one started with. Therefore, the operation of pull back along $\introS(i)$ and then taking isomorphism classes (which maps from $X$ to $P(\introS(X))$) is surjective in the appropriate sense. \TODO
 
-We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb/'s theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. The collection of such slices above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
+Thus, all presumptions are satisfied for us to be able to apply \magicref{PreIntrospDiag} for an arbitrary $g : \introS(\Omega) \to P$. Such a $g$ amounts to \TODO
+
+----
+
+\TODOinline{Old stuff from hereon out}
 
 The fixed point property we derive then tells us:
 
@@ -360,5 +333,90 @@ In a sense, all we have shown so far are some very familiar results. Diagonaliza
 But the value of \magicref{PreIntrospDiagSpecialization} is that we have now formalized it at a particularly general level of abstraction, even more general than Lawvere's theorem, which will allow us to move beyond cartesian closed structure as such, into suitably modalized exponentials. Instead of only producing the traditional Y combinator, what we produce in general will be a suitably modalized Y combinator, as is necessary for the context we now turn to, of introspective theories.
 
 In the context of an introspective theory, taking $P$ to be $T$-small in general\footnote{That is, presuming $P(c)$ is $T$-small for every generalized object $c$ of $C$; equivalently, that $P$ has a $T$-small category of elements.}, we shall be able to remove the precondition of the retraction from RetractInT and RetractInC, to get an unconditional version of \Loeb/'s theorem. Or rather, we shall be able to show that a suitable retraction always exists; indeed, a fortiori, a suitable isomorphism $Y \iso P(\introS(Y))$ always exists.
+
+Old stuff:
+
+
+Essentially, our plan is to apply RetractInT \TODO taking $P$ to be the presheaf which assigns to every object $c$ of $C$, the underlying set\footnote{When we speak of \quote{the underlying set of objects} of $C/c$, we must have in mind some particular representation for $\Ob(C)$, but that is ok. An introspective theory is such that some representation exists, and any one we pick will suffice. Put another way, we can take ourselves to be working with an inner-strict introspective theory, as every introspective theory can be equipped as such.} of objects of $C/c$ (i.e., those morphisms in $C$ with codomain $c$), with pullback as action on morphisms.
+
+There is one caveat! This presheaf isn't quite a presheaf, as it is naturally valued not in sets but in setoids\footnote{If we assumed $T$ to be an effective regular category, we could quotient any setoid internal to $T$ into a corresponding plain object of $T$, but we do not wish to require this assumption. Instead, we will take advantage of our ability to use relation $R$ in arbitrary $T$ to achieve the same end.}. Pullback isn't well-defined, it is only well-defined up to isomorphism, and if we pick chosen pullbacks in some arbitrary fashion, there is no guarantee that pullback will be strictly functorial. In other words, this is a 2-functor rather than a functor. We must be careful about this.
+
+But supposing we take care of that, we will at any rate naturally want to impose upon this $P$ the relation given by those same isomorphisms. That is, we take $R(c)$ to be the isomorphisms of $C/c$, with its two projections to $\Ob(C/c)$ being the domain and codomain maps.
+
+Indeed, armed with the idea of this relationship, it becomes easy to deal with the problem from two paragraphs ago: We can always replace a 2-functorial presheaf $P'$ and isomorphism-respecting relation $R'$ upon it, by a strictly functorial presheaf $P$, using the definition that $P(x)$ consists of an object $y$, a morphism $m$ from $x$ to $y$, and an element $e$ of $P(y)$, with the transport-back action of $P$ simply being composition upon its morphism component. This is automatically strictly functorial. There a clear inclusion $i$ of $P'(x)$ into $P(x)$ via sending each element $e$ of $P'(x)$ to the element $\langle x, \id_x, e \rangle$ of $P(x)$, and a corresponding retraction $f$ from $P(x)$ onto $P'(x)$, taking an element $\langle y, m : x \to y, e \rangle$ of $P'(y)$ to the transport $m^* e$ or $P(m) e$ of $e$ back along $m$ via the action of $P$.
+
+We then impose upon this presheaf $P$ the relation $R$ under which two elements $(p, q)$ of $P$ are related by any relationship in $R'$ between elements $(p', q')$ of $P'$, along with an isomorphism between $p'$ and $f(p)$ and an isomorphism between $q'$ and $f(q)$. (When $R'$ itself is simply the isomorphism relationship, then $R$ also amounts to relating all and only those things which are isomorphic). It is straightforward to verify that this relation $R$ has a groupoid structure itself, and that its projection maps to $P$ are indeed natural transformations between presheaves. \TODOinline{Write this out in a detailed way.}
+
+We now need a particular $Y$ in $T$ which acts as a retract-up-to-isomorphism in the necessary way to allow us to apply our \Loeb/'s theorem to this $P$ and $R$. Specifically, we can take this $Y$ to be $P'(\introS(\Mor(C)))$, the object of slices in $C$ above $\Mor(C)$. [Note that we are only able to consider such a $Y$ because $\Mor(C)$ is $T$-small, the defining property of an introspective theory]. The collection of such slices above $\Mor(C)$ injects into $\Mor(C)$ [this is an injection, i.e. monic, as the slices above any particular object can be defined as an equalizer subobject of $\Mor(C)$, and equalizer inclusions are always monic]. Applying $\introS$ gives us an injection in $C$ from $\introS(Y)$ to $\introS(\Mor(C))$ [$\introS$ preserves monicity as it is a lexfunctor]. Composition and pullback along this injection will be our maps in the two directions between $P'(\introS(Y))$ and $P'(\introS(\Mor(C))) = Y$. The fact that this is a retraction-up-to-isomorphism is the fact that composing and then pulling back along any monic map results in a slice isomorphic to the one started with. We have written this retraction-up-to-isomorphism now using $P'$ rather than our strictly functorial $P$, but as $P'$ is equivalent to $P$ in the sense of isomorphic-up-to-isomorphism, we get the same result for $P$ as well. \TODOinline{Write out details.}
+
+\subsection{Relating variations on Lawvere's fixed point theorem}
+Although not important for our main narrative, we note here some further comments on the relation of Lawvere's fixed point theorem to generalizations of ours or others.
+
+First, we observe that \magicref{LawveresFixedPointTheorem} can be straightforwardly re-obtained as a special case of our \magicref{PreIntrospDiag}.
+\begin{proof}
+First, we handle the special case of \magicref{LawveresFixedPointTheorem} where $T$ has finite products and $\Omega$ is an object of $T$.
+
+This is a special case of \magicref{PreIntrospDiag} where we furthermore take the pre-introspective finite product theory $\langle T, C \rangle$ to be the trivial one noted at \TODOinline{Cite earlier construction}, where $C$ is the simple self-indexing $T//-$, and $\introF$ is the identity.
+
+Furthermore, $P$ is taken to be the $(T, C)$-indexed set represented by $\Omega$; that is, such that $P(t, c) = \Hom_T(t \times c, \Omega)$. Note that $P(\introS(t))$ for objects $t$ of $T$ is therefore the $T$-indexed set $\Omega^t$. In particular, $P(1)$ is thus isomorphic to $\Omega$; as in \magicref{PreIntrospDiagSpecialization} we can take $\quotient$ to be this isomorphism (one can think of it as an identity if one likes), and this will then automatically be surjective on its $X \times X$ aspect.
+
+We take $\alpha : X \to P(\introS(X)) = \Omega^X$ to be given by the map $\App' : X \to \Omega^X$ presumed in \magicref{LawveresFixedPointTheorem}. The surjectivity presumption from \magicref{LawveresFixedPointTheorem} then becomes the surjectivity presumption of \magicref{PreIntrospDiag}. 
+
+And to give a $g$ in the global aspect of $P(\introS(\Omega)) = \Omega^\Omega$ is precisely the data presumed by the name $g$ in \magicref{LawveresFixedPointTheorem}.
+
+This matches all the presumptions of \magicref{PreIntrospDiag} up with corresponding presumptions from \magicref{LawveresFixedPointTheorem}, and the conclusion we then obtain from \magicref{PreIntrospDiag} is readily seen to be the same as the conclusion from \magicref{LawveresFixedPointTheorem}.
+
+The above shows how to obtain \magicref{LawveresFixedPointTheorem} as an instance of \magicref{PreIntrospDiag} when $T$ is a finite product category and $\Omega$ is an object of $T$. We then obtain \magicref{LawveresFixedPointTheorem} in full (that is, for arbitrary categories $T$ and $T$-indexed sets $\Omega$) from this special case, by first replacing $T$ with $\Psh{T}$, as noted at \TODOinline{Cite our previous discussion}.
+\end{proof}
+
+We also note in passing that another interesting generalization of \magicref{LawveresFixedPointTheorem} was recently remarked upon in \autocite{roberts2021substructural}. The following (or rather, its contrapositive) was given as Theorem 11 there. We shall present our own proof.
+
+\openNamed{theorem}{The Magmoidal Fixed Point Theorem}\label{MagmoidalFixedPointTheorem}
+Let $T$ be an arbitrary category with objects $\point$ and $\Omega$, and let $B : T \times T \to T$ be a bifunctor on $T$ such that we have a transformation $\delta_t : t \to B(t, t)$ natural in $t$ from $T$. As ever, use \quote{point of} to mean \quote{element of the $\point$-aspect of}.
+
+Suppose given an object $X$ of $T$ and an $\alpha : B(X, X) \to \Omega$ with the pointwise surjectivity property that for every $F : X \to \Omega$, there is a point $f$ of $X$, such that for every point $x$ of $X$, we have that the following diagram commutes:
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXHBvaW50Il0sWzEsMCwiQihcXHBvaW50LCBcXHBvaW50KSJdLFsyLDAsIkIoWCwgWCkiXSxbMywwLCJcXE9tZWdhIl0sWzEsMSwiWCJdLFswLDEsIlxcZGVsdGFfe1xccG9pbnR9Il0sWzEsMiwiQihmLCB4KSJdLFsyLDMsIlxcYWxwaGEiXSxbMCw0LCJ4IiwyXSxbNCwzLCJGIiwyXV0=
+\[\begin{tikzcd}
+	\point & {B(\point, \point)} & {B(X, X)} & \Omega \\
+	& X
+	\arrow["{\delta_{\point}}", from=1-1, to=1-2]
+	\arrow["{B(f, x)}", from=1-2, to=1-3]
+	\arrow["\alpha", from=1-3, to=1-4]
+	\arrow["x"', from=1-1, to=2-2]
+	\arrow["F"', from=2-2, to=1-4]
+\end{tikzcd}\]
+
+Then for every $g : \Omega \to \Omega$, there is a point $\omega$ of $\Omega$ such that $\omega = g(\omega)$. That is to say, a fixed point of $g$.
+\closeNamed{theorem}
+\begin{proof}
+Take $\App : X \times X \to \Omega$ to be defined like so: For each object $t$ of $T$, we define $\App_t : \Hom(t, X) \times \Hom(t, X) \to \Hom(t, \Omega)$ by giving $\App_t(m, n)$ as the following composition:
+
+% https://q.uiver.app/?q=WzAsNCxbMSwwLCJCKHQsIHQpIl0sWzAsMCwidCJdLFszLDAsIkIoWCwgWCkiXSxbNCwwLCJcXE9tZWdhIl0sWzEsMCwiXFxkZWx0YV97dH0iXSxbMCwyLCJCKG0sIG4pIl0sWzIsMywiXFxhbHBoYSJdXQ==
+\[\begin{tikzcd}
+	t & {B(t, t)} && {B(X, X)} & \Omega
+	\arrow["{\delta_{t}}", from=1-1, to=1-2]
+	\arrow["{B(m, n)}", from=1-2, to=1-4]
+	\arrow["\alpha", from=1-4, to=1-5]
+\end{tikzcd}\]
+
+That this definition of $\App_t$ is natural in $t$ follows from the naturality of $\delta$ and the functoriality of $B$. Specifically, naturality with respect to $h: s \to t$ is seen as follows:
+
+% https://q.uiver.app/?q=WzAsNixbMSwwLCJCKHQsIHQpIl0sWzAsMCwidCJdLFszLDAsIkIoWCwgWCkiXSxbNCwwLCJcXE9tZWdhIl0sWzAsMSwicyJdLFsxLDEsIkIocywgcykiXSxbMSwwLCJcXGRlbHRhX3t0fSJdLFswLDIsIkIobSwgbikiXSxbMiwzLCJcXGFscGhhIl0sWzQsNSwiXFxkZWx0YV9zIiwyXSxbNCwxLCJoIl0sWzUsMCwiQihoLCBoKSIsMV0sWzUsMiwiQihtIGgsIG4gaCkiLDJdXQ==
+\[\begin{tikzcd}
+	t & {B(t, t)} && {B(X, X)} & \Omega \\
+	s & {B(s, s)}
+	\arrow["{\delta_{t}}", from=1-1, to=1-2]
+	\arrow["{B(m, n)}", from=1-2, to=1-4]
+	\arrow["\alpha", from=1-4, to=1-5]
+	\arrow["{\delta_s}"', from=2-1, to=2-2]
+	\arrow["h", from=2-1, to=1-1]
+	\arrow["{B(h, h)}"{description}, from=2-2, to=1-2]
+	\arrow["{B(m h, n h)}"', from=2-2, to=1-4]
+\end{tikzcd}\]
+
+The desired result now follows by \magicref{LawveresFixedPointTheorem}.
+\end{proof}
+\magicref{LawveresFixedPointTheorem} is of course the special case of \magicref{MagmoidalFixedPointTheorem} where $B$ is the familiar cartesian product and $\delta$ is the familiar diagonal transformation. Thus, in \autocite{roberts2021substructural}, \magicref{MagmoidalFixedPointTheorem} is considered as a generalization of Lawvere's fixed point theorem. But as we've just seen, \magicref{MagmoidalFixedPointTheorem} is also a special case of Lawvere's fixed point theorem, appropriately construed (as in our formulation of \magicref{LawveresFixedPointTheorem} which removes the $\point = 1$ constraint), despite the seeming mismatch between general bifunctors and specifically cartesian products. As noted before, there is no need for $X \times X$ to be $T$-\repsmall/, and if such closure of our underlying category is insisted upon, we can just as well always pass to $\Psh{T}$ first.
 
 \fileend
