@@ -419,22 +419,17 @@ In the same way, there is also an induced functor $f'' : A//a \to B//f(a)$ betwe
 For any category $T$ with a terminal object $1$, we have an equivalence between $T$ and its slice category $T/1$.
 \end{observation}
 
-\begin{theoremEnd}[category=IntrospLemmas]{lemma}\label{Lemma1}
+\begin{lemma}\label{Lemma1}
 If $Y$ is a category with initial object $0$ and $X$ is a (2-)category, then to any functor $f : Y \to X$, we can associate a corresponding functor $f'$ from $Y$ to the slice category $f(0)/X$.
 
 Furthermore, if $D$ and $C$ are parallel functors from $Y$ to $X$, then a natural transformation from $D$ to $C$ amounts to the same thing as a map $\introS$ from $D(0)$ to $C(0)$ along with a natural transformation from $D'$ to $\introS^{*} \circ C'$, where $\introS^{*} : C(0)/X \to D(0)/X$ is the functor between these slice categories given by composition with $\introS$.
 
 (Dually, for contravariant functors $f : \op{Y} \to X$ (such as with indexed structures), acting on a category $Y$ with a terminal object $1$, we obtain a corresponding contravarint functor $f'$ from $Y$ to the co-slice category $X/f(1)$. And then the dual further result as well.)
-\end{theoremEnd}
+\end{lemma}
 \begin{proof}
 The first half of the lemma is just the combination of \magicref{FunctorsActOnSlices} and \magicref{CategoryIsGlobalSlices}.
 
 The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), so that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data.
-
-See \hyperref[proof:prAtEnd\pratendcountercurrent]{full proof} on page~\pageref{proof:prAtEnd\pratendcountercurrent}.
-\end{proof}
-\begin{proofEnd}[no link to proof]
-We pick up from where we left off previously in the proof of \cref{Lemma1}.
 
 Throughout the remainder of this proof, all references to \quote{category}, \quote{functor}, etc, are in the sense of whatever dimension of higher-categories encapsulates both $Y$ and $X$.
 
@@ -491,7 +486,7 @@ Finally, let us consider what a natural transformation between $D \circ q$ and $
 such that the rightmost arrow of this diagram corresponds to some arrow $\introS$ in $X$ whose domain is $(D \circ q)(0_Z) = D(0)$ and whose codomain is $(C \circ q)(0_Z) = C(0)$, and such that the bottom arrow of this diagram corresponds to a natural transformation from $D \circ q \circ i \iso D$ to $C \circ q \circ i \iso C$. The 2-cell in the above diagram then corresponds to the remaining data necessary for us to construe this natural transformation from $D$ to $C$ as simply the codomain projection of a natural transformation between $D'$ and $\introS^{*} \circ C'$, the functors from $Y$ to $D(0)/X$ as mentioned in the statement of this lemma.
 
 \TODOinline{Phew! That made a mountain out of a molehill. But perhaps people sometimes appreciate such written-out detail.}
-\end{proofEnd}
+\end{proof}
 
 In order to state the next theorem, some terminology:
 
@@ -516,13 +511,13 @@ It is also simple enough to show, so we will write out the argument:
 \TODOinline{This is a bit messily written right now, but it gets the job done}
 Applying $T/- : \op{T} \to \LexCat$ to the unique functor from object $t$ in $T$ to $1$, we get a lexfunctor $R$ from $T = T/1$ to $T/t$ given by pullback along the unique map $t$ to $1$; more explicitly, $R(x)$ is the projection slice from $t \times x$ to $t$, which projects out the first component. We also have a left adjoint to this, the forgetful functor $L : T/t \to T$.
 
-Breaking down what our proposed theorem says, the claim we must show is that there is a morphism $g : R(1) \to R(t)$ in $T/t$ such that, for any lexcategory $X$, lexfunctor $F: T \to X$, and morphism $h: F(1) \to F(t)$ in $X$, there is a unique lexfunctor $E: T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. (More precisely, there is a contractible space of such lexfunctors such that $E \circ R$ is naturally isomorphic to $F$, and the induced action of that isomorphism as a map from $\Hom_X(E(R(1)), E(R(t)))$ to $\Hom_X(F(1), F(t))$ takes $E(g)$ to $h$. By a contractible space, we mean that such a lexfunctor $E$ exists, and for any two such lexfunctors $E_1$ and $E_2$, there is a unique natural isomorphism between them which, when whiskered along $R$ and then composed with the given isomorphism from $E_2 \circ R$ to $F$, yields the given isomorphism from $E_1 \circ R$ to $F$.) Furthermore, we must show that reindexing within $T[1 \to -]$ corresponds to pullback within $T/-$. \TODOinline{Expand on this}
+Breaking down what our proposed theorem says, the claim we must show is that there is a morphism $g : R(1) \to R(t)$ in $T/t$ such that, for any lexcategory $X$, lexfunctor $F: T \to X$, and morphism $h: F(1) \to F(t)$ in $X$, there is a unique lexfunctor $E: T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. (More precisely, there is a contractible space of such lexfunctors such that $E \circ R$ is naturally isomorphic to $F$, and the induced action of that isomorphism as a map from $\Hom_X(E(R(1)), E(R(t)))$ to $\Hom_X(F(1), F(t))$ takes $E(g)$ to $h$. By a contractible space, we mean that such a lexfunctor $E$ exists, and for any two such lexfunctors $E_1$ and $E_2$, there is a unique natural isomorphism between them which, when whiskered along $R$ and then composed with the given isomorphism from $E_2 \circ R$ to $F$, yields the given isomorphism from $E_1 \circ R$ to $F$.) Furthermore, we must show that reindexing within $T[1 \to -]$ corresponds to reindexing within $T/-$ (i.e., to pullback).
 
 We will take our $g$ to be the map from $R(1)$ to $R(t)$ given by the diagonal map $\Delta : t \to t \times t$ (that is, such that $L(g) = \Delta$).
 
-As for the existence aspect of the claim, suppose given an arbitrary lexfunctor $F: T \to X$ and also a morphism $h : 1_X \to F(t)$, where $1_X$ is any terminal object of $X$. This $F$ induces a lexfunctor $F' : T/t \to X/F(t)$ via \magicref{FunctorsActOnSlices}. Composing this with the pullback action $\pullAlong{h} : X/F(t) \to X/1_X$ and the equivalence of $X/1_X$ with $X$, we get a lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. \TODOinline{Expand on this}
+As for the existence aspect of the claim, suppose given an arbitrary lexfunctor $F: T \to X$ and also a morphism $h : 1_X \to F(t)$, where $1_X$ is any terminal object of $X$. This $F$ induces a lexfunctor $F' : T/t \to X/F(t)$ via \magicref{FunctorsActOnSlices}. Composing this with the pullback action $\pullAlong{h} : X/F(t) \to X/1_X$ and the equivalence of $X/1_X$ with $X$, we get a lexfunctor $E : T/t \to X$ such that $E \circ R = F$ and $E(g) = h$. \TODOinline{Expand on this; why do these equations hold?}
 
-As for uniqueness, it will suffice to show that every diagram in $T/t$ is the pullback along $g$ of some diagram in the range of $R$. We show this now.
+As for uniqueness, it will suffice to show that every diagram in $T/t$ is the pullback along $g$ of some diagram in the range of $R$ (thus, every diagram in $T/t$ has its image under a lexfunctor determined by the lexfunctor's behavior on $g$ and on the range of $R$). We show this now.
 
 By the observation of \magicref{FunctorsActOnSlices}, our $R$ induces also a lexfunctor $R'$ from $T/t$ to $(T/t)/R(t)$.
 
@@ -547,9 +542,9 @@ Thus, every object or morphism in $T/t$ is given (as a diagram in $T$) by $\pull
 
 Thus, we have the uniqueness to complement existence, and have established that $T/t$ is the free augmentation of $T$ with a global element of $t$.
 
-Finally, it is easy to verify that the pullback actions from $T/t$ to $T/s$ for arbitrary morphisms $m : s \to t$ correspond to the reindexings from $T[1 \to t]$ to $T[1 \to s$ along $m$. \TODOinline{Expand on this}
+Finally, it is easy to verify that the pullback actions from $T/t$ to $T/s$ for arbitrary morphisms $m : s \to t$ correspond to the reindexings from $T[1 \to t]$ to $T[1 \to s]$ along $m$. \TODOinline{Expand on this}
 
-This completes the proof that $T/-$ is the same as $T[1 \to -]$. Note that the same argument, restricted to only those slices which are projections, shows that the simple self-indexing $T//-$ is the same as $T[[1 \to -]]$.
+This completes the proof that $T/-$ is the same as $T[1 \to -]$. Note that the same argument, restricted to only those slices which are projections, also shows that when $T$ is a category with finite products, the simple self-indexing $T//-$ is the same as $T[[1 \to -]]$.
 \end{proof}
 
 \begin{observation}\label{SelfIndexingIsFreeCorollary}
@@ -610,20 +605,18 @@ Thus, the data of an indexed category is equivalent to the data of a fibration. 
 
 Of course, this construction can be iterated further now. A $(T, C)$-indexed category $D$ is a $(\Groth_T C)$-indexed category (i.e., a contravariant functor from $\Groth_T C$ to $\Cat$), and thus gives rise to another category $\Groth_{\Groth_T C} D$. Structures indexed over $\Groth_{\Groth_T C} D$ can be called $(T, C, D)$-indexed structures. And so on ad infinitum. Do not worry, we will not need to explicitly consider this to any further depth of indexing.
 
-
-
 \TODOinline{Discuss the concept of being $T$-\repsmall/ vs. $C$-\repsmall/ when $(T, C)$-indexed}
 
 Note also that any structure singly-indexed over $T$ can automatically be thought of as doubly-indexed over $T$ and $C$, where the indexing over $C$ is trivial. This is basically by the fact that the Grothendieck construction for $T$ and $C$ comes with a projection functor to $T$, so that all $T$-indexed structures thus induce, via this functor, a $T$-and-$C$-indexed structure. Thus, we can readily speak of maps between $T$-indexed structures and $(T, C)$-indexed structures, by treating the former as implicitly $(T, C)$-indexed themselves.
 
-Indeed, more generally in the multiply indexed context, any structure indexed over some prefix of a string of categories is automatically indexed over the full string of categories. And in the same way, this allows us to speak of maps between structures indexed by different strings of categories. This is the main reason for us to bring all this up, just so that we can speak of maps between structures at different levels of indexing.
+Indeed, more generally in the multiply indexed context, any structure indexed over some prefix of a string of categories is automatically indexed over the full string of categories. And in the same way, this allows us to speak of maps between structures indexed by different strings of categories. This is perhaps the main reason for us to bring all this up, just so that we can speak of maps between structures at different levels of indexing.
 
 (Keep in mind also that an honest-to-goodness actual structure, living in $\Set$, is like the zero-ary case of indexing; it's indexed by the empty string of categories $()$, but can be seen in a trivial way as $T$-indexed for any category $T$).
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
 \TODOinline{Set the following notational convention}
-Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except when objects of $T$ and globally defined objects of $C$ have the same name (as will often happen with terminal objects named $1$). Where there is ambiguity, it should be cleared up by context; in general, there is a strong presumption when saying $P(1)$ that the $1$ refers to the terminal object of $C$ rather than the terminal object of $T$, so that $P(1)$ means the object of $\Psh{T}$ (which may be \repsmall/ and thus in $T$ itself) given by $t \mapsto P(t, 1_C)$.
+Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except where there is already the ambiguity of objects of $T$ and globally defined objects of $C$ having the same name (as could happen with terminal objects named $1$). Where there is ambiguity, it should be cleared up by context.
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
