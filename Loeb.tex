@@ -139,7 +139,7 @@ Combining these last three paragraphs, we have that $\quotient(\App(f, x)) =  \p
 If we define the relation $R(\omega_1, \omega_2)$ as the equation $\quotient(\omega_1) = \pullAlong{\introN_{\Omega}(\omega_2)} g$ accordingly, we have now established the surjectivity supposition required in order to invoke \magicref{SelfRelatedPointTheorem}. From this invocation, we get a point of $\Omega$ which is related by $R$ to itself, which is just what we desired, completing the proof.
 \end{proof}
 \begin{corollary}\label{PreIntrospDiagSpecialization}
-Although the above argument allowed for some greater generality in its stated presumptions, every instance we will be interested in is where $\langle T, C, \introS, \introN \rangle$ is given by a pre-introspective finite product theory, with $\point_C$ being the terminal object of $C$, and with $\point_T$ being the terminal object of $T$.
+Although the above argument allowed for some greater generality in its presumptions, every instance we will be interested in is where $\langle T, C, \introS, \introN \rangle$ is given by a pre-introspective finite product theory, with $\point_C$ being the terminal object of $C$, and with $\point_T$ being the terminal object of $T$.
 
 In many cases we are interested in (though not all!), we furthermore take $P(\point_C)$ to be $T$-\repsmall/ and take $\Omega$ to be $P(\point_C)$, with $\quotient : \Omega \to P(\point_C)$ as the identity map or isomorphism between these. We then automatically have that the aspect of $\quotient$ at ${X \times X}$ is surjective as required.
 \end{corollary}
@@ -164,7 +164,7 @@ We can see in the types of this last theorem the outline of \Loeb/'s theorem. Bu
 
 Incredibly, we can bootstrap away this isomorphism precondition, in the context of an introspective theory. That is, in the context of an introspective theory, we can use one particular instance of \magicref{PreIntrospDiag} itself to provide the very isomorphisms necessary in order to then re-invoke \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagFromIso}.
 
-Essentially, our plan is to consider the presheaf $P$ which assigns to every object $c$ of $C$ the set of isomorphism classes of $C/c$, with the action of $P$ on morphisms of $C$ correspondingly being given by pullback. That is, $P(t, c)$ is the set of $t$-defined objects of $C/c$ modulo $t$-defined isomorphisms of $C/c$. Note that this set of objects modulo isomorphism is well-defined even though $C$ is only a category and not a strict category!
+Our plan is to consider the presheaf $P$ which assigns to every object $c$ of $C$ the set of isomorphism classes of $C/c$, with the action of $P$ on morphisms of $C$ correspondingly being given by pullback. That is, $P(t, c)$ is the set of $t$-defined objects of $C/c$ modulo $t$-defined isomorphisms of $C/c$. Note that this set of objects modulo isomorphism is well-defined even though $C$ is only a category and not a strict category!
 
 The reindexing action of this $P$ along morphisms in $T$ (reinterpreting $t_2$-defined data as $t_1$-defined data along any morphism $: t_1 \to t_2$ in $T$) is straightforward. As for reindexing along morphisms in $C$, for any fixed $t$ and any $t$-defined morphism $m : c_1 \to c_2$ of $C$, the action $P(t, m) : P(t, c_2) \to P(t, c_1)$ is given by pullback in the lexcategory $C$ along $m$; that is, this is given by $\pullAlong{m} : C/c_2 \to C/c_1$ considered as acting on isomorphism classes of objects. \TODOinline{Maybe move all this to the Preliminaries in the section on doubly-indexed sets}. Note that reindexing along morphisms in $C$ is indeed strictly functorial, because we are working with objects modulo isomorphism rather than with objects simpliciter.
 
@@ -269,51 +269,38 @@ Then $E$ has the analogous property that for every object $e$ of $E$ and every m
 	\arrow["{g_E}", from=1-2, to=2-2]
 	\arrow["{\omega_E}"', from=2-1, to=2-2]
 \end{tikzcd}\]
+
+Furthermore, if there is always a unique such $\omega_D$ in $D$, then there is always a unique such $\omega_E$ in $E$.
 \end{theorem}
 \begin{proof}
-Let $g_E : MN(e) \to e$ be given. By our supposition on $D$, taking $d = N(e)$ and $g_D = N(g_E) : NMN(e) \to N(e)$, we get $\omega_D$ making the following diagram commute:
-
-% https://q.uiver.app/?q=WzAsMyxbMCwxLCIxIl0sWzEsMCwiTk1OKGUpIl0sWzEsMSwiTihlKSJdLFswLDEsIk5NKFxcb21lZ2FfRCkiXSxbMSwyLCJOKGdfRSkiXSxbMCwyLCJcXG9tZWdhX0QiLDJdXQ==
-\[\begin{tikzcd}
-	& {NMN(e)} \\
-	1 & {N(e)}
-	\arrow["{NM(\omega_D)}", from=2-1, to=1-2]
-	\arrow["{N(g_E)}", from=1-2, to=2-2]
-	\arrow["{\omega_D}"', from=2-1, to=2-2]
-\end{tikzcd}\]
-
-Applying $M$ to this, we get the following diagram:
-% https://q.uiver.app/?q=WzAsMyxbMCwxLCIxIl0sWzIsMCwiTU5NTihlKSJdLFsyLDEsIk1OKGUpIl0sWzAsMSwiTU5NKFxcb21lZ2FfRCkiXSxbMSwyLCJNTihnX0UpIl0sWzAsMiwiTShcXG9tZWdhX0QpIiwyXV0=
-\[\begin{tikzcd}
-	&& {MNMN(e)} \\
-	1 && {MN(e)}
-	\arrow["{MNM(\omega_D)}", from=2-1, to=1-3]
-	\arrow["{MN(g_E)}", from=1-3, to=2-3]
-	\arrow["{M(\omega_D)}"', from=2-1, to=2-3]
-\end{tikzcd}\]
-
-But now defining $\omega_E$ as $g_E \circ M(\omega_D)$ as shown and then observing that $MN(\omega_E)$ is the composite path from $1$ to $MN(e)$ around the top of this diagram, we see that this $\omega_E$ has the desired property, completing the proof.
-
-% https://q.uiver.app/?q=WzAsNSxbMCwxLCIxIl0sWzIsMCwiTU5NTihlKSJdLFsyLDEsIk1OKGUpIl0sWzIsMiwiZSJdLFswLDIsIjEiXSxbMCwxLCJNTk0oXFxvbWVnYV9EKSJdLFsxLDIsIk1OKGdfRSkiXSxbMCwyLCJNKFxcb21lZ2FfRCkiLDJdLFsyLDMsImdfRSJdLFs0LDMsIlxcb21lZ2FfRSA9IGdfRSBcXGNpcmMgTShcXG9tZWdhX0QpIiwyXSxbMCw0LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
-\[\begin{tikzcd}
-	&& {MNMN(e)} \\
-	1 && {MN(e)} \\
-	1 && e
-	\arrow["{MNM(\omega_D)}", from=2-1, to=1-3]
-	\arrow["{MN(g_E)}", from=1-3, to=2-3]
-	\arrow["{M(\omega_D)}"', from=2-1, to=2-3]
-	\arrow["{g_E}", from=2-3, to=3-3]
-	\arrow["{\omega_E = g_E \circ M(\omega_D)}"', from=3-1, to=3-3]
-	\arrow[Rightarrow, no head, from=2-1, to=3-1]
-\end{tikzcd}\]
+This is by the general theorem \TODOinline{Note as a lemma in Preliminaries?} that fixed points of a composition of functions are in 1:1 correspondence with fixed points of any cyclic rearrangement of that composition. In particular, letting $comp_x(y) = x \circ y$, the fixed points of $\omega_E \mapsto comp_{g_E}(M(N(\omega_E)))$ are in 1:1 correspondence with the fixed points of $\omega_D \mapsto N (comp_{g_E}(M(\omega_D)))$, which is to say, the fixed points of $\omega_D \mapsto comp_{N(g_E)}(N (M (\omega_D)))$. Thus, by considering our fixed point presumption (with or without presumed uniqueness) on $D$ for $g_D = N(g_E)$, we establish the corresponding property on $E$ for $g_E$.
 \end{proof}
 
 \TODOinline{Loeb's theorem for slice categories, including Loeb's theorem given by a generic slice thus qua combinator}
 
 \subsection{Uniqueness and initiality/terminality}
-Throughout this section, we work in the context of a locally \Loeb/ theory $\langle T, C \rangle$. We establish some results on the uniqueness of the fixed points given by \magicref{LocallyIntrospLoeb}, as well as their initiality or terminality in certain contexts. We note that similar arguments to those given in this section have already been given in the literature on guarded recursion; for example, in \autocite{birkedal2011first} and in \autocite{birkedal2013universes}. We record these results here to explicitly confirm that they hold in our particular setting (with $T$, $C$, and $\Psh{C}$ distinguished, with no assumption of cartesian closure, with no form of \Loeb/'s directly assumed but rather this having been derived from other assumptions, etc.).
+Throughout this section, we work in the context of a locally \Loeb/ \TODOinline{define} theory $\langle T, C \rangle$. We establish some results on the uniqueness of the fixed points given by \magicref{LocallyIntrospLoeb}, as well as their initiality or terminality in certain contexts. We note that similar arguments to those given in this section have already been given in the literature on guarded recursion; for example, in \autocite{birkedal2011first} and in \autocite{birkedal2013universes}. We record these results here to explicitly confirm that they hold in our particular setting (with $T$, $C$, and $\Psh{C}$ distinguished, with no assumption of cartesian closure, with no form of \Loeb/'s directly assumed but rather this having been derived from other assumptions, etc.). We also observe a particular unification of the uniqueness argument and the initiality/terminality argument that we do not believe has been observed before.
 
 \TODOinline{The rest of this section is old stuff to be cleaned up}
+
+Let $T$ be any lexcategory with the weak \Loeb/ theorem noted above for a lexfunctor $\Box$ and let $D$ be any category internal to $T$. We obtain also another category $\Box D$ internal to $T$ and a lexfunctor $\Box$ between the global aspects of $D$ and of $Box D$. Consider now an arbitrary lexfunctor $f : \Box D \to D$, and write $F$ for the endofunctor of the global aspect of $D$ given by first applying $\Box$, then applying $f$.
+
+\begin{theorem}
+Given any globally defined coalgebra $W : \Hom_D(w, F(w))$ and algebra $M : \Hom_D(F(m), m)$ for $F$, there is a globally defined coalgebra-to-algebra map between them.
+\end{theorem}
+\begin{proof}
+A coalgebra-to-algebra map between these is an element $x \in \Hom_D(w, m)$ such that $x = M \circ f(\Box(x)) \circ W$. Considering $M \circ f(-) \circ W : \Box \Hom_D(w, m) \to \Hom_D(w, m)$, we can apply our \Loeb/ theorem to conclude the existence of such an $x$.
+\end{proof}
+
+By replacing $D$ by its core and considering the case of the previous theorem for this groupoid, we see furthermore that any two fixed points up to isomorphism of $F$ are furthermore isomorphic to each other. But we can go further.
+
+By considering the case where $D$ is the discrete category on an object of $T$, we see that the fixed points generated by our \Loeb/ theorem are unique.
+
+By reapplying this last uniqueness argument back to our coalgebra-to-algebra argument, we see that each coalgebra in fact has a unique map into each algebra. In particular, then, any iso-algebra is both an initial algebra and a terminal coalgebra. And thus any two iso-algebras are uniquely isomorphic.
+
+We've phrased this with $T$, but we could just as well be talking about $\Psh{C}$, since all we assumed was finite limits and the weak \Loeb/ property.
+
+We've also phrased all this in terms of global values. But by passing to a slice category, we get uniqueness etc there too... If we know that the \Loeb/ property holds for all slice categories. (Do we know that the \Loeb/ property holds for slice categories of $\Psh{C}$?)
 
 \begin{theorem}\label{UniqueFixedPoints}
 The fixed points produced by \magicref{LocallyIntrospLoeb} are unique, in the sense that for any $t$-defined point $f$ of $P(\introS(P(1)))$ and any two $t$-defined points $a$ and $b$ of $P(1)$ satisfying the appropriate fixed point property (that is, each is equal to $f$ transported back along $\introN$ of itself), we have that $a = b$.
