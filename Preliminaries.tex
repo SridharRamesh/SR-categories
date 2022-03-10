@@ -52,6 +52,8 @@ The word \quote{small} of course has a conventional meaning of set-sized (as opp
 
 \begin{convention}
 Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$. And conversely, given a \repsmall/ $T$-indexed set $P$, we freely write also $P$ to name an object in $T$ representing $P$, rather than explicitly writing $\yoneda^{-1}(P)$.
+
+Via the Yoneda lemma, we frequently also identify $P(t)$ with $\Hom(t, P)$.
 \end{convention}
 
 \begin{theorem}
@@ -310,6 +312,10 @@ Given a $T$-indexed category $C$, an object $t$ of $T$ and any two objects $a$ a
 \end{definition}
 
 Note that this is the same as saying that $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$ has \repsmall/ fibers in the sense of \magicref{RepsmallFibersDefn}, except for that we do not need to think of $\Ob(C)$ as carrying an equality relation as such.
+
+\TODOinline{Discuss how a(n indexed) category has a well-defined (indexed) set of objects modulo isomorphism, i.e., set of isomorphism classes of objects}.
+
+\TODOinline{Discuss how a set carries a canonical structure as a strict category, the categories presented by these are discrete categories, and in this way sets are also equivalent to discrete categories. In particular, in this way, an indexed set is the same as an indexed discrete category.}
 
 \subsection{Strict categories and internal categories}
 These bothers around the ill-defined set of objects of a general indexed category shall take us down some technical digressions for a bit, before we return to our big picture ideas. (Please keep in mind, the nuances of this section mostly do not matter for a big picture understanding. The main part of this document where such details might matter is in being rigorous in our chapter on geminal categories. We recommend that on a first read, the reader ignore all discussion of strictification or distinction between strict and non-strict concepts, in order to pick up the big picture ideas. The reader can then pay attention to these details on later more scrupulous re-reads as desired.)
@@ -597,6 +603,10 @@ Thus, we can resummarize all of these conditions like so: We create a category d
 
 Then, a $(T, C)$-indexed set is just the same as as a $(\Groth_T C)$-indexed set. This also gives us easily the right notion of maps between $(T, C)$-indexed sets. They are just maps between the corresponding $(\Groth_T C)$-indexed sets (i.e., natural transformations between presheaves on $\Groth_T C$). In this way, we can speak about $(\Groth_T C)$-indexed structures more generally than mere sets.
 
+Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except where there is already the ambiguity of objects of $T$ and globally defined objects of $C$ having the same name (as could happen with terminal objects named $1$). Where there is ambiguity, it should be cleared up by context.
+
+We say a $(T, C)$-indexed category $P$ is $T$-\repsmall/ if, for any $t$-defined object $c$ of $C$, the corresponding $P(c)$ \TODOinline{This has to be defined, when $t$ is not $1$} is given by an object in $T/t$. \TODO. When $C$ is presented by a strict category $C_{strict}$, this is equivalent to saying that the corresponding map into $\Ob(C_{strict})$ has $T$-\repsmall/ fibers. \TODOinline{Perhaps before discussing (T, C)-indexed sets for T-indexed categories C, we should discuss (T, C)-indexed sets for T-indexed sets C. This is just looking at slice categories in $\Psh{T}$, but the motivation may be useful.}
+
 We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will only consider $(T, C)$-indexed sets $P$ in cases where $C$ is in fact $T$-small, and furthermore $P$ is $T$-small. \TODOinline{Define what it means for $P$ to be $T$-small. Show how this leads to a simpler representation of $P$ as living internally to $T$}
 
 The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given a fibration just as an abstract functor between categories, one can recover the indexed category which gave rise to it.
@@ -614,9 +624,6 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 (Keep in mind also that an honest-to-goodness actual structure, living in $\Set$, is like the zero-ary case of indexing; it's indexed by the empty string of categories $()$, but can be seen in a trivial way as $T$-indexed for any category $T$).
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
-
-\TODOinline{Set the following notational convention}
-Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except where there is already the ambiguity of objects of $T$ and globally defined objects of $C$ having the same name (as could happen with terminal objects named $1$). Where there is ambiguity, it should be cleared up by context.
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
