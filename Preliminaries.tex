@@ -3,7 +3,7 @@
 \section{Category-theoretic preliminaries}
 
 \subsection{Higher categorical terminology conventions}
-We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories or abstract Kan extensions. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
+We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
 We will take all categories to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc, but wherever this is important we will make some explicit note.
 
@@ -34,7 +34,7 @@ Let $T$ be an arbitrary category. By a $T$-\defined{indexed set}, we mean a pres
 
 The category of $T$-indexed sets and maps between them is thus the presheaf category $\Set^{\op{T}}$. We may also refer to this as $\Psh{T}$.
 
-We may refer to the data of an indexed set at any object $t$ of the category over which it is indexed as its data \defined{defined over} $t$, or which is $t$-\defined{indexed}, or as its $t$-\defined{aspect}. We can refer to the $t$-aspect of an indexed set $P$ as the set $P(t)$ or $P_t$.
+We may refer to the data of an indexed set at any object $t$ of the category over which it is indexed as its data \defined{defined over} $t$, or which is $t$-\defined{indexed}, or as its $t$-\defined{aspect}.\footnote{Those who prefer to talk in terms of fibered structures rather than indexed structures would call this the \quote{fiber} at $t$.} We can refer to the $t$-aspect of an indexed set $P$ as the set $P(t)$ or $P_t$.
 
 Note that data defined over $t$ is automatically transferred to corresponding data defined over $s$ by any morphism from $s$ to $t$ in $T$, by the action of the presheaf. More explicitly, given morphism $m : s \to t$ in $T$, we may write $P(m) : P(t) \to P(s)$ for the corresponding function in $\Set$, or $P_m$.
 
@@ -43,7 +43,7 @@ In contexts where it is clear what presheaf $P$ we have in mind, we may also wri
 In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets.
 
 \begin{definition}
-We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable. \TODOinline{I am in the middle of changing instances of "small" in this document to "\repsmall/". They have not all changed yet, so you will see the word \quote{small} still used in much of the document to mean \repsmall/.}
+We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable. \TODOinline{I am in the middle of changing instances of "small" in this document to \quote{\repsmall/}. They have not all changed yet, so you will see the word \quote{small} still used in much of the document to mean \repsmall/. I may also change my mind and turn these all back into \quote{small}.}
 \end{definition}
 
 It is perhaps a bit misleading to use \quote{small}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the smallest indexed set, the one which constantly takes the value of the empty set, is never \repsmall/ in this technical representability sense. But the analogy to the familiar distinction between \quote{small} sets and non-\quote{small} proper classes is often a fruitful one, motivating this terminology. Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{small} in essentially the same way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that this notion of \repsmall/ is equivalent to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.
@@ -61,7 +61,7 @@ Note that \repsmall/ sets, construed as objects of $\Psh{T}$, are closed under a
 \end{theorem}
 
 \begin{definition}
-Note that given an arbitrary functor $f : S \to T$, this induces by composition a functor $\pullAlong{f} : \Psh{T} \to \Psh{S}$.\footnote{I apologize for re-using this $\pullAlong{f}$ notation both for the action of a presheaf on a morphism $f$, AND for composition of a presheaf with a functor $f$, but this re-use of notation seems to be relatively standard. We can think of the second use of this notation as a kind of instance of the first, for the category-valued $\Hom(-, \Set)$ presheaf on $\Cat$.}
+Note that given an arbitrary functor $f : S \to T$, this induces by composition a functor $\pullAlong{f} : \Psh{T} \to \Psh{S}$.\footnote{I apologize for re-using this $\pullAlong{f}$ notation both for the action of a presheaf on a morphism $f$, \emph{and} for composition of a presheaf with a functor $f$, but this re-use of notation seems to be relatively standard. We can think of the second use of this notation as a kind of instance of the first, for the category-valued $\Hom(-, \Set)$ presheaf on $\Cat$.}
 
 That is, from a $T$-indexed set $P$, we may construct the following $S$-indexed set $\pullAlong{f} P$:
 
@@ -82,9 +82,9 @@ Keep in mind that in these Hom-expressions, $s$ and $f(s)$ have implicitly been 
 This completes the proof. (In fancy categorical jargon, we have demonstrated that $\yoneda \circ f : S \to \Psh{T}$ is the relative left adjoint of $\pullAlong{f} : \Psh{T} \to \Psh{S}$, relative to the Yoneda embedding $\yoneda : S \to \Psh{S}$.)
 \end{proof}
 
-\begin{corollary}\label{YonedaPullalongLemma}
+\begin{lemma}\label{YonedaPullalongLemma}
 Given $f$, $s$, and $P$ as in \magicref{YonedaPullalong}, we have that every morphism $m : s \to \pullAlong{f} P$ factors through a morphism in the range of $\pullAlong{f}$. That is, $m = \pullAlong{f}(m') \circ \eta$ for some $m' : f(s) \to P$ and $\eta : s \to \pullAlong{f}(f(s))$.
-\end{corollary}
+\end{lemma}
 \begin{proof}
 This is corollary to \magicref{YonedaPullalong} by the general yoga of relative adjoints.
 
@@ -151,7 +151,7 @@ A function $f : A \to B$ between $T$-indexed sets has \defined{\repsmall/ fibers
 \end{tikzcd}\]
 \end{definition}
 
-(Beware that when $T$ does not have finite limits, this definition does not have the properties which might be expected. For example, we might expect that any morphism between $T$-\repsmall/ sets should have $T$-\repsmall/ fibers, which would not be true if $T$ itself did not have pullbacks. If $T$ does not have binary products, it will not even be true that a map into the terminal object $1$ has \repsmall/ fibers whenever its domain is \repsmall/.)
+(Beware that when $T$ does not have finite limits, this definition does not have all the properties which might be expected. For example, we might expect that any morphism between $T$-\repsmall/ sets should have $T$-\repsmall/ fibers, which would not be true if $T$ itself did not have pullbacks. If $T$ does not have binary products, it will not even be true that a map into the terminal object $1$ has \repsmall/ fibers whenever its domain is \repsmall/.)
 
 \begin{theorem}\label{RepsmallSumOfRepsmallFibers}
 If $f : A \to B$ has \repsmall/ fibers and $B$ is \repsmall/, then $A$ is \repsmall/ too.
@@ -403,7 +403,7 @@ Note that it is NOT true that any indexed strict category which has finite limit
 Note that, from any lexcategory $T$ (or even just a category with pullbacks), we obtain a $T$-indexed lexcategory by considering the functor $T/-$ which assigns to each object $t$ of $T$ the slice category $T/t$, and whose action on morphisms is given by pullback. We refer to this as the \defined{self-indexing} of $T$.
 \end{definition}
 
-Note in the above that our flexibility in considering an indexed category as a pseudofunctor into $\Cat$, rather than a strict functor into $\StrictCat$, pays off in letting us not worry about how to choose specific pullback slices in a strictly functorial way. \TODOinline{That said, we will actually eventually use the construction under which this is made strictly functorial, at one point internally in our proof of Lob's theorem, so perhaps we should write out that construction in these Preliminaries as well.}
+Note in the above that our flexibility in considering an indexed category as a pseudofunctor into $\Cat$, rather than a strict functor into $\StrictCat$, pays off in letting us not worry about how to choose specific pullback slices in a strictly functorial way.
 
 The self-indexing $T/-$ of a lexcategory $T$ is not in general \repsmall/, nor even locally \repsmall/. Given two globally defined objects $A$ and $B$ of the self-indexed category, their corresponding hom-set $\Hom_{T/-}(A, B)$ amounts to the presheaf $\Hom_{T}(A \times -, B)$ on $T$, which is to say, the exponential $B^A$ within $\Psh{T}$. This indexed set is \repsmall/ just in case an exponential object $B^A$ already exists within $T$. This extends in the same way to non-globally-defined objects of the self-indexed category (considered as globally defined over some slice category of $T$ instead, a la \magicref{AspectIsSliceGlobal}), and so the self-indexing of $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed. Even if we do not have local cartesian closure in full, note that when $A = 1$, the exponential $B^A$ always is given by $B$ itself, so that hom-sets whose domain is $1$ are always \repsmall/ within the self-indexed category, with $\Hom_{T/-}(1, B)$ being the same as $B$ itself. In this way, the global sections presheaf upon the self-indexed category yields the canonical equivalence between the self-indexed category and the category of \repsmall/ sets. \TODOinline{Here, we are talking about a presheaf on an indexed category. Perhaps that should wait till after the section on doubly indexed sets}
 
@@ -560,8 +560,6 @@ And in just the same way also for $T[[1 \to -]]$ for any categorical structure e
 \end{observation}
 
 \subsection{Double or multiple indexing}
-\TODOinline{Reader beware, this section is only needed for understanding some of the discussion at the beginning of the chapter on Geminal Categories. Apart from that, this section does not come up significantly. TODO: Emphasize the notion of multiply internal structures, the main thing this section is used to discuss.}
-
 At this point, for any algebraic-categorical notion $S$ (e.g., the notion of a commutative ring, or the notion of a lexcategory), we also have a definition of the notion of a pair of a category and an instance of notion $S$ indexed over that category.
 
 We can thus iterate this process. In particular, we can speak of a $T$-indexed (category $C$ and $C$-indexed set $P$). We can call this also a $(T, C)$-indexed set $P$. Let us observe in more detail what this amounts to.
@@ -603,11 +601,11 @@ Thus, we can resummarize all of these conditions like so: We create a category d
 
 Then, a $(T, C)$-indexed set is just the same as as a $(\Groth_T C)$-indexed set. This also gives us easily the right notion of maps between $(T, C)$-indexed sets. They are just maps between the corresponding $(\Groth_T C)$-indexed sets (i.e., natural transformations between presheaves on $\Groth_T C$). In this way, we can speak about $(\Groth_T C)$-indexed structures more generally than mere sets.
 
-Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except where there is already the ambiguity of objects of $T$ and globally defined objects of $C$ having the same name (as could happen with terminal objects named $1$). Where there is ambiguity, it should be cleared up by context.
+Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except if there is some existing ambiguity where objects of $T$ and globally defined objects of $C$ have been given the same name (as could happen with terminal objects named $1$). If there is ever any such ambiguity, it should be cleared up by context.
 
 We say a $(T, C)$-indexed category $P$ is $T$-\repsmall/ if, for any $t$-defined object $c$ of $C$, the corresponding $P(c)$ \TODOinline{This has to be defined, when $t$ is not $1$} is given by an object in $T/t$. \TODO. When $C$ is presented by a strict category $C_{strict}$, this is equivalent to saying that the corresponding map into $\Ob(C_{strict})$ has $T$-\repsmall/ fibers. \TODOinline{Perhaps before discussing (T, C)-indexed sets for T-indexed categories C, we should discuss (T, C)-indexed sets for T-indexed sets C. This is just looking at slice categories in $\Psh{T}$, but the motivation may be useful.}
 
-We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will only consider $(T, C)$-indexed sets $P$ in cases where $C$ is in fact $T$-small, and furthermore $P$ is $T$-small. \TODOinline{Define what it means for $P$ to be $T$-small. Show how this leads to a simpler representation of $P$ as living internally to $T$}
+We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed sets $P$ in cases where $C$ is in fact $T$-small, and furthermore $P$ is $T$-small. \TODOinline{Define what it means for $P$ to be $T$-small. Show how this leads to a simpler representation of $P$ as living internally to $T$}
 
 The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given a fibration just as an abstract functor between categories, one can recover the indexed category which gave rise to it.
 

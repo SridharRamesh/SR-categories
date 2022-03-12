@@ -278,18 +278,18 @@ The latter fixed points always exist (or exist uniquely) if $NM : D \to D$ has t
 \TODOinline{Loeb's theorem for slice categories, including Loeb's theorem given by a generic slice thus qua combinator. Note that we DON'T get Loeb's theorem for arbitrary slice categories in C, only for arbitrary slice categories in T. We do however get the combinator from T living also in C via introS/introF, of course. And so we get []_{Psh(C)}([]x -> x) |- []_{Psh(C)} x for arbitrary x in Psh{C}, not just those coming from T or even from C}
 
 \subsection{Uniqueness and initiality/terminality}
-Throughout this section, we work in the context of a locally \Loeb/ \TODOinline{define} theory $\langle T, C \rangle$. We establish some results on the uniqueness of the fixed points given by \magicref{LocallyIntrospLoeb}, as well as their initiality or terminality in certain contexts. We note that similar arguments to those given in this section have already been given in the literature on guarded recursion; for example, in \autocite{birkedal2011first} and in \autocite{birkedal2013universes}. We record these results here to explicitly confirm that they hold in our particular setting (with $T$, $C$, and $\Psh{C}$ distinguished, with no assumption of cartesian closure, with no form of \Loeb/'s property directly assumed but rather this having been derived from other assumptions, with no natural transformation from identity to $\Box$ on $C$ or on $\Psh{C}$, etc.). We also observe a particular unification of the uniqueness argument and the initiality/terminality argument that we do not believe has been observed before.
+In this section, we establish results on the uniqueness of the fixed points given by the \Loeb/ property for our introspective theories, as well as their initiality or terminality in certain contexts. We note that similar arguments to those given in this section have already been given in the literature on guarded recursion; for example, in \autocite{birkedal2011first} and in \autocite{birkedal2013universes}. We record these results here to explicitly confirm that they hold in our particular setting (with $T$, $C$, and $\Psh{C}$ distinguished, with no assumption of cartesian closure, with no form of \Loeb/'s property directly assumed but rather this having been derived from other assumptions as in the prior sections, with no natural transformation from identity to $\Box$ on $C$ nor on $\Psh{C}$, etc.). We also observe that the uniqueness argument and the initiality/terminality argument are unified in a way that we do not believe has been stated before.
 
-\TODOinline{The rest of this section is old stuff to be cleaned up}
+The key theorem for this entire section is the following:
 
 \begin{theorem}
-Let $D$ be any lexcategory and let $\Box : D \to D$ be any lexfunctor with the \Loeb/ property. Let $E$ be any category internal to $D$. We obtain also another category $\Box E$ internal to $E$ and a lexfunctor $\Box$ between the global aspects of $E$ and of $\Box E$.
+Let $D$ be any lexcategory and let $\Box : D \to D$ be any lexfunctor with the \Loeb/ property. Let $E$ be any category internal to $D$. We obtain from these also another category $\Box E$ internal to $E$ and a lexfunctor $\Box$ between the global aspects of $E$ and of $\Box E$.
 
 Consider now an arbitrary internal lexfunctor $f : \Box E \to E$, and write $F$ for the endolexfunctor on the global aspect of $E$ given by first applying $\Box$, then applying $f$.
 
 Within the global aspect of $E$, given any coalgebra $W : \Hom_E(w, F(w))$ and algebra $M : \Hom_E(F(m), m)$ for $F$, there is a coalgebra-to-algebra map between them.
 
-If $\Box$ furthermore has the \Loeb/ property with uniqueness, then there is a unique such coalgebra-to-algebra map.
+Furthermore, if $\Box$ has the \Loeb/ property with uniqueness, then this coalgebra-to-algebra map is unique.
 \end{theorem}
 \begin{proof}
 A coalgebra-to-algebra map between these is an element $x \in \Hom_E(w, m)$ such that $x = M \circ f(\Box x) \circ W$. Considering $M \circ f(-) \circ W : \Box \Hom_E(w, m) \to \Hom_E(w, m)$, we can apply our \Loeb/ property (without or with uniqueness) to conclude the existence of a globally defined such $x$ (without or with uniqueness, respectively).
@@ -322,67 +322,12 @@ Note that this argument made essential use of the structure (notably, equalizers
 Note that this means that the apparent dependence on which particular object $Y$ and retraction from $P(\introS(Y))$ into $Y$ is used in the diagonalization theorem doesn't actually matter, in this context. We get the same result no matter what.
 \end{observation}
 
-A similar argument to \magicref{UniqueFixedPoints} tells us that fixed points for endofunctors are unique, and even some initial algebra/terminal coalgebra properties for them:
+----
 
-\begin{theorem}\label{CoalgToAlgExist}
-Suppose $Q$ is a $T$-small presheaf on the opposite category of $C$. (That is, a $T$-indexed covariant functor from $C$ to the self-indexing of $T$ whose category of elements is $T$-small). This induces a covariant endofunctor $Q(\introS(-))$ on $T$. Suppose $a : A \to Q(\introS(A))$ is a coalgebra for this functor within $T$ and $b : Q(\introS(B)) \to B$ is an algebra for this functor within $T$. Then there is some coalgebra-to-algebra morphism $g$ from $\introS(a)$ to $\introS(b)$ within $C$. That is, there is some $g : \introS(a) \to \introS(b)$ within $C$ such that $g = \introS(a) \circ \introS(Q(g)) \circ \introS(b)$.
-\end{theorem}
-\begin{proof}
-Note that the action of $Q$ gives us a morphism from $\Hom_C(\introS(A), \introS(B)) \times Q(\introS(A))$ to $Q(\introS(B))$ within $T$. By pre- and post-composing this with $a$ and $b$, respectively, we get a morphism from $\Hom_C(\introS(A), \introS(B)) \times A$ to $B$ within $T$. By applying $\introS$ to this, we get a globally defined morphism within $C$ from $\introS(\Hom_C(\introS(A), \introS(B))) \times \introS(A)$ to $\introS(B)$. This morphism is of type $P(S(P(1)))$, where $P$ is the $T$-small presheaf upon $C$ defined by $P(-) = \Hom_C(- \times \introS(A), \introS(B))$.
-
-Thus, we can apply our fixed point theorem \magicref{LocallyIntrospLoeb} to this value. The result is a value $g$ in $P(1)$ (i.e., in $\Hom_C(\introS(A), \introS(B))$) which is equal to $\introS(a \circ Q(g) \circ b)$, as desired.
-
-\TODOinline{Write diagrams to make this all clearer}
-\end{proof}
-
-\begin{theorem}\label{CoalgToAlgUnique}
-The theorem \magicref{CoalgToAlgExist} can be strengthened to not only produce a coalgebra-to-algebra morphism, but also to conclude that such a coalgebra-to-algebra morphism is unique.
-\end{theorem}
-\begin{proof}
-After applying \magicref{CoalgToAlgExist} with a suitable presheaf $Q$ to get existence, apply \magicref{UniqueFixedPoints} with that same presheaf to get uniqueness.
-\end{proof}
-
-\begin{theorem}
-Given $Q$ as in \magicref{CoalgToAlgExist}, there exists a unique (up to isomorphism) fixed point of $Q(\introS(-))$, in the sense of a unique (up to isomorphism) object $A$ and isomorphism $a : A \to Q(\introS(A))$. This fixed point is both a terminal coalgebra and (its inverse is) an initial algebra.
-\end{theorem}
-\begin{proof}
-We get the existence of an object $A$ and isomorphism $a : A \to Q(\introS(A))$ directly from the definition of a locally \Loeb/ theory.
-
-Furthermore, by \magicref{CoalgToAlgUnique}, any coalgebra has a unique map into any algebra, from which it follows that any inverse morphism of a coalgebra (or algebra) is in fact an initial algebra (or terminal coalgebra). Since initial (or terminal) objects are all isomorphic to each other, we immediately have the uniqueness up to isomorphism we seek.
-\end{proof}
-
-Essentially identical arguments work when dealing with presheaves on the opposite category of the core of $C$ (that is, its subcategory including only its isomorphisms):
-
-\begin{theorem}\label{CoreCoalgToAlgExist}
-Suppose $Q$ is a $T$-small presheaf on the opposite category of the core of $C$. This induces a covariant endofunctor $Q(\introS(-))$ on the core of $T$. Suppose $a : A \to Q(\introS(A))$ is a coalgebra for this functor within the core of $T$ and $b : Q(\introS(B)) \to B$ is an algebra for this functor within the core of $T$. Then there is some coalgebra-to-algebra isomorphism $g$ from $\introS(a)$ to $\introS(b)$ within $C$. That is, there is some $g : \introS(a) \to \introS(b)$ within $C$ such that $g = \introS(a) \circ \introS(Q(g)) \circ \introS(b)$.
-\end{theorem}
-\begin{proof}
-Note that the action of $Q$ gives us a morphism from $\Iso_{C}(\introS(A), \introS(B)) \times Q(\introS(A))$ to $Q(\introS(B))$ within $T$. Actually, this satisfies a stronger property, of corresponding to a morphism from $\Iso_{C}(\introS(A), \introS(B))$ to $\Iso_T(Q(\introS(A)), Q(\introS(B)))$.
-
-By pre- and post-composing this with $a$ and $b$, respectively, we get a morphism from $\Iso_C(\introS(A), \introS(B)) \times A$ to $B$ within $T$, that corresponds to a morphism from $\Iso_C(\introS(A), \introS(B))$ to $\Iso_T(A, B)$.
-
-By applying $\introS$ to this, we get a globally defined morphism within $C$ from $\introS(\Iso_C($ $\introS(A), \introS(B))) \times \introS(A)$ to $\introS(B)$, that corresponds to a morphism from $\introS(\Iso_C(\introS(A), \introS(B)))$ to $\Iso_C(\introS(A), \introS(B))$.
-
-This morphism is of type $P(S(P(1)))$, where $P$ is the $T$-small presheaf upon the core of $C$ defined by $P(c)$ amounting to $c$-defined isomorphisms from $\introS(A)$ to $\introS(B)$.
-
-Thus, we can apply our fixed point theorem \magicref{LocallyIntrospLoeb} to this value. The result is a value $g$ in $P(1)$ (i.e., in $\Iso_C(\introS(A), \introS(B))$) which is equal to $\introS(a \circ Q(g) \circ b)$, as desired.
-
-\TODOinline{Write diagrams to make this all clearer}
-\end{proof}
-
-\begin{theorem}
-The theorem \magicref{CoreCoalgToAlgExist} can be strengthened to not only produce a coalgebra-to-algebra isomorphism, but also to conclude that such a coalgebra-to-algebra isomorphism is unique.
-\end{theorem}
-\begin{proof}
-After applying \magicref{CoreCoalgToAlgExist} with a suitable presheaf $Q$ to get existence, apply \magicref{UniqueFixedPoints} with that same presheaf to get uniqueness.
-\end{proof}
-
-\TODOinline{Thus, not only is there an essentially unique fixed point for isovariant functors from C to T, but furthermore, this unique fixed point is rigid}
-
-It is worth noting that the proofs of \magicref{UniqueFixedPoints}, of \magicref{CoalgToAlgExist}, and of \magicref{CoreCoalgToAlgExist} can all be unified, seen as different instances of one general theorem. \TODOinline{Do this, and then having done so, the above cleans up a lot.}
+\TODOinline{Thus, not only is there an essentially unique fixed point for isovariant functors from C to T, but furthermore, this unique fixed point is rigid. This strengthens our theorem from above in the bootstrapping section which gave us fixed points for isovariant functors in the first place, or even just functors indexed by isomorphism classes of C.}
 
 \begin{TODOblock}
-Discuss how we may conclude that our functorial fixed points are both initial algebras and terminal coalgebras. Note that Loeb's theorem itself is the initial algebra property for []1 |- 1.
+Note that Loeb's theorem itself is the initial algebra property for []1 |- 1.
 \end{TODOblock}
 
 \begin{TODOblock}
@@ -400,8 +345,6 @@ Discuss the relationship to models of guarded recursion, and the Birkedal et al 
 
 Roughly speaking, the difference between our theory and the theory such as in "Intensional Type Theory with Guarded Recursive Types qua Fixed Points on Universes" is all about cartesian closure and the smallness of []U. A super-introspective theory which happens to be locally cartesian closed (on both the levels of T and C, though the [] operator needn't preserve exponentials) corresponds to a model of guarded recursive types with universes where []U and [](sigma u, v : U. El(u) -> El(v)) are U-small. We do not bother making this correspondence formal, but leave it for future work. The dropping of cartesian closure from the presumptions allows us to encompass the initial arithmetic universe and its ilk as models, while adding the presumption of []U etc as U-small allows us to derive \Loeb/'s theorem from this instead of having to presume it by fiat. (More generally, it allows us to show how \Loeb/'s theorem applies not just to objects of C but also to non-representable presheaves on C in the form P(S(P(1))) |- P(1)).
 \end{TODOblock}
-
-\TODOinline{Observe that we can, with care, recover Loeb's theorem for T from our Loeb's theorem for C}
 
 \subsection{Relating variations on Lawvere's fixed point theorem}
 Although not important for our main narrative, we note here some further comments on the relation of Lawvere's fixed point theorem to generalizations of ours or others.
