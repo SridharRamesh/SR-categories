@@ -54,6 +54,8 @@ In $T$, we have $(\neg \Box 0) \times (\Box 0) \vdash 0$. There is also a genera
 Applying that general principle to this particular morphism, we find in $T$ a morphism $\neg \Box 0 \vdash \Box (\Box 0) \implies 0$. The right-hand side here combines with our \Loeb/ morphism; the result of this composition is $\neg \Box 0 \vdash \Box 0$. And from here we quickly get $\neg \Box 0 \vdash 0$, aka, $1 \vdash \neg \neg \Box 0$.
 \end{proof}
 
+(In fact, for an introspective theory, we get this more easily: simply consider the aspect of $T$ defined over $(\Box 0) \implies 0$.)
+
 The above shows the undesirability of using exponentiation in a cartesian closed $T$ to model ordinary implication, when using introspective theories to model ordinary provability logic, as this would imply a certain degree of incompatibility with Boolean logic. Specifically, in a Boolean context, when $0$ is actual falsehood so that $\neg \neg$ is supposed to be identity, the above would give us the rule $1 \vdash \Box 0$, asserting provable falsehood.
 
 The appropriate way to model provability logic complete with an implication operator is not to take $T$ to be cartesian closed, but rather, to take only $C$ to be an indexed cartesian closed category. Note that even if $T$ happens to be cartesian closed as well, we will in general not have that $\introF$ must preserve exponentials; that is, exponentials computed via $T$'s cartesian closed structure may well differ from exponentials computed via $C$'s cartesian closed structure (especially \TODOinline{Only?} if $C$ has objects not in the range of $\introF$). It is the latter which are most relevant for ordinary provability logic. Thus, although $T$ being cartesian closed will give us $\introS(\neg_T \Box 0_T) \vdash_C \introS(0_T)$, it will not give us $\neg_C \introS(\Box 0_T) \vdash_C \introS(0_T)$. We will see this explicitly in model \TODO and model \TODO.
@@ -111,7 +113,7 @@ Therefore, for any model M : T -Lex-> Set, we get also by composition a lexfunct
 
 But we also have a lexfunctor from (N -> Set) to Set given by taking colimits, since filtered colimits commute with finite limits.
 
-Composing these, we get a lexfunctor from T to Set which is the colimit of all those models and homomorphisms. It should be possible to check directly that this colimit model is such that each $\introN$ component within it is an isomorphism. Thus, it has a soundness in the above sense.
+Composing these, we get a lexfunctor from T to Set which is the colimit of all those models and homomorphisms. It should be possible to check directly that this colimit model is such that each $\introN$ component within it is an isomorphism. Thus, it has a soundness in the above sense. (I am no longer confident this works, I think it still falls apart on the failure of well-pointedness.)
 
 ----
 

@@ -651,6 +651,8 @@ Suppose, within some 2-category $C$, we have the following comma object and left
 Furthermore, suppose $f_X$ preserves the Kan extension $\Lan_q (s; \pi_X)$. (We notably do NOT make any such assumption on $f_Y$).
 
 Then $\Lan_q s : B \to (f_X / f_Y)$ exists and furthermore is preserved by both $\pi_X$ and $\pi_Y$.
+
+(Dually, we can turn all 2-cells around in this theorem, replacing the left Kan extensions with right Kan extensions and moving the preservation condition so that the functor on the codomain side of our comma category must preserve the corresponding Kan extension.)
 \end{theorem}
 \begin{proof}
 We may compute as follows: By the universal property of the comma object $(f_X / f_Y)$, the set of 1-cells from $B$ to this comma object whose projections match our two Kan extensions is given by the set of 2-cells between the top and bottom path from $B$ to $\omega$ in the above diagram. Since $f_X$ preserves the top Kan extension, the top path is itself a left Kan extension, and using its universal property, we find that the 2-cells from the top path to the bottom path are the same as 2-cells between two different paths from $A$ to $\omega$; specifically, from $s; \pi_X; f_X$ to $q; \Lan_q(s; \pi_Y); f_Y$. Such a 2-cell is given by the composition of $\gamma$ and $\epsilon_Y$.
@@ -658,9 +660,9 @@ We may compute as follows: By the universal property of the comma object $(f_X /
 Thus, we do indeed get a 1-cell $m : B \to (f_X / f_Y)$ whose composition with each projection $\pi$ matches $\Lan_q(s; \pi)$. What remains is only to show that $m$ is indeed $\Lan_q s$.
 
 Let an arbitrary $k : B \to (f_X/f_Y)$ be given. By the universal property of the comma category again, we have that 2-cells from $m$ to $k$ are in correspondence with choices of 2-cells from $m ; \pi$ to $k ; \pi$ for each projection $\pi$, such that both resulting composite 2-cells from $m; \pi_X; f_X$ to $k ; \pi_y; f_Y$ are equal. But each $m ; \pi = \Lan_q(s; \pi)$, so a 2-cell from this to $k ; \pi$ amounts to a 2-cell from $s; \pi$ to $q; k ; \pi$. A choice of such 2-cells satisfying the coherence condition is, again by the universal property of the comma category $(f_X / f_Y)$, the same thing as a 2-cell from $s$ to $q; k$. Thus, we have shown $\Hom(m, k) = \Hom(s, (q; k))$, which establishes $m$ as satisfying the universal property defining $\Lan_q s$. This completes the proof. \TODOinline{Add details to this last paragraph on the coherence conditions}
-\end{proof}
 
-Dually, we can turn all 2-cells around in this theorem, replacing the left Kan extensions with right Kan extensions and now having a condition that the functor on the codomain side of our comma category must preserve the corresponding Kan extension.
+(The dualized result of course follows automatically.) 
+\end{proof}
 
 \begin{corollary}\label{CommaCategoryColimits}
 Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have colimits of a particular shape and $f_X$ preserves colimits of that shape, then $(f_X / f_Y)$ has colimits of that shape, preserved by both projections $\pi_X$ and $\pi_Y$.

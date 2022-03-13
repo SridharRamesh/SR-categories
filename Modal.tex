@@ -2,7 +2,7 @@
 
 \section{Modal logic}
 \subsection{The box operator}
-The following notation will be very convenient for us going forward. It is also suggestive of connections with modal logic we will eventually explore.
+The following notation will be very convenient for us going forward. It is also suggestive of connections with modal logic we will eventually explore:
 
 Let $\langle T, C \rangle$ be a locally introspective theory.
 
@@ -25,8 +25,9 @@ Between these, we also have a cycle of $T$-indexed lexfunctors, like so:
 	\arrow["{P \mapsto P(1)}"', from=3-5, to=1-3]
 \end{tikzcd}\]
 
-Here, the bottom arrow is the Yoneda embedding, sending each object of $C$ to the corresponding representable presheaf. The right arrow takes a presheaf to its global elements. The left arrow is the $\introF$ which is part of the structure of an introspective theory.
+Here, the bottom arrow is the Yoneda embedding, sending each object of $C$ to the corresponding representable presheaf. The right arrow takes a presheaf on $C$ to its evaluation at the terminal object of $C$; that is, to its global elements. The left arrow is the $\introF$ which is part of the structure of an introspective theory.
 
+\begin{definition}\label{BoxDefn}
 In general, we will write $\Box$ for a roundtrip around this diagram, starting from any of its three nodes.
 
 Thus, we will write $\Box$ for the $T$-indexed lexfunctor from $T$ to itself given by $t \mapsto \Hom_C(1, \introF(t))$.
@@ -38,6 +39,7 @@ And we will ALSO write $\Box$ for the $T$-indexed lexfunctor from $\Psh{C}$ to $
 When we want to clarify precisely the domain we are operating on, we may write $\Box_T$, $\Box_C$, or $\Box_{\Psh{C}}$, as appropriate.
 
 As the Yoneda embedding is naturally thought of as the inclusion of a full sub-lexcategory, identifying $C$ with the corresponding representable presheaves within $\Psh{C}$, we may also think of $\Box_{\Psh{C}}$ as a $T$-indexed lexfunctor from $\Psh{C}$ to $C$. That is, as the composition of merely the top two arrows above.
+\end{definition}
 
 The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all (and the rest of this chapter as well) descends to corresponding structure on their global aspects as well. Keep in mind, in the global aspect context, $\introF$ is the same as $\introS$, so wherever in the above we discussed $\introF$, a corresponding statement holds as well for $\introS$, when considering just the global aspect.
 
