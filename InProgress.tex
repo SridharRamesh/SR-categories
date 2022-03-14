@@ -98,6 +98,11 @@ Similarly, some analogue of the above for locally introspective finite limit the
 Similarly, some analogue of both of the above for geminal categories? The simplest observation is that, from any cartesian closed category C' with endo-fp-functor Box s.t. we have a natural transformation from Box to $\Box^2$ s.t. the two induced paths from Box to $\Box^3$ are equal, we can construct an introspective finite product theory T such that the objects of $T$ are finite products of objects of the form $\Hom_C(A, B)$ for objects $A$ and $B$ in $C(1)$, while the objects of $C$ at every aspect are the objects of $C'$. And of course $\introS(\Hom_C(A, B)) = \Box(B^A)$, while $\introN$ corresponds to our Box to $\Box^2$ operator. Maybe this is simpler put in terms of the observation as to what a geminal (simple/fp theory) cartesian closed category on given objects is.
 \end{TODOblock}
 
+\subsection{Cartesian closure and box}
+We should be able to interpret $\Hom_C(S(a), S(b))$ as $\Box_T(a \implies b)$ for $a, b \in T$ with some analogy to how this works on $\Psh{C}$. (Search for where we say bifunctor in this document). Note that if $T$ is cartesian closed, this may be distinct from $\Box_T (B^A)$ using the cartesian closed structure of $T$ to define $B^A$.
+
+If T is cartesian closed, we have $Hom_C(1, S(a -> b)) |- Hom_C(S(a), S(b))$, but not the other way around.
+
 \subsection{Soundnesses}
 \TODO
 
@@ -127,5 +132,10 @@ We're a bit glib in all our writing when we swap between thinking of $x$ as an e
 
 Can move these notes to the Preliminaries.
 \end{TODOblock}
+
+\subsection{Fixed point interchange}
+\begin{theorem}
+Suppose $f : A \to B$ and $g : B \to A$. Then \TODO
+\end{theorem}
 
 \fileend

@@ -51,11 +51,18 @@
 
 % It's not ideal that I have to manually keep track of when to use \cref vs. when to use \nameref or \parensref.
 % The following solution is based on https://tex.stackexchange.com/a/66096/231784.
+%\newcommand{\magicref}[1]{%
+%  \if\vcenter\getrefbykeydefault{#1}{name}{}\vcenter
+%    \cref{#1}%
+%  \else
+%    \nameref{#1}%
+%  \fi
+%}
 \newcommand{\magicref}[1]{%
   \if\vcenter\getrefbykeydefault{#1}{name}{}\vcenter
     \cref{#1}%
   \else
-    \nameref{#1}%
+    \parensref{#1}%
   \fi
 }
 \newcommand{\magicparensref}[1]{%

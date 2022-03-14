@@ -44,9 +44,11 @@ As the Yoneda embedding is naturally thought of as the inclusion of a full sub-l
 The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all (and the rest of this chapter as well) descends to corresponding structure on their global aspects as well. Keep in mind, in the global aspect context, $\introF$ is the same as $\introS$, so wherever in the above we discussed $\introF$, a corresponding statement holds as well for $\introS$, when considering just the global aspect.
 
 \bigskip
+\begin{observation}\label{BoxNotationSmallnessConcerns}
 (Incidentally, the reason we restricted attention here to locally $T$-small presheaves, rather than arbitrary presheaves, is so that the map $P \mapsto P(1)$ can indeed be taken as always landing back within $T$ and not within $T$-indexed sets more generally.
 
 Similarly, the reason we restricted attention to locally introspective theories (i.e., the case where $C$ is locally $T$-small) and not to pre-introspective theories more generally is so that the Yoneda embedding $c \mapsto \Hom_C(-, c)$ does indeed land within the locally $T$-small presheaves, rather than arbitrary presheaves.)
+\end{observation}
 
 \subsection{Box preservation}
 Note that, having set up these various notions of $\Box$, we find that $\Box$ and each of the maps in the diagram \quote{commutes} in the appropriate sense; that is, they can be seen as preserving each other.
@@ -64,7 +66,7 @@ The choice of this $\Box$ notation for these purposes is meant to convey an anal
 
 The key point here is that the rules of the $\Box$ operator in a Kripke normal modal logic are essentially the rules of a lex endofunctor on a lexcategory, and any of our $\Box$ operators is certainly lex as a composite of lex functors.
 
-Furthermore, each of our $\Box$ operators comes with a natural transformation from $\Box$ to $\Box \Box$ corresponding to the so-called 4 axiom $\Box A \vdash \Box \Box A$.
+Furthermore, each of our $\Box$ operators comes with a natural transformation from $\Box$ to $\Box \Box$ corresponding to the so-called 4 axiom $\Box A \vdash \Box \Box A$ in modal logic.
 
 For the $\Box$ operator on $T$ this is clear, as the natural transformation $\introN$ from identity to $\Box$ encodes the even stronger property $t \vdash \Box t$. The 4 axiom is the special case where $t$ here is itself of the form $\Box A$.
 
@@ -127,8 +129,11 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 We have phrased the definitions and results in this chapter in terms of locally introspective theories (i.e., locally introspective finite limit theories) as these are our main objects of interest. But it is immediately seen that all the definitions and results in this chapter work just as well in the context of locally introspective finite product theories, replacing the self-indexing $T/-$ by the simple self-indexing $T//-$ and replacing all mention of \quote{lexfunctor}s with instead \quote{finite product preserving functor}s.
 
 \subsection{TODO}
-We should be able to interpret $\Hom_C(S(a), S(b))$ as $\Box_T(a \implies b)$ for $a, b \in T$ with some analogy to how this works on $\Psh{C}$. (Search for where we say bifunctor in this document). Note that if $T$ is cartesian closed, this may be distinct from $\Box_T (B^A)$ using the cartesian closed structure of $T$ to define $B^A$.
-
-If T is cartesian closed, we have $Hom_C(1, S(a -> b)) |- Hom_C(S(a), S(b))$, but not the other way around.
+\begin{theorem}\label{BoxMatchesN}
+For a locally introspective theory (or finite product theory) $\langle T, C, \introS, \introN \rangle$, and a globally defined element $x$ of $P(1)$ for $P \in \Psh{C}$, we have that $\introN_{\Omega}(x)$ is the globally defined element of $(\Box P)(1)$ given by applying $\Box_{\Psh{C}}$ to $x$.
+\end{theorem}
+\begin{proof}
+\TODO
+\end{proof}
 
 \fileend
