@@ -74,9 +74,11 @@ This section basically only exists in order to claim that finitely axiomatizable
 
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
-Fix some lex theory $T$ extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose the initial gadget $G$ (in $\Set$) contains an initial internal gadget $G'$ (in the sense that $G'$ is a gadget internal to the underlying lexcategory $|G|$ of $G$, and for any other gadget $H$ internal to $|G|$, there is a unique $|G|$-internal gadget homomorphism from $G'$ to $H$). For sake of a name for this concept, call such a theory \defined{inito-geminal}. \TODOinline{See note at \magicref{ModelTerminology} on the inaptness of this "internal" terminology. Clean it up.}
+Fix some lex theory $T$ extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose the initial gadget $G$ (in $\Set$) contains an initial internal gadget $G'$ (in the sense that $G'$ is a gadget internal to the underlying lexcategory $|G|$ of $G$, and for any other gadget $H$ internal to $|G|$, there is a unique $|G|$-internal gadget homomorphism from $G'$ to $H$). For sake of a name for this concept, call such a theory \defined{\initogeminal/}.
 
-(With most self-initializing theories of interest, it is furthermore the case that EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most self-initializing theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. But we do not actually need this property for the following construction.)
+\TODOinline{See note at \magicref{ModelTerminology} on the inaptness of this "internal" terminology. Clean it up.}
+
+(With most \initogeminal/ theories of interest, it is furthermore the case that EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most \initogeminal/ theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. But we do not actually need this property for the following construction.)
 
 Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
 
@@ -84,8 +86,24 @@ This setup is thus a geminal gadget (with axioms 3 and 3' of a geminal gadget au
 
 Indeed, this is the unique way to equip $G$ as a geminal gadget with internal gadget $G'$.
 
-In summary, we have shown how the initial model of any self-initializing theory can naturally be equipped as a geminal model of that same theory.
+In summary, we have shown how the initial model of any \initogeminal/ theory can naturally be equipped as a geminal model of that same theory.
 \end{construction}
+
+\begin{TODOblock}
+When the inito-geminal theory T is such that furthermore Set is a model of T, and we have the strong property noted above that EVERY homomorphism out of the initial model of T preserves its interior initial model's initiality, then we furthermore get a soundness result here: The map from the initial model M of T (the one defined by global elements in the lexcategory corresponding to T) to Set takes M's interior initial model of T to the actual M in Set, and so on.
+
+Thus, we get a homomorphism from the globalization of M's interior initial model of T to the actual M. Since M is initial, this homomorphism onto it is a retraction. Thus, the map from M into the globalization of its internal model has a left inverse.
+
+Note the following two caveats:
+
+1. This composition needn't be identity in the other order.
+
+Proof: Let p be a proposition which is independent from PA, and consider a term t such as "3 if p is true, 5 if p is false", well-defined classically. The map from M' to M to M' will take the term t living in M' to its interpretation as an actual particular number (either 3 or 5) and then to that actual particular number as a canonical term (either "3" or "5"), but that canonical term will not be equal to the original term since t is neither provably equal to 3 nor provably equal to 5.
+
+2. If Set is not a model of T to begin with, there needn't even be a homomorphism from M's internal model to M in the first place.
+
+Proof: Let T be a theory corresponding to PA + ~Con(PA) or the like. Then the initial model M of T is nontrivial, i.e. doesn't prove 1 = 0 (since PA + ~Con(PA) is consistent, since PA doesn't prove Con(PA), by G2IT). However, M's internal initial model of T is trivial, i.e. proves 1 = 0 (since T proves ~Con(PA) which in turn entails ~Con(T)). We cannot have a homomorphism from the latter to the former.
+\end{TODOblock}
 
 This construction immediately gives us many nontrivial examples of geminal categories. For example, many theories $T$ simultaneously satisfy the following two properties:
 
@@ -93,7 +111,7 @@ A) $T$ is a finitely axiomatizable lex theory extending the theory of lex catego
 
 B) Every model of $T$ contains initial internal models of every finitely axiomatizable lex theory.
 
-Any such $T$ will of course be inito-geminal.
+Any such $T$ will of course be \initogeminal/.
 
 For example, consider the theory of strict elementary toposes with natural numbers objects (let us call this an \defined{NNO-topos}, to make it less of a mouthful). This is indeed a finitely axiomatizable lex theory extending the theory of lexcategories \TODOinline{Maybe make up a name for lex theories extending the theory of lexcategories, since we use them often, need them to define our concept of truly internal models, etc}. Furthermore, it satisfies the property B just noted:
 
@@ -118,7 +136,7 @@ This is one simple approach available to us for constructing initial models in a
 \TODOinline{Make further observation about k-ary theories, when we have k-ary coproducts. Note that it is key here how the theory actually recognizes internally anything which is externally a model of such an infinitary theory, as we can construct any external function on domain k as an internal map. Once we've noted the version of this for arbitrary k, we can invoke it later on when we wish to make any initial model in actual Set of an infinitary sort.}
 \end{proof}
 
-From \magicref{NNOToposIsInitoGeminal} and the finite axiomatizability of the theory of NNO-toposes, we have that in particular, the initial NNO-topos has an initial internal NNO-topos. That is to say, the theory of NNO-toposes is self-initializing. Thus, by \magicref{InitoGeminalYieldsGeminal}, the initial NNO-topos is equipped as a geminal NNO-topos (a fortiori, a geminal category).
+From \magicref{NNOToposIsInitoGeminal} and the finite axiomatizability of the theory of NNO-toposes, we have that in particular, the initial NNO-topos has an initial internal NNO-topos. That is to say, the theory of NNO-toposes is \initogeminal/. Thus, by \magicref{InitoGeminalYieldsGeminal}, the initial NNO-topos is equipped as a geminal NNO-topos (a fortiori, a geminal category).
 
 \begin{warningenv}\label{InitoGeminalWarning}
 It is important to observe that the initial NNO-topos is NOT an introspective theory! Using the name $G$ for the initial NNO-topos and $G'$ for its internal initial NNO-topos, we should not expect to have natural maps in $G$ from $t$ to $\Hom_{G'}(1, \introS(t)))$ (i.e., $\Box t$) for general $t$, as the $\introN$ of an introspective theory would provide. For example, we will not have notable maps of type $\Omega \to \Box \Omega$ or $\nat^{\nat} \to \Box(\nat^{\nat})$ (the presence of such a map would express the absurd logical assertion that every function from naturals to naturals (every such function at all) induces some corresponding definable morphism in the initial NNO-topos.). We have merely equipped it as a geminal category. We will in some cases have canonical such requoting maps (e.g., a map $: \nat \to \Box \nat$ will be available by initial algebra properties of $\nat$), but not in general.
@@ -126,23 +144,25 @@ It is important to observe that the initial NNO-topos is NOT an introspective th
 So the construction in \magicref{InitoGeminalYieldsGeminal} does not give us new introspective theories. Rather, it takes the introspective theory of geminal gadgets (which we already constructed in \TODO) and constructs a model of it, for suitable notions of \quote{gadget}.
 \end{warningenv}
 
-Having established that NNO-toposes have initial internal models of all finitely axiomatizable theories, it follows that any finitely axiomatizable theory extending the theory of NNO-toposes is self-initializing.
+Having established that NNO-toposes have initial internal models of all finitely axiomatizable theories, it follows that any finitely axiomatizable theory extending the theory of NNO-toposes is \initogeminal/.
 
 Due to work by Maietti et al following in the footsteps of Joyal (\TODOinline{cite}), it is also known that any arithmetic universe contains an internal initial model of any finitely axiomatizable theory.
 
-Thus, also, the theory of arithmetic universes is self-initializing, and thus the initial arithmetic universe can be equipped as a geminal arithmetic universe (a fortiori, a geminal category). Thus, we get \Godel/'s incompleteness results manifesting within the initial arithmetic universe. This is the structure discussed by Joyal in unpublished work on a category-theoretic account of \Godel/'s incompleteness theorem, and further discussed by others after Joyal (see in particular \autocite{van2020g}).
+Thus, also, the theory of arithmetic universes is \initogeminal/, and thus the initial arithmetic universe can be equipped as a geminal arithmetic universe (a fortiori, a geminal category). Thus, we get \Godel/'s incompleteness results manifesting within the initial arithmetic universe. This is the structure discussed by Joyal in unpublished work on a category-theoretic account of \Godel/'s incompleteness theorem, and further discussed by others after Joyal (see in particular \autocite{van2020g}).
 
 The fact that every NNO-topos contains an initial model of every finitely axiomatizable lex theory can of course be taken as a special case of the fact that every arithmetic universe has the same property, since NNO-toposes are straightforawrdly arithmetic universes. But the construction of initial internal models in an NNO-topos can also be carried out by much easier means than are available in an arbitrary arithmetic universe; e.g., as in the proof sketch we gave at \magicref{NNOToposIsInitoGeminal}, which made essential use of cartesian closure, quantification over power objects, and the like.
 
 Of course, we could directly consider the theory of a lexcategory with an initial internal model for every finitely axiomatizable theory. This would be interno-geminal... if it were finitely axiomatizable. In the form we just stated this theory, it was axiomatized infinitely (there is a separate imposed basic constructor for every particular finitely axiomatizable theory). It is an open question to this author whether this theory admits some alternative finite selection of basic constructors allowing it to be finitely axiomatized.
 
-\TODOinline{Still, stress that finite axiomatizability isn't the key thing. We have after all the theory of a topos with countable coproducts as a self-initializing theory}.
+\TODOinline{Still, stress that finite axiomatizability isn't the key thing. We have after all the theory of a topos with countable coproducts as a \initogeminal/ theory}.
 
-It is a similarly open question whether there is an initial self-initializing theory (in either the sense without or with the parenthetical condition noted at \magicref{InitoGeminalYieldsGeminal}). The theory of self-initializing theories is not known to be equivalent to any lex theory (the condition for $T$ to be self-initializing involves a higher-order quantification over all endolexfunctors of $T$), so we do not automatically have the existence of an initial such structure.
+It is a similarly open question whether there is an initial \initogeminal/ theory (in either the sense without or with the parenthetical condition noted at \magicref{InitoGeminalYieldsGeminal}). The theory of \initogeminal/ theories is not known to be equivalent to any lex theory (the condition for $T$ to be \initogeminal/ involves a higher-order quantification over all endolexfunctors of $T$), so we do not automatically have the existence of an initial such structure.
 
-Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of yet, we have only equipped the initial arithmetic universe as a geminal category, not an introspective theory. But it will turn out that, unlike the typical situation for a self-initializing theory as with the initial NNO-topos, the theory of arithmetic universes is so special that we can in fact further equip it in a natural way as an introspective theory! We shall come back to this at the end of the next section, after developing some more tooling for constructing more sophisticated introspective theories from self-initializing theories in general.
+Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of yet, we have only equipped the initial arithmetic universe as a geminal category, not an introspective theory. But it will turn out that, unlike the typical situation for a \initogeminal/ theory as with the initial NNO-topos, the theory of arithmetic universes is so special that we can in fact further equip it in a natural way as an introspective theory! We shall come back to this at the end of the next section, after developing some more tooling for constructing more sophisticated introspective theories from \initogeminal/ theories in general.
 
 \TODOinline{Reorganize order of paragraphs here for clarity. Discuss toposes with k-ary coproducts as mentioned above.}
+
+\TODOinline{Note that we have a soundness result for the geminal categories we get from the initial NNO-topos, the initial arithmetic universe, etc: Their internal views of the initial such-and-such do in fact match themselves; the uniquely determined structure-preserving (AU-preserving or NNO-topos-preserving) functor from these things to Set takes their internal initial such-and-such to themselves. We don't have this kind of soundness for all \initogeminal/ theories. For example, we might consider the theory of bloposes, where a blopos is an NNO topos in which the internal initial NNO topos is trivially 1. That is, a blopos is a topos that thinks the theory of toposes is inconsistent. Then the theory of bloposes incorrectly proves that the theory of bloposes is inconsistent, so the initial blopos is nontrivial, but its internal initial blopos is trivial. The key thing that makes bloposes different from toposes is that Set is itself a topos (and an AU and so on), but not a blopos. Our soundness result is only for those theories which Set itself models.}
 
 \subsubsection{The theory of initial models as an introspective theory}
 

@@ -10,11 +10,14 @@
 \subsubsection{Theories, models, functors, etc}
 \begin{observation}\label{ModelTerminology}
 We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
-
-We can use interior vs. included.
 \end{observation}
 
-\TODOinline{Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.}
+\TODOinline{
+Introduce terminology for "the walking X" meaning "the free lexcategory with an internal X". "Internal X" always means "Map into me from the lex theory of Xes", and NOT "Internal lexcategory in me, and map into THAT from the lex theory of Xes". The latter should be called doubly internal. The theory of Xes has an internal X. Hm. Maybe we need good terminology for "the theory of blahs" vs "a blah", when blah is itself a lexcategory-extending notion.
+
+Let's say \included/ models of theory T within lexcategory S refers to lexfunctors from the lexcategory corresponding to T, to S. While \interior/ models of T within S refers to the case where S has a designated internal lexcategory C, and we also have a lexfunctor from T to the globalization of C. In other words, \interior/ is doubly internal.
+
+The weird thing is that the identity lexfunctor on a category also corresponds to the generic internal model, even though the identity seems like staying on the same level, while internal sounds like going down one level. Hence why actually going down a level with \interior/ corresponds to doubly internal.}
 
 \subsubsection{Constructing initializers}
 So, for example, let us try constructing, for a lexcategory $T$, the initial lexcategory with an internal initial model of $T$. We find some quasi-equational theory $Th(T)$ presenting $T$. This theory is k-sized, so we work from now on in k-ary quasi-equational theories. We now make the k-ary quasi-equational theory of a strict lexcategory with an internal initial model of $Th(T)$, and apply the initial algebra theorem. We get an initial strict lexcategory with an internal initial model of $Th(T)$; call this $S$.
@@ -139,5 +142,13 @@ Can move these notes to the Preliminaries.
 \begin{theorem}
 Suppose $f : A \to B$ and $g : B \to A$. Then \TODO
 \end{theorem}
+
+\subsection{Another box lemma}
+\begin{theorem}\label{BoxMatchesN}
+For a locally introspective theory (or finite product theory) $\langle T, C, \introS, \introN \rangle$, and a globally defined element $x$ of $P(1)$ for $P \in \Psh{C}$, we have that $\introN_{\Omega}(x)$ is the globally defined element of $(\Box P)(1)$ given by applying $\Box_{\Psh{C}}$ to $x$.
+\end{theorem}
+\begin{proof}
+\TODO
+\end{proof}
 
 \fileend
