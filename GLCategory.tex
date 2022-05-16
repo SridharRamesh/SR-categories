@@ -1,17 +1,35 @@
 \filestart
 
 \section{Geminal categories}\label{GeminalChapter}
-The content of this chapter will be giving a more explicit description of the initial introspective theory (the theory of geminal categories), and also showing that any strict introspective theory can itself be equipped in a natural way as a model of the initial introspective theory. We will also discuss a partial converse, a way to extract an introspective theory from a geminal category.
+\subsection{Preview}
+In this chapter, we give a more explicit description of the initial introspective theory (the theory of \quote{geminal categories}).
+
+We also show the remarkable result that any strict introspective theory can itself be equipped in a natural way as a model of this initial introspective theory; that is, any strict introspective theory can be seen as a geminal category.
+
+This last statement is easy to misinterpret, so let me be a bit more clear as to what I mean by this. I do not mean the trivial statement that every introspective theory extends the initial introspective theory. Rather, I mean that the theory of strict introspective theories extends the initial introspective theory (even though the theory of strict introspective theories is not itself an introspective theory).
+
+We will also discuss a partial converse of sorts, a way to extract an introspective theory from a geminal category with certain maximality properties (that is, a sort of cofree introspective theory induced by the given model of the free introspective theory).
+
+\subsection{Arriving at geminal categories, take 2}
+Let $\langle T, C, \introS, \introN \rangle$ be an introspective theory.
+
+Recall that any introspective theory admits some presentation as an inner-strict introspective theory (see \TODO), so we can think of $C$ as a lexcategory internal to $T$. By applying $\introS$ to this $C$, we obtain some lexcategory $C'$ internal to the global aspect of $C$ (that is, this $C'$ is a $(T, C)$-internal lexcategory \TODOinline{Define multiple indexing internality}).
+
+Furthermore, if we look at the components of the natural transformation $\introN$ at $\Ob(C)$ and $\Mor(C)$, we find that this defines a $T$-internal lexfunctor from $C$ to the global aspect of $C'$ (that is, we get a lexfunctor $\introN_C : C \to \Hom_C(1, C')$, so to speak).
+
+But $C'$ is itself given by certain morphisms in $T$, and so we can apply $\introS$ to $C'$ as well, to obtain some lexcategory $C''$ internal to $C'$. Similarly, this $T$-internal lexfunctor $\introN_C$ is itself given by morphisms in $T$, and so we can apply $\introS$ to this as well, to obtain a $C$-internal lexfunctor $\introN'_{C'} : C' \to \Hom_C'(1, C'')$, so to speak.
+
+\TODO
 
 \subsection{Arriving at geminal categories}
 \begin{observation}\label{IntrospContainsGLObservation}
 \TODOinline{Perhaps make greater use of doubly-indexed categories to discuss the following, or perhaps make no use of them and remove them from the preliminaries.}
 
-Let $\langle T, C \rangle$ be an inner-strict introspective theory. Recall that inner strictness means we've fixed a particular representation for $C$ as an internal strict lexcategory.
+Let $\langle T, C \rangle$ be an inner-strict introspective theory. Recall (see \magicref{InnerStrictDefn}) that inner strictness means we've fixed a particular representation for $C$ as an internal lexcategory (thus, we have a well-defined $\Ob(C)$ as an object of $T$ and so on).
 
-Now it may be that $C$ carries more structure internal to $T$ than just that of a strict lexcategory. For example, perhaps $C$ is furthermore an internal strict locally cartesian closed category. Or perhaps $C$ is the underlying strict lexcategory of some larger structure internal to $T$ with more sorts than just the objects and morphisms of $C$. At the extreme end, the lexcategory $T$ itself defines some species of gadget, and $C$ can be considered an underlying strict lexcategory of the generic internal gadget of this sort within $T$.
+Now it may be that $C$ is equippable with further structure internal to $T$ than just that of a lexcategory. For example, perhaps $C$ is furthermore an internal locally cartesian closed category. Or perhaps $C$ is the underlying lexcategory of some larger structure internal to $T$ with more sorts than just the objects and morphisms of $C$. At the extreme end, the lexcategory $T$ itself defines some species of gadget, and $C$ can be considered an underlying lexcategory of the generic internal gadget of this sort within $T$.
 
-At any rate, pick some lexly defined theory whose models come with an underlying strict lexcategory, such that $C$ can be seen as the underlying strict lexcategory of a model of such a theory internal to $T$. This amounts to choosing some lexcategory $L$ with an internal strict lexcategory $C_L$, and a lexfunctor $\ell: L \to T$ taking $C_L$ to $C$. If models of $L$ are called gadgets, then in this way, we have a gadget $G$ internal to $T$, with underlying strict lexcategory $|G| = C$. (For any gadget, I will use such bars to signify its underlying strict lexcategory)
+At any rate, pick some lexly defined theory whose models come with an underlying lexcategory, such that $C$ can be seen as the underlying lexcategory of a model of such a theory internal to $T$. This amounts to choosing some lexcategory $L$ with an internal lexcategory $C_L$, and a lexfunctor $\ell: L \to T$ taking $C_L$ to $C$. If models of $L$ are called gadgets, then in this way, we have a gadget $G$ internal to $T$, with underlying lexcategory $|G| = C$. (For any gadget, I will use such bars to signify its underlying lexcategory)
 
 Now make the following observation: We have $G$ as an internal gadget in $T$ (that is, a $T$-indexed gadget which is $T$-small, thus specified by a diagram within $T$). But by applying $\introS$ to the diagram in $T$ specifying $G$ (that is, by composing $\ell$ with $\introS$), we also get some gadget $G' = \introS[G]$ internal to $C = |G|$. (That is, a $(T, |G|)$-indexed gadget which is $|G|$-small).
 
@@ -66,6 +84,9 @@ For any particular lex theory extending the theory of strict lexcategories, whos
     
     \item 3': Such that $\introN'_{G'} \circ \introN'_{G'} = \introN''_{G''} \circ \introN'_{G'}$, in the same sense as above, where $\introN''_{G''} = \introN_{G}[\introN'_{G'}]$.
 \end{itemize}
+
+\TODOinline{Say in simple words why we should have axiom 3; we want that $\introN_G$ is not just a gadget-homomorphism, but a homomorphism of all the structure we are considering, including a homomorphism which preserves $\introN$ itself! Similarly, discuss how the primed axioms are the internal mirror images of the non-primed axioms.}
+
 Thus, we may speak of geminal strict lexcategories, geminal strict locally cartesian closed categories, geminal strict elementary toposes, and so on. Generally, we will drop the explicit word \quote{strict} when speaking of geminal structures (thus simply saying geminal locally cartesian closed categories, geminal elementary toposes, etc), as it can be presumed that any lexly defined notion is strict.
 
 Note also that, at a minimum, the notion of gadget used here is the notion of a strict lexcategory, and thus, for convenience, we may say \defined{geminal category} as shorthand for geminal strict lexcategory.
@@ -107,6 +128,8 @@ The free lexcategory $\GLCatTheory$ with an internal geminal gadget (for some fi
 \begin{proof}
 This is equivalent to \cref{GLContainsGL}, via the yoga of functorial semantics.
 \end{proof}
+
+\TODOinline{Furthermore, this is the initial introspective theory with an internal gadget}
 
 \TODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory. The difficulty with turning this into an introspective theory is that the property we really depend on from the free lexcategory $L$ with an internal gadget of some sort is not just the 1-categorical property that it has a unique homomorphism to every other gadget, but the 2-categorical property that the category of homomorphisms from it to another lexcategory and natural transformations between those is equivalent to the 1-category of internal gadgets within that codomain lexcategory. This is true for lexcategories, but not necessarily for other doctrines, and I believe this is related to how $\Hom(1, -)$ is always a lexfunctor (thus turning internal models into genuine models,) but not always an X-functor. The subtle role of this in the above proof should be highlighted.}
 
@@ -245,5 +268,8 @@ An example is given by the first part of \cref{SigmaModelSimple}, before we exte
 \TODOinline{Note that if the theory of gadgets if finitely presentable, then so is the theory of geminal gadgets}
 
 \TODOinline{Note that the slice introspective theory construction gives us the free augmentation of an introspective theory with a global element of a particular object}
+
+\subsection{Recap}
+\TODO
 
 \fileend

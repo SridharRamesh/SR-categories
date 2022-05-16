@@ -295,7 +295,7 @@ We can talk about any kind of $T$-indexed structure or $T$-indexed maps between 
 
 Observe that, as $\pullAlong{f}$ for an arbitrary functor $f : S \to T$ preserves finite limits (by \magicref{PullalongIsLex}), it not only takes $T$-indexed sets to $S$-indexed sets but also acts as a functor from $T$-indexed structures to $S$-indexed structures more generally, for any notion of structure definable using finite limits. For example, $\pullAlong{f}$ takes $T$-indexed groups to $S$-indexed groups, and so on. Furthermore, by \magicref{RepsmallRightAdjoint}, if $f$ has a right adjoint, then $\pullAlong{f}$ will take \repsmall/ structures to \repsmall/ structures.
 
-Observe also that any $T$-indexed structure has a global aspect which is an ordinary (that is, non-indexed) structure of the same sort (as well as aspects at each object of $T$). In particular, every internal structure has a global aspect. In the literature, it is also common to refer to this global aspect of an internal structure as its \defined{externalization}.
+Observe also that any $T$-indexed structure has a global aspect which is an ordinary (that is, non-indexed) structure of the same sort (as well as aspects at each object of $T$).
 
 \subsection{Indexed categories}
 \begin{definition}
@@ -674,7 +674,7 @@ Furthermore, an arbitrary functor into $(f_X / f_Y)$ then preserves colimits of 
 (Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
 \end{corollary}
 \begin{proof}
-The first statement follows from \magicref{CommaKan} by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along such a functor.
+The first statement follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along such a functor.
 
 The second statement then follows from the fact that in addition to the the forgetful functor from $(f_X / f_Y)$ into $X \times Y$ preserving colimits as just shown, such a forgetful functor from a comma category to a product category is always conservative (that is, if the image of a morphism under this functor is invertible, the morphism was already invertible in the comma category). A conservative functor which preserves colimits, on a category which has those colimits, automatically has the desired property that a functor into its domain preserves such colimits iff their composition preserves such colimits.
 \end{proof}
@@ -689,7 +689,7 @@ From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span
 The conclusion of \magicref{CommaKan} will often be particularly useful to us in conjunction with the following lemma.
 
 \begin{lemma}\label{CommaMap}
-Let $C$ and $D$ be 2-categories, with $|-| : C \to D$ a 2-functor, and suppose for all objects $X$, $Y$, and $\omega$ of $C$ along with 1-cell $f_X : X \to \Omega$ in $C$ and 1-cell $f_Y : |Y| to |\omega|$ in $D$, we have a span in $C$ whose image under $|-|$ is the comma object $(|f_X| / f_Y)$ in $D$ along with its projections.
+Let $C$ and $D$ be 2-categories, with $|-| : C \to D$ a 2-functor, and suppose for all objects $X$, $Y$, and $\omega$ of $C$ along with 1-cell $f_X : X \to \omega$ in $C$ and 1-cell $f_Y : |Y| \to |\omega|$ in $D$, we have a span in $C$ whose image under $|-|$ is the comma object $(|f_X| / f_Y)$ in $D$ along with its projections.
 
 Furthermore, suppose $X$ is initial in $C$. Then the identity map on $|X|$ is initial within $D(X, X)$.
 \end{lemma}

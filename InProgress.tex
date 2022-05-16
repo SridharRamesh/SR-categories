@@ -151,4 +151,31 @@ For a locally introspective theory (or finite product theory) $\langle T, C, \in
 \TODO
 \end{proof}
 
+\subsection{Simplest archetypal tree-like example}
+The following example takes place in the context of a metatheory such as ZF.
+
+In the following, by a ZF-set, I mean a set in the sense of ZF; that is, an element of the cumulative hierarchy, which comes with a well-defined rank (keep in mind that two bijective ZF-sets may have very different ranks!). Furthermore, in the following, by $W_{\alpha}$, I mean the set $V_{\omega \times \alpha}$ of sets of rank less than $\omega \times \alpha$.
+
+We make use both of the fact that ZF is a material rather than structural set theory (so that ZF-sets come with well-defined ranks), and of the fact that ZF's Axiom of Replacement ensures the existence of the cumulative hierarchy at least as far as (indeed much further than) $V_{\omega^2} = W_{\omega}$. [Note that the following construction could not be carried out as written in a weaker context such as the internal logic of a topos with natural numbers object, where the cumulative hierarchy needn't go further than $V_{\omega \times 2} = W_2$.
+
+Let $T'$ be the category of presheaves on the positive natural numbers $\posnat$; thus, an object $t$ of $T'$ is given by a sequence of sets $\{t_i\}_{i \in \posnat}$ along with a sequence of reindexing functions $\{m_i : t_{i + 1} \to t_i\}_{i \in \posnat}$. A morphism between such objects is a sequence of functions between the involved sets componentwise, commuting with the reindexing functions, and composition is given componentwise as well.
+
+As with any presheaf category, $T'$ is in fact a lexcategory, in which finite limits can be taken componentwise.
+
+Although we made no use of the ZF-set structure, we may nonetheless think of the components of objects of $T'$ as ZF-sets; thus, having well-defined ranks. Of course, isomorphic objects in $T'$ may be comprised of very distinct ZF sets.
+
+Now let $T$ be the full subcategory of $T'$ consisting of only those objects for which each $i$-th component ZF-set has rank less than $\omega \times i$; that is, each $i$-th component ZF-set is an element of $W_i$.
+
+Note that this $T$ is in fact closed under the finite limits of $T'$, given how finite limits in presheaf categories are computed componentwise and how the rank of finite limit constructions in ZF is at most finitely higher than the rank of the largest involved factor. Thus, $T$ is a lexcategory.
+
+We now define objects $\Ob(C)$ and $\Mor(C)$ of $T$ like so: The $i$-th ZF-set of $\Ob(C)$ is given as the product of $W_j$ over $j < i$, while the $i$-th ZF-set of $\Mor(C)$ is given as the product of $W_j^{W_j}$ over $j < i$.
+
+Note that each of these products has rank at most finitely greater than the supremum of the ranks of such $W_j$, and thus each of these products is indeed an element of $W_i$ as required.
+
+As for the reindexing maps $m_i$ for $\Ob(C)$ and $\Mor(C)$, note that in each case, the reindexing map is from a product with one more factor to a product without that additional factor. So we can define these reindexing maps as just the projections forgetting these extra factors.
+
+There is a clear internal category structure here. \TODOinline{Showing all the composition, domain, codomain, etc, maps commute with all the reindexings, which is obvious from everything being component-wise}.
+
+\TODOinline{Define $\introS$, $\introN$}.
+
 \fileend

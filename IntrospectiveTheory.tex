@@ -5,11 +5,11 @@
 \subsection{Preview}
 In this chapter, we introduce the central object of our interest, the notion of an \quote{introspective theory}.
 
-An introspective theory is an essentially algebraic theory such that every model of the theory includes a lexcategory with an internal model of the same theory, and a homomorphism from the overall model into the global aspect of the internal model.
+An introspective theory is an essentially algebraic theory such that every model of the theory includes a lexcategory with an internal model of the same theory, as well as a homomorphism from the overall model into the global aspect of the internal model.
 
-We will give two formal definitions of an introspective theory, and prove them equivalent. In this preview section, let us note 
+We will give two formal definitions of an introspective theory, and prove them equivalent. The second formal definition we give will directly correspond to the previous paragraph. The first formal definition we give will be a bit more compact, but framed in the language of indexed categories.
 
-The definition of an introspective theory can be given in two different ways, which we prove equivalent.
+En route to discussing introspective theories, we also discuss some more general notions we call \quote{pre-introspective theories}, \quote{locally introspective theories}, and so on, which will be of some use to us as well.
 
 % Non-evil definition
 \subsection{First definition (indexed style)}
@@ -31,7 +31,7 @@ We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-intros
 An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/.
 \end{definition}
 
-The concept of an introspective theory is the fundamental object of our interest and study in these notes. We shall show that this simple definition already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
+We shall show in later chapters that the simple concept of an introspective theory already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
 
 We shall also introduce some further generalizations of this concept, in order to be able to state results along the way in their natural generality or point out connections to related work or interesting structures that are not quite introspective theories per se but are closely related. But throughout these notes, if at any time the abstractions seem daunting or distracting, remember that the concrete concept which matters most is the concept of an introspective theory as defined above.
 
@@ -189,8 +189,8 @@ Phew! What a long walk it was to get to describing that example! All the better,
 While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$ or the like. As a check of their understanding, the reader is encouraged to think about why this is.
 \end{warningenv}
 
-\subsection{Constructions building new (pre-)introspective theories from given ones}
-Now let us discuss some constructions for building new (pre-)introspective theories from old ones.
+\subsection{Constructions building new (pre-)introspective theories}
+Now let us discuss some constructions for building new (pre-)introspective theories from old ones or from other data.
 
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
@@ -318,19 +318,13 @@ When $C$ is locally small, we may call this a \defined{locally introspective X t
 
 There is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
 
-\begin{definition}
+\begin{definition}\label{InnerStrictDefn}
 By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
 \end{definition}
 
 Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
 
 We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
-
-Also, it is convenient to have the following terminology:
-\begin{definition}
-By a \defined{geminal category}, we mean the image of the internal category $C$ of any introspective theory $\langle T, C \rangle$ under a lexfunctor into $\Set$. More generally, if this lexfunctor is into some lexcategory other than $\Set$, we consider the resulting image of $C$ a geminal category internal to this other lexcategory.
-\end{definition}
-We will be studying the general structure of geminal categories much more in \parensref{GeminalChapter}.
 
 \subsection{The interaction of \texorpdfstring{$\introS$}{S} and \texorpdfstring{$\introN$}{N}}
 We gather here two small but useful lemmas for reasoning about (pre-)introspective theories, concerning the interaction of $\introS$ and $\introN$.
@@ -393,5 +387,6 @@ Now consider the composites around this commutative diagram along the two outerm
 \TODOinline{Note that in our Box notation, the above identifies $\introN$ and $\Box$, so far as their action on global elements of $T$ goes}
 
 \subsection{Recap}
+We have defined the central notion of our interest, the concept of an introspective theory. We have proven that two different definitions of this concept are equivalent. We have also discussed a number of slight variations on this concept. We have seen how a canonical example of an introspective theory can be constructed by considering $\Sigma_1$ formulae in familiar theories such as ZF-Finite. Finally, we have discussed a number of other constructions which generate new introspective theories or pre-introspective theories from existing ones or from other categorical data (such as generating pre-introspective theories from cartesian closed categories).
 
 \fileend
