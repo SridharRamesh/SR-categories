@@ -2,13 +2,13 @@
 
 \section{Geminal categories}\label{GeminalChapter}
 \subsection{Preview}
-In this chapter, we give a more explicit description of the initial introspective theory (the theory of \quote{geminal categories}).
+In this chapter, we give an explicit yet tractably compact description of the initial introspective theory (which we call the theory of \quote{geminal categories}).
 
 We also show the remarkable result that any strict introspective theory can itself be equipped in a natural way as a model of this initial introspective theory; that is, any strict introspective theory can be seen as a geminal category.
 
 This last statement is easy to misinterpret, so let me be a bit more clear as to what I mean by this. I do not mean the trivial statement that every introspective theory extends the initial introspective theory. Rather, I mean that the theory of strict introspective theories extends the initial introspective theory (even though the theory of strict introspective theories is not itself an introspective theory).
 
-We will also discuss a partial converse of sorts, a way to extract an introspective theory from a geminal category with certain maximality properties (that is, a sort of cofree introspective theory induced by the given model of the free introspective theory).
+We will also discuss a partial converse of sorts, a way to extract an introspective theory from a geminal category, with the extracted introspective theory having a certain terminality property (that is, we construct a sort of co-free introspective theory induced by the given geminal category).
 
 \subsection{Arriving at geminal categories, take 2}
 Let $\langle T, C, \introS, \introN \rangle$ be an introspective theory.
@@ -129,8 +129,6 @@ The free lexcategory $\GLCatTheory$ with an internal geminal gadget (for some fi
 This is equivalent to \cref{GLContainsGL}, via the yoga of functorial semantics.
 \end{proof}
 
-\TODOinline{Furthermore, this is the initial introspective theory with an internal gadget}
-
 \TODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory. The difficulty with turning this into an introspective theory is that the property we really depend on from the free lexcategory $L$ with an internal gadget of some sort is not just the 1-categorical property that it has a unique homomorphism to every other gadget, but the 2-categorical property that the category of homomorphisms from it to another lexcategory and natural transformations between those is equivalent to the 1-category of internal gadgets within that codomain lexcategory. This is true for lexcategories, but not necessarily for other doctrines, and I believe this is related to how $\Hom(1, -)$ is always a lexfunctor (thus turning internal models into genuine models,) but not always an X-functor. The subtle role of this in the above proof should be highlighted.}
 
 \TODOinline{Before the following theorem, write out the straightforward definition of introspective theory homomorphism, and updated to arbitrary gadgets}
@@ -238,7 +236,7 @@ For any other introspective theory $\langle T', C' \rangle$ giving rise to $G$ v
 \end{TODOblock}
 
 \begin{TODOblock}
-Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points.
+Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points. (Write this intuition about how geminal categories differ from introspective theories most notably wrt to the X |- []X presumption into the introductory section.)
 
 But a geminal category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic geminal category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors. (It is worth observing this specific failure with an example.)
 \end{TODOblock}

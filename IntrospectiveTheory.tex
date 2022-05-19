@@ -31,7 +31,7 @@ We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-intros
 An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/.
 \end{definition}
 
-We shall show in later chapters that the simple concept of an introspective theory already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
+We shall show in later chapters how this simple concept of an introspective theory already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
 
 We shall also introduce some further generalizations of this concept, in order to be able to state results along the way in their natural generality or point out connections to related work or interesting structures that are not quite introspective theories per se but are closely related. But throughout these notes, if at any time the abstractions seem daunting or distracting, remember that the concrete concept which matters most is the concept of an introspective theory as defined above.
 
@@ -41,30 +41,30 @@ The example-oriented reader may immediately demand an example of a pre-introspec
 Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a pre-introspective theory can be made from this where we take $\introF$ to be the identity (with $C$ as the self-indexing of $T$).
 \end{example}
 
-Alas, this simple example of a pre-introspective theory is almost never an introspective theory (that is to say, a lexcategory's self-indexing is almost never \repsmall/; indeed, the only case in which this happens is the trivial one where $T$ is the terminal category\footnote{This can be seen as a consequence of our categorical \Loeb/'s theorem established in the next chapter.}).
+Alas, this simple example of a pre-introspective theory is almost never an introspective theory (that is to say, a lexcategory's self-indexing is almost never \repsmall/; indeed, the only case in which this happens is the trivial one where $T$ is the terminal category\footnote{This can be seen as a consequence of our categorical \Loeb/'s theorem established in a later chapter.}).
 
-Here, then, is an equally simple, perhaps even simpler, example of an introspective theory:
+Here, then, is an equally simple, or perhaps even simpler, example of an introspective theory:
 
 \begin{example}
-Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a pre-introspective theory can be made from this where we take $C$ to the terminal indexed lexcategory, with $\introF$ as the unique map into this.
+Let $T$ be one's favorite lexcategory, any lexcategory of one's choice. Then a pre-introspective theory can be made from this where we take $C$ to be the terminal indexed lexcategory, with $\introF$ as the unique map into this.
 \end{example}
 
 This is indeed an introspective theory (the terminal lexcategory being \repsmall/ over any indexing category with a terminal object). But alas, although this last example can be as nontrivial as one likes in terms of the structure of $T$, it is of course trivial in all its further structure.
 
-Nontrivial introspective theories do exist and we will give an archetypal example of an introspective theory soon enough. But in order to do so, it will be convenient to first develop some further machinery on how (pre-)introspective theories may be presented.
+Nontrivial introspective theories do exist and we will give some archetypal examples of them soon enough. But in order to do so, it will be convenient to first develop some further machinery on how (pre-)introspective theories may be presented.
 
 \subsection{Second definition (non-indexed style)}
 
 We shall now make an observation about an alternative but equivalent way to specify the data of a pre-introspective theory.
 
 \begin{theorem}\label{SNCorrespondence}
-Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying a natural transformation from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
+Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying a natural transformation from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$.
 \end{theorem}
 
 \begin{proof}
 Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \magicref{Lemma1} (keeping in mind the contravariance of the functors defining indexed structures), a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ (where the map $\introS$ is used to treat $C$ as a $T$-indexed object of $T/\LexCat$).
 
-Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from $t$ to $\Hom_C(1, \introS(t))$.
+Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$.
 \end{proof}
 
 \begin{remark}\label{IntrospGeneralDoctrine}
@@ -74,7 +74,7 @@ It wasn't fundamentally important that we were dealing with lexcategories here. 
 As a result of \cref{SNCorrespondence}, we can give an alternative definition equivalent to \cref{DefnPreIntrospIndexed}:
 
 \begin{definition}\label{DefnPreIntrospSN}
-A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
+A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$.
 \end{definition}
 
 Much as before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, will refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all such structures (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
@@ -85,15 +85,16 @@ The definition of an introspective theory remains exactly as before (\cref{DefnI
 An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is small.
 \end{definition}
 
-While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The reduction of the full indexed lexfunctor $\introF$ to just its global aspect ($\introS$) and a natural transformation between 1-functors means much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
+While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The reduction of the full indexed lexfunctor $\introF$ to just its global aspect ($\introS$) and a natural transformation between 1-functors means much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the appropriate coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
-\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory (which thus has an underlying lexcategory $|C|$ interpreting $C$) is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model in its underlying lexcategory of the same theory (this is the role of $\introS$). In short, every model has a homomorphism into an interior model.
+\Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory (which thus has an underlying lexcategory as its interpretation of $C$) is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of that same theory in its underlying lexcategory (this is the role of $\introS$). In short, every model has a homomorphism into an interior model.
 
-\subsection{A concrete example}
+\subsection{Some concrete examples}
 
 Let us now finally give the example-oriented reader a nontrivial example of an introspective theory by which to orient themselves. (On the other hand, the reader who prefers to consider abstract definitions without immediately diving into a worked out example of a highly concrete flavor may skip this section at this introductory time if they find its details a distraction. To each reader at their own taste!).
 
-In fact, we will give two closely related examples. The first example we present is somewhat atypical of general introspective theories, but important nonetheless. It is very similar to the arithmetic universe constructions considered by Joyal in his account of \Godel/'s incompleteness theorem and by others following up on this (Joyal himself never published this work, but a detailed account has been given in \autocite{van2020g}, building off the formalization of the initial arithmetic universe given in \autocite{maietti10a}). 
+\subsubsection{Example based on a traditional logical theory}
+In this subsection, we will give two closely related examples. The first example we present is somewhat atypical of general introspective theories, but important nonetheless. It is very similar to the arithmetic universe constructions considered by Joyal in his account of \Godel/'s incompleteness theorem and by others following up on this (Joyal himself never published this work, but a detailed account has been given in \autocite{van2020g}, building off the formalization of the initial arithmetic universe given in \autocite{maietti10a}). 
 
 Although very similar, the category we use in this first example is not exactly the same as the initial arithmetic universe considered in \autocite{van2020g} and \autocite{maietti10a}. The variant and presentation we give is intended to feel natural to an audience of traditional logicians. The connection of this construction to the initial arithmetic universe will be discussed in more detail later at \magicref{Sigma1Model}. 
 
@@ -189,8 +190,53 @@ Phew! What a long walk it was to get to describing that example! All the better,
 While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$ or the like. As a check of their understanding, the reader is encouraged to think about why this is.
 \end{warningenv}
 
+\subsubsection{Example based on a presheaf category}
+In this subsection, we will give an example of an introspective theory based on presheaf categories.
+
+\TODOinline{Finish writing out the details on this example. Get rid of the "hopefully" words. Write out a naive version first, without size conditions, then show the obstruction, to motivate the size condition.}
+
+\begin{construction}
+The following example takes place in the context of a metatheory such as ZF.
+
+In the following, by a ZF-set, I mean a set in the sense of ZF; that is, an element of the cumulative hierarchy, which comes with a well-defined rank (keep in mind that two bijective ZF-sets may have very different ranks!).
+
+We make use both of the fact that ZF is a material rather than structural set theory (so that ZF-sets come with well-defined ranks), and of the fact that ZF's Axiom of Replacement ensures the existence of the cumulative hierarchy at least as far as (indeed much further than) $V_{\omega^2}$. [Note that the following construction could not be carried out as written in a weaker context such as the internal logic of a topos with natural numbers object, where the cumulative hierarchy needn't go further than $V_{\omega \times 2}$.
+
+First of all, consider some sequence $W_1, W_2, W_3, \ldots$, indexed by positive integers, where each $W_i$ is a full sublexcategory of $\Set$, and each $W_j$ can be seen as an internal lexcategory within $W_i$ for $j < i$.
+
+For example, we can take the positive limit stages of the von Neumann hierarchy, with $W_i = V_{\omega \times i}$ for positive integer $i$. Each of these is a full sublexcategory of $\Set$ (closed under finite limits because ranks of finite limits can be taken as at most finitely greater than the supremum of the ranks of all factors), and each $W_j$ can be seen as an internal lexcategory within $W_i$, for $j < i$.
+
+Now, consider the positive integers both as a poset $P$ and as a discrete category $|P|$. Of course, the latter has an inclusion functor into the former.
+
+We can consider presheaves on $P$, $\Psh{P}$, and we can consider presheaves on $|P|$, $\Psh{|P|}$. The inclusion functor $|P| \to P$ gives us a forgetful functor $\Psh{P} \to \Psh{|P|}$. Because limits in presheaf categories are computed componentwise, this forgetful functor is a lexfunctor.
+
+Now let us consider a particular full subcatgory of $\Psh{|P|}$. An object of $\Psh{|P|}$ is a sequence of sets $s_1, s_2, s_3, \ldots$. The full subcategory we are interested in is comprised of those objects where each $s_i$ is one of the sets in $W_i$. This is like imposing a smallness constraint, but the sense of \quote{smallness} is not constant but grows ever looser as we go further into the sequence.
+
+This full subcategory of $\Psh{|P|}$ is equivalently the product of $W_i$ over all positive integers $i$. Because the $W_i$ are closed under finite limits, we have that this is indeed a full sublexcategory of $\Psh{|P|}$.
+
+This full sublexcategory of $\Psh{|P|}$ induces as its preimage under the forgetful lexfunctor $\Psh{P} \to \Psh{|P|}$ also a full sublexcategory of $\Psh{P}$. Let us call this $T$. That is, $T$ comprises those presheaves on the positive integers whose $i$-th set is an element of $W_i$.
+
+This is the first piece of the introspective theory we are building here.
+
+Secondly, let us consider a particular internal lexcategory $C$ within $T$. Specifically, the $i$-th component of $C$ is the product of the lexcategories $W_j$ over all $j < i$. As for the action of the presheaf as we go from higher-indexed components to lower-indexed components, we simply project away the no longer needed factors.
+
+Hopefully it is clear what I mean by this and clear that it does indeed define a lexcategory $C$ internal to $T$. (In particular, all the lexcategorical structure commutes appropriately with the presheaf actions because all the lexcategorical structure is defined componentwise on these products and the presheaf actions just project away components.)
+
+What's more, hopefully it is clear that the global aspect of $C$ is precisely the product of $W_i$ over all positive integers $i$. This is precisely the full sublexcategory of $\Psh{|P|}$ which $T$ maps into under our aforementioned forgetful lexfunctor. Thus, said forgetful functor acts as a lexfunctor $\introS$ from $T$ into the global aspect of $C$.
+
+Under this correspondence, it is hopefully also clear that given an object $c$ in the global aspect of $C$, which can be viewed as a sequence of sets $s_1, s_2, s_3, \ldots$ with $s_i$ in $W_i$, the corresponding object $\Hom_C(1, c)$ in $T$ is such that its $i$-th set is the product of $s_j$ over $j < i$, with presheaf action again given by projecting away unneeded factors.
+
+Thus, the natural transformation $\introN$ that we need to make this an introspective theory amounts to the following: Its component at any object of $T$ given by sets $s_1, s_2, s_3, \ldots$, should have an $i$-th component which is a function from $s_i$ to the product of $s_j$ over all $j < i$. We obtain this function just from the presheaf action for the given object of $T$, and observe that this does indeed satisfy the appropriate properties to comprise a morphism in $T$. For the naturality of this transformation, we need to know that any morphism in $T$ commutes appropriately with these presheaf actions, and indeed it will by the definition of morphisms in $T$.
+
+Thus, $\langle T, C, \introS, \introN \rangle$ comprises an introspective theory.
+\end{construction}
+
+This is an important archetypal example. It corresponds closely to the interpretation of GL modal logic using a Kripke frame given by a sequence of worlds indexed by positive integers, each world accessing the lower-indexed worlds. It is hopefully clear how an analogous construction works for any other well-founded Kripke frame (at any rate, we will discuss this more in the Models chapter).
+
+\TODOinline{Discuss the modal operator in this context, in the Modal logic chapter}
+
 \subsection{Constructions building new (pre-)introspective theories}
-Now let us discuss some constructions for building new (pre-)introspective theories from old ones or from other data.
+Now let us discuss some general constructions for building new (pre-)introspective theories from old ones or from other data.
 
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 

@@ -701,6 +701,31 @@ Take $Y = \omega = X$, let $f_X$ be the identity on $X$, and let $f_Y : |X| \to 
 For turning the initial AU into our PA sigma 1 models, etc, after we've established that AUs are closed under comma category constructions, let X = Y = omega =the initial AU in which some AU definable morphisms are invertible, let f_X = identity, and f_y = arbitrary lex. It follows that the comma category is also an AU, and because everything is component wise, the projections send the relevant AU-definable morphisms to invertible morphisms. Since projections from a comma object are jointly conservative, the comma category is also an AU where the AU definable morphisms of note are invertible. Thus, X maps into the comma category in a unique AU way; the projections following this mapping are identity, and we get a natural transformation from identity on X to f_Y.
 \end{TODOblock}
 
+We note here some further corollaries of the above (all with similar proofs; \TODO):
+
+\begin{corollary}
+If $X$, $Y$, and $\omega$ are lexcategories with pullback stable finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the comma category $(f_X, f_Y)$ also is a lexcategory with finite coproducts, and those coproducts are preserved by its projections to $X$ and $Y$.
+
+If furthermore finite coproducts are disjoint in $X$, $Y$, and $\omega$ (i.e., these are extensive categories), then this is the case in $(f_X, f_Y)$ as well.
+\end{corollary}
+
+\begin{corollary}
+If $X$, $Y$, and $\omega$ are regular categories, $f_X : X \to \omega$ is a regular functor, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ is also a regular category, and its projections to $X$ and $Y$ are regular functors.
+
+If $X$, $Y$, and $\omega$ are furthermore effective regular (aka, exact), then so is $(f_X, f_Y)$.
+\end{corollary}
+
+\begin{corollary}
+If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable natural numbers objects, $f_X : X \to \omega$ is a lexfunctor preserving the natural numbers object, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also has a pullback-stable natural numbers object, and its projections to $X$ and $Y$ preserve the natural numbers object.
+
+The same holds replacing the condition of natural numbers objects with list objects more generally.
+\end{corollary}
+
+Putting these all together, we have:
+\begin{corollary}
+If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve arithmetic universe structure.
+\end{corollary}
+
 \subsection{Quasi-equational theories}
 The significance of lexcategories with respect to logic is that they capture, in a presentation-independent way (a la Lawvere's functorial semantics), those logical theories given by various sorts, partially defined finitary operations on those sorts (whose domain of definition is given by the constraint that some finitely many other compositions of operations are simultaneously equal), and universal entailments between equations between compositions of such operations (more precisely, entailments from finite conjunctions of equations to equations).
 
@@ -708,12 +733,12 @@ One can often make different choices of primitive sorts, operations, and laws fo
 
 However, sometimes it is useful to draw finer distinctions between different presentations of such a theory, or at any rate to be able to talk about compact syntactic presentations of these theories more directly.
 
-Many slightly different formalizations of such theory presentations have been given, but one of the cleanest approaches seems to be the notion of
+Many slightly different formalizations of such theory presentations have been given, but one of the cleaner approaches seems to be the notion of
 \defined{quasi-equational theory} proposed in \autocite{palmgrenvickers}. (The interested reader can find comparison to several other approaches spelled out in this paper.) We shall not here spell out the definition of quasi-equational theories but simply refer the reader to \autocite{palmgrenvickers}. We shall note in this subsection our notational conventions and the useful constructions or theorems we will need for the uses we will make of quasi-equational theories. Essentially all concepts and results in this subsection are taken from \autocite{palmgrenvickers}, although rephrased into the language of our own conventions around strict and non-strict categories.
 
 In \autocite{palmgrenvickers}, the concept of a \defined{model} of a quasi-equational theory $\theoryT$ within a lexcategory or strict lexcategory $S$ is defined, as well as the notion of \defined{homomorphism} between such models.
 
-These are given by suitable diagrams within $S$; specifically, a model is given by the selection of an object in $S$ for each sort in $\theoryT$, along with the selection of morphisms in $S$ with appropriate domain and codomain for each operation in $\theoryT$, required to satisfy a corresponding condition on such morphisms for each law of $\theoryT$. While a homomorphism between two such models is given by the selection of a morphism in $S$ with appropriate domain and codomain for every sort in $\theoryT$, required to satisfy an appropriate condition for each operation of $\theoryT$. In particular, if $\theoryT$ is finitely specified, then specifying a model or homomorphism only involves specifying finitely much data subject to finitely many conditions. (And similarly if \quote{finite} is replaced by \quote{less than $\kappa$} for some infinite cardinal $\kappa$.)
+These are given by suitable diagrams within $S$; specifically, a model is given by the selection of an object in $S$ for each sort in $\theoryT$, along with the selection of morphisms in $S$ with appropriate domain and codomain for each operation in $\theoryT$, required to satisfy a corresponding condition on such morphisms for each law of $\theoryT$. A homomorphism between two such models is given by the selection of a morphism in $S$ with appropriate domain and codomain for every sort in $\theoryT$, required to satisfy an appropriate condition for each operation of $\theoryT$. In particular, if $\theoryT$ is finitely specified, then specifying a model or homomorphism only involves specifying finitely much data subject to finitely many conditions. (And similarly if \quote{finite} is replaced by \quote{less than $\kappa$} for some infinite cardinal $\kappa$.)
 
 The collection of models of $\theoryT$ within lexcategory $S$, along with homomorphisms between them, comprises a category, which we will call $\modelsIn{\theoryT}{S}$. When $S$ is a strict lexcategory, then in the same way we get a strict category $\modelsIn{\theoryT}{S}$. (Indeed, if strict lexcategory $S$ presents the non-strict lexcategory $S'$, then the strict category $\modelsIn{\theoryT}{S}$ will present the non-strict category $\modelsIn{\theoryT}{S'}$. That is, any model of $\theoryT$ in non-strict $S'$ can be presented by some model of $\theoryT$ in strict $S$, regardless of what choices $S$ makes for how to impose or refrain from imposing equations on its objects.)
 
@@ -721,9 +746,9 @@ This is all suitably functorial. Any lexfunctor $F: S \to S'$ takes models of $\
 
 It is shown in \autocite{palmgrenvickers} how there is a quasi-equational theory (which they call $\theoryT_{\mathrm{cart}}$ but which we shall call $\TheoryOfLexCat$) such that models of $\TheoryOfLexCat$ in $S$ correspond to internal lexcategories in $S$, and homomorphisms between these correpond to internal lexfunctors.
 
-More generally, they show how to associate to any quasi-equational $\theoryT$ another corresponding quasi-equational theory (which they call $\operatorname{Cart}\varpi \theoryT$ but which we shall call $\cartwith{\theoryT}$) such that a model of $\cartwith{\theoryT}$ in $S$ corresponds to an $S$-internal lexcategory $L$, along with a model of $\theoryT$ in the global aspect of $L$. 
+More generally, they show how to associate to any quasi-equational $\theoryT$ another corresponding quasi-equational theory (which they call $\operatorname{Cart}\varpi \theoryT$ but which we shall call $\cartwith{\theoryT}$) such that a model of $\cartwith{\theoryT}$ in $S$ corresponds to an $S$-internal lexcategory $L$ along with a model of $\theoryT$ in the global aspect of $L$. 
 
-It is shown in \autocite{palmgrenvickers} how to associate to any quasi-equational theory $\theoryT$ a corresponding strict lexcategory $\classifying{\theoryT}$ called its classifying category. We may also use the name $\classifying{\theoryT}$ again for the (non-strict) lexcategory this presents.
+It is shown in \autocite{palmgrenvickers} how to associate to any quasi-equational theory $\theoryT$ a corresponding strict lexcategory $\classifying{\theoryT}$ called its classifying category. We may also use the name $\classifying{\theoryT}$ again for the non-strict lexcategory this presents.
 
 This has the property that there is a natural correspondence between $\LexCat(\classifying{\theoryT}, -)$ and $\modelsIn{\theoryT}{-}$. There is also a natural correspondence between $\StrictLexCatTwo(\classifying{\theoryT}, -)$ and $\modelsIn{\theoryT}{-}$ (this now meaning the strict version of $\modelsIn{\theoryT}{-}$). And finally, this last correspondence respects strict equality as well, in that there is a natural bijection between the sets $\StrictLexCat(\classifying{\theoryT}, -)$ and $\Ob(\modelsIn{\theoryT}{-})$.
 
@@ -738,7 +763,7 @@ Finally, we note that \autocite{palmgrenvickers} shows us how to take any strict
 More generally, given an arbitrary lexcategory $T'$, if we make a choice of strict lexcategory $T$ which presents $T'$, then we may for convenience use the name $\LexCatToTheory{T'}$ to refer to $\LexCatToTheory{T}$, even though this strictly speaking depends on the choice of $T$ and not merely on $T'$. Regardless of the exact quasi-equational theory produced, we will in any case still have the property that $\LexCat(T', -)$ and $\modelsIn{\LexCatToTheory{T'}}{-}$ are in correspondence. \TODOinline{We may not actually use this abuse of language in the end after all, in which case we can delete this paragraph.}
 
 \begin{observation}
-All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but also have $k$-ary products, for all $k$ drawn from some fixed set of cardinalities $K$. (Such categories in fact have all limits of cardinality $k$, by the usual reduction to $k$-ary products and binary equalizers.)
+All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but also have $k$-ary products, for all $k$ drawn from some fixed set of infinite cardinalities $K$. (Such categories in fact have all limits of cardinality $k$, by the usual reduction to $k$-ary products and binary equalizers.)
 \end{observation}
 
 \fileend
