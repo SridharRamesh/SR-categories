@@ -151,4 +151,16 @@ For a locally introspective theory (or finite product theory) $\langle T, C, \in
 \TODO
 \end{proof}
 
+\subsection{Note of caution}
+\begin{observation}\label{InitialWrtSet}
+In our metatheory, we have access to the following principle: If M is the term model of some finitely axiomatized lex theory of gadgets, and Set is also a gadget (but a large one), then M not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from M to Set.
+\end{observation}
+\begin{proof}
+The proof is by the exact same proof that shows M's initiality with respect to set-sized gadgets.
+
+Alternatively, the proof can be carried out like so: Firstly, for existence of a map from M to Set, we take the finitely many finitary operations of our theory and note that the hull definable from these within Set describes a small (indeed, countable) subgadget of Set. M will have by initiality a homomorphism into this subgadget, and thus into Set itself. As for uniqueness, consider any two homomorphisms from M to Set. Again, their ranges will be small subgadgets of Set, and we can take the union of those ranges, close under the operations of our theory, and find some other small subgadget of Set containing them both. M will have a unique homomorphism into this enveloping subgadget, and thus the parallel homomorphisms of M must have been equal.
+\end{proof}
+
+Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
+
 \fileend

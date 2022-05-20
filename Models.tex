@@ -186,7 +186,7 @@ This is by some general initial object of small algebraish theories theorem  we 
 If $f : T \to S$ is the initial $T$-initializer, then for any other $T$-initializer $g : T \to U$, we get that $!$ is initial within $\LexCat(S, U)$, where $!$ is the lexfunctor from $S$ to $U$ given by $f$ being the initial $T$-initializer.
 \end{theorem}
 \begin{proof}
-\TODO (By our Comma-Kan lemma \magicref{CommaKan}, with $X$ and $Y$ as $S$, with $\omega$ as $U$, with $f_X$ as $!$ and $f_Y$ is an arbitrary lexfunctor, with $A$ as the initial lexcategory and $B$ as $T$, we get that $(!/f_Y)$ has an initial lexfunctor into it from $T$, and this is preserved by the projections out of the comma category. There is therefore a unique lexfunctor from $S$ to $(!/f_Y)$ preserving initiality of the maps from $T$. Following this up with the projections also preserves that initiality, so this unique lexfunctor from $S$ to $(!/f_Y)$ has both projections yielding identity; any other lexfunctor from $S$ to $(!/f_Y)$ with both projections yielding identity also has to be equal to this one. This gives us a unique natural transformation of the sort we have in mind. \TODOinline{Check this, clean this up}
+\TODO (By \magicref{CommaKan}, with $X$ and $Y$ as $S$, with $\omega$ as $U$, with $f_X$ as $!$ and $f_Y$ is an arbitrary lexfunctor, with $A$ as the initial lexcategory and $B$ as $T$, we get that $(!/f_Y)$ has an initial lexfunctor into it from $T$, and this is preserved by the projections out of the comma category. There is therefore a unique lexfunctor from $S$ to $(!/f_Y)$ preserving initiality of the maps from $T$. Following this up with the projections also preserves that initiality, so this unique lexfunctor from $S$ to $(!/f_Y)$ has both projections yielding identity; any other lexfunctor from $S$ to $(!/f_Y)$ with both projections yielding identity also has to be equal to this one. This gives us a unique natural transformation of the sort we have in mind. \TODOinline{Check this, clean this up}
 \end{proof}
 
 Therefore, the identity endolexfunctor on the initial $T$-initializer is initial among its endolexfunctors. \TODOinline{In the language of the following todo note, this is sigma1esque}. In this way, we get an introspective theory on the initial $T$-initializer once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...).
@@ -208,6 +208,82 @@ The initial arithmetic universe $U$ probably satisfies a property slightly stron
 
 We now know that we have at least one such functor (the unique AU map from $A$ to $(A/f)$). But how do we see uniqueness (qua functor, not uniqueness qua AU map)? Perhaps a more careful analysis of the gluing construction will tell us that a functor into the comma category is an AU map just in case both its projections are? That is, the forgetful functor from the comma category to the product category creates (i.e., preserves AND reflects) AU structure. [Is this what we want? Is creating structure the same as saying that the forgetful functor composed with any other functor preserves and reflects the property of AU-structure-preservingness in the other functor? Yes, I think so.] This should be relatively straightforward to show for limits and colimits, by general comma category properties, and then also for list objects. \TODO
 \end{TODOblock}
+
+\subsection{The initial arithmetic universe}
+Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. Let us now show how the fourth, a suitable natural transformation, can be obtained.
+
+This natural transformation is the one constructed in Lemma 5.15 of \autocite{van2020g}. The construction goes as follows:
+
+\begin{construction}
+Consider the IAU-indexed lexfunctor $\Hom_{IAU'}(1, -)$. Let us call this $\Gamma$ for convenience. The global aspect of this is a lexfunctor from the global aspect of IAU' to IAU; we may write $\Gamma : \Glob{IAU'} \to IAU$.
+
+Now consider the comma category $(\id_{IAU}, \Gamma)$, illustrated like so:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCIoXFxpZF97SUFVfSwgXFxHYW1tYSkiXSxbMSwwLCJJQVUiXSxbMSwxLCJJQVUiXSxbMCwxLCJcXEdsb2J7SUFVJ30iXSxbMSwyLCJcXGlkX3tJQVV9Il0sWzAsM10sWzMsMiwiXFxHYW1tYSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDFdLFsxLDMsIiIsMix7ImxldmVsIjoyfV1d
+\[\begin{tikzcd}
+	{(\id_{IAU}, \Gamma)} & IAU \\
+	{\Glob{IAU'}} & IAU
+	\arrow["{\id_{IAU}}", from=1-2, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["\Gamma"', dashed, from=2-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+	\arrow[Rightarrow, from=1-2, to=2-1]
+\end{tikzcd}\]
+
+In this diagram, we illustrate lexfunctors by dashed arrows, and arithmetic functors by ordinary arrows.
+
+By \magicref{CommaStableArithmetic}, this comma category is an arithmetic universe and its two projections (the top and left arrow in the above diagram) are arithmetic functors.
+
+Since this is an arithmetic universe, we have a unique arithmetic functor into it from IAU, like so:
+
+% https://q.uiver.app/?q=WzAsNSxbMSwxLCIoXFxpZF97SUFVfSwgXFxHYW1tYSkiXSxbMiwxLCJJQVUiXSxbMiwyLCJJQVUiXSxbMSwyLCJcXEdsb2J7SUFVJ30iXSxbMCwwLCJJQVUiXSxbMSwyLCJcXGlkIl0sWzAsM10sWzMsMiwiXFxHYW1tYSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDFdLFsxLDMsIiIsMix7ImxldmVsIjoyfV0sWzQsMCwiISIsMV0sWzQsMywiXFxpbnRyb1MiLDJdLFs0LDEsIlxcaWQiXV0=
+\[\begin{tikzcd}
+	IAU \\
+	& {(\id_{IAU}, \Gamma)} & IAU \\
+	& {\Glob{IAU'}} & IAU
+	\arrow["\id", from=2-3, to=3-3]
+	\arrow[from=2-2, to=3-2]
+	\arrow["\Gamma"', dashed, from=3-2, to=3-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow[Rightarrow, from=2-3, to=3-2]
+	\arrow["{!}"{description}, from=1-1, to=2-2]
+	\arrow["\introS"', from=1-1, to=3-2]
+	\arrow["\id", from=1-1, to=2-3]
+\end{tikzcd}\]
+
+Because of the uniqueness of parallel arithmetic functors out of the initial arithmetic universe IAU, we know that the composite arithmetic functor from IAU to the comma category and then back to IAU on top is the identity, while the composite arithmetic functor from IAU to the comma category and then to $\Glob{IAU'}$ on the left is equal to $\introS$. Thus, the overall composite 2-cell is from the identity on IAU to the functor $\Gamma(\introS(-)) = \Hom_{IAU'}(1, \introS(-)) = \Box_{IAU}$. This is precisely the type we need in order to take this 2-cell to be the natural transformation $\introN$ completing our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.
+\end{construction}
+
+\TODOinline{Show that this introspective theory structure extends the geminal category structure on IAU already obtained in previous sections by mere initiality properties. Conclude that IAU in fact comprises a super-duper introspective theory}
+
+\TODOinline{Discuss the extension of this to sigma_1 localizations of IAU. Compare this to our previous description of the sigma_1 ZF-finite/Peano Arithmetic/etc model}
+
+Let $T_{IAU}$ be some quotient of IAU' internal to IAU. Then the arithmetic functor from IAU to Set takes $T_{IAU}$ to an actual arithmetic universe T, such that $T$ is equivalent to the global aspect of $T_{IAU}$ \TODOinline{proof? We must show that the global sections functor on IAU is an arithmetic functor}. Furthermore, the arithmetic functor from IAU to T takes $T_{IAU}$ to an arithmetic universe $T'$ internal to $T$.
+
+\subsection{Lemmas to be moved}
+
+\begin{theorem}\label{RetractIsCocontinuousEtc}
+Any retract of a coproduct-preserving(/regular/arithmetic) functor is itself coproduct-preserving(/regular/arithmetic, respectively).
+\end{theorem}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{theorem}\label{TermModelIsInitialForLex}
+The global sections functor from a lexcategory to $\Set$ is initial among all parallel lexfunctors.
+\end{theorem}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{theorem}
+The global sections functor from the Initial Arithmetic Universe to $\Set$ is the unique arithmetic functor from IAU to $\Set$.
+\end{theorem}
+\begin{proof}
+A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the initiality of IAU (keeping in mind \magicref{InitialWrtSet}). What remains is only to show that this $!$ is the same as the global sections functor. By creating the comma category $(\id_{Set}, \Hom_{IAU}(1, -))$ and invoking \magicref{CommaStableArithmetic}, we obtain a natural transformation from $!$ to the global sections functor. Since the global sections functor is initial among all lexfunctors (by \magicref{TermModelIsInitialForLex}), this equips the global sections functor as a retraction of the arithmetic functor $!$. This makes the global sections functor itself an arithmetic functor (by \magicref{RetractIsCocontinuousEtc}). But as $!$ was the unique arithmetic functor from IAU to $\Set$, this identifies the global sections functor with $!$.
+\end{proof}
+
+With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does NOT internalize. In particular, we do not know internal to IAU that the global sections functor from IAU' to IAU/- is arithmetic (if we did, this would violate \Goedel/'s second incompleteness theorem).
 
 \subsection{Models based on well-founded posets or semicategories}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
