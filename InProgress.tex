@@ -151,7 +151,7 @@ For a locally introspective theory (or finite product theory) $\langle T, C, \in
 \TODO
 \end{proof}
 
-\subsection{Note of caution}
+\subsection{Initiality with respect to Set itself}
 \begin{observation}\label{InitialWrtSet}
 In our metatheory, we have access to the following principle: If M is the term model of some finitely axiomatized lex theory of gadgets, and Set is also a gadget (but a large one), then M not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from M to Set.
 \end{observation}
@@ -162,5 +162,53 @@ Alternatively, the proof can be carried out like so: Firstly, for existence of a
 \end{proof}
 
 Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
+
+\subsection{Uniqueness of model constructions}
+\begin{lemma}
+Let $T$ be a lexcategory with a natural numbers object, such that every object of $T$ admits a monic map into the natural numbers object. Let $\Box$ be a lex endfunctor on $T$. There is at most one natural transformation from $\id_T$ to $\Box$.
+\end{lemma}
+\begin{proof}
+Let $\nat$ be the natural numbers object of $T$, with zero map $z : 1 \to \nat$ and successor map $s : \nat \to \nat$. Note that $\Box z : 1 \to \Box \nat$ and $\Box s : \Box \nat \to \Box \nat$. Thus, by the universal property of $\nat$, there is a unique map $h : \nat \to \Box \nat$ such that $h \circ z = \Box z$ and $h \circ s = (\Box s) \circ h$.
+
+Now we will show that each of the components of a natural transformation $\eta : \id_T \to \Box$ is uniquely determined (if such a natural transformation exists at all!).
+
+First of all, by naturality of $\eta$ with respect to the morphisms $z$ and $s$, we see that any natural transformation $\eta : \id_T \to \Box$ would also be such that $\eta_{\nat} \circ z = \Box z$ and $\eta_{\nat} \circ s = (\Box s) \circ \eta_{\nat}$. Thus, we must have that $\eta_{\nat} = h$.
+
+Furthermore, for any arbitrary object $t$ of $T$, consider some monic map $m : t \to \nat$. By naturality of $\eta$ with respect to $m$, we see that $(\Box m) \circ \eta_t = \eta_{\nat} \circ m$. Since $\Box m$ is monic (since $\Box$ as a lexfunctor preserves monicity), and since $\eta_{\nat}$ was already uniquely determined, this uniquely determines $\eta_t$ as well.
+\end{proof}
+
+\subsection{Localization lemmas}
+\begin{lemma}
+If a lexcategory has a parameterized NNO (that is, an NNO in its simple self-indexing), then this is furthermore a pullback-stable NNO (that is, an NNO in its full self-indexing).
+\end{lemma}
+
+\begin{lemma}
+For any category with finite products $C$, there is a tractable explicit description of its free lex completion $C'$. That is, a lexcategory $C'$ such that we have a finite-product-preserving functor $f : C \to C'$, such that for any other lexcategory $D$ and finite-product-preserving $g: C \to D$, we have that $g$ factors through $f$ by a unique lexfunctor.
+
+The functor $f: C \to C'$ is furthermore full and faithful, so that $C$ can be seen as a full subcategory of $C'$. Furthermore, every object of $C'$ comprises an equalizer of two parallel morphisms of $C$ (i.e., every object of $C'$ is a regular subobject of an object of $C$). Furthermore, every morphism from an object of $C'$ to an object of $C$ is given by composing such an equalizer with a morphism of $C$ (i.e., the objects of $C$ comprise regular injective objects of $C'$).
+
+If $C$ furthermore has a parameterized NNO, then this is furthermore a pullback-stable NNO in $C'$.
+\end{lemma}
+\begin{proof}
+The construction is given in section 2 of \autocite{BungeSymmetricTopos}, following unpublished notes of A. Pitts. They do not make the final observation about NNOs, but this follows straightforwardly from the rest.
+\end{proof}
+
+Let $PrimRec$ denote the free category with finite products and a parameterized NNO, and let $PrimRecLex$ denote the free category with finite limits and a paremeterized NNO. By the above lemma, PrimRec is equivalent to the full subcategory of PrimRecLex comprising finite powers of the natural numbers object.
+
+\begin{construction}
+Suppose $T$ is a lexcategory, and $M$ is a subset of the monic arrows of $T$ which includes all isomorphisms, is closed under composition, and is closed under pullback along arbitrary morphisms of $T$.
+
+Then using the \quote{calculus of (right) fractions}, we have a tractable explicit construction of the category $T[M^{-1}]$ which freely makes each arrow in $M$ an isomorphism. That is, we have a lexfunctor $f : T \to T[M^{-1}]$ such that $f(m)$ is an isomorphism for each $m \in M$, and furthermore, for any other lexcategory $U$ and lexfunctor $g : T \to U$ such that $g(m)$ is an isomorphism for each $m \in M$, we have that $g$ factors uniquely through $f$ by another lexfunctor.
+
+The details of this calculus of fractions construction are a special case of the construction given in Proposition 5.2.4, combined with the consequences of Proposition 5.2.5, in \autocite{BorceuxHandbook1}.
+\end{construction}
+
+\begin{lemma}
+Suppose $T$ is a lexcategory with a pullback-stable NNO $\nat$, and suppose $T'$ is the localization of $T$ qua lexcategory at some collection of monics. Then the image of $\nat$ in $T'$ is also a pullback-stable NNO. \TODOinline{Not sure this is true}
+\end{lemma}
+
+\begin{lemma}
+Let $T$ be any arithmetic universe in which every object is a subquotient of $N$, and every subobject of $N$ is equal to one coming from the initial arithmetic universe. Then $T$ is some localization of the initial arithmetic universe.
+\end{lemma}
 
 \fileend
