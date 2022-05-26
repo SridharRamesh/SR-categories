@@ -211,4 +211,13 @@ Suppose $T$ is a lexcategory with a pullback-stable NNO $\nat$, and suppose $T'$
 Let $T$ be any arithmetic universe in which every object is a subquotient of $N$, and every subobject of $N$ is equal to one coming from the initial arithmetic universe. Then $T$ is some localization of the initial arithmetic universe.
 \end{lemma}
 
+\subsection{Expanded definition of geminal gadgets}
+A geminal gadget consists of a sequence of gadgets $G_0, G_1, G_2, \ldots$, along with a sequence of lexcategories $C_0,C _1, C_2, \ldots$, along with a sequence of internal gadgets $D_0, D_1, D_2, \ldots$, where each $C_i$ is the underlying lexcategory of $G_i$, each $D_i$ is internal to $C_i$, and each $G_{i + 1}$ is the global aspect of $D_i$.
+
+Note that $\Hom_{C_{i + 1}}(1, -)$ can be seen as a lexfunctor from $C_{i + 1}$ to $C_i$. Call this lexfunctor $\Gamma_i$.
+
+We have also a sequence of gadget-homomorphisms $\introN_i : G_i \to G_{i + 1}$, as well as internal gadget-homomorphisms $\introN'_i : D_i \to \Gamma_i(D_{i + 1})$, with $\introN'_i$ being internal to $C_i$, and with $\introN_{i + 1}$ being the global aspect of $\introN'_i$.
+
+We impose a series of equations
+
 \fileend
