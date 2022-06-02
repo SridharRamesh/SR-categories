@@ -68,7 +68,7 @@ The appropriate way to model provability logic complete with an implication oper
 We observe here that a locally introspective simple (i.e., finite product) theory in which $T$ and $C$ are cartesian closed and $\introF$ preserves cartesian closed structure and is essentially surjective on objects is the same as a cartesian closed theory $T$ along with a finite product preserving operator $\Box_T$ and natural transformation $\introN : \id_T \to \Box_T$.
 \end{theorem}
 \begin{proof}
-As a cartesian closed category, $T$ is enriched over $T$. A finite product preserving functor from $T_1$ to $T_2$ turns enrichments over $T_1$ into enrichments over $T_2$; using this, we can construe $T$ instead as a category $C$ enriched over $T$, where the objects of $C$ are those of $T$ but $\Hom_C(t, s) = \Box_T \Hom_T(t, s) = \Box_T s^t$.
+As a cartesian closed category, $T$ is enriched over itself. A finite product preserving functor from $T_1$ to $T_2$ turns enrichments over $T_1$ into enrichments over $T_2$; using this, we can construe $T$ instead as a category $C$ enriched over $T$, where the objects of $C$ are those of $T$ but $\Hom_C(t, s) = \Box_T \Hom_T(t, s) = \Box_T s^t$.
 
 A category enriched over $T$ (with terminal object) is the same as a locally \repsmall/ $T$-indexed category such that every object in $C(t)$ is the pullback of some object in $C(1)$. Thus, the above has produced $C$ as a locally \repsmall/ $T$-indexed category. Since both $\Box$ and $-^t$ are product preserving endofunctors of $T$, it's easy to see that $\Hom_C(t, s_1 \times \ldots \times s_n) = \Hom_C(t, s_1) \times \ldots \times \Hom_C(t, s_n)$ so that $C$ furthermore has finite products. (We can also see that $C$ has exponentials, from \TODO).
 
@@ -212,12 +212,39 @@ Let $T$ be any arithmetic universe in which every object is a subquotient of $N$
 \end{lemma}
 
 \subsection{Expanded definition of geminal gadgets}
-A geminal gadget consists of a sequence of gadgets $G_0, G_1, G_2, \ldots$, along with a sequence of lexcategories $C_0,C _1, C_2, \ldots$, along with a sequence of internal gadgets $D_0, D_1, D_2, \ldots$, where each $C_i$ is the underlying lexcategory of $G_i$, each $D_i$ is internal to $C_i$, and each $G_{i + 1}$ is the global aspect of $D_i$.
+Recall from \magicref{MultiplyInternal} that if $F : C \to D$ is a lexfunctor, and $S$ is some structure internal to $C$, then $F(S)$ is a similar structure internal to $D$, and furthermore, there is an induced homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may refer to this induced homomorphism as $F$ as well, in convenient abuse of notation.
 
-Note that $\Hom_{C_{i + 1}}(1, -)$ can be seen as a lexfunctor from $C_{i + 1}$ to $C_i$. Call this lexfunctor $\Gamma_i$.
+In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F$ as well.
 
-We have also a sequence of gadget-homomorphisms $\introN_i : G_i \to G_{i + 1}$, as well as internal gadget-homomorphisms $\introN'_i : D_i \to \Gamma_i(D_{i + 1})$, with $\introN'_i$ being internal to $C_i$, and with $\introN_{i + 1}$ being the global aspect of $\introN'_i$.
+A geminal gadget internal to lexcategory $C_0$ consists (among other things) of a sequence $G_1, C_1, G_2, C_2, G_3, C_3, \ldots$, where for $i \geq 0$, each $G_{i + 1}$ is a gadget internal to $C_i$ and each $C_{i + 1}$ is the global aspect of the underlying (strict) lexcategory of $G_{i + 1}$.
 
-We impose a series of equations
+Note that $\Hom_{C_{i + 1}}(1, -)$ can be seen as a lexfunctor from $C_{i + 1}$ to $C_i$ (since $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$). Call this global sections lexfunctor $\Gamma_i : C_{i + 1} \to C_i$.
+
+We now also require a sequence of internal gadget-homomorphisms $F_1, F_2, F_3, \ldots$, where each $F_i : G_i \to \Gamma_i(G_{i + 1})$ is internal to $C_i$.
+
+Finally, we impose some equations. We require that each $F_i$ takes $G_j$ to $G_{j + 1}$ and takes $F_j$ to $F_{j + 1}$ for $j > i$. Furthermore, we demand that each $F_i F_i = F_{i + 1} F_i$ in a suitable sense.
+
+Note that all structure subscripted $j$ can be seen as $(j - i)$-tuply internal to $C_i$, for $j > i$. In particular, all of this structure is indeed internal to $C_0$.
+
+Note furthermore that restricting attention to the sequence of $G_j$, $C_j$, and $F_j$ for $j > 1$ yields an instance of this structure internal to $C_1$.
+
+Note even furthermore that $F_1$ acts as an internal homomorphism of this structure.
+
+This all describes a geminal gadget internal to $C_0$.
+
+\begin{theorem}
+It suffices only to require $G_i$, $F_i$, and the equation $F_i F_i = F_{i + 1} F_i$ for $i \in \{1, 2\}$.
+\end{theorem}
+\begin{proof}
+Define $G_n$ as $F_1^{n - 1}(G_2)$, and similarly define $F_n$ as $F_1^{n - 1}(F_2)$.
+
+It is now automatically the case that $F_1$ takes $G_j$ to $G_{j + 1}$, and takes $F_j$ to $F_{j + 1}$.
+
+Furthermore, we get the equation that $F_i F_i = F_{i + 1} F_i$, by applying $F_1^{n - 1}$ to the instance of this equation at $i = 2$.
+
+What remains is only to see that each $F_i$ also takes $G_j$ to $G_{j + 1}$ and takes $F_j$ to $F_{j + 1}$, for $j > i$.
+
+We prove this by induction on $i$. Suppose we know this already holds for $i$. Then $F_{i + 1}(G_j) = F_{i + 1} F_i G_{j - 1} = F_i F_i G_{j - 1} = F_i G_j = G_{j + 1}$. And similarly for $F$ in place of $G$.
+\end{proof}
 
 \fileend

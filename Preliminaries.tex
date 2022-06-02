@@ -40,7 +40,7 @@ Note that data defined over $t$ is automatically transferred to corresponding da
 
 In contexts where it is clear what presheaf $P$ we have in mind, we may also write $\pullAlong{m}$ for $P(m)$. Also, in contexts where it would cause no confusion to speak in this way, given some $t$-indexed datum $d \in P(t)$ and a morphism $m : s \to t$, we use the same name $d$ also to refer to the corresponding $s$-indexed datum which more explicitly would be called $P(m)(d)$ or $\pullAlong{m} d$. It will be especially common for us to abuse language in this name-reusing way when $t$ is a terminal object.
 
-In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets.
+In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}, which we may also denote as $\Glob{t}$. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets.
 
 \begin{definition}
 We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable.
@@ -613,7 +613,7 @@ The construction $\Groth_T C$ is called the Grothendieck construction. By projec
 
 Thus, the data of an indexed category is equivalent to the data of a fibration. The entire machinery of indexed categories can therefore equivalently be presented in terms of fibrations. For this reason, fibrations are also called fibered categories. In particular, one can give a more intrinsic account of the conditions under which an arbitrary functor is a fibration. Furthermore, any natural transformation between $T$-indexed categories induces a corresponding map between the corresponding fibrations in $\Cat/T$, and again the natural transformation can be recovered from this map, and again a more intrinsic account can be given of which maps arise in this way. Some things are easier to describe in a fibration-based presentation. Other things are more difficult. For our purposes (using the general language of indexed structures ultimately for the goal of understanding specifically \repsmall/ or internal structures), we felt the indexed category presentation was the most apt. Thus, we will not describe the theory of fibered categories further. We use the Grothendieck construction only for the correspondence between $(\Groth_T C)$-indexed sets and $(T, C)$-indexed sets.
 
-Of course, this construction can be iterated further now. A $(T, C)$-indexed category $D$ is a $(\Groth_T C)$-indexed category (i.e., a contravariant functor from $\Groth_T C$ to $\Cat$), and thus gives rise to another category $\Groth_{\Groth_T C} D$. Structures indexed over $\Groth_{\Groth_T C} D$ can be called $(T, C, D)$-indexed structures. And so on ad infinitum. Do not worry, we will not need to explicitly consider this to any further depth of indexing.
+Of course, this construction can be iterated further now. A $(T, C)$-indexed category $D$ is a $(\Groth_T C)$-indexed category (i.e., a contravariant functor from $\Groth_T C$ to $\Cat$), and thus gives rise to another category $\Groth_{\Groth_T C} D$. Structures indexed over $\Groth_{\Groth_T C} D$ can be called $(T, C, D)$-indexed structures. And so on ad infinitum. Do not worry, we will not need to explicitly consider this to any further depth of indexing. \TODOinline{But see the next section on multiply internal structures}
 
 \TODOinline{Discuss the concept of being $T$-\repsmall/ vs. $C$-\repsmall/ when $(T, C)$-indexed}
 
@@ -624,6 +624,21 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 (Keep in mind also that an honest-to-goodness actual structure, living in $\Set$, is like the zero-ary case of indexing; it's indexed by the empty string of categories $()$, but can be seen in a trivial way as $T$-indexed for any category $T$).
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
+
+\subsection{Multiply internal structures}\label{MultiplyInternal}
+Let $C_0$ be a strict lexcategory, and let $C'_1$ be an internal lexcategory in $C_0$. This $C'_1$ has a global aspect, which we may call $C_1$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
+
+In particular, we may even have some lexcategory $C'_2$ doubly internal to $C_0$; that is, $C'_2$ is a lexcategory internal to the global aspect of a lexcategory internal to $C_0$. We can then define $C_2$ as the global aspect of $C'_2$, and in the same way now speak of structures internal to $C_2$ as being triply internal to $C_0$.
+
+And in general, given a sequence $C_0, C'_1, C_1, C'_2, C_2, C'_3, C_3, \ldots, C_n$ where each $C'_{i + 1}$ is a lexcategory internal to $C_i$ and each $C_{i + 1}$ is the global aspect of $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure is a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
+
+Now recall that if $F : C \to D$ is a lexfunctor, and $S$ is some structure internal to $C$, then $F(S)$ is a similar structure internal to $D$, and furthermore, there is an induced homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may refer to this induced homomorphism as $F$ as well, in convenient abuse of notation.
+
+In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F$ as well.
+
+The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $F : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
+
+If we wish to explicitly disambiguate, we may refer to this induced homomorphism as $F_S$ instead of simply as $F$.
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
