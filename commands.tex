@@ -60,9 +60,19 @@
 
 % Warning! LaTeX will swallow the following space stupidly in this command. You may have to place a backslash-space after it instead.
 \newcommand{\TODO}{{\color{red} TO DO}}
-
 \newcommand{\TODOinline}[1]{\TODO\ {\color{red} #1}}
-\newcommand{\UnprintedTODO}[1]{}
+
+\newif\ifHideStodo
+
+\HideStodofalse
+
+\ifHideStodo
+\newcommand{\sTODO}{}
+\newcommand{\sTODOinline}[1]{}
+\else
+\newcommand{\sTODO}{\TODO}
+\newcommand{\sTODOinline}[1]{\TODOinline{#1}}
+\fi
 
 % Using \operatorname for constants is maybe a little wrong, as it suggests a closer semantic association to the right. For now, we just use \mathrm.
 \newcommand{\const}[1]{\mathrm{#1}} % Typesetting named constants
