@@ -630,7 +630,7 @@ Let $C_0$ be a strict lexcategory, and let $C'_1$ be an internal lexcategory in 
 
 In particular, we may even have some lexcategory $C'_2$ doubly internal to $C_0$; that is, $C'_2$ is a lexcategory internal to the global aspect of a lexcategory internal to $C_0$. We can then define $C_2$ as the global aspect of $C'_2$, and in the same way now speak of structures internal to $C_2$ as being triply internal to $C_0$.
 
-And in general, given a sequence $C_0, C'_1, C_1, C'_2, C_2, C'_3, C_3, \ldots, C_n$ where each $C'_{i + 1}$ is a lexcategory internal to $C_i$ and each $C_{i + 1}$ is the global aspect of $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure is a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
+And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
 
 Now recall that if $F : C \to D$ is a lexfunctor, and $S$ is some structure internal to $C$, then $F(S)$ is a similar structure internal to $D$, and furthermore, there is an induced homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may refer to this induced homomorphism as $F$ as well, in convenient abuse of notation.
 
@@ -639,6 +639,8 @@ In particular, if $S$ is an internal lexcategory, then our original lexfunctor $
 The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $F : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
 
 If we wish to explicitly disambiguate, we may refer to this induced homomorphism as $F_S$ instead of simply as $F$.
+
+Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable smallness conditions, but they are probably more easily understood in the presentation just given.
 
 \subsection{Comma objects and their interaction with Kan extensions}
 

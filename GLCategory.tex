@@ -10,16 +10,82 @@ This last statement is easy to misinterpret, so let me be a bit more clear as to
 
 We will also discuss a partial converse of sorts, a way to extract an introspective theory from a geminal category, with the extracted introspective theory having a certain terminality property (that is, we construct a sort of co-free introspective theory induced by the given geminal category).
 
-\subsection{Arriving at geminal categories, take 2}
-Let $\langle T, C, \introS, \introN \rangle$ be an introspective theory.
+\TODOinline{This whole chapter is currently being rewritten; thus, in flux}
 
-Recall that any introspective theory admits some presentation as an inner-strict introspective theory (see \TODO), so we can think of $C$ as a lexcategory internal to $T$. By applying $\introS$ to this $C$, we obtain some lexcategory $C'$ internal to the global aspect of $C$ (that is, this $C'$ is a $(T, C)$-internal lexcategory \TODOinline{Define multiple indexing internality}).
+\subsection{Defining geminal categories}
+\begin{definition}[Geminal category (verbose presentation)]\label{VerboseGeminalCatDefn}
+A \defined{geminal category} internal to lexcategory $C_0$ consists of several ingredients:
 
-Furthermore, if we look at the components of the natural transformation $\introN$ at $\Ob(C)$ and $\Mor(C)$, we find that this defines a $T$-internal lexfunctor from $C$ to the global aspect of $C'$ (that is, we get a lexfunctor $\introN_C : C \to \Hom_C(1, C')$, so to speak).
+\begin{itemize}
+    \item 
+    The first ingredient is an infinite sequence $C_1, C_2, C_3, \ldots$, in which each $C_{i + 1}$ (for $i \geq 0$) is the global aspect of a lexcategory internal to $C_i$ (we refer to this internal lexcategory as $C'_{i + 1}$).
+\end{itemize}
 
-But $C'$ is itself given by certain morphisms in $T$, and so we can apply $\introS$ to $C'$ as well, to obtain some lexcategory $C''$ internal to $C'$. Similarly, this $T$-internal lexfunctor $\introN_C$ is itself given by morphisms in $T$, and so we can apply $\introS$ to this as well, to obtain a $C$-internal lexfunctor $\introN'_{C'} : C' \to \Hom_C'(1, C'')$, so to speak.
+Note that $\Hom_{C_{i + 1}}(1, -)$ can be seen as a lexfunctor from $C_{i + 1}$ to $C_i$ (since $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$). Call this global sections lexfunctor $\Gamma_i : C_{i + 1} \to C_i$. Observe that, if $S$ is some structure internal to $C_{i + 1}$, then the global aspect of $S$ is the same as the global aspect of the $C_i$-internal structure $\Gamma_i[S]$. In particular, the global aspect of $\Gamma_i[C'_{i + 2}]$ is $C_{i + 2}$.
 
-\TODO
+\begin{itemize}
+    \item
+    The second ingredient comprising a geminal category is an infinite sequence of internal lexfunctors $F_1, F_2, F_3, \ldots$, where each $F_{i + 1} : C'_{i + 1} \to \Gamma_i[C'_{i + 2}]$ is internal to $C_i$ (for $i \geq 0$).
+\end{itemize}
+
+As with any internal homomorphisms, these act also on global aspects, so that we can also view each $F_{i + 1}$ as a lexfunctor from $C_{i + 1}$ to $C_{i + 2}$.
+
+\begin{itemize}
+    \item 
+    Finally, the last ingredients we require are some equations. We require that each $F_i[C_j] = C_{j + 1}$ and each $F_i[F_j] = F_{j + 1}$ for $j > i \geq 1$. Furthermore, we require that the composition $F_i \circ F_i = F_{i + 1} \circ F_i$, for each $i \geq 1$, where this equation is interpreted internal to $C_{i - 1}$. We refer to this last equation as $E_i$.
+\end{itemize}
+\end{definition}
+
+Note that all above structure subscripted with some index $j$ can be seen as $(j - i)$-tuply internal to $C_i$, for $j > i$. In particular, all aforementioned structure apart from $C_0$ itself is indeed given by diagrams within $C_0$.
+
+To be fully explicit, we would describe the above geminal category internal to $C_0$ by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F_1, F_2, F_3, \ldots \rangle$. However, we take the abuse of notation convention of often referencing this geminal category simply via the name of $C'_1$ (the part of the structure which is a lexcategory directly internal to $C_0$).
+
+It is manifestly the case that this definition of a geminal category is essentially algebraic. That is, there is some essentially algebraic theory such that models of that theory internal to $C_0$ are the same thing as geminal categories internal to $C_0$. The above amounts to an infinitary presentation of this theory. We will call it the \quote{verbose presentation} of geminal categories. However, it turns out this theory can be finitely axiomatized as well.
+
+\begin{definition}[Geminal category (compact definition)]\label{CompactGeminalCatDefn}
+A \defined{compactly presented geminal category} internal to lexcategory $C_0$ consists of the structure $C'_i$, $F_i$, and equations $E_i$ of the verbose presentation for $i \in \{1, 2\}$.
+
+(Here, in interpreting the codomain of $F_2$, we take $C'_3$ to be $F_1[C'_2]$, and in interpreting the equation $E_2$, we take $F_3$ to be $F_1[F_2]$)
+
+That is, a compactly presented geminal category internal to $C_0$ consists of the following six pieces of data:
+
+\begin{itemize}
+    \item A lexcategory $C'_1$ internal to $C_0$, whose global aspect we call $C_1$.
+    \item A lexcategory $C'_2$ internal to $C_1$, whose global aspect we call $C_2$.
+    \item A lexfunctor $F_1 : C'_1 \to \Gamma_1[C'_2]$, internal to $C_0$.
+    
+    (Here, $\Gamma_1 : C_1 \to C_0$ is the global sections functor $\Hom_{C_1}(1, -)$.)
+    
+    \item A lexfunctor $F_2 : C'_2 \to \Gamma_2[C'_3]$, internal to $C_1$.
+    
+    (Here, $C'_3$ is defined as $F_1[C'_2]$, and $\Gamma_2 : C_2 \to C_1$ is the global sections functor $\Hom_{C_2}(1, -)$.)
+    
+    \item The equation $F_1 \circ F_1 = F_2 \circ F_1$, internal to $C_0$. We call this equation $E_1$.
+    
+    \item The equation $F_2 \circ F_2 = F_3 \circ F_2$, internal to $C_1$.
+    
+    (Here, $F_3$ is defined as $F_1[F_2]$.)
+\end{itemize}
+\end{definition}
+
+Clearly, the structure defining a compactly presented geminal category is part of the structure defining a verbosely presented geminal category. But in fact, these are equivalent definitions.
+
+\begin{theorem}
+The structure of a compactly presented geminal category uniquely determines the further structure of a verbosely presented geminal category.
+\end{theorem}
+\begin{proof}
+By definition, in a geminal category, we must have that $F_1[C'_j] = C'_{j + 1}$ and $F_1[F_j] = F_{j + 1}$ for each $j > 2$.
+
+Accordingly, if we are given the structure in \magicref{CompactGeminalCatDefn}, and we are to extend it to all the further structure in \magicref{VerboseGeminalCatDefn}, it inductively must be the case that $C'_j = F_1^{j - 2}[C_2]$ and $F_j = F_1^{j - 2}[F_2]$ for each $j > 2$. Adopt these definitions throughout the following accordingly.
+
+The equations given to us directly in the compact presentation are the equations $E_1$ and $E_2$ of the verbose presentation. Furthermore, we obtain the equation $E_i$ for $i > 2$ by applying $F_1^{n - 1}$ to $E_2$.
+
+What remains is only to see that each $F_i$ for $i > 1$ also takes $C_j$ to $C_{j + 1}$ and takes $F_j$ to $F_{j + 1}$, for $j > i \geq 1$.
+
+We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[C_j] = F_{i + 1} [F_i [C_{j - 1}]] = (F_{i + 1} \circ F_i)[C_{j - 1}] = (F_i \circ F_i) = F_i [F_i [C_{j - 1}]] = F_i [C_j] = C_{j + 1}$. And similarly with $F$ in place of $C$ throughout as well.
+\end{proof}
+
+\TODOinline{Everything following in this chapter is about to get thrown out/rewritten}
 
 \subsection{Arriving at geminal categories}
 \begin{observation}\label{IntrospContainsGLObservation}

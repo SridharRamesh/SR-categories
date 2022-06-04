@@ -211,11 +211,7 @@ Suppose $T$ is a lexcategory with a pullback-stable NNO $\nat$, and suppose $T'$
 Let $T$ be any arithmetic universe in which every object is a subquotient of $N$, and every subobject of $N$ is equal to one coming from the initial arithmetic universe. Then $T$ is some localization of the initial arithmetic universe.
 \end{lemma}
 
-\subsection{Expanded definition of geminal gadgets}
-Recall from \magicref{MultiplyInternal} that if $F : C \to D$ is a lexfunctor, and $S$ is some structure internal to $C$, then $F(S)$ is a similar structure internal to $D$, and furthermore, there is an induced homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may refer to this induced homomorphism as $F$ as well, in convenient abuse of notation.
-
-In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F$ as well.
-
+\subsection{Geminal gadgets more generally}
 A geminal gadget internal to lexcategory $C_0$ consists (among other things) of a sequence $G_1, C_1, G_2, C_2, G_3, C_3, \ldots$, where for $i \geq 0$, each $G_{i + 1}$ is a gadget internal to $C_i$ and each $C_{i + 1}$ is the global aspect of the underlying (strict) lexcategory of $G_{i + 1}$.
 
 Note that $\Hom_{C_{i + 1}}(1, -)$ can be seen as a lexfunctor from $C_{i + 1}$ to $C_i$ (since $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$). Call this global sections lexfunctor $\Gamma_i : C_{i + 1} \to C_i$.
@@ -233,10 +229,10 @@ Note even furthermore that $F_1$ acts as an internal homomorphism of this struct
 This all describes a geminal gadget internal to $C_0$.
 
 \begin{theorem}
-It suffices only to require $G_i$, $F_i$, and the equation $F_i F_i = F_{i + 1} F_i$ for $i \in \{1, 2\}$.
+To uniquely generate all the rest of the aforementioned structure, it suffices only to be given $G_i$, $F_i$, and the equation $F_i F_i = F_{i + 1} F_i$ for $i \in \{1, 2\}$.
 \end{theorem}
 \begin{proof}
-Define $G_n$ as $F_1^{n - 1}(G_2)$, and similarly define $F_n$ as $F_1^{n - 1}(F_2)$.
+Define $G_n$ as $F_1^{n - 1}(G_2)$, and similarly define $F_n$ as $F_1^{n - 1}(F_2)$. \TODOinline{Clarify the notation, that $F_1(F_2)$ for example is not a composition but rather an application of a functor to the diagram specifying an internal functor. Can use square brackets instead.}
 
 It is now automatically the case that $F_1$ takes $G_j$ to $G_{j + 1}$, and takes $F_j$ to $F_{j + 1}$.
 
@@ -244,7 +240,7 @@ Furthermore, we get the equation that $F_i F_i = F_{i + 1} F_i$, by applying $F_
 
 What remains is only to see that each $F_i$ also takes $G_j$ to $G_{j + 1}$ and takes $F_j$ to $F_{j + 1}$, for $j > i$.
 
-We prove this by induction on $i$. Suppose we know this already holds for $i$. Then $F_{i + 1}(G_j) = F_{i + 1} F_i G_{j - 1} = F_i F_i G_{j - 1} = F_i G_j = G_{j + 1}$. And similarly for $F$ in place of $G$.
+We prove this by induction on $i$. We have above established this for $i = 1$ as our base case. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[G_j] = F_{i + 1} [F_i [G_{j - 1}]] = (F_{i + 1} \circ F_i)[G_{j - 1}] = (F_i \circ F_i) = F_i [F_i [G_{j - 1}]] = F_i [G_j] = G_{j + 1}$. And similarly with $F$ in place of $G$ as well.
 \end{proof}
 
 \subsection{TODO test}
