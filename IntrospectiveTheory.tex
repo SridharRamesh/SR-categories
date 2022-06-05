@@ -58,13 +58,13 @@ Nontrivial introspective theories do exist and we will give some archetypal exam
 We shall now make an observation about an alternative but equivalent way to specify the data of a pre-introspective theory.
 
 \begin{theorem}\label{SNCorrespondence}
-Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying a natural transformation from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$.
+Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying maps from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$, naturally in $t$.
 \end{theorem}
 
 \begin{proof}
 Let $T$ be a lexcategory, and let $C$ be some $T$-indexed lexcategory. By \magicref{Lemma1} (keeping in mind the contravariance of the functors defining indexed structures), a map from the self-indexing $T/-$ to $C$ as $T$-indexed lexcategories is the same as a lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with a map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ (where the map $\introS$ is used to treat $C$ as a $T$-indexed object of $T/\LexCat$).
 
-Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, a natural transformation from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$.
+Next we apply \magicref{SelfIndexingIsFree}. The map from $T/-$ to $C$ as $T$-indexed objects of $T/\LexCat$ is the same as choosing, in a natural way over all $t$ in $T$, some $t$-defined value in $\Hom_C(1, \introS(t))$. That is, maps from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$, comprising a natural transformation.
 \end{proof}
 
 \begin{remark}\label{IntrospGeneralDoctrine}

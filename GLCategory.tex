@@ -19,7 +19,7 @@ It will be technically convenient for us to work in this chapter with a slightly
 A \defined{strict introspective theory} is a strict lexcategory $T$, a lexcategory $C$ internal to $T$, a strict lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $\id_T$ to $\Hom_C(1, \introS(-))$.
 \end{definition}
 
-This differs from the definition of an introspective theory in precisely the manner that $T$ is made strict (thus, its internal structures can be considered up to equality instead of mere isomorphism), we demand the selection of $C$ as a particular $T$-internal lexcategory up to equality (instead of simply up to presenting equivalent indexed categories), and we demand that $\introS$ preserves strict structure (that is, preserves chosen basis limits).
+This differs from the ordinary definition of an introspective theory (\magicref{DefnIntrospSN}) in the following ways: $T$ is made strict (thus, its internal structures can be considered up to equality instead of mere isomorphism), we demand the selection of $C$ as a particular $T$-internal lexcategory up to equality (instead of simply up to presenting equivalent indexed categories), and we take $\introS$ as a strict lexfunctor (thus, $\introS$ preserves chosen basis limits on-the-nose).
 
 Clearly, any strict introspective theory presents some introspective theory. Conversely, we have the following:
 
@@ -29,7 +29,11 @@ Any introspective theory $\langle T, C, \introS, \introN \rangle$ is presented b
 \begin{proof}
 Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$. By definition of the smallness of $C$, we can choose some lexcategory $C_{int}$ internal to $T$ (up to isomorphism of indexed strict lexcategories) which presents the $T$-indexed category $C$ (up to equivalence of indexed categories).
 
-Now using \TODO, let $T_{strict}$ be some strict lexcategory which presents $T$ and which has the freeness property that \TODO. Because $T'$ presents $T$, we can choose some specific internal lexcategory $C_{strict}$ in $T_{strict}$ (up to equality!) which presents $C_{int}$. Furthermore, using the freeness property of $T_{strict}$, we obtain a lexfunctor $\introS_{strict}$ from $T_{strict}$ to the global aspect of $C_{strict}$ which presents $\introS$. Finally, we deal with $\introN$. \TODO
+Now using \TODO, let $T_{strict}$ be some strict lexcategory which presents $T$ and which has the freeness property that \TODO. Because $T'$ presents $T$, we can choose some specific internal lexcategory $C_{strict}$ in $T_{strict}$ (up to equality!) which presents $C_{int}$. Because $C_{strict}$ presents $C_{int}$ which in turn presents $C$, $\introS$ can be viewed as a (non-strict) lexfunctor from $T$ to the global aspect of $C_{strict}$. Now using the freeness property of $T_{strict}$, we obtain a strict lexfunctor $\introS_{strict}$ from $T_{strict}$ to the global aspect of $C_{strict}$, such that $\introS_{strict}$ presents $\introS$.
+
+Finally, we deal with $\introN$. \TODO
+
+Thus, we have obtained a strict introspective theory $\langle T_{strict}, C_{strict}, \introS_{strict}, \introN \rangle$ presenting the introspective theory $\langle T, C, \introS, \introN \rangle$.
 \end{proof}
 
 Strict introspective theories are slightly more convenient than introspective theories for phrasing the results of this chapter, because strict introspective theories are themselves an essentially algebraic notion. That is, there is an essentially algebraic theory such that the models of this theory are the strict introspective theories. (This is in precisely the same way that the theory of strict categories is essentially algebraic, while the theory of categories construed up to equivalence is not quite essentially algebraic.)
@@ -39,14 +43,14 @@ As with any essentially algebraic theory, we get automatically a corresponding n
 \begin{definition}
 A \defined{homomorphism} between strict introspective theories $\langle T_1, C_1, \introS_1, \introN_1 \rangle$ and $\langle T_2, C_2, \introS_2, \introN_2 \rangle$ is a strict lexfunctor $H : T_1 \to T_2$ such that $H[C_1] = C_2$, $H[\introN_t] = \introN_{H(t)}$ for each object $t$ of $T_1$, and the following diagram commutes:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJUXzEiXSxbMSwwLCJUXzIiXSxbMCwxLCJcXEdsb2J7Q18xfSJdLFsxLDEsIlxcR2xvYntDXzJ9Il0sWzAsMSwiSCJdLFswLDIsIlxcaW50cm9TXzEiLDJdLFsyLDMsIkhbLV0iLDJdLFsxLDMsIlxcaW50cm9TXzIiXV0=
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJUXzEiXSxbMiwwLCJUXzIiXSxbMCwxLCJcXEdsb2J7Q18xfSJdLFsyLDEsIlxcR2xvYntDXzJ9Il0sWzAsMSwiSCJdLFswLDIsIlxcaW50cm9TXzEiLDJdLFsyLDMsIlxcSW5kdWNlZEhvbW97SH17Q18xfSIsMl0sWzEsMywiXFxpbnRyb1NfMiJdXQ==
 \[\begin{tikzcd}
-	{T_1} & {T_2} \\
-	{\Glob{C_1}} & {\Glob{C_2}}
-	\arrow["H", from=1-1, to=1-2]
+	{T_1} && {T_2} \\
+	{\Glob{C_1}} && {\Glob{C_2}}
+	\arrow["H", from=1-1, to=1-3]
 	\arrow["{\introS_1}"', from=1-1, to=2-1]
-	\arrow["{H[-]}"', from=2-1, to=2-2]
-	\arrow["{\introS_2}", from=1-2, to=2-2]
+	\arrow["{\InducedHomo{H}{C_1}}"', from=2-1, to=2-3]
+	\arrow["{\introS_2}", from=1-3, to=2-3]
 \end{tikzcd}\]
 
 In the above diagram, the bottom arrow indicates the action of $H$ as a homomorphism from the global aspect of the $T_1$-internal structure $C_1$, to the global aspect of the corresponding $T_2$-internal structure $H[C_1] = C_2$.
@@ -57,23 +61,19 @@ Such homomorphisms are closed under composition and thus we obtain the category 
 As the category of models of an essentially algebraic theory, this category must have an initial object. That is, there is a strict introspective theory with a unique homomorphism into any other strict introspective theory. In this chapter, we will find a tractable explicit description of this initial strict introspective theory.
 
 \subsection{Defining geminal categories}
-Recall from \magicref{MultiplyInternal} that if $F : C \to D$ is a lexfunctor, and $S$ is some structure internal or $n$-tuply internal to $C$, then $F[S]$ is a similar structure internal or $n$-tuply internal to $D$, and furthermore, $F$ induces a homomorphism from the global aspect of $S$ to the global aspect of $F[S]$, which we may call $\InducedHomo{F}{S}$. \TODOinline{Some random notation choice here, to be revised}
-
-Throughout the following, whenever we write $F[S]$, this means the application of the lexfunctor $F$ to some internal or multiply internal structure $S$. When we write $F \circ G$, this means the composite action of first applying $G$, then applying $F$, to some internal or multiply internal structure (or global aspects thereof). Note, in particular, that both $F[G]$ and $F \circ G$ may be meaningful, in certain contexts where $G$ is an internal or multiply internal lexfunctor itself, but that they mean slightly distinct (though related!) things.
+We make heavy use in this section of the conventions from \magicref{MultiplyInternal}, with which the reader may wish to reacquaint themselves.
 
 \begin{definition}[Geminal category (verbose presentation)]\label{VerboseGeminalCatDefn}
 A \defined{geminal category} internal to lexcategory $C_0$ consists of several ingredients:
 
 \begin{itemize}
     \item 
-    The first ingredient is an infinite sequence $C_1, C_2, C_3, \ldots$, in which each $C_{i + 1}$ (for $i \geq 0$) is the global aspect of a lexcategory internal to $C_i$ (let us refer to this internal lexcategory as $C'_{i + 1}$).
+    The first ingredient is an infinite sequence $C_1, C_2, C_3, \ldots$, in which each $C_i$ (for $i \geq 1$) is the global aspect of a lexcategory $C'_i$ internal to $C_{i - 1}$.
 \end{itemize}
 
-(Throughout the following, it will be useful to keep in mind that we are using these general naming habits: Primed names are used for internal structures, while the corresponding unprimed names indicate the corresponding global aspects. Furthermore, names subscripted with index $j$ arise from structure internal to $C_{j - 1}$.)
+Thus, each $C'_{i + n}$ is $n$-tuply internal to $C_i$.
 
-Note that $\Hom_{C'_{i + 1}}(1, -)$ can be seen as a lexfunctor from $C_{i + 1}$ to $C_i$ (since $C'_{i + 1}$ is indexed over $C_i$, this functor takes the global aspect of $C'_{i + 1}$ to the global aspect of $C_i/-$). Call this global sections functor $\Gamma_{i + 1} : C_{i + 1} \to C_i$. In general, it will do no harm to drop the subscript and simply say $\Gamma$.
-
-Observe that, if $S$ is some structure internal to $C_{i + 1}$, then the global aspect of $S$ is the same as the global aspect of the $C_i$-internal structure $\Gamma[S]$. In particular, the global aspect of $\Gamma[C'_i]$ is $C_i$ for each $i \geq 2$.
+(Throughout the following, it will be useful to keep in mind that we are using these general naming habits: Primed names are used for internal structures, while the corresponding unprimed names indicate the corresponding global aspects. Furthermore, names subscripted with index $i$ arise from structure internal to $C_{i - 1}$.)
 
 \begin{itemize}
     \item
@@ -115,86 +115,88 @@ Finally, the last ingredients we require are some equations:
      We require that $F_i[C'_j] = C'_{j + 1}$ and $F_i[F'_j] = F'_{j + 1}$ for $j > i \geq 1$.
      
     \item
-    Furthermore, we require an equation internal to $C_{i - 1}$ which informally can be glossed as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}, for each $i \geq 1$. We refer to this equation as $E_i$. More formally, $E_i$ states that the following diagram of lexfunctors in $C_{i - 1}$ commutes:
+    Furthermore, we require that the following diagram of lexfunctors internal to $C_{i - 1}$ commutes, for each $i \geq 1$. We call this equation $E_i$.
     
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJDJ19pIl0sWzIsMCwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSA9IFxcSG9tX3tDJ19pfSgxLCBDJ197aSArIDF9KSJdLFsyLDIsIlxcR2FtbWFfaSBbXFxHYW1tYV97aSArIDF9W0MnX3tpICsgMn1dXSA9IFxcSG9tX3tDJ19pfSgxLCBcXEhvbV97Qydfe2kgKyAxfX0oMSwgQydfe2kgKyAyfSkpIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDEsIlxcSG9tX3tcXEdhbW1hX2lbQydfe2kgKyAxfV19KDEsIEYnX2lbQydfe2kgKyAxfV0pID0gXFxIb21fe0MnX2l9KDEsIFxcSG9tX3tDJ197aSArIDF9fSgxLCBGJ19pW0MnX3tpICsgMX1dKSkiXSxbMCwxLCJGJ19pIl0sWzAsMywiRidfaSIsMl0sWzMsMiwiXFxHYW1tYV9pIFtGJ197aSArIDF9XSIsMl0sWzEsNCwiRidfaSJdLFs0LDIsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYSBbQydfe2kgKyAxfV0iXSxbMiwyLCJcXEdhbW1hIFtcXEdhbW1hW0MnX3tpICsgMn1dXSJdLFsyLDAsIlxcR2FtbWEgW0MnX3tpICsgMX1dIl0sWzAsMSwiRidfaSIsMl0sWzAsMywiRidfaSJdLFszLDIsIlxcR2FtbWEgW0YnX3tpICsgMX1dIl0sWzEsMiwiXFxJbmR1Y2VkSG9tb3tGJ19pfXtDJ197aSArIDF9fSIsMl1d
 \[\begin{tikzcd}
-	{C'_i} && {\Gamma_i [C'_{i + 1}] = \Hom_{C'_i}(1, C'_{i + 1})} \\
-	&& {\Hom_{\Gamma_i[C'_{i + 1}]}(1, F'_i[C'_{i + 1}]) = \Hom_{C'_i}(1, \Hom_{C'_{i + 1}}(1, F'_i[C'_{i + 1}]))} \\
-	{\Gamma_i [C'_{i + 1}]} && {\Gamma_i [\Gamma_{i + 1}[C'_{i + 2}]] = \Hom_{C'_i}(1, \Hom_{C'_{i + 1}}(1, C'_{i + 2}))}
-	\arrow["{F'_i}", from=1-1, to=1-3]
+	{C'_i} && {\Gamma [C'_{i + 1}]} \\
+	\\
+	{\Gamma [C'_{i + 1}]} && {\Gamma [\Gamma[C'_{i + 2}]]}
 	\arrow["{F'_i}"', from=1-1, to=3-1]
-	\arrow["{\Gamma_i [F'_{i + 1}]}"', from=3-1, to=3-3]
-	\arrow["{F'_i}", from=1-3, to=2-3]
-	\arrow[Rightarrow, no head, from=2-3, to=3-3]
+	\arrow["{F'_i}", from=1-1, to=1-3]
+	\arrow["{\Gamma [F'_{i + 1}]}", from=1-3, to=3-3]
+	\arrow["{\InducedHomo{F'_i}{C'_{i + 1}}}"', from=3-1, to=3-3]
 \end{tikzcd}\]
+
+That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma[F'_{i + 1}] \circ F'_i$. This could be naively glossed as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}, in severe abuse of notation.
 \end{itemize}
 
-The top, left, and bottom of this diagram are straightforward. On the top-right, we have the action of $F'_i$ as a lexfunctor on a particular global section in its domain, taking it to a corresponding global section in its codomain (this is in the internal logic of $C_{i - 1}$ the induced homomorphism $\InducedHomo{F'_i}{C'_{i + 1}}$). And in the bottom-right, we have an equation which follows from our presumption that $F_i[C'_{i + 1}] = C'_{i + 2}$.
-
 This concludes the definition of a geminal category internal to $C_0$.
+
+By a \defined{geminal category} simpliciter, we mean of course the case where $C_0 = \Set$. (Note that in this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect, as the global sections functor from $\Set$ to $\Set$ is the identity.).
 \end{definition}
+
+We wrote out here the definition for general $C_0$, instead of specifically for $C_0 = \Set$, just to highlight certain symmetries in this definition.
 
 All aforementioned structure apart from $C_0$ itself has been given as $i$-tuply internal to $C_0$ for some $i > 0$. Thus, all of this structure is indeed given by diagrams within $C_0$.
 
-To be fully explicit, we would describe the above geminal category internal to $C_0$ by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. However, we take the abuse of notation convention of often referencing this geminal category simply via the name of $C'_1$ (the part of the structure which is a lexcategory directly internal to $C_0$).
+When being fully explicit, we reference such a geminal category internal to $C_0$ by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. However, we often take the abuse of notation convention of giving such a geminal category the same name as its first component $C'_1$, with the rest of the structure implicit instead of explicitly named.
 
-It is manifestly the case that this definition of a geminal category is essentially algebraic. That is, there is some essentially algebraic theory such that models of that theory internal to $C_0$ are the same thing as geminal categories internal to $C_0$. Of course, geminal categories simpliciter are just models of this theory in the ordinary sense; that is, geminal categories internal to $\Set$. (In this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect.).
+It is manifestly the case that this definition of a geminal category is essentially algebraic. That is, there is some essentially algebraic theory such that models of that theory internal to $C_0$ are the same thing as geminal categories internal to $C_0$.
 
 As an essentially algebraic theory, we automatically get a notion of homomorphism. In this case, it amounts to the following:
 
 \begin{definition}\label{VerboseGeminalCatHomoDefn}
 Given two geminal categories $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$ and $\langle D'_1, D'_2, $ $D'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$, a \defined{homomorphism} from the former to the latter consists of a lexfunctor $H : C'_1 \to D'_1$ such that $H[C'_i] = D'_i$ and $H[F'_i] = \phi'_i$ for each $i > 1$, while also the following diagram commutes:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJDJ18xIl0sWzEsMCwiRCdfMSJdLFsxLDEsIlxcR2xvYntEXzInfSJdLFswLDEsIlxcR2xvYntDXzInfSJdLFswLDEsIkgiXSxbMCwzLCJGJ18xIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0h9e0MnXzJ9IiwyXSxbMSwyLCJcXHBoaSdfMSJdXQ==
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJDJ18xIl0sWzIsMCwiRCdfMSJdLFsyLDIsIlxcR2xvYntIW0MnXzJdfSA9IFxcR2xvYntEXzInfSJdLFswLDIsIlxcR2xvYntDXzInfSJdLFswLDEsIkgiXSxbMCwzLCJGJ18xIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0h9e0MnXzJ9IiwyXSxbMSwyLCJcXHBoaSdfMSJdXQ==
 \[\begin{tikzcd}
-	{C'_1} & {D'_1} \\
-	{\Glob{C_2'}} & {\Glob{D_2'}}
-	\arrow["H", from=1-1, to=1-2]
-	\arrow["{F'_1}"', from=1-1, to=2-1]
-	\arrow["{\InducedHomo{H}{C'_2}}"', from=2-1, to=2-2]
-	\arrow["{\phi'_1}", from=1-2, to=2-2]
+	{C'_1} && {D'_1} \\
+	\\
+	{\Glob{C_2'}} && {\Glob{H[C'_2]} = \Glob{D_2'}}
+	\arrow["H", from=1-1, to=1-3]
+	\arrow["{F'_1}"', from=1-1, to=3-1]
+	\arrow["{\InducedHomo{H}{C'_2}}"', from=3-1, to=3-3]
+	\arrow["{\phi'_1}", from=1-3, to=3-3]
 \end{tikzcd}\]
-
-In this diagram, the bottom arrow is the action of $H$ as a homomorphism from the global aspect of $C'_2$ to the global aspect of $H[C'_2] = D'_2$.
 \end{definition}
 
 \begin{theorem}
 Given any geminal category $K_1 = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$, we have also that $K_2 = \langle C'_2, C'_3, C'_4, \ldots; F'_2, F'_3, F'_4 \ldots \rangle$ comprises a geminal category internal to $C'_1$.
 
-We furthermore have that $F'_1$ acts as a geminal category homomorphism from $K_1$ to $\Gamma_1[K_2]$ (where $\Gamma_1$ is the global sections functor from $C'_1$ to $\Set$).
+We furthermore have that $F'_1$ acts as a geminal category homomorphism from $K_1$ to the global aspect of $K_2$.
 \end{theorem}
 \begin{proof}
 This is all direct by definition.
 
-For the first part, each condition imposed upon each $C'_{i}$ or $F'_{i}$ in the definition of a geminal category comes with an analogous condition imposed upon $C'_{i + 1}$ or $F'_{i + 1}$. Thus, it is immediate that $K_2$ is itself a geminal category internal to the global aspect of $C'_1$.
+For the first part, each condition imposed upon each $C'_{i}$ or $F'_{i}$ in the definition of a geminal category comes with an analogous condition imposed upon $C'_{i + 1}$ or $F'_{i + 1}$. Thus, it is immediate that $K_2$ is itself a geminal category internal to $C'_1$.
 
-For the second part, the definition of a geminal category directly imposes upon $F_1$ precisely the conditions which are necessary for $F_1$ to comprise a geminal category homomorphism from $K_1$ to $\Gamma_1[K_2]$. \TODO
+For the second part, the definition of a geminal category directly imposes upon $F_1$ precisely the conditions which are necessary for $F_1$ to comprise a geminal category homomorphism from $K_1$ to the global aspect of $K_2$ (in particular, equation $E_1$ from \magicref{VerboseGeminalCatDefn} is identical to the commutative diagram from \magicref{VerboseGeminalCatHomoDefn}, in this context).
 \end{proof}
 
 The above all amounts to an infinitary presentation of the theory of geminal categories. For this reason, we it the \quote{verbose presentation} of geminal categories. However, it turns out this same theory can be finitely axiomatized as well.
 
 \begin{definition}[Geminal category (compact definition)]\label{CompactGeminalCatDefn}
-A \defined{compactly presented geminal category} internal to lexcategory $C_0$ consists of the structure $C'_i$, $F'_i$, and equations $E'_i$ of the verbose presentation, but only for $i \in \{1, 2\}$.
+A \defined{compactly presented geminal category} internal to lexcategory $C_0$ consists of the structure $C'_i$, $F'_i$, and equations $E_i$ of the verbose presentation, but only for $i \in \{1, 2\}$.
 
-(Here, in interpreting the codomain of $F'_2$, we take $C'_3$ to be $F_1[C'_2]$, and in interpreting the equation $E'_2$, we take $F'_3$ to be $F_1[F'_2]$)
+(Here, in interpreting the codomain of $F'_2$, we take $C'_3$ to be $F_1[C'_2]$, and in interpreting the equation $E_2$, we take $F'_3$ to be $F_1[F'_2]$)
 
 That is, a compactly presented geminal category internal to $C_0$ consists of the following six pieces of data:
 
 \begin{itemize}
     \item A lexcategory $C'_1$ internal to $C_0$, whose global aspect we call $C_1$.
+    
     \item A lexcategory $C'_2$ internal to $C_1$, whose global aspect we call $C_2$.
-    \item A lexfunctor $F'_1 : C'_1 \to \Gamma_1[C'_2]$, internal to $C_0$. We use $F_1 : C_1 \to C_2$ to denote the global aspect of $F'_1$.
     
-    (Here, $\Gamma_1 : C_1 \to C_0$ is the global sections functor $\Hom_{C_1}(1, -)$.)
+    \item A lexfunctor $F'_1 : C'_1 \to \Gamma[C'_2]$, internal to $C_0$. We call the global aspect of this $F_1 : C_1 \to C_2$.
     
-    \item A lexfunctor $F'_2 : C'_2 \to \Gamma_2[C'_3]$, internal to $C_1$.
+    \item A lexfunctor $F'_2 : C'_2 \to \Gamma[C'_3]$, internal to $C_1$.
     
-    (Here, $C'_3$ is defined as $F_1[C'_2]$, and $\Gamma_2 : C_2 \to C_1$ is the global sections functor $\Hom_{C_2}(1, -)$.)
+    (Here, $C'_3$ is defined as $F_1[C'_2]$.)
     
-    \item The equation $F_1 \circ F_1 = F_2 \circ F_1$, internal to $C_0$. We call this equation $E_1$.
+    \item The equation $\InducedHomo{F'_1}{C'_{2}} \circ F'_1 = \Gamma[F'_2] \circ F'_1$, internal to $C_0$. We call this equation $E_1$.
     
-    \item The equation $F_2 \circ F_2 = F_3 \circ F_2$, internal to $C_1$. We call this equation $E_2$.
+    \item The equation $\InducedHomo{F'_2}{C'_{3}} \circ F'_2 = \Gamma[F'_3] \circ F'_2$, internal to $C_1$. We call this equation $E_2$.
     
     (Here, $F'_3$ is defined as $F_1[F'_2]$.)
 \end{itemize}
@@ -214,7 +216,7 @@ The equations given to us directly in the compact presentation are the equations
 
 What remains is only to see that each $F_i$ for $i > 1$ also takes $C'_j$ to $C'_{j + 1}$ and takes $F'_j$ to $F'_{j + 1}$, for $j > i \geq 1$.
 
-We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[C'_j] = F_{i + 1} [F_i [C'_{j - 1}]] = (F_{i + 1} \circ F_i)[C'_{j - 1}] = (F_i \circ F_i) = F_i [F_i [C'_{j - 1}]] = F_i [C'_j] = C'_{j + 1}$, where the third step is by $E_i$. And similarly with $F'$ in place of $C'$ throughout as well.
+We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[C'_j] = F_{i + 1} [F_i [C'_{j - 1}]] = F_i [F_i [C'_{j - 1}]] = F_i [C'_j] = C'_{j + 1}$, where the second step is by $E_i$ and the other steps are by our induction hypothesis. And similarly with $F'$ in place of $C'$ throughout as well.
 \end{proof}
 
 \TODOinline{Everything following in this chapter is about to get thrown out/rewritten}

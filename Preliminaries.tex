@@ -40,7 +40,7 @@ Note that data defined over $t$ is automatically transferred to corresponding da
 
 In contexts where it is clear what presheaf $P$ we have in mind, we may also write $\pullAlong{m}$ for $P(m)$. Also, in contexts where it would cause no confusion to speak in this way, given some $t$-indexed datum $d \in P(t)$ and a morphism $m : s \to t$, we use the same name $d$ also to refer to the corresponding $s$-indexed datum which more explicitly would be called $P(m)(d)$ or $\pullAlong{m} d$. It will be especially common for us to abuse language in this name-reusing way when $t$ is a terminal object.
 
-In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}, which we may also denote as $\Glob{t}$. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets.
+In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets. We sometimes use the notation $\Glob{P}$ to refer to the global aspect of an indexed set $P$.
 
 \begin{definition}
 We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable.
@@ -295,7 +295,7 @@ We can talk about any kind of $T$-indexed structure or $T$-indexed maps between 
 
 Observe that, as $\pullAlong{f}$ for an arbitrary functor $f : S \to T$ preserves finite limits (by \magicref{PullalongIsLex}), it not only takes $T$-indexed sets to $S$-indexed sets but also acts as a functor from $T$-indexed structures to $S$-indexed structures more generally, for any notion of structure definable using finite limits. For example, $\pullAlong{f}$ takes $T$-indexed groups to $S$-indexed groups, and so on. Furthermore, by \magicref{RepsmallRightAdjoint}, if $f$ has a right adjoint, then $\pullAlong{f}$ will take \repsmall/ structures to \repsmall/ structures.
 
-Observe also that any $T$-indexed structure has a global aspect which is an ordinary (that is, non-indexed) structure of the same sort (as well as aspects at each object of $T$).
+Observe also that any $T$-indexed structure $S$ has a global aspect $\Glob{S}$ which is an ordinary (that is, non-indexed) structure of the same sort (as well as aspects at each object of $T$).
 
 \subsection{Indexed categories}
 \begin{definition}
@@ -626,19 +626,29 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
 \subsection{Multiply internal structures}\label{MultiplyInternal}
-Let $C_0$ be a strict lexcategory, and let $C'_1$ be an internal lexcategory in $C_0$. This $C'_1$ has a global aspect, which we may call $C_1$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
+Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
 
-In particular, we may even have some lexcategory $C'_2$ doubly internal to $C_0$; that is, $C'_2$ is a lexcategory internal to the global aspect of a lexcategory internal to $C_0$. We can then define $C_2$ as the global aspect of $C'_2$, and in the same way now speak of structures internal to $C_2$ as being triply internal to $C_0$.
+We may iterate this process. Suppose now that $C_2$ is the global aspect of some lexcategory internal to $C_1$, which in turn remains the global aspect of some lexcategory internal to $C_0$. We can now speak of structures internal to $C_2$ as being triply internal to $C_0$.
 
 And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
 
-Now recall that if $F : C \to D$ is a lexfunctor, and $S$ is some structure internal to $C$, then $F(S)$ is a similar structure internal to $D$, and furthermore, there is an induced homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may refer to this induced homomorphism as $F$ as well, in convenient abuse of notation.
+Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
 
-In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F$ as well.
+Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row.
 
-The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $F : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
+Note also that if $C$ is a lexcategory, $D$ is the global aspect of a $C$-indexed lexcategory, and $S$ is a $D$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$.
 
-If we wish to explicitly disambiguate, we may refer to this induced homomorphism as $F_S$ instead of simply as $F$.
+Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
+
+Next, observe that if $F : C \to D$ is a lexfunctor between lexcategories, and $S$ is some structure internal to $C$, then not only do we have $F(S)$ as a similar structure internal to $D$, but furthermore, the action of $F$ induces a homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may use the same name $F$ to refer to this induced homomorphism $F : \Glob{S} \to \Glob{F(S)}$ as well, or we may refer to it as $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$ to be explicit.
+
+In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F : \Glob{S_2} \to \Glob{F(S_2)}$ as well, or we may refer to it as $\InducedHomo{F}{S}$ to be explicit.
+
+The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
+
+This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal lexfunctor $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
+
+Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
 
 Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable smallness conditions, but they are probably more easily understood in the presentation just given.
 
