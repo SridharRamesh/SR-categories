@@ -136,7 +136,7 @@ This concludes the definition of a geminal category internal to $C_0$.
 
 By a \defined{geminal category} simpliciter, we mean of course the case where $C_0 = \Set$. (Note that in this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect, as the global sections functor from $\Set$ to $\Set$ is the identity.). We wrote out here the definition for general $C_0$, instead of specifically for $C_0 = \Set$, in order to emphasize certain symmetries in this definition.
 
-When being fully explicit, we reference a geminal category by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $|K|$ to denote what we call its \quote{underlying lexcategory}, $C'_1$.
+When being fully explicit, we reference a geminal category by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $|K|$ to refer to its underlying lexcategory $C'_1$.
 
 All aforementioned structure apart from $C_0$ itself has been given as $i$-tuply internal to $C_0$ for some $i > 0$. Thus, all of this structure is indeed given by diagrams within $C_0$.
 
@@ -165,26 +165,28 @@ Given two geminal categories $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3
 \begin{theorem}\label{GeminalContainsGeminal}
 Given any geminal category $K = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$, we have also that $\langle C'_2, C'_3, C'_4, \ldots; F'_2, F'_3, F'_4 \ldots \rangle$ comprises a geminal category internal to $|K| = C'_1$. We refer to this internal geminal category as $\InteriorGeminal{K}$.
 
-We furthermore have that $F'_1$ acts as a geminal category homomorphism from $K$ to the global aspect of $\InteriorGeminal{K}$. For general $K$, we refer to this homomorphism as $\IntoSelf{K} : K \to \Gamma[\InteriorGeminal{K}]$.
+We furthermore have that $F'_1$ acts as a geminal category homomorphism from $K$ to the global aspect of $\InteriorGeminal{K}$. We refer to this homomorphism as $\IntoSelf{K} : K \to \Gamma[\InteriorGeminal{K}]$.
 \end{theorem}
 \begin{proof}
 This is all direct by definition.
 
 For the first part, each condition imposed upon each $C'_{i}$ or $F'_{i}$ in the definition of a geminal category comes with an analogous condition imposed upon $C'_{i + 1}$ or $F'_{i + 1}$. Thus, it is immediate that the given $\InteriorGeminal{K}$ satisfies the conditions to be a geminal category internal to $|K|$.
 
-For the second part, the definition of a geminal category directly imposes upon $F_1$ precisely the conditions which are necessary for $F_1$ to comprise a geminal category homomorphism from $K$ to the global aspect of $\InteriorGeminal{K}$. In particular, equation $E_1$ from \magicref{VerboseGeminalCatDefn} is identical to the commutative diagram from \magicref{VerboseGeminalCatHomoDefn}, in this context.
+For the second part, the definition of a geminal category directly imposes upon $F'_1$ precisely the conditions which are necessary for $F'_1$ to comprise a geminal category homomorphism from $K$ to the global aspect of $\InteriorGeminal{K}$. In particular, equation $E_1$ from \magicref{VerboseGeminalCatDefn} is identical to the commutative diagram from \magicref{VerboseGeminalCatHomoDefn}, in this context.
 \end{proof}
 
-Via the yoga of functorial semantics, \magicref{GeminalContainsGeminal} states how the theory of geminal categories can be equipped as an introspective theory (which can further be taken to be strict, via \magicref{StrictifyingIntrosp}). In detail, this is given like so:
+Via the yoga of functorial semantics, \magicref{GeminalContainsGeminal} states how the theory of geminal categories can be equipped as an introspective theory. In detail, this is given like so:
 
 \begin{construction}\label{GLCatTheoryIsIntrosp}
-Let $\GLCatTheory$ be the free strict lexcategory with an internal geminal category. Thus, strict lexfunctors from $\GLCatTheory$ to any other strict lexcategory $D$ correspond to geminal categories internal to $D$, while natural transformations between such lexfunctors correspond to homomorphisms between these $D$-internal geminal categories.
+Let $\GLCatTheory$ be the free strict lexcategory with an internal geminal category (that is, in the terminology of \magicref{QuasiTheoryTheory}, we take $\GLCatTheory$ to be the classifying strict lexcategory $\classifying{\theoryT}$, where $\theoryT$ is the theory of geminal categories). 
+
+Thus, strict lexfunctors from $\GLCatTheory$ to any other strict lexcategory $D$ correspond to geminal categories internal to $D$, while natural transformations between such lexfunctors correspond to homomorphisms between these $D$-internal geminal categories.
 
 Let $K$ denote the $\GLCatTheory$-internal geminal category corresponding to the identity functor on $\GLCatTheory$.
 
 By \magicref{GeminalContainsGeminal} in the internal logic of $\GLCatTheory$, we obtain also a geminal category $\InteriorGeminal{K}$ internal to $|K|$, as well as a homomorphism $\IntoSelf{K} : K \to \Gamma[\InteriorGeminal{K}]$.
 
-Thus, there is some strict lexfunctor $\introS$ from $\GLCatTheory$ to the global aspect of $|K|$, corresponding to $\InteriorGeminal{K}$. Furthermore, there is some natural transformation $\introN$ from the identity functor $\GLCatTheory$ to $\Hom_{|K|}(1, \introS(-))$, corresponding to $\IntoSelf{K}$.
+Thus, there is some strict lexfunctor $\introS$ from $\GLCatTheory$ to the global aspect of $|K|$, corresponding to $\InteriorGeminal{K}$. Furthermore, there is some natural transformation $\introN$ from the identity functor on $\GLCatTheory$ to $\Hom_{|K|}(1, \introS(-))$, corresponding to $\IntoSelf{K}$.
 
 Putting this together, we have a strict introspective theory $\langle \GLCatTheory, |K|, \introS, \introN \rangle$.
 \end{construction}
@@ -292,9 +294,9 @@ The conjunction of these conditions clearly is uniquely satisfied by $\gamma$. T
 \end{proof}
 
 \subsection{Geminal gadgets}
-We have now successfully described the initial introspective theory, but we can also take our free construction results a bit further than this.
+We have now successfully described the initial introspective theory. But we can also take our free construction results a bit further than this.
 
-Specifically, every introspective theory is, among other things, an essentially algebraic theory extending the theory of strict lexcategories. That is, we have a functor from the category of introspective theories to the category of essentially algebraic theories extending the theory of strict lexcategories (essentially, this functor takes $\langle T, C, \introS, \introN$ to $\langle T, C, \rangle$). This functor has a left adjoint.
+Specifically, every introspective theory is, among other things, an essentially algebraic theory extending the theory of strict lexcategories. That is, we have a functor from the category of introspective theories to the category of extensions of the essentially algebraic theory of strict lexcategories (essentially, this functor takes $\langle T, C, \introS, \introN \rangle$ to $\langle T, C \rangle$). This functor has a left adjoint.
 
 Put in other words, for any essentially algebraic theory $Th$ such that models of $Th$ come with an underlying strict lexcategory, there is a free strict introspective theory $\langle T, C, \introS, \introN \rangle$ with a designated $T$-internal model of $Th$ with underlying lexcategory $C$.
 
