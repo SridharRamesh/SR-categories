@@ -196,11 +196,13 @@ The construction is given in section 2 of \autocite{BungeSymmetricTopos}, follow
 Let $PrimRec$ denote the free category with finite products and a parameterized NNO, and let $PrimRecLex$ denote the free category with finite limits and a paremeterized NNO. By the above lemma, PrimRec is equivalent to the full subcategory of PrimRecLex comprising finite powers of the natural numbers object.
 
 \begin{construction}
-Suppose $T$ is a lexcategory, and $M$ is a subset of the monic arrows of $T$ which includes all isomorphisms, is closed under composition, and is closed under pullback along arbitrary morphisms of $T$.
+Suppose $T$ is a lexcategory, fix some lexfunctor $q$ on domain $T$, and let $M$ be the subset of arrows of $T$ which are sent to isomorphisms by $q$.
 
-Then using the \quote{calculus of (right) fractions}, we have a tractable explicit construction of the category $T[M^{-1}]$ which freely makes each arrow in $M$ an isomorphism. That is, we have a functor $f : T \to T[M^{-1}]$ such that $f(m)$ is an isomorphism for each $m \in M$, and furthermore, for any other category $U$ and functor $g : T \to U$ such that $g(m)$ is an isomorphism for each $m \in M$, we have that $g$ factors uniquely through $f$ by another lexfunctor. In fact, this $T[M^{-1}]$ is a lexcategory and $f$ is a lexfunctor. When $g$ is a lexfunctor, its factorization through $f$ is by a lexfunctor as well \TODOinline{This last statement isn't explicitly in Borceux yet, but follows like so: It's easy enough to see the factoring functor preserves products, since the objects of $T[M^{-1}]$ are the same as those of $T$. Preservation of equalizers similarly follows from the fact that any two parallel maps in $T[M^{-1}]$ are given by an isomorphism in $M^{-1}$ followed by two parallel maps from $T$.}.
+Then using the \quote{calculus of (right) fractions}, we have a tractable explicit construction of the \quote{localized} category $T[M^{-1}]$ which freely makes each arrow in $M$ an isomorphism. That is, we have a functor $f : T \to T[M^{-1}]$ such that $f(m)$ is an isomorphism for each $m \in M$, and furthermore, for any other category $U$ and functor $g : T \to U$ such that $g(m)$ is an isomorphism for each $m \in M$, we have that $g$ factors uniquely through $f$ (up to natural isomorphism) by another functor $g'$. In fact, this $T[M^{-1}]$ is a lexcategory and $f$ is a lexfunctor. When $g$ preserves finite limits, the corresponding $g'$ preserves finite limits as well. Thus, this is simultaneously a localization qua category and localization qua lexcategory.
 
-The details of this calculus of fractions construction are a special case of the construction given in Proposition 5.2.4, combined with the consequences of Proposition 5.2.5, in \autocite{BorceuxHandbook1}.
+The details of this calculus of fractions construction are given in \autocite{gabrielzisman1967}, with the above result as the combination of their Propositions 3.1, 3.2, and 3.4.
+
+We furthermore have the observation that, for any parallel $g_1, g_2 : T \to U$, with $g_1', g_2' : T[M^{-1}] \to U$ being their corresponding factorizations through $f : T \to T[M^{-1}]$, then each natural isomorphism from $g_1$ to $g_2$ is the whiskering along $f$ of a unique natural isomorphism from $g_1'$ to $g_2'$ (that is, $f$ induces an isomorphism from $\Hom(g_1', g_2')$ to $\Hom(g_1, g_2)$; that is, the functor $f$ induces from $U^{T[M^{-1}]}$ to $U^T$ is full and faithful). This follows from considering the arrow category $U^{arrow}$, its relationship to natural transformations, and the fact that morphisms in $U^{arrow}$ are invertible just in case both their projections to $U$ are invertible. \TODOinline{Write this last paragraph better or find a cite for it; the result, though not the proof, is noted at the nLab page on localization}
 \end{construction}
 
 \begin{lemma}
@@ -210,6 +212,28 @@ Suppose $T$ is a lexcategory with a pullback-stable NNO $\nat$, and suppose $T'$
 \begin{lemma}
 Let $T$ be any arithmetic universe in which every object is a subquotient of $N$, and every subobject of $N$ is equal to one coming from the initial arithmetic universe. Then $T$ is some localization of the initial arithmetic universe.
 \end{lemma}
+
+\TODOinline{Perhaps forget all the above leading to localizing AUs. Instead, we can just directly localize introspective theories, as long as they have corresponding internal localizations as well. In fact, the internal localization doesn't need the universal property, it just needs to have made the appropriate maps into isomorphisms. The tricky part of this is showing that we still have our N. This is because objects don't change under localization (so we can reuse the components of the old N), and the new morphisms are all compositions of old morphisms or inverses of old morphisms (so we automatically get naturality with respect to them just from the old naturalities). It appears we could also freely add new equations between morphisms without issue.
+
+A corollary of this is that any AU (call it T) internal to the initial AU gives rise to an introspective theory, as there will be an internal map from the internal initial AU to T, and there will also be the actual interpretation of T in Set, and this will admit a lexfunctor into the global aspect of the internal T. Furthermore, the actual interpretation of T in Set will admit an arithmetic functor from the initial AU, and the image of this, in some suitable sense, will be the sigma_1 aspect of T, which is suitably constrained so as to allow us to still have our N.}
+
+Let IAU be the initial AU.
+
+We have automatically two lexfunctors from IAU to Set: one is the unique AU-functor $!$ from IAU to Set, and the other is the global sections lexfunctor $\Hom_{IAU}(1, -)$. From the sigma1esque properties of IAU, we have that $!$ is initial in Lex(IAU, Set), while from the yoga of lexfunctors, we also hae that $\Hom_{IAU}(1, -)$ is initial in Lex(IAU, Set). Thus, $!$ and $\Hom_{IAU}(1, -)$ are uniquely isomorphic.
+
+Let $C$ be any AU internal to IAU, and let $\Glob{C}$ be its global aspect (equivalently, its image under $!$). Let $\Gamma_C : \Glob{C} \to IAU$ be the global sections functor $\Hom_C(1, -)$.
+
+We can equip IAU as an introspective theory via \magicref{IAUAsIntrosp}. Using the unique internal arithmetic functor from IAU's internal initial IAU to $C$, along with \magicref{IntrospInternalMap}, we can re-equip IAU as an introspective theory we will call $\langle IAU, C, \introS, \introN \rangle$ in the following. (Actually, we needn't even use this particular approach to the construction here. We obtain the same $\langle IAU, C, \introS, \introN \rangle$ by taking $\introS : IAU \to \Glob{C}$ to be the unique such arithmetic functor (by initiality of IAU), and $\introN : \id_{IAU} \to \Gamma_C \circ \introS$ to be the unique such natural transformation (by sigma1esqueness).)
+
+Let $M$ be the morphisms in IAU whose image under $\introS$ is invertible; we can form the localization (qua lexcategory) $f : IAU \to IAU[M^{-1}]$, along with lexfunctor $g : IAU[M^{-1}] \to \Glob{C}$ such that $g \circ f = \introS$. This $IAU[M^{-1}]$ is like the $\Sigma_1$ aspect of $\Glob{C}$.
+
+Now let $\Gamma[M^{-1}]_C : \Glob{C} \to IAU$ be the composition $f \circ \Gamma_C$. By whiskering along $f$, we get $f \introN : f \to f \circ \Gamma_C \circ \introS = f \circ \Gamma_C \circ g \circ f$.
+
+By the properties of localization with respect to natural transformation, this corresponds to some unique natural transformation $H : \id_{IAU[M^{-1}]} \to f \circ \Gamma_C \circ g$, such that $f \introN = H f$.
+
+Now, let's define $C'$ as $f[C]$. Let $\Gamma_C' : \Glob{C'} \to IAU[M^{-1}]$ be the corresponding global sections functor. Note that we have also $\InducedHomo{f}{S} : \Glob{C} \to \Glob{C'}$. Let $\introS' : IAU[M^{-1}]$ be given as the composition $\InducedHomo{F}{S} \circ g$. Finally, we need a natural transformation $\introN' : \id_{IAU[M^{-1}]} \to \Gamma_C' \circ \introS' = \Gamma_C' \circ \InducedHomo{f}{S} \circ g$. We obtain this $\introN'$ by taking $H$ as above and composing it with the whiskering along $g$ of the canonical natural transformation from $f \circ \Gamma_C$ to $\Gamma_C' \circ \InducedHomo{f}{S}$.
+
+This completes the construction of $\langle IAU[M^{-1}], C', \introS', \introN' \rangle$ as an introspective theory.
 
 \subsection{Geminal gadgets more generally}
 A geminal gadget internal to lexcategory $C_0$ consists (among other things) of a sequence $G_1, C_1, G_2, C_2, G_3, C_3, \ldots$, where for $i \geq 0$, each $G_{i + 1}$ is a gadget internal to $C_i$ and each $C_{i + 1}$ is the global aspect of the underlying (strict) lexcategory of $G_{i + 1}$.
