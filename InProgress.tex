@@ -219,7 +219,7 @@ A corollary of this is that any AU (call it T) internal to the initial AU gives 
 
 Let IAU be the initial AU.
 
-We have automatically two lexfunctors from IAU to Set: one is the unique AU-functor $!$ from IAU to Set, and the other is the global sections lexfunctor $\Hom_{IAU}(1, -)$. From the sigma1esque properties of IAU, we have that $!$ is initial in Lex(IAU, Set), while from the yoga of lexfunctors, we also hae that $\Hom_{IAU}(1, -)$ is initial in Lex(IAU, Set). Thus, $!$ and $\Hom_{IAU}(1, -)$ are uniquely isomorphic.
+We have automatically two lexfunctors from IAU to Set: one is the unique AU-functor $!$ from IAU to Set, and the other is the global sections lexfunctor $\Hom_{IAU}(1, -)$. From the sigma1esque properties of IAU, we have that $!$ is initial in Lex(IAU, Set), while from the yoga of lexfunctors, we also have that $\Hom_{IAU}(1, -)$ is initial in Lex(IAU, Set). Thus, $!$ and $\Hom_{IAU}(1, -)$ are uniquely isomorphic.
 
 Let $C$ be any AU internal to IAU, and let $\Glob{C}$ be its global aspect (equivalently, its image under $!$). Let $\Gamma_C : \Glob{C} \to IAU$ be the global sections functor $\Hom_C(1, -)$.
 
@@ -227,13 +227,15 @@ We can equip IAU as an introspective theory via \magicref{IAUAsIntrosp}. Using t
 
 Let $M$ be the morphisms in IAU whose image under $\introS$ is invertible; we can form the localization (qua lexcategory) $f : IAU \to IAU[M^{-1}]$, along with lexfunctor $g : IAU[M^{-1}] \to \Glob{C}$ such that $g \circ f = \introS$. This $IAU[M^{-1}]$ is like the $\Sigma_1$ aspect of $\Glob{C}$.
 
-Now let $\Gamma[M^{-1}]_C : \Glob{C} \to IAU$ be the composition $f \circ \Gamma_C$. By whiskering along $f$, we get $f \introN : f \to f \circ \Gamma_C \circ \introS = f \circ \Gamma_C \circ g \circ f$.
+By whiskering along $f$, we get $f \introN : f \to f \circ \Gamma_C \circ \introS = f \circ \Gamma_C \circ g \circ f$. By the properties of localization with respect to natural transformation, this corresponds to some unique natural transformation $H : \id_{IAU[M^{-1}]} \to f \circ \Gamma_C \circ g$ such that $f \introN = H f$. \TODOinline{We can perhaps tighten this up by showing sigma1esqueness of $IAU[M^{-1}]$, so that this natural transformation is uniquely determined}
 
-By the properties of localization with respect to natural transformation, this corresponds to some unique natural transformation $H : \id_{IAU[M^{-1}]} \to f \circ \Gamma_C \circ g$, such that $f \introN = H f$.
-
-Now, let's define $C'$ as $f[C]$. Let $\Gamma_C' : \Glob{C'} \to IAU[M^{-1}]$ be the corresponding global sections functor. Note that we have also $\InducedHomo{f}{S} : \Glob{C} \to \Glob{C'}$. Let $\introS' : IAU[M^{-1}]$ be given as the composition $\InducedHomo{F}{S} \circ g$. Finally, we need a natural transformation $\introN' : \id_{IAU[M^{-1}]} \to \Gamma_C' \circ \introS' = \Gamma_C' \circ \InducedHomo{f}{S} \circ g$. We obtain this $\introN'$ by taking $H$ as above and composing it with the whiskering along $g$ of the canonical natural transformation from $f \circ \Gamma_C$ to $\Gamma_C' \circ \InducedHomo{f}{S}$.
+Now, let's define $C'$ as $f[C]$. Let $\Gamma_C' : \Glob{C'} \to IAU[M^{-1}]$ be the corresponding global sections functor. Note that we have also $\InducedHomo{f}{C} : \Glob{C} \to \Glob{C'}$. Let $\introS' : IAU[M^{-1}] \to \Glob{C'}$ be given as the composition $\InducedHomo{f}{C} \circ g$. Finally, we need a natural transformation $\introN' : \id_{IAU[M^{-1}]} \to \Gamma_C' \circ \introS' = \Gamma_C' \circ \InducedHomo{f}{C} \circ g$. We obtain this $\introN'$ by taking $H$ as above and composing it with the whiskering along $g$ of the canonical natural isomorphism (given by \magicref{InducedGlobalCommute}) from $f \circ \Gamma_C$ to $\Gamma_C' \circ \InducedHomo{f}{C}$.
 
 This completes the construction of $\langle IAU[M^{-1}], C', \introS', \introN' \rangle$ as an introspective theory.
+
+***
+
+One upshot of all of the above is that, given IAU and any AU $C$ internal to IAU, there is a unique corresponding introspective theory $\langle IAU, C$ for which the $\introS$ is an arithmetic functor. And given any introspective theory, there is a unique localization of it for which the $\introS$ is a conservative functor.
 
 \subsection{Geminal gadgets more generally}
 A geminal gadget internal to lexcategory $C_0$ consists (among other things) of a sequence $G_1, C_1, G_2, C_2, G_3, C_3, \ldots$, where for $i \geq 0$, each $G_{i + 1}$ is a gadget internal to $C_i$ and each $C_{i + 1}$ is the global aspect of the underlying (strict) lexcategory of $G_{i + 1}$.

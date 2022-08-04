@@ -173,7 +173,18 @@ Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of 
 
 \subsubsection{The theory of initial models as an introspective theory}
 
-Let $T$ be a lexcategory. Let us say an object $f : T \to S$ of the slice 2-category $T/\LexCat$ is a $T$-initializer if $f$ is initial within $\LexCat(T, S)$. Let us say the 2-category of $T$-initializers is $T/\LexCat$ restricted to just having the $T$-initializers as objects. (N.B. In this slice 2-category, we take the 1-cells to be triangles which commute up to invertible 2-cells, not up to lax 2-cells)
+\begin{definition}\label{Initializer}
+We say a lexfunctor $f : T \to S$ is an \defined{initializer} if $f$ is initial among all parallel lexfunctors. That is, for any parallel lexfunctor $g : T \to S$, there is a unique natural transformation from $f$ to $g$.
+\end{definition}
+
+\begin{lemma}\label{TermModelIsInitialForLex}
+For any lexcategory $C$, its global sections lexfunctor $\Hom_C(1, -) : C \to \Set$ is an initializer.
+\end{lemma}
+\begin{proof}
+By the Yoneda lemma, for any functor $f : C \to \Set$, the natural transformations from $\Hom_C(1, -)$ to $f$ are in correspondence with the elements of $f(1)$. But if $f$ is a lexfunctor, then $f(1)$ has a unique element.
+\end{proof}
+
+By the 2-category of $T$-initializers, we mean $T/\LexCat$ restricted to just having the $T$-initializers as objects. (N.B. In this coslice 2-category, we take the 1-cells to be triangles which commute up to invertible 2-cells, not up to lax 2-cells)
 
 \begin{theorem}
 For every (\setsmall/) lexcategory $T$, there is an initial object within the 2-category of $T$-initializers.
@@ -210,6 +221,13 @@ We now know that we have at least one such functor (the unique AU map from $A$ t
 \end{TODOblock}
 
 \subsection{The initial arithmetic universe}
+\begin{theorem}
+Every arithmetic functor out of the initial arithmetic universe is an initializer. That is, if $\IAU$ is the initial arithmetic universe, $C$ is any other arithmetic universe, $! : \IAU \to C$ is the unique arithmetic functor between these, and $f: \IAU \to C$ is an arbitrary lexfunctor, then there is a unique natural transformation from $!$ to $f$.
+\end{theorem}
+\begin{proof}
+Consider the comma category $(\id_C / f)$ and apply \magicref{CommaStableArithmetic}. \TODO
+\end{proof}
+
 Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. Let us now show how the fourth, a suitable natural transformation, can be obtained.
 
 This natural transformation is the one constructed in Lemma 5.15 of \autocite{van2020g}. The construction goes as follows:
@@ -264,13 +282,6 @@ Let $T_{IAU}$ be some quotient of IAU' internal to IAU. Then the arithmetic func
 
 \begin{theorem}\label{RetractIsCocontinuousEtc}
 Any retract of a coproduct-preserving(/regular/arithmetic) functor is itself coproduct-preserving(/regular/arithmetic, respectively).
-\end{theorem}
-\begin{proof}
-\TODO
-\end{proof}
-
-\begin{theorem}\label{TermModelIsInitialForLex}
-The global sections functor from a lexcategory to $\Set$ is initial among all parallel lexfunctors.
 \end{theorem}
 \begin{proof}
 \TODO

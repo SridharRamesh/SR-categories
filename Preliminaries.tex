@@ -5,7 +5,9 @@
 \subsection{Higher categorical terminology conventions}
 We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
-We will take all categories to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc, but wherever this is important we will make some explicit note.
+We will take all categories we work with to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
+
+In particular, we do not bother explicitly stating size restrictions on an arbitrary category $C$ before using the Yoneda embedding of $C$ into $\Set^{C^{op}}$. Only in situations where there is some risk that it would not be possible to simply interpret $\Set$ as suitably large relative to $C$ do we bother making explicit comment on size issues.
 
 We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We may occasionally write $n ; m$ to mean $m \circ n$. We write $\id_X$ or just $\id$ for the identity morphism on an object $X$. When $C$ is a category, we occasionally write $c \in C$ to mean that $c$ is an object of $C$.
 
@@ -304,7 +306,7 @@ In the same vein as all this, by a $T$-\defined{indexed category}, we mean a cat
 
 One might have thought our definition of $T$-indexed category-like structures would simply be a special case of our previous definition of $T$-indexed set-like structures as suitable diagrams within $\Psh{T}$ (that is, as suitable diagrams of $\Set$-valued functors). That is indeed the essence of this definition. However, the fact that we take indexed categories to be given by pseudofunctors into the 2-category $\Cat$, instead of treating $\Cat$ as a 1-category, provides a subtle but technically convenient generalization beyond directly demanding mere diagrams of $\Set$-valued functors.
 
-Still, all the same notational conventions apply to indexed categories. E.g., given a $T$-indexed category $C$, we write $C(t)$ (or $C_t$) for the category which is the $t$-aspect of $C$ at an object $t$ of $T$, we write $C(m) : C(t) \to C(s)$ (or $C_m$) for the functor induced by a morphism $m: s \to t$ in $T$, we may write $\pullAlong{m}$ instead of $C(m)$ in contexts where it is clear that we are referring to the action of $C$, etc.
+Still, all the same notational conventions apply to indexed categories. E.g., given a $T$-indexed category $C$, we write $C(t)$ (or $C_t$, or even Yoneda-style $\Hom(t, C)$) for the category which is the $t$-aspect of $C$ at an object $t$ of $T$, we write $C(m) : C(t) \to C(s)$ (or $C_m$) for the functor induced by a morphism $m: s \to t$ in $T$, we may write $\pullAlong{m}$ instead of $C(m)$ in contexts where it is clear that we are referring to the action of $C$, etc.
 
 We now might like to speak about an indexed category being \repsmall/, in the sense that its collection of objects and its collection of morphisms are both \repsmall/. This is the essence of the definition we will indeed adopt (at \magicref{RepsmallCategoryDefn}) but there is one pitfall to be aware of here, related to the just mentioned subtlety. We generally speak about categories in such a way as that they do not come with a particular notion of their set of objects, as such. That is, two categories may be equivalent (in the technical sense of \quote{equivalent} within the 2-category $\Cat$) though presented with different ostensible sets of objects. For example, a category presented as comprised of one terminal object, and a category presented as comprised of two isomorphic terminal objects, are equivalent categories; there is no pseudofunctor from the 2-category of categories, functors, and natural isomorphisms to $\Set$ which would send the first of these to a one-element set and the second to a two-element set. We are to treat them as the \quote{same} category. So to speak about a category as having a particular set of objects, we must imagine it as carrying more fine-grained equality structure on its objects than we normally do.
 
@@ -648,6 +650,26 @@ The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each 
 
 This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal lexfunctor $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
 
+\begin{observation}\label{InducedGlobalCommute}
+If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$ (in the sense of a canonical isomorphism). That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary element $m \in \Hom_C(1, Q)$:
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEdsb2J7UX0iXSxbMCwzLCJcXEdsb2J7RihRKX0iXSxbMywwLCJDIl0sWzMsMywiRCJdLFsxLDEsIm0iXSxbMSwyLCJGKG0pIl0sWzIsMSwiXFxIb21fUSgxLCBtKSJdLFsyLDIsIkYoXFxIb21fUSgxLCBtKSkgPSBcXEhvbV97RihRKX0oMSwgRihtKSkiXSxbMCwxLCJcXEluZHVjZWRIb21ve0Z9e1F9IiwyXSxbMCwyLCJcXEdhbW1hX1EiXSxbMSwzLCJcXEdhbW1hX3tGKFEpfSIsMl0sWzQsNiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsyLDMsIkYiXV0=
+\[\begin{tikzcd}
+	{\Glob{Q}} &&& C \\
+	& m & {\Hom_Q(1, m)} \\
+	& {F(m)} & {F(\Hom_Q(1, m)) = \Hom_{F(Q)}(1, F(m))} \\
+	{\Glob{F(Q)}} &&& D
+	\arrow["{\InducedHomo{F}{Q}}"', from=1-1, to=4-1]
+	\arrow["{\Gamma_Q}", from=1-1, to=1-4]
+	\arrow["{\Gamma_{F(Q)}}"', from=4-1, to=4-4]
+	\arrow[maps to, from=2-2, to=2-3]
+	\arrow[maps to, from=2-2, to=3-2]
+	\arrow[maps to, from=3-2, to=3-3]
+	\arrow[maps to, from=2-3, to=3-3]
+	\arrow["F", from=1-4, to=4-4]
+\end{tikzcd}\]
+\end{observation}
+
 Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
 
 Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable smallness conditions, but they are probably more easily understood in the presentation just given.
@@ -694,16 +716,16 @@ Let an arbitrary $k : B \to (f_X/f_Y)$ be given. By the universal property of th
 \end{proof}
 
 \begin{corollary}\label{CommaCategoryColimits}
-Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have colimits of a particular shape and $f_X$ preserves colimits of that shape, then $(f_X / f_Y)$ has colimits of that shape, preserved by both projections $\pi_X$ and $\pi_Y$.
+Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have colimits of a particular shape and $f_X$ preserves colimits of that shape, then the two projections out of $(f_X / f_Y)$ jointly create colimits of that shape.
 
-Furthermore, an arbitrary functor into $(f_X / f_Y)$ then preserves colimits of that shape iff its composition with both projections preserves such colimits.
+That is, $(f_X / f_Y)$ has colimits of that shape, both projections out of this comma category preserve colimits of that shape, and these projections jointly reflect colimits of that shape (i.e., a functor into the comma category preserves colimits of that shape whenever its compositions with both projections preserve colimits of that shape).
 
 (Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
 \end{corollary}
 \begin{proof}
-The first statement follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along such a functor.
+The existence of such colimits in $(f_X / f_Y)$, along with their preservation by both projections, follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along such a functor.
 
-The second statement then follows from the fact that in addition to the the forgetful functor from $(f_X / f_Y)$ into $X \times Y$ preserving colimits as just shown, such a forgetful functor from a comma category to a product category is always conservative (that is, if the image of a morphism under this functor is invertible, the morphism was already invertible in the comma category). A conservative functor which preserves colimits, on a category which has those colimits, automatically has the desired property that a functor into its domain preserves such colimits iff their composition preserves such colimits.
+The final claim (the joint reflection of such colimits) then follows from the fact that the forgetful functor from $(f_X / f_Y)$ into $X \times Y$, like any forgetful functor from a comma category to the corresponding product category, is conservative (that is, if the image of a morphism under this functor is invertible, the morphism was already invertible in the comma category). A conservative functor which preserves colimits, on a category which has those colimits, automatically also reflects colimits.
 \end{proof}
 
 \begin{corollary}\label{LexCatComma}
@@ -731,26 +753,26 @@ For turning the initial AU into our PA sigma 1 models, etc, after we've establis
 We note here some further corollaries of the above (all with similar proofs; \TODO):
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are lexcategories with pullback stable finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the comma category $(f_X, f_Y)$ also is a lexcategory with finite coproducts, and those coproducts are preserved by its projections to $X$ and $Y$.
+If $X$, $Y$, and $\omega$ are lexcategories with pullback stable finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the comma category $(f_X, f_Y)$ also is a lexcategory with finite coproducts, and those coproducts are preserved and jointly reflected by its projections to $X$ and $Y$.
 
 If furthermore finite coproducts are disjoint in $X$, $Y$, and $\omega$ (i.e., these are extensive categories), then this is the case in $(f_X, f_Y)$ as well.
 \end{corollary}
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are regular categories, $f_X : X \to \omega$ is a regular functor, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ is also a regular category, and its projections to $X$ and $Y$ are regular functors.
+If $X$, $Y$, and $\omega$ are regular categories, $f_X : X \to \omega$ is a regular functor, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ is also a regular category, and its projections to $X$ and $Y$ preserve and jointly reflect regular structure.
 
 If $X$, $Y$, and $\omega$ are furthermore effective regular (aka, exact), then so is $(f_X, f_Y)$.
 \end{corollary}
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable natural numbers objects, $f_X : X \to \omega$ is a lexfunctor preserving the natural numbers object, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also has a pullback-stable natural numbers object, and its projections to $X$ and $Y$ preserve the natural numbers object.
+If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable natural numbers objects, $f_X : X \to \omega$ is a lexfunctor preserving the natural numbers object, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also has a pullback-stable natural numbers object, and its projections to $X$ and $Y$ preserve and jointly reflect natural numbers objects.
 
 The same holds replacing the condition of natural numbers objects with list objects more generally.
 \end{corollary}
 
 Putting these all together, we have:
 \begin{corollary}\label{CommaStableArithmetic}
-If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve arithmetic universe structure.
+If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve and jointly reflect arithmetic universe structure.
 \end{corollary}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
