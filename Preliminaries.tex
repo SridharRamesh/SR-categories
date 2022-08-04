@@ -677,7 +677,7 @@ Multiply internal structures can equivalently be thought of as multiply indexed 
 \subsection{Comma objects and their interaction with Kan extensions}
 
 \begin{theorem}[The Comma-Kan Lemma] \label{CommaKan}
-Suppose, within some 2-category $C$, we have the following comma object and left Kan extensions:
+Suppose, within some 2-category, we have the following comma object and left Kan extensions:
 
 % https://q.uiver.app/?q=WzAsNyxbNCwyLCJYIl0sWzQsNCwiXFxvbWVnYSJdLFsyLDQsIlkiXSxbMiwyLCIoZl9YL2ZfWSkiXSxbMSwxLCJBIl0sWzAsMCwiQiJdLFs1LDFdLFswLDEsImZfWCJdLFsyLDEsImZfWSIsMl0sWzMsMiwiXFxwaV9ZIiwyXSxbMywwLCJcXHBpX1giXSxbMCwyLCJcXGdhbW1hIiwyLHsibGV2ZWwiOjJ9XSxbNCwzLCJzIiwxXSxbNCw1LCJxIiwxXSxbNSwwLCJcXExhbl9xIChzOyBcXHBpX1gpIl0sWzUsMiwiXFxMYW5fcShzOyBcXHBpX1kpIiwyXSxbMywxNCwiXFxlcHNpbG9uX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzMsMTUsIlxcZXBzaWxvbl9ZIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
 \[\begin{tikzcd}
@@ -723,7 +723,7 @@ That is, $(f_X / f_Y)$ has colimits of that shape, both projections out of this 
 (Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
 \end{corollary}
 \begin{proof}
-The existence of such colimits in $(f_X / f_Y)$, along with their preservation by both projections, follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along such a functor.
+The existence of such colimits in $(f_X / f_Y)$, along with their preservation by both projections, follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along functors to the terminal category.
 
 The final claim (the joint reflection of such colimits) then follows from the fact that the forgetful functor from $(f_X / f_Y)$ into $X \times Y$, like any forgetful functor from a comma category to the corresponding product category, is conservative (that is, if the image of a morphism under this functor is invertible, the morphism was already invertible in the comma category). A conservative functor which preserves colimits, on a category which has those colimits, automatically also reflects colimits.
 \end{proof}
@@ -750,10 +750,10 @@ Take $Y = \omega = X$, let $f_X$ be the identity on $X$, and let $f_Y : |X| \to 
 For turning the initial AU into our PA sigma 1 models, etc, after we've established that AUs are closed under comma category constructions, let X = Y = omega =the initial AU in which some AU definable morphisms are invertible, let f_X = identity, and f_y = arbitrary lex. It follows that the comma category is also an AU, and because everything is component wise, the projections send the relevant AU-definable morphisms to invertible morphisms. Since projections from a comma object are jointly conservative, the comma category is also an AU where the AU definable morphisms of note are invertible. Thus, X maps into the comma category in a unique AU way; the projections following this mapping are identity, and we get a natural transformation from identity on X to f_Y.
 \end{TODOblock}
 
-We note here some further corollaries of the above (all with similar proofs; \TODO):
+We note here some further corollaries of \magicref{CommaKan} (all with similar proofs to \magicref{CommaCategoryColimits}):
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are lexcategories with pullback stable finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the comma category $(f_X, f_Y)$ also is a lexcategory with finite coproducts, and those coproducts are preserved and jointly reflected by its projections to $X$ and $Y$.
+If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the comma category $(f_X, f_Y)$ also is a lexcategory with pullback-stable finite coproducts, and those coproducts are preserved and jointly reflected by its projections to $X$ and $Y$.
 
 If furthermore finite coproducts are disjoint in $X$, $Y$, and $\omega$ (i.e., these are extensive categories), then this is the case in $(f_X, f_Y)$ as well.
 \end{corollary}
