@@ -62,7 +62,7 @@ This category $T'$ is regular but not exact (that is, not every equivalence rela
 A concept that will often be useful to us in the following.
 
 \begin{definition}
-A \defined{finitely axiomatizable lex theory} is a lexcategory $W$ which, qua lexcategory, can be generated in finitely many steps of the following form, starting from the initial lexcategory: free augmentation with an object, free augmentation with a morphism between existing objects, or freely making two existing parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}.
+A \defined{finitely axiomatizable lex theory} is a lexcategory $W$ which can be generated in finitely many steps of the following form, starting from the initial lexcategory: free augmentation (qua lexcategory) with an object, free augmentation (qua lexcategory) with a morphism between two existing objects, or freely (qua lexcategory) making two existing parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}.
 \end{definition}
 
 If $W$ is a finitely axiomatizable lex theory, and $C$ is an internal lexcategory within a lexcategory $T$, then the set of lexfunctors from $W$ to $C$ is $T$-\repsmall/. This can be seen readily from the inductive definition of finite axiomatizability: 
@@ -126,6 +126,7 @@ For example, consider the theory of strict elementary toposes with natural numbe
 Every NNO-topos has an initial internal model of every finitely axiomatizable lex theory. Such initial internal models are furthermore preserved by functors preserving NNO-topos structure.
 \end{theorem}
 \begin{proof}
+\TODOinline{Mention that terms can be partially defined (that is, not all terms denote), in the following}
 This is simply by carrying out in its internal logic the ordinary mathematical construction establishing the existence of initial models of finitely axiomatizable lex theories. We do not give here a detailed proof, but sketch the key ideas:
 
 We need to construct, internally to an arbitrary NNO-topos, the set of well-founded finitely branching labelled rooted trees corresponding to the term model (the labels on the nodes of the tree corresponding to the operators which build new terms or new equations from old ones in the algebraic theory). Once we have constructed these, we use effective regularity to quotient the trees corresponding to definable terms by the equivalence relation induced by trees corresponding to derivable equations. All difficulty is just in first constructing this object of well-founded labelled trees (a so-called W-type).

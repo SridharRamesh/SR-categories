@@ -98,3 +98,5 @@ In the same vein as the two previous, see also "A NOTE ON GENERALIZED ALGEBRAIC 
 See the theorem at https://ncatlab.org/nlab/show/walking+structure for the proof that the walking X's internal X, when globalized, becomes the initial X.
 
 "A Note on Russell's Paradox in Locally Cartesian Closed Categories" by Pitts and Taylor discusses essentially our Lob's theorem for introspective locally cartesian closed categories (where it implies that any such thing is degenerate).
+
+https://www.cs.bham.ac.uk/~sjv/PalmgrenMem.pdf mentions some Maietti references on the Initial Model Theorem in AUs.

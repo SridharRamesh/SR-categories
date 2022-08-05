@@ -146,3 +146,20 @@ Super-duper-introspective like the initial arithmetic universe. [We need our Com
 Super-(duper-)introspective like localizations of the IAU (localizations qua lexcategory). [By "super-introspective", I mean an introspective theory with an internal introspective theory satisfying such and such coherence conditions. By super-duper, I mean furthermore that there is a lexfunctor to Set taking the internal super-introspective theory to the external one. Localization produces a super-duper introspective theory if the maps we localize on are indeed (in the canonical model in Set) isomorphisms.]
 
 Show how localizations of the IAU can be explicitly described (using a class of dense subobjects to localize). Show that these localizations are also arithmetic universes. Relate to our initial description of the PA sigma_1 model.
+
+---
+
+STUFF TO FINISH THE MODELS CHAPTER:
+1. All stuff dealing with arithmetic universes.
+2. All stuff dealing with presheaf models.
+2.5: Uncountable model (free topos with countable products). Uncomputable model.
+3. Writing out how geminal categories generalize to geminal gadgets. Ideally this can be taken care of in just a few paragraphs.
+
+CLEANUP:
+4. Threading the two models from the first chapter through other chapters to guide the reader.
+5. Improving the introduction.
+6. General cleanup (making everything readable + going to every TODO note everywhere and either dealing with it or hiding it).
+
+LAST BITS IT WOULD BE NICE TO INCLUDE, NOT STRICTLY NECESSARY BEFORE SENDING SOMETHING TO DANA:
+7. Extracting introspective theories from geminal categories.
+8. Chapter on applications to modally naive set theory.
