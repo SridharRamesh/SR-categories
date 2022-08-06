@@ -17,11 +17,12 @@ En route to discussing introspective theories, we also discuss some more general
 \begin{definition} \label{DefnPreIntrospIndexed}
 A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, and a lexfunctor $\introF$ from the self-indexing of $T$ to $C$, like so:
 
+% https://q.uiver.app/?q=WzAsMixbMCwwLCJcXG9we1R9Il0sWzIsMCwiXFxMZXhDYXQiXSxbMCwxLCJULy0iLDAseyJvZmZzZXQiOi0yfV0sWzAsMSwiQyIsMix7Im9mZnNldCI6Mn1dLFsyLDMsIlxcaW50cm9GIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
 \[\begin{tikzcd}
-	{\op{T}} && {\LexCat}
-	\arrow["{T/-}"{name=0}, from=1-1, to=1-3, shift left=2]
-	\arrow["{C}"{name=1, swap}, from=1-1, to=1-3, shift right=2]
-	\arrow[Rightarrow, "{\introF}"', from=0, to=1]
+	{\op{T}} && \LexCat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{T/-}", shift left=2, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-1, to=1-3]
+	\arrow["\introF"', shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
 \end{tikzcd}\]
 \end{definition}
 
@@ -88,6 +89,12 @@ An \defined{introspective theory} is a pre-introspective theory $\langle T, C \r
 While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The reduction of the full indexed lexfunctor $\introF$ to just its global aspect ($\introS$) and a natural transformation between 1-functors means much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the appropriate coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
 \Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory (which thus has an underlying lexcategory as its interpretation of $C$) is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of that same theory in its underlying lexcategory (this is the role of $\introS$). In short, every model has a homomorphism into a further internal model.
+
+It will be useful for us also to consider sometimes the following concept, intermediate between pre-introspective theories and introspective theories:
+
+\begin{definition}\label{DefnLocallyIntrosp}
+A \defined{locally introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is locally \repsmall/.
+\end{definition}
 
 \subsection{Some concrete examples}
 
@@ -308,6 +315,19 @@ The last two constructions are often fruitfully combined: Given a pre-introspect
 Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way. (We could also take limits of strict introspective theories more generally, but that involves talking about object equality, which we don't really want to do.). We can also take sub-introspective theories generated as the hull of subsets of their objects and morphisms, or other such free constructions.
 \end{TODOblock}
 
+\begin{construction}\label{LocalizeIntrosp}
+If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $\introS : T \to \Glob{C}$ factors through some $f : T \to T[M^{-1}]$ which is a lex localization in the sense of \magicref{DefnLexLocalization}, then the localization functor $f$ acts as an introspective theory homomorphism from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C), \ldots \rangle$.
+\end{construction}
+\begin{definition}
+If $f$ is to act as an introspective theory homomorphism, it must be to some introspective theory of the form $\langle T', C', \introS', \introN' \rangle$. We will show that each of these components are uniquely determined by the requirements of \magicref{StrictIntrospHomoDefn} (\TODOinline{Or rather, its non-strict analogue}).
+
+That $T'$ is uniquely determined as $T[M^{-1}]$ and $C'$ is uniquely determined as $f(C)$ is immediate.
+
+The requirement on $\introS'$ is that $\introS' \circ f = \InducedHomo{f}{C} \circ \introS$. Note that the right hand side of this equation sends all morphisms in $M$ to isomorphisms (since $\introS$ already does so). Thus, by the defining property of localization, this uniquely determines $\introS'$ as a functor, and indeed it will be a lexfunctor by \magicref{LexLocalizationLemma}.
+
+The requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is $f$ whiskered along $\introN$ from the other side. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
+\end{definition}
+
 \begin{construction}\label{TrivialPreIntrosp}
 If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
 
@@ -342,27 +362,36 @@ However, locally introspective (locally) cartesian closed theories cannot be ful
 
 There are some slight variations on the concept of a (pre-)introspective theory which will occasionally be of use to us in future chapters, for technical reasons or for showing the greater generality of some results. In this section, we discuss such variations. But we remind the reader that our main object of interest is introspective theories. If ever this zoo of other named concepts grows intimidating, think always of introspective theories as the North Star.
 
-\begin{definition}\label{DefnPreIntrospSNGeneralized}
-Recall that a pre-introspective theory is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. Note how lex structure (that is, finite limit structure) is used throughout this definition.
+It is sometimes useful to relax all finite limit structure in \magicref{DefnPreIntrospSN} to merely finite product structure:
 
-More generally, for any notion of categorical structure extending the concept of a category-with-terminal-object, we may consider the situation of a category $T$ with such structure, a $T$-indexed category $C$ with such structure, a functor $\introS$ from $T$ to the global aspect of $C$ preserving such structure, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$. In this way, we could speak of \defined{pre-introspective X theories} for various X; pre-introspective finite product theories, pre-introspective terminal object theories, pre-introspective countable limit theories, and so on.
-
-But when we leave the nature of the theory unqualified, we always mean finite limits by default.
-
-Note that whenever every instance of structure X is also an instance of structure Y, we will have that every pre-introspective X theory is also a pre-introspective Y theory.
-
-Finally, on rare occasion it is even worthwhile to observe the extreme generality where we do not demand a terminal object. That is, a category $T$, a $T$-indexed category $C$, a functor $\introS$ from $T$ to the global aspect\footnote{Note that this global aspect is well-defined even if $T$ lacks a terminal object.} of $C$, a designated object $1$ in the global aspect of $C$ (not presumed terminal), and a map $\introN$ from $t$ to $\Hom_C(1, \introS(t))$, natural in $t$ in $T$. We shall call this a \defined{pre-introspective unary theory}.
-
-Note that every pre-introspective terminal object theory can canonically be equipped as a pre-introspective unary theory by taking the designated object in $C$ to be its terminal object.
-
-As ever, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will usually say $\langle T, C \rangle$ to describe a pre-introspective X theory.
-
-When $C$ is small, we may call this an \defined{introspective X theory}. (We will only do this in contexts where it makes sense to speak of Xes internal to Xes. The minimal such context is when X is finite limit theories). 
-
-When $C$ is locally small, we may call this a \defined{locally introspective X theory}. The most notable example of this is to speak of \defined{locally introspective finite product theories}. (Indeed, we will only use this terminology in contexts where a $T$-indexed locally small $X$ is taken to an $S$-indexed locally small $X$ by any $X$-homomorphism from $T$ to $S$, and the minimal such context is when X is finite product theories).
+\begin{definition}
+A \defined{pre-introspective finite product theory} is a finite product category $T$, a $T$-indexed finite product category $C$, a finite product preserving functor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
 \end{definition}
 
-There is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
+As ever, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will usually say $\langle T, C \rangle$ to describe a pre-introspective finite product theory. Of course, every pre-introspective theory is a fortiori a pre-introspective finite product theory using the same components.
+
+Just as for pre-introspective theories, these admit an alternative definition along the lines of \magicref{DefnPreIntrospIndexed}, with the equivalence between the two definitions established by the remark after \autoref{SNCorrespondence}:
+
+\begin{definition}
+A \defined{pre-introspective finite product theory} is a finite product category $T$, a $T$-indexed finite product category $C$, and a finite product preserving functor $\introF$ from the simple self-indexing of $T$ to $C$, like so:
+
+% https://q.uiver.app/?q=WzAsMixbMCwwLCJcXG9we1R9Il0sWzIsMCwiXFxGaW5Qcm9kQ2F0Il0sWzAsMSwiVC8vLSIsMCx7Im9mZnNldCI6LTJ9XSxbMCwxLCJDIiwyLHsib2Zmc2V0IjoyfV0sWzIsMywiXFxpbnRyb0YiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+	{\op{T}} && \FinProdCat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{T//-}", shift left=2, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-1, to=1-3]
+	\arrow["\introF"', shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+\end{definition}
+
+It is natural now also to generalize \autoref{DefnLocallyIntrosp}:
+\begin{definition}
+By a \defined{locally introspective finite product theory}, we mean a pre-instrospective finite product theory $\langle T, C \rangle$ for which $C$ is locally \repsmall/.
+\end{definition}
+
+However, we do not take any special interest in locally introspective finite product theories $\langle T, C \rangle$ for which $C$ is furthermore fully \repsmall/, for reasons connected to the footnote given in \magicref{IndexedStructuresDefn}. Thus, the concept of an introspective theory does not have a complete analogue in the finite product context.
+
+Returning to the world of finite limits, there is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
 
 \begin{definition}\label{InnerStrictDefn}
 By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
