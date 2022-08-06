@@ -689,11 +689,13 @@ A \defined{lextensive} category is \TODO.
 A category with \defined{NNO} is \TODO.
 \end{definition}
 
-\begin{definition}
+\begin{definition}\label{DefnIAU}
 An \defined{arithmetic universe} is a category which is exact and extensive with pullback-stable list objects. \TODO
 \end{definition}
 
-We denote the initial arithmetic universe as $\IAU$. Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any description of a computably enumerable structure corresponds canonically to some structure internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic in $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! So it can be dangerous to think of $\IAU$ as just some subcategory of $\Set$. This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
+We denote the initial arithmetic universe as $\IAU$. Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any computer program describing some computably enumerable structure induces a structure of that sort internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic in $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
+
+There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in the paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts).
 
 \subsection{Localization}
 \begin{definition}
@@ -789,21 +791,6 @@ Comma objects exist in $\LexCat$, constructed in the same way as in $\Cat$ (thus
 \begin{proof}
 From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span of finite limit preserving functors between categories which have finite limits, then the comma category $(f_X / f_Y)$ (the comma object in $\Cat$) is also a lexcategory and its projections are lexfunctors. Thus, this $(f_X / f_Y)$ and its projections exist within $\LexCat$. That these continue to comprise a comma object span within $\LexCat$ follows immediately from the fact that the forgetful functor $|-|$ from $\LexCat$ to $\Cat$ induces bijections between the sets of 2-cells $\Hom(f, g)$ and $\Hom(|f|, |g|)$ for any parallel 1-cells $f$ and $g$ in $\LexCat$ (that is, the 2-cells in $\LexCat$ between lexfunctors are just ordinary natural transformations, with no further property or structure).
 \end{proof}
-
-The conclusion of \magicref{CommaKan} will often be particularly useful to us in conjunction with the following lemma.
-
-\begin{lemma}\label{CommaMap}
-Let $C$ and $D$ be 2-categories, with $|-| : C \to D$ a 2-functor, and suppose for all objects $X$, $Y$, and $\omega$ of $C$ along with 1-cell $f_X : X \to \omega$ in $C$ and 1-cell $f_Y : |Y| \to |\omega|$ in $D$, we have a span in $C$ whose image under $|-|$ is the comma object $(|f_X| / f_Y)$ in $D$ along with its projections.
-
-Furthermore, suppose $X$ is initial in $C$. Then the identity map on $|X|$ is initial within $D(X, X)$.
-\end{lemma}
-\begin{proof}
-Take $Y = \omega = X$, let $f_X$ be the identity on $X$, and let $f_Y : |X| \to |X|$ in $D$ be arbitrary. \TODO
-\end{proof}
-
-\begin{TODOblock}
-For turning the initial AU into our PA sigma 1 models, etc, after we've established that AUs are closed under comma category constructions, let X = Y = omega =the initial AU in which some AU definable morphisms are invertible, let f_X = identity, and f_y = arbitrary lex. It follows that the comma category is also an AU, and because everything is component wise, the projections send the relevant AU-definable morphisms to invertible morphisms. Since projections from a comma object are jointly conservative, the comma category is also an AU where the AU definable morphisms of note are invertible. Thus, X maps into the comma category in a unique AU way; the projections following this mapping are identity, and we get a natural transformation from identity on X to f_Y.
-\end{TODOblock}
 
 We note here some further corollaries of \magicref{CommaKan} (all with similar proofs to \magicref{CommaCategoryColimits}):
 

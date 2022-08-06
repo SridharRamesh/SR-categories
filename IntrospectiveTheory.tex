@@ -316,17 +316,19 @@ Make the useful observations that the theory of introspective theories is essent
 \end{TODOblock}
 
 \begin{construction}\label{LocalizeIntrosp}
-If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $\introS : T \to \Glob{C}$ factors through some $f : T \to T[M^{-1}]$ which is a lex localization in the sense of \magicref{DefnLexLocalization}, then the localization functor $f$ acts as an introspective theory homomorphism from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C), \ldots \rangle$.
-\end{construction}
-\begin{definition}
-If $f$ is to act as an introspective theory homomorphism, it must be to some introspective theory of the form $\langle T', C', \introS', \introN' \rangle$. We will show that each of these components are uniquely determined by the requirements of \magicref{StrictIntrospHomoDefn} (\TODOinline{Or rather, its non-strict analogue}).
+If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $f : T \to T[M^{-1}]$ is a lex localization in the sense of \magicref{DefnLexLocalization}, and every morphism in $M$ is sent to an isomorphism by $\introS$, then $f$ acts as an introspective theory homomorphism from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C) \rangle$.
 
-That $T'$ is uniquely determined as $T[M^{-1}]$ and $C'$ is uniquely determined as $f(C)$ is immediate.
+In particular, for any introspective theory, we can apply the above taking $M$ to be the set of all morphisms sent to isomorphisms by $\introS$. We may call the result the \defined{maximal localization} of our original introspective theory.
+\end{construction}
+\begin{proof}
+If $f : T \to T[M^{-1}]$ is to act as an introspective theory homomorphism, it must be to some introspective theory $\langle T[M^{-1}], C', \introS', \introN' \rangle$. We will show that each of these components are uniquely determined by the requirements of \magicref{StrictIntrospHomoDefn} (\TODOinline{Or rather, its non-strict analogue. We need to move this theorem to after a suitable definition of introspective theory homomorphism has been given}).
+
+The requirement on $C'$ in \magicref{StrictIntrospHomoDefn} directly determines it as $f(C)$.
 
 The requirement on $\introS'$ is that $\introS' \circ f = \InducedHomo{f}{C} \circ \introS$. Note that the right hand side of this equation sends all morphisms in $M$ to isomorphisms (since $\introS$ already does so). Thus, by the defining property of localization, this uniquely determines $\introS'$ as a functor, and indeed it will be a lexfunctor by \magicref{LexLocalizationLemma}.
 
-The requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is $f$ whiskered along $\introN$ from the other side. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
-\end{definition}
+Finally, the requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is $\introN$ whiskered along $f$ from the other side. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
+\end{proof}
 
 \begin{construction}\label{TrivialPreIntrosp}
 If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
