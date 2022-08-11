@@ -302,24 +302,9 @@ Put in other words, for any essentially algebraic theory $Th$ such that models o
 
 For simplicity as a first introduction, everything done previously was the special case where $Th$ was simply the theory of strict lexcategories itself. But now we describe the more general results, which follow by almost exactly the same reasoning as used before:
 
-\TODOinline{Now we can duplicate all of the above, except for the result that introspective theories are themselves geminal categories, for geminal gadgets more generally.}
+\TODOinline{Now we can duplicate all of the above, except for the result that introspective theories are themselves geminal categories, for \quote{geminal gadgets} more generally. That is, the left adjoint mentioned above is given by a general construction perfectly analogous to the one we used to construct the concept of geminal categories above.}
 
 \subsection{Co-free introspective theories}
-\TODO
-
-\subsection{Don't read beyond here}
-\TODOinline{Everything following in this chapter is about to get thrown out/rewritten}
-
-\begin{TODOblock}
-Note that the above means every geminal gadget is the carrier of a coalgebra for a particular endofunctor on geminal gadgets. Those gadgets for which this coalgebra is an isomorphism are of particular note (as related to GLS modal logic and not just GL modal logic). We can also iterate transfinitely and take a colimit (usually just an omega-colimit for finitary notions of gadget), i.e. apply Adamek's construction, to reflect arbitrary geminal gadgets into these GLS geminal gadgets. See the section on well-pointed endofunctors at "transfinite construction of free algebras" on nlab, or "A unified treatment of transfinite constructions for free algebras, free monoids, colimits, associated sheaves, and so on.". Keep in mind that the relevant endofunctor is indeed well-pointed, by the properties of geminal categories. Keep in mind, this infinitary colimit reflection can be carried out for geminal categories internal to $\Set$, given $\Set$'s sufficient infinitary colimit structure; we do not have a guarantee that a geminal category internal to an arbitrary lexcategory can be reflected into a GLS category.
-
-Actually, none of this is specific to geminal gadgets (models of free introspective theories). It applies to models of any introspective theory. (Although maybe we don't actually have well-pointedness here in general?)
-
-It may be curious to consider in what cases an introspective theory is itself GLS-geminal like so. Many natural examples do have this property (the $\Sigma_1$ introspective theory with internal $\Sigma_1$ C for a sound theory like PA, the topos of trees with step operator, the initial arithmetic universe, etc). These will generally also be "super-introspective theories" in the terminology of the TODO note at the end of this section.
-\end{TODOblock}
-
-There are analogues of all the above results where we use finite product theories instead, and talk about enriched structures rather than internal structures. This can be made to work because finite product structure suffices to discuss enriched category structure and even enriched category-with-finite-product structure once the structure of the objects themselves has been fixed. We decline for now to formalize this, as it is a bit off the path of our main interest in introspective theories. \TODOinline{Formalize this, as free locally introspective theories (consider both the finite limit and finite product cases) unify this with the above, show how Kripke-4 categories are the enriched analogue of a geminal cartesian closed category. Note how a geminal lex cartesian closed category always gives rise to such an enriched-geminal cartesian closed category. Discuss the weaker notion of enriched-geminal categories which do not presume cartesian closed structure as well, and note how any geminal category gives rise to such an enriched-geminal category.}
-
 \begin{TODOblock}
 Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
 
@@ -376,6 +361,19 @@ And how do we map this introspective theory into $S$ to re-yield our original ge
 
 For any other introspective theory $\langle T', C' \rangle$ giving rise to $G$ via lexfunctor $M$ into $S$, we obtain a lexfunctor from $T'$ to $T$ which sends object $t$ in $T'$ to $\langle M(t), M(\introS(t)), M(\introN_t), M(\introS(\introN_t))\rangle$ and sends morphism $m$ in $T'$ to $\langle M(m), M(\introS(m))\rangle$. This will act as an introspective theory homomorphism.
 \end{TODOblock}
+
+\subsection{Don't read beyond here}
+\TODOinline{Everything following in this chapter is about to get thrown out/rewritten}
+
+\begin{TODOblock}
+Note that the above means every geminal gadget is the carrier of a coalgebra for a particular endofunctor on geminal gadgets. Those gadgets for which this coalgebra is an isomorphism are of particular note (as related to GLS modal logic and not just GL modal logic). We can also iterate transfinitely and take a colimit (usually just an omega-colimit for finitary notions of gadget), i.e. apply Adamek's construction, to reflect arbitrary geminal gadgets into these GLS geminal gadgets. See the section on well-pointed endofunctors at "transfinite construction of free algebras" on nlab, or "A unified treatment of transfinite constructions for free algebras, free monoids, colimits, associated sheaves, and so on.". Keep in mind that the relevant endofunctor is indeed well-pointed, by the properties of geminal categories. Keep in mind, this infinitary colimit reflection can be carried out for geminal categories internal to $\Set$, given $\Set$'s sufficient infinitary colimit structure; we do not have a guarantee that a geminal category internal to an arbitrary lexcategory can be reflected into a GLS category.
+
+Actually, none of this is specific to geminal gadgets (models of free introspective theories). It applies to models of any introspective theory. (Although maybe we don't actually have well-pointedness here in general?)
+
+It may be curious to consider in what cases an introspective theory is itself GLS-geminal like so. Many natural examples do have this property (the $\Sigma_1$ introspective theory with internal $\Sigma_1$ C for a sound theory like PA, the topos of trees with step operator, the initial arithmetic universe, etc). These will generally also be "super-introspective theories" in the terminology of the TODO note at the end of this section.
+\end{TODOblock}
+
+There are analogues of all the above results where we use finite product theories instead, and talk about enriched structures rather than internal structures. This can be made to work because finite product structure suffices to discuss enriched category structure and even enriched category-with-finite-product structure once the structure of the objects themselves has been fixed. We decline for now to formalize this, as it is a bit off the path of our main interest in introspective theories. \TODOinline{Formalize this, as free locally introspective theories (consider both the finite limit and finite product cases) unify this with the above, show how Kripke-4 categories are the enriched analogue of a geminal cartesian closed category. Note how a geminal lex cartesian closed category always gives rise to such an enriched-geminal cartesian closed category. Discuss the weaker notion of enriched-geminal categories which do not presume cartesian closed structure as well, and note how any geminal category gives rise to such an enriched-geminal category.}
 
 \begin{TODOblock}
 Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points. (Write this intuition about how geminal categories differ from introspective theories most notably wrt to the X |- []X presumption into the introductory section.)

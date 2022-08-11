@@ -400,7 +400,7 @@ Let the internal category $C$, internal to $T$, be given, and suppose its $t$-as
 
 Then in particular, for each basis finite limit shape, we can consider the case where $t$ is taken to be the set of diagrams of such shape within $C$ (for example, for binary products, we can consider $t = \Ob(C) \times \Ob(C)$, or for binary equalizers, we can consider $t$ taken to be the kernel pair (that is, pullback along itself) of $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$). There will then be, within the $t$-aspect of $C$, a corresponding generic diagram of this shape, which will have some limit within $C$ as $C$ has finite limits. The selection of any particular such limit (that is, a particular value in $\Hom(t, \Ob(C))$ to serve as the apex of the limit cone, and particular further values in $\Hom(t, \Mor(C))$ to serve as the projection morphisms of the limit cone) gives us the morphisms within $T$ which serve as a limit-assigning operation on $C$ for this particular shape of basic limit. After making such a choice for each of the basic limit operations (of which we can presume there are only finitely many), we ultimately have equipped $C$ as an internal lexcategory.
 \end{proof}
-Note that it is NOT true that any indexed strict category which has finite limits (qua indexed category) can furthermore be equipped as an indexed strict lexcategory (without modification to the indexed strict category structure)! The former has reindexing functors which need only preserve finite limits in a non-strict-sense, while the latter's chosen basic limits must be such that all reindexing functors preserve basic limits on-the-nose. So it is rather remarkable that we get this for free once our indexed strict category is furthermore repsmall.
+Note that it is NOT true that any indexed strict category which has finite limits (qua indexed category) can furthermore be equipped as an indexed strict lexcategory (without modification to the indexed strict category structure)! The former has reindexing functors which need only preserve finite limits in a non-strict-sense, while the latter's chosen basic limits must be such that all reindexing functors preserve basic limits on-the-nose. So it is rather remarkable that we get this for free once our indexed strict category is furthermore \repsmall/.
 
 \subsection{Self-indexing and slice categories}
 \begin{definition}
@@ -634,11 +634,11 @@ We may iterate this process. Suppose now that $C_2$ is the global aspect of some
 
 And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
 
-Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
+Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally small lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
 
 Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row.
 
-Note also that if $C$ is a lexcategory, $D$ is the global aspect of a $C$-indexed lexcategory, and $S$ is a $D$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$.
+Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally small lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$.
 
 Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
 
@@ -648,10 +648,10 @@ In particular, if $S$ is an internal lexcategory, then our original lexfunctor $
 
 The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
 
-This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal lexfunctor $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
+This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal homomorphism $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
 
 \begin{observation}\label{InducedGlobalCommute}
-If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$ (in the sense of a canonical isomorphism). That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary element $m \in \Hom_C(1, Q)$:
+If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$ (in the sense of a canonical natural isomorphism). That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
 
 % https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEdsb2J7UX0iXSxbMCwzLCJcXEdsb2J7RihRKX0iXSxbMywwLCJDIl0sWzMsMywiRCJdLFsxLDEsIm0iXSxbMSwyLCJGKG0pIl0sWzIsMSwiXFxIb21fUSgxLCBtKSJdLFsyLDIsIkYoXFxIb21fUSgxLCBtKSkgPSBcXEhvbV97RihRKX0oMSwgRihtKSkiXSxbMCwxLCJcXEluZHVjZWRIb21ve0Z9e1F9IiwyXSxbMCwyLCJcXEdhbW1hX1EiXSxbMSwzLCJcXEdhbW1hX3tGKFEpfSIsMl0sWzQsNiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsyLDMsIkYiXV0=
 \[\begin{tikzcd}
@@ -675,10 +675,12 @@ Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simpl
 Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable smallness conditions, but they are probably more easily understood in the presentation just given.
 
 \subsection{Kinds of category}
+\TODOinline{This section isn't ready yet. I just thought I should have these definitions somewhere, if I'm going to reference them later. Mainly the definition of arithmetic universe.}
+
 In addition to categories simpliciter and lexcategories, we have various other enrichments of the basic notion of category which are occasionally of interest:
 
 \begin{definition}
-A \defined{regular} category is \TODO. If \TODO, we call it \defined{exact}.
+A \defined{regular} category is \TODO. If \TODO, we call it \defined{effective regular} or \defined{exact}.
 \end{definition}
 
 \begin{definition}
@@ -698,9 +700,15 @@ We denote the initial arithmetic universe as $\IAU$. Structures internal to $\IA
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in the paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts).
 
 \subsection{Localization}
+\TODOinline{The contents of this section are only important for one construction we use once later.}
+
 \begin{definition}
-For any category $C$, and any set of morphisms $M$ of $C$, we may consider freely adjoining inverses to the morphisms in $M$. This process is called \defined{localization}, and the resulting category is denoted $C[M^{-1}]$. Thus, we have a functor $f : C \to C[M^{-1}]$ such that $f$ sends every morphism in $M$ to an isomorphism, and for any $g : C \to D$ which also sends every morphism in $M$ to an isomorphism, there is a unique functor $h : C[M^{-1}] \to D$ such that $h \circ f = g$.
+For any category $C$, and any set of morphisms $M$ of $C$, we may consider freely adjoining inverses to the morphisms in $M$. This process is called \defined{localization}, and the resulting category is denoted $C[M^{-1}]$. Thus, we have a localization functor $f : C \to C[M^{-1}]$ such that $f$ sends every morphism in $M$ to an isomorphism, and for any $g : C \to D$ which also sends every morphism in $M$ to an isomorphism, there is a unique functor $h : C[M^{-1}] \to D$ such that $h \circ f = g$.
 \end{definition}
+
+\begin{lemma}
+Any localization functor is eso.
+\end{lemma}
 
 \begin{lemma}\label{LocalizingTransform}
 Let $C$ be a category, let $M$ be some set of morphisms of $C$, and let $f : C \to C[M^{-1}]$ be the corresponding localization. Then given any category $D$ and parallel functors $g_1, g_2 : C[M^{-1}] \to D$, we have that each natural transformation from $g_1 \circ f$ to $g_2 \circ f$ is the whiskering along $f$ of a unique natural transformation from $g_1$ to $g_2$. Thus, $\Cat(C[M^{-1}], D)$ comprises a full subcategory of $\Cat(C, D)$.
@@ -713,16 +721,45 @@ Consider the comma category $(\id_D, \id_D)$. A functor $k : C \to (\id_D, \id_D
 Let $C$ be a lexcategory. If there is some lexfunctor on $C$ (with any codomain), such that $M$ is the set of morphisms taken to isomorphisms by this lexfunctor, then we say $C[M^{-1}]$ is a \defined{lex localization}.
 \end{definition}
 
-Lex localizations admit a tractable explicit construction using the \quote{calculus of right fractions}, which in particular decomposes each morphism in $C[M^{-1}]$ as the inverse of a morphism from $M$ followed by a morphism from $C$. The details of this calculus of fractions construction are given in \autocite{gabrielzisman1967}, among other references (see also \autocite{BorceuxHandbook1} and \autocite{kashiwara2006}). We also have the following result:
+Lex localizations admit a tractable explicit construction using the \quote{calculus of right fractions}, which in particular decomposes each morphism in $C[M^{-1}]$ as the inverse of a morphism from $M$ followed by a morphism from $C$. The details of this calculus of fractions construction are given in \autocite{gabrielzisman1967}, among other references (see also \autocite{BorceuxHandbook1} and \autocite{kashiwara2006}). 
+
+This calculus of fractions construction immediately gives us the following result:
+\begin{lemma}\label{LexLocalizationEso}
+If $f : C \to C[M^{-1}]$ is a lex localization, then for each object $c \in C$, the induced functor from $C/c$ to $C[M^{-1}]/f(c)$ is essentially surjective on objects.
+\end{lemma}
+
+We also have the following result:
 
 \begin{lemma}\label{LexLocalizationLemma}
-Lex localizations are localizations qua lexcategory, in that if $f : C \to C[M^{-1}]$ is a lex localization, then $C[M^{-1}]$ is a lexcategory, $f$ is a lexfunctor, and any lexfunctor out of $C$ which factors through $f$ (necessarily uniquely) is such that this factorization is itself a lexfunctor.
+Lex localizations are not just localizations qua category but also qua lexcategory, in that if $f : C \to C[M^{-1}]$ is a lex localization, then $C[M^{-1}]$ is a lexcategory, $f$ is a lexfunctor, and any lexfunctor out of $C$ which factors through $f$ (necessarily uniquely) is such that this factorization is itself a lexfunctor.
+
+(There is of course a precisely dual result for categories with, and functors preserving, finite colimits.)
 \end{lemma}
 \begin{proof}
 This is given by the combination of Propositions 3.1, 3.2, and 3.4 from \autocite{gabrielzisman1967}.
 \end{proof}
 
-There is a precisely dual result using the \quote{calculus of left fractions} for categories with, and functors preserving, finite colimits.
+\begin{lemma}\label{ConservativeFaithfulLemma}
+If a lexfunctor is conservative (i.e., any morphism it sends to an isomorphism is already an isomorphism), then it is faithful.
+\end{lemma}
+\begin{proof}
+Let lexfunctor $f : C \to D$ and $m_1, m_2 : c_1 \to c_2$ in $C$ be given such that $f(m_1) = f(m_2)$. The equalizer of $f(m_1)$ and $f(m_2)$ is therefore an isomorphism. But this is the same as $f$ applied to the equalizer of $m_1$ and $m_2$, which therefore (by the conservativity of $f$) must already be an isomorphism. Thus $m_1$ and $m_2$ equal.
+\end{proof}
+
+\begin{lemma}\label{IsLexLocalizationLemma}
+Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomorphisms by $h$, let $f : C \to C[M^{-1}]$ be the corresponding lex localization, and let $g : C[M^{-1}] \to D$ be the uniquely determined lexfunctor such that $h = g \circ f$.
+
+Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every slice in $D/h(c)$ is isomorphic to $h$ applied to some slice in $C/c$ (i.e., $h$ restricted to any slice category is eso).
+\end{lemma}
+\begin{proof}
+Suppose $h$ satisfies the surjectivity properties. We must show that $g$ is essentially surjective on objects, full, and faithful.
+
+That $g$ is essentially surjective on objects follows from the fact that $h = gf$ is eso when acting on $C/1$.
+
+Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2)$ is given by $g$ applied to some morphism in $Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. \TODO
+
+Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
+\end{proof}
 
 \begin{lemma}
 Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to another arithmetic universe be given, and let $M$ be the set of morphisms of $C$ which are sent to isomorphisms by said arithmetic functor. Then letting $f : C \to C[M^{-1}]$ be the corresponding localization (an \defined{arithmetic localization}), we have that this is also the localization qua arithmetic universe, in that $C[M^{-1}]$ is an arithmetic universe, $f$ is an arithmetic functor, and any arithmetic functor out of $C$ which factors (necessarily uniquely) through $f$ is such that this factorization is itself an arithmetic functor.
@@ -733,14 +770,16 @@ Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to anoth
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
+\TODOinline{I've been inconsistent about my notation for comma categories, between (f, g) and (f/g). I need to hunt down everywhere and switch it to a standardized notation.}
+
 \begin{theorem}[The Comma-Kan Lemma] \label{CommaKan}
 Suppose, within some 2-category, we have the following comma object and left Kan extensions:
 
-% https://q.uiver.app/?q=WzAsNyxbNCwyLCJYIl0sWzQsNCwiXFxvbWVnYSJdLFsyLDQsIlkiXSxbMiwyLCIoZl9YL2ZfWSkiXSxbMSwxLCJBIl0sWzAsMCwiQiJdLFs1LDFdLFswLDEsImZfWCJdLFsyLDEsImZfWSIsMl0sWzMsMiwiXFxwaV9ZIiwyXSxbMywwLCJcXHBpX1giXSxbMCwyLCJcXGdhbW1hIiwyLHsibGV2ZWwiOjJ9XSxbNCwzLCJzIiwxXSxbNCw1LCJxIiwxXSxbNSwwLCJcXExhbl9xIChzOyBcXHBpX1gpIl0sWzUsMiwiXFxMYW5fcShzOyBcXHBpX1kpIiwyXSxbMywxNCwiXFxlcHNpbG9uX1giLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzMsMTUsIlxcZXBzaWxvbl9ZIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+% https://q.uiver.app/?q=WzAsNyxbNCwyLCJYIl0sWzQsNCwiXFxvbWVnYSJdLFsyLDQsIlkiXSxbMiwyLCJcXGNvbW1he2ZfWH17Zl9ZfSJdLFsxLDEsIkEiXSxbMCwwLCJCIl0sWzUsMV0sWzAsMSwiZl9YIl0sWzIsMSwiZl9ZIiwyXSxbMywyLCJcXHBpX1kiLDJdLFszLDAsIlxccGlfWCJdLFswLDIsIlxcZ2FtbWEiLDIseyJsZXZlbCI6Mn1dLFs0LDMsInMiLDFdLFs0LDUsInEiLDFdLFs1LDAsIlxcTGFuX3EgKHM7IFxccGlfWCkiXSxbNSwyLCJcXExhbl9xKHM7IFxccGlfWSkiLDJdLFszLDE0LCJcXGVwc2lsb25fWCIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XSxbMywxNSwiXFxlcHNpbG9uX1kiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV1d
 \[\begin{tikzcd}
 	B \\
 	& A &&&& {} \\
-	&& {(f_X/f_Y)} && X \\
+	&& {\comma{f_X}{f_Y}} && X \\
 	\\
 	&& Y && \omega
 	\arrow["{f_X}", from=3-5, to=5-5]
@@ -753,68 +792,77 @@ Suppose, within some 2-category, we have the following comma object and left Kan
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Lan_q (s; \pi_X)}", from=1-1, to=3-5]
 	\arrow[""{name=1, anchor=center, inner sep=0}, "{\Lan_q(s; \pi_Y)}"', from=1-1, to=5-3]
 	\arrow["{\epsilon_X}"{description}, shorten <=3pt, Rightarrow, from=3-3, to=0]
-	\arrow["{\epsilon_Y}"{description}, shorten <=4pt, Rightarrow, from=3-3, to=1]
+	\arrow["{\epsilon_Y}"{description}, shorten <=3pt, Rightarrow, from=3-3, to=1]
 \end{tikzcd}\]
 
 Furthermore, suppose $f_X$ preserves the Kan extension $\Lan_q (s; \pi_X)$. (We notably do NOT make any such assumption on $f_Y$).
 
-Then $\Lan_q s : B \to (f_X / f_Y)$ exists and furthermore is preserved by both $\pi_X$ and $\pi_Y$.
+Then $\Lan_q s : B \to \comma{f_X}{f_Y}$ exists and furthermore is preserved by both $\pi_X$ and $\pi_Y$.
 
 (Dually, we can turn all 2-cells around in this theorem, replacing the left Kan extensions with right Kan extensions and moving the preservation condition so that the functor on the codomain side of our comma category must preserve the corresponding Kan extension.)
 \end{theorem}
 \begin{proof}
-We may compute as follows: By the universal property of the comma object $(f_X / f_Y)$, the set of 1-cells from $B$ to this comma object whose projections match our two Kan extensions is given by the set of 2-cells between the top and bottom path from $B$ to $\omega$ in the above diagram. Since $f_X$ preserves the top Kan extension, the top path is itself a left Kan extension, and using its universal property, we find that the 2-cells from the top path to the bottom path are the same as 2-cells between two different paths from $A$ to $\omega$; specifically, from $s; \pi_X; f_X$ to $q; \Lan_q(s; \pi_Y); f_Y$. Such a 2-cell is given by the composition of $\gamma$ and $\epsilon_Y$.
+We may compute as follows: By the universal property of the comma object $\comma{f_X}{f_Y}$, the set of 1-cells from $B$ to this comma object whose projections match our two Kan extensions is given by the set of 2-cells between the top and bottom path from $B$ to $\omega$ in the above diagram. Since $f_X$ preserves the top Kan extension, the top path is itself a left Kan extension, and using its universal property, we find that the 2-cells from the top path to the bottom path are the same as 2-cells between two different paths from $A$ to $\omega$; specifically, from $s; \pi_X; f_X$ to $q; \Lan_q(s; \pi_Y); f_Y$. Such a 2-cell is given by the composition of $\gamma$ and $\epsilon_Y$.
 
-Thus, we do indeed get a 1-cell $m : B \to (f_X / f_Y)$ whose composition with each projection $\pi$ matches $\Lan_q(s; \pi)$. What remains is only to show that $m$ is indeed $\Lan_q s$.
+Thus, we do indeed get a 1-cell $m : B \to \comma{f_X}{f_Y}$ whose composition with each projection $\pi$ matches $\Lan_q(s; \pi)$. What remains is only to show that $m$ is indeed $\Lan_q s$.
 
-Let an arbitrary $k : B \to (f_X/f_Y)$ be given. By the universal property of the comma category again, we have that 2-cells from $m$ to $k$ are in correspondence with choices of 2-cells from $m ; \pi$ to $k ; \pi$ for each projection $\pi$, such that both resulting composite 2-cells from $m; \pi_X; f_X$ to $k ; \pi_y; f_Y$ are equal. But each $m ; \pi = \Lan_q(s; \pi)$, so a 2-cell from this to $k ; \pi$ amounts to a 2-cell from $s; \pi$ to $q; k ; \pi$. A choice of such 2-cells satisfying the coherence condition is, again by the universal property of the comma category $(f_X / f_Y)$, the same thing as a 2-cell from $s$ to $q; k$. Thus, we have shown $\Hom(m, k) = \Hom(s, (q; k))$, which establishes $m$ as satisfying the universal property defining $\Lan_q s$. This completes the proof. \TODOinline{Add details to this last paragraph on the coherence conditions}
+Let an arbitrary $k : B \to \comma{f_X}{f_Y}$ be given. By the universal property of the comma category again, we have that 2-cells from $m$ to $k$ are in correspondence with choices of 2-cells from $m ; \pi$ to $k ; \pi$ for each projection $\pi$, such that both resulting composite 2-cells from $m; \pi_X; f_X$ to $k ; \pi_y; f_Y$ are equal. But each $m ; \pi = \Lan_q(s; \pi)$, so a 2-cell from this to $k ; \pi$ amounts to a 2-cell from $s; \pi$ to $q; k ; \pi$. A choice of such 2-cells satisfying the coherence condition is, again by the universal property of the comma category $\comma{f_X}{f_Y}$, the same thing as a 2-cell from $s$ to $q; k$. Thus, we have shown $\Hom(m, k) = \Hom(s, (q; k))$, which establishes $m$ as satisfying the universal property defining $\Lan_q s$. This completes the proof. \TODOinline{Add details to this last paragraph on the coherence conditions}
 
 (The dualized result of course follows automatically.) 
 \end{proof}
 
 \begin{corollary}\label{CommaCategoryColimits}
-Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have colimits of a particular shape and $f_X$ preserves colimits of that shape, then the two projections out of $(f_X / f_Y)$ jointly create colimits of that shape.
+Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have colimits of a particular shape and $f_X$ preserves colimits of that shape, then the two projections out of $\comma{f_X}{f_Y}$ jointly create colimits of that shape.
 
-That is, $(f_X / f_Y)$ has colimits of that shape, both projections out of this comma category preserve colimits of that shape, and these projections jointly reflect colimits of that shape (i.e., a functor into the comma category preserves colimits of that shape whenever its compositions with both projections preserve colimits of that shape).
+That is, $\comma{f_X}{f_Y}$ has colimits of that shape, both projections out of this comma category preserve colimits of that shape, and these projections jointly reflect colimits of that shape (i.e., a functor into the comma category preserves colimits of that shape whenever its compositions with both projections preserve colimits of that shape).
 
 (Dually, we have the corresponding statements where all instances of \quote{colimit} are turned into \quote{limit} and the first statement's limit preservation condition is put on $f_Y$ rather than $f_X$.)
 \end{corollary}
 \begin{proof}
-The existence of such colimits in $(f_X / f_Y)$, along with their preservation by both projections, follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along functors to the terminal category.
+The existence of such colimits in $\comma{f_X}{f_Y}$, along with their preservation by both projections, follows from \magicref{CommaKan} within $\Cat$ by taking $A$ to be the generic category of the indicated shape and taking $B$ to be the terminal category, considering how colimits correspond to left Kan extensions along functors to the terminal category.
 
-The final claim (the joint reflection of such colimits) then follows from the fact that the forgetful functor from $(f_X / f_Y)$ into $X \times Y$, like any forgetful functor from a comma category to the corresponding product category, is conservative (that is, if the image of a morphism under this functor is invertible, the morphism was already invertible in the comma category). A conservative functor which preserves colimits, on a category which has those colimits, automatically also reflects colimits.
+The final claim (the joint reflection of such colimits) then follows from the fact that the forgetful functor from $\comma{f_X}{f_Y}$ into $X \times Y$, like any forgetful functor from a comma category to the corresponding product category, is conservative (that is, if the image of a morphism under this functor is invertible, the morphism was already invertible in the comma category). A conservative functor which preserves colimits, on a category which has those colimits, automatically also reflects colimits.
 \end{proof}
 
 \begin{corollary}\label{LexCatComma}
 Comma objects exist in $\LexCat$, constructed in the same way as in $\Cat$ (thus, preserved by the forgetful functor into $\Cat$).
 \end{corollary}
 \begin{proof}
-From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span of finite limit preserving functors between categories which have finite limits, then the comma category $(f_X / f_Y)$ (the comma object in $\Cat$) is also a lexcategory and its projections are lexfunctors. Thus, this $(f_X / f_Y)$ and its projections exist within $\LexCat$. That these continue to comprise a comma object span within $\LexCat$ follows immediately from the fact that the forgetful functor $|-|$ from $\LexCat$ to $\Cat$ induces bijections between the sets of 2-cells $\Hom(f, g)$ and $\Hom(|f|, |g|)$ for any parallel 1-cells $f$ and $g$ in $\LexCat$ (that is, the 2-cells in $\LexCat$ between lexfunctors are just ordinary natural transformations, with no further property or structure).
+From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span of finite limit preserving functors between categories which have finite limits, then the comma category $\comma{f_X}{f_Y}$ (the comma object in $\Cat$) is also a lexcategory and its projections are lexfunctors. Thus, this $\comma{f_X}{f_Y}$ and its projections exist within $\LexCat$. That these continue to comprise a comma object span within $\LexCat$ follows immediately from the fact that the forgetful functor $|-|$ from $\LexCat$ to $\Cat$ induces bijections between the sets of 2-cells $\Hom(f, g)$ and $\Hom(|f|, |g|)$ for any parallel 1-cells $f$ and $g$ in $\LexCat$ (that is, the 2-cells in $\LexCat$ between lexfunctors are just ordinary natural transformations, with no further property or structure).
 \end{proof}
 
-We note here some further corollaries of \magicref{CommaKan} (all with similar proofs to \magicref{CommaCategoryColimits}):
+We note here some further corollaries of \magicref{CommaKan} (all with similar proofs):
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the comma category $(f_X, f_Y)$ also is a lexcategory with pullback-stable finite coproducts, and those coproducts are preserved and jointly reflected by its projections to $X$ and $Y$.
+If $X$, $Y$, and $\omega$ are lexcategories with finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the projections out of the comma category $\comma{f_X}{f_Y}$ jointly create finite coproducts.
 
-If furthermore finite coproducts are disjoint in $X$, $Y$, and $\omega$ (i.e., these are extensive categories), then this is the case in $(f_X, f_Y)$ as well.
+If furthermore, finite coproducts are pullback-stable in $X$ and $Y$, then finite coproducts are pullback-stable in $\comma{f_X}{f_Y}$.
+
+If furthermore finite coproducts are disjoint in $X$ and $Y$ (i.e., these are extensive categories), then this is the case in $\comma{f_X}{f_Y}$ as well.
+\end{corollary}
+\begin{proof}
+The joint creation of finite coproducts is just a special case of \magicref{CommaCategoryColimits}. What remains to be shown are the exactness properties.
+
+Let $Q$ be the initial lexcategory-with-finite-coproducts generated by slices $A_1, \ldots, A_n$ above an object $A$, along with a morphism into $A$. To say that $n$-ary coproducts are pullback stable in a lexcategory $C$ with finite coproducts is to say that every lexfunctor preserving finite coproducts from $Q$ to $C$ sends a particular morphism in $Q$ (the comparison morphism between the coproduct of the pullback and the pullback of the coproduct, for the generic objects in $Q/A$ as pulled back along the generic morphism into $A$) to an isomorphism. Since the projections out of our comma category jointly preserve and reflect finite limit structure, finite coproduct structure, and invertibility, this property will hold in the comma category just in case it holds in both $X$ and $Y$.
+
+Disjointness is characterized by a similar invertibility condition and thus can be proven to hold in the comma category once it holds in both $X$ and $Y$ in the same way.
+\end{proof}
+
+\begin{corollary}
+If $X$, $Y$, and $\omega$ are regular categories, $f_X : X \to \omega$ is a regular functor, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ is also a regular category, and its projections to $X$ and $Y$ preserve and jointly reflect regular structure.
+
+If $X$, $Y$, and $\omega$ are furthermore effective regular (aka, exact), then so is $\comma{f_X}{f_Y}$.
 \end{corollary}
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are regular categories, $f_X : X \to \omega$ is a regular functor, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ is also a regular category, and its projections to $X$ and $Y$ preserve and jointly reflect regular structure.
-
-If $X$, $Y$, and $\omega$ are furthermore effective regular (aka, exact), then so is $(f_X, f_Y)$.
-\end{corollary}
-
-\begin{corollary}
-If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable natural numbers objects, $f_X : X \to \omega$ is a lexfunctor preserving the natural numbers object, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also has a pullback-stable natural numbers object, and its projections to $X$ and $Y$ preserve and jointly reflect natural numbers objects.
+If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable natural numbers objects, $f_X : X \to \omega$ is a lexfunctor preserving the natural numbers object, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ also has a pullback-stable natural numbers object, and its projections to $X$ and $Y$ preserve and jointly reflect natural numbers objects.
 
 The same holds replacing the condition of natural numbers objects with list objects more generally.
 \end{corollary}
 
 Putting these all together, we have:
 \begin{corollary}\label{CommaStableArithmetic}
-If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $(f_X, f_Y)$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve and jointly reflect arithmetic universe structure.
+If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve and jointly reflect arithmetic universe structure.
 \end{corollary}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
