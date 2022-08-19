@@ -12,7 +12,7 @@ Firstly, there are those which are similar in flavor to the traditional instance
 The second class of models/examples we consider are more similar in flavor to the traditional interpretation of the modal logic GL in well-founded orders. Here, the existence of guarded recursion is straightforward, but it is the unification with our general theory which is of note. Among these models are examples like the topos of trees, the canonical model discussed in the literature on guarded recursion. We also demonstrate similar but distinct models which support an interpretation of Boolean provability logic, as opposed to the fundamentally intuitionistic logic of the topos of trees.
 
 \subsection{Automatic consistency results without models as such}
-We already know that the theory of geminal categories is an introspective theory. And because every introspective theory is itself a geminal category, we know that the theory of introspective theories only prove $\Box A$ if it furthermore proves $A$.
+We already know that the theory of geminal categories is an introspective theory. And because every introspective theory is itself a geminal category, we know that the theory of introspective theories only proves $\Box A$ if it furthermore proves $A$.
 
 Finally, we know that every lexcategory can be equipped as a geminal category in a trivial way, by taking its internal geminal category to be trivially $1$, even when the outer lexcategory needn't be trivial. From this, we can conclude that the theory of introspective theories is nontrivial in the sense that it does not prove its internal geminal category to be trivial. Thus, it does not prove $\Box A$ for all $A$. Furthermore, combining this with the previous paragraph, we have the stronger consistency result that for every $n$, the theory of introspective theories does not prove $\Box^n A$ for all $A$.
 
@@ -139,7 +139,7 @@ Finally, we can define the sets of arbitrary or well-founded countably branching
 
 Finally, the well-foundedness of these trees lets us prove inductively the existence of partial functions satisfying any particular recursion conditions with any particular tree in their domain, and lets us prove that any two such partial functions agree wherever both are defined. An impredicative union of all such partial functions then yields a unique total function defined by such recursion. This gives us the unique homomorphisms from the term model to other internal models, establishing the term model as the initial internal model.
 
-This is one simple approach available to us for constructing initial models in an NNO-topos. Other approaches are possible as well.
+This is one simple approach available to us for constructing initial models in an NNO-topos. Other approaches are possible as well. \TODOinline{For example, by making the observation that arithmetic universes have the same property, and NNO-toposes are arithmetic universes.}
 
 \TODOinline{Make further observation about k-ary theories, when we have k-ary coproducts. Note that it is key here how the theory actually recognizes internally anything which is externally a model of such an infinitary theory, as we can construct any external function on domain k as an internal map. Once we've noted the version of this for arbitrary k, we can invoke it later on when we wish to make any initial model in actual Set of an infinitary sort.}
 \end{proof}

@@ -120,8 +120,9 @@ This is corollary to \magicref{YonedaPullalong}, which tells us $\Hom_{\Psh{T/t}
 If $f \adjointTo g$, then $\pullAlong{f} \adjointTo \pullAlong{g}$. Thus $\pullAlong{f} = \Lan_{\op{g}}$, while $\pullAlong{g} = \Ran_{\op{f}}$.
 \end{theorem}
 \begin{proof}
-\TODOinline{This is simply the fact that adjunction is preserved by 2-functors and reversed by each of co and op, thus preserved by $\Hom(\op{-}, C)$ for a fixed category $C$. We don't really need to remark on this theorem here in the final draft, but I'm including it for my own reference, so I can stop getting things backwards in my head.}
+This is simply the fact that adjunction is preserved by 2-functors, and reversed (in the sense of swapping left and right adjoints) by each of $\mathrm{co}$ and $\mathrm{op}$. Thus, adjunction is preserved by $\Hom(\op{-}, C)$ for any fixed $C$. In particular, adjunction is preserved by $\Set^{\op{-}}$ within $\Cat$.
 \end{proof}
+\sTODO{We don't really need to remark on this theorem here in the final draft, but I'm including it for my own reference, so I can stop getting things backwards in my head.}
 
 \begin{theorem}\label{RepsmallRightAdjoint}
 If $f : S \to T$ has a right adjoint $g : T \to S$, then $\pullAlong{f} : \Psh{T} \to \Psh{S}$ takes \repsmall/ sets to \repsmall/ sets. Specifically, $\pullAlong{f}(t) = g(t)$.
@@ -628,6 +629,8 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
 \subsection{Multiply internal structures}\label{MultiplyInternal}
+\TODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$}
+
 Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
 
 We may iterate this process. Suppose now that $C_2$ is the global aspect of some lexcategory internal to $C_1$, which in turn remains the global aspect of some lexcategory internal to $C_0$. We can now speak of structures internal to $C_2$ as being triply internal to $C_0$.
@@ -650,7 +653,7 @@ The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each 
 
 This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal homomorphism $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
 
-\begin{observation}\label{InducedGlobalCommute}
+\begin{lemma}\label{InducedGlobalCommute}
 If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$ (in the sense of a canonical natural isomorphism). That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
 
 % https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEdsb2J7UX0iXSxbMCwzLCJcXEdsb2J7RihRKX0iXSxbMywwLCJDIl0sWzMsMywiRCJdLFsxLDEsIm0iXSxbMSwyLCJGKG0pIl0sWzIsMSwiXFxIb21fUSgxLCBtKSJdLFsyLDIsIkYoXFxIb21fUSgxLCBtKSkgPSBcXEhvbV97RihRKX0oMSwgRihtKSkiXSxbMCwxLCJcXEluZHVjZWRIb21ve0Z9e1F9IiwyXSxbMCwyLCJcXEdhbW1hX1EiXSxbMSwzLCJcXEdhbW1hX3tGKFEpfSIsMl0sWzQsNiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsyLDMsIkYiXV0=
@@ -668,13 +671,13 @@ If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F
 	\arrow[maps to, from=2-3, to=3-3]
 	\arrow["F", from=1-4, to=4-4]
 \end{tikzcd}\]
-\end{observation}
+\end{lemma}
 
 Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
 
 Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable smallness conditions, but they are probably more easily understood in the presentation just given.
 
-\subsection{Kinds of category}
+\subsection{Arithmetic universes and other special kinds of category}
 \TODOinline{This section isn't ready yet. I just thought I should have these definitions somewhere, if I'm going to reference them later. Mainly the definition of arithmetic universe.}
 
 In addition to categories simpliciter and lexcategories, we have various other enrichments of the basic notion of category which are occasionally of interest:

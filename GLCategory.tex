@@ -98,7 +98,7 @@ Pictorially, this can be envisioned like so:
 
 Here, the first row is structure internal to $C_0$, the second row is structure internal to $C_1$ (thus, doubly internal to the ambient $C_0$), the third row is structure internal to $C_2$ (thus, triply internal to the ambient $C_0$), and so on.
 
-In keeping with our convention, we shall also use $F_i : C_i \to C_{i + 1}$ to refer to the global aspect of $F'_i$. These global aspects line up more straightforwardly:
+In keeping with our naming convention, we shall also use $F_i : C_i \to C_{i + 1}$ to refer to the global aspect of $F'_i$. These global aspects line up more straightforwardly:
 
 % https://q.uiver.app/?q=WzAsNCxbMCwwLCJDXzEiXSxbMSwwLCJDXzIiXSxbMiwwLCJDXzMiXSxbMywwLCJcXGxkb3RzIl0sWzAsMSwiRl8xIl0sWzEsMiwiRl8yIl0sWzIsMywiRl8zIl1d
 \[\begin{tikzcd}
@@ -272,7 +272,7 @@ This is the result of first obtaining the geminal category $\gamma = \langle T, 
 We now are ready to prove our main result about geminal categories.
 
 \subsection{The free introspective theory}
-\begin{theorem}
+\begin{theorem}\label{InitialIntrospectiveTheory}
 The strict introspective theory given in \magicref{GLCatTheoryIsIntrosp} is the initial strict introspective theory.
 \end{theorem}
 \begin{proof}
@@ -305,6 +305,20 @@ For simplicity as a first introduction, everything done previously was the speci
 \TODOinline{Now we can duplicate all of the above, except for the result that introspective theories are themselves geminal categories, for \quote{geminal gadgets} more generally. That is, the left adjoint mentioned above is given by a general construction perfectly analogous to the one we used to construct the concept of geminal categories above.}
 
 \subsection{Co-free introspective theories}
+\TODOinline{We will present results first in terms of strict introspective theories for convenience, then make the observation as to how this transfers to the non-strict context.}
+
+Let $\langle T, C, \introS, \introN \rangle$ be a strict introspective theory. Let $C_0$ be a lexcategory, and let $M : T \to C_0$ be a lexfunctor. Via \magicref{IntrospContainsGeminal}, we obtain a geminal category internal to $T$. This is transported by $M$ to a geminal category internal to $C_0$, which we shall call $\langle C'_1, C'_2, \ldots; F'_1, F'_2, \ldots \rangle$. Note that $C'_1 = M[C]$.
+
+As before, we shall use the unprimed names $C_i$ to refer to the global aspect of $C'_i$, and similarly $F_i$ to refer to the global aspect of $F'_i$.
+
+Let $Q$ be the sublexcategory of $\prod_{i \geq 0} C_i$ consisting only of those objects and morphisms such that, for each $i \geq 1$, we have that the $(i + 1)$-th component is given by applying $F_i$ to the $i$-th component. Clearly, the projection from $Q$ to $C_0 \times C_1$ is an equivalence, as each further component of any data within $Q$ is recursively determined from the $C_1$ component already.
+
+The combination of $M : T \to C_0$ and $\InducedHomo{M}{C} \circ \introS : T \to C_1$ gives us a lexfunctor $\beta$ from $T$ to $C_0 \times C_1$, thus to $Q$.
+
+For each $i \geq 0$, we have a lexfunctor $\Gamma : C_{i + 1} \to C_{i }$. Taking the product of these gives us a lexfunctor we shall also call $\Gamma : \prod_{i \geq 1} C_i \to \prod_{i \geq 0} C_i$. Composing this with the projection $\pi : \prod_{i \geq 0} C_i \to \prod_{i \geq 1} C_i$ gives us an endolexfunctor on $\prod_{i \geq 0}$. Via the combination of \magicref{InducedGlobalCommute} and equation $E_i$ in \magicref{VerboseGeminalCatDefn}, we see that this restrits also to an endolexfunctor on $Q$, which we call $L$.
+
+\TODOinline{Observe that we get a lexfunctor from $T$ to suitable coalgebras for $L$ whose carrier is $\beta$, via $\introN$. Observe that this category of suitable coalgebras can be equipped as an introspective theory, and this lexfunctor becomes an introspective theory homomorphism.}
+
 \begin{TODOblock}
 Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
 
@@ -324,6 +338,8 @@ Then we can make an introspective theory $T$ whose objects are quadruples $\lang
 \end{tikzcd}\].
 
 This corresponds to the naturality square for $\introN$ as applied to itself. $a$ is meant to be a component of $\introN$, and $b$ is $\introS(a)$, with $g$ similarly as $\introS(s)$. So to speak.
+
+(Perhaps the above needs also to be demanded one level further internal; perhaps that doesn't follow automatically! But further levels then do follow automatically)
 
 A morphism between two such objects is a pair $\langle m : s_1 \to s_2 \in S, n : g_1 \to g_2 \in G$ such that the following commutes:
 

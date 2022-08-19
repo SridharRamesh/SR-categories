@@ -269,18 +269,4 @@ What remains is only to see that each $F_i$ also takes $G_j$ to $G_{j + 1}$ and 
 We prove this by induction on $i$. We have above established this for $i = 1$ as our base case. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[G_j] = F_{i + 1} [F_i [G_{j - 1}]] = (F_{i + 1} \circ F_i)[G_{j - 1}] = (F_i \circ F_i) = F_i [F_i [G_{j - 1}]] = F_i [G_j] = G_{j + 1}$. And similarly with $F$ in place of $G$ as well.
 \end{proof}
 
-\subsection{GL lemma}
-\begin{lemma}
-Given $c, d \in C_2$, we have that $F_1(\Hom{C_2}(c, d)) = \Hom_{C_3}(F_1(c), F_1(d))$.
-\end{lemma}
-
-\subsection{TODO test}
-Here's a comment: \sTODOinline{Hello}
-
-This needs to be fleshed out: \sTODO
-
-\sTODOinline{More stuff to be done.}
-
-And more writing comes here.
-
 \fileend
