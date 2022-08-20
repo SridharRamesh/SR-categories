@@ -253,7 +253,7 @@ Thus, we can go back and forth between thinking of geminal categories in either 
 From a strict introspective theory $\langle T, C, \introS, \introN \rangle$, we obtain a geminal category $\langle T, C; \introS, \introN_{C} \rangle$, whose underlying lexcategory is $T$. This is the canonical way to view an introspective theory as a geminal category.
 \end{construction}
 \begin{proof}
-It is immediate in the definition of a strict introspective theory that $C$ is a lexcategory internal to $T$ and $\introS : T \to \Glob{C}$. This gives us the first three out of the six ingredients of \magicref{CompactGeminalCatDefn}.
+It is immediate in the definition of a strict introspective theory that $C$ is a lexcategory internal to $T$, and $\introS$ is a lexfunctor from $T$ to $\Glob{C}$. This gives us the first three out of the six ingredients of \magicref{CompactGeminalCatDefn}.
 
 As for $\introN_{C}$, meaning the components of the natural transformation $\introN$ at the objects of $C$, this gives us a $T$-internal lexfunctor from $C$ to $\Hom_C(1, \introS[C]) = \Gamma[\introS[C]]$. This is the fourth ingredient of \magicref{CompactGeminalCatDefn}.
 
@@ -307,17 +307,19 @@ For simplicity as a first introduction, everything done previously was the speci
 \subsection{Co-free introspective theories}
 \TODOinline{We will present results first in terms of strict introspective theories for convenience, then make the observation as to how this transfers to the non-strict context.}
 
-Let $\langle T, C, \introS, \introN \rangle$ be a strict introspective theory. Let $C_0$ be a lexcategory, and let $M : T \to C_0$ be a lexfunctor. Via \magicref{IntrospContainsGeminal}, we obtain a geminal category internal to $T$. This is transported by $M$ to a geminal category internal to $C_0$, which we shall call $\langle C'_1, C'_2, \ldots; F'_1, F'_2, \ldots \rangle$. Note that $C'_1 = M[C]$.
+Let $\langle T, C, \introS, \introN \rangle$ be a strict introspective theory. Let the endolexfunctor $\sigma$ on $T \times \Glob{C}$ be defined by $\sigma(t, c) = (\Gamma_C(c), N(c))$, where the lexfunctor $N : \Glob{C} \to \Glob{C}$ is given by considering the internal lexfunctor $\introN_C : C \to \Gamma_C(\introS[C])$ and \TODO.
 
-As before, we shall use the unprimed names $C_i$ to refer to the global aspect of $C'_i$, and similarly $F_i$ to refer to the global aspect of $F'_i$.
+Observe that we have a lexfunctor from $T$ to the category of $\sigma$-coalgebras. \TODO. The objects in the range of this lexfunctor always satisfy the property \TODO.
 
-Let $Q$ be the sublexcategory of $\prod_{i \geq 0} C_i$ consisting only of those objects and morphisms such that, for each $i \geq 1$, we have that the $(i + 1)$-th component is given by applying $F_i$ to the $i$-th component. Clearly, the projection from $Q$ to $C_0 \times C_1$ is an equivalence, as each further component of any data within $Q$ is recursively determined from the $C_1$ component already.
+Now, let $K$ be a lexcategory, and let $M : T \to K$ be a lexfunctor. Let the endolexfunctor $\lambda$ on $K \times \Glob{M[C]}$ be defined by $\lambda(k, mc) = (\Gamma_{M[C]}(mc), ...)$. \TODO.
 
-The combination of $M : T \to C_0$ and $\InducedHomo{M}{C} \circ \introS : T \to C_1$ gives us a lexfunctor $\beta$ from $T$ to $C_0 \times C_1$, thus to $Q$.
+Observe that we have a lexfunctor $J : T \times \Glob{C} \to K \times \Glob{M[C]}$ given by $M \times \InducedHomo{M}{C}$.
 
-For each $i \geq 0$, we have a lexfunctor $\Gamma : C_{i + 1} \to C_{i }$. Taking the product of these gives us a lexfunctor we shall also call $\Gamma : \prod_{i \geq 1} C_i \to \prod_{i \geq 0} C_i$. Composing this with the projection $\pi : \prod_{i \geq 0} C_i \to \prod_{i \geq 1} C_i$ gives us an endolexfunctor on $\prod_{i \geq 0}$. Via the combination of \magicref{InducedGlobalCommute} and equation $E_i$ in \magicref{VerboseGeminalCatDefn}, we see that this restrits also to an endolexfunctor on $Q$, which we call $L$.
+Observe that $J \circ \sigma = \kappa \circ J$??? \TODO.
 
-\TODOinline{Observe that we get a lexfunctor from $T$ to suitable coalgebras for $L$ whose carrier is $\beta$, via $\introN$. Observe that this category of suitable coalgebras can be equipped as an introspective theory, and this lexfunctor becomes an introspective theory homomorphism.}
+Thus, the category of $\sigma$-coalgebras is transported by $J$ to the category of $\lambda$-coalgebras. \TODO. Together with our previous observation, this gives us a lexfunctor from $T$ to the category of $\lambda$-coalgebras, such that the objects in the range of this lexfunctor always satisfy the property \TODO.
+
+\TODOinline{Observe that this category of suitable coalgebras can be equipped as an introspective theory, and this lexfunctor becomes an introspective theory homomorphism.}
 
 \begin{TODOblock}
 Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
