@@ -1,6 +1,6 @@
 \filestart
 
-\section{Models}
+\section{Examples in the wild}
 
 \subsection{Preview}
 This chapter might better be titled \quote{Examples in the wild}. In previous chapters, we have defined introspective theories and geminal categories. That is, we have axiomatized the theory of introspective theories and the theory of geminal categories. Now we look at some notable models of these axiomatic theories, which is to say, at some notable specific examples of introspective theories and of geminal categories. These examples are of a sort which might be considered to have been found \quote{in the wild}, instead of being freely syntactically constructed as the examples of the last chapter were.
@@ -20,68 +20,11 @@ In this way, simply by consideration of the freeness properties already establis
 
 \TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
-\subsection{Models based on \texorpdfstring{$\Sigma_1$}{Sigma-1} or arbitrary extensions of PA, or ZFC, or etc}
-\TODOinline{I will write this section in a sloppy way for now and then improve it later.}
-
-This section reviews and builds upon the construction previously seen at \cref{SigmaModelSimple}.
-
-\begin{construction}\label{Sigma1Model}
-
-Consider a sigma-1 theory $\tau$ extending PA (or ZFC, or any such thing), in the sense of an extension whose axioms are computably enumerable. Actually, for now, let's just consider PA simpliciter.
-
-\TODOinline{It probably isn't easy to pin down in a clean way exactly the minimal kind of system in which this goes through, but it could be useful to name some weak subsystems of arithmetic in which it goes through. In particular, we should not expect this to go through in Robinson's Arithmetic Q which lacks induction entirely, but we should expect it to still work in systems that just have induction for $\Sigma_1$ formulae).}
-
-Consider the category $T$ whose objects are the sigma-1 formulas $\phi(n, m)$ in the language of PA which define binary relations on the natural numbers which PA proves to be partial equivalence relations (i.e., symmetric and transitive). Given any two such formulas $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a sigma-1 formula $F(n, m)$ on the natural numbers which PA proves to correspond to the graph of a function between the subquotients of $\mathbb{N}$ corresponding to $\phi$ and to $\psi$, respectively. That is, such that PA proves the universal closures of the following:
-
-$F(n, m) \implies \phi(n, n) \wedge \psi(m, m)$
-
-$\phi(n_1, n_2) \wedge \psi(m_1, m_2) \wedge F(n_1, m_1) \implies F(n_2, m_2)$
-
-$\phi(n, n) \implies \exists m [F(n, m)]$
-
-$F(n, m_1) \wedge F(n, m_2) \implies \psi(m_1, m_2)$.
-
-Two such formulas $F(n, m)$ and $F'(n, m)$ are considered to be equal as morphisms from $\phi$ to $\psi$ if PA proves them to be equivalent (that is, if PA proves $F(n, m) \implies F'(n, m)$ and $F'(n, m) \implies F(n, m)$).
-
-Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we define their composition in the usual way of composing functions represented as graphs, as $(F \circ G)(n, m) = \exists p [G(n, p) \wedge F(p, m)]$.
-
-This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
-
-\TODOinline{Perhaps instead of imposing PERs from the beginning, we start only with the category of RE sets, and then take its ex/lex completion or some such thing. Like so:}
-
-Consider the category $T'$ whose objects are the sigma-1 formulas $\phi(n)$ in the language of PA, and such that a morphism from $\phi(n)$ to $\psi(m)$ is a sigma-1 formula $F(n, m)$ such that $PA$ proves $\forall n, m . F(n, m) \implies (\phi(n) \wedge \psi(m))$ and $\forall n . \phi(n) \implies \exists! m . F(n, m)$. Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case PA proves $\forall n, m . F(n, m) \biimplies G(n, m)$. Morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
-
-This category $T'$ is regular but not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
-
-\TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
-\end{construction}
-
-\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that as concerns ZFC, we can also consider for $C$ not just categories of definable subsets of naturals, but also of definable sets in general, or of definable classes.}
-
-\subsection{Finitely axiomatizable lex theories}
-A concept that will often be useful to us in the following.
-
-\begin{definition}
-A \defined{finitely axiomatizable lex theory} is a lexcategory $W$ which can be generated in finitely many steps of the following form, starting from the initial lexcategory: free augmentation (qua lexcategory) with an object, free augmentation (qua lexcategory) with a morphism between two existing objects, or freely (qua lexcategory) making two existing parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}.
-\end{definition}
-
-If $W$ is a finitely axiomatizable lex theory, and $C$ is an internal lexcategory within a lexcategory $T$, then the set of lexfunctors from $W$ to $C$ is $T$-\repsmall/. This can be seen readily from the inductive definition of finite axiomatizability: 
-
-\begin{TODOblock}
-Discuss the concept of a lexcategory having initial internal models of ALL finitely axiomatizable lex theories.
-
-As a bit of trivia, observe how this follows simply from having an internal free locally cartesian closed category on one object (verify the details on this; or perhaps from having internal free lex categories and the ability to freely augment internal lex categories with a new cell). Regardless of whether those details work out, conjecture that there are finitely many finitely axiomatizable lex theories such that having internal initial models of those implies having internal initial models of all finitely axiomatizable lex theories, so that the latter is itself a finitely axiomatizable condition.
-
-Relate this also to the concept of arithmetic universes. Conjecturally, being an arithmetic universe is equivalent to something like having free internal models for sketches indexed by finite unions of internal objects (but there seems to be some hesitance in the literature to claim this? Understand that better). At any rate, an arithmetic universe should have internal initial models of all finitely axiomatizable lex theories.
-
-This section basically only exists in order to claim that finitely axiomatizable lex theories which extend the theory of arithmetic universes are automatically examples of the next section.
-\end{TODOblock}
-
-\subsection{Theories with initial internal models of themselves}
+\subsection{Theories with initial interior models of themselves}
 
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
-Fix some lex theory $T$ extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose the initial gadget $G$ (in $\Set$) contains an initial internal gadget $G'$ (in the sense that $G'$ is a gadget internal to the underlying lexcategory $|G|$ of $G$, and for any other gadget $H$ internal to $|G|$, there is a unique $|G|$-internal gadget homomorphism from $G'$ to $H$). For sake of a name for this concept, call such a theory \defined{\initogeminal/}.
+Fix some lex theory $T$ extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose the initial gadget $G$ (in $\Set$) contains an initial internal gadget $G'$ (in the sense that $G'$ is initial among the gadgets internal to the underlying lexcategory $|G|$ of $G$). For sake of a name for this concept, call such a theory \defined{\initogeminal/}.
 
 \TODOinline{See note at \magicref{ModelTerminology} on the inaptness of this "internal" terminology. Clean it up.}
 
@@ -89,7 +32,7 @@ Fix some lex theory $T$ extending the theory of strict lexcategories, whose mode
 
 Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
 
-This setup is thus a geminal gadget (with axioms 3 and 3' of a geminal gadget automatically satisfied by the uniqueness observations in the previous paragraph).
+This setup is thus a geminal gadget (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
 
 Indeed, this is the unique way to equip $G$ as a geminal gadget with internal gadget $G'$.
 
@@ -179,7 +122,7 @@ We say a lexfunctor $f : T \to S$ is an \defined{initializer} if $f$ is initial 
 \end{definition}
 
 \begin{lemma}\label{TermModelIsInitialForLex}
-For any lexcategory $C$, its global sections lexfunctor $\Hom_C(1, -) : C \to \Set$ is an initializer.
+For any lexcategory $C$, its global sections lexfunctor $\Hom_C(1, -) : C \to \Set$ is an initial model of $C$ in $\Set$.
 \end{lemma}
 \begin{proof}
 By the Yoneda lemma, for any functor $f : C \to \Set$, the natural transformations from $\Hom_C(1, -)$ to $f$ are in correspondence with the elements of $f(1)$. But if $f$ is a lexfunctor, then $f(1)$ has a unique element.

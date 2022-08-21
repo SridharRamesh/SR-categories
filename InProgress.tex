@@ -9,7 +9,7 @@
 
 \subsubsection{Theories, models, functors, etc}
 \begin{observation}\label{ModelTerminology}
-We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
+We need to standardize our terminology on theories, models, and internal models. Is a lexfunctor from $T$ to $S$ an internal model of $T$ in $S$? Or is a lexfunctor from $T$ to the globalization of an internal category in $S$ an internal model of $T$ in $S$? Is a model always Set-valued? Etc. Let us do a Ctrl+F for "model" to make sure we are not confusing on this point. It may be best to speak scrupulously of lexcategories and lexfunctors at all times, and not of theories or models, except in the fixed phrase "introspective theory".
 \end{observation}
 
 \TODOinline{
@@ -268,5 +268,64 @@ What remains is only to see that each $F_i$ also takes $G_j$ to $G_{j + 1}$ and 
 
 We prove this by induction on $i$. We have above established this for $i = 1$ as our base case. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[G_j] = F_{i + 1} [F_i [G_{j - 1}]] = (F_{i + 1} \circ F_i)[G_{j - 1}] = (F_i \circ F_i) = F_i [F_i [G_{j - 1}]] = F_i [G_j] = G_{j + 1}$. And similarly with $F$ in place of $G$ as well.
 \end{proof}
+
+\section{What follows is stuff to be removed, as it has been rewritten}
+
+\subsection{Models based on \texorpdfstring{$\Sigma_1$}{Sigma-1} or arbitrary extensions of PA, or ZFC, or etc}
+\TODOinline{I will write this section in a sloppy way for now and then improve it later.}
+
+This section reviews and builds upon the construction previously seen at \cref{SigmaModelSimple}.
+
+\begin{construction}\label{Sigma1Model}
+
+Consider a sigma-1 theory $\tau$ extending PA (or ZFC, or any such thing), in the sense of an extension whose axioms are computably enumerable. Actually, for now, let's just consider PA simpliciter.
+
+\TODOinline{It probably isn't easy to pin down in a clean way exactly the minimal kind of system in which this goes through, but it could be useful to name some weak subsystems of arithmetic in which it goes through. In particular, we should not expect this to go through in Robinson's Arithmetic Q which lacks induction entirely, but we should expect it to still work in systems that just have induction for $\Sigma_1$ formulae).}
+
+Consider the category $T$ whose objects are the sigma-1 formulas $\phi(n, m)$ in the language of PA which define binary relations on the natural numbers which PA proves to be partial equivalence relations (i.e., symmetric and transitive). Given any two such formulas $\phi(n, m)$ and $\psi(n, m)$, a morphism in $T$ from $\phi$ to $\psi$ is a sigma-1 formula $F(n, m)$ on the natural numbers which PA proves to correspond to the graph of a function between the subquotients of $\mathbb{N}$ corresponding to $\phi$ and to $\psi$, respectively. That is, such that PA proves the universal closures of the following:
+
+$F(n, m) \implies \phi(n, n) \wedge \psi(m, m)$
+
+$\phi(n_1, n_2) \wedge \psi(m_1, m_2) \wedge F(n_1, m_1) \implies F(n_2, m_2)$
+
+$\phi(n, n) \implies \exists m [F(n, m)]$
+
+$F(n, m_1) \wedge F(n, m_2) \implies \psi(m_1, m_2)$.
+
+Two such formulas $F(n, m)$ and $F'(n, m)$ are considered to be equal as morphisms from $\phi$ to $\psi$ if PA proves them to be equivalent (that is, if PA proves $F(n, m) \implies F'(n, m)$ and $F'(n, m) \implies F(n, m)$).
+
+Given morphisms $F : \phi \to \psi$ and $G: \psi \to \chi$ of this sort, we define their composition in the usual way of composing functions represented as graphs, as $(F \circ G)(n, m) = \exists p [G(n, p) \wedge F(p, m)]$.
+
+This all describes the category $T$, which one can verify is indeed a category and moreso, a category with finite limits.
+
+\TODOinline{Perhaps instead of imposing PERs from the beginning, we start only with the category of RE sets, and then take its ex/lex completion or some such thing. Like so:}
+
+Consider the category $T'$ whose objects are the sigma-1 formulas $\phi(n)$ in the language of PA, and such that a morphism from $\phi(n)$ to $\psi(m)$ is a sigma-1 formula $F(n, m)$ such that $PA$ proves $\forall n, m . F(n, m) \implies (\phi(n) \wedge \psi(m))$ and $\forall n . \phi(n) \implies \exists! m . F(n, m)$. Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case PA proves $\forall n, m . F(n, m) \biimplies G(n, m)$. Morphisms compose in the obvious way; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
+
+This category $T'$ is regular but not exact (that is, not every equivalence relation in $T'$ admits a corresponding quotient). Let $T$ be its ex/reg completion.
+
+\TODOinline{Now, we describe the C inside T which is its internal copy, just by carrying out this exact same construction internal to T, and then we describe the indexed lexfunctor from T to C, which is a little more interesting or takes a little more care. Having this functor be indexed is where the sigma-1 restriction is important.}
+\end{construction}
+
+\TODOinline{Observe that we have somewhat distinct concepts of "T = PA Sigma-1, C = ZFC Sigma-1" vs "T = ZFC Sigma-1, C = ZFC Sigma-1", say. Also observe that as concerns ZFC, we can also consider for $C$ not just categories of definable subsets of naturals, but also of definable sets in general, or of definable classes.}
+
+\subsection{Finitely axiomatizable lex theories}
+A concept that will often be useful to us in the following.
+
+\begin{definition}
+A \defined{finitely axiomatizable lex theory} is a lexcategory $W$ which can be generated in finitely many steps of the following form, starting from the initial lexcategory: free augmentation (qua lexcategory) with an object, free augmentation (qua lexcategory) with a morphism between two existing objects, or freely (qua lexcategory) making two existing parallel morphisms equal. In other words, it can be presented by a finite lex \quote{sketch}.
+\end{definition}
+
+If $W$ is a finitely axiomatizable lex theory, and $C$ is an internal lexcategory within a lexcategory $T$, then the set of lexfunctors from $W$ to $C$ is $T$-\repsmall/. This can be seen readily from the inductive definition of finite axiomatizability: 
+
+\begin{TODOblock}
+Discuss the concept of a lexcategory having initial internal models of ALL finitely axiomatizable lex theories.
+
+As a bit of trivia, observe how this follows simply from having an internal free locally cartesian closed category on one object (verify the details on this; or perhaps from having internal free lex categories and the ability to freely augment internal lex categories with a new cell). Regardless of whether those details work out, conjecture that there are finitely many finitely axiomatizable lex theories such that having internal initial models of those implies having internal initial models of all finitely axiomatizable lex theories, so that the latter is itself a finitely axiomatizable condition.
+
+Relate this also to the concept of arithmetic universes. Conjecturally, being an arithmetic universe is equivalent to something like having free internal models for sketches indexed by finite unions of internal objects (but there seems to be some hesitance in the literature to claim this? Understand that better). At any rate, an arithmetic universe should have internal initial models of all finitely axiomatizable lex theories.
+
+This section basically only exists in order to claim that finitely axiomatizable lex theories which extend the theory of arithmetic universes are automatically examples of the next section.
+\end{TODOblock}
 
 \fileend

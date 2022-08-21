@@ -304,24 +304,136 @@ For simplicity as a first introduction, everything done previously was the speci
 
 \TODOinline{Now we can duplicate all of the above, except for the result that introspective theories are themselves geminal categories, for \quote{geminal gadgets} more generally. That is, the left adjoint mentioned above is given by a general construction perfectly analogous to the one we used to construct the concept of geminal categories above.}
 
+\TODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
+
+\subsection{Modal logic in geminal categories}
+The significance of our constellation of constructions turning introspective theories into geminal categories may be further illuminated by thinking about box notation for geminal categories.
+
+\begin{definition}\label{BoxForGeminal}
+Given a geminal category $\langle C'_1, C'_2; F'_1, F'_2 \rangle$, we may define a bifunctor on $C'_1$ like so: Given objects $c$ and $d$ in $C'_1$, we define $\Box(c \implies d)$ to mean $\Hom_{C'_2}(F'_1(c), F'_1(d))$. We then take $\Box d$ as shorthand for $\Box(1 \implies d)$.
+\end{definition}
+
+This is reminiscent of our previously introduced box notation for introspective theories (where we had both $\Box_T$ and $\Box_C$). And indeed, we will now link all of these box notations:
+
+\begin{observation}
+Given an introspective theory $\langle T, C, \introS, \introN \rangle$, if we think of this as a geminal category with underlying lexcategory $T$ via \magicref{IntrospAsGeminal} and then apply the box notation from \magicref{BoxForGeminal}, we find that for $t, s \in T$, we have $\Box(s \implies t) = \Hom_C(\introS(s), \introS(t))$, and in particular, $\Box t = \Hom_C(1, \introS(t))$. This exactly matches the definition of $\Box_T t$ used for introspective theories from \magicref{BoxDefn}.
+
+Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-internal geminal category with underlying lexcategory $C$, and then apply the box notation from \magicref{BoxForGeminal}, we find that for $c, d \in C$, we have $\Box(c \implies d) = \Hom_{\introS[C]}(\introN_{\Ob(c)}(c), \introN_{\Ob(c)}(d))$. When $c$ and $d$ are globally defined, we can use \magicref{SMatchesN} to show this equal to $\Hom_{\introS[C]}(\introS(c), \introS(d)) =  \introS(\Hom_C(c, d))$. This exactly matches the definition of $\Box_C (c \implies d)$ used with introspective theories from \magicref{BoxDefn}.
+
+\TODOinline{When $c$ and $d$ are not globally defined, then what?}
+\end{observation}
+
+\TODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our two main classes of example into here.}
+
 \subsection{Co-free introspective theories}
 \TODOinline{We will present results first in terms of strict introspective theories for convenience, then make the observation as to how this transfers to the non-strict context.}
 
-Let $\langle T, C, \introS, \introN \rangle$ be a strict introspective theory. Let the endolexfunctor $\sigma$ on $T \times \Glob{C}$ be defined by $\sigma(t, c) = (\Gamma_C(c), N(c))$, where the lexfunctor $N : \Glob{C} \to \Glob{C}$ is given by considering the internal lexfunctor $\introN_C : C \to \Gamma_C(\introS[C])$ and \TODO.
+\begin{construction}\label{BoxCoalgebrasInGeminal}
+Let $\langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category. Because $\Box_{C_1}$ is an endolexfunctor, the category of $\Box_{C_1}$-coalgebras is a lexcategory, with its forgetful functor to $C_1$ creating finite limits (by similar reasoning to \magicref{CommaCategoryColimits}; indeed, this can be seen as a (non-full) sublexcategory of the comma category $\comma{\id}{\Box_{C_1}}$). As $C_1$ is in fact a strict lexcategory, we can thus equip the category of $\Box_{C_1}$-coalgebras as a strict lexcategory, with its forgetful functor to $C_1$ creating basic limits (note that it is fine here if $\Box_{C_1}$ does not preserve basic limits on the nose; all that mattered was that it preserves finite limits in the non-strict-sense).
+\end{construction}
 
-Observe that we have a lexfunctor from $T$ to the category of $\sigma$-coalgebras. \TODO. The objects in the range of this lexfunctor always satisfy the property \TODO.
+\begin{construction}
+Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
 
-Now, let $K$ be a lexcategory, and let $M : T \to K$ be a lexfunctor. Let the endolexfunctor $\lambda$ on $K \times \Glob{M[C]}$ be defined by $\lambda(k, mc) = (\Gamma_{M[C]}(mc), ...)$. \TODO.
+Observe that $\Box_{C_1} \circ H = H \circ \Box_T$, via the following commutative diagram:
+
+% https://q.uiver.app/?q=WzAsNixbMywwLCJDXzEiXSxbMywxLCJcXEdsb2J7QydfMn0iXSxbMywyLCJDXzEiXSxbMCwwLCJUIl0sWzAsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkZfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDXzF9IiwwLHsiY3VydmUiOi01fV0sWzMsMCwiSCJdLFszLDQsIlxcaW50cm9TIl0sWzQsMSwiXFxJbmR1Y2VkSG9tb3tIfXtDfSIsMV0sWzQsNSwiXFxHYW1tYV9DIl0sWzUsMiwiSCIsMl0sWzMsNSwiXFxCb3hfVCIsMix7ImN1cnZlIjo1fV1d
+\[\begin{tikzcd}
+	T &&& {C_1} \\
+	{\Glob{C}} &&& {\Glob{C'_2}} \\
+	T &&& {C_1}
+	\arrow["{F_1}"', from=1-4, to=2-4]
+	\arrow["{\Gamma_{C'_2}}"', from=2-4, to=3-4]
+	\arrow["{\Box_{C_1}}", curve={height=-30pt}, from=1-4, to=3-4]
+	\arrow["H", from=1-1, to=1-4]
+	\arrow["\introS", from=1-1, to=2-1]
+	\arrow["{\InducedHomo{H}{C}}"{description}, from=2-1, to=2-4]
+	\arrow["{\Gamma_C}", from=2-1, to=3-1]
+	\arrow["H"', from=3-1, to=3-4]
+	\arrow["{\Box_T}"', curve={height=30pt}, from=1-1, to=3-1]
+\end{tikzcd}\]
+
+In the above diagram, the left side is the definition of $\Box_T$ and the right side is the definition of $\Box_{C_1}$. The top rectangle is by $H$ being a geminal category homomorphism and the bottom rectangle is by \magicref{InducedGlobalCommute}.
+
+Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $\Box_{C_1} \circ H$. Illustrated like so:
+
+% https://q.uiver.app/?q=WzAsNixbNCwwLCJDXzEiXSxbNCwxLCJcXEdsb2J7QydfMn0iXSxbNCwyLCJDXzEiXSxbMCwwLCJUIl0sWzEsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkZfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDXzF9IiwwLHsiY3VydmUiOi01fV0sWzMsMCwiSCJdLFszLDQsIlxcaW50cm9TIl0sWzQsMSwiXFxJbmR1Y2VkSG9tb3tIfXtDfSIsMV0sWzQsNSwiXFxHYW1tYV9DIl0sWzUsMiwiSCIsMl0sWzMsNSwiXFxpZCIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDQsIlxcaW50cm9OIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	T &&&& {C_1} \\
+	& {\Glob{C}} &&& {\Glob{C'_2}} \\
+	T &&&& {C_1}
+	\arrow["{F_1}"', from=1-5, to=2-5]
+	\arrow["{\Gamma_{C'_2}}"', from=2-5, to=3-5]
+	\arrow["{\Box_{C_1}}", curve={height=-30pt}, from=1-5, to=3-5]
+	\arrow["H", from=1-1, to=1-5]
+	\arrow["\introS", from=1-1, to=2-2]
+	\arrow["{\InducedHomo{H}{C}}"{description}, from=2-2, to=2-5]
+	\arrow["{\Gamma_C}", from=2-2, to=3-1]
+	\arrow["H"', from=3-1, to=3-5]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "\id"', Rightarrow, no head, from=1-1, to=3-1]
+	\arrow["\introN"', shorten <=4pt, Rightarrow, from=0, to=2-2]
+\end{tikzcd}\]
+
+This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor, this $\beta$ is also a strict lexfunctor, when the category of $\Box_{C_1}$-coalgebras is construed as a strict lexcategory in the manner of \magicref{BoxCoalgebrasInGeminal}.
+
+Not only that, but every coalgebra in the range of $\beta$ has the following property:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
+\[\begin{tikzcd}
+	c && {\Box c} \\
+	\\
+	{\Box c} && {\Box^2 c}
+	\arrow["m"', from=1-1, to=3-1]
+	\arrow["m", from=1-1, to=1-3]
+	\arrow["{\Box m}", from=1-3, to=3-3]
+	\arrow["{4_c}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+\TODOinline{Explain above diagram}
+\end{construction}
+
+----
+
+\TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
+
+\TODOinline{Show a similar result for how to take a lexcategory with an internal geminal category, and find a terminal geminal category mapping into this lexcategory in such a way as takes its own internal geminal category to this one}.
+
+\TODOinline{Putting together the above two constructions should give the following:}
+
+----
+
+Let $\langle T, C, \introS, \introN \rangle$ be a \TODOinline{strict?} introspective theory. Let the endolexfunctor $\sigma$ on $T \times \Glob{C}$ be defined by $\sigma(t, c) = (\Gamma_C(c), N(c))$, where the endolexfunctor $N : \Glob{C} \to \Glob{C}$ is given by considering the internal lexfunctors $\introN_C : C \to \Gamma_C(\introS[C])$ and $\Hom_{\introS[C]}(1, -) : \Gamma_C(\introS[C]) \to C$, composing these to get an internal endolexfunctor on $C$, and taking its global aspect.
+
+We have a natural transformation $\rho : \sigma \to \sigma^2$ given by \TODO.
+
+Because $\sigma$ is a lexfunctor, the category of $\sigma$-coalgebras is a lexcategory (by similar reasoning to \magicref{CommaCategoryColimits}; indeed, this can be seen as a (non-full) sublexcategory of the comma category $\comma{\id}{\sigma}$).
+
+Let $\beta : T \to T \times \Glob{C}$ be the lexfunctor whose first projection is $\id_T$ and whose second projection is $\introS$. Observe that there is a natural transformation from $\beta$ to $\sigma \circ \beta$ \TODOinline{the first projection of this is $\introN$ and the second projection of this is given by $\introS[\introN]$}. This acts as a lexfunctor from $T$ to the lexcategory of $\sigma$-coalgebras. The coalgebras $m$ in the range of this lexfunctor always satisfy the property that the following diagram commutes \TODOinline{Verify this, and define $\rho$}:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJ4Il0sWzAsMiwiXFxzaWdtYSh4KSJdLFsyLDAsIlxcc2lnbWEoeCkiXSxbMiwyLCJcXHNpZ21hXjIoeCkiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxzaWdtYShtKSJdLFsxLDMsIlxccmhvX3giLDJdXQ==
+\[\begin{tikzcd}
+	x && {\sigma(x)} \\
+	\\
+	{\sigma(x)} && {\sigma^2(x)}
+	\arrow["m"', from=1-1, to=3-1]
+	\arrow["m", from=1-1, to=1-3]
+	\arrow["{\sigma(m)}", from=1-3, to=3-3]
+	\arrow["{\rho_x}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+Now, let $K$ be a lexcategory, and let $M : T \to K$ be a lexfunctor. Let the endolexfunctor $\lambda$ on $K \times \Glob{M[C]}$ be defined by $\lambda(k, mc) = (\Gamma_{M[C]}(mc), ...)$. \TODOinline{Precisely analogous to the above}.
 
 Observe that we have a lexfunctor $J : T \times \Glob{C} \to K \times \Glob{M[C]}$ given by $M \times \InducedHomo{M}{C}$.
 
-Observe that $J \circ \sigma = \kappa \circ J$??? \TODO.
+Observe that $J \circ \sigma = \kappa \circ J$ \TODOinline{By straightforward calculation}.
 
-Thus, the category of $\sigma$-coalgebras is transported by $J$ to the category of $\lambda$-coalgebras. \TODO. Together with our previous observation, this gives us a lexfunctor from $T$ to the category of $\lambda$-coalgebras, such that the objects in the range of this lexfunctor always satisfy the property \TODO.
+Thus, $J$ also acts as a lexfunctor from the lexcategory of $\sigma$-coalgebras to the lexcategory of $\lambda$-coalgebras. Together with our previous observation, this gives us a lexfunctor from $T$ to the lexcategory of $\lambda$-coalgebras, such that the objects in the range of this lexfunctor always satisfy the property \TODOinline{Precisely analogous to the above}.
 
-\TODOinline{Observe that this category of suitable coalgebras can be equipped as an introspective theory, and this lexfunctor becomes an introspective theory homomorphism.}
+\TODOinline{Observe that this category of suitable coalgebras can be equipped as an introspective theory, and this lexfunctor becomes an introspective theory homomorphism. Observe the uniqueness property of this introspective theory homomorphism, and that this construction only depends on the geminal category structure (not on any other aspects of $T$ or $M$), thus making this a suitably co-free introspective theory.}
 
 \begin{TODOblock}
+The above is a cleaner account of the following:
+
 Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
 
 Actually, I believe this is what we should look at: Consider a geminal category $\langle G, G'\rangle$ living internally to ambient lexcategory $S$.
@@ -418,22 +530,5 @@ An example is given by the first part of \cref{SigmaModelSimple}, before we exte
 \TODOinline{Note that if the theory of gadgets is finitely presentable, then so is the theory of geminal gadgets}
 
 \TODOinline{Note that the slice introspective theory construction gives us the free augmentation of an introspective theory with a global element of a particular object}
-
-\subsection{Detritus to maybe delete}
-The significance of our constellation of constructions turning introspective theories into geminal categories may be further illuminated by thinking about box notation for geminal categories.
-
-\begin{definition}\label{BoxForGeminal}
-Given a geminal category $\langle C'_1, C'_2; F'_1, F'_2 \rangle$, we may define a bifunctor on $C'_1$ like so: Given objects $c$ and $d$ in $C'_1$, we define $\Box(c \implies d)$ to mean $\Hom_{C'_2}(F'_1(c), F'_1(d))$. We then take $\Box d$ as shorthand for $\Box(1 \implies d)$.
-\end{definition}
-
-This is reminiscent of our previously introduced box notation for introspective theories (where we had both $\Box_T$ and $\Box_C$). And indeed, we will now link all of these box notations:
-
-\begin{observation}
-Given an introspective theory $\langle T, C, \introS, \introN \rangle$, if we think of this as a geminal category with underlying lexcategory $T$ via \magicref{IntrospAsGeminal} and then apply the box notation from \magicref{BoxForGeminal}, we find that for $t, s \in T$, we have $\Box(s \implies t) = \Hom_C(\introS(s), \introS(t))$, and in particular, $\Box t = \Hom_C(1, \introS(t))$. This exactly matches the definition of $\Box_T t$ used for introspective theories from \magicref{BoxDefn}.
-
-Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-internal geminal category with underlying lexcategory $C$, and then apply the box notation from \magicref{BoxForGeminal}, we find that for $c, d \in C$, we have $\Box(c \implies d) = \Hom_{\introS[C]}(\introN_{\Ob(c)}(c), \introN_{\Ob(c)}(d))$. When $c$ and $d$ are globally defined, we can use \magicref{SMatchesN} to show this equal to $\Hom_{\introS[C]}(\introS(c), \introS(d)) =  \introS(\Hom_C(c, d))$. This exactly matches the definition of $\Box_C (c \implies d)$ used with introspective theories from \magicref{BoxDefn}.
-
-\TODOinline{When $c$ and $d$ are not globally defined, then what?}
-\end{observation}
 
 \fileend
