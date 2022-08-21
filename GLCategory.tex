@@ -307,6 +307,8 @@ For simplicity as a first introduction, everything done previously was the speci
 \TODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
 \subsection{Modal logic in geminal categories}
+\TODOinline{Rewrite this just in terms of the internal $\Box_C$ in the initial introspective theory, which then automatically applies to arbitrary geminal categories.}
+
 The significance of our constellation of constructions turning introspective theories into geminal categories may be further illuminated by thinking about box notation for geminal categories.
 
 \begin{definition}\label{BoxForGeminal}
@@ -326,13 +328,15 @@ Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-inter
 \TODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our two main classes of example into here.}
 
 \subsection{Co-free introspective theories}
-\TODOinline{We will present results first in terms of strict introspective theories for convenience, then make the observation as to how this transfers to the non-strict context.}
 
 \begin{construction}\label{BoxCoalgebrasInGeminal}
 Let $\langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category. Because $\Box_{C_1}$ is an endolexfunctor, the category of $\Box_{C_1}$-coalgebras is a lexcategory, with its forgetful functor to $C_1$ creating finite limits (by similar reasoning to \magicref{CommaCategoryColimits}; indeed, this can be seen as a (non-full) sublexcategory of the comma category $\comma{\id}{\Box_{C_1}}$). As $C_1$ is in fact a strict lexcategory, we can thus equip the category of $\Box_{C_1}$-coalgebras as a strict lexcategory, with its forgetful functor to $C_1$ creating basic limits (note that it is fine here if $\Box_{C_1}$ does not preserve basic limits on the nose; all that mattered was that it preserves finite limits in the non-strict-sense).
 \end{construction}
 
 \begin{construction}
+For any geminal category $C_1$, there is a terminal strict introspective theory equipped with a geminal category homomorphism to $C_1$.
+\end{construction}
+\openDetails
 Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
 
 Observe that $\Box_{C_1} \circ H = H \circ \Box_T$, via the following commutative diagram:
@@ -390,7 +394,7 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 \end{tikzcd}\]
 
 \TODOinline{Explain above diagram}
-\end{construction}
+\closeDetails
 
 ----
 
@@ -398,99 +402,22 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 
 \TODOinline{Show a similar result for how to take a lexcategory with an internal geminal category, and find a terminal geminal category mapping into this lexcategory in such a way as takes its own internal geminal category to this one}.
 
-\TODOinline{Putting together the above two constructions should give the following:}
+\begin{construction}
+For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : |G| \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$.
+\end{construction}
+\openDetails
+Let $\gamma = \langle C'_1, C'_2; F'_1, F'_2 \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in the usual fashion.
 
-----
+Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2; \phi'_1, \phi'_2 \rangle$ internal to $G_0$, with $G'_1 = C'_1 \times C'_2$. 
 
-Let $\langle T, C, \introS, \introN \rangle$ be a \TODOinline{strict?} introspective theory. Let the endolexfunctor $\sigma$ on $T \times \Glob{C}$ be defined by $\sigma(t, c) = (\Gamma_C(c), N(c))$, where the endolexfunctor $N : \Glob{C} \to \Glob{C}$ is given by considering the internal lexfunctors $\introN_C : C \to \Gamma_C(\introS[C])$ and $\Hom_{\introS[C]}(1, -) : \Gamma_C(\introS[C]) \to C$, composing these to get an internal endolexfunctor on $C$, and taking its global aspect.
+Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $\langle G_0, G'_1; \phi_0, \phi'_1 \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were).
 
-We have a natural transformation $\rho : \sigma \to \sigma^2$ given by \TODO.
+We also clearly have a projection lexfunctor from $G_0$ to $C_0$ which does indeed take the internal geminal category to $\gamma$.
 
-Because $\sigma$ is a lexfunctor, the category of $\sigma$-coalgebras is a lexcategory (by similar reasoning to \magicref{CommaCategoryColimits}; indeed, this can be seen as a (non-full) sublexcategory of the comma category $\comma{\id}{\sigma}$).
+\TODOinline{Show that this has the terminality property, and clean up this writing.}
+\closeDetails
 
-Let $\beta : T \to T \times \Glob{C}$ be the lexfunctor whose first projection is $\id_T$ and whose second projection is $\introS$. Observe that there is a natural transformation from $\beta$ to $\sigma \circ \beta$ \TODOinline{the first projection of this is $\introN$ and the second projection of this is given by $\introS[\introN]$}. This acts as a lexfunctor from $T$ to the lexcategory of $\sigma$-coalgebras. The coalgebras $m$ in the range of this lexfunctor always satisfy the property that the following diagram commutes \TODOinline{Verify this, and define $\rho$}:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJ4Il0sWzAsMiwiXFxzaWdtYSh4KSJdLFsyLDAsIlxcc2lnbWEoeCkiXSxbMiwyLCJcXHNpZ21hXjIoeCkiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxzaWdtYShtKSJdLFsxLDMsIlxccmhvX3giLDJdXQ==
-\[\begin{tikzcd}
-	x && {\sigma(x)} \\
-	\\
-	{\sigma(x)} && {\sigma^2(x)}
-	\arrow["m"', from=1-1, to=3-1]
-	\arrow["m", from=1-1, to=1-3]
-	\arrow["{\sigma(m)}", from=1-3, to=3-3]
-	\arrow["{\rho_x}"', from=3-1, to=3-3]
-\end{tikzcd}\]
-
-Now, let $K$ be a lexcategory, and let $M : T \to K$ be a lexfunctor. Let the endolexfunctor $\lambda$ on $K \times \Glob{M[C]}$ be defined by $\lambda(k, mc) = (\Gamma_{M[C]}(mc), ...)$. \TODOinline{Precisely analogous to the above}.
-
-Observe that we have a lexfunctor $J : T \times \Glob{C} \to K \times \Glob{M[C]}$ given by $M \times \InducedHomo{M}{C}$.
-
-Observe that $J \circ \sigma = \kappa \circ J$ \TODOinline{By straightforward calculation}.
-
-Thus, $J$ also acts as a lexfunctor from the lexcategory of $\sigma$-coalgebras to the lexcategory of $\lambda$-coalgebras. Together with our previous observation, this gives us a lexfunctor from $T$ to the lexcategory of $\lambda$-coalgebras, such that the objects in the range of this lexfunctor always satisfy the property \TODOinline{Precisely analogous to the above}.
-
-\TODOinline{Observe that this category of suitable coalgebras can be equipped as an introspective theory, and this lexfunctor becomes an introspective theory homomorphism. Observe the uniqueness property of this introspective theory homomorphism, and that this construction only depends on the geminal category structure (not on any other aspects of $T$ or $M$), thus making this a suitably co-free introspective theory.}
-
-\begin{TODOblock}
-The above is a cleaner account of the following:
-
-Write out how we can sort of re-extract from a geminal category $C$ some introspective theories which may have given rise to it, or something like the initial and terminal introspective theories which may have given rise to it, the latter meaning something like the category of morphisms m : X -> []X within $C$ such that []m = J: []X -> [][]X, and the former meaning either the theory of geminal categories itself or the free lex theory with an internal model of $C$. There's some profunctors/adjunctions between introspective theories and geminal categories to consider here.
-
-Actually, I believe this is what we should look at: Consider a geminal category $\langle G, G'\rangle$ living internally to ambient lexcategory $S$.
-
-Then we can make an introspective theory $T$ whose objects are quadruples $\langle s, g, a, b \rangle$ where $s$ is an object of $S$, $g$ is a globally defined object of $G$, $a : s \to \Hom_G(1, g)$ is a morphism of $S$, and $b$ is a global element of $\Hom_G(g, \Hom_G'(1, \introN_G g))$, such that the following diagram commutes:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJzIl0sWzAsMiwiXFxIb21fRygxLCBnKSJdLFsyLDAsIlxcSG9tX0coMSwgZykiXSxbMiwyLCJcXEhvbV9HKDEsIFxcSG9tX3tHJ30oMSwgXFxpbnRyb05fRyBnKSkiXSxbMCwxLCJhIiwyXSxbMCwyLCJhIl0sWzIsMywiYiBcXGNpcmMgLSJdLFsxLDMsIlxcaW50cm9OX0ciLDJdXQ==
-\[\begin{tikzcd}
-	s && {\Hom_G(1, g)} \\
-	\\
-	{\Hom_G(1, g)} && {\Hom_G(1, \Hom_{G'}(1, \introN_G g))}
-	\arrow["a"', from=1-1, to=3-1]
-	\arrow["a", from=1-1, to=1-3]
-	\arrow["{b \circ -}", from=1-3, to=3-3]
-	\arrow["{\introN_G}"', from=3-1, to=3-3]
-\end{tikzcd}\].
-
-This corresponds to the naturality square for $\introN$ as applied to itself. $a$ is meant to be a component of $\introN$, and $b$ is $\introS(a)$, with $g$ similarly as $\introS(s)$. So to speak.
-
-(Perhaps the above needs also to be demanded one level further internal; perhaps that doesn't follow automatically! But further levels then do follow automatically)
-
-A morphism between two such objects is a pair $\langle m : s_1 \to s_2 \in S, n : g_1 \to g_2 \in G$ such that the following commutes:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJzXzEiXSxbMCwyLCJcXEhvbV9HKDEsIGdfMSkiXSxbMiwwLCJzXzIiXSxbMiwyLCJcXEhvbV9HKDEsIGdfMikiXSxbMCwxLCJhXzEiXSxbMCwyLCJtIiwyXSxbMiwzLCJhXzIiLDJdLFsxLDMsIm4gXFxjaXJjIC0iXV0=
-\[\begin{tikzcd}
-	{s_1} && {s_2} \\
-	\\
-	{\Hom_G(1, g_1)} && {\Hom_G(1, g_2)}
-	\arrow["{a_1}", from=1-1, to=3-1]
-	\arrow["m"', from=1-1, to=1-3]
-	\arrow["{a_2}"', from=1-3, to=3-3]
-	\arrow["{n \circ -}", from=3-1, to=3-3]
-\end{tikzcd}\]
-
-And also, the following commutes (living within the global aspect of $G$): % https://q.uiver.app/?q=WzAsNCxbMCwwLCJnXzEiXSxbMCwyLCJcXEhvbV9HJygxLCBcXGludHJvTl9HIGdfMSkiXSxbMiwwLCJnXzIiXSxbMiwyLCJcXEhvbV9HJygxLCBcXGludHJvTl9HIGdfMikiXSxbMCwxLCJiXzEiXSxbMCwyLCJuIiwyXSxbMiwzLCJiXzIiLDJdLFsxLDMsIlxcaW50cm9OX0cobikgXFxjaXJjIC0iXV0=
-\[\begin{tikzcd}
-	{g_1} && {g_2} \\
-	\\
-	{\Hom_G'(1, \introN_G g_1)} && {\Hom_G'(1, \introN_G g_2)}
-	\arrow["{b_1}", from=1-1, to=3-1]
-	\arrow["n"', from=1-1, to=1-3]
-	\arrow["{b_2}"', from=1-3, to=3-3]
-	\arrow["{\introN_G(n) \circ -}", from=3-1, to=3-3]
-\end{tikzcd}\]
-
-Check that this really does yield a lexcategory. Limits are probably taken component-wise everywhere. Indeed, this appears to be some kind of iterated comma category.
-
-That defines $T$. Within $T$, how do we define $C$? Well, for example, $\Ob(C)$ is the quadruple $\langle \Ob(G), \Ob(G'), \introN_G, \introN'_{G'} \rangle$ and so on for $\Mor(C)$ and everything else. This probably works out, write out the tedious details.
-
-Now, how do we define $\introS$? Well, for its action on objects, for any quadruple $\langle s, g, a, b \rangle$, you can take it to $\langle g, \introN_G g, b, \introN_G b\rangle$; similarly, for its action on morphisms, for any pair $\langle m, n\rangle$, you can take it to $\langle n, \introN_G n \rangle$.
-
-Finally, how do we define $\introN$? Well, for its component at $\langle s, g, a, b \rangle$, we define the morphism to be given by $\langle a, b \rangle$. Check that the naturality and everything works.
-
-And how do we map this introspective theory into $S$ to re-yield our original geminal gadget? Send $\langle s, g, a, b \rangle$ to $s$, and send $\langle m, n \rangle$ to $m$.
-
-For any other introspective theory $\langle T', C' \rangle$ giving rise to $G$ via lexfunctor $M$ into $S$, we obtain a lexfunctor from $T'$ to $T$ which sends object $t$ in $T'$ to $\langle M(t), M(\introS(t)), M(\introN_t), M(\introS(\introN_t))\rangle$ and sends morphism $m$ in $T'$ to $\langle M(m), M(\introS(m))\rangle$. This will act as an introspective theory homomorphism.
-\end{TODOblock}
+\TODOinline{Observe that the above two co-free constructions can be combined, to find the terminal introspective theory with a suitable lexfunctor into a given lexcategory yielding a given internal geminal category}
 
 \subsection{Don't read beyond here}
 \TODOinline{Everything following in this chapter is about to get thrown out/rewritten}
