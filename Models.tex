@@ -24,11 +24,15 @@ In this way, simply by consideration of the freeness properties already establis
 
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
-Fix some lex theory $T$ extending the theory of strict lexcategories, whose models we shall call \quote{gadgets}. Now suppose the initial gadget $G$ (in $\Set$) contains an initial internal gadget $G'$ (in the sense that $G'$ is initial among the gadgets internal to the underlying lexcategory $|G|$ of $G$). For sake of a name for this concept, call such a theory \defined{\initogeminal/}.
+Let $T$ be a lexcategory (whose models we shall call \quote{gadgets}), let $C$ be a lexcategory internal to $T$ (such that we think of the interpretation of $C$ as the \quote{underlying lexcategory} of any gadget), and suppose there is an initial model of $T$ in $\Glob{C}$.
+
+In other words, the initial gadget $G$ (in $\Set$) contains, in its underlying lexcategory, an initial internal gadget $G'$.
+
+For sake of a name for this concept, call such a theory $T$ \defined{\initogeminal/}.
 
 \TODOinline{See note at \magicref{ModelTerminology} on the inaptness of this "internal" terminology. Clean it up.}
 
-(With most \initogeminal/ theories of interest, it is furthermore the case that EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most \initogeminal/ theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. But we do not actually need this property for the following construction.)
+(With most \initogeminal/ theories of interest, it is furthermore the case that for any lexfunctor $f : T \to S$ for arbitrary $S$, we have that $\InducedHomo{f}{G'}$ is an initial model of $T$ in $\Glob{f[C]}$; in other words, EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most \initogeminal/ theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. But we do not actually need this property for the following construction.)
 
 Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
 
@@ -55,7 +59,8 @@ Proof: Let p be a proposition which is independent from PA, and consider a term 
 Proof: Let T be a theory corresponding to PA + ~Con(PA) or the like. Then the initial model M of T is nontrivial, i.e. doesn't prove 1 = 0 (since PA + ~Con(PA) is consistent, since PA doesn't prove Con(PA), by G2IT). However, M's internal initial model of T is trivial, i.e. proves 1 = 0 (since T proves ~Con(PA) which in turn entails ~Con(T)). We cannot have a homomorphism from the latter to the former.
 \end{TODOblock}
 
-This construction immediately gives us many nontrivial examples of geminal categories. For example, many theories $T$ simultaneously satisfy the following two properties:
+\subsection{Inito-geminal finitely axiomatizable theories}
+\magicref{InitoGeminalYieldsGeminal} immediately gives us many nontrivial examples of geminal categories. For example, many theories $T$ simultaneously satisfy the following two properties:
 
 A) $T$ is a finitely axiomatizable lex theory extending the theory of lex categories.
 
@@ -115,11 +120,10 @@ Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of 
 
 \TODOinline{Note that we have a soundness result for the geminal categories we get from the initial NNO-topos, the initial arithmetic universe, etc: Their internal views of the initial such-and-such do in fact match themselves; the uniquely determined structure-preserving (AU-preserving or NNO-topos-preserving) functor from these things to Set takes their internal initial such-and-such to themselves. We don't have this kind of soundness for all \initogeminal/ theories. For example, we might consider the theory of bloposes, where a blopos is an NNO topos in which the internal initial NNO topos is trivially 1. That is, a blopos is a topos that thinks the theory of toposes is inconsistent. Then the theory of bloposes incorrectly proves that the theory of bloposes is inconsistent, so the initial blopos is nontrivial, but its internal initial blopos is trivial. The key thing that makes bloposes different from toposes is that Set is itself a topos (and an AU and so on), but not a blopos. Our soundness result is only for those theories which Set itself models.}
 
-\subsubsection{The theory of initial models as an introspective theory}
+\subsubsection{The theory of initial models of an inito-geminal theory as an introspective theory}
+\TODOinline{Come up with a less wordy section title}
 
-\begin{definition}\label{Initializer}
-We say a lexfunctor $f : T \to S$ is an \defined{initializer} if $f$ is initial among all parallel lexfunctors. That is, for any parallel lexfunctor $g : T \to S$, there is a unique natural transformation from $f$ to $g$.
-\end{definition}
+Throughout the following, we use the \quote{initial model} terminology of \magicref{LexModelTerminology}. As a reminder, we say a lexfunctor $f : T \to S$ is an initial model of $T$ if it is initial within the category $\LexCat(T, S)$.
 
 \begin{lemma}\label{TermModelIsInitialForLex}
 For any lexcategory $C$, its global sections lexfunctor $\Hom_C(1, -) : C \to \Set$ is an initial model of $C$ in $\Set$.
@@ -128,24 +132,25 @@ For any lexcategory $C$, its global sections lexfunctor $\Hom_C(1, -) : C \to \S
 By the Yoneda lemma, for any functor $f : C \to \Set$, the natural transformations from $\Hom_C(1, -)$ to $f$ are in correspondence with the elements of $f(1)$. But if $f$ is a lexfunctor, then $f(1)$ has a unique element.
 \end{proof}
 
-By the 2-category of $T$-initializers, we mean $T/\LexCat$ restricted to just having the $T$-initializers as objects. (N.B. In this coslice 2-category, we take the 1-cells to be triangles which commute up to invertible 2-cells, not up to lax 2-cells)
+By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
 
 \begin{theorem}
-For every (\setsmall/) lexcategory $T$, there is an initial object within the 2-category of $T$-initializers.
+For every (\setsmall/) lexcategory $T$, there is an initial object within $\initMod{T}$.
 \end{theorem}
 \begin{proof}
 This is by some general initial object of small algebraish theories theorem  we should establish somewhere, that we will be using over and over. \TODO
 \end{proof}
 
-\begin{theorem}
-If $f : T \to S$ is the initial $T$-initializer, then for any other $T$-initializer $g : T \to U$, we get that $!$ is initial within $\LexCat(S, U)$, where $!$ is the lexfunctor from $S$ to $U$ given by $f$ being the initial $T$-initializer.
+\begin{theorem}\label{InitialInitializerStrongSigmaesque}
+If $S$ is the initial object of $\initMod{T}$, then for any other lexcategory $U$ in $\initMod{T}$, we get that $!$ is initial within $\LexCat(S, U)$, where $! : S \to U$ is the unique lexfunctor from $S$ to $U$ which preserves the initial model of $T$.
 \end{theorem}
 \begin{proof}
-\TODO (By \magicref{CommaKan}, with $X$ and $Y$ as $S$, with $\omega$ as $U$, with $f_X$ as $!$ and $f_Y$ is an arbitrary lexfunctor, with $A$ as the initial lexcategory and $B$ as $T$, we get that $(!/f_Y)$ has an initial lexfunctor into it from $T$, and this is preserved by the projections out of the comma category. There is therefore a unique lexfunctor from $S$ to $(!/f_Y)$ preserving initiality of the maps from $T$. Following this up with the projections also preserves that initiality, so this unique lexfunctor from $S$ to $(!/f_Y)$ has both projections yielding identity; any other lexfunctor from $S$ to $(!/f_Y)$ with both projections yielding identity also has to be equal to this one. This gives us a unique natural transformation of the sort we have in mind. \TODOinline{Check this, clean this up}
+By \magicref{CommaKan}, with $X$ and $Y$ as $S$, with $\omega$ as $U$, with $f_X$ as $!$ and $f_Y$ as an arbitrary lexfunctor, with $A$ as the initial lexcategory and $B$ as $T$, we get that $(!/f_Y)$ has an initial model of $T$, created by both projections out of this comma category. There is therefore a unique lexfunctor from $S$ to $(!/f_Y)$ preserving initial models of $T$, and this condition is on such a lexfunctor is the same as asking for both its projections to $S$ to preserve initial models of $T$, which in turn is the same as asking for both projections to be the identity on $S$. Thus, there is a unique natural transformation from $! \circ id_S$ to $f_Y \circ \id_S$.
 \end{proof}
 
-Therefore, the identity endolexfunctor on the initial $T$-initializer is initial among its endolexfunctors. \TODOinline{In the language of the following todo note, this is sigma1esque}. In this way, we get an introspective theory on the initial $T$-initializer once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...).
+Therefore, the identity endolexfunctor on the initial object $S$ of $\initMod{T}$ is initial among its endolexfunctors. \TODOinline{In the language of the following todo note, this is sigma1esque}. In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...).
 
+\subsection{Stray TODO notes mostly already taken care of}
 \TODOinline{The initial arithmetic universe actually IS an introspective theory, via reasoning about Freyd covers that does not generalize to other examples of this section's phenomena. Discuss this further. This introspective theory extends the geminal arithmetic universe of the previous construction with a suitable natural transformation; furthermore, as its internalization functor preserves AU structure and thus takes its internal initial AU to ITS internal initial AU, the internal geminal AU in this introspective theory is also the internalization of the previous geminal gadget construction. This last part generalizes to any geminal gadget constructed in the previous way: Its internal geminal gadget will also have been constructed by the internalization of the previous construction.}
 
 \begin{TODOblock}
@@ -166,7 +171,7 @@ We now know that we have at least one such functor (the unique AU map from $A$ t
 
 \subsection{The initial arithmetic universe}
 \begin{theorem}\label{AUStrongSigma1esque}
-Every arithmetic functor out of the initial arithmetic universe is an initializer. That is, if $\IAU$ is the initial arithmetic universe, $C$ is any other arithmetic universe, $!_C : \IAU \to C$ is the unique arithmetic functor between these, and $f: \IAU \to C$ is an arbitrary lexfunctor, then there is a unique natural transformation from $!_C$ to $f$.
+Every arithmetic functor out of the initial arithmetic universe $\IAU$ is an initial model of $\IAU$. That is, if $C$ is any other arithmetic universe, $!_C : \IAU \to C$ is the unique arithmetic functor between these, and $f: \IAU \to C$ is an arbitrary lexfunctor, then there is a unique natural transformation from $!_C$ to $f$.
 \end{theorem}
 \begin{proof}
 From \magicref{CommaStableArithmetic}, we know that the comma category $(\id_C / f)$ is an arithmetic universe, such that its two projections jointly create arithmetic universe structure (that is, a functor into this comma category is arithmetic just in case its compositions with both projections are arithmetic).
@@ -192,51 +197,13 @@ We illustrate the situation as follows, where the dashed arrow is a lexfunctor, 
 The uniqueness of $!_{comma}$ as an arithmetic functor, along with the joint creation of arithmetic universe structure by the two projections, along with the universal property of the comma category, tells us there is a unique triple of two arithmetic functors $!_C$ and $!_{\IAU}$ along with a natural transformation from the top path ($\id_C \circ !_C$) to the bottom path ($f \circ !_{\IAU}$) of the diagram. We also know that $\id_C$ is uniquely determined as an arithmetic functor in itself, and that $!_{\IAU}$ is uniquely determined as an arithmetic functor and must be the identity. Thus, we may conclude there is a unique natural transformation from $!_C$ to $f$.
 \end{proof}
 
-Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. Let us now show how the fourth, a suitable natural transformation, can be obtained.
-
-This natural transformation is the one constructed in Lemma 5.15 of \autocite{van2020g}. The construction goes as follows:
+Compare \magicref{AUStrongSigma1esque} to \magicref{InitialInitializerStrongSigmaesque}, which is a similar result and argument.
 
 \begin{construction}\label{IAUAsIntrosp}
-Consider the IAU-indexed lexfunctor $\Hom_{IAU'}(1, -)$. Let us call this $\Gamma$ for convenience. The global aspect of this is a lexfunctor from the global aspect of IAU' to IAU; we may write $\Gamma : \Glob{IAU'} \to IAU$.
-
-Now consider the comma category $(\id_{IAU}, \Gamma)$, illustrated like so:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCIoXFxpZF97SUFVfSwgXFxHYW1tYSkiXSxbMSwwLCJJQVUiXSxbMSwxLCJJQVUiXSxbMCwxLCJcXEdsb2J7SUFVJ30iXSxbMSwyLCJcXGlkX3tJQVV9Il0sWzAsM10sWzMsMiwiXFxHYW1tYSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDFdLFsxLDMsIiIsMix7ImxldmVsIjoyfV1d
-\[\begin{tikzcd}
-	{(\id_{IAU}, \Gamma)} & IAU \\
-	{\Glob{IAU'}} & IAU
-	\arrow["{\id_{IAU}}", from=1-2, to=2-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow["\Gamma"', dashed, from=2-1, to=2-2]
-	\arrow[from=1-1, to=1-2]
-	\arrow[Rightarrow, from=1-2, to=2-1]
-\end{tikzcd}\]
-
-In this diagram, we illustrate lexfunctors by dashed arrows, and arithmetic functors by ordinary arrows.
-
-By \magicref{CommaStableArithmetic}, this comma category is an arithmetic universe and its two projections (the top and left arrow in the above diagram) are arithmetic functors.
-
-Since this is an arithmetic universe, we have a unique arithmetic functor into it from IAU, like so:
-
-% https://q.uiver.app/?q=WzAsNSxbMSwxLCIoXFxpZF97SUFVfSwgXFxHYW1tYSkiXSxbMiwxLCJJQVUiXSxbMiwyLCJJQVUiXSxbMSwyLCJcXEdsb2J7SUFVJ30iXSxbMCwwLCJJQVUiXSxbMSwyLCJcXGlkIl0sWzAsM10sWzMsMiwiXFxHYW1tYSIsMix7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFswLDFdLFsxLDMsIiIsMix7ImxldmVsIjoyfV0sWzQsMCwiISIsMV0sWzQsMywiXFxpbnRyb1MiLDJdLFs0LDEsIlxcaWQiXV0=
-\[\begin{tikzcd}
-	IAU \\
-	& {(\id_{IAU}, \Gamma)} & IAU \\
-	& {\Glob{IAU'}} & IAU
-	\arrow["\id", from=2-3, to=3-3]
-	\arrow[from=2-2, to=3-2]
-	\arrow["\Gamma"', dashed, from=3-2, to=3-3]
-	\arrow[from=2-2, to=2-3]
-	\arrow[Rightarrow, from=2-3, to=3-2]
-	\arrow["{!}"{description}, from=1-1, to=2-2]
-	\arrow["\introS"', from=1-1, to=3-2]
-	\arrow["\id", from=1-1, to=2-3]
-\end{tikzcd}\]
-
-Because of the uniqueness of parallel arithmetic functors out of the initial arithmetic universe IAU, we know that the composite arithmetic functor from IAU to the comma category and then back to IAU on top is the identity, while the composite arithmetic functor from IAU to the comma category and then to $\Glob{IAU'}$ on the left is equal to $\introS$. Thus, the overall composite 2-cell is from the identity on IAU to the functor $\Gamma(\introS(-)) = \Hom_{IAU'}(1, \introS(-)) = \Box_{IAU}$. This is precisely the type we need in order to take this 2-cell to be the natural transformation $\introN$ completing our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.
+Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. From \magicref{AUStrongSigma1esque}, the natural transformation $\introN$ is also uniquey determined. (This natural transformation is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}). This completes our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.
 \end{construction}
 
-\TODOinline{Show that this introspective theory structure extends the geminal category structure on IAU already obtained in previous sections by mere initiality properties. Conclude that IAU in fact comprises a super-duper introspective theory}
+\TODOinline{Show that this introspective theory structure extends the geminal category structure on IAU already obtained in previous sections by mere initiality properties (this is clear already from the uniqueness result on inito-geminal theories' corresponding geminal gadgets). Conclude that IAU in fact comprises a \quote{super-duper introspective theory}.}
 
 \TODOinline{Discuss the extension of this to sigma_1 localizations of IAU. Compare this to our previous description of the sigma_1 ZF-finite/Peano Arithmetic/etc model}
 

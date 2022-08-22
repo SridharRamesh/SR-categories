@@ -339,7 +339,7 @@ For any geminal category $C_1$, there is a terminal strict introspective theory 
 \openDetails
 Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
 
-Observe that $\Box_{C_1} \circ H = H \circ \Box_T$, via the following commutative diagram:
+By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C_1} \circ H$. In detail, this is seen via the following commutative diagram:
 
 % https://q.uiver.app/?q=WzAsNixbMywwLCJDXzEiXSxbMywxLCJcXEdsb2J7QydfMn0iXSxbMywyLCJDXzEiXSxbMCwwLCJUIl0sWzAsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkZfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDXzF9IiwwLHsiY3VydmUiOi01fV0sWzMsMCwiSCJdLFszLDQsIlxcaW50cm9TIl0sWzQsMSwiXFxJbmR1Y2VkSG9tb3tIfXtDfSIsMV0sWzQsNSwiXFxHYW1tYV9DIl0sWzUsMiwiSCIsMl0sWzMsNSwiXFxCb3hfVCIsMix7ImN1cnZlIjo1fV1d
 \[\begin{tikzcd}
@@ -357,7 +357,7 @@ Observe that $\Box_{C_1} \circ H = H \circ \Box_T$, via the following commutativ
 	\arrow["{\Box_T}"', curve={height=30pt}, from=1-1, to=3-1]
 \end{tikzcd}\]
 
-In the above diagram, the left side is the definition of $\Box_T$ and the right side is the definition of $\Box_{C_1}$. The top rectangle is by $H$ being a geminal category homomorphism and the bottom rectangle is by \magicref{InducedGlobalCommute}.
+In the above diagram, the left side is the definition of $\Box_T$ and the right side is the definition of $\Box_{C_1}$. The top rectangle is one of the conditions in \magicref{VerboseGeminalCatHomoDefn} and the bottom rectangle is by \magicref{InducedGlobalCommute}.
 
 Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $\Box_{C_1} \circ H$. Illustrated like so:
 
@@ -400,13 +400,11 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 
 \TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
 
-\TODOinline{Show a similar result for how to take a lexcategory with an internal geminal category, and find a terminal geminal category mapping into this lexcategory in such a way as takes its own internal geminal category to this one}.
-
 \begin{construction}
 For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : |G| \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$.
 \end{construction}
 \openDetails
-Let $\gamma = \langle C'_1, C'_2; F'_1, F'_2 \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in the usual fashion.
+Let $\gamma = \langle C'_1, C'_2; F'_1, F'_2 \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion.
 
 Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2; \phi'_1, \phi'_2 \rangle$ internal to $G_0$, with $G'_1 = C'_1 \times C'_2$. 
 
