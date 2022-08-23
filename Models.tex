@@ -145,9 +145,13 @@ This is by some general initial object of small algebraish theories theorem  we 
 
 \begin{theorem}\label{InitialInitializerStrongSigmaesque}
 If $S$ is the initial object of $\initMod{T}$, then for any other lexcategory $U$ in $\initMod{T}$, we get that $!$ is initial within $\LexCat(S, U)$, where $! : S \to U$ is the unique lexfunctor from $S$ to $U$ which preserves the initial model of $T$.
+
+In particular, the identity on $S$ is initial among all endolexfunctors of $S$.
 \end{theorem}
 \begin{proof}
-By \magicref{CommaKan}, with $X$ and $Y$ as $S$, with $\omega$ as $U$, with $f_X$ as $!$ and $f_Y$ as an arbitrary lexfunctor, with $A$ as the initial lexcategory and $B$ as $T$, we get that $(!/f_Y)$ has an initial model of $T$, created by both projections out of this comma category. There is therefore a unique lexfunctor from $S$ to $(!/f_Y)$ preserving initial models of $T$, and this condition is on such a lexfunctor is the same as asking for both its projections to $S$ to preserve initial models of $T$, which in turn is the same as asking for both projections to be the identity on $S$. Thus, there is a unique natural transformation from $! \circ id_S$ to $f_Y \circ \id_S$.
+This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with $Special$ as the sub-2-category $\initMod{T}$.
+
+The preconditions for invoking \magicref{CommaKanStrongSigmesque} are satisfied in this context via \magicref{InitialModelCommaStable}.
 \end{proof}
 
 Therefore, the identity endolexfunctor on the initial object $S$ of $\initMod{T}$ is initial among its endolexfunctors. \TODOinline{In the language of the following todo note, this is sigma1esque}. In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...).
@@ -157,33 +161,13 @@ Therefore, the identity endolexfunctor on the initial object $S$ of $\initMod{T}
 
 \subsection{The initial arithmetic universe}
 \begin{theorem}\label{AUStrongSigma1esque}
-Every arithmetic functor out of the initial arithmetic universe $\IAU$ is an initial model of $\IAU$. That is, if $C$ is any other arithmetic universe, $!_C : \IAU \to C$ is the unique arithmetic functor between these, and $f: \IAU \to C$ is an arbitrary lexfunctor, then there is a unique natural transformation from $!_C$ to $f$.
+Every arithmetic functor out of the initial arithmetic universe $\IAU$ is an initial model of $\IAU$. That is, if $\omega$ is any arithmetic universe, $! : \IAU \to \omega$ is the unique arithmetic functor between these, and $f: \IAU \to \omega$ is an arbitrary lexfunctor, then there is a unique natural transformation from $!$ to $f$.
+
+In particular, the identity on $\IAU$ is initial among all endolexfunctors of $\IAU$.
 \end{theorem}
 \begin{proof}
-From \magicref{CommaStableArithmetic}, we know that the comma category $(\id_C / f)$ is an arithmetic universe, such that its two projections jointly create arithmetic universe structure (that is, a functor into this comma category is arithmetic just in case its compositions with both projections are arithmetic).
-
-We illustrate the situation as follows, where the dashed arrow is a lexfunctor, ordinary arrows are arithmetic functors, and arrows marked with exclamation points are the unique arithmetic functors given by the initiality of $\IAU$:
-
-% https://q.uiver.app/?q=WzAsNSxbMywxLCJDIl0sWzMsMywiQyJdLFsxLDMsIlxcSUFVIl0sWzEsMSwiKFxcaWRfQyAvIGYpIl0sWzAsMCwiXFxJQVUiXSxbMCwxLCJcXGlkIiwxXSxbMiwxLCJmIiwxLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzMsMl0sWzMsMF0sWzAsMiwiIiwxLHsibGV2ZWwiOjJ9XSxbNCwyLCIhX3tcXElBVX0gPSBcXGlkIiwxXSxbNCwzLCIhX3tjb21tYX0iLDFdLFs0LDAsIiFfQyIsMV1d
-\[\begin{tikzcd}
-	\IAU \\
-	& {(\id_C / f)} && C \\
-	\\
-	& \IAU && C
-	\arrow["\id"{description}, from=2-4, to=4-4]
-	\arrow["f"{description}, dashed, from=4-2, to=4-4]
-	\arrow[from=2-2, to=4-2]
-	\arrow[from=2-2, to=2-4]
-	\arrow[Rightarrow, from=2-4, to=4-2]
-	\arrow["{!_{\IAU} = \id}"{description}, from=1-1, to=4-2]
-	\arrow["{!_{comma}}"{description}, from=1-1, to=2-2]
-	\arrow["{!_C}"{description}, from=1-1, to=2-4]
-\end{tikzcd}\]
-
-The uniqueness of $!_{comma}$ as an arithmetic functor, along with the joint creation of arithmetic universe structure by the two projections, along with the universal property of the comma category, tells us there is a unique triple of two arithmetic functors $!_C$ and $!_{\IAU}$ along with a natural transformation from the top path ($\id_C \circ !_C$) to the bottom path ($f \circ !_{\IAU}$) of the diagram. We also know that $\id_C$ is uniquely determined as an arithmetic functor in itself, and that $!_{\IAU}$ is uniquely determined as an arithmetic functor and must be the identity. Thus, we may conclude there is a unique natural transformation from $!_C$ to $f$.
+This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with the special $0$-cells as the arithmetic universes and the special $1$-cells as the arithmetic functors. The preconditions for invoking \magicref{CommaKanStrongSigmesque} are satisfied in this context via \magicref{CommaStableArithmetic}.
 \end{proof}
-
-Compare \magicref{AUStrongSigma1esque} to \magicref{InitialInitializerStrongSigmaesque}, which is a similar result and argument. \TODOinline{Unify these proofs into a lemma in the Comma-Kan section of the preliminaries.}
 
 \begin{construction}\label{IAUAsIntrosp}
 Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. From \magicref{AUStrongSigma1esque}, the natural transformation $\introN$ is also uniquey determined. (This natural transformation is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}). This completes our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.

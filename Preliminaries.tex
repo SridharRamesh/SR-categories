@@ -9,7 +9,7 @@ We will take all categories we work with to be locally small (which is to say, w
 
 In particular, we do not bother explicitly stating size restrictions on an arbitrary category $C$ before using the Yoneda embedding of $C$ into $\Set^{C^{op}}$. Only in situations where there is some risk that it would not be possible to simply interpret $\Set$ as suitably large relative to $C$ do we bother making explicit comment on size issues.
 
-We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We may occasionally write $n ; m$ to mean $m \circ n$. We write $\id_X$ or just $\id$ for the identity morphism on an object $X$. When $C$ is a category, we occasionally write $c \in C$ to mean that $c$ is an object of $C$. We usually write $\Hom_C(a, b)$ to mean the morphisms from $a$ to $b$ in $C$, but we sometimes write $C(a, b)$ instead, especially when $C$ is a 2-category so that $C(a, b)$ is not merely a set but a 1-category.
+We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We occasionally write $n ; m$ to mean $m \circ n$. We write $\id_X$ or just $\id$ for the identity morphism on an object $X$. When $C$ is a category, we occasionally write $c \in C$ to mean that $c$ is an object of $C$. We usually write $\Hom_C(a, b)$ to mean the morphisms from $a$ to $b$ in $C$, but we sometimes write $C(a, b)$ instead, especially when $C$ is a 2-category so that $C(a, b)$ is not merely a set but a 1-category.
 
 We use the term \defined{lexcategory} for a category with finite limits. We use the term \defined{lexfunctor} for a functor preserving finite limits, whose domain and codomain are both lexcategories. By $\LexCat$, we mean the 2-category of lexcategories, lexfunctors, and natural transformations. We will not generally be explicit about making distinctions between $f(a \times b)$ and $f(a) \times f(b)$, etc, when $f$ is a lexfunctor, but shall instead write with the ordinary fluency for working with limit-preserving functors. (Similarly, we use $\FinProdCat$ for the 2-category of finite product categories (i.e., categories with finite products), functors preserving finite products, and natural transformations.)
 
@@ -680,7 +680,7 @@ Multiply internal structures can equivalently be thought of as multiply indexed 
 \subsection{Arithmetic universes and other special kinds of category}
 \TODOinline{This section isn't ready yet. I just thought I should have these definitions somewhere, if I'm going to reference them later. Mainly the definition of arithmetic universe.}
 
-In addition to categories simpliciter and lexcategories, we have various other enrichments of the basic notion of category which are occasionally of interest:
+In addition to categories simpliciter and lexcategories, we have various other augmentations of the basic notion of category which are occasionally of interest:
 
 \begin{definition}
 A \defined{regular} category is \TODO. If \TODO, we call it \defined{effective regular} or \defined{exact}.
@@ -703,7 +703,7 @@ We denote the initial arithmetic universe as $\IAU$. Structures internal to $\IA
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in the paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts).
 
 \subsection{Localization}
-\TODOinline{The contents of this section are only important for one construction we use once later.}
+The reader is advised that we only ultimately make one use of the results in this section (at \TODO). Thus, the reader may skip this section unless and until interested in the details of that particular result.
 
 \begin{definition}
 For any category $C$, and any set of morphisms $M$ of $C$, we may consider freely adjoining inverses to the morphisms in $M$. This process is called \defined{localization}, and the resulting category is denoted $C[M^{-1}]$. Thus, we have a localization functor $f : C \to C[M^{-1}]$ such that $f$ sends every morphism in $M$ to an isomorphism, and for any $g : C \to D$ which also sends every morphism in $M$ to an isomorphism, there is a unique functor $h : C[M^{-1}] \to D$ such that $h \circ f = g$.
@@ -828,7 +828,9 @@ The final claim (the joint reflection of such colimits) then follows from the fa
 \end{proof}
 
 \begin{corollary}\label{LexCatComma}
-Comma objects exist in $\LexCat$, constructed in the same way as in $\Cat$ (thus, preserved by the forgetful functor into $\Cat$).
+Comma objects exist in $\LexCat$, constructed in the same way as in $\Cat$ (thus, preserved by the forgetful functor into $\Cat$). 
+
+(This corollary is so ubiquitously useful for us that we will not explicitly cite it each time we implicitly invoke it, but rather trust the reader to have absorbed it.)
 \end{corollary}
 \begin{proof}
 From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span of finite limit preserving functors between categories which have finite limits, then the comma category $\comma{f_X}{f_Y}$ (the comma object in $\Cat$) is also a lexcategory and its projections are lexfunctors. Thus, this $\comma{f_X}{f_Y}$ and its projections exist within $\LexCat$. That these continue to comprise a comma object span within $\LexCat$ follows immediately from the fact that the forgetful functor $|-|$ from $\LexCat$ to $\Cat$ induces bijections between the sets of 2-cells $\Hom(f, g)$ and $\Hom(|f|, |g|)$ for any parallel 1-cells $f$ and $g$ in $\LexCat$ (that is, the 2-cells in $\LexCat$ between lexfunctors are just ordinary natural transformations, with no further property or structure).
@@ -868,11 +870,62 @@ Putting these all together, we have:
 If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve and jointly reflect arithmetic universe structure.
 \end{corollary}
 
+Though phrased rather abstractly, the following theorem will be useful to us twice (at \magicref{InitialInitializerStrongSigmaesque} and \magicref{AUStrongSigma1esque}):
+\begin{theorem}\label{CommaKanStrongSigmesque}
+Let $D$ be a 2-category and let $Special$ be a sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. We presume any invertible cell in $D$ whose domain or codomain is special is itself special (thus, membership in $Special$ is invariant under isomorphism in $D$), and we also presume that any 2-cell between special 1-cells is special.
+
+Suppose furthermore that $D$ has comma objects. And suppose these have the further property that for any comma object $\gamma = \comma{f_X}{f_Y}$ in $D$ where $f_X$ is special and the domain of $f_Y$ is special, we have that this $\gamma$ has special structure jointly created by its two projections, in the following sense: $\gamma$ is special, its two projections are special, and for any 1-cell in $D$ whose codomain is $\gamma$ and whose domain is special, we have that this $1$-cell is special whenever both of its compositions with the projections out of the comma object are special.
+
+Finally, suppose $Special$ has an initial object $0$.
+
+Then for any special object $\omega$, we have that the unique special map from $0$ to $\omega$ is furthermore initial within $D(0, \omega)$. In particular, it follows that the identity on $0$ is initial within $D(0, 0)$.
+\end{theorem}
+\begin{proof}
+Let $f_X$ be the unique special map from $0$ to $\omega$ and let $f_Y : 0 \to \omega$ be an arbitrary map in $D$. Consider the following diagram, illustrating the comma object $\comma{f_X}{f_Y}$ of $D$, as well as unique special maps from $0$:
+
+% https://q.uiver.app/?q=WzAsNSxbMywxLCIwIl0sWzMsMywiXFxvbWVnYSJdLFsxLDMsIjAiXSxbMSwxLCJcXGNvbW1he2ZfWH17Zl9ZfSJdLFswLDAsIjAiXSxbMCwxLCIhID0gZl9YIiwxXSxbMiwxLCJmX1kiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywyXSxbMywwXSxbMCwyLCIiLDEseyJsZXZlbCI6Mn1dLFs0LDIsIiEgPSBcXGlkID0gYiIsMV0sWzQsMywiISIsMV0sWzQsMCwiISA9IFxcaWQgPSBhIiwxXV0=
+\[\begin{tikzcd}
+	0 \\
+	& {\comma{f_X}{f_Y}} && 0 \\
+	\\
+	& 0 && \omega
+	\arrow["{! = f_X}"{description}, from=2-4, to=4-4]
+	\arrow["{f_Y}"{description}, dashed, from=4-2, to=4-4]
+	\arrow[from=2-2, to=4-2]
+	\arrow[from=2-2, to=2-4]
+	\arrow[Rightarrow, from=2-4, to=4-2]
+	\arrow["{! = \id = b}"{description}, from=1-1, to=4-2]
+	\arrow["{!}"{description}, from=1-1, to=2-2]
+	\arrow["{! = \id = a}"{description}, from=1-1, to=2-4]
+\end{tikzcd}\]
+Here, we use solid arrows to denote special $1$-cells. The dashed arrow $f_Y$ is a $1$-cell of $D$, not presumed special. The bottom right square is of course the one corresponding to the comma object. Special $1$-cells out of $0$ are denoted $!$ to indicate their uniqueness.
+
+Because the comma object is special, it has a unique special map from $0$. By the universal property of a comma object, along with our presumption that the projections jointly create special structure, this means there is a unique triple of special $a : 0 \to 0$, special $b : 0 \to 0$, and 2-cell $: f_X \circ a \to f_Y \circ b$. Because of the initiality of $0$, we know that both $a$ and $b$ must be the unique special map from $0$ to itself, which is the identity. Thus, we conclude there is a unique 2-cell from $f_X$ to $f_Y$. As $f_Y$ was an arbitrary map in $D$, we can conclude that $f_X$ (i.e., the unique special map from $0$ to $\omega$) is initial within $D(0, \omega)$.
+\end{proof}
+
 \subsection{Internal and initial model terminology}
 \TODOinline{Move this somewhere appropriate.}
 \begin{definition}\label{LexModelTerminology}
 Given a lexfunctor $F : T \to S$, we may sometimes call this a \defined{model} or \defined{internal model} of $T$ in $S$. If $F$ is initial within the category $\LexCat(T, S)$, then we naturally call this an initial model of $T$ in $S$. Of course, as with any initial objects, if there is any initial model of $T$ in $S$, then there is a unique one up to unique isomorphism.
+
+If $S_1$ has an initial model of $T$ given by $F: T \to S_1$, and $H : S_1 \to S_2$ is a lexfunctor such that $H \circ F$ is an initial model of $T$ in $S_2$, then we say $H$ preserves initial models of $T$.
 \end{definition}
+
+\begin{observation}\label{InitialModelsAreLeftKanExtensions}
+Let $0$ be the initial lexcategory (i.e., the terminal category), and let $T$ and $S$ be arbitrary lexcategories. Then an initial model of $T$ in $S$ is the same thing as a left Kan extension of the unique lexfunctor $:0 \to S$ along the unique lexfunctor $: 0 \to T$.
+\end{observation}
+\begin{proof}
+This is immediate upon unraveling definitions.
+\end{proof}
+
+\begin{theorem}\label{InitialModelCommaStable}
+Let $T$ be a fixed lexcategory, and throughout the following, use \quote{initial model} specifically to mean \quote{initial model of $T$}.
+
+If $X$, $Y$, and $\omega$ are lexcategories with initial models, $f_X : X \to \omega$ is a lexfunctor preserving the initial model, and $f_Y : Y \to \omega$ is an arbitrary lexfunctor, then the comma lexcategory $\comma{f_X}{f_Y}$ has an initial model, jointly created by its two projections. (That is, both projections preserve initial models, and for any lexcategory $Z$ with an initial model, a lexfunctor from $Z$ to the comma category preserves the initial model just in case both of its compositions with the projections preserve the initial model.)
+\end{theorem}
+\begin{proof}
+Thanks to \magicref{InitialModelsAreLeftKanExtensions}, this is the instance of \magicref{CommaKan} within $\LexCat$ for which $A$ is the initial lexcategory and $B$ is $T$.
+\end{proof}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
 The significance of lexcategories with respect to logic is that they capture, in a presentation-independent way (a la Lawvere's functorial semantics), those logical theories given by various sorts, partially defined finitary operations on those sorts (whose domain of definition is given by the constraint that some finitely many other compositions of operations are simultaneously equal), and universal entailments between equations between compositions of such operations (more precisely, entailments from finite conjunctions of equations to equations).

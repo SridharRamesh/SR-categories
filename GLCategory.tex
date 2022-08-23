@@ -334,7 +334,7 @@ Let $\langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category. Because $\Box_
 \end{construction}
 
 \begin{construction}
-For any geminal category $C_1$, there is a terminal strict introspective theory equipped with a geminal category homomorphism to $C_1$.
+For any geminal category $C_1$, there is a terminal strict introspective theory equipped with a geminal category homomorphism to $C_1$. This co-free introspective theory admits a tractable explicit description, as a certain subcategory of the coalgebras for $\Box_{C_1}$, suitably equipped.
 \end{construction}
 \openDetails
 Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
@@ -401,7 +401,7 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 \TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
 
 \begin{construction}
-For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : |G| \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$.
+For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : |G| \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$. This co-free $G$ admits a tractable explicit description as $C_0 \times |\gamma|$ suitably equipped.
 \end{construction}
 \openDetails
 Let $\gamma = \langle C'_1, C'_2; F'_1, F'_2 \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion.
@@ -413,6 +413,8 @@ Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_
 We also clearly have a projection lexfunctor from $G_0$ to $C_0$ which does indeed take the internal geminal category to $\gamma$.
 
 \TODOinline{Show that this has the terminality property, and clean up this writing.}
+
+Suppose given any arbitrary geminal category $K = \langle K_0, K'_1; P_0, P'_1 \rangle$ and lexfunctor $H_0 : K_0 \to C_0$ such that $H[\InteriorGeminal{K}] = \gamma$. Observe that we also have a lexfunctor $H_1 : K_0 \to C_1$ given by $H_1 = \InducedHomo{H_0}{K'_1} \circ P_0$. Thus, we obtain a unique lexfunctor $H : C_0 \to G_0$ whose two projections are $H_0$ and $H_1$. We shall show that $H$ is a geminal category homomorphism, and the unique one with the appropriate properties. \TODO
 \closeDetails
 
 \TODOinline{Observe that the above two co-free constructions can be combined, to find the terminal introspective theory with a suitable lexfunctor into a given lexcategory yielding a given internal geminal category}
