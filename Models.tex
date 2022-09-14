@@ -43,6 +43,8 @@ Indeed, this is the unique way to equip $G$ as a geminal gadget with internal ga
 In summary, we have shown how the initial model of any \initogeminal/ theory can naturally be equipped as a geminal model of that same theory.
 \end{construction}
 
+\TODOinline{Note that when the theory is in fact strongly self-initializing, in the sense of the previous TODO note, then we have that in the geminal category $\langle G_1 = G, G_2 = G', \ldots; F, \ldots \rangle$, $G_3 = G''$ is also an initial gadget internal to $G'$ (since $G''$ is given by $F[G']$). Thus, $\InteriorGeminal{G}$ is itself given by the internalization of the same construction of a geminal category for a self-initializing theory.}
+
 \begin{TODOblock}
 When the \initogeminal/ theory T is such that furthermore Set is a model of T, and we have the strong property noted above that EVERY homomorphism out of the initial model of T preserves its interior initial model's initiality, then we furthermore get a soundness result here: The map from the initial model M of T (the one defined by global elements in the lexcategory corresponding to T) to Set takes M's interior initial model of T to the actual M in Set, and so on.
 
@@ -154,10 +156,7 @@ This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to 
 The preconditions for invoking \magicref{CommaKanStrongSigmesque} are satisfied in this context via \magicref{InitialModelCommaStable}.
 \end{proof}
 
-Therefore, the identity endolexfunctor on the initial object $S$ of $\initMod{T}$ is initial among its endolexfunctors. \TODOinline{In the language of the following todo note, this is sigma1esque}. In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...).
-
-\subsubsection{Stray TODO notes mostly already taken care of}
-\TODOinline{The initial arithmetic universe actually IS an introspective theory, via reasoning about Freyd covers that does not generalize to other examples of this section's phenomena. Discuss this further. This introspective theory extends the geminal arithmetic universe of the previous construction with a suitable natural transformation; furthermore, as its internalization functor preserves AU structure and thus takes its internal initial AU to ITS internal initial AU, the internal geminal AU in this introspective theory is also the internalization of the previous geminal gadget construction. This last part generalizes to any geminal gadget constructed in the previous way: Its internal geminal gadget will also have been constructed by the internalization of the previous construction.}
+In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...). \TODO
 
 \subsection{The initial arithmetic universe}
 \begin{theorem}\label{AUStrongSigma1esque}
@@ -193,7 +192,7 @@ With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSe
 \subsection{Models based on well-founded posets or semicategories}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
 
-Previous iterations of this document at this point gave an overly complicated as a way of describing something simple (though still good to understand):
+Previous iterations of this document at this point gave an overly complicated way of describing something simple (though still good to understand):
 
 First of all, let $Disc$ be an arbitrary (set-sized) category. This gives rise also to the category $\Psh{Disc}$ of presheaves on $Disc$, which is automatically a lexcategory, and indeed locally cartesian closed. By the observation of \cref{TrivialPreIntrosp}, this yields a locally introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$.
 

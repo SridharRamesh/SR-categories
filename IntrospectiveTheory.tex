@@ -98,7 +98,7 @@ A \defined{locally introspective theory} is a pre-introspective theory $\langle 
 
 Almost all results we discuss for introspective theories will admit generalization to locally introspective theories. The sole major exception is the derivation of \Loeb/'s theorem in \TODO. However, because that one result is so important to us, our main interest in this document is in discussing introspective theories, rather than locally introspective theories more generally.
 
-\subsection{Some concrete examples}
+\subsection{Basic examples}
 
 Let us now finally give the example-oriented reader a nontrivial example of an introspective theory by which to orient themselves. (On the other hand, the reader who prefers to consider abstract definitions without immediately diving into a worked out example of a highly concrete flavor may skip this section at this introductory time if they find its details a distraction. To each reader at their own taste!).
 
@@ -186,7 +186,7 @@ Let us describe now a more archetypal introspective theory, to guide the reader'
 
 Throughout the construction of $\ZfinSigma$, we have imposed a $\Sigma_1$ constraint on formulae (both on the formulae defining objects and on the formulae defining morphisms). If we drop all such $\Sigma_1$ constraints and allow arbitrary formulae, we get by the same construction an analogous category $\Zfin$. $\ZfinSigma$ sits inside $\Zfin$ as a subcategory (but not a full subcategory! The inclusion from $\ZfinSigma$ into $\Zfin$ is faithful, but not full).
 
-Just as the construction of $\ZfinSigma$ could itself be carried out in ZF-Finite to get an $\InnerZfinSigma$ internal to $\ZfinSigma$, so too can the construction of $\Zfin$ can be carried out in ZF-Finite, to get an $\InnerZfin$ internal to $\ZfinSigma$. Yes, this $\InnerZfin$ is internal to $\ZfinSigma$, not just internal to $\Zfin$! Even though $\Zfin$ includes as its objects and morphisms formulae which are not $\Sigma_1$, the description of $\Zfin$ (as a category whose objects are symbol-strings for which certain other symbol-strings exist, and whose morphisms are symbol-strings for which certain other symbol-strings exist, and so on) is $\Sigma_1$.
+Just as the construction of $\ZfinSigma$ could itself be carried out in ZF-Finite to get a $\InnerZfinSigma$ internal to $\ZfinSigma$, so too can the construction of $\Zfin$ can be carried out in ZF-Finite, to get a $\InnerZfin$ internal to $\ZfinSigma$. Yes, this $\InnerZfin$ is internal to $\ZfinSigma$, not just internal to $\Zfin$! Even though $\Zfin$ includes as its objects and morphisms formulae which are not $\Sigma_1$, the description of $\Zfin$ (as a category whose objects are symbol-strings for which certain other symbol-strings exist, and whose morphisms are symbol-strings for which certain other symbol-strings exist, and so on) is $\Sigma_1$.
 
 Finally, the inclusion of $\ZfinSigma$ into $\Zfin$ yields, analogously, an inclusion from $\InnerZfinSigma$ into $\InnerZfin$, internal to $\ZfinSigma$. This means the functor $\introS$ from $\ZfinSigma$ into the global aspect of $\InnerZfinSigma$ can just as well be thought of as having $\InnerZfin$ for its codomain, and similarly the natural transformation $\introN$ can just be well as thought of in this context. (This way of making one introspective theory from another is an instance of the general construction \magicref{IntrospInternalMap}.)
 
@@ -244,7 +244,7 @@ This is an important archetypal example. It corresponds closely to the interpret
 
 \TODOinline{Discuss the modal operator in this context, in the Modal logic chapter}
 
-\subsection{Basic constructions of (pre-)introspective theories}
+\subsection{Basic constructions}
 Now let us discuss some general constructions for building new (pre-)introspective theories from old ones or from other data.
 
 \begin{construction}\label{IntrospInternalMap}

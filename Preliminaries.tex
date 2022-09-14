@@ -24,7 +24,7 @@ Similarly, if we ever describe diagrams involving functors between categories as
 \subsection{Indexed sets and \repsmall/ness}
 We will now give a series of related definitions, concerning what are called indexed structures. The notions being described in this section are all old hat, none of them are newly invented by us, but we wish to pin them down with particular names to establish a language for easily talking about the things we wish to talk about in the rest of this document.
 
-As we give these definitions, we will also observe a basic stock of theorems about them which. Again, we make no claim to originality with these preliminaries. They simply may be useful to remind the reader of, or to give labels to in order to reference as we use them.
+As we give these definitions, we will also observe a basic stock of theorems about them. Again, we make no claim to originality with these preliminaries. They simply may be useful to remind the reader of, or to give labels to in order to reference as we use them.
 
 The reader who is already very familiar with these notions and just unfamiliar with our conventions of vocabulary is advised to just skim these preliminaries on initial read and then return as needed when faced with unfamiliar vocabulary. Frankly, the reader who is not very familiar with these notions is also given similar advice. No need to spend all one's time reading proofs and details of lemmas up front. It is probably best to read a bit of the preliminaries to get the lay of the land, then go off and read the actual content and come back as needed. But who knows? To each reader, their own reading style may be best. \TODOinline{Figure out exactly the roadmap or reading advice we want to give.}
 
@@ -836,7 +836,20 @@ Comma objects exist in $\LexCat$, constructed in the same way as in $\Cat$ (thus
 From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span of finite limit preserving functors between categories which have finite limits, then the comma category $\comma{f_X}{f_Y}$ (the comma object in $\Cat$) is also a lexcategory and its projections are lexfunctors. Thus, this $\comma{f_X}{f_Y}$ and its projections exist within $\LexCat$. That these continue to comprise a comma object span within $\LexCat$ follows immediately from the fact that the forgetful functor $|-|$ from $\LexCat$ to $\Cat$ induces bijections between the sets of 2-cells $\Hom(f, g)$ and $\Hom(|f|, |g|)$ for any parallel 1-cells $f$ and $g$ in $\LexCat$ (that is, the 2-cells in $\LexCat$ between lexfunctors are just ordinary natural transformations, with no further property or structure).
 \end{proof}
 
-We note here some further corollaries of \magicref{CommaKan} (all with similar proofs):
+The above is paradigmatic of a situation which comes up often, for which it will be convenient to have terminology:
+\begin{definition}
+Let $D$ be a 2-category and let $Special$ be a sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. We presume any invertible cell in $D$ whose domain or codomain is special is itself special (thus, membership in $Special$ is invariant under isomorphism in $D$), and we also presume that any 2-cell between special 1-cells is special.
+
+Suppose furthermore that $D$ has comma objects. And suppose for any comma object $\comma{f_X}{f_Y}$ in $D$ where $f_X$ is special and the domain of $f_Y$ is special, the comma object has special structure jointly created by its two projections. That is, $\comma{f_X}{f_Y}$ is special, its two projections are special, and for any 1-cell in $D$ from a special object to $\comma{f_X}{f_Y}$, we have that this $1$-cell is special whenever both of its compositions with the projections out of $\comma{f_X}{f_Y}$ are special.
+
+In this case, we say that $Special$ is \defined{left comma-stable} within $D$, or that the restriction of $D$ to $Special$ is left comma-stable.
+
+(Dually, if this property holds when we instead demand $f_Y$ to be special while allowing $f_X$ to be an arbitrary morphism of $D$ with special domain, then we say that the restriction of $D$ to $Special$ is right comma-stable.)
+\end{definition}
+
+In this language, \magicref{CommaCategoryColimits} shows that the restriction of $\Cat$ to categories having, and functors preserving, finite colimits is left comma-stable within $\Cat$. (And dually, $\LexCat$ is right comma-stable within $\Cat$.)
+
+We note here a number of left comma-stable restrictions of $\LexCat$, all similarly demonstrable as corollaries of \magicref{CommaKan}:
 
 \begin{corollary}
 If $X$, $Y$, and $\omega$ are lexcategories with finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the projections out of the comma category $\comma{f_X}{f_Y}$ jointly create finite coproducts.
@@ -844,9 +857,11 @@ If $X$, $Y$, and $\omega$ are lexcategories with finite coproducts, $f_X : X \to
 If furthermore, finite coproducts are pullback-stable in $X$ and $Y$, then finite coproducts are pullback-stable in $\comma{f_X}{f_Y}$.
 
 If furthermore finite coproducts are disjoint in $X$ and $Y$ (i.e., these are extensive categories), then this is the case in $\comma{f_X}{f_Y}$ as well.
+
+In other words, the restriction of $\LexCat$ to lexcategories with finite coproducts, and lexfunctors preserving finite coproducts, is left comma-stable. And the further restriction of $\LexCat$ to extensive categories and such functors is also left comma-stable.
 \end{corollary}
 \begin{proof}
-The joint creation of finite coproducts is just a special case of \magicref{CommaCategoryColimits}. What remains to be shown are the exactness properties.
+The joint creation of finite coproducts is just a special case of \magicref{CommaCategoryColimits}. What remains to be shown are the inheritance of exactness properties by the comma objects.
 
 Let $Q$ be the initial lexcategory-with-finite-coproducts generated by slices $A_1, \ldots, A_n$ above an object $A$, along with a morphism into $A$. To say that $n$-ary coproducts are pullback stable in a lexcategory $C$ with finite coproducts is to say that every lexfunctor preserving finite coproducts from $Q$ to $C$ sends a particular morphism in $Q$ (the comparison morphism between the coproduct of the pullback and the pullback of the coproduct, for the generic objects in $Q/A$ as pulled back along the generic morphism into $A$) to an isomorphism. Since the projections out of our comma category jointly preserve and reflect finite limit structure, finite coproduct structure, and invertibility, this property will hold in the comma category just in case it holds in both $X$ and $Y$.
 
@@ -854,29 +869,25 @@ Disjointness is characterized by a similar invertibility condition and thus can 
 \end{proof}
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are regular categories, $f_X : X \to \omega$ is a regular functor, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ is also a regular category, and its projections to $X$ and $Y$ preserve and jointly reflect regular structure.
-
-If $X$, $Y$, and $\omega$ are furthermore effective regular (aka, exact), then so is $\comma{f_X}{f_Y}$.
+The restriction of $\LexCat$ to regular categories and regular functors is left comma-stable. Furthermore, the restriction of $\LexCat$ to effective regular categories and regular functors is left comma-stable.
 \end{corollary}
 
 \begin{corollary}
-If $X$, $Y$, and $\omega$ are lexcategories with pullback-stable natural numbers objects, $f_X : X \to \omega$ is a lexfunctor preserving the natural numbers object, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ also has a pullback-stable natural numbers object, and its projections to $X$ and $Y$ preserve and jointly reflect natural numbers objects.
+The restriction of $\LexCat$ to lexcategories with pullback-stable natural numbers objects, and lexfunctors preserving NNOs, is left comma-stable.
 
-The same holds replacing the condition of natural numbers objects with list objects more generally.
+Similarly, the restriction of $\LexCat$ to lexcategories with pullback-stable list objects, and lexfunctors preserving list objects, is left comma-stable.
 \end{corollary}
 
 Putting these all together, we have:
 \begin{corollary}\label{CommaStableArithmetic}
-If $X$, $Y$, and $\omega$ are arithmetic universes, $f_X : X \to \omega$ is a functor preserving arithmetic universe structure, and $f_Y : Y \to \omega$ is a lexfunctor, then the comma category $\comma{f_X}{f_Y}$ also is an arithmetic universe, and its projections to $X$ and $Y$ preserve and jointly reflect arithmetic universe structure.
+The restriction of $\LexCat$ to arithmetic universes and arithmetic functors is left comma-stable.
 \end{corollary}
 
 Though phrased rather abstractly, the following theorem will be useful to us twice (at \magicref{InitialInitializerStrongSigmaesque} and \magicref{AUStrongSigma1esque}):
 \begin{theorem}\label{CommaKanStrongSigmesque}
-Let $D$ be a 2-category and let $Special$ be a sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. We presume any invertible cell in $D$ whose domain or codomain is special is itself special (thus, membership in $Special$ is invariant under isomorphism in $D$), and we also presume that any 2-cell between special 1-cells is special.
+Let $D$ be a 2-category and let $Special$ be a left comma-stable sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. 
 
-Suppose furthermore that $D$ has comma objects. And suppose these have the further property that for any comma object $\gamma = \comma{f_X}{f_Y}$ in $D$ where $f_X$ is special and the domain of $f_Y$ is special, we have that this $\gamma$ has special structure jointly created by its two projections, in the following sense: $\gamma$ is special, its two projections are special, and for any 1-cell in $D$ whose codomain is $\gamma$ and whose domain is special, we have that this $1$-cell is special whenever both of its compositions with the projections out of the comma object are special.
-
-Finally, suppose $Special$ has an initial object $0$.
+Furthermore, suppose $Special$ has an initial object $0$.
 
 Then for any special object $\omega$, we have that the unique special map from $0$ to $\omega$ is furthermore initial within $D(0, \omega)$. In particular, it follows that the identity on $0$ is initial within $D(0, 0)$.
 \end{theorem}
@@ -900,7 +911,7 @@ Let $f_X$ be the unique special map from $0$ to $\omega$ and let $f_Y : 0 \to \o
 \end{tikzcd}\]
 Here, we use solid arrows to denote special $1$-cells. The dashed arrow $f_Y$ is a $1$-cell of $D$, not presumed special. The bottom right square is of course the one corresponding to the comma object. Special $1$-cells out of $0$ are denoted $!$ to indicate their uniqueness.
 
-Because the comma object is special, it has a unique special map from $0$. By the universal property of a comma object, along with our presumption that the projections jointly create special structure, this means there is a unique triple of special $a : 0 \to 0$, special $b : 0 \to 0$, and 2-cell $: f_X \circ a \to f_Y \circ b$. Because of the initiality of $0$, we know that both $a$ and $b$ must be the unique special map from $0$ to itself, which is the identity. Thus, we conclude there is a unique 2-cell from $f_X$ to $f_Y$. As $f_Y$ was an arbitrary map in $D$, we can conclude that $f_X$ (i.e., the unique special map from $0$ to $\omega$) is initial within $D(0, \omega)$.
+Because the comma object is special (by left comma-stability), it has a unique special map from $0$. By the universal property of a comma object, along with our presumption that the projections jointly create special structure, this means there is a unique triple of special $a : 0 \to 0$, special $b : 0 \to 0$, and 2-cell $: f_X \circ a \to f_Y \circ b$. Because of the initiality of $0$, we know that both $a$ and $b$ must be the unique special map from $0$ to itself, which is the identity. Thus, we conclude there is a unique 2-cell from $f_X$ to $f_Y$. As $f_Y$ was an arbitrary map in $D$, we can conclude that $f_X$ (i.e., the unique special map from $0$ to $\omega$) is initial within $D(0, \omega)$.
 \end{proof}
 
 \subsection{Internal and initial model terminology}
@@ -919,12 +930,14 @@ This is immediate upon unraveling definitions.
 \end{proof}
 
 \begin{theorem}\label{InitialModelCommaStable}
-Let $T$ be a fixed lexcategory, and throughout the following, use \quote{initial model} specifically to mean \quote{initial model of $T$}.
+Let $T$ be a fixed lexcategory, and throughout the following, take \quote{initial model} to mean specifically \quote{initial model of $T$}.
 
-If $X$, $Y$, and $\omega$ are lexcategories with initial models, $f_X : X \to \omega$ is a lexfunctor preserving the initial model, and $f_Y : Y \to \omega$ is an arbitrary lexfunctor, then the comma lexcategory $\comma{f_X}{f_Y}$ has an initial model, jointly created by its two projections. (That is, both projections preserve initial models, and for any lexcategory $Z$ with an initial model, a lexfunctor from $Z$ to the comma category preserves the initial model just in case both of its compositions with the projections preserve the initial model.)
+If $X$, $Y$, and $\omega$ are lexcategories with initial models, $f_X : X \to \omega$ is a lexfunctor preserving the initial model, and $f_Y : Y \to \omega$ is an arbitrary lexfunctor, then the comma lexcategory $\comma{f_X}{f_Y}$ has an initial model, jointly created by its two projections. (That is, for any lexcategory $Z$ with an initial model, a lexfunctor from $Z$ to $\comma{f_X}{f_Y}$ preserves the initial model if and only if both of its compositions with these projections preserve the initial model.)
+
+In other words, the restriction of $\LexCat$ to lexcategories having, and lexfunctors preserving, initial models of $T$ is left comma-stable.
 \end{theorem}
 \begin{proof}
-Thanks to \magicref{InitialModelsAreLeftKanExtensions}, this is the instance of \magicref{CommaKan} within $\LexCat$ for which $A$ is the initial lexcategory and $B$ is $T$.
+Thanks to \magicref{InitialModelsAreLeftKanExtensions}, this is the instance of \magicref{CommaKan} within $\LexCat$ where $A$ is taken to be the initial lexcategory and $B$ is taken to be $T$.
 \end{proof}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
