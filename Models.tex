@@ -3,7 +3,7 @@
 \section{Examples in the wild}
 
 \subsection{Preview}
-This chapter might better be titled \quote{Examples in the wild}. In previous chapters, we have defined introspective theories and geminal categories. That is, we have axiomatized the theory of introspective theories and the theory of geminal categories. Now we look at some notable models of these axiomatic theories, which is to say, at some notable specific examples of introspective theories and of geminal categories. These examples are of a sort which might be considered to have been found \quote{in the wild}, instead of being freely syntactically constructed as the examples of the last chapter were.
+In previous chapters, we have defined introspective theories and geminal categories. That is, we have axiomatized the theory of introspective theories and the theory of geminal categories. Now we look at some notable models of these axiomatic theories, which is to say, at some notable specific examples of introspective theories and of geminal categories. These examples are of a sort which might be considered to have been found \quote{in the wild}, instead of being freely syntactically constructed as the examples of the last chapter were.
 
 There are two broad classes of models/examples of note in this chapter:
 
@@ -20,19 +20,19 @@ In this way, simply by consideration of the freeness properties already establis
 
 \TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
-\subsection{Theories with initial interior models of themselves}
+\subsection{Self-initializing theories}
 
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
-Let $T$ be a lexcategory (whose models we shall call \quote{gadgets}), let $C$ be a lexcategory internal to $T$ (such that we think of the interpretation of $C$ as the \quote{underlying lexcategory} of any gadget), and suppose there is an initial model of $T$ in $\Glob{C}$.
+Let $T$ be a lexcategory (whose models we shall call \quote{gadgets}), let $C$ be a lexcategory internal to $T$ (such that we think of the interpretation of $C$ as the underlying lexcategory of any gadget), and suppose there is an initial model of $T$ in $\Glob{C}$.
 
 In other words, the initial gadget $G$ (in $\Set$) contains, in its underlying lexcategory, an initial internal gadget $G'$.
 
-For sake of a name for this concept, call such a theory $T$ \defined{\initogeminal/}.
+For sake of a name for this concept, call such a theory $T$ \defined{weakly \initogeminal/}.
 
 \TODOinline{See note at \magicref{ModelTerminology} on the inaptness of this "internal" terminology. Clean it up.}
 
-(With most \initogeminal/ theories of interest, it is furthermore the case that for any lexfunctor $f : T \to S$ for arbitrary $S$, we have that $\InducedHomo{f}{G'}$ is an initial model of $T$ in $\Glob{f[C]}$; in other words, EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most \initogeminal/ theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. But we do not actually need this property for the following construction.)
+(With most weakly \initogeminal/ theories of interest, it is furthermore the case that for any lexfunctor $f : T \to S$ for arbitrary $S$, we have that $\InducedHomo{f}{G'}$ is an initial model of $T$ in $\Glob{f[C]}$; in other words, EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most weakly \initogeminal/ theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. In that case, we shall call the theory \defined{strongly \initogeminal/}. But we do not actually need this property for the following construction.)
 
 Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
 
@@ -40,10 +40,12 @@ This setup is thus a geminal gadget (with the equations $E_1$ and $E_2$ of \magi
 
 Indeed, this is the unique way to equip $G$ as a geminal gadget with internal gadget $G'$.
 
-In summary, we have shown how the initial model of any \initogeminal/ theory can naturally be equipped as a geminal model of that same theory.
+In summary, we have shown how the initial model of any weakly \initogeminal/ theory can naturally be equipped as a geminal model of that same theory.
 \end{construction}
 
 \TODOinline{Note that when the theory is in fact strongly self-initializing, in the sense of the previous TODO note, then we have that in the geminal category $\langle G_1 = G, G_2 = G', \ldots; F, \ldots \rangle$, $G_3 = G''$ is also an initial gadget internal to $G'$ (since $G''$ is given by $F[G']$). Thus, $\InteriorGeminal{G}$ is itself given by the internalization of the same construction of a geminal category for a self-initializing theory.}
+
+\TODOinline{Discuss more generally how we can get geminal categories from the initial X, if the theory X is extended by the theory Y, and the initial X has an internal initial Y. The above is the special case of this where X and Y coincide.}
 
 \begin{TODOblock}
 When the \initogeminal/ theory T is such that furthermore Set is a model of T, and we have the strong property noted above that EVERY homomorphism out of the initial model of T preserves its interior initial model's initiality, then we furthermore get a soundness result here: The map from the initial model M of T (the one defined by global elements in the lexcategory corresponding to T) to Set takes M's interior initial model of T to the actual M in Set, and so on.
@@ -129,13 +131,6 @@ Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of 
 
 Throughout the following, we use the \quote{initial model} terminology of \magicref{LexModelTerminology}. As a reminder, we say a lexfunctor $f : T \to S$ is an initial model of $T$ if it is initial within the category $\LexCat(T, S)$.
 
-\begin{lemma}\label{TermModelIsInitialForLex}
-For any lexcategory $C$, its global sections lexfunctor $\Hom_C(1, -) : C \to \Set$ is an initial model of $C$ in $\Set$.
-\end{lemma}
-\begin{proof}
-By the Yoneda lemma, for any functor $f : C \to \Set$, the natural transformations from $\Hom_C(1, -)$ to $f$ are in correspondence with the elements of $f(1)$. But if $f$ is a lexfunctor, then $f(1)$ has a unique element.
-\end{proof}
-
 By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
 
 \begin{theorem}
@@ -151,12 +146,17 @@ If $S$ is the initial object of $\initMod{T}$, then for any other lexcategory $U
 In particular, the identity on $S$ is initial among all endolexfunctors of $S$.
 \end{theorem}
 \begin{proof}
-This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with $Special$ as the sub-2-category $\initMod{T}$.
-
-The preconditions for invoking \magicref{CommaKanStrongSigmesque} are satisfied in this context via \magicref{InitialModelCommaStable}.
+This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with $Special$ as the sub-2-category $\initMod{T}$. The precondition for invoking \magicref{CommaKanStrongSigmesque} in this context (i.e., the left comma-stability of $\initMod(T)$ within $\LexCat$) is given by \magicref{InitialModelCommaStable}.
 \end{proof}
 
 In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...). \TODO
+
+\subsubsection{A self-initializing theory with uncountable flavor}
+\TODOinline{Consider the free topos with countable (co)products, which has an internal free topos with countable (co)products as well, with internal and external views coinciding on what things have or preserve countable coproducts.}
+
+\subsubsection{A self-initializing theory with countable but uncomputable flavor}
+
+\TODO
 
 \subsection{The initial arithmetic universe}
 \begin{theorem}\label{AUStrongSigma1esque}
@@ -165,11 +165,11 @@ Every arithmetic functor out of the initial arithmetic universe $\IAU$ is an ini
 In particular, the identity on $\IAU$ is initial among all endolexfunctors of $\IAU$.
 \end{theorem}
 \begin{proof}
-This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with the special $0$-cells as the arithmetic universes and the special $1$-cells as the arithmetic functors. The preconditions for invoking \magicref{CommaKanStrongSigmesque} are satisfied in this context via \magicref{CommaStableArithmetic}.
+This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with the special $0$-cells as the arithmetic universes and the special $1$-cells as the arithmetic functors. The precondition for invoking \magicref{CommaKanStrongSigmesque} in this context (i.e., the left comma-stability of these special cells) is given by \magicref{CommaStableArithmetic}.
 \end{proof}
 
 \begin{construction}\label{IAUAsIntrosp}
-Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. From \magicref{AUStrongSigma1esque}, the natural transformation $\introN$ is also uniquey determined. (This natural transformation is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}). This completes our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.
+Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. From \magicref{AUStrongSigma1esque}, the natural transformation $\introN$ is also uniquely determined. (This natural transformation is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}). This completes our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.
 \end{construction}
 
 \TODOinline{Show that this introspective theory structure extends the geminal category structure on IAU already obtained in previous sections by mere initiality properties (this is clear already from the uniqueness result on \initogeminal/ theories' corresponding geminal gadgets). Conclude that IAU in fact comprises a \quote{super-duper introspective theory}.}

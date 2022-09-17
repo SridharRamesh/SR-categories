@@ -710,7 +710,7 @@ For any category $C$, and any set of morphisms $M$ of $C$, we may consider freel
 \end{definition}
 
 \begin{lemma}
-Any localization functor is eso.
+Any localization functor is essentially surjective on objects (eso).
 \end{lemma}
 
 \begin{lemma}\label{LocalizingTransform}
@@ -768,7 +768,7 @@ Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFait
 Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to another arithmetic universe be given, and let $M$ be the set of morphisms of $C$ which are sent to isomorphisms by said arithmetic functor. Then letting $f : C \to C[M^{-1}]$ be the corresponding localization (an \defined{arithmetic localization}), we have that this is also the localization qua arithmetic universe, in that $C[M^{-1}]$ is an arithmetic universe, $f$ is an arithmetic functor, and any arithmetic functor out of $C$ which factors (necessarily uniquely) through $f$ is such that this factorization is itself an arithmetic functor.
 \end{lemma}
 \begin{proof}
-\TODOinline{This is all straightforward by the general techniques of GZ, but I'm not bothered to write it out right now. Demonstrating that $C[M^{-1}]$ has list objects is the one nonstraightforwardish aspect, for which it is useful to keep in mind that in an arithmetic universe, there is an isomorphism between \quote{lists of Xes, along with one Y} and \quote{lists of Xes, along with a sequence of Ys of length one greater, each Y being suitably related to the previous one in that applying some fixed isomorphism to Y_i yields the same result as applying some other fixed map to X x Y_i}}.
+\TODOinline{This is all straightforward by the general techniques of GZ, but I'm not bothered to write it out right now. Demonstrating that $C[M^{-1}]$ has NNOs and list objects is the one nonstraightforwardish aspect, for which it is useful to keep in mind that in an arithmetic universe, there is an isomorphism between \quote{lists of Xes, along with one Y} and \quote{lists of Xes, along with a sequence of Ys of length one greater, each Y being suitably related to the previous one in that applying some fixed isomorphism to Y_i yields the same result as applying some other fixed map to X x Y_i}}.
 \end{proof}
 
 \subsection{Comma objects and their interaction with Kan extensions}
@@ -814,6 +814,9 @@ Let an arbitrary $k : B \to \comma{f_X}{f_Y}$ be given. By the universal propert
 (The dualized result of course follows automatically.) 
 \end{proof}
 
+\begin{note}\magicref{CommaKan} is perhaps best understood more modularly as the combination of two results concerning Kan extensions: One on the interaction of Kan extensions with products, and another on the interaction of Kan extensions with inserters. Comma objects can then be understood as a particular combination of products and inserters. However, as nearly all the use we will make of this idea is specifically concerning comma categories, we have written the lemma in this combined way, instead of breaking it down into those two steps.
+\end{note}
+
 \begin{corollary}\label{CommaCategoryColimits}
 Given a cospan of functors $f_X, f_Y$ from respective categories $X$ and $Y$, if $X$ and $Y$ both have colimits of a particular shape and $f_X$ preserves colimits of that shape, then the two projections out of $\comma{f_X}{f_Y}$ jointly create colimits of that shape.
 
@@ -837,19 +840,41 @@ From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span
 \end{proof}
 
 The above is paradigmatic of a situation which comes up often, for which it will be convenient to have terminology:
+
 \begin{definition}
-Let $D$ be a 2-category and let $Special$ be a sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. We presume any invertible cell in $D$ whose domain or codomain is special is itself special (thus, membership in $Special$ is invariant under isomorphism in $D$), and we also presume that any 2-cell between special 1-cells is special.
+Let $U : Special \to D$ be a 2-functor between 2-categories. 
 
-Suppose furthermore that $D$ has comma objects. And suppose for any comma object $\comma{f_X}{f_Y}$ in $D$ where $f_X$ is special and the domain of $f_Y$ is special, the comma object has special structure jointly created by its two projections. That is, $\comma{f_X}{f_Y}$ is special, its two projections are special, and for any 1-cell in $D$ from a special object to $\comma{f_X}{f_Y}$, we have that this $1$-cell is special whenever both of its compositions with the projections out of $\comma{f_X}{f_Y}$ are special.
+We presume that $U$ is locally fully faithful; that is, for any 0-cells $s_1, s_2 \in Special$, the functor induced by $U$ from $Special(s_1, s_2)$ to $D(U(s_1), U(s_2))$ is fully faithful. In other words, $U$ acts bijectively on 2-cells.
 
-In this case, we say that $Special$ is \defined{left comma-stable} within $D$, or that the restriction of $D$ to $Special$ is left comma-stable.
+Now suppose given a comma object in $D$ whose span is in the range of $U$, like so:
 
-(Dually, if this property holds when we instead demand $f_Y$ to be special while allowing $f_X$ to be an arbitrary morphism of $D$ with special domain, then we say that the restriction of $D$ to $Special$ is right comma-stable.)
+% https://q.uiver.app/?q=WzAsNyxbMywwLCJjIl0sWzQsMCwiWCJdLFszLDEsIlkiXSxbMSwxLCJcXG9tZWdhIl0sWzAsMSwiVShZKSJdLFsxLDAsIlUoWCkiXSxbMCwwLCJVKGMpID0gXFxjb21tYXtmX1h9e2ZfWX0iXSxbMCwxLCJcXHBpX1giXSxbMCwyLCJcXHBpX1kiLDJdLFs0LDMsImZfWSIsMl0sWzUsMywiZl9YIl0sWzUsNCwiIiwxLHsibGV2ZWwiOjJ9XSxbNiw0LCJVKFxccGlfWSkiLDJdLFs2LDUsIlUoXFxwaV9YKSJdXQ==
+\[\begin{tikzcd}
+	{U(c) = \comma{f_X}{f_Y}} & {U(X)} && c & X \\
+	{U(Y)} & \omega && Y
+	\arrow["{\pi_X}", from=1-4, to=1-5]
+	\arrow["{\pi_Y}"', from=1-4, to=2-4]
+	\arrow["{f_Y}"', from=2-1, to=2-2]
+	\arrow["{f_X}", from=1-2, to=2-2]
+	\arrow[Rightarrow, from=1-2, to=2-1]
+	\arrow["{U(\pi_Y)}"', from=1-1, to=2-1]
+	\arrow["{U(\pi_X)}", from=1-1, to=1-2]
+\end{tikzcd}\]
+
+Furthermore, suppose that for any object $s \in Special$ and 1-cell $m : U(s) \to U(c)$, we have that $m$ is contained in $U(Special(s, c))$ whenever both $m; U(\pi_X)$ and $m; U(\pi_Y)$ are contained in $U(Special(s, X))$ and $U(Special(s, Y))$, respectively. (All containments in the range of $U$ here are meant up to isomorphism, of course.)
+
+In this case, we say $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure (under $U$).
+
+If the comma object $\comma{f_X}{f_Y}$ exists and its projections jointly create $Special$ structure whenever both $f_X$ and $\dom(f_Y)$ are in the range of $U$, then we say that $Special$ structure is \defined{left comma-stable}.
+
+(Dually, if $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure whenever both $\dom(f_X)$ and $f_Y$ are in the range of $U$, then we say that $Special$ structure is \defined{right comma-stable}.)
+
+If $Special$ is thought of as a sub-2-category of $D$, with $U$ as the corresponding inclusion, we may also word this as \quote{the restriction of $D$ to $Special$ is left comma-stable} or \quote{$Special$ is left comma-stable within $D$}, etc.
 \end{definition}
 
-In this language, \magicref{CommaCategoryColimits} shows that the restriction of $\Cat$ to categories having, and functors preserving, finite colimits is left comma-stable within $\Cat$. (And dually, $\LexCat$ is right comma-stable within $\Cat$.)
+In this language, \magicref{CommaCategoryColimits} shows that the 2-category of categories having, and functors preserving, finite colimits is left comma-stable within $\Cat$. (And dually, $\LexCat$ is right comma-stable within $\Cat$.)
 
-We note here a number of left comma-stable restrictions of $\LexCat$, all similarly demonstrable as corollaries of \magicref{CommaKan}:
+We note here a number of left comma-stable sub-2-categories of $\LexCat$, all similarly demonstrable as corollaries of \magicref{CommaKan}:
 
 \begin{corollary}
 If $X$, $Y$, and $\omega$ are lexcategories with finite coproducts, $f_X : X \to \omega$ is a lexfunctor which preserves finite coproducts, and $f_Y : Y \to \omega$ is a lexfunctor (not necessarily preserving coproducts), then the projections out of the comma category $\comma{f_X}{f_Y}$ jointly create finite coproducts.
@@ -883,7 +908,7 @@ Putting these all together, we have:
 The restriction of $\LexCat$ to arithmetic universes and arithmetic functors is left comma-stable.
 \end{corollary}
 
-Though phrased rather abstractly, the following theorem will be useful to us twice (at \magicref{InitialInitializerStrongSigmaesque} and \magicref{AUStrongSigma1esque}):
+Left comma-stability is of interest to us because of the following abstract theorem, which will be useful to us twice (at \magicref{InitialInitializerStrongSigmaesque} and \magicref{AUStrongSigma1esque}):
 \begin{theorem}\label{CommaKanStrongSigmesque}
 Let $D$ be a 2-category and let $Special$ be a left comma-stable sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. 
 
@@ -921,6 +946,13 @@ Given a lexfunctor $F : T \to S$, we may sometimes call this a \defined{model} o
 
 If $S_1$ has an initial model of $T$ given by $F: T \to S_1$, and $H : S_1 \to S_2$ is a lexfunctor such that $H \circ F$ is an initial model of $T$ in $S_2$, then we say $H$ preserves initial models of $T$.
 \end{definition}
+
+\begin{lemma}\label{TermModelIsInitialForLex}
+For any lexcategory $T$, its global sections lexfunctor $\Hom_T(1, -) : T \to \Set$ is an initial model of $T$ in $\Set$.
+\end{lemma}
+\begin{proof}
+By the Yoneda lemma, for any functor $f : T \to \Set$, the natural transformations from $\Hom_T(1, -)$ to $f$ are in correspondence with the elements of $f(1)$. But if $f$ is a lexfunctor, then $f(1)$ has a unique element.
+\end{proof}
 
 \begin{observation}\label{InitialModelsAreLeftKanExtensions}
 Let $0$ be the initial lexcategory (i.e., the terminal category), and let $T$ and $S$ be arbitrary lexcategories. Then an initial model of $T$ in $S$ is the same thing as a left Kan extension of the unique lexfunctor $:0 \to S$ along the unique lexfunctor $: 0 \to T$.
