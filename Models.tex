@@ -20,28 +20,63 @@ In this way, simply by consideration of the freeness properties already establis
 
 \TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
-\subsection{Self-initializing theories}
+\subsection{Self-initializing and super-initializing theories}
 
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
-Let $T$ be a lexcategory (whose models we shall call \quote{gadgets}), let $C$ be a lexcategory internal to $T$ (such that we think of the interpretation of $C$ as the underlying lexcategory of any gadget), and suppose there is an initial model of $T$ in $\Glob{C}$.
+Suppose given some lexcategory $T$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $T$ (the underlying lexcategory of a gadget).
 
-In other words, the initial gadget $G$ (in $\Set$) contains, in its underlying lexcategory, an initial internal gadget $G'$.
+Furthermore, suppose given an initial gadget $G$ with an initial internal gadget $G'$. That is, suppose given some lexcategory $S$ such that $\LexCat(T, S)$ has an initial object (our $G$) and such that $\LexCat(T, G[C])$ has an initial object (our $G'$).
 
-For sake of a name for this concept, call such a theory $T$ \defined{weakly \initogeminal/}.
-
-\TODOinline{See note at \magicref{ModelTerminology} on the inaptness of this "internal" terminology. Clean it up.}
-
-(With most weakly \initogeminal/ theories of interest, it is furthermore the case that for any lexfunctor $f : T \to S$ for arbitrary $S$, we have that $\InducedHomo{f}{G'}$ is an initial model of $T$ in $\Glob{f[C]}$; in other words, EVERY model of the theory has an internal initial model of the theory, and every homomorphism preserves this internal initial model. That is, with most weakly \initogeminal/ theories of interest, the initial model's internal initial model is obtained not just accidentally because of some paucity of other globally defined structures, but intrinsically by virtue of the algebraic laws encoded in the theory. In that case, we shall call the theory \defined{strongly \initogeminal/}. But we do not actually need this property for the following construction.)
-
-Because $G$ is initial, we automatically get a unique gadget-homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$ as well. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
+Because $G$ is initial, we automatically get a unique homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$. And because $G'$ is an initial $|G|$-internal gadget, we automatically get a unique $|G|$-internal homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
 
 This setup is thus a geminal gadget (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
 
-Indeed, this is the unique way to equip $G$ as a geminal gadget with internal gadget $G'$.
-
-In summary, we have shown how the initial model of any weakly \initogeminal/ theory can naturally be equipped as a geminal model of that same theory.
+Indeed, this is the unique way to equip $\langle G, G' \rangle$ as a geminal gadget.
 \end{construction}
+
+In practice, when an initial gadget has an initial internal gadget like above, this is usually not just some accident caused by a paucity of globally defined structures, but rather, is due to the theory of gadgets itself encoding the construction of an internal initial gadget:
+\begin{definition}
+Suppose, as above, given some lexcategory $T$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $T$ (the underlying lexcategory of a gadget).
+
+If every gadget has an initial internal gadget in its underlying lexcategory, and every gadget homomorphism preserves these initial internal gadgets, then we say the theory of gadgets is \defined{self-initializing}.
+
+In other words, $T$ is self-initializing if $\LexCat(T, \Glob{C})$ has an initial object, and this initiality is preserved by every $\InducedHomo{f}{C}$ for any lexfunctor $f$ out of $T$.
+\end{definition}
+
+There are a number of self-initializing theories in the wild, which thus immediately give us examples of geminal categories in the wild.
+
+For example: \TODO.
+
+The above all admits a slight generalization worth noting:
+
+\begin{construction}\label{InitoGeminalYieldsGeminal}
+Suppose given some lexfunctor $i : T \to T_2$, along with a lexcategory $C$ internal to $T$. We call $T$ the theory of \quote{gadgets}, and $T_2$ the theory of \quote{supergadgets}. Via $i$, every supergadget has an underlying gadget, and via $C$, every gadget has an underlying lexcategory.
+
+Furthermore, suppose given an initial gadget $G$ with an initial internal supergadget $G'$. That is, suppose given some lexcategory $S$ such that $\LexCat(T, S)$ has an initial object (our $G$) and such that $\LexCat(T_2, G[C])$ has an initial object (our $G'$).
+
+Because $G$ is initial, we automatically get a unique gadget homomorphism $\introN_{G}$ from $G$ to $\Hom_{|G|}(1, G')$. And because $G'$ is an initial $|G|$-internal supergadget, we automatically get a unique $|G|$-internal supergadget homomorphism $\introN_{G'}$ from $G'$ to $\Hom_{|G'|}(1, G'')$ where $G'' = \introN_{G}[G']$.
+
+This setup is thus a geminal gadget (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
+
+Indeed, this is the unique way to equip $\langle G, G' \rangle$ as a geminal gadget $\langle G, G', F, F' \rangle$ such that $F'$ comes from a supergadget homomorphism.
+\end{construction}
+
+And again, in practice, when an initial gadget has an initial internal supergadget like above, this is usually not just some accident caused by a paucity of globally defined structures, but rather, is due to the theory of gadgets itself encoding the construction of an internal initial supergadget:
+
+\begin{definition}
+Suppose, as above, given some lexfunctor $i : T \to T_2$, along with a lexcategory $C$ internal to $T$. We call $T$ the theory of \quote{gadgets}, and $T_2$ the theory of \quote{supergadgets}. Via $i$, every supergadget has an underlying gadget, and via $C$, every gadget has an underlying lexcategory.
+
+If every gadget has an initial internal supergadget in its underlying lexcategory, and every gadget homomorphism preserves these initial internal supergadgets, then we say the theory of gadgets (or more precisely, the extension of the theory of gadgets by the theory of supergadgets) is \defined{super-initializing}.
+
+In other words, this situation is super-initializing if $\LexCat(T_2, \Glob{C})$ has an initial object, and this initiality is preserved by every $\InducedHomo{f}{C}$ for any lexfunctor $f$ out of $T$.
+\end{definition}
+
+The self-initializing situation is of course the special case of the super-initializing situation where $T_2 = T$ and $i$ is the identity.
+
+Again, there are a number of self-initializing theories in the wild, which thus immediately give us examples of geminal categories in the wild.
+
+For example: \TODO.
 
 \TODOinline{Note that when the theory is in fact strongly self-initializing, in the sense of the previous TODO note, then we have that in the geminal category $\langle G_1 = G, G_2 = G', \ldots; F, \ldots \rangle$, $G_3 = G''$ is also an initial gadget internal to $G'$ (since $G''$ is given by $F[G']$). Thus, $\InteriorGeminal{G}$ is itself given by the internalization of the same construction of a geminal category for a self-initializing theory.}
 
@@ -150,6 +185,8 @@ This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to 
 \end{proof}
 
 In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...). \TODO
+
+More generally, let $T$ and $T_2$ be lexcategories, and $Extend : T \to T_2$ be given, such that $T_2$ is thought of as a lex theory extending $T$. \TODO
 
 \subsubsection{A self-initializing theory with uncountable flavor}
 \TODOinline{Consider the free topos with countable (co)products, which has an internal free topos with countable (co)products as well, with internal and external views coinciding on what things have or preserve countable coproducts.}

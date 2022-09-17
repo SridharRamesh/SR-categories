@@ -700,7 +700,11 @@ An \defined{arithmetic universe} is a category which is exact and extensive with
 
 We denote the initial arithmetic universe as $\IAU$. Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any computer program describing some computably enumerable structure induces a structure of that sort internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic in $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
 
-There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in the paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts).
+There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
+
+\begin{definition}
+An \defined{NNO-topos} is \TODO.
+\end{definition}
 
 \subsection{Localization}
 The reader is advised that we only ultimately make one use of the results in this section (at \TODO). Thus, the reader may skip this section unless and until interested in the details of that particular result.
@@ -844,13 +848,13 @@ The above is paradigmatic of a situation which comes up often, for which it will
 \begin{definition}
 Let $U : Special \to D$ be a 2-functor between 2-categories. 
 
-We presume that $U$ is locally fully faithful; that is, for any 0-cells $s_1, s_2 \in Special$, the functor induced by $U$ from $Special(s_1, s_2)$ to $D(U(s_1), U(s_2))$ is fully faithful. In other words, $U$ acts bijectively on 2-cells.
+We presume that $U$ is locally fully faithful; that is, for any 0-cells $s_1, s_2 \in Special$, the functor induced by $U$ from $Special(s_1, s_2)$ to $D(U(s_1), U(s_2))$ is fully faithful. In other words, $U$ acts bijectively on 2-cells (and thus also injectively on isomorphism classes of 1-cells). We also presume that $D$ has comma objects.
 
-Now suppose given a comma object in $D$ whose span is in the range of $U$, like so:
+Now suppose some comma object in $D$ has its span in the range of $U$, like so:
 
-% https://q.uiver.app/?q=WzAsNyxbMywwLCJjIl0sWzQsMCwiWCJdLFszLDEsIlkiXSxbMSwxLCJcXG9tZWdhIl0sWzAsMSwiVShZKSJdLFsxLDAsIlUoWCkiXSxbMCwwLCJVKGMpID0gXFxjb21tYXtmX1h9e2ZfWX0iXSxbMCwxLCJcXHBpX1giXSxbMCwyLCJcXHBpX1kiLDJdLFs0LDMsImZfWSIsMl0sWzUsMywiZl9YIl0sWzUsNCwiIiwxLHsibGV2ZWwiOjJ9XSxbNiw0LCJVKFxccGlfWSkiLDJdLFs2LDUsIlUoXFxwaV9YKSJdXQ==
+% https://q.uiver.app/?q=WzAsNyxbMywwLCJjIl0sWzQsMCwiWCJdLFszLDEsIlkiXSxbMSwxLCJcXG9tZWdhIl0sWzAsMSwiVShZKSJdLFsxLDAsIlUoWCkiXSxbMCwwLCJcXGNvbW1he2ZfWH17Zl9ZfSA9IFUoYykiXSxbMCwxLCJcXHBpX1giXSxbMCwyLCJcXHBpX1kiLDJdLFs0LDMsImZfWSIsMl0sWzUsMywiZl9YIl0sWzUsNCwiIiwxLHsibGV2ZWwiOjJ9XSxbNiw0LCJVKFxccGlfWSkiLDJdLFs2LDUsIlUoXFxwaV9YKSJdXQ==
 \[\begin{tikzcd}
-	{U(c) = \comma{f_X}{f_Y}} & {U(X)} && c & X \\
+	{\comma{f_X}{f_Y} = U(c)} & {U(X)} && c & X \\
 	{U(Y)} & \omega && Y
 	\arrow["{\pi_X}", from=1-4, to=1-5]
 	\arrow["{\pi_Y}"', from=1-4, to=2-4]
@@ -863,11 +867,11 @@ Now suppose given a comma object in $D$ whose span is in the range of $U$, like 
 
 Furthermore, suppose that for any object $s \in Special$ and 1-cell $m : U(s) \to U(c)$, we have that $m$ is contained in $U(Special(s, c))$ whenever both $m; U(\pi_X)$ and $m; U(\pi_Y)$ are contained in $U(Special(s, X))$ and $U(Special(s, Y))$, respectively. (All containments in the range of $U$ here are meant up to isomorphism, of course.)
 
-In this case, we say $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure (under $U$).
+In this case, we say that $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure. (Note that if the above span in $Special$ exists, it is uniquely determined by $f_X$ and $f_Y$, with $c$ as the representing object for a suitable 2-functor $: \op{Special} \to \Cat$.)
 
-If the comma object $\comma{f_X}{f_Y}$ exists and its projections jointly create $Special$ structure whenever both $f_X$ and $\dom(f_Y)$ are in the range of $U$, then we say that $Special$ structure is \defined{left comma-stable}.
+If $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure whenever $f_X$ and $\dom(f_Y)$ are in the range of $U$, then we say that $Special$ structure is \defined{left comma-stable} under $U$.
 
-(Dually, if $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure whenever both $\dom(f_X)$ and $f_Y$ are in the range of $U$, then we say that $Special$ structure is \defined{right comma-stable}.)
+(Dually, if $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure whenever $\dom(f_X)$ and $f_Y$ are in the range of $U$, then we say that $Special$ structure is \defined{right comma-stable} under $U$.)
 
 If $Special$ is thought of as a sub-2-category of $D$, with $U$ as the corresponding inclusion, we may also word this as \quote{the restriction of $D$ to $Special$ is left comma-stable} or \quote{$Special$ is left comma-stable within $D$}, etc.
 \end{definition}
@@ -1009,7 +1013,7 @@ Finally, we note that \autocite{palmgrenvickers} shows us how to take any strict
 More generally, given an arbitrary lexcategory $T'$, if we make a choice of strict lexcategory $T$ which presents $T'$, then we may for convenience use the name $\LexCatToTheory{T'}$ to refer to $\LexCatToTheory{T}$, even though this strictly speaking depends on the choice of $T$ and not merely on $T'$. Regardless of the exact quasi-equational theory produced, we will in any case still have the property that $\LexCat(T', -)$ and $\modelsIn{\LexCatToTheory{T'}}{-}$ are in correspondence. \TODOinline{We may not actually use this abuse of language in the end after all, in which case we can delete this paragraph.}
 
 \begin{observation}
-All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but also have $k$-ary products, for all $k$ drawn from some fixed set of infinite cardinalities $K$. (Such categories in fact have all limits of cardinality $k$, by the usual reduction to $k$-ary products and binary equalizers.)
+All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but furthermore have $k$-ary products, for all $k$ drawn from some fixed set of infinite cardinalities $K$. (Such categories in fact have all limits of diagrams whose object and morphism cardinalities are in $K$ or finite, by the usual reduction to products and binary equalizers.)
 \end{observation}
 
 \fileend
