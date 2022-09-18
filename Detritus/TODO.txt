@@ -163,3 +163,13 @@ CLEANUP:
 LAST BITS IT WOULD BE NICE TO INCLUDE, NOT STRICTLY NECESSARY BEFORE SENDING SOMETHING TO DANA:
 7. Extracting introspective theories from geminal categories.
 8. Chapter on applications to modally naive set theory.
+
+-------
+
+Perhaps we should define a tree-category (with globalization) as an opfibration parent : E -> C, along with a map Glob : E -> C, along with a map \Gamma : Glob -> parent. The canonical example is where C is LexCat, and parent : E -> C lists the lexcategories and lexfunctors internal to an object of C. (How does InducedHomomorphism fit into this? Is \gamma really natural in this sense? I think \gamma is lax natural, not pseudonatural, and perhaps this is where Induced comes from?. But perhaps it's pseudonatural on purely horizontal maps?)
+
+We can talk about geminal categories abstractly relative to a tree category.
+
+Also, in the case where C is 2-categorical, we can talk about introspective theories abstractly relative to a tree category.
+
+Perhaps all initiality results on geminal categories and on models constructed by initiality properties follow from this framework purely abstractly, without invoking anything actually using lexcategory structure.
