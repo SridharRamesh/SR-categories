@@ -11,24 +11,29 @@ Firstly, there are those which are similar in flavor to the traditional instance
 
 The second class of models/examples we consider are more similar in flavor to the traditional interpretation of the modal logic GL in well-founded orders. Here, the existence of guarded recursion is straightforward, but it is the unification with our general theory which is of note. Among these models are examples like the topos of trees, the canonical model discussed in the literature on guarded recursion. We also demonstrate similar but distinct models which support an interpretation of Boolean provability logic, as opposed to the fundamentally intuitionistic logic of the topos of trees.
 
-\subsection{Automatic consistency results without models as such}
-We already know that the theory of geminal categories is an introspective theory. And because every introspective theory is itself a geminal category, we know that the theory of introspective theories only proves $\Box A$ if it furthermore proves $A$.
+\subsection{The main initiality-based construction}
+\begin{construction}\label{SpecialInitialIntrosp}
+Let $Special$ be a left comma-stable sub-2-category of $\LexCat$, in the sense of \magicref{CommaStableDefn}. Furthermore, suppose $Special$ has an initial object $T$, that $T$ has an internal lexcategory $C$, and that $\Glob{C}$ is itself an object of $Special$.
 
-Finally, we know that every lexcategory can be equipped as a geminal category in a trivial way, by taking its internal geminal category to be trivially $1$, even when the outer lexcategory needn't be trivial. From this, we can conclude that the theory of introspective theories is nontrivial in the sense that it does not prove its internal geminal category to be trivial. Thus, it does not prove $\Box A$ for all $A$. Furthermore, combining this with the previous paragraph, we have the stronger consistency result that for every $n$, the theory of introspective theories does not prove $\Box^n A$ for all $A$.
+Then we obtain a unique lexfunctor $\introS \in Special(T, \Glob{C})$, by the initiality of $T$.
 
-In this way, simply by consideration of the freeness properties already established in the chapter on geminal categories, we already know the theory of introspective theories to have highly nontrivial content, even without needing to find any models of it \quote{in the wild}.
+Furthermore, by \magicref{CommaKanStrongSigmesque}, we have that $\id_T$ is initial within $\LexCat(T, T)$. Thus, in particular, there is a unique natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$. In this way, we obtain an introspective theory $\langle T, C, \introS, \introN \rangle$.
+\end{construction}
 
-\TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
+\begin{theorem}
+Let $Special$ and $\langle T, C, \introS, \introN \rangle$ be given as in \magicref{SpecialInitialIntrosp} above.
+
+Consider also any other introspective theory $\langle T', C', \introS', \introN' \rangle$ such that $\introS' : T' \to \Glob{C'}$ lives in $Special$. If the unique special map $f : T \to T'$ is such that $f[C] = C'$, then this $f$ is also an introspective theory homomorphism (in the sense of \TODOinline{cite}). The condition that $f$ interacts appropriately with $\introS$ and $\introS'$ is automatic by the initiality of $T$. Furthermore, the condition that $f$ interacts appropriately with $\introN$ and $\introN'$ is automatic by the fact that $f$ is initial within $\LexCat(T, T')$, thanks to \magicref{CommaKanStrongSigmesque}.
+\end{theorem}
 
 \subsection{Self-initializing and super-initializing theories}
-
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
-Suppose given some lexcategory $T$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $T$ (the underlying lexcategory of a gadget).
+Suppose given some lexcategory $Th$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $Th$ (the underlying lexcategory of a gadget).
 
-Furthermore, suppose given an initial gadget $G_1$ with an initial internal gadget $G_2$. That is, suppose given some lexcategory $V$ such that $\LexCat(T, V)$ has an initial object (our $G_1$) and such that $\LexCat(T, G_1[C])$ has an initial object (our $G_2$).
+Furthermore, suppose given an initial gadget $G_1$ with an initial internal gadget $G_2$. That is, suppose given some lexcategory $V$ such that $\LexCat(Th, V)$ has an initial object (our $G_1$) and such that $\LexCat(Th, \Glob{G_1[C]})$ has an initial object (our $G_2$).
 
-Because $G_1$ is initial, we automatically get a unique homomorphism $F_1 : G_1 \to \Glob{G_2}$. And because $G_2$ is an initial $G$-internal gadget, we automatically get a unique $G_1$-internal homomorphism $F_2 : G_2 \to \Gamma[F_1[G_2]]$.
+Because $G_1$ is initial, we automatically get a unique homomorphism $F_1 : G_1 \to \Gamma{G_2}$. And because $G_2$ is an initial $G$-internal gadget, we automatically get a unique $G_1$-internal homomorphism $F_2 : G_2 \to \Gamma[G_3]$ where $G_3 = F_1[G_2]$.
 
 This setup is thus a geminal gadget internal to $V$ (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
 
@@ -37,21 +42,21 @@ Indeed, this is the unique way to equip $\langle G_1, G_2 \rangle$ as a geminal 
 
 In practice, when an initial gadget has an initial internal gadget like above, this is usually not just some accident (caused by a paucity of globally defined structures, say), but rather, is due to the theory of gadgets itself encoding the construction of an internal initial gadget:
 \begin{definition}
-Suppose, as above, given some lexcategory $T$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $T$ (the underlying lexcategory of a gadget).
+Suppose, as above, given some lexcategory $Th$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $Th$ (the underlying lexcategory of a gadget).
 
 If every gadget has an initial internal gadget, and every gadget homomorphism preserves these initial internal gadgets, then we say the theory of gadgets is \defined{self-initializing}.
 
-In other words, $T$ is self-initializing if $\LexCat(T, \Glob{C})$ has an initial object, and this initiality is preserved by $\InducedHomo{f}{C}$ for every lexfunctor $f$ out of $T$.
+In other words, $Th$ is self-initializing if $\LexCat(Th, \Glob{C})$ has an initial object, and this initiality is preserved by $\InducedHomo{f}{C}$ for every lexfunctor $f$ out of $Th$.
 \end{definition}
 
 The above all admits a generalization worth noting:
 
 \begin{construction}\label{SuperInitoGeminalYieldsGeminal}
-Suppose given some lexfunctor $i : T \to T'$, along with a lexcategory $C$ internal to $T$. Call $T$ the theory of \quote{gadgets}, and $T'$ the theory of \quote{supergadgets}. Via $i$, every supergadget has an underlying gadget, and via $C$, every gadget has an underlying lexcategory.
+Suppose given some lexfunctor $i : Th \to Th'$, along with a lexcategory $C$ internal to $Th$. Call $Th$ the theory of \quote{gadgets}, and $Th'$ the theory of \quote{supergadgets}. Via $i$, every supergadget has an underlying gadget, and via $C$, every gadget has an underlying lexcategory.
 
-Furthermore, suppose given an initial gadget $G_1$ with an initial internal supergadget $G_2$. That is, suppose given some lexcategory $V$ such that $\LexCat(T, V)$ has an initial object (our $G_1$) and such that $\LexCat(T', G_1[C])$ has an initial object (our $G_2$).
+Furthermore, suppose given an initial gadget $G_1$ with an initial internal supergadget $G_2$. That is, suppose given some lexcategory $V$ such that $\LexCat(Th, V)$ has an initial object (our $G_1$) and such that $\LexCat(Th', \Glob{G_1[C]})$ has an initial object (our $G_2$).
 
-Because $G_1$ is initial, we automatically get a unique gadget homomorphism $F_1$ from $G_1$ to $\Glob{G_2}$. And because $G_2$ is an initial $G_1$-internal supergadget, we automatically get a unique $G_1$-internal supergadget homomorphism $F_2$ from $G_2$ to $\Gamma[F_1[G_2]]$.
+Because $G_1$ is initial, we automatically get a unique gadget homomorphism $F_1: G_1 \to \Gamma{G_2}$. And because $G_2$ is an initial $G_1$-internal supergadget, we automatically get a unique $G_1$-internal supergadget homomorphism $F_2 : G_2 \to \Gamma[G_3]$ where $G_3 = F_1[G_2]$.
 
 This setup is thus a geminal gadget internal to $V$ (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
 
@@ -61,20 +66,26 @@ Indeed, this is the unique way to equip $\langle G_1, G_2 \rangle$ as a geminal 
 And again, in practice, when an initial gadget has an initial internal supergadget like above, this is usually not just some accident caused by a paucity of globally defined structures, but rather, is due to the theory of gadgets itself encoding the construction of an internal initial supergadget:
 
 \begin{definition}
-Suppose, as above, given some lexfunctor $i : T \to T'$, along with a lexcategory $C$ internal to $T$. We call $T$ the theory of \quote{gadgets}, and $T'$ the theory of \quote{supergadgets}. Via $i$, every supergadget has an underlying gadget, and via $C$, every gadget has an underlying lexcategory.
+Suppose, as above, given some lexfunctor $i : Th \to Th'$, along with a lexcategory $C$ internal to $T$. We call $T$ the theory of \quote{gadgets}, and $Th'$ the theory of \quote{supergadgets}. Via $i$, every supergadget has an underlying gadget, and via $C$, every gadget has an underlying lexcategory.
 
 If every gadget has an initial internal supergadget, and every gadget homomorphism preserves these initial internal supergadgets, then we say the theory of gadgets (or more precisely, the extension of the theory of gadgets by the theory of supergadgets) is \defined{super-initializing}.
 
-In other words, this situation is super-initializing if $\LexCat(T', \Glob{C})$ has an initial object, and this initiality is preserved by $\InducedHomo{f}{C}$ for every lexfunctor $f$ out of $T$.
+In other words, this situation is super-initializing if $\LexCat(Th', \Glob{C})$ has an initial object, and this initiality is preserved by $\InducedHomo{f}{C}$ for every lexfunctor $f$ out of $Th$.
 
-Note in this case that $T'$ will itself be self-initializing, as every supergadget is a fortiori a gadget (thus having an initial internal supergadget), and every supergadget homomorphism is a fortiori a gadget homomorphism (thus preserving initial internal supergadgets).
+Note in this case that $Th'$ will itself be self-initializing, as every supergadget is a fortiori a gadget (thus having an initial internal supergadget), and every supergadget homomorphism is a fortiori a gadget homomorphism (thus preserving initial internal supergadgets).
 \end{definition}
 
-The self-initializing situation is of course the special case of the super-initializing situation where $T' = T$ and $i$ is the identity.
+The self-initializing situation is of course the special case of the super-initializing situation where $Th' = Th$ and $i$ is the identity.
 
 There are a number of self- and super-initializing theories in the wild, which thus immediately give us examples of geminal categories in the wild.
 
-For example: \TODOinline{Frequently, a theory is self-initializing because it has internal initial models of all finitely axiomatizable theories, and is itself finitely axiomatizable. Such theories will also be super-initializing for any finitely axiomatizable extension.}
+For example: It is straightforward to show that every NNO-topos has internal initial models of every finitely axiomatizable lex theory, preserved by every NNO-topos homomorphism \TODOinline{Cite in preliminaries}.
+
+It is a little more difficult, but also possible to show that more generally, every arithmetic universe has internal initial models of every finitely axiomatizable lex theory, preserved by every arithmetic functor. \TODOinline{Cite in preliminaries}
+
+Thus, any finitely axiomatizable extension of the theory of arithmetic universes is self-initializing. More generally, given any $Th$ extending the theory of arithmetic universes, and any finitely axiomatizable $Th'$ extending $Th$, the extension of $Th$ to $Th'$ is super-initializing. 
+
+This immediately gives us many examples of geminal categories using the above construction. For example, as one random example among myriad, we can obtain a geminal category $\langle G_1, G_2 \rangle$ where $G_1$ is the initial cartesian closed arithmetic universe and $G_2$ is its internal initial NNO-topos satisfying the internal axiom of choice.
 
 \TODOinline{Note that when a theory is super-initializing, then we have that in the geminal category $\gamma = \langle G_1 G_2; F_1, F_2 \rangle$, $G_3 = F_1[G_2]$ is also an initial supergadget internal to $G_2$, and $F_3 = F_1[F_2]$ is a supergadget homomorphism. Thus, $\InteriorGeminal{\gamma}$ is itself given by the same construction of a geminal category for the self-initializing theory of supergadgets.}
 
@@ -95,6 +106,8 @@ Proof: Let T be a theory corresponding to PA + ~Con(PA) or the like. Then the in
 \end{TODOblock}
 
 We have discussed all this just in the context of geminal categories, but this extends to give analogous constructions of introspective theories as well. We discuss these next.
+
+\TODOinline{Maybe delete most of this section (except for the definitions of self- and super-initializing theories) and only give examples of introspective theories.}
 
 \subsubsection{Self-initializing finitely axiomatizable theories}
 \TODOinline{Get rid of this section}
@@ -164,32 +177,46 @@ Throughout the following, we use the \quote{initial model} terminology of \magic
 
 By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
 
-\begin{theorem}
-For every (\setsmall/) lexcategory $T$, there is an initial object within $\initMod{T}$.
+\begin{theorem}\label{InitialModelWithInitialModel}
+For every (\setsmall/) lexcategory $Th$, there is an initial object within $\initMod{Th}$.
 \end{theorem}
 \begin{proof}
 This is by some general initial object of small algebraish theories theorem  we should establish somewhere, that we will be using over and over. \TODO
 \end{proof}
 
-\begin{theorem}\label{InitialInitializerStrongSigmaesque}
-If $S$ is the initial object of $\initMod{T}$, then for any other lexcategory $U$ in $\initMod{T}$, we get that $!$ is initial within $\LexCat(S, U)$, where $! : S \to U$ is the unique lexfunctor from $S$ to $U$ which preserves the initial model of $T$.
+\begin{construction}
+If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}.
 
-In particular, the identity on $S$ is initial among all endolexfunctors of $S$.
-\end{theorem}
-\begin{proof}
-This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to be $\LexCat$, with $Special$ as the sub-2-category $\initMod{T}$. The precondition for invoking \magicref{CommaKanStrongSigmesque} in this context (i.e., the left comma-stability of $\initMod(T)$ within $\LexCat$) is given by \magicref{InitialModelCommaStable}.
-\end{proof}
+This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $T$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
 
-In this way, we get an introspective theory on this $S$ once it also has a lexfunctor in the globalization of some internal category in $T$ (or, for that matter, in itself...). \TODO
+We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ where $\introS$ is a map in $\initMod{Th}$.
+\end{construction}
 
-More generally, let $T$ and $T_2$ be lexcategories, and $i : T \to T_2$ be given, such that $T_2$ is thought of as a lex theory extending $T$. \TODO
+There is an extension of the above construction to super-initializing theories. However, it is a bit trickier. We sketch out the argument like so: \TODO
 
-\subsubsection{A self-initializing theory with uncountable flavor}
+\subsection{Scratch}
+\begin{construction}
+Let $U : Special \to \LexCat$ be a 2-functor which is left comma-stable in the sense of \TODOinline{cite preliminaries}.
+
+Suppose $Special$ has an initial object $T'$, and let the lexcategory $T = U(T')$.
+
+Furthermore, suppose there is a special object $C'$ internal to $T$, in the sense that there is a lexcategory $C$ internal to $T$ such that $U(C') = \Glob{C}$.
+
+By initiality, there is a unique special $\introS' : T' \to C'$. Applying $U$ to this, we obtain a lexfunctor $\introS : T \to \Glob{C}$.
+
+Now invoking \TODOinline{cite preliminaries}, we obtain a unique natural transformation $\introN$ finishing this off as an introspective theory $\langle T, C, \introS, N \rangle$.
+\end{construction}
+
+We obtain from this a number of introspective theories. \TODOinline{Self-initializing, super-initializing, and arithmetic universe examples. Note that for super-initializing, the relevant thing is an X that has a designated map to each Y, and these designated maps are closed under post-composing Y-homomorphisms. There is NOT uniqueness, though. This construction is all a little tricky, requiring modifying both the Comma-Kan lemma and the comma category sigma1esqueness lemma, in addition to describing why an initial such thing exists, and so on and so on, so maybe TODO it for the time being.}
+
+\TODOinline{Free topos with countable products example}
+
+\subsubsection{A self-initializing theory with uncountable and uncomputable flavor}
 \TODOinline{Consider the free topos with countable (co)products, which has an internal free topos with countable (co)products as well, with internal and external views coinciding on what things have or preserve countable coproducts.}
 
-\subsubsection{A self-initializing theory with countable but uncomputable flavor}
+\TODOinline{Note that this contains true arithmetic, but is still subject to \Loeb/'s theorem and \Goedel/'s incompleteness theorems. Its just that its consistency sentence isn't expressible in first-order arithmetic or indeed by quantification over naturals.}
 
-\TODO
+\sTODOinline{A self-initializing theory with countable but uncomputable flavor}
 
 \subsection{The initial arithmetic universe}
 \begin{theorem}\label{AUStrongSigma1esque}
@@ -204,6 +231,8 @@ This is the instance of \magicref{CommaKanStrongSigmesque} where we take $D$ to 
 \begin{construction}\label{IAUAsIntrosp}
 Any arithmetic universe contains an initial internal model of any finitely axiomatizable lex theory (\TODOinline{cite Maietti}). Furthermore, the theory of (strict) arithmetic universes is itself finitely axiomatizable. Thus, the initial arithmetic universe IAU also contains an initial internal arithmetic universe IAU'. By initiality, there is an arithmetic functor $\introS$ from IAU to the global aspect of IAU'. These provide three of the four ingredients for an introspective theory. From \magicref{AUStrongSigma1esque}, the natural transformation $\introN$ is also uniquely determined. (This natural transformation is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}). This completes our construction of $\langle IAU, IAU', \introS, \introN \rangle$ as an introspective theory.
 \end{construction}
+
+\TODOinline{This is something like the initial introspective theory (T, C, S, N) in which T is an arithmetic universe, C is the image of the indicated category, and S is an arithmetic functor. Initial under arithmetic functors that are introspective theory homomorphisms. Using this, we can show that there is an arithmetic introspective theory homomorphism into the PA introspective theory, and then it's easy to show this is a maximal localization.}
 
 \TODOinline{Show that this introspective theory structure extends the geminal category structure on IAU already obtained in previous sections by mere initiality properties (this is clear already from the uniqueness result on \initogeminal/ theories' corresponding geminal gadgets). Conclude that IAU in fact comprises a \quote{super-duper introspective theory}.}
 

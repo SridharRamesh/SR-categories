@@ -150,25 +150,23 @@ Show how localizations of the IAU can be explicitly described (using a class of 
 ---
 
 STUFF TO FINISH THE MODELS CHAPTER:
-1. All stuff dealing with arithmetic universes.
+1.1: Comma categories for self-initializing and super-initializing theories
+1.2: Arithmetic universes, and their localization
+1.3: Uncountable model (free topos on countable products)
 2. All stuff dealing with presheaf models.
-2.5: Uncountable model (free topos with countable products). Uncomputable model.
-3. Writing out how geminal categories generalize to geminal gadgets. Ideally this can be taken care of in just a few paragraphs.
 
 CLEANUP:
-4. Threading the two models from the first chapter through other chapters to guide the reader.
-5. Improving the introduction.
-6. General cleanup (making everything readable + going to every TODO note everywhere and either dealing with it or hiding it).
+3. Threading the two models from the first chapter through other chapters to guide the reader.
+4. Improving the introduction.
+5. General cleanup (making everything readable + going to every TODO note everywhere and either dealing with it or hiding it).
 
 LAST BITS IT WOULD BE NICE TO INCLUDE, NOT STRICTLY NECESSARY BEFORE SENDING SOMETHING TO DANA:
-7. Extracting introspective theories from geminal categories.
-8. Chapter on applications to modally naive set theory.
+6. Extracting introspective theories from geminal categories.
+7. Chapter on applications to modally naive set theory.
 
 -------
 
-Perhaps we should define a tree-category (with globalization) as an opfibration parent : E -> C, along with a map Glob : E -> C, along with a map \Gamma : Glob -> parent. The canonical example is where C is LexCat, and parent : E -> C lists the lexcategories and lexfunctors internal to an object of C. (How does InducedHomomorphism fit into this? Is \gamma really natural in this sense? I think \gamma is lax natural, not pseudonatural, and perhaps this is where Induced comes from?. But perhaps it's pseudonatural on purely horizontal maps?)
-
-Or maybe it's something like, we have a map of opfibrations from E -> C to (Arrow category of C) --cod--> C.
+Perhaps we should define a tree-category (with globalization) as some functor : L -> Cat, along with suitable functors from L(c) back into L (globalization), along with some suitably associative way of turning multiply internal structures into single internal structures. Need to have inducedhomo also.
 
 We can talk about geminal categories abstractly relative to a tree category.
 

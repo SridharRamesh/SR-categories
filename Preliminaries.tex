@@ -639,7 +639,7 @@ And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i +
 
 Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally small lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
 
-Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row.
+Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \TODOinline{Clarify that n here can't be 0.}
 
 Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally small lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$.
 
@@ -777,7 +777,7 @@ Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to anoth
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
-\TODOinline{I've been inconsistent about my notation for comma categories, between (f, g) and (f/g). I need to hunt down everywhere and switch it to a standardized notation.}
+\TODOinline{I've been inconsistent about my notation for comma categories, between (f, g) and (f/g). I need to hunt down everywhere and switch it to a standardized notation. If we use the slash notation, perhaps we should note how slice categories are a special case of comma categories.}
 
 \begin{theorem}[The Comma-Kan Lemma] \label{CommaKan}
 Suppose, within some 2-category, we have the following comma object and left Kan extensions:
@@ -845,38 +845,17 @@ From \magicref{CommaCategoryColimits}, we see that when $f_X, f_Y$ are a co-span
 
 The above is paradigmatic of a situation which comes up often, for which it will be convenient to have terminology:
 
-\begin{definition}
-Let $U : Special \to D$ be a 2-functor between 2-categories. 
+\begin{definition}\label{CommaStableDefn}
+Let $D$ be a 2-category and let $Special$ be a sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. We presume any invertible cell in $D$ whose domain or codomain is special is itself special (thus, membership in $Special$ is invariant under isomorphism in $D$), and we also presume that any 2-cell between special 1-cells is special.
 
-We presume that $U$ is locally fully faithful; that is, for any 0-cells $s_1, s_2 \in Special$, the functor induced by $U$ from $Special(s_1, s_2)$ to $D(U(s_1), U(s_2))$ is fully faithful. In other words, $U$ acts bijectively on 2-cells (and thus also injectively on isomorphism classes of 1-cells). We also presume that $D$ has comma objects.
+Suppose furthermore that $D$ has comma objects. And suppose for any comma object $\comma{f_X}{f_Y}$ in $D$ where $f_X$ is special and the domain of $f_Y$ is special, the comma object has special structure jointly created by its two projections. That is, $\comma{f_X}{f_Y}$ is special, its two projections are special, and for any 1-cell in $D$ from a special object to $\comma{f_X}{f_Y}$, we have that this $1$-cell is special whenever both of its compositions with the projections out of $\comma{f_X}{f_Y}$ are special.
 
-Now suppose some comma object in $D$ has its span in the range of $U$, like so:
-
-% https://q.uiver.app/?q=WzAsNyxbMywwLCJjIl0sWzQsMCwiWCJdLFszLDEsIlkiXSxbMSwxLCJcXG9tZWdhIl0sWzAsMSwiVShZKSJdLFsxLDAsIlUoWCkiXSxbMCwwLCJcXGNvbW1he2ZfWH17Zl9ZfSA9IFUoYykiXSxbMCwxLCJcXHBpX1giXSxbMCwyLCJcXHBpX1kiLDJdLFs0LDMsImZfWSIsMl0sWzUsMywiZl9YIl0sWzUsNCwiIiwxLHsibGV2ZWwiOjJ9XSxbNiw0LCJVKFxccGlfWSkiLDJdLFs2LDUsIlUoXFxwaV9YKSJdXQ==
-\[\begin{tikzcd}
-	{\comma{f_X}{f_Y} = U(c)} & {U(X)} && c & X \\
-	{U(Y)} & \omega && Y
-	\arrow["{\pi_X}", from=1-4, to=1-5]
-	\arrow["{\pi_Y}"', from=1-4, to=2-4]
-	\arrow["{f_Y}"', from=2-1, to=2-2]
-	\arrow["{f_X}", from=1-2, to=2-2]
-	\arrow[Rightarrow, from=1-2, to=2-1]
-	\arrow["{U(\pi_Y)}"', from=1-1, to=2-1]
-	\arrow["{U(\pi_X)}", from=1-1, to=1-2]
-\end{tikzcd}\]
-
-Furthermore, suppose that for any object $s \in Special$ and 1-cell $m : U(s) \to U(c)$, we have that $m$ is contained in $U(Special(s, c))$ whenever both $m; U(\pi_X)$ and $m; U(\pi_Y)$ are contained in $U(Special(s, X))$ and $U(Special(s, Y))$, respectively. (All containments in the range of $U$ here are meant up to isomorphism, of course.)
-
-In this case, we say that $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure. (Note that if the above span in $Special$ exists, it is uniquely determined by $f_X$ and $f_Y$, with $c$ as the representing object for a suitable 2-functor $: \op{Special} \to \Cat$.)
-
-If $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure whenever $f_X$ and $\dom(f_Y)$ are in the range of $U$, then we say that $Special$ structure is \defined{left comma-stable} under $U$.
-
-(Dually, if $\comma{f_X}{f_Y}$'s projections jointly create $Special$ structure whenever $\dom(f_X)$ and $f_Y$ are in the range of $U$, then we say that $Special$ structure is \defined{right comma-stable} under $U$.)
-
-If $Special$ is thought of as a sub-2-category of $D$, with $U$ as the corresponding inclusion, we may also word this as \quote{the restriction of $D$ to $Special$ is left comma-stable} or \quote{$Special$ is left comma-stable within $D$}, etc.
+In this case, we say that the restriction of $D$ to $Special$ is \defined{left comma-stable}, or that $Special$ is left comma-stable within $D$. (Dually, if this property holds when we instead demand $f_Y$ to be special while allowing $f_X$ to be an arbitrary morphism of $D$ with special domain, then we say $Special$ is \defined{right comma-stable} within $D$.)
 \end{definition}
 
-In this language, \magicref{CommaCategoryColimits} shows that the 2-category of categories having, and functors preserving, finite colimits is left comma-stable within $\Cat$. (And dually, $\LexCat$ is right comma-stable within $\Cat$.)
+In this language, \magicref{CommaCategoryColimits} shows that the restriction of $\Cat$ to categories having, and functors preserving, finite colimits is left comma-stable within $\Cat$. And dually, $\LexCat$ is right comma-stable within $\Cat$.
+
+\TODOinline{More generally, our Comma-Kan lemma tells us that for any functor q : A -> B, the objects having, and maps preserving, left/right Kan extensions along q comprises a left/right comma-stable sub-category. The non-exactness portions of the following results are all instances of this.}
 
 We note here a number of left comma-stable sub-2-categories of $\LexCat$, all similarly demonstrable as corollaries of \magicref{CommaKan}:
 
@@ -912,7 +891,7 @@ Putting these all together, we have:
 The restriction of $\LexCat$ to arithmetic universes and arithmetic functors is left comma-stable.
 \end{corollary}
 
-Left comma-stability is of interest to us because of the following abstract theorem, which will be useful to us twice (at \magicref{InitialInitializerStrongSigmaesque} and \magicref{AUStrongSigma1esque}):
+Left comma-stability is of interest to us because of the following abstract theorem, which will be useful to us twice (at \magicref{SpecialInitialIntrosp} and \magicref{AUStrongSigma1esque}):
 \begin{theorem}\label{CommaKanStrongSigmesque}
 Let $D$ be a 2-category and let $Special$ be a left comma-stable sub-2-category of $D$. We will say a cell of $D$ is special if it lies in $Special$. 
 

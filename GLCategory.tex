@@ -41,7 +41,7 @@ Strict introspective theories are slightly more convenient than introspective th
 As with any essentially algebraic theory, we get automatically a corresponding notion of homomorphism.
 
 \begin{definition}\label{StrictIntrospHomoDefn}
-A \defined{homomorphism} between strict introspective theories $\langle T_1, C_1, \introS, \introN \rangle$ and $\langle T_2, C_2, \introS, \introN \rangle$ is a strict lexfunctor $H : T_1 \to T_2$ such that $H[C_1] = C_2$, $H[\introN_t] = \introN_{H(t)}$ for each object $t$ of $T_1$, and the following diagram commutes:
+A \defined{homomorphism} between strict introspective theories $\langle T_1, C_1, \introS, \introN \rangle$ and $\langle T_2, C_2, \introS, \introN \rangle$ is a strict lexfunctor $H : T_1 \to T_2$ such that $H[C_1] = C_2$, $H[\introN_t] = \introN_{H(t)}$ for each object $t$ of $T_1$ (i.e., the whiskerings of $H$ along the two $\introN$s match), and the following diagram commutes:
 
 % https://q.uiver.app/?q=WzAsNCxbMCwwLCJUXzEiXSxbMiwwLCJUXzIiXSxbMCwxLCJcXEdsb2J7Q18xfSJdLFsyLDEsIlxcR2xvYntDXzJ9Il0sWzAsMSwiSCJdLFswLDIsIlxcaW50cm9TIiwyXSxbMiwzLCJcXEluZHVjZWRIb21ve0h9e0NfMX0iLDJdLFsxLDMsIlxcaW50cm9TIl1d
 \[\begin{tikzcd}
@@ -459,5 +459,18 @@ An example is given by the first part of \cref{SigmaModelSimple}, before we exte
 \TODOinline{Note that the slice introspective theory construction gives us the free augmentation of an introspective theory with a global element of a particular object}
 
 \TODOinline{Do we have slice geminal categories?}
+
+\TODOinline{Remark on the fact that \Loeb/'s theorem transfers to geminal categories. Thus, any geminal cartesian closed category (such as $Set^|N|$ with Kripke [], or such as the initial topos with NNO) is like a model of guarded recursion with exponentials but without A |- []A. On the other hand, any introspective theory (such as the initial arithmetic universe) is like a model of guarded recursion with A |- []A but without exponentials.)}
+
+\subsection{Automatic consistency results without models as such}
+We already know that the theory of geminal categories is an introspective theory. And because every introspective theory is itself a geminal category, we know that the theory of introspective theories only proves $\Box A$ if it furthermore proves $A$.
+
+Finally, we know that every lexcategory can be equipped as a geminal category in a trivial way, by taking its internal geminal category to be trivially $1$, even when the outer lexcategory needn't be trivial. From this, we can conclude that the theory of introspective theories is nontrivial in the sense that it does not prove its internal geminal category to be trivial. Thus, it does not prove $\Box A$ for all $A$. Furthermore, combining this with the previous paragraph, we have the stronger consistency result that for every $n$, the theory of introspective theories does not prove $\Box^n A$ for all $A$.
+
+In this way, simply by consideration of the freeness properties already established in the chapter on geminal categories, we already know the theory of introspective theories to have highly nontrivial content, even without needing to find any models of it \quote{in the wild}.
+
+\TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
+
+\TODOinline{Maybe remove this section. No one cares about looking at things this way this except me, and we already have explicit models to show consistency.}
 
 \fileend
