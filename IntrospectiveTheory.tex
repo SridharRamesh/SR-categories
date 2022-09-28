@@ -173,9 +173,9 @@ Finally, let us observe the naturality of this $\introN$. Consider the general f
 	\arrow["{\introS(m) \circ -}"', from=2-1, to=2-2]
 \end{tikzcd}\]
 
-This says that, for any definable unary formula $m(x)$, it is provably the case that for every $x$, we have that applying the function $m$ to $x$ and then constructing the term encoding the result ($\code{m(x)}$) is a provably equivalent term to taking the term representing $x$ and substituting it into the argument of the formula defining $m$ (what might be called $m(\code{x})$ or perhaps $\code{m}(\code{x})$ or at any rate $\introS(m)(\code{x})$). To be clear, by the provable equivalence of terms here, we do not mean syntactic identity as symbol-strings; rather, we mean that there is a provable equality sentence whose left and right sides are comprised of these terms. That is, whatever the actual result of the function $m$ on the input $x$ is, we must have that this is also provably the same as applying $m$ to the input $x$. Here, again, the $\Sigma_1$-ness of the formula defining $m$ comes to our rescue, telling us that truth entails provability in the appropriate way.
+This says that, for any definable function $m$, it is provably the case that for every $x$, we have that applying the function $m$ to $x$ and then constructing the term encoding the result ($\code{m(x)}$) is a provably equivalent term to taking the term representing $x$ and substituting it into the argument of the formula defining $m$ (what might be called $m(\code{x})$ or perhaps $\code{m}(\code{x})$ or at any rate $\introS(m)(\code{x})$). To be clear, by the provable equivalence of terms here, we do not mean syntactic identity as symbol-strings; rather, we mean that there is a provable equality sentence whose left and right sides are comprised of these terms. That is, whatever the actual result of the function $m$ on the input $x$ is, we must have that this is also provably the same as applying $m$ to the input $x$. Here, again, the $\Sigma_1$-ness of the formula defining $m$ comes to our rescue, telling us that truth entails provability in the appropriate way.
 
-Thus, we obtain an introspective theory $\langle \ZfinSigma, \InnerZfinSigma, \introS, \introN \rangle$. This concludes our first example of an instrospective theory!
+Thus, we obtain an introspective theory $\langle \ZfinSigma, \InnerZfinSigma, \introS, \introN \rangle$. This concludes our first nontrivial example of an instrospective theory!
 \end{construction}
 
 \bigskip
@@ -190,13 +190,13 @@ Just as the construction of $\ZfinSigma$ could itself be carried out in ZF-Finit
 
 Finally, the inclusion of $\ZfinSigma$ into $\Zfin$ yields, analogously, an inclusion from $\InnerZfinSigma$ into $\InnerZfin$, internal to $\ZfinSigma$. This means the functor $\introS$ from $\ZfinSigma$ into the global aspect of $\InnerZfinSigma$ can just as well be thought of as having $\InnerZfin$ for its codomain, and similarly the natural transformation $\introN$ can just be well as thought of in this context. (This way of making one introspective theory from another is an instance of the general construction \magicref{IntrospInternalMap}.)
 
-Summarizing, we get an introspective theory $\langle \ZfinSigma, \InnerZfin, \introS, \introN \rangle$, where $\ZfinSigma$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, $\InnerZfin$ is the lexcategory internal to $\ZfinSigma$ of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite, $\introS$ assigns to each piece of $\ZfinSigma$ the corresponding (globally defined) piece of $\InnerZfin$, and $\introN$ is the definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
+Summarizing, we get an introspective theory $\langle \ZfinSigma, \InnerZfin, \introS, \introN \rangle$, where $\ZfinSigma$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, $\InnerZfin$ is the lexcategory internal to $\ZfinSigma$ of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite, $\introS$ assigns to each piece of $\ZfinSigma$ the corresponding (globally defined) piece of $\InnerZfin$, and $\introN$ is the $\Sigma_1$-definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
 \end{construction}
 
 Phew! What a long walk it was to get to describing that example! All the better, then, that we have formalized introspective theories so abstractly, and can work with them without having to fuss about such concrete details as in that example. But this is indeed the archetypal example it will be best to keep in mind to guide the reader's intuition throughout all further discussion.
 
 \begin{warningenv}
-While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$ or the like. As a check of their understanding, the reader is encouraged to think about why this is.
+While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$. As a check of their understanding, the reader is encouraged to think about why this is.
 \end{warningenv}
 
 \subsubsection{Example based on a presheaf category}
@@ -217,7 +217,7 @@ For example, we can take the positive limit stages of the von Neumann hierarchy,
 
 Now, consider the positive integers both as a poset $P$ and as a discrete category $|P|$. Of course, the latter has an inclusion functor into the former.
 
-We can consider presheaves on $P$, which comprise $\Psh{P}$, and we can consider presheaves on $|P|$, which comprise $\Psh{|P|}$. The inclusion functor $|P| \to P$ gives us a forgetful functor $\Psh{P} \to \Psh{|P|}$. Because limits in presheaf categories are computed componentwise, this forgetful functor is a lexfunctor.
+We can consider presheaves on $P$, which comprise $\Psh{P}$, and we can consider presheaves on $|P|$, which comprise $\Psh{|P|}$. The inclusion functor $|P| \to P$ gives us a forgetful functor $\Psh{P} \to \Psh{|P|}$. Because finite limits in presheaf categories are computed componentwise, this forgetful functor is a lexfunctor.
 
 Now let us consider a particular full subcatgory of $\Psh{|P|}$. An object of $\Psh{|P|}$ is a sequence of sets $s_1, s_2, s_3, \ldots$. The full subcategory we are interested in is comprised of those objects where each $s_i$ is one of the sets in $W_i$. This is like imposing a smallness constraint, but the sense of \quote{smallness} is not constant but grows ever looser as we go further into the sequence.
 

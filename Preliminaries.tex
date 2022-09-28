@@ -955,6 +955,55 @@ In other words, the restriction of $\LexCat$ to lexcategories having, and lexfun
 Thanks to \magicref{InitialModelsAreLeftKanExtensions}, this is the instance of \magicref{CommaKan} within $\LexCat$ where $A$ is taken to be the initial lexcategory and $B$ is taken to be $T$.
 \end{proof}
 
+\begin{definition}\label{FiniteLexTheory}
+A \defined{finitely axiomatized lex theory} is a lexcategory $T$ which is generated from the initial lexcategory by finitely many operations of freely adjoining a new object, freely adjoining a new morphism between existing objects, or freely making two existing parallel morphisms equal (all these free constructions are meant in the sense of free lexcategories, of course).
+\end{definition}
+\TODOinline{Relate the above to the following chapter on presentations as quasi-equational theories.}
+
+\begin{theorem}\label{NNOToposInternalInitialFinite}
+Any NNO-topos has an initial internal model of any finitely axiomatized lex theory. Such initial internal models are furthermore preserved by functors preserving NNO-topos structure.
+\end{theorem}
+\begin{proof}
+This is a standard result, shown by carrying out in the internal logic of an NNO-topos the ordinary mathematical construction of an initial model of an essentially algebraic theory. The finite sets of defining sorts, operations, equations, etc, of the finitely axiomatized lex theory are given by finite coproducts of the terminal object. Beyond this, the key ingredient in the construction is the existence in the internal logic of an NNO-topos of suitable sets of well-founded branching trees (so-called W-types).
+
+In particular, we use such trees whose nodes are labelled by operations of the theory, and whose edges out of a node are labelled in correspondence with the arity of this operation, to represent the terms of the free model. Such trees can be represented in an NNO-topos by suitable partial functions from finite sequences of edge labels to node labels (finite sequences in turn can be represented by suitable partial functions on the natural numbers object). By impredicative quantification over powersets as is available in the internal logic of a topos, we may also restrict to the well-founded such trees, and subquotient these to give the well-defined terms of the algebraic theory modulo provable equality. Using similar techniques, we may build up the appropriate homomorphisms and uniqueness proofs to establish this as an initial model of the essentially algebraic theory.
+
+As all of this is standard, we omit the details.
+\end{proof}
+
+There is a stronger generalization of the above available to us, though it takes rather more care to prove:
+\begin{theorem}\label{AUInternalInitialFinite}
+Any arithmetic universe has an initial internal model of any finitely axiomatized lex theory. Such initial internal models are furthermore preserved by arithmetic functors.
+\end{theorem}
+\begin{proof}
+This standard result is the motivation for most of the interest in arithmetic universe. It is implicit in \TODOinline{Cite Maetti} and note explicitly in \TODOinline{other cites}.
+\end{proof}
+
+There is also a variant of \magicref{NNOToposInternalInitialFinite} of note:
+\begin{definition}\label{CountablyLexDefns}
+By \defined{countable products}, we mean products of collections of objects indexed by the natural numbers. A \defined{finitely axiomatized countably lex theory} is, a la \magicref{FiniteLexTheory}, a lexcategory with countable products which is generated from the initial lexcategory with countable products by finitely many operations of freely adjoining a new object, freely adjoining a new morphism between two existing objects, or freely making two existing parallel morphisms equal (all these free constructions are meant in the sense of free within the context of lexcategories with countable products and lexfunctors preserving countable products, of course).
+\end{definition}
+
+\begin{theorem}\label{CountableToposInitialInternalCountable}
+If $S$ is a topos with countable products, and $T$ is a finitely axiomatized countably lex theory, there is an initial lexfunctor preserving countable products from $T$ to $S$.
+\end{theorem}
+\begin{proof}
+This is by the same techniques as in the proof of \magicref{NNOToposInternalInitialFinite}. The key observations are the following:
+
+We can then carry out in the internal logic of an NNO-topos $S$ the standard mathematical construction of the initial model of any internal finitely axiomatized countably lex theory. This will be initial in an internal sense of structures having, and homomorphisms preserving, operations of countable arity; that is, operations of countable arity are interpreted by using the slice category $S/N$ where $N$ is the natural numbers object of $S$. (Note that this is potentially distinct from the category $S^{\mathbb{N}}$ which is the product of countably many copies of $S$. Thus, this is not strong enough to guarantee initiality in the \quote{external} sense of having a unique lexfunctor preserving countable products from $T$ to $S$, as there may be such lexfunctors from $T$ to $S$ which are not \quote{visible} internally.)
+
+Next, we note that a topos with countable products also has countable coproducts (by Paré's theorem on the construction of colimits from similarly shaped limits in a topos), and thus also has a natural numbers object given as the coproduct of countably many terminal objects. For such a topos with countable products $S$, we actually will have that $S/N$ and $S^{\mathbb{N}}$ coincide. Thus, in such a context, the construction from the above paragraph yields an initial model of $T$ in the same sense as required to establish the noted theorem.
+\end{proof}
+
+We make also the following observations:
+\begin{observation}
+The theories of NNO-toposes and of arithmetic universes both finitely axiomatized lex theories.
+\end{observation}
+
+\begin{observation}
+The theory of toposes with countable products is a finitely axiomatized countably lex theory.
+\end{observation}
+
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
 The significance of lexcategories with respect to logic is that they capture, in a presentation-independent way (a la Lawvere's functorial semantics), those logical theories given by various sorts, partially defined finitary operations on those sorts (whose domain of definition is given by the constraint that some finitely many other compositions of operations are simultaneously equal), and universal entailments between equations between compositions of such operations (more precisely, entailments from finite conjunctions of equations to equations).
 
