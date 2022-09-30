@@ -163,6 +163,16 @@ Alternatively, the proof can be carried out like so: Firstly, for existence of a
 
 Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
 
+\TODOinline{Move the following somewhere where it belongs}
+\begin{theorem}
+The global sections functor $\Hom_{\IAU}(1, -)$ is the unique arithmetic functor from the initial arithmetic universe $\IAU$ to $\Set$.
+\end{theorem}
+\begin{proof}
+A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the initiality of IAU (keeping in mind \magicref{InitialWrtSet}). What remains is only to show that this $!$ is the same as the global sections functor. By \magicref{TermModelIsInitialForLex}, we know that the global sections functor is initial among lexfunctors from $\IAU$ to $\Set$. But by \magicref{AUStrongSigma1esque}, we know that $!$ is also initial among these. Thus, $!$ and the global sections functor are isomorphic (indeed, uniquely isomorphic), completing the proof.
+\end{proof}
+
+With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does not internalize. In particular, we do NOT know internal to $\IAU$ that the global sections functor from $\IAU'$ to the self-indexing $\IAU/-$ is arithmetic, or even that it preserves the initial object (this would violate \Goedel/'s second incompleteness theorem).
+
 \subsection{Uniqueness of model constructions}
 \begin{lemma}
 Let $T$ be a lexcategory with a natural numbers object, such that every object of $T$ admits a monic map into the natural numbers object. Let $\Box$ be a lex endfunctor on $T$. There is at most one natural transformation from $\id_T$ to $\Box$.
@@ -327,5 +337,68 @@ Relate this also to the concept of arithmetic universes. Conjecturally, being an
 
 This section basically only exists in order to claim that finitely axiomatizable lex theories which extend the theory of arithmetic universes are automatically examples of the next section.
 \end{TODOblock}
+
+\subsection{Self-initializing finitely axiomatizable theories}
+\TODOinline{Get rid of this section}
+
+\magicref{InitoGeminalYieldsGeminal} immediately gives us many nontrivial examples of geminal categories. For example, many theories $T$ simultaneously satisfy the following two properties:
+
+A) $T$ is a finitely axiomatizable lex theory extending the theory of lex categories.
+
+B) Every model of $T$ contains initial internal models of every finitely axiomatizable lex theory.
+
+Any such $T$ will of course be \initogeminal/.
+
+For example, consider the theory of strict elementary toposes with natural numbers objects (let us call this an \defined{NNO-topos}, to make it less of a mouthful). This is indeed a finitely axiomatizable lex theory extending the theory of lexcategories \TODOinline{Maybe make up a name for lex theories extending the theory of lexcategories, since we use them often, need them to define our concept of truly internal models, etc}. Furthermore, it satisfies the property B just noted:
+
+\begin{theorem}\label{NNOToposIsInitoGeminal}
+Every NNO-topos has an initial internal model of every finitely axiomatizable lex theory. Such initial internal models are furthermore preserved by functors preserving NNO-topos structure.
+\end{theorem}
+\begin{proof}
+\TODOinline{Mention that terms can be partially defined (that is, not all terms denote), in the following}
+This is simply by carrying out in its internal logic the ordinary mathematical construction establishing the existence of initial models of finitely axiomatizable lex theories. We do not give here a detailed proof, but sketch the key ideas:
+
+We need to construct, internally to an arbitrary NNO-topos, the set of well-founded finitely branching labelled rooted trees corresponding to the term model (the labels on the nodes of the tree corresponding to the operators which build new terms or new equations from old ones in the algebraic theory). Once we have constructed these, we use effective regularity to quotient the trees corresponding to definable terms by the equivalence relation induced by trees corresponding to derivable equations. All difficulty is just in first constructing this object of well-founded labelled trees (a so-called W-type).
+
+We first of all take a finite coproduct of $1$s to serve as the object of labels. This suffices as we only need finitely many labels for a finitely axiomatizable theory.
+
+Next, we note that we can define the set of lists of $X$es in suitable fashion. For example, we can define lists of $X$es as suitable partial functions with domain $\nat$ and codomain $X$ (returning the $n$th element of a given list). This definition can then be interpreted in NNO-toposes using cartesian closure and subobject comprehension.
+
+Finally, we can define the sets of arbitrary or well-founded countably branching trees similarly, as, e.g., suitable partial functions with domain the set of lists of naturals and codomain the set of labels (returning the label found by traversing a given sequence of branch indices down from the root). We can express within the internal logic of topos theory the conditions corresponding to being a well-founded tree formed by appropriate applications of the constructors of our algebraic theory (by a suitable quantification over the power object). We can thus take the appropriate subobject of the set of all such partial functions, to get the set of well-formed labelled trees we are interested in.
+
+Finally, the well-foundedness of these trees lets us prove inductively the existence of partial functions satisfying any particular recursion conditions with any particular tree in their domain, and lets us prove that any two such partial functions agree wherever both are defined. An impredicative union of all such partial functions then yields a unique total function defined by such recursion. This gives us the unique homomorphisms from the term model to other internal models, establishing the term model as the initial internal model.
+
+This is one simple approach available to us for constructing initial models in an NNO-topos. Other approaches are possible as well. \TODOinline{For example, by making the observation that arithmetic universes have the same property, and NNO-toposes are arithmetic universes.}
+
+\TODOinline{Make further observation about k-ary theories, when we have k-ary coproducts. Note that it is key here how the theory actually recognizes internally anything which is externally a model of such an infinitary theory, as we can construct any external function on domain k as an internal map. Once we've noted the version of this for arbitrary k, we can invoke it later on when we wish to make any initial model in actual Set of an infinitary sort.}
+\end{proof}
+
+From \magicref{NNOToposIsInitoGeminal} and the finite axiomatizability of the theory of NNO-toposes, we have that in particular, the initial NNO-topos has an initial internal NNO-topos. That is to say, the theory of NNO-toposes is \initogeminal/. Thus, by \magicref{InitoGeminalYieldsGeminal}, the initial NNO-topos is equipped as a geminal NNO-topos (a fortiori, a geminal category).
+
+\begin{warningenv}\label{InitoGeminalWarning}
+It is important to observe that the initial NNO-topos is NOT an introspective theory! Using the name $G$ for the initial NNO-topos and $G'$ for its internal initial NNO-topos, we should not expect to have natural maps in $G$ from $t$ to $\Hom_{G'}(1, \introS(t)))$ (i.e., $\Box t$) for general $t$, as the $\introN$ of an introspective theory would provide. For example, we will not have notable maps of type $\Omega \to \Box \Omega$ or $\nat^{\nat} \to \Box(\nat^{\nat})$ (the presence of such a map would express the absurd logical assertion that every function from naturals to naturals (every such function at all) induces some corresponding definable morphism in the initial NNO-topos.). We have merely equipped it as a geminal category. We will in some cases have canonical such requoting maps (e.g., a map $: \nat \to \Box \nat$ will be available by initial algebra properties of $\nat$), but not in general.
+
+So the construction in \magicref{InitoGeminalYieldsGeminal} does not give us new introspective theories. Rather, it takes the introspective theory of geminal gadgets (which we already constructed in \TODO) and constructs a model of it, for suitable notions of \quote{gadget}.
+\end{warningenv}
+
+Having established that NNO-toposes have initial internal models of all finitely axiomatizable theories, it follows that any finitely axiomatizable theory extending the theory of NNO-toposes is \initogeminal/.
+
+Due to work by Maietti et al following in the footsteps of Joyal (\TODOinline{cite}), it is also known that any arithmetic universe contains an internal initial model of any finitely axiomatizable theory.
+
+Thus, also, the theory of arithmetic universes is \initogeminal/, and thus the initial arithmetic universe can be equipped as a geminal arithmetic universe (a fortiori, a geminal category). Thus, we get \Godel/'s incompleteness results manifesting within the initial arithmetic universe. This is the structure discussed by Joyal in unpublished work on a category-theoretic account of \Godel/'s incompleteness theorem, and further discussed by others after Joyal (see in particular \autocite{van2020g}).
+
+The fact that every NNO-topos contains an initial model of every finitely axiomatizable lex theory can of course be taken as a special case of the fact that every arithmetic universe has the same property, since NNO-toposes are straightforawrdly arithmetic universes. But the construction of initial internal models in an NNO-topos can also be carried out by much easier means than are available in an arbitrary arithmetic universe; e.g., as in the proof sketch we gave at \magicref{NNOToposIsInitoGeminal}, which made essential use of cartesian closure, quantification over power objects, and the like.
+
+Of course, we could directly consider the theory of a lexcategory with an initial internal model for every finitely axiomatizable theory. This would be interno-geminal... if it were finitely axiomatizable. In the form we just stated this theory, it was axiomatized infinitely (there is a separate imposed basic constructor for every particular finitely axiomatizable theory). It is an open question to this author whether this theory admits some alternative finite selection of basic constructors allowing it to be finitely axiomatized.
+
+\TODOinline{Still, stress that finite axiomatizability isn't the key thing. We have after all the theory of a topos with countable coproducts as a \initogeminal/ theory}.
+
+It is a similarly open question whether there is an initial \initogeminal/ theory (in either the sense without or with the parenthetical condition noted at \magicref{InitoGeminalYieldsGeminal}). The theory of \initogeminal/ theories is not known to be equivalent to any lex theory (the condition for $T$ to be \initogeminal/ involves a higher-order quantification over all endolexfunctors of $T$), so we do not automatically have the existence of an initial such structure.
+
+Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of yet, we have only equipped the initial arithmetic universe as a geminal category, not an introspective theory. But it will turn out that, unlike the typical situation for a \initogeminal/ theory as with the initial NNO-topos, the theory of arithmetic universes is so special that we can in fact further equip it in a natural way as an introspective theory! We shall come back to this at the end of the next section, after developing some more tooling for constructing more sophisticated introspective theories from \initogeminal/ theories in general.
+
+\TODOinline{Reorganize order of paragraphs here for clarity. Discuss toposes with k-ary coproducts as mentioned above.}
+
+\TODOinline{Note that we have a soundness result for the geminal categories we get from the initial NNO-topos, the initial arithmetic universe, etc: Their internal views of the initial such-and-such do in fact match themselves; the uniquely determined structure-preserving (AU-preserving or NNO-topos-preserving) functor from these things to Set takes their internal initial such-and-such to themselves. We don't have this kind of soundness for all \initogeminal/ theories. For example, we might consider the theory of bloposes, where a blopos is an NNO topos in which the internal initial NNO topos is trivially 1. That is, a blopos is a topos that thinks the theory of toposes is inconsistent. Then the theory of bloposes incorrectly proves that the theory of bloposes is inconsistent, so the initial blopos is nontrivial, but its internal initial blopos is trivial. The key thing that makes bloposes different from toposes is that Set is itself a topos (and an AU and so on), but not a blopos. Our soundness result is only for those theories which Set itself models.}
 
 \fileend
