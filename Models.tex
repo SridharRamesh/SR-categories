@@ -20,7 +20,7 @@ Then we obtain a unique lexfunctor $\introS \in Special(T, \Glob{C})$, by the in
 Furthermore, by \magicref{CommaKanStrongSigmesque}, we have that $\id_T$ is initial within $\LexCat(T, T)$. Thus, in particular, there is a unique natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$. In this way, we obtain an introspective theory $\langle T, C, \introS, \introN \rangle$.
 \end{construction}
 
-\begin{theorem}
+\begin{theorem}\label{SpecialInitialIntrospIsInitial}
 Let $Special$ and $\langle T, C, \introS, \introN \rangle$ be given as in \magicref{SpecialInitialIntrosp} above.
 
 Consider also any other introspective theory $\langle T', C', \introS', \introN' \rangle$ such that $\introS' : T' \to \Glob{C'}$ lives in $Special$. By the initiality of $T$ within $Special$, we get a unique special lexfunctor $H : T \to T'$. If this $H$ is such that $H[C] = C'$, then this $H$ is also an introspective theory homomorphism (in the sense of \TODOinline{cite}). The condition that $H$ interacts appropriately with $\introS$ and $\introS'$ is automatic by the initiality of $T$ within $Special$. Furthermore, the condition that $H$ interacts appropriately with $\introN$ and $\introN'$ is automatic by the fact that $H$ is initial within $\LexCat(T, T')$, thanks to \magicref{CommaKanStrongSigmesque}.
@@ -146,37 +146,40 @@ Let $i : Th \to Th'$ be a lexfunctor, such that models of $Th$ are considered ga
 
 \subsection{The initial arithmetic universe}
 \begin{construction}\label{IAUAsIntrospGeneral}
-Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic universe internal to $\IAU$. Then by the combination of \magicref{SpecialInitialIntrosp} and \magicref{CommaStableArithmetic}, we obtain an introspective theory $\langle T, C, \introS, \introN \rangle$ in which $\introS : T \to \Glob{C}$ is the unique such arithmetic functor, and the natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$ is uniquely determined.
+Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic universe internal to $\IAU$. Then by the combination of \magicref{SpecialInitialIntrosp} and \magicref{CommaStableArithmetic}, we obtain an introspective theory $\langle \IAU, C, \introS, \introN \rangle$ in which $\introS : \IAU \to \Glob{C}$ is the unique such arithmetic functor, and the natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$ is uniquely determined.
 \end{construction}
 
 \begin{observation}
 Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $IAU$ (which exists thanks to \TODOinline{cite from Preliminaries}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
 \end{observation}
 
-We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding examples of introspective theories based on traditional logical theories, from \magicref{SigmaModelSimple} and \magicref{SigmaModelComplex}:
+We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding example of an introspective theory based on traditional logical theories, from \magicref{SigmaModelComplex}.
 
-\begin{construction}\label{MaxLocalizeIAUGeneral}
-Given any arithmetic universe internal to the initial arithmetic universe $\IAU$, we may consider the introspective theory obtained by first using the construction \magicref{IAUAsIntrospGeneral} and then taking its maximal localization in the sense of \magicref{LocalizeIntrosp}.
-\end{construction}
-
-\begin{theorem}
-The introspective theory described in \magicref{SigmaModelSimple} is the result of applying \magicref{MaxLocalizeIAUGeneral} to the lexcategory $\ZFin_{\Sigma_1}$ internal to IAU.
-
-Similarly, the introspective theory described in \magicref{SigmaModelComplex} is the result of applying \magicref{MaxLocalizeIAUGeneral} to the lexcategory $\ZFin$ internal to IAU.
-\end{theorem}
+\begin{observation}
+The introspective theory described in \magicref{SigmaModelComplex} is the maximal localization, in the sense of \magicref{LocalizeIntrosp}, of an introspective theory produced by \magicref{IAUAsIntrospGeneral}.
+\end{observation}
 \begin{proof}
-\TODO
+Recall the categories $\Zfin$ and $\ZfinSigma$ from \magicref{SigmaModelComplex}. Here, $\Zfin$ is an exact category whose objects and morphisms correspond to definable classes and graphs of functions between these in the theory ZF-Finite, with morphisms taken modulo provable equality in ZF-Finite. While $\ZfinSigma$ is the subcategory of $\Zfin$ where the definability conditions are further restricted to $\Sigma_1$-definability.
+
+It is readily verified that $\Zfin$ is an arithmetic universe. Thus, there is a unique arithmetic functor $!_{\Zfin} : \IAU \to \Zfin$. Let $M$ be the set of morphisms in $\IAU$ which are taken to isomorphisms by this $!_{\Zfin}$. By \magicref{ArithmeticLocalization}, this $!_{\Zfin}$ factors uniquely through the arithmetic localization $\IAU[M^{-1}]$. \TODOinline{Illustrate}. Using \magicref{IsLexLocalizationLemma}, it is straightforwardly, if tediously, verified that this $\IAU[M^{-1}]$ is in fact $\ZfinSigma$, with $!_{\Zfin}$ thus being the unique arithmetic functor from $\IAU$ to $\ZfinSigma$ followed by the inclusion from $\ZfinSigma$ to $\Zfin$. That is to say, the role played by the $\Sigma_1$ constraints in defining $\ZfinSigma$ is precisely to make $\ZfinSigma$ an arithmetic localization of $\IAU$.
+
+Note also that, as $\Zfin$ and $\ZfinSigma$ are both computably enumerable arithmetic universes internal to $\Set$, we find, in keeping with \magicref{ComputableMeansIAUInternal}, that these are the images in $\Set$ of arithmetic universes internal to the initial arithmetic universe $\IAU$. That is, letting $\Glob_{IAU}$ be the unique arithmetic functor from $\IAU$ to $\Set$ (which is the same as the global sections funtor $\Hom_{\IAU}(1, -)$, thanks to \magicref{GlobalIsArithmeticOnIAU}), we have arithmetic universes $\Glob_{IAU}^{-1}[\Zfin]$ and $\Glob_{IAU}^{-1}[\ZfinSigma]$ such that the images of these under $\Glob_{IAU}$ are $\Zfin$ and $\ZfinSigma$, respectively.
+
+Via \magicref{SpecialInitialIntrosp}, we thus obtain an introspective theory $\langle \IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$.
+
+Note in this introspective theory that $\introS : \IAU \to \Glob{\Glob_{IAU}^{-1}[\Zfin]} = \Zfin$ is the unique arithmetic functor from $\IAU$ to $\Zfin$. Thus the set of morphisms in $\IAU$ sent to isomorphisms by this $\introS$ is the same as the $M$ defined above.
+
+Now let $\langle \ZfinSigma, \InnerZfin \rangle$ be the introspective theory described in \magicref{SigmaModelComplex}.
+
+It is readily verified that $\InnerZfin$ and $\Glob_{IAU}^{-1}[\Zfin]$ can be chosen so that the former is the image of the latter under the unique arithmetic functor $!_{\ZfinSigma} : \IAU \to \ZfinSigma$. Furthermore, it is readily verified that $\introS : \ZfinSigma \to \Glob{\InnerZfin}$ is an arithmetic functor. Thus by \magicref{SpecialInitialIntrosp}, the unique arithmetic functor $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ is in fact an introspective theory homomorphism from $\langle IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$ to $\langle \ZfinSigma, \InnerZfin \rangle$.
+
+Since $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ was, as noted above, the same as the arithmetic localization $\IAU \to \IAU[M^{-1}]$, we may invoke \magicref{LocalizeIntrosp} to conclude that the introspective theory homomorphism from $\langle IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$ to $\langle \ZfinSigma, \InnerZfin \rangle$ is the same as the localization of the introspective theory $\langle IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$ at $M$, which by the observation three paragraphs ago is the maximal localization of this introspective theory.
+
+This concludes the proof.
 \end{proof}
 
-\TODOinline{This is something like the initial introspective theory (T, C, S, N) in which T is an arithmetic universe, C is the image of the indicated category, and S is an arithmetic functor. Initial under arithmetic functors that are introspective theory homomorphisms. Using this, we can show that there is an arithmetic introspective theory homomorphism into the PA introspective theory, and then it's easy to show this is a maximal localization.}
 
-\TODOinline{Show that this introspective theory structure extends the geminal category structure on IAU already obtained in previous sections by mere initiality properties (this is clear already from the uniqueness result on \initogeminal/ theories' corresponding geminal gadgets). Conclude that IAU in fact comprises a \quote{super-duper introspective theory}.}
-
-\TODOinline{Note that we could equally well carry out an introspective theory construction on IAU for ANY internal category admitting a lexfunctor from IAU. Thus, the PA, ZFC, etc type models. It is not at all important that we use IAU' as the internal initial arithmetic universe. It's not even important that IAU admits internal initial models of finitely axiomatizable theories, except insofar as this helps us build internal arithmetic universes or other internal categories admitting lexfunctors from IAU.}
-
-\TODOinline{Discuss the extension of this to sigma_1 localizations of IAU. Compare this to our previous description of the sigma_1 ZF-finite/Peano Arithmetic/etc model}
-
-Let $T_{IAU}$ be some quotient of IAU' internal to IAU. Then the arithmetic functor from IAU to Set takes $T_{IAU}$ to an actual arithmetic universe T, such that $T$ is equivalent to the global aspect of $T_{IAU}$ \TODOinline{proof? We must show that the global sections functor on IAU is an arithmetic functor}. Furthermore, the arithmetic functor from IAU to T takes $T_{IAU}$ to an arithmetic universe $T'$ internal to $T$.
+\TODOinline{Note how the above therefore extends easily to considerations of any traditional logical theory, not just ZF-Finite. Any such theory gives rise to an arithmetic universe internal to IAU, and we can then take the corresponding localized introspective theory. For example, PA, or vNBG, or PA + whatever computably enumerable set of axioms, etc.}
 
 \TODOinline{Note that basically nothing here is special about IAU. We could similarly construct introspective theories using initial objects of any structure left comma-stable over LexCat, given any structure of the same kind internal to the initial one. What's special about IAU is just that it happens to actually contain interesting structures internally (such as PA, ZFC, the initial internal AU, etc), whereas the initial lexcat, or initial regular category, or initial lexcat with finite pullback-stable colimits, or such things all don't have much interesting internally. An example that DOES have interesting internal structure, however, might be the free lexcategory with pullback-stable disjoint etc countable coproducts.}
 

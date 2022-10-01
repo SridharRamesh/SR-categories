@@ -698,7 +698,11 @@ A category with \defined{NNO} is \TODO.
 An \defined{arithmetic universe} is a category which is exact and extensive with pullback-stable list objects. \TODO
 \end{definition}
 
-We denote the initial arithmetic universe as $\IAU$. Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any computer program describing some computably enumerable structure induces a structure of that sort internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic in $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
+We denote the initial arithmetic universe as $\IAU$.
+
+\begin{observation}\label{ComputableMeansIAUInternal}
+Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any computer program describing some computably enumerable structure induces a structure of that sort internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic in $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
+\end{observation}
 
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
 
@@ -768,7 +772,7 @@ Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show tha
 Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
 \end{proof}
 
-\begin{lemma}
+\begin{lemma}\label{ArithmeticLocalization}
 Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to another arithmetic universe be given, and let $M$ be the set of morphisms of $C$ which are sent to isomorphisms by said arithmetic functor. Then letting $f : C \to C[M^{-1}]$ be the corresponding localization (an \defined{arithmetic localization}), we have that this is also the localization qua arithmetic universe, in that $C[M^{-1}]$ is an arithmetic universe, $f$ is an arithmetic functor, and any arithmetic functor out of $C$ which factors (necessarily uniquely) through $f$ is such that this factorization is itself an arithmetic functor.
 \end{lemma}
 \begin{proof}

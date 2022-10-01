@@ -164,11 +164,11 @@ Alternatively, the proof can be carried out like so: Firstly, for existence of a
 Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
 
 \TODOinline{Move the following somewhere where it belongs}
-\begin{theorem}
+\begin{theorem}\label{GlobalIsArithmeticOnIAU}
 The global sections functor $\Hom_{\IAU}(1, -)$ is the unique arithmetic functor from the initial arithmetic universe $\IAU$ to $\Set$.
 \end{theorem}
 \begin{proof}
-A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the initiality of IAU (keeping in mind \magicref{InitialWrtSet}). What remains is only to show that this $!$ is the same as the global sections functor. By \magicref{TermModelIsInitialForLex}, we know that the global sections functor is initial among lexfunctors from $\IAU$ to $\Set$. But by \magicref{AUStrongSigma1esque}, we know that $!$ is also initial among these. Thus, $!$ and the global sections functor are isomorphic (indeed, uniquely isomorphic), completing the proof.
+A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the initiality of IAU (keeping in mind \magicref{InitialWrtSet}). What remains is only to show that this $!$ is the same as the global sections functor. By \magicref{TermModelIsInitialForLex}, we know that the global sections functor is initial among lexfunctors from $\IAU$ to $\Set$. But by \magicref{CommaKanStrongSigmesque} with \magicref{CommaStableArithmetic}, we know that $!$ is also initial among these. Thus, $!$ and the global sections functor are isomorphic (indeed, uniquely isomorphic), completing the proof.
 \end{proof}
 
 With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does not internalize. In particular, we do NOT know internal to $\IAU$ that the global sections functor from $\IAU'$ to the self-indexing $\IAU/-$ is arithmetic, or even that it preserves the initial object (this would violate \Goedel/'s second incompleteness theorem).

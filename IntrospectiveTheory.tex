@@ -114,6 +114,7 @@ After having given this first example, we will then tweak it slightly into anoth
 \newcommand{\InnerZfin}{\mathrm{Z}'}
 \newcommand{\InnerZfinSigma}{\mathrm{Z}_{\Sigma_1}'}
 \begin{construction}\label{SigmaModelSimple}
+\TODOinline{Perhaps do all the following in terms of ZFC rather than ZF-Finite?}
 Let us start with the first-order logical theory ZF-Finite: This is the theory ZF but with the axiom of infinity replaced by its negation\footnote{This theory happens to be equivalent to Peano Arithmetic in a suitable sense, but it will be more convenient for us to speak in terms of ZF-Finite so as not to fret about codings of a sort every modern mathematician readily takes for granted in a ZF-style context.}. The universe this theory describes is the hereditarily finite sets $V_{\omega}$. Throughout this construction, whenever we speak of formulae, we mean formulae in the language of ZF-Finite, and whenever we speak of provability, we mean provable within ZF-Finite.
 
 Certain formulae are $\Sigma_1$. These are the formulae which consist of an initial string of unbounded existential quantifiers (ranging over the entire universe), after which all other quantifiers are bounded (ranging only over the elements of some particular definable finite set\footnote{Definable in the sense that it is given by a term in the language of ZF, when this language is taken to include the standard constructors of ZF-Finite (e.g., powerset, pairing, etc) as function symbols. This term may contain parameters given by previously quantified variables. We trust the reader understands the standard notion of $\Sigma_1$ formulae in the ZF-Finite context or equivalent Peano Arithmetic context.}).
@@ -320,6 +321,8 @@ Make the useful observations that the theory of introspective theories is essent
 \begin{construction}\label{LocalizeIntrosp}
 If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $f : T \to T[M^{-1}]$ is a lex localization in the sense of \magicref{DefnLexLocalization}, and every morphism in $M$ is sent to an isomorphism by $\introS$, then $f$ acts as an introspective theory homomorphism from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C) \rangle$.
 
+Furthermore, given any introspective theory homomorphism $h : \langle T, C \rangle \to \langle T_2, C_2 \rangle$ such that $h$ sends every morphism in $M$ to an isomorphism and $h[C] = C_2$, this $h$ factors uniquely through $f$ by an introspective theory homomorphism from $\langle T[M^{-1}], f(C) \rangle$ to $\langle T_2, C_2 \rangle$. In this sense, $\langle T[M^{-1}], f(C) \rangle$ is the localization qua introspective theory of $\langle T, C \rangle$ at $M$.
+
 In particular, for any introspective theory, we can apply the above taking $M$ to be the set of all morphisms sent to isomorphisms by $\introS$. We may call the result the \defined{maximal localization} of our original introspective theory.
 \end{construction}
 \begin{proof}
@@ -330,6 +333,8 @@ The requirement on $C'$ in \magicref{StrictIntrospHomoDefn} directly determines 
 The requirement on $\introS'$ is that $\introS' \circ f = \InducedHomo{f}{C} \circ \introS$. Note that the right hand side of this equation sends all morphisms in $M$ to isomorphisms (since $\introS$ already does so). Thus, by the defining property of localization, this uniquely determines $\introS'$ as a functor, and indeed it will be a lexfunctor by \magicref{LexLocalizationLemma}.
 
 Finally, the requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is $\introN$ whiskered along $f$ from the other side. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
+
+Next, we show the unique factorization property. \TODO.
 \end{proof}
 
 \begin{construction}\label{TrivialPreIntrosp}
