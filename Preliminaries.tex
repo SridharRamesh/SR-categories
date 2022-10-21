@@ -641,7 +641,7 @@ Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locall
 
 Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \TODOinline{Clarify that n here can't be 0.}
 
-Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally small lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$.
+Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally small lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \TODOinline{Write out why this is so}
 
 Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
 
@@ -904,26 +904,26 @@ Furthermore, suppose $Special$ has an initial object $0$.
 Then for any special object $\omega$, we have that the unique special map from $0$ to $\omega$ is furthermore initial within $D(0, \omega)$. In particular, it follows that the identity on $0$ is initial within $D(0, 0)$.
 \end{theorem}
 \begin{proof}
-Let $f_X$ be the unique special map from $0$ to $\omega$ and let $f_Y : 0 \to \omega$ be an arbitrary map in $D$. Consider the following diagram, illustrating the comma object $\comma{f_X}{f_Y}$ of $D$, as well as unique special maps from $0$:
+Let $f_Y : 0 \to \omega$ be an arbitrary map in $D$. Let $f_X : A \to \omega$ be any special map into $\omega$ (two choices always available are the identity from $\omega$ to itself, or the unique special map from $0$ to $\omega$). Consider the following diagram, illustrating the comma object $\comma{f_X}{f_Y}$ of $D$, as well as unique special maps from $0$:
 
-% https://q.uiver.app/?q=WzAsNSxbMywxLCIwIl0sWzMsMywiXFxvbWVnYSJdLFsxLDMsIjAiXSxbMSwxLCJcXGNvbW1he2ZfWH17Zl9ZfSJdLFswLDAsIjAiXSxbMCwxLCIhID0gZl9YIiwxXSxbMiwxLCJmX1kiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMywyXSxbMywwXSxbMCwyLCIiLDEseyJsZXZlbCI6Mn1dLFs0LDIsIiEgPSBcXGlkID0gYiIsMV0sWzQsMywiISIsMV0sWzQsMCwiISA9IFxcaWQgPSBhIiwxXV0=
+% https://q.uiver.app/?q=WzAsNSxbMywxLCJBIl0sWzMsMywiXFxvbWVnYSJdLFsxLDMsIjAiXSxbMSwxLCJcXGNvbW1he2ZfWH17Zl9ZfSJdLFswLDAsIjAiXSxbMCwxLCJmX1giLDFdLFsyLDEsImZfWSIsMSx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDJdLFszLDBdLFswLDIsIiIsMSx7ImxldmVsIjoyfV0sWzQsMiwiISA9IFxcaWQgPSBiIiwxXSxbNCwzLCIhIiwxXSxbNCwwLCIhID0gYSIsMV1d
 \[\begin{tikzcd}
 	0 \\
-	& {\comma{f_X}{f_Y}} && 0 \\
+	& {\comma{f_X}{f_Y}} && A \\
 	\\
 	& 0 && \omega
-	\arrow["{! = f_X}"{description}, from=2-4, to=4-4]
+	\arrow["{f_X}"{description}, from=2-4, to=4-4]
 	\arrow["{f_Y}"{description}, dashed, from=4-2, to=4-4]
 	\arrow[from=2-2, to=4-2]
 	\arrow[from=2-2, to=2-4]
 	\arrow[Rightarrow, from=2-4, to=4-2]
 	\arrow["{! = \id = b}"{description}, from=1-1, to=4-2]
 	\arrow["{!}"{description}, from=1-1, to=2-2]
-	\arrow["{! = \id = a}"{description}, from=1-1, to=2-4]
+	\arrow["{! = a}"{description}, from=1-1, to=2-4]
 \end{tikzcd}\]
 Here, we use solid arrows to denote special $1$-cells. The dashed arrow $f_Y$ is a $1$-cell of $D$, not presumed special. The bottom right square is of course the one corresponding to the comma object. Special $1$-cells out of $0$ are denoted $!$ to indicate their uniqueness.
 
-Because the comma object is special (by left comma-stability), it has a unique special map from $0$. By the universal property of a comma object, along with our presumption that the projections jointly create special structure, this means there is a unique triple of special $a : 0 \to 0$, special $b : 0 \to 0$, and 2-cell $: f_X \circ a \to f_Y \circ b$. Because of the initiality of $0$, we know that both $a$ and $b$ must be the unique special map from $0$ to itself, which is the identity. Thus, we conclude there is a unique 2-cell from $f_X$ to $f_Y$. As $f_Y$ was an arbitrary map in $D$, we can conclude that $f_X$ (i.e., the unique special map from $0$ to $\omega$) is initial within $D(0, \omega)$.
+Because the comma object is special (by left comma-stability), it has a unique special map from $0$. By the universal property of a comma object, along with our presumption that the projections jointly create special structure, this means there is a unique triple of special $a : 0 \to A$, special $b : 0 \to 0$, and 2-cell $: f_X \circ a \to f_Y \circ b$. Because of the initiality of $0$, we know that $a$ must be the unique special map from $0$ to $A$, while $b$ must be the identity on $0$. Thus, we conclude there is a unique 2-cell from this $f_X \circ a$ to $f_Y$. As $f_X \circ a$ must be the unique special map from $0$ to $\omega$, while $f_Y$ was an arbitrary map in $D$, we can conclude that the unique special map from $0$ to $\omega$ is initial within $D(0, \omega)$.
 \end{proof}
 
 \subsection{Internal and initial model terminology}

@@ -238,7 +238,7 @@ The equations given to us directly in the compact presentation are the equations
 
 What remains is only to see that each $F_i$ for $i > 1$ also takes $C'_j$ to $C'_{j + 1}$ and takes $F'_j$ to $F'_{j + 1}$, for $j > i \geq 1$.
 
-We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[C'_j] = F_{i + 1} [F_i [C'_{j - 1}]] = F_i [F_i [C'_{j - 1}]] = F_i [C'_j] = C'_{j + 1}$, where the second step is by $E_i$ \TODO and the other steps are by our induction hypothesis. And similarly with $F'$ in place of $C'$ throughout as well.
+We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[C'_j] = F_{i + 1} [F_i [C'_{j - 1}]] = F_i [F_i [C'_{j - 1}]] = F_i [C'_j] = C'_{j + 1}$, where the second step is by $E_i$ and the other steps are by our induction hypothesis. And similarly with $F'$ in place of $C'$ throughout as well.
 \end{proof}
 
 \begin{corollary}\label{CompactGeminalCatHomoDefn}
@@ -276,7 +276,7 @@ We now are ready to prove our main result about geminal categories.
 The strict introspective theory given in \magicref{GLCatTheoryIsIntrosp} is the initial strict introspective theory.
 \end{theorem}
 \begin{proof}
-We must show there is a unique homomorphism from the strict introspective theory $\langle \GLCatTheory, K \rangle$ of \magicref{GLCatTheoryIsIntrosp} to any other strict introspective theory $\langle T, D, \introS, \introN \rangle$.
+We must show there is a unique homomorphism from the strict introspective theory $\langle \GLCatTheory, K \rangle$ of \magicref{GLCatTheoryIsIntrosp} to any other strict introspective theory $\langle T, D \rangle$.
 
 Such a homomorphism is comprised of a strict lexfunctor $H : \GLCatTheory \to T$ satisfying certain conditions. By the nature of $\GLCatTheory$, this amounts to a geminal category $\langle D'_1, D'_2, D'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$ internal to $T$ satisfying certain conditions.
 
@@ -284,7 +284,7 @@ One particular geminal category internal to $T$ is the one that is given by $\ga
 
 What remains is to show that the lexfunctor $H : \GLCatTheory \to T$ corresponding to this $\gamma$ uniquely satisfies the conditions of \magicref{StrictIntrospHomoDefn}.
 
-The condition $H[C'_1] = D$ in \magicref{StrictIntrospHomoDefn} says in this context that we must use a geminal category whose underlying lexcategory is $D$.
+The condition \quote{$H[C_1] = C_2$} in \magicref{StrictIntrospHomoDefn} says in this context that we must use a geminal category whose underlying lexcategory is $D$.
 
 The condition concerning $\introN$ in \magicref{StrictIntrospHomoDefn}, along with the definition of $\introN$ in \magicref{GLCatTheoryIsIntrosp}, says that we must use a geminal category whose first lexfunctor component is $\introN_{D}$.
 

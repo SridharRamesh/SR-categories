@@ -341,4 +341,97 @@ Just as with \magicref{InitoGeminalWarning}, we should remark that again, as of 
 
 \TODOinline{Note that we have a soundness result for the geminal categories we get from the initial NNO-topos, the initial arithmetic universe, etc: Their internal views of the initial such-and-such do in fact match themselves; the uniquely determined structure-preserving (AU-preserving or NNO-topos-preserving) functor from these things to Set takes their internal initial such-and-such to themselves. We don't have this kind of soundness for all \initogeminal/ theories. For example, we might consider the theory of bloposes, where a blopos is an NNO topos in which the internal initial NNO topos is trivially 1. That is, a blopos is a topos that thinks the theory of toposes is inconsistent. Then the theory of bloposes incorrectly proves that the theory of bloposes is inconsistent, so the initial blopos is nontrivial, but its internal initial blopos is trivial. The key thing that makes bloposes different from toposes is that Set is itself a topos (and an AU and so on), but not a blopos. Our soundness result is only for those theories which Set itself models.}
 
+\subsection{Soundnesses for self-initializing theories}
+\begin{TODOblock}
+When the self-initializing theory Th is such that furthermore Set is a model of Th, then we furthermore get a soundness result here: The map from the initial model M of Th (the one defined by global elements in the lexcategory corresponding to T) to Set takes M's interior initial model of Th to the actual M in Set, and so on.
+
+Thus, we get a homomorphism from the globalization of M's interior initial model of Th to the actual M. Since M is initial, this homomorphism onto it is a retraction. Thus, the map from M into the globalization of its internal model has a left inverse.
+
+Note the following two caveats:
+
+1. This composition needn't be identity in the other order.
+
+Proof: Let p be a proposition which is independent from PA, and consider the corresponding term t : 1 -> 1 + 1, well-defined classically. The map from M' to M to M' will take the term t living in M' to its interpretation as an actual particular Boolean in the internal logic of M (that is, M will prove internally that this is either True or False) and then to that actual particular Boolean as a canonical term (that is, M will prove internally that the resulting value in M' is either "True" or "False"), but that canonical term will not be equal to the original term since t is neither provably equal to True nor provably equal to False.
+
+Actually, I'm no longer convinced this argument is correct. The map from M to M' isn't necessarily one which sends terms for Booleans to the corresponding canonical terms. These are geminal structures, not introspective ones.
+
+A better (but not great) argument might be that we can consider a theory like T = PA augmented with a random constant for a random term in PA'. This random constant will then persist into T' as well, but this random constant obviously won't be provably equivalent to anything canonical. However, there's some sense in which we can nonetheless think of Set as a model of T (in various inequivalent ways!), sending the random constant to any random old thing. What's not great here is the lack of universal properties fixing the value of the constant in Set.
+
+2. If Set is not a model of Th to begin with, there needn't even be a homomorphism from M's internal model to M in the first place.
+
+Proof: Let Th be a theory corresponding to PA + ~Con(PA) or the like. Then the initial model M of Th is nontrivial, i.e. doesn't prove 1 = 0 (since PA + ~Con(PA) is consistent, since PA doesn't prove Con(PA), by G2IT). However, M's internal initial model of Th is trivial, i.e. proves 1 = 0 (since Th proves ~Con(PA) which in turn entails ~Con(Th)). We cannot have a homomorphism from the latter to the former.
+
+We can think of this in terms of arithmetic universes rather than Peano Arithmetic as well. The initial AU whose internal initial AU is terminal is not itself terminal.
+\end{TODOblock}
+
+\subsection{Local intro to intro}
+\begin{construction}
+Let $\langle T, C \rangle$ be a locally introspective theory. Suppose given a $T$-small set $X$ and a map $i : X \to \Ob(C)$ such that the full subcategory of $C$ restricted to those objects in the range of $i$ is in fact a sublexcategory.
+
+This full sublexcategory thus gives us a $T$-internal lexcategory we may call $C'$, with $\Ob(C') = X$.
+
+Suppose furthermore the condition is satisfied that $\introS(\Mor(C'))$ lies in the range of $i$ (in the sense that there is a global element of $X$ which is taken by $i$ to $\introS(\Mor(C'))$).
+
+Then using \magicref{SubPreIntrosp}, we may first pass from our original locally introspective theory $\langle T, C \rangle$ to a locally introspective theory $\langle T', C \rangle$, such that $T'$ is the full sublexcategory of $T$ restricted to those objects $t$ for which $\introS(t)$ lies in the range of $i$.
+
+By our presupposition, $\Mor(C')$ lies in this $T'$. Furthermore, $\Ob(C')$ therefore does as well (as this is a retract of $\Mor(C')$ and thus contained in any full sublexcategory containing $\Mor(C')$). Thus, $C'$ is a lexcategory internal to $T'$. Furthermore, by presupposition, $\introS : T' \to \Glob{C}$ factors through the inclusion of $C'$ into $C$.
+
+We may now use \magicref{SubPreIntrosp} to pass from our locally introspective theory $\langle T', C \rangle$ to an introspective theory $\langle T', C' \rangle$.
+\end{construction}
+
+By an \quote{inverse category} is meant a category whose non-identity morphisms are closed under binary composition, and such that the relation on objects \quote{"There is a non-identity morphism from $A$ to $B$"} which we will denote $A < B$ is well-founded.
+
+Given an inverse category $T$ and an object $t \in T$, we will say \quote{$T_{< t}$} in the following to mean the full subcategory of $T$ consisting only of objects from which there is some non-identity morphism to $t$. And we will say \quote{$T_{\leq t}$} to mean the full subcategory of $T$ consisting only of objects from which there is some morphism to $t$ (thus, $T_{\leq t}$ comprises the objects of $T_{< t}$ along with $t$ itself).
+
+\begin{construction}
+Let $T$ be a small inverse category. Suppose given a system of operators $F_t$ such that each $F_t$ takes as input a small full subcategory of $\Psh{T_{< t}}$ and produces as output a small full subcategory of $\Psh{T_{\leq t}}$.
+
+Then we may recursively define small full subcategories $P_{< t}$ of each $\Psh{T_{< t}}$ and full subcategories $P_{\leq t}$ of each $\Psh{T_{\leq t}}$ such that each $P_{\leq t}$ is given by applying $F_t$ to the corresponding $P_{< t}$, while each $P_{< t}$ comprises precisely those presheaves in $\Psh{T_{< t}}$ whose restriction to any $\Psh{T_{\leq s}}$ for $s < t$ lies in $P_{\leq s}$. (Note that this is indeed small, using our stipulations that $T$ and the outputs from $F_t$ are small.)
+
+We may then in the same manner define overall a small full subcategory $P$ of $\Psh{T}$, comprising precisely those presheaves whose restriction to any $T_{\leq t}$ lies in $P_{\leq t}$.
+
+A common special case of the above is when each operator $F_t$ is of the following form: There is a map $G_t$ from small full subcategories of $\Psh{T_{< t}}$ to small full subcategories of $\Set$, and $F_t$ sends any small full subcategory $x$ of $\Psh{T_{< t}}$ to the small full subcategory of $\Psh{T_{\leq t}}$ comprising those presheaves whose value at $t$ lies in $G_t(x)$ and whose restriction to $\Psh{T_{< t}}$ lies in $x$.
+
+In this case, our recursive construction of $P$ comprises precisely those presheaves in $\Psh{T}$ whose value at each object $t$ lies in some corresponding full subcategory $g_t$ of $\Set$. $P_{< t}$ and $P_{\leq t}$ are similarly defined using the same $g_t$, and each $g_t$ is given by applying $G_t$ to $P_{< t}$.
+\end{construction}
+
+The operators $F_t$ can easily be chosen to always yield outputs closed under finite limits, and/or closed under countable limits, and/or closed under topos operations, and/or containing all of a designated small number of presheaves, etc, without harm to the result still being small.
+
+In particular, we may apply the above taking $G_t$ to be the operator which, for any small full subcategory $x$ of $\Psh{T_{< t}}$, picks out the smallest full sublexcategory of $\Set$ containing $x$ as an internal category. \TODOinline{Strictness concerns here? We need $x$ to come with the data of a designated set of objects. We should thread this through everywhere; everything should be thought of as strict categories here, and we are talking about strict small full subcategories, etc.}
+
+\TODOinline{Discuss how topos operations like powerset are defined in a presheaf topos $\Psh{T}$ at an object $t$ only with dependence on the values at $\Psh{T_{\leq t}}$. This is because $\Psh{T_{\leq t}}$ can be identified with a slice topos of $\Psh{T}$, specifically over a suitable subterminal object. (And a similar property holds of our $\Box$ operator...). This has the effect that if each $F_t$ produces a $P_{\leq t}$ closed under topos operations, then each $P_{< t}$ and $P$ itself will be closed under topos operations.}
+
+\begin{construction}
+Let functor $i : D \to S$ be given. We will also associate to every object $s \in S$ a corresponding full subcategory $\Set_s$ of $\Set$, like so: \TODO
+\end{construction}
+
+\begin{lemma}
+Let $A$ be a small set of objects of a locally small topos $B$, such that $A$ is closed under finite limits and power objects. Then the objects of $B$ which arise as subobjects of objects in $A$ comprise a small full subtopos of $B$.
+\end{lemma}
+
+\begin{lemma}
+For any small set of objects of $\Set$, there is a small full subtopos of $\Set$ containing those objects.
+\end{lemma}
+\begin{proof}
+Consider the collection $A$ of all objects of $\Set$ generable from the given small set using finite products and power objects, then apply the above lemma.
+\end{proof}
+
+\begin{construction}
+Throughout the following, we take all categories (or lexcategories or toposes, etc) to be strict, including $\Set$.
+
+Let $i : D \to S$ be an arbitrary functor between small categories. We will assign a small full subtopos of $\Set$ to each object of $S$. Using $i$, this induces also such an assignment to each object of $D$. Each of these small full subtoposes will also contain $D$ and $S$ themselves. As a result, the correspondingly constrained presheaf categories on $D$ and on $S$ will themselves be subtoposes of the unconstrained presheaf categories.
+
+Furthermore, we request that on each $s \in S$, the corresponding full subtopos of $\Set$ contains the constrained category of presheaves on ($D$ restricted to objects whose image under $i$ is below $s$). This can be inductively achieved so long as $S$ is well-founded qua category. Or maybe, it should be some kind of limit here that we consider, hm.
+
+Our $i$ clearly continues to induce a functor from the constrained presheaves on $S$ to the constrained presheaves on $D$. Ideally, this still has a right adjoint (Kan extension), but I suppose this isn't really important.
+
+
+\end{construction}
+
+Suppose given a category $S_{\leq s}$ such that for all $t < s \in S_{\leq s}$, we have an associated (lex-closed) cardinal $K_t$. Now we consider $K-\Psh{S_{\leq s}}$, meaning the presheaves constrained by these cardinality restrictions, with no cardinality restriction at $s$ itself. This maps into unconstrained $\Psh{S_{\leq s}}$. This maps into $\Psh{S_{< s}}$ by a process corresponding to our $H$. This in turn induces a map into $\Psh{D_{< s}}$, where $D_{< s}$ is the subcategory of $D$ that maps into $S_{< s}$ under the map from $D$ to $S$. There is a sub-lexcategory of $\Psh{D_{< s}}$ which we may call $K-\Psh{D_{< s}}$, using the cardinality restrictions on each object of $D$ from the associated object of $S$. This induces a sub-lexcategory of the self-indexing of $\Psh{D_{< s}}$, which we may call $K-\Psh{D_{< s}}/\Psh{D_{< s}}$ (given a lexcategory $L$ with sub-lexcategory $M$, we may consider the sub-lexcategory of $L/-$ comprising those slices whose pullback above any object of $M$ has domain in $M$ as well). 
+
+So, taking this indexed lexcategory $K-\Psh{D_{< s}}/\Psh{D_{< s}}$ and transporting it along all our maps into a lexcategory indexed over $K-\Psh{S_{\leq s}}$, we may ask for this to be small. Is this the case? Our claim is that this is always small whenever the corresponding constructions are small at each $K-\Psh{S_{\leq t}}$ for $t < s$. \TODO. Because this is small, it has a representing object, and this representing object allows us to now add a cardinality constraint at $s$ itself, which just has to be large enough to contain the value at $s$ of the representing object, for the whole thing to be small even over the subcategory $K'-\Psh{S_{\leq s}}$ of $K-\Psh{S_{\leq s}}$, where $K'$ has been augmented to include this extra cardinality constraint at $s$.
+
+For the \TODO, there should always be a representing object inside unconstrained $\Psh{S_{\leq s}}$, which we obtain by just examining the corresponding values at $S_{\leq s}$ (identified with its Yoneda embedding) itself (plus some reasoning about how all other presheaves are colimits of representable ones, and the indexed category of interest respects these colimits; \TODO). Ok, here it may be important that the Yoneda embedding of $s$ actually lies within $K-\Psh{S_{\leq s}}$, so our cardinality constraints need to be loose enough to contain all of $S$, say. Now if we look at the indexed category of interest at $s$, it becomes a certain slice category within $K-\Psh_{D_{< s}}$. Since $K-\Psh_{D_{< s}}$ itself is set-sized, this is set-sized, and so we just need that particular set to be within our cardinality constraint at $s$. (Plus whatever reasoning about how stuff at $t < s$ is automatic from restrictions to $S_{\leq t}$; \TODO).
+
 \fileend

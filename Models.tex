@@ -89,30 +89,14 @@ This immediately gives us many examples of geminal categories using the above co
 
 \TODOinline{Note that when a theory is super-initializing, then we have that in the geminal category $\gamma = \langle G_1 G_2; F_1, F_2 \rangle$, $G_3 = F_1[G_2]$ is also an initial supergadget internal to $G_2$, and $F_3 = F_1[F_2]$ is a supergadget homomorphism. Thus, $\InteriorGeminal{\gamma}$ is itself given by the same construction of a geminal category for the self-initializing theory of supergadgets.}
 
-\begin{TODOblock}
-When the \initogeminal/ theory T is such that furthermore Set is a model of T, and we have the strong property noted above that EVERY homomorphism out of the initial model of T preserves its interior initial model's initiality, then we furthermore get a soundness result here: The map from the initial model M of T (the one defined by global elements in the lexcategory corresponding to T) to Set takes M's interior initial model of T to the actual M in Set, and so on.
-
-Thus, we get a homomorphism from the globalization of M's interior initial model of T to the actual M. Since M is initial, this homomorphism onto it is a retraction. Thus, the map from M into the globalization of its internal model has a left inverse.
-
-Note the following two caveats:
-
-1. This composition needn't be identity in the other order.
-
-Proof: Let p be a proposition which is independent from PA, and consider a term t such as "3 if p is true, 5 if p is false", well-defined classically. The map from M' to M to M' will take the term t living in M' to its interpretation as an actual particular number (either 3 or 5) and then to that actual particular number as a canonical term (either "3" or "5"), but that canonical term will not be equal to the original term since t is neither provably equal to 3 nor provably equal to 5.
-
-2. If Set is not a model of T to begin with, there needn't even be a homomorphism from M's internal model to M in the first place.
-
-Proof: Let T be a theory corresponding to PA + ~Con(PA) or the like. Then the initial model M of T is nontrivial, i.e. doesn't prove 1 = 0 (since PA + ~Con(PA) is consistent, since PA doesn't prove Con(PA), by G2IT). However, M's internal initial model of T is trivial, i.e. proves 1 = 0 (since T proves ~Con(PA) which in turn entails ~Con(T)). We cannot have a homomorphism from the latter to the former.
-\end{TODOblock}
-
 We have discussed all this just in the context of geminal categories, but this extends to give analogous constructions of introspective theories as well. We discuss these next.
 
 \TODOinline{Maybe delete most of this section (except for the definitions of self- and super-initializing theories) and only give examples of introspective theories.}
 
 \subsubsection{The theory of initial models as an introspective theory}
-Throughout the following, we use the \quote{initial model} terminology of \magicref{LexModelTerminology}. As a reminder, we say a lexfunctor $f : T \to S$ is an initial model of $T$ if it is initial within the category $\LexCat(T, S)$.
+Throughout the following, we say say an initial object in a category of the form $\LexCat(T, S)$ is an initial model of $T$ internal to $S$. Given lexcategories $S$ and $S'$ both containing initial internal models of $T$, we say a lexfunctor from $S$ to $S'$ preserves initial models of $T$ if its composition with the initial model of $T$ in $S$ is the initial model of $T$ in $S'$.
 
-By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
+By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial internal models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
 
 \begin{theorem}\label{InitialModelWithInitialModel}
 For every \setsmall/ lexcategory $Th$, there is an initial object within $\initMod{Th}$.
@@ -124,9 +108,7 @@ In more detail, the category of strict lexcategories with internal initial model
 \end{proof}
 
 \begin{construction}
-If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}.
-
-This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $T$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
+If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}. This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $T$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
 
 We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ where $\introS$ is a map in $\initMod{Th}$.
 \end{construction}
@@ -134,7 +116,23 @@ We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspec
 There is an extension of the above construction to super-initializing theories. However, it is a bit trickier. The key issue is to construct, for a super-initializing lexfunctor $i : Th \to Th'$, a lexcategory which captures simultaneously the properties which are shared by initial models of $Th$ and by initial models of $Th'$. We sketch out the construction as follows:
 
 \begin{construction}
-Let $i : Th \to Th'$ be a lexfunctor, such that models of $Th$ are considered gadgets, models of $Th'$ are considered supergadgets, and via $i$ every supergadget is thought of as having an underlying gadget. Given a lexcategory $L$, we will say that a $Th'$-initial model of $Th$ in $L$ is an internal supergadget $\beta$ in $L$, along with, for every internal gadget $\alpha$ in $L$, a chosen gadget homomorphism from $h_\alpha : \beta \to \alpha$, such that furthermore, these chosen homomorphisms are closed under postcomposition with supergadget homomorphisms (that is, for any supergadget homomorphism $f : \beta \to \beta'$ in $L$, we have that $f \circ h_{\beta} = h_{\beta'}$, as gadget homomorphisms). \TODOinline{Illustrate this diagrammatically}. Note that this structure is NOT given by a universal property! There may be multiple non-equivalent ways to choose such structure within $L$. \TODO \TODOinline{Note that for super-initializing, the relevant thing is an X that has a designated map to each Y, and these designated maps are closed under post-composing Y-homomorphisms. There is NOT uniqueness, though. This construction is all a little tricky, requiring modifying both the Comma-Kan lemma and the comma category sigma1esqueness lemma, in addition to describing why an initial such thing exists, and so on and so on, so maybe TODO it for the time being.}
+Let $i : Th \to Th'$ be a lexfunctor, such that models of $Th$ are considered gadgets, models of $Th'$ are considered supergadgets, and via $i$ every supergadget is thought of as having an underlying gadget.
+
+Given a lexcategory $L$, we will say that a $Th'$-initial model of $Th$ in $L$ is an internal gadget $\alpha$ in $L$, along with, for every internal supergadget $\beta$ in $L$, a chosen gadget homomorphism from $h_\beta : \alpha \to \beta$, such that furthermore, these chosen homomorphisms are closed under postcomposition with supergadget homomorphisms (that is, for any supergadget homomorphism $f : \beta \to \beta'$ in $L$, we have that $f \circ h_{\beta} = h_{\beta'}$, as gadget homomorphisms). \TODOinline{Illustrate this diagrammatically}. Note that this structure is NOT given by a universal property! There may be multiple non-equivalent ways to choose such structure within $L$.
+
+We may define a 2-category $Special$ whose objects are lexcategories along with a choice of $Th'$-initial models of $Th$ in these lexcategories. The 1-cells of $Special$ will be lexfunctors which preserve these $Th'$-initial models of $Th$, in the sense of taking designated gadgets and homomorphisms to designated gadgets and homomorphisms. 2-cells between these are just ordinary natural transformations. There is an obvious 2-functor from this $Special$ to $\LexCat$.
+
+This $Special$ has an initial object $A$. This $A$ contains a designated internal gadget $G$ with an underlying lexcategory $C$. Because of the super-initializing property of gadgets and supergadgets, within $\Glob{C}$, there is an internal initial supergadget. Thus $\Glob{C}$ can uniquely be equipped as an object of $Special$ such that the designated gadget in $\Glob{C}$ is its internal initial supergadget. And thus there is a unique lexfunctor $\introS : A \to \Glob{C}$ which takes $G$ to the initial supergadget $G'$ in $\Glob{C}$.
+
+Finally, we shall show that there is a unique natural transformation $\introN : \id_A \to \Hom_C(1, \introS(-))$ such that action of this $\introN$ restricted to $G$ is a designated gadget homomorphism. The argument for this is completely analogous to \magicref{SpecialInitialIntrosp}, with appropriate modification for the fact that $Th'$-initial models of $Th$ are not given by a universal property and thus $Special$ is not merely a subcategory of $\LexCat$.
+
+Specifically, we will consider the comma category $\comma{\id_A}{f_Y}$ where $f_Y = \Hom_A(1, \introS(-)) : A \to A$. Note that this $f_Y$, when applied to the designated gadget in $A$, yields the underlying gadget of a supergadget.
+
+By a modification of \magicref{CommaKan}, we find a unique way to equip $\comma{\id_A}{f_Y}$ as having a $Th'$-initial model of $Th$ which is preserved by both projections, such that the induced homomorphism on $G$ is a designated homomorphism.
+
+Then we may apply a modification of \magicref{CommaKanStrongSigmesque} to conclude that the identity on $A$ has a unique natural transformation into $f_Y$ whose induced action on $G$ is a designated homomorphism.
+
+\TODOinline{Clean up this entire writeup. Or maybe scrap this theorem for the time being, since no one will care about it?}
 \end{construction}
 
 \subsubsection{A self-initializing theory with uncountable and uncomputable flavor}
@@ -152,36 +150,35 @@ Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic uni
 \begin{observation}
 Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $IAU$ (which exists thanks to \TODOinline{cite from Preliminaries}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
 \end{observation}
+\TODOinline{Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence, since the global sections functor on $\IAU$ is also the unique arithmetic functor to $\Set$ (as both are initial among lexfunctors), so that $\Glob{\IAU'} = \IAU$, which has the identity as its only endoarithmetic functor.}
+
+Note that nothing was special about the initial arithmetic universe for \magicref{IAUAsIntrospGeneral}; it was just an invocation of our general construction \magicref{SpecialInitialIntrosp}. We could similarly construct introspective theories using initial objects of any kind of structure left comma-stable over $\LexCat$, given any structure of the same kind internal to the initial one. What's noteworthy about $\IAU$ is just that it happens to actually contain interesting internal structures (such as internal categories corresponding to Peano Arithmetic, to ZFC, to the initial internal arithmetic universe, etc), whereas the initial lexcategory, or initial regular category, or initial lexcategory with finite pullback-stable colimits, or such things, all have a paucity of interesting internal structures.
 
 We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding example of an introspective theory based on traditional logical theories, from \magicref{SigmaModelComplex}.
 
-\begin{observation}
+\begin{theorem}
 The introspective theory described in \magicref{SigmaModelComplex} is the maximal localization, in the sense of \magicref{LocalizeIntrosp}, of an introspective theory produced by \magicref{IAUAsIntrospGeneral}.
-\end{observation}
+\end{theorem}
 \begin{proof}
 Recall the categories $\Zfin$ and $\ZfinSigma$ from \magicref{SigmaModelComplex}. Here, $\Zfin$ is an exact category whose objects and morphisms correspond to definable classes and graphs of functions between these in the theory ZF-Finite, with morphisms taken modulo provable equality in ZF-Finite. While $\ZfinSigma$ is the subcategory of $\Zfin$ where the definability conditions are further restricted to $\Sigma_1$-definability.
 
 It is readily verified that $\Zfin$ is an arithmetic universe. Thus, there is a unique arithmetic functor $!_{\Zfin} : \IAU \to \Zfin$. Let $M$ be the set of morphisms in $\IAU$ which are taken to isomorphisms by this $!_{\Zfin}$. By \magicref{ArithmeticLocalization}, this $!_{\Zfin}$ factors uniquely through the arithmetic localization $\IAU[M^{-1}]$. \TODOinline{Illustrate}. Using \magicref{IsLexLocalizationLemma}, it is straightforwardly, if tediously, verified that this $\IAU[M^{-1}]$ is in fact $\ZfinSigma$, with $!_{\Zfin}$ thus being the unique arithmetic functor from $\IAU$ to $\ZfinSigma$ followed by the inclusion from $\ZfinSigma$ to $\Zfin$. That is to say, the role played by the $\Sigma_1$ constraints in defining $\ZfinSigma$ is precisely to make $\ZfinSigma$ an arithmetic localization of $\IAU$.
 
-Note also that, as $\Zfin$ and $\ZfinSigma$ are both computably enumerable arithmetic universes internal to $\Set$, we find, in keeping with \magicref{ComputableMeansIAUInternal}, that these are the images in $\Set$ of arithmetic universes internal to the initial arithmetic universe $\IAU$. That is, letting $\Glob_{IAU}$ be the unique arithmetic functor from $\IAU$ to $\Set$ (which is the same as the global sections funtor $\Hom_{\IAU}(1, -)$, thanks to \magicref{GlobalIsArithmeticOnIAU}), we have arithmetic universes $\Glob_{IAU}^{-1}[\Zfin]$ and $\Glob_{IAU}^{-1}[\ZfinSigma]$ such that the images of these under $\Glob_{IAU}$ are $\Zfin$ and $\ZfinSigma$, respectively.
+\newcommand{\IAUGlob}{\mathrm{Glob}_{\IAU}}
+Note also that, as $\Zfin$ and $\ZfinSigma$ are both computably enumerable arithmetic universes internal to $\Set$, we find, in keeping with \magicref{ComputableMeansIAUInternal}, that these are the images in $\Set$ of arithmetic universes internal to the initial arithmetic universe $\IAU$. That is, letting $\IAUGlob$ be the unique arithmetic functor from $\IAU$ to $\Set$ (which is the same as the global sections functor $\Hom_{\IAU}(1, -)$, thanks to \magicref{GlobalIsArithmeticOnIAU}), we have arithmetic universes $\IAUGlob^{-1}[\Zfin]$ and $\IAUGlob^{-1}[\ZfinSigma]$ such that the images of these under $\IAUGlob$ are $\Zfin$ and $\ZfinSigma$, respectively.
 
-Via \magicref{SpecialInitialIntrosp}, we thus obtain an introspective theory $\langle \IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$.
-
-Note in this introspective theory that $\introS : \IAU \to \Glob{\Glob_{IAU}^{-1}[\Zfin]} = \Zfin$ is the unique arithmetic functor from $\IAU$ to $\Zfin$. Thus the set of morphisms in $\IAU$ sent to isomorphisms by this $\introS$ is the same as the $M$ defined above.
+Via \magicref{SpecialInitialIntrosp}, we thus obtain an introspective theory $\langle \IAU, \IAUGlob^{-1}[\Zfin] \rangle$, whose $\introS : \IAU \to \Glob{\IAUGlob^{-1}[\Zfin]} = \Zfin$ is the unique arithmetic functor from $\IAU$ to $\Zfin$. Thus the set of morphisms in $\IAU$ sent to isomorphisms by this $\introS$ is the same as the $M$ defined above.
 
 Now let $\langle \ZfinSigma, \InnerZfin \rangle$ be the introspective theory described in \magicref{SigmaModelComplex}.
 
-It is readily verified that $\InnerZfin$ and $\Glob_{IAU}^{-1}[\Zfin]$ can be chosen so that the former is the image of the latter under the unique arithmetic functor $!_{\ZfinSigma} : \IAU \to \ZfinSigma$. Furthermore, it is readily verified that $\introS : \ZfinSigma \to \Glob{\InnerZfin}$ is an arithmetic functor. Thus by \magicref{SpecialInitialIntrosp}, the unique arithmetic functor $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ is in fact an introspective theory homomorphism from $\langle IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$ to $\langle \ZfinSigma, \InnerZfin \rangle$.
+It is readily verified that $\InnerZfin$ and $\IAUGlob^{-1}[\Zfin]$ can be chosen so that the former is the image of the latter under the unique arithmetic functor $!_{\ZfinSigma} : \IAU \to \ZfinSigma$. Furthermore, it is readily verified that $\introS : \ZfinSigma \to \Glob{\InnerZfin}$ is an arithmetic functor. Thus by \magicref{SpecialInitialIntrosp}, the unique arithmetic functor $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ is in fact an introspective theory homomorphism from $\langle \IAU, \IAUGlob^{-1}[\Zfin] \rangle$ to $\langle \ZfinSigma, \InnerZfin \rangle$.
 
-Since $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ was, as noted above, the same as the arithmetic localization $\IAU \to \IAU[M^{-1}]$, we may invoke \magicref{LocalizeIntrosp} to conclude that the introspective theory homomorphism from $\langle IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$ to $\langle \ZfinSigma, \InnerZfin \rangle$ is the same as the localization of the introspective theory $\langle IAU, \Glob_{IAU}^{-1}[\Zfin] \rangle$ at $M$, which by the observation three paragraphs ago is the maximal localization of this introspective theory.
+Since $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ was, as noted above, the same as the arithmetic localization $\IAU \to \IAU[M^{-1}]$, we may invoke \magicref{LocalizeIntrosp} to conclude that the introspective theory homomorphism from $\langle \IAU, \IAUGlob^{-1}[\Zfin] \rangle$ to $\langle \ZfinSigma, \InnerZfin \rangle$ is the same as the localization of the introspective theory $\langle \IAU, \IAUGlob^{-1}[\Zfin] \rangle$ at $M$, which by the observation three paragraphs ago is the maximal localization of this introspective theory.
 
 This concludes the proof.
 \end{proof}
 
-
-\TODOinline{Note how the above therefore extends easily to considerations of any traditional logical theory, not just ZF-Finite. Any such theory gives rise to an arithmetic universe internal to IAU, and we can then take the corresponding localized introspective theory. For example, PA, or vNBG, or PA + whatever computably enumerable set of axioms, etc.}
-
-\TODOinline{Note that basically nothing here is special about IAU. We could similarly construct introspective theories using initial objects of any structure left comma-stable over LexCat, given any structure of the same kind internal to the initial one. What's special about IAU is just that it happens to actually contain interesting structures internally (such as PA, ZFC, the initial internal AU, etc), whereas the initial lexcat, or initial regular category, or initial lexcat with finite pullback-stable colimits, or such things all don't have much interesting internally. An example that DOES have interesting internal structure, however, might be the free lexcategory with pullback-stable disjoint etc countable coproducts.}
+Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
 
 \subsection{Models based on well-founded posets or semicategories}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
@@ -225,7 +222,9 @@ These comprised the last ingredients we needed for proper Kripke semantics for i
 	\arrow["{C \op{i}}"{description}, shorten <=7pt, Rightarrow, from=1, to=3-2]
 \end{tikzcd}\]
 
-Keeping in mind that $H \circ - : \Psh{Struct} \to \Psh{Struct}$ has a right adjoint, we may conclude that the result is a locally introspective theory. When we start off taking $Struct^-$ to be a Kripke frame presumed transitive but not reflexive, taking Disc to be the discrete category on the same objects as Struct-, and $f : Disc \to Struct$ to be the inclusion, then the result of the above process is the introspective theory which corresponds to Kripke semantics on $Struct^-$. \TODOinline{Write out in more detail what the construction comes down to and thus showing how it corresponds to traditional Kripke semantics.}
+(In the above diagram, $\LexCat$ must be understood as large enough to contain categories such as $\Psh{Struct}$.)
+
+Keeping in mind that $H \circ - : \Psh{Struct} \to \Psh{Struct}$ has a right adjoint, we may conclude that the result is a locally introspective theory (using \magicref{RepSmallRightAdjointFibers}). When we start off taking $Struct^-$ to be a Kripke frame presumed transitive but not reflexive, taking Disc to be the discrete category on the same objects as Struct-, and $f : Disc \to Struct$ to be the inclusion, then the result of the above process is the introspective theory which corresponds to Kripke semantics on $Struct^-$. \TODOinline{Write out in more detail what the construction comes down to and thus showing how it corresponds to traditional Kripke semantics.}
 
 The result will be locally Loeb when the order on the objects of Struct- given by its morphisms is a converse well-founded order. \TODOinline{Expand on this}. We can then impose a suitable size constraint to get it to be fully introspective.
 
