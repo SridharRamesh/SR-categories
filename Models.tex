@@ -181,6 +181,52 @@ This concludes the proof.
 Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
 
 \subsection{Models based on well-founded posets or semicategories}
+\TODOinline{Everything from hereon out in the document is in a draft state, not yet readable}
+
+\subsubsection{The general construction, yielding locally introspective theories}
+\newcommand{\SpecialHom}{\mathrm{SpecialHom}}
+\newcommand{\Prior}{\mathrm{Prior}}
+
+\begin{construction}\label{GeneralPresheafLocalIntrosp}
+Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories $D$ and $S$.
+
+Furthermore, suppose given some subset of the morphisms of $S$ which is closed under composition on either side with arbitrary morphisms. That is, suppose given some bifunctor $\SpecialHom_S(-, =) : S^{op} \times S \to \Set$ which is a subfunctor of $\Hom_S(-, =) : S^{op} \times S \to \Set$.
+
+By currying, we may read this $\SpecialHom$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. This extends to a endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which is a left adjoint, like so (\TODOinline{Discuss Yoneda extension in preliminaries}): \TODO.
+
+We may now define a locally introspective theory $\langle \Psh{S}, C\rangle$ like so:
+
+% https://q.uiver.app/?q=WzAsNCxbMiwwLCJcXG9we1xcUHNoe1N9fSJdLFs0LDEsIlxcb3B7XFxQc2h7RH19Il0sWzYsMCwiXFxMZXhDYXQiXSxbMCwwLCJcXG9we1xcUHNoe1N9fSJdLFswLDEsIlxcb3B7XFxsZWZ0KCBcXHB1bGxBbG9uZ3tpfSBcXHJpZ2h0KX0iLDJdLFsxLDIsIlxcUHNoe0R9Ly0iLDJdLFswLDIsIlxcUHNoe1N9Ly0iXSxbMywwLCJcXGlkIl0sWzMsMCwiXFxvcHtcXFByaW9yfSIsMix7ImN1cnZlIjo1fV0sWzYsMSwiXFxwdWxsQWxvbmd7aX0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzcsOCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	{\op{\Psh{S}}} && {\op{\Psh{S}}} &&&& \LexCat \\
+	&&&& {\op{\Psh{D}}}
+	\arrow["{\op{\left( \pullAlong{i} \right)}}"', from=1-3, to=2-5]
+	\arrow["{\Psh{D}/-}"', from=2-5, to=1-7]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Psh{S}/-}", from=1-3, to=1-7]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\id", from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=1-1, to=1-3]
+	\arrow["{\pullAlong{i}}"{description}, shorten <=3pt, Rightarrow, from=0, to=2-5]
+	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=1, to=2]
+\end{tikzcd}\]
+
+(Pedantically, we caution that in the above diagram, $\LexCat$ must be understood as containing not just \setsmall/ lexcategories but also large lexcategories, so that this $\LexCat$ may serve as the target of the self-indexings of the large categories $\Psh{S}$ and $\Psh{D}$.)
+
+Here, we take the $\Psh{S}$-indexed lexcategory $C$ to be the bottom composite path, and of course our $\introF$ is the composite 2-cell from top to bottom. The local \repsmall/ness of this $C$ follows via \magicref{RepLocallySmallRightAdjoint} from the observations that $\Prior$ and $\pullAlong{i}$ both have right adjoints and $\Psh{D}/-$ is locally \repsmall/ (i.e., $\Psh{D}$ is locally cartesian closed).
+
+This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} (note that the inclusion of $\Prior$ into $\id_{\Psh{S}}$ becomes a map in the other direction when acting on $\op{\Psh{S}}$; this is the unlabelled 2-cell on the left of the above diagram).
+\end{construction}
+
+\TODOinline{Discuss the K4 example of this general construction, including the issue of augmenting with a new maximal element. Relate to introductory examples from the first chapter}
+
+Unfortunately, the above construction does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \TODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}.
+
+But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next section.
+
+\subsubsection{Ramp-constrained presheaves}
+\TODO
+
+\subsubsection{Old stuff}
+
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
 
 Previous iterations of this document at this point gave an overly complicated way of describing something simple (though still good to understand):

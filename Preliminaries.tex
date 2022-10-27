@@ -318,6 +318,14 @@ Given a $T$-indexed category $C$, an object $t$ of $T$ and any two objects $a$ a
 
 Note that this is the same as saying that $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$ has \repsmall/ fibers in the sense of \magicref{RepsmallFibersDefn}, except for that we do not need to think of $\Ob(C)$ as carrying an equality relation as such.
 
+In particular, we have the following result:
+\begin{theorem}\label{RepLocallySmallRightAdjoint}
+If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullbacks, and $C$ is a $T$-indexed locally small category, then the composition of $C$ with $L$ to yield a $Q$-indexed category is also locally small.
+\end{theorem}
+\begin{proof}
+By the reasoning of \magicref{RepSmallRightAdjointFibers}, as applied to the map $\langle \cod, \dom \rangle : Mor(C) \to \Ob(C) \times \Ob(C)$, although $\Ob(C)$ need not itself be thought of as carrying an equality relation as such.
+\end{proof}
+
 \TODOinline{Discuss how a(n indexed) category has a well-defined (indexed) set of objects modulo isomorphism, i.e., set of isomorphism classes of objects}.
 
 \TODOinline{Discuss how a set carries a canonical structure as a strict category, the categories presented by these are discrete categories, and in this way sets are also equivalent to discrete categories. In particular, in this way, an indexed set is the same as an indexed discrete category.}
