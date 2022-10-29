@@ -180,9 +180,7 @@ This concludes the proof.
 
 Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
 
-\subsection{Models based on well-founded posets or semicategories}
-\TODOinline{Everything from hereon out in the document is in a draft state, not yet readable}
-
+\subsection{Models based on presheaf categories}
 \subsubsection{The general construction, yielding locally introspective theories}
 \newcommand{\SpecialHom}{\mathrm{SpecialHom}}
 \newcommand{\Prior}{\mathrm{Prior}}
@@ -225,7 +223,38 @@ But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a 
 \subsubsection{Ramp-constrained presheaves}
 \TODO
 
+\newcommand{\KFiberPsh}[2]{\Psh{#2}/_{#1}-}
+
+\newcommand{\KPshGlobal}[2]{\operatorname{Psh}_{#1}(#2)}
+
+\newcommand{\KDecObject}[2]{#1\mathrm{-Dec}(#2)}
+
+\TODOinline{Explain how the following is all about cardinality constraints, in terms of fibers}
+
+Let $X$ be a category internal to $\Set$, and let $K$ be a function from the objects of $X$ to sets of sets. We call any choice of such $K$ a \quote{ramp} on $X$.
+
+By a $K$-presheaf on $X$, we mean a presheaf $E$ on $X$ such that $E(x) \in K(x)$ for each $x \in X$. These comprise a full subcategory of $\Psh{X}$, which we may call $\KPshGlobal{K}{X}$.
+
+More generally, given an arbitrary presheaf $P$ on $X$, we define the notion of a $K$-decoration on $P$. This is a function $f$ which assigns to each $x \in X$ and $p \in P(x)$ an element $f(x, p) \in K(x)$, along with a presheaf $E$ on $X$ and a slice $\pi : E \to P$ in $\Psh{X}/P$ satisfying the condition on its fibers that $\pi_x^{-1}(p) = f(x, p)$ for each $x \in X$ and $p \in P(x)$. (Thus, all that is left to specify in $E$ is its restriction maps, in a compatible fashion with the morphism structure of $X$ and with the projection map to $P$.)
+
+That is, a $K$-decoration of $P$ is a presheaf over $P$ whose fibers at each aspect $P(x)$ of $P$ are each given by elements of the corresponding $K(x)$. Thinking of each $K(x)$ as a genuine set whose elements can be compared for equality, the $K$-decorations of $P$ also comprise a genuine set (they can be compared for equality and it is readily observed that in size they comprise a set rather than a proper class).
+
+Note that $K$-decorations of the terminal presheaf amount to the same thing as objects of $\KPshGlobal{K}{X}$.
+
+Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-decoration of $P_2$ back to a $K$-decoration of $P_1$. \TODOinline{Describe details or is it obvious? We compose $f$ for $P_2$ with the action of $m$ to get $f$ for $P_1$, and we literally take the pullback of $\pi$ for $P_2$ along $m$ to get $\pi$ for $P_1$}. This is strictly functorial, and thus we get a contravariant map from $\Psh{X}$ to $\Set$.
+
+It is also straightforward to observe that this map takes small colimits in $\Psh{X}$ to small limits in $\Set$. Thus, by \TODOinline{Put lemma in preliminaries}, this is in fact $\Psh{X}$-small. We obtain a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the pullback of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
+
+We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice; call this $\KFiberPsh{K}{X}$. This indexed category has a small set of objects (given by $\KDecObject{K}{X}$), and is locally small (as it is a full subcategory of $\Psh{X}/-$, which is locally small by the local cartesian closure of $\Psh{X}$). Thus, it is a small indexed category.
+
+Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our previous observation about $K$-decorations of the terminal presheaf.
+
+Observe that if each $K(x)$ for $x \in X$ is closed under finite products and subsets, then each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, and $\KFiberPsh{K}{X}$ is in fact a full sublexcategory of the self-indexing $\Psh{X}/-$, with $\KPshGlobal{K}{X}$ accordingly being a full sublexcategory of $\Psh{X}$. \TODOinline{More details on this point?}. From now on, we will always make this assumption on our ramps $K$.
+
+\TODO
+
 \subsubsection{Old stuff}
+\TODOinline{Everything from hereon out in the document is in a draft state, not yet readable}
 
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
 
