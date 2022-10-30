@@ -207,6 +207,19 @@ We may now define a locally introspective theory $\langle \Psh{S}, C\rangle$ lik
 	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=1, to=2]
 \end{tikzcd}\]
 
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXG9we1xcUHNoe1N9fSJdLFszLDEsIlxcb3B7XFxQc2h7RH19Il0sWzUsMCwiXFxMZXhDYXQiXSxbMCwxLCJcXG9we1xcUHJpb3J9Il0sWzAsMSwiXFxvcHtcXGxlZnQoIFxccHVsbEFsb25ne2l9IFxccmlnaHQpfSIsMV0sWzEsMiwiXFxQc2h7RH0vLSIsMl0sWzAsMiwiXFxQc2h7U30vLSJdLFswLDMsIiIsMSx7ImN1cnZlIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzMsMCwiIiwxLHsiY3VydmUiOjJ9XSxbMCwzLCIiLDEseyJsZXZlbCI6Mn1dLFs2LDEsIlxccHVsbEFsb25ne2l9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	{\op{\Psh{S}}} &&&&& \LexCat \\
+	{\op{\Prior}} &&& {\op{\Psh{D}}}
+	\arrow["{\op{\left( \pullAlong{i} \right)}}"{description}, from=1-1, to=2-4]
+	\arrow["{\Psh{D}/-}"', from=2-4, to=1-6]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Psh{S}/-}", from=1-1, to=1-6]
+	\arrow[curve={height=12pt}, no head, from=1-1, to=2-1]
+	\arrow[curve={height=12pt}, from=2-1, to=1-1]
+	\arrow[Rightarrow, from=1-1, to=2-1]
+	\arrow["{\pullAlong{i}}"{description}, shorten <=4pt, Rightarrow, from=0, to=2-4]
+\end{tikzcd}\]
+
 (Pedantically, we caution that in the above diagram, $\LexCat$ must be understood as containing not just \setsmall/ lexcategories but also large lexcategories, so that this $\LexCat$ may serve as the target of the self-indexings of the large categories $\Psh{S}$ and $\Psh{D}$.)
 
 Here, we take the $\Psh{S}$-indexed lexcategory $C$ to be the bottom composite path, and of course our $\introF$ is the composite 2-cell from top to bottom. The local \repsmall/ness of this $C$ follows via \magicref{RepLocallySmallRightAdjoint} from the observations that $\Prior$ and $\pullAlong{i}$ both have right adjoints and $\Psh{D}/-$ is locally \repsmall/ (i.e., $\Psh{D}$ is locally cartesian closed).
@@ -245,63 +258,53 @@ Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-
 
 It is also straightforward to observe that this map takes small colimits in $\Psh{X}$ to small limits in $\Set$. Thus, by \TODOinline{Put lemma in preliminaries}, this is in fact $\Psh{X}$-small. We obtain a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the pullback of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
 
-We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice; call this $\KFiberPsh{K}{X}$. This indexed category has a small set of objects (given by $\KDecObject{K}{X}$), and is locally small (as it is a full subcategory of $\Psh{X}/-$, which is locally small by the local cartesian closure of $\Psh{X}$). Thus, it is a small indexed category.
+We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice; call this $\KFiberPsh{K}{X}$. This indexed category has a small set of objects (given by $\KDecObject{K}{X}$), and is locally small (as it is a full subcategory of $\Psh{X}/-$, which is locally small by the local cartesian closure of $\Psh{X}$). Thus, it is a small indexed category. Indeed, it can be seen as an internal indexed category with set of objects specifically $\KDecObject{K}{X}$.
 
 Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our previous observation about $K$-decorations of the terminal presheaf.
 
-Observe that if each $K(x)$ for $x \in X$ is closed under finite products and subsets, then each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, and $\KFiberPsh{K}{X}$ is in fact a full sublexcategory of the self-indexing $\Psh{X}/-$, with $\KPshGlobal{K}{X}$ accordingly being a full sublexcategory of $\Psh{X}$. \TODOinline{More details on this point?}. From now on, we will always make this assumption on our ramps $K$.
+Observe that if each $K(x)$ for $x \in X$ is closed under finite products and subsets, then each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, and $\KFiberPsh{K}{X}$ is in fact a full sublexcategory of the self-indexing $\Psh{X}/-$, with $\KPshGlobal{K}{X}$ accordingly being a full sublexcategory of $\Psh{X}$. \TODOinline{More details on this point? Also, may want to invoke lemma from the Preliminaries that a small indexed category whose every aspect is a lexcategory and whose every reindexing preserves finite limits non-strictly is in fact an internal lexcategory?}. From now on, we will always make this assumption on our ramps $K$.
+
+\TODOinline{Probe $\KFiberPsh{K}{X}$ with representable preseheaves, to observe that its $x$-aspect only depends on $K$ at objects $\leq x$.}
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9IiwxXSxbNCwzLCJcXGlkIl0sWzAsNF0sWzQsMywiXFxvcHtcXFByaW9yfSIsMix7ImN1cnZlIjo1fV0sWzUsNiwiXFxwdWxsQWxvbmd7aX0iLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzgsMTAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	{\op{\KPshGlobal{K_S}{S}}} &&& \LexCat \\
+	\\
+	{\op{\Psh{S}}} & {\op{\Psh{S}}} && {\op{\Psh{D}}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\KPshGlobal{K_S}{S}/-}", from=1-1, to=1-4]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\op{\left(\pullAlong{i}\right)}}"', from=3-2, to=3-4]
+	\arrow["{\KFiberPsh{K_D}{D}}"{description}, from=3-4, to=1-4]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "\id", from=3-1, to=3-2]
+	\arrow[from=1-1, to=3-1]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=3-1, to=3-2]
+	\arrow["{\pullAlong{i}}"', shorten <=9pt, shorten >=9pt, Rightarrow, from=0, to=1]
+	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=2, to=3]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9Il0sWzQsMywiXFxpZCJdLFswLDRdLFs0LDMsIlxcb3B7XFxQcmlvcn0iLDIseyJjdXJ2ZSI6NX1dLFsyLDEsIlxcUHNoe0R9Ly0iLDIseyJjdXJ2ZSI6NX1dLFs1LDYsIlxccHVsbEFsb25ne2l9IiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDEwLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzcsMTEsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+\[\begin{tikzcd}
+	{\op{\KPshGlobal{K_S}{S}}} &&&& \LexCat \\
+	\\
+	{\op{\Psh{S}}} & {\op{\Psh{S}}} && {\op{\Psh{D}}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\KPshGlobal{K_S}{S}/-}", from=1-1, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\op{\left(\pullAlong{i}\right)}}"', from=3-2, to=3-4]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{\KFiberPsh{K_D}{D}}", from=3-4, to=1-5]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "\id", from=3-1, to=3-2]
+	\arrow[from=1-1, to=3-1]
+	\arrow[""{name=4, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=3-1, to=3-2]
+	\arrow[""{name=5, anchor=center, inner sep=0}, "{\Psh{D}/-}"', curve={height=30pt}, from=3-4, to=1-5]
+	\arrow["{\pullAlong{i}}"', shorten <=9pt, shorten >=9pt, Rightarrow, from=0, to=1]
+	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=3, to=4]
+	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=2, to=5]
+\end{tikzcd}\]
 
 \TODO
 
 \subsubsection{Old stuff}
-\TODOinline{Everything from hereon out in the document is in a draft state, not yet readable}
-
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
 
-Previous iterations of this document at this point gave an overly complicated way of describing something simple (though still good to understand):
+\TODOinline{Wherever above I put a set-sized constraint on a category (such as $S$ or $D$), it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too small: they must include presheaves of sufficiently high cardinality relative to the original category.}
 
-First of all, let $Disc$ be an arbitrary (set-sized) category. This gives rise also to the category $\Psh{Disc}$ of presheaves on $Disc$, which is automatically a lexcategory, and indeed locally cartesian closed. By the observation of \cref{TrivialPreIntrosp}, this yields a locally introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$.
-
-Now, let $f : Disc \to Struct$ be an arbitrary functor from $Disc$ into an arbitrary (also set-sized) category $Struct$. This induces by composition a functor $f^* : \Psh{Struct} \to \Psh{Disc}$. This $f^*$ preserves pullbacks (as pullbacks are computed pointwise in presheaf categories. Indeed, $f^*$ furthermore preserves all limits, as it has a left adjoint given by left Kan extension). This $f^*$ also has a right adjoint (given by right Kan extension).
-
-\TODOinline{The above tells us that any geometric morphism between locally cartesian closed categories induces in the same way a locally introspective theory.}
-
-By now using \cref{IntrospPullback} with our functor $f^*$ as applied to our first locally introspective theory $\langle \Psh{Disc}, \Psh{Disc}/-, \id \rangle$, we get a second locally introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*, \ldots \rangle$.
-
-This is ALMOST the locally introspective theory we are interested in for Kripke semantics. But it needs to be massaged a bit more, in a manner requiring some further assumptions. \TODOinline{Note that if we stop right here, we get a natural notion of model corresponding to S4 Kripke frames.}
-
-First, a lemmatic construction. Suppose given any arbitrary profunctor $H : X \profuncTo Y$. This $H$ induces by profunctor composition (with profunctors $:1 \profuncTo X$, which correspond to presheaves on $X$) correspondingly an ordinary functor $H \circ - : \Psh{X} \to \Psh{Y}$. Note that this functor $H \circ -$ has a right adjoint (right Kan lift of a profunctor along a profunctor).
-
-(Alternatively, we can think of the above like so: Given (set-sized) categories $X$ and $Y$ and any arbitrary functor $H : X \to \Psh{Y}$, this extends uniquely to a (set-sized-)colimit preserving functor $: \Psh{X} \to \Psh{Y}$, as $\Psh{X}$ is the free cocompletion of $X$ (with respect to set sized colimits). This functor is the one we call $H \circ -$, and by the Special Adjoint Functor Theorem, it will have a right adjoint.)
-
-\TODOinline{Wherever above I put a set-sized constraint on a category, it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too small: they must include presheaves of sufficiently high cardinality relative to the original category.}
-
-If given two such $H_1, H_2$ and a transformation $n : H_1 \to H_2$, this extends also to a transformation $n \circ -$ from $H_1 \circ -$ to $H_2 \circ -$ as ordinary functors $: \Psh{X} \to \Psh{Y}$.
-
-Let us now suppose that $Struct$ (from before) is in fact the free category adding identities to some semicategory $Struct^-$. Then we have a bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$, as the morphisms of $Struct^-$ are not only closed under composition with each other, but also (trivially) under composition with identities on either side, and thus closed under composition on either side with the morphisms of $Struct$. 
-
-This bifunctor $\Hom_{Struct^-} : \op{Struct} \times Struct \to \Set$ comes with an inclusion transformation to the bifunctor $\Hom_{Struct} : \op{Struct} \times Struct \to \Set$. These bifunctors can both be read as profunctors from Struct to Struct; the latter is in fact the identity bifunctor on Struct, and the former is what we will take to be our $H$ as above. The inclusion transformation thus will become an inclusion transformation $i$ from $H \circ -$ to identity as functors $: \Psh{Struct} \to \Psh{Struct}$.
-
-These comprised the last ingredients we needed for proper Kripke semantics for irreflexive frames. Remember, we already had a locally introspective theory $\langle \Psh{Struct}, \Psh{Disc}/- \circ f^*\rangle$ from above. Let us call this $\langle \Psh{Struct}, C \rangle$ for convenience. We now modify it like so using: \cref{IntrospInternalMap}.
-
-% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1xcUHNoe1N0cnVjdH19Il0sWzIsMCwiXFxMZXhDYXQiXSxbMSwyLCJcXG9we1xcUHNoe1N0cnVjdH19Il0sWzAsMSwiXFxQc2h7U3RydWN0fS8tIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMCwyLCJIIFxcY2lyYyAtIiwyXSxbMiwxLCJDIiwyXSxbMyw0LCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzQsMiwiQyBcXG9we2l9IiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
-\[\begin{tikzcd}
-	{\op{\Psh{Struct}}} && \LexCat \\
-	\\
-	& {\op{\Psh{Struct}}}
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Psh{Struct}/-}", shift left=2, from=1-1, to=1-3]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-1, to=1-3]
-	\arrow["{H \circ -}"', from=1-1, to=3-2]
-	\arrow["C"', from=3-2, to=1-3]
-	\arrow[shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
-	\arrow["{C \op{i}}"{description}, shorten <=7pt, Rightarrow, from=1, to=3-2]
-\end{tikzcd}\]
-
-(In the above diagram, $\LexCat$ must be understood as large enough to contain categories such as $\Psh{Struct}$.)
-
-Keeping in mind that $H \circ - : \Psh{Struct} \to \Psh{Struct}$ has a right adjoint, we may conclude that the result is a locally introspective theory (using \magicref{RepSmallRightAdjointFibers}). When we start off taking $Struct^-$ to be a Kripke frame presumed transitive but not reflexive, taking Disc to be the discrete category on the same objects as Struct-, and $f : Disc \to Struct$ to be the inclusion, then the result of the above process is the introspective theory which corresponds to Kripke semantics on $Struct^-$. \TODOinline{Write out in more detail what the construction comes down to and thus showing how it corresponds to traditional Kripke semantics.}
-
-The result will be locally Loeb when the order on the objects of Struct- given by its morphisms is a converse well-founded order. \TODOinline{Expand on this}. We can then impose a suitable size constraint to get it to be fully introspective.
 
 \begin{TODOblock}
 Clarify the size constraint. Note that it is very common in mathematics to take the relative point of view on Set, in terms of Grothendieck universes or the like, so as to consider the topos $Set^K$ as built up from a bunch of full subtoposes defined by a global cardinality constraint: those presheaves whose cardinality at each object is constrained by an upper bound, and this upper bound is the same at each object. But there is no reason we must only consider such constant upper bounds. We can just as well consider all kinds of varying upper bounds. And by allowing the the upper bounds to vary in the appropriate way, growing sufficiently fast, we get that $Set^K$ is built up from a bunch of full subtoposes which are all introspective theories. It is like a shift of frame of reference, to allow the upper bounds to vary with suitable \quote{slope} instead of having to be constant. But it serves all the same purposes as the very standard move in mathematics, of taking a relative point of view on Set.
@@ -314,8 +317,6 @@ The reason we must use the Axiom of Replacement is essentially because the initi
 \begin{TODOblock}
 The above results immediately imply that the theorems of modal logic which hold for all locally introspective theories are no stronger than those which hold for all transitive Kripke frames, and the theorems which hold for all introspective theories or the theorems which hold in all locally Loeb theories are no stronger than those which hold for all transitive converse well-founded Kripke frames. From this, we can readily conclude that the theorems which hold in all locally introspective theories are K4 and the theorems which hold in all introspective theories or the theorems which hold in all locally Loeb theories are GL. Does the last two of these coinciding help us embed every locally introspective theory into an introspective theory, in the same way as we did for the unconstrained vs constrained presheaf models of GL Kripke frames?
 \end{TODOblock}
-
-\TODOinline{LaTeXify the above better}
 
 \begin{TODOblock}
 Give topos of trees example as well. This is what happens when we take $f$ as the identity functor and $Struct = Disc$ as the free category on some semicategory (in particular, the semicategory of natural numbers with strict reverse ordering). Note that this is an example of an introspective theory in which the functor from the introspective theory to the global aspect of the geminal category is an equivalence of categories (probably an equivalence of geminal categories, even? Thus, what we were calling a GLS-category...). Our $\Box$ operator becomes, on this category, what Birkedal et al call the step operator. This has a left adjoint as well, what Birkedal et al call the constant set operator. It's likely that in general we have left adjoints for these models based on well-founded semicategories.
