@@ -443,4 +443,82 @@ We next have to add in thinking about "ramps" (cardinality constraints) on presh
 Let S be a set-sized category. By a \quote{ramp} K on S, we mean an assignment of a set-sized collection of sets K(s) to each object s of S. By a K-presheaf on S, we mean a presheaf P on S such that for each s in S, we have that P(s) is among the sets in K(s). These comprise a set-sized full subcategory of Psh(S), which we may call K-Psh(S).
 
 What's more, K-Psh(S) extends also to a set-sized full subcategory of the self-indexing Psh(S)/- (set-sized and full in the sense of giving set-sized full subcategories of Psh(S)/P at each P in Psh(S)). It will be helpful to keep in mind that Psh(S)/P can be identified with Psh(Grothendieck(P)), where Grothendieck(P) is the category of elements for P. Grothendieck acts as a functor from Psh(S) to StrictCat/S (a slice category of StrictCat, with strictly commutative triangles). We can take a ramp on Grothendieck(P) where K(p in Grothendieck(P) above s in S) = K(s). Using this, we can construct K-Psh(Grothendieck(P)). The map from P to K-Psh(Grothendieck(P)) gives a Psh(S)-indexed category. (indeed, a Psh(S)-indexed strict category, and one where all the reindexings preserve (non-strictly) limits of such size as K is closed under). This in fact is repsmall; thus, we get a corresponding Psh(S)-internal category (an internal lexcategory, even, supposing K is closed under finite limits).
+
+\subsubsection{Old stuff from Models chapter on presheaf models}
+There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
+
+\TODOinline{Wherever above I put a set-sized constraint on a category (such as $S$ or $D$), it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too small: they must include presheaves of sufficiently high cardinality relative to the original category.}
+
+
+\begin{TODOblock}
+Clarify the size constraint. Note that it is very common in mathematics to take the relative point of view on Set, in terms of Grothendieck universes or the like, so as to consider the topos $Set^K$ as built up from a bunch of full subtoposes defined by a global cardinality constraint: those presheaves whose cardinality at each object is constrained by an upper bound, and this upper bound is the same at each object. But there is no reason we must only consider such constant upper bounds. We can just as well consider all kinds of varying upper bounds. And by allowing the the upper bounds to vary in the appropriate way, growing sufficiently fast, we get that $Set^K$ is built up from a bunch of full subtoposes which are all introspective theories. It is like a shift of frame of reference, to allow the upper bounds to vary with suitable \quote{slope} instead of having to be constant. But it serves all the same purposes as the very standard move in mathematics, of taking a relative point of view on Set.
+
+Note that while typical categorical arguments work within structural set theory, the above can be done most readily within a material set theory. Furthermore, while typical categorical arguments work within the internal logic of toposes with NNO or some such thing, the above requires us to move beyond this, and is done most readily using the Axiom of Replacement. Thus, ZF or IZF or the like. Specifically, take Set to be a material set theory and a strict lexcategory, and take a cardinality constraint at a node to be a set of sets (corresponding to a full subcategory of Set) satisfying the condition that this full subcategory is closed under finite limits. Then we furthermore impose the condition that the full subcategory at node X contains the small category of all discrete presheaves on < X and all natural transformations between them. Using transfinite induction, we can easily define a function from nodes to sets that has this property.
+
+The reason we must use the Axiom of Replacement is essentially because the initial algebra/transfinite recursion properties of well-founded sets within a mere topos $T$ are only with respect to endomorphisms of the subobject functor (which is representable, and thus such endomorphisms are themselves represented by endomorphisms on $\Omega$, living internally to the category), and not with respect to natural transformations of the self-indexing more generally (which is not representable, and thus its endomorphisms are not given by some internal data). Even simple natural transformations of the self-indexing such as the powerset operation on indexed sets may not admit corresponding catamorphisms defined by induction (e.g., there is in general no slice above the natural numbers in which the fiber of n + 1 is the powerset of the fiber of n).
+\end{TODOblock}
+
+\begin{TODOblock}
+The above results immediately imply that the theorems of modal logic which hold for all locally introspective theories are no stronger than those which hold for all transitive Kripke frames, and the theorems which hold for all introspective theories or the theorems which hold in all locally Loeb theories are no stronger than those which hold for all transitive converse well-founded Kripke frames. From this, we can readily conclude that the theorems which hold in all locally introspective theories are K4 and the theorems which hold in all introspective theories or the theorems which hold in all locally Loeb theories are GL. Does the last two of these coinciding help us embed every locally introspective theory into an introspective theory, in the same way as we did for the unconstrained vs constrained presheaf models of GL Kripke frames?
+\end{TODOblock}
+
+\begin{TODOblock}
+Give topos of trees example as well. This is what happens when we take $f$ as the identity functor and $Struct = Disc$ as the free category on some semicategory (in particular, the semicategory of natural numbers with strict reverse ordering). Note that this is an example of an introspective theory in which the functor from the introspective theory to the global aspect of the geminal category is an equivalence of categories (probably an equivalence of geminal categories, even? Thus, what we were calling a GLS-category...). Our $\Box$ operator becomes, on this category, what Birkedal et al call the step operator. This has a left adjoint as well, what Birkedal et al call the constant set operator. It's likely that in general we have left adjoints for these models based on well-founded semicategories.
+
+Actually, many of the things we cite to Birkedal are already anticipated in "Unifying Recursive and Co-recursive Definitions in Sheaf Categories" by Pietro Di Gianantonio Marino Miculan.
+\end{TODOblock}
+
+\subsection{Old stuff from geminal categories chapter}
+\TODOinline{Everything following in this chapter is about to get thrown out/rewritten}
+
+\begin{TODOblock}
+Note that the above means every geminal gadget is the carrier of a coalgebra for a particular endofunctor on geminal gadgets. Those gadgets for which this coalgebra is an isomorphism are of particular note (as related to GLS modal logic and not just GL modal logic). We can also iterate transfinitely and take a colimit (usually just an omega-colimit for finitary notions of gadget), i.e. apply Adamek's construction, to reflect arbitrary geminal gadgets into these GLS geminal gadgets. See the section on well-pointed endofunctors at "transfinite construction of free algebras" on nlab, or "A unified treatment of transfinite constructions for free algebras, free monoids, colimits, associated sheaves, and so on.". Keep in mind that the relevant endofunctor is indeed well-pointed, by the properties of geminal categories (actually, I no longer think this is well-pointed). Keep in mind, this infinitary colimit reflection can be carried out for geminal categories internal to $\Set$, given $\Set$'s sufficient infinitary colimit structure; we do not have a guarantee that a geminal category internal to an arbitrary lexcategory can be reflected into a GLS category.
+
+Actually, none of this is specific to geminal gadgets (models of free introspective theories). It applies to models of any introspective theory. (Although maybe we don't actually have well-pointedness here in general?)
+
+It may be curious to consider in what cases an introspective theory is itself GLS-geminal like so. Many natural examples do have this property (the $\Sigma_1$ introspective theory with internal $\Sigma_1$ C for a sound theory like PA, the topos of trees with step operator, the initial arithmetic universe, etc). These will generally also be "super-introspective theories" in the terminology of the TODO note at the end of this section.
+\end{TODOblock}
+
+There are analogues of all the above results where we use finite product theories instead, and talk about enriched structures rather than internal structures. This can be made to work because finite product structure suffices to discuss enriched category structure and even enriched category-with-finite-product structure once the structure of the objects themselves has been fixed. We decline for now to formalize this, as it is a bit off the path of our main interest in introspective theories. \TODOinline{Formalize this, as free locally introspective theories (consider both the finite limit and finite product cases) unify this with the above, show how Kripke-4 categories are the enriched analogue of a geminal cartesian closed category. Note how a geminal lex cartesian closed category always gives rise to such an enriched-geminal cartesian closed category. Discuss the weaker notion of enriched-geminal categories which do not presume cartesian closed structure as well, and note how any geminal category gives rise to such an enriched-geminal category.}
+
+\begin{TODOblock}
+Observe that geminal categories differ importantly from introspective theories because we do not have X |- []X for arbitrary objects in a geminal category, like we do in an introspective theory. Observe that we do have Loeb's theorem for representable presheaves in any geminal category, just from the fact that we have it as a claim about $C$ within any introspective theory, even for these objects which do not satisfy X |- []X. And similarly for certain functorial fixed points. (Write this intuition about how geminal categories differ from introspective theories most notably wrt to the X |- []X presumption into the introductory section.)
+
+But a geminal category in itself does not give us the structure to talk about presheaves or functors of a sort not definable for, well, a generic geminal category, and so we do not get Loeb's theorem or fixed points for arbitrary presheaves or functors. (It is worth observing this specific failure with an example.)
+\end{TODOblock}
+
+\begin{TODOblock}
+Write out that Geminal Ys are the same as Geminal (Geminal Y)s. More to the point, (geminal Ys)-extending-X, for a specific geminal Y structure called X, are the same as geminal (Geminal-Ys-extending-X).
+
+Thus, every specific geminal structure (for one kind of gadget) is an initial geminal structure (for another kind of gadget).
+
+One consequence of this is that every geminal structure indeed arises as the global aspect of some gadget-with-underlying-category C internal to some introspective theory (as it is easy, essentially tautological, to see that the free geminal gadget is the one which arises as the global sections of the introspective theory of geminal gadgets).
+\end{TODOblock}
+
+\begin{TODOblock}
+Discuss \quote{super-introspective} theories: Introspective theories whose internal category is equipped not just as a geminal category but furthermore as an introspective theory, and satisfying the coherence axiom that for any X, when you internalize the map from X to []X, you get the internal introspective theory's map from (internalization of X) to [](internalization of X). Note that this is a kind of well-pointedness condition.
+
+These are the same as geminal introspective theories such that the two underlying geminal category structures (from being a geminal X and from being an introspective theory) coincide.
+
+An example is given by the first part of \cref{SigmaModelSimple}, before we extend the internal copy to be more than just $\Sigma_1$. When the internal copy is restricted to $\Sigma_1$ formulas, it is not merely geminal but furthermore canonically introspective, in a matching way with the outer introspective structure.
+\end{TODOblock}
+
+\TODOinline{Note that if the theory of gadgets is finitely presentable, then so is the theory of geminal gadgets}
+
+\TODOinline{Note that the slice introspective theory construction gives us the free augmentation of an introspective theory with a global element of a particular object}
+
+\TODOinline{Do we have slice geminal categories?}
+
+\TODOinline{Remark on the fact that \Loeb/'s theorem transfers to geminal categories. Thus, any geminal cartesian closed category (such as $Set^|N|$ with Kripke [], or such as the initial topos with NNO) is like a model of guarded recursion with exponentials but without A |- []A. On the other hand, any introspective theory (such as the initial arithmetic universe) is like a model of guarded recursion with A |- []A but without exponentials.)}
+
+\subsection{Automatic consistency results without models as such}
+We already know that the theory of geminal categories is an introspective theory. And because every introspective theory is itself a geminal category, we know that the theory of introspective theories only proves $\Box A$ if it furthermore proves $A$.
+
+Finally, we know that every lexcategory can be equipped as a geminal category in a trivial way, by taking its internal geminal category to be trivially $1$, even when the outer lexcategory needn't be trivial. From this, we can conclude that the theory of introspective theories is nontrivial in the sense that it does not prove its internal geminal category to be trivial. Thus, it does not prove $\Box A$ for all $A$. Furthermore, combining this with the previous paragraph, we have the stronger consistency result that for every $n$, the theory of introspective theories does not prove $\Box^n A$ for all $A$.
+
+In this way, simply by consideration of the freeness properties already established in the chapter on geminal categories, we already know the theory of introspective theories to have highly nontrivial content, even without needing to find any models of it \quote{in the wild}.
+
+\TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
+
+\TODOinline{Maybe remove this section. No one cares about looking at things this way this except me, and we already have explicit models to show consistency.}
 \fileend
