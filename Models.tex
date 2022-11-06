@@ -156,7 +156,7 @@ Note that nothing was special about the initial arithmetic universe for \magicre
 
 We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding example of an introspective theory based on traditional logical theories, from \magicref{SigmaModelComplex}.
 
-\begin{theorem}
+\begin{theorem}\label{Sigma1ModelIAUConnection}
 The introspective theory described in \magicref{SigmaModelComplex} is the maximal localization, in the sense of \magicref{LocalizeIntrosp}, of an introspective theory produced by \magicref{IAUAsIntrospGeneral}.
 \end{theorem}
 \begin{proof}
@@ -184,6 +184,7 @@ Clearly, there is nothing special about ZF-Finite in the above. From any traditi
 \subsubsection{The general construction, yielding locally introspective theories}
 \newcommand{\SpecialHom}{\mathrm{SpecialHom}}
 \newcommand{\Prior}{\mathrm{Prior}}
+\newcommand{\prior}{\mathrm{prior}}
 
 \begin{construction}\label{GeneralPresheafLocalIntrosp}
 Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories $D$ and $S$.
@@ -194,24 +195,26 @@ By currying, we may read this $\SpecialHom$ as a functor from $S$ to $\Psh{S}$ w
 
 We may now define a locally introspective theory $\langle \Psh{S}, C\rangle$ like so:
 
-% https://q.uiver.app/?q=WzAsNCxbMiwwLCJcXG9we1xcUHNoe1N9fSJdLFs0LDEsIlxcb3B7XFxQc2h7RH19Il0sWzYsMCwiXFxMZXhDYXQiXSxbMCwwLCJcXG9we1xcUHNoe1N9fSJdLFswLDEsIlxcb3B7XFxsZWZ0KCBcXHB1bGxBbG9uZ3tpfSBcXHJpZ2h0KX0iLDJdLFsxLDIsIlxcUHNoe0R9Ly0iLDJdLFswLDIsIlxcUHNoe1N9Ly0iXSxbMywwLCJcXGlkIl0sWzMsMCwiXFxvcHtcXFByaW9yfSIsMix7ImN1cnZlIjo1fV0sWzYsMSwiXFxwdWxsQWxvbmd7aX0iLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzcsOCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+% https://q.uiver.app/?q=WzAsNCxbMiwwLCJcXG9we1xcUHNoe1N9fSJdLFs0LDEsIlxcb3B7XFxQc2h7RH19Il0sWzYsMCwiXFxMZXhDYXQiXSxbMCwwLCJcXG9we1xcUHNoe1N9fSJdLFswLDEsIlxcb3B7XFxsZWZ0KCBcXHB1bGxBbG9uZ3tpfSBcXHJpZ2h0KX0iLDJdLFsxLDIsIlxcUHNoe0R9Ly0iLDJdLFswLDIsIlxcUHNoe1N9Ly0iXSxbMywwLCJcXGlkIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywwLCJcXG9we1xcUHJpb3J9IiwyLHsiY3VydmUiOjV9XSxbNiwxLCJcXHB1bGxBbG9uZ3tpfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XSxbNyw4LCIiLDEseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
 \[\begin{tikzcd}
 	{\op{\Psh{S}}} && {\op{\Psh{S}}} &&&& \LexCat \\
 	&&&& {\op{\Psh{D}}}
 	\arrow["{\op{\left( \pullAlong{i} \right)}}"', from=1-3, to=2-5]
 	\arrow["{\Psh{D}/-}"', from=2-5, to=1-7]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{\Psh{S}/-}", from=1-3, to=1-7]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "\id", from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\id", Rightarrow, no head, from=1-1, to=1-3]
 	\arrow[""{name=2, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=1-1, to=1-3]
 	\arrow["{\pullAlong{i}}"{description}, shorten <=3pt, Rightarrow, from=0, to=2-5]
 	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=1, to=2]
 \end{tikzcd}\]
 
-(Pedantically, we caution that in the above diagram, $\LexCat$ must be understood as containing not just \setsmall/ lexcategories but also large lexcategories, so that this $\LexCat$ may serve as the target of the self-indexings of the large categories $\Psh{S}$ and $\Psh{D}$.)
+The unlabelled 2-cell on the left of the above diagram is the one given by the inclusion of $\Prior$ into the identity (which is turned around when considered as endodunctors of $\op{\Psh{S}}$ instead of $\Psh{S}$).
 
 Here, we take the $\Psh{S}$-indexed lexcategory $C$ to be the bottom composite path, and of course our $\introF$ is the composite 2-cell from top to bottom. The local \repsmall/ness of this $C$ follows via \magicref{RepLocallySmallRightAdjoint} from the observations that $\Prior$ and $\pullAlong{i}$ both have right adjoints and $\Psh{D}/-$ is locally \repsmall/ (i.e., $\Psh{D}$ is locally cartesian closed).
 
-This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} (note that the inclusion of $\Prior$ into $\id_{\Psh{S}}$ becomes a map in the other direction when acting on $\op{\Psh{S}}$; this is the unlabelled 2-cell on the left of the above diagram).
+(Pedantically, we caution that in the above diagram, $\LexCat$ must be understood as containing not just \setsmall/ lexcategories but also large lexcategories, so that this $\LexCat$ may serve as the target of the self-indexings of the large categories $\Psh{S}$ and $\Psh{D}$.)
+
+This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} using a map derived from the inclusion of $\Prior$ into the identity on $\Psh(S)$.
 \end{construction}
 
 \TODOinline{Discuss the K4 example of this general construction, including the issue of augmenting with a new maximal element. Relate to introductory examples from the first chapter}
@@ -314,6 +317,8 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 \end{tikzcd}\]
 
 \TODOinline{Observe that we get \Loeb/'s theorem for our locally introspective theory from \Loeb/'s theorem for our fully introspective theory, by picking sufficiently large ramps for any particular instance.}
+
+\TODOinline{Observe that this argument depends on the Axiom of Replacement. It would fail in ZFC - Replacement for the same reason that one could not construct $\bigcup_{n \in \nat} \mathcal{P}^n(\nat)$ or $\prod_{n \in \nat} \mathcal{P}^n(\nat)$.}
 
 \subsection{Recap}
 \TODO
