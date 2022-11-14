@@ -268,7 +268,7 @@ Of course, this yields an introspective or locally introspective theory just in 
 \end{construction}
 
 \begin{construction}\label{IntrospPullback}
-If $\langle T, C, \introF \rangle$ is a pre-introspective theory, $U$ is any lexcategory, and $\Sigma: U \to T$ is any functor which preserves pullbacks (we do not require $\Sigma$ to preserve the terminal object), then $\langle U, \pullAlong{\Sigma} C \rangle$ can naturally be equipped as an introspective theory, like so:
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, $U$ is any lexcategory, and $\Sigma: U \to T$ is any functor which preserves pullbacks (we do not require $\Sigma$ to preserve the terminal object), then $\langle U, \pullAlong{\Sigma} C \rangle$ can naturally be equipped as a pre-introspective theory, like so:
 \end{construction}
 \begin{proof}[Details]
 % https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1V9Il0sWzIsMCwiXFxvcHtUfSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzEsMiwiVC8tIiwwLHsib2Zmc2V0IjotMn1dLFsxLDIsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMCwxLCJcXG9we1xcU2lnbWF9Il0sWzAsMiwiVS8tIiwwLHsib2Zmc2V0IjotNSwiY3VydmUiOi0zfV0sWzMsNCwiXFxpbnRyb0YiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzYsMSwiXFxTaWdtYSIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
@@ -345,66 +345,14 @@ Next, we show the unique factorization property. \TODO.
 If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
 
 This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. This will follow from the categorical \Loeb/'s theorem we develop in the next chapter.
-
-In the same way, if $T$ is any category with finite products, it can be equipped as a pre-introspective finite product theory, taking $C$ to be given by the simple self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. This will be a locally introspective finite product theory just in case $T$ is cartesian closed.
-
-\TODOinline{The constructions of the last two paragraphs are trivial and in a way a distraction, because our goal is introspective theories in the end, and these do not give us that. However, this way of looking at categories with finite products/CCCs/LCCCs is useful for drawing traditional corollaries of our general results.}
 \end{construction}
 
-\begin{observation}\label{CartesianClosedLocallyIntrosp}
-The last construction can be much further generalized. Here we do so, using a number of observations:
-\TODOinline{Move these wherever they actually belong}
-
-Given a lex endofunctor $\Box$ under identity (that is, equipped with a natural transformation $\introN$ from identity to $\Box$) on a lex category $T$, we can automatically extend $\Box$ to a $T$-indexed lex endofunctor under identity on the self-indexing of $T$, taking the action on objects of $\Box_X$ on a slice $f : Y \to X$ above $X$ to be given by applying $\Box$ to $f$ to achieve a slice $\Box f : \Box Y \to \Box X$, then pulling this back along $\introN_Y : X \to \Box X$ to get another slice above $X$. The action on morphisms and the lexness of this construction are straightforward if tedious to show, as are the relevant functoriality and naturality conditions for this $\Box$ to be a well-defined $T$-indexed endofunctor \TODO.
-
-This construction also works replacing lexness throughout by finite product structure and using the simple self-indexing correspondingly.
-
-Furthermore, if $T$ is a cartesian closed category and $\Box$ is a finite product preserving endofunctor on $T$, we can obtain another cartesian closed category with the same objects as $T$ but in which a morphism from $A$ to $B$ is what had originally been a global section of $\Box (A \implies B)$, with the obvious composition structure.
-
-The end result of these observations is that a pre-introspective cartesian closed theory in which $\introF$ is essentially surjective on objects amounts to essentially the same thing as a cartesian closed category $T$, a finite product preserving endofunctor $\Box$ on $T$, and a natural transformation $\introN$ from identity to $\Box$ on $T$. We take our category $C$ to be given by the construction of the last paragraph (taken as $T$-indexed by performing this relative to each aspect of the simple self-indexing of $T$), and we obtain $\introS$ by noting that a morphism from $A$ to $B$ in (any aspect of) $T$ corresponds to a global section of $A \implies B$, which can then be hit with $\Box$ to obtain a global section of $\Box (A \implies B)$. The result is automatically locally introspective.
-
-\TODOinline{Some version of this should apply as well to locally cartesian closed categories, but there's some bother about defining what the objects in the construction from two paragraphs ago should be, when they are given by equalizers in $C$ that don't already exist in $T$.}
-
-However, locally introspective (locally) cartesian closed theories cannot be fully introspective, or even just have the \Loeb/\ property, except in a somewhat degenerate sense. $((\Box A) \implies A) \implies A$ will automatically be inhabited, as we have $(\Box A \implies A) \vdash \Box (\Box A \implies A)$ by $\introN$, which in turn entails $\Box A$ by \Loeb/, and thus $(\Box A) \implies A \vdash A$. When $A$ is thought of as falsehood $0$, this amounts to $\neg \neg \Box 0$, asserting the double-negation of the inconsistency of $C$. In a Boolean context, this forces $C$ to be trivial.
-
-\TODOinline{Write the analogue of this for geminal categories}
-\end{observation}
-
 \subsection{Variations from our core definition}
-\TODOinline{Note that essentially all constructions and results in this chapter generalize to finite product theories; standardize vocabulary around this}
+\TODOinline{Comment in passing on what in this document generalizes to finite product theories or the like.}
 
-There are some slight variations on the concept of a (pre-)introspective theory which will occasionally be of use to us in future chapters, for technical reasons or for showing the greater generality of some results. In this section, we discuss such variations. But we remind the reader that our main object of interest is introspective theories. If ever this zoo of other named concepts grows intimidating, think always of introspective theories as the North Star.
+\TODOinline{Move the following to the geminal categories chapter}
 
-It is sometimes useful to relax all finite limit structure in \magicref{DefnPreIntrospSN} to merely finite product structure:
-
-\begin{definition}
-A \defined{pre-introspective finite product theory} is a finite product category $T$, a $T$-indexed finite product category $C$, a finite product preserving functor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $t$ in $T$ to $\Hom_C(1, \introS(t))$.
-\end{definition}
-
-As ever, we may write out $\langle T, C, \introS, \introN \rangle$ or $\langle T, C, \introS, \introN, 1 \rangle$ to be fully explicit, but in typical abuse of language, will usually say $\langle T, C \rangle$ to describe a pre-introspective finite product theory. Of course, every pre-introspective theory is a fortiori a pre-introspective finite product theory using the same components.
-
-Just as for pre-introspective theories, these admit an alternative definition along the lines of \magicref{DefnPreIntrospIndexed}, with the equivalence between the two definitions established by the remark after \autoref{SNCorrespondence}:
-
-\begin{definition}
-A \defined{pre-introspective finite product theory} is a finite product category $T$, a $T$-indexed finite product category $C$, and a finite product preserving functor $\introF$ from the simple self-indexing of $T$ to $C$, like so:
-
-% https://q.uiver.app/?q=WzAsMixbMCwwLCJcXG9we1R9Il0sWzIsMCwiXFxGaW5Qcm9kQ2F0Il0sWzAsMSwiVC8vLSIsMCx7Im9mZnNldCI6LTJ9XSxbMCwxLCJDIiwyLHsib2Zmc2V0IjoyfV0sWzIsMywiXFxpbnRyb0YiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
-\[\begin{tikzcd}
-	{\op{T}} && \FinProdCat
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{T//-}", shift left=2, from=1-1, to=1-3]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-1, to=1-3]
-	\arrow["\introF"', shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
-\end{tikzcd}\]
-\end{definition}
-
-It is natural now also to generalize \autoref{DefnLocallyIntrosp}:
-\begin{definition}
-By a \defined{locally introspective finite product theory}, we mean a pre-instrospective finite product theory $\langle T, C \rangle$ for which $C$ is locally \repsmall/.
-\end{definition}
-
-However, we do not take any special interest in locally introspective finite product theories $\langle T, C \rangle$ for which $C$ is furthermore fully \repsmall/, for reasons connected to the footnote given in \magicref{IndexedStructuresDefn}. Thus, the concept of an introspective theory does not have a complete analogue in the finite product context.
-
-Returning to the world of finite limits, there is one final definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
+There is one more definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
 
 \begin{definition}\label{InnerStrictDefn}
 By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
@@ -414,7 +362,7 @@ Thus, an introspective theory can always be construed as some inner-strict intro
 
 We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
 
-\TODOinline{We should probably just define introspective theories in the first place as inner-strict introspective theories. This makes everything easier when we discuss homomorphisms, Loeb's theorem, etc. At least, we should make some note about how every construction we give is really a construction of inner-strict introspective theories.}
+\TODOinline{We perhaps should just define introspective theories in the first place as inner-strict introspective theories. This makes everything easier when we discuss homomorphisms, Loeb's theorem, etc. At least, we should make some note about how every construction we give is really a construction of inner-strict introspective theories.}
 
 \subsection{The interaction of \texorpdfstring{$\introS$}{S} and \texorpdfstring{$\introN$}{N}}
 We gather here two small but useful lemmas for reasoning about (pre-)introspective theories, concerning the interaction of $\introS$ and $\introN$.

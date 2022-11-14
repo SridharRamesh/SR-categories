@@ -499,4 +499,24 @@ In this way, simply by consideration of the freeness properties already establis
 \TODOinline{Discuss more why the stronger consistency result is really the relevant thing to think about.}
 
 \TODOinline{Maybe remove this section. No one cares about looking at things this way this except me, and we already have explicit models to show consistency.}
+
+\subsection{Locally introspective cartesian closed theories}
+\begin{observation}\label{CartesianClosedLocallyIntrosp}
+\magicref{TrivialPreIntrosp} can be much further generalized. Here we do so, using a number of observations:
+\TODOinline{Move these wherever they actually belong}
+
+Given a lex endofunctor $\Box$ under identity (that is, equipped with a natural transformation $\introN$ from identity to $\Box$) on a lex category $T$, we can automatically extend $\Box$ to a $T$-indexed lex endofunctor under identity on the self-indexing of $T$, taking the action on objects of $\Box_X$ on a slice $f : Y \to X$ above $X$ to be given by applying $\Box$ to $f$ to achieve a slice $\Box f : \Box Y \to \Box X$, then pulling this back along $\introN_Y : X \to \Box X$ to get another slice above $X$. The action on morphisms and the lexness of this construction are straightforward if tedious to show, as are the relevant functoriality and naturality conditions for this $\Box$ to be a well-defined $T$-indexed endofunctor \TODO.
+
+This construction also works replacing lexness throughout by finite product structure and using the simple self-indexing correspondingly.
+
+Furthermore, if $T$ is a cartesian closed category and $\Box$ is a finite product preserving endofunctor on $T$, we can obtain another cartesian closed category with the same objects as $T$ but in which a morphism from $A$ to $B$ is what had originally been a global section of $\Box (A \implies B)$, with the obvious composition structure.
+
+The end result of these observations is that a pre-introspective cartesian closed theory in which $\introF$ is essentially surjective on objects amounts to essentially the same thing as a cartesian closed category $T$, a finite product preserving endofunctor $\Box$ on $T$, and a natural transformation $\introN$ from identity to $\Box$ on $T$. We take our category $C$ to be given by the construction of the last paragraph (taken as $T$-indexed by performing this relative to each aspect of the simple self-indexing of $T$), and we obtain $\introS$ by noting that a morphism from $A$ to $B$ in (any aspect of) $T$ corresponds to a global section of $A \implies B$, which can then be hit with $\Box$ to obtain a global section of $\Box (A \implies B)$. The result is automatically locally introspective.
+
+\TODOinline{Some version of this should apply as well to locally cartesian closed categories, but there's some bother about defining what the objects in the construction from two paragraphs ago should be, when they are given by equalizers in $C$ that don't already exist in $T$.}
+
+However, locally introspective (locally) cartesian closed theories cannot be fully introspective, or even just have the \Loeb/\ property, except in a somewhat degenerate sense. $((\Box A) \implies A) \implies A$ will automatically be inhabited, as we have $(\Box A \implies A) \vdash \Box (\Box A \implies A)$ by $\introN$, which in turn entails $\Box A$ by \Loeb/, and thus $(\Box A) \implies A \vdash A$. When $A$ is thought of as falsehood $0$, this amounts to $\neg \neg \Box 0$, asserting the double-negation of the inconsistency of $C$. In a Boolean context, this forces $C$ to be trivial.
+
+\TODOinline{Write the analogue of this for geminal categories}
+\end{observation}
 \fileend
