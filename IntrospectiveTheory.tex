@@ -347,23 +347,6 @@ If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, tak
 This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. This will follow from the categorical \Loeb/'s theorem we develop in the next chapter.
 \end{construction}
 
-\subsection{Variations from our core definition}
-\TODOinline{Comment in passing on what in this document generalizes to finite product theories or the like.}
-
-\TODOinline{Move the following to the geminal categories chapter}
-
-There is one more definition we will need for technical reasons later on. Recall that a small indexed lexcategory is one which is equivalent to some small indexed strict lexcategory (with possibly multiple non-isomorphic such choices available). It is occasionally of use to imagine some particular such choice has been pinned down, leading to the following definition.
-
-\begin{definition}\label{InnerStrictDefn}
-By an \defined{inner-strict introspective theory}, we mean an introspective theory $\langle T, C\rangle$ along with a specific choice for how to construe $C$ as an internal lexcategory; that is, a specific choice of $\Ob(C)$ as an object in $T$, as well as specific choices of internal maps equipping $C$ with chosen basic limits.
-\end{definition}
-
-Thus, an introspective theory can always be construed as some inner-strict introspective theory, though multiple non-isomorphic such choices may be available. \TODOinline{Cite how every small indexed non-strict lexcategory can become a small indexed strict lexcategory}
-
-We call this \quote{inner strict} to emphasize that we've taken every choice concerning the representation of $C$ which was allowed to vary over non-isomorphic objects or non-equal parallel morphisms in $T$, and fixed some particular such choice for it, but we've not imposed strict structure on $T$ itself.
-
-\TODOinline{We perhaps should just define introspective theories in the first place as inner-strict introspective theories. This makes everything easier when we discuss homomorphisms, Loeb's theorem, etc. At least, we should make some note about how every construction we give is really a construction of inner-strict introspective theories.}
-
 \subsection{The interaction of \texorpdfstring{$\introS$}{S} and \texorpdfstring{$\introN$}{N}}
 We gather here two small but useful lemmas for reasoning about (pre-)introspective theories, concerning the interaction of $\introS$ and $\introN$.
 
@@ -422,9 +405,11 @@ Now consider the composites around this commutative diagram along the two outerm
 (We would not ordinarily bother to distinguish between $1$ and $\introS(1)$ or in general explicitly write out the coherence isomorphisms for a product preserving functor, but in this one example it may be illuminating to see these distinctions and isomorphisms explicitly.)
 \end{proof}
 
-\TODOinline{Note that in our Box notation, the above identifies $\introN$ and $\Box$, so far as their action on global elements of $T$ goes}
+\sTODOinline{Note that in our Box notation, the above identifies $\introN$ and $\Box$, so far as their action on global elements of $T$ goes.}
 
 \subsection{Recap}
 We have defined the central notion of our interest, the concept of an introspective theory. We have proven that two different definitions of this concept are equivalent. We have also discussed a number of slight variations on this concept. We have seen how a canonical example of an introspective theory can be constructed by considering $\Sigma_1$ formulae in familiar theories such as ZF-Finite. Finally, we have discussed a number of other constructions which generate new introspective theories or pre-introspective theories from existing ones or from other categorical data (such as generating pre-introspective theories from cartesian closed categories).
+
+\sTODOinline{Comment in passing on what in this document generalizes to finite product theories or the like.}
 
 \fileend
