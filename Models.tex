@@ -180,6 +180,8 @@ This concludes the proof.
 
 Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
 
+\TODOinline{Observe that in this section we constructed the initial arithmetic universe as an introspective theory. This is different in flavor from the previous section, where we constructed the initial NNO-topos or the like not as an introspective theory but as a geminal category.}
+
 \subsection{Models based on presheaf categories}
 \subsubsection{The general construction, yielding locally introspective theories}
 \newcommand{\SpecialHom}{\mathrm{SpecialHom}}
@@ -214,10 +216,12 @@ Here, we take the $\Psh{S}$-indexed lexcategory $C$ to be the bottom composite p
 
 (Pedantically, we caution that in the above diagram, $\LexCat$ must be understood as containing not just \setsmall/ lexcategories but also large lexcategories, so that this $\LexCat$ may serve as the target of the self-indexings of the large categories $\Psh{S}$ and $\Psh{D}$.)
 
-This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} using a map derived from the inclusion of $\Prior$ into the identity on $\Psh(S)$.
+This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} using a map derived from the inclusion of $\Prior$ into the identity on $\Psh{S}$.
 \end{construction}
 
 \TODOinline{Discuss the K4 example of this general construction, including the issue of augmenting with a new maximal element. Relate to introductory examples from the first chapter}
+
+\TODOinline{Discuss the topos of trees example of this general construction}
 
 Unfortunately, the above construction does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \TODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}.
 
