@@ -204,8 +204,91 @@ Phew! What a long walk it was to get to describing that example! All the better,
 While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$. As a check of their understanding, the reader is encouraged to think about why this is.
 \end{warningenv}
 
-\subsubsection{Example based on a presheaf category}
-In this subsection, we will give an example of an introspective theory based on presheaf categories.
+\subsubsection{Examples based on presheaf categories}
+\TODOinline{Warning to readers: I'm in the middle of modifying this section, so it will be unreadable while I tinker with it.}
+
+In this subsection, we will give some other instructive examples of introspective theories based on presheaf categories. These examples are of a different flavor from those based on logical theories as in the previous section, but thus help illustrate the generality of the notion of introspective theory.
+
+The first example in this section will eventually be used to relate introspective theories to the topos of trees as used in much work on guarded recursion. This may also be useful to build up intuition as we work towards the more complicated example in this section.
+
+The final example in this section will eventually be particularly useful for relating introspective theories to the traditional study of \Goedel/-\Loeb/ modal logic via well-founded Kripke frames.
+
+\paragraph{The locally introspective topos of trees and fully introspective subcategories of this}
+Here, we consider an example of an introspective theory based on presheaves over the natural numbers (which comprise the so-called topos of trees). Analogous examples may be constructed for presheaves over arbitrary categories; see \TODOinline{cite later chapter} for a vast generalization. We introduce this particular example as it is perhaps the simplest nontrivial presheaf category to consider, and as this topos of trees has already been much considered in work on guarded recursion (a point we will return to in \TODOinline{cite later chapter}).
+
+\begin{construction}
+Let $\omega$ be the poset of natural numbers with their usual ordering, and consider the category of presheaves $\Psh{\omega}$ (often called the topos of trees). As a topos, this is locally cartesian closed. Accordingly, its self-indexing $\Psh{\omega}/-$ is locally \repsmall/.
+
+The functor $\mathrm{Succ} : n : \omega \mapsto n + 1 : \omega$ induces correspondingly a functor $\pullAlong{\mathrm{Succ}} : \Psh{\omega} \to \Psh{\omega}$. For convenience, we will use the name $\Prior$ to refer to this endofunctor on $\Psh{\omega}$. Thus, $\Prior(P)(n) = P(n + 1)$ for $n \in \omega$.
+
+The map $n \leq n + 1$ from identity to $\mathrm{Succ}$ as endofunctors on $\omega$ induces a corresponding map from $\Prior$ to identity as endofunctors on $\Psh{\omega}$ (keeping in mind the contravariance of presheaves). We shall write $\prior : \Prior \to \id$ for this map.
+
+Also, as with any functor between presheaf categories given by composition in this manner, $\Prior$ has a right adjoint, given by right Kan extension. [The right adjoint of $\Prior$ may be called $\Later$; it can be described by $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$ for $n \in \omega$, with the obvious corresponding actions on restriction maps and on morphisms between presheaves. Note that we may pull the map $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$ to obtain a corresponding map $\latermap : \id \to \Later$.]
+
+Let $C$ be the $\Psh{\omega}$-indexed lexcategory given by $C(-) = \Psh{\omega}/\Prior(-)$. That is, $C$ is given by applying $\pullAlong{\Prior}$ to the self-indexing $\Psh{\omega}/-$. Note that $C$ is locally \repsmall/ by \magicref{RepLocallySmallRightAdjoint}, as the self-indexing $\Psh{\omega}/-$ is locally \repsmall/ and $\Prior$ has a right adjoint.
+
+We will now equip $\langle \Psh{\omega}, C \rangle$ as a locally introspective theory, by exhibiting a suitable $\introF$ from $\Psh{\omega}/-$ to $C$. This is via whiskering $\prior$ as in the following diagram:
+
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJcXG9we1xcUHNoe1xcb21lZ2F9fSJdLFsyLDAsIlxcb3B7XFxQc2h7XFxvbWVnYX19Il0sWzQsMCwiXFxMZXhDYXQiXSxbMSwyLCJcXFBzaHtcXG9tZWdhfS8tIl0sWzAsMSwiXFxpZCIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzAsMSwiXFxvcHtcXFByaW9yfSIsMix7ImN1cnZlIjo1fV0sWzQsNSwiXFxvcHtwcmlvcn0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+	{\op{\Psh{\omega}}} && {\op{\Psh{\omega}}} && \LexCat
+	\arrow["{\Psh{\omega}/-}", from=1-3, to=1-5]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "\id", Rightarrow, no head, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=1-1, to=1-3]
+	\arrow["{\op{prior}}", shorten <=4pt, shorten >=4pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+[Pedantically, in this diagram, $\LexCat$ must be interpreted as suitably large relative to $\Psh{\omega}$ for the self-indexing of $\Psh{\omega}$ to be valued in $\LexCat$.]
+
+Again, keep in mind the contravariance of indexed structures here, so that $\prior : \Prior \to \id$ does indeed act as a map from any $\Psh{\omega}$-indexed structure $X$ into the corresponding $\pullAlong{\Prior}(X)$.
+
+Thus, we have constructed a locally introspective theory $\langle \Psh{\omega}, C \rangle$ with $\introF$ given by whiskering $\prior$ as in the above diagram.
+
+[It may be illustrative to alternatively describe this $\introF$ in terms of $\introS$ and $\introN$.
+
+For $\introS$, let us first observe that $\Prior(1) = 1$; that is, $\Prior$ preserves the terminal object\footnote{This is closely related to the fact that $\omega$ has no maximal element, and would need modification were we carrying out the analogous construction for a poset which had maximal elements.}. Accordingly, $\Glob{C} = \Psh{\omega}/\Prior(1) = \Psh{\omega}$. And as the component $\prior_1 : \Prior(1) \to 1$ must be the identity on the terminal object, the map $\introS : \Psh{\omega} \to \Glob{C}$ corresponding to our choice of $\introF$ becomes the identity under this identification. 
+
+Furthermore, the map $\Hom_C(1, \introS(-)) : \Psh{\omega} \to \Psh{\omega}$ can be seen to be the right adjoint to $\Prior$; thus, it is $\Later$. Finally, as for the $\introN$ corresponding to our $\introF$, this will be the map $\latermap : \id \to \Later$ given by pulling $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$.]
+\end{construction}
+
+This way of viewing $\Psh{\omega}$ as a locally introspective theory is illustrative. Unfortunately, this is not an introspective theory, as our $C = \pullAlong{\Prior}\left(\Psh{\omega}/-\right) \rangle$ is merely locally \repsmall/, not \repsmall/ simpliciter.
+
+We do not have that $\Ob(C)$ is itself an object of $\Psh{\omega}$. Essentially, the obstruction is that $C(\yoneda(n)) = \Psh{\omega}/\Prior(\yoneda(n)) = \Psh{\omega}/\yoneda(\mathrm{max}(n - 1, 0))$ has a proper class of objects, but the presheaves in $\Psh{\omega}$ are set-valued.
+
+We might naively try to ameliorate this problem by replacing $\Psh{\omega} = \Set^{\omega}$ by $\left(\Set'\right)^{\omega}$ where $\Set'$ is some full subcategory of $\Set$, such as sets of cardinality below some particular inaccessible cardinal. But it is soon seen that such a uniform cardinality constraint across all $n \in \omega$ will not be workable for fixing the issue.
+
+Rather, what will fix the issue is to impose a variable cardinality constraint: We shall consider those presheaves whose values at each $n$ come from a particular full sublexcategory $\Set_n$ of $\Set$, where these restrictions get looser as $n$ gets larger.
+
+We will describe this process in full generality later at \TODOinline{Cite appropriate later chapter}. For now, we will quickly describe one concrete approach that works:
+
+\newcommand{\PshUnderN}[1]{\mathrm{Psh}'(\omega_{<#1})}
+\newcommand{\PshUnder}{\mathrm{Psh}'(\omega)}
+
+\begin{construction}
+Let $\Set_n$ for each  $n \in \omega$ be a \setsmall/ full sublexcategory of $\Set$. By $\PshUnder$, we mean the full sublexcategory of $\Psh{\omega}$ comprising presheaves $P$ such that $P(m) \in \Set_m$ for all $m \in \omega$.
+
+By $\omega_{< n}$, we mean the full subcategory of $\omega$ restricted to those naturals which are less than $n$. By $\PshUnderN{n}$, we mean the full sublexcategory of $\Psh{\omega_{< n}}$ comprising presheaves such that $P(m) \in \Set_m$ for each $m < n$.
+
+Observe that each $\PshUnderN{n}$ can be viewed as a \setsmall/ strict lexcategory. Its collection of objects and its collection of morphisms are readily seen to comprise bona fide sets. 
+
+We also have obvious restriction maps from $\PshUnderN{n}$ to $\PshUnderN{m}$ for $m \leq n$ by projecting away unused components, and any composition of such restriction maps yields the appropriate such restriction map.
+
+Thus, we have an $\omega$-indexed \setsmall/ strict lexcategory $C'(n) = \PshUnderN{n}$. In other words, this is a lexcategory internal to $\Psh{\omega}$.
+
+Also note that once $\Set_0, \Set_1, \ldots, \Set_{n - 1}$ are determined, we have already determined what $\PshUnderN{n}$ is.
+
+Thus, we may readily inductively choose $\Set_n$ for each $n$ such that both $\Ob(\PshUnderN{n})$ and $\Mor(\PshUnderN{n})$ are among the objects of $\Set_n$.
+
+One such choice, for example, is where we take each $\Set_n$ to comprise the sets of rank less than \TODO.
+
+When we choose $\Set_n$ in this manner, we have that $C'$ is not only internal to $\Psh{\omega}$, but indeed lives within its full subcategory $\PshUnder$.
+
+We now flesh $\langle \PshUnder, C'\rangle$ out into an introspective theory, by defining an appropriate $\introS$ and $\introN$. Much like before, $\Glob{C'}$ is readily identified with $\PshUnder$ and we take  $\introS$ to be this identification. As just as before, we find that under this identification, $\Hom_C(1, -)$ acts as $\Later$, so we may take $\introN$ to be $\latermap$. \TODOinline{Flesh this out more.}
+
+This completes the description of $\langle \PshUnder, C' \rangle$ as an introspective theory  (relative to any suitable choice of the categories $\{\Set_n\}_{n \in \omega}$).
+\end{construction}
+
+\paragraph{A more archetypal example}
 
 \TODOinline{Finish writing out the details on this example. Get rid of the "hopefully" words. Write out a naive version first, without size conditions, then show the obstruction, to motivate the size condition. Perhaps write out first a model like the topos of trees, where T and C are essentially the same, then do the more archetypal example after that.}
 
