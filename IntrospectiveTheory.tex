@@ -209,12 +209,15 @@ While we have above constructed introspective theories $\langle \ZfinSigma, \Inn
 
 In this subsection, we will give some other instructive examples of introspective theories based on presheaf categories. These examples are of a different flavor from those based on logical theories as in the previous section, but thus help illustrate the generality of the notion of introspective theory.
 
-The first example in this section will eventually be used to relate introspective theories to the topos of trees as used in much work on guarded recursion. This may also be useful to build up intuition as we work towards the more complicated example in this section.
+The first example in this section will eventually be used to relate introspective theories to the topos of trees with the \quote{later} modality as used in much work on guarded recursion. This may also be useful to build up intuition as we work towards the more complicated example in this section.
 
-The final example in this section will eventually be particularly useful for relating introspective theories to the traditional study of \Goedel/-\Loeb/ modal logic via well-founded Kripke frames.
+The final examples in this section are also illustrated using the topos of trees, but with a different internal category inducing a different modality. This will eventually be particularly useful for relating introspective theories to the traditional study of \Goedel/-\Loeb/ modal logic via well-founded Kripke frames.
 
-\paragraph{The locally introspective topos of trees and fully introspective subcategories of this}
-Here, we consider an example of an introspective theory based on presheaves over the natural numbers (which comprise the so-called topos of trees). Analogous examples may be constructed for presheaves over arbitrary categories; see \TODOinline{cite later chapter} for a vast generalization. We introduce this particular example as it is perhaps the simplest nontrivial presheaf category to consider, and as this topos of trees has already been much considered in work on guarded recursion (a point we will return to in \TODOinline{cite later chapter}).
+In both examples in this section, we first construct a locally introspective theory using an unrestricted presheaf category. We then impose some cardinality constraints to cut these down into introspective theories.
+
+\paragraph{Presheaf examples related to the \quote{later} modality from guarded recursion}
+
+We give this example in terms of presheaves over the natural numbers (which comprise the so-called topos of trees), but analogous examples may be constructed for presheaves over arbitrary categories; see \TODOinline{cite later chapter} for a vast generalization. We focus on presheaves over the natural numbers in this example as it is perhaps the simplest nontrivial presheaf category to consider, and also as the \quote{later} modality on the topos of trees which is at the core of this example has already been much considered in work on guarded recursion (a point which we will return to highlighting in \TODOinline{cite later chapter}).
 
 \begin{construction}
 Let $\omega$ be the poset of natural numbers with their usual ordering, and consider the category of presheaves $\Psh{\omega}$ (often called the topos of trees). As a topos, this is locally cartesian closed. Accordingly, its self-indexing $\Psh{\omega}/-$ is locally \repsmall/.
@@ -223,7 +226,7 @@ The functor $\mathrm{Succ} : n : \omega \mapsto n + 1 : \omega$ induces correspo
 
 The map $n \leq n + 1$ from identity to $\mathrm{Succ}$ as endofunctors on $\omega$ induces a corresponding map from $\Prior$ to identity as endofunctors on $\Psh{\omega}$ (keeping in mind the contravariance of presheaves). We shall write $\prior : \Prior \to \id$ for this map.
 
-Also, as with any functor between presheaf categories given by composition in this manner, $\Prior$ has a right adjoint, given by right Kan extension. [The right adjoint of $\Prior$ may be called $\Later$; it can be described by $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$ for $n \in \omega$, with the obvious corresponding actions on restriction maps and on morphisms between presheaves. Note that we may pull the map $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$ to obtain a corresponding map $\latermap : \id \to \Later$.]
+Also, as with any functor between presheaf categories given by composition in this manner, $\Prior$ has a right adjoint, given by right Kan extension. [The right adjoint of $\Prior$ may be called $\Later$, or is often called $\later$ in guarded recursion literature. It can be described by $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$ for $n \in \omega$, with the obvious corresponding actions on restriction maps and on morphisms between presheaves. Note that we may pull the map $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$ to obtain a corresponding map $\latermap : \id \to \Later$.]
 
 Let $C$ be the $\Psh{\omega}$-indexed lexcategory given by $C(-) = \Psh{\omega}/\Prior(-)$. That is, $C$ is given by applying $\pullAlong{\Prior}$ to the self-indexing $\Psh{\omega}/-$. Note that $C$ is locally \repsmall/ by \magicref{RepLocallySmallRightAdjoint}, as the self-indexing $\Psh{\omega}/-$ is locally \repsmall/ and $\Prior$ has a right adjoint.
 
@@ -238,22 +241,22 @@ We will now equip $\langle \Psh{\omega}, C \rangle$ as a locally introspective t
 	\arrow["{\op{prior}}", shorten <=4pt, shorten >=4pt, Rightarrow, from=0, to=1]
 \end{tikzcd}\]
 
-[Pedantically, in this diagram, $\LexCat$ must be interpreted as suitably large relative to $\Psh{\omega}$ for the self-indexing of $\Psh{\omega}$ to be valued in $\LexCat$.]
+[Pedantically, in this diagram, $\LexCat$ must be understood as including lexcategories of comparable size to $\Psh{\omega}$, so that the self-indexing of $\Psh{\omega}$ is valued in $\LexCat$.]
 
 Again, keep in mind the contravariance of indexed structures here, so that $\prior : \Prior \to \id$ does indeed act as a map from any $\Psh{\omega}$-indexed structure $X$ into the corresponding $\pullAlong{\Prior}(X)$.
 
 Thus, we have constructed a locally introspective theory $\langle \Psh{\omega}, C \rangle$ with $\introF$ given by whiskering $\prior$ as in the above diagram.
 
-[It may be illustrative to alternatively describe this $\introF$ in terms of $\introS$ and $\introN$.
+It may be illustrative to alternatively describe this $\introF$ in terms of $\introS$ and $\introN$.
 
 For $\introS$, let us first observe that $\Prior(1) = 1$; that is, $\Prior$ preserves the terminal object\footnote{This is closely related to the fact that $\omega$ has no maximal element, and would need modification were we carrying out the analogous construction for a poset which had maximal elements.}. Accordingly, $\Glob{C} = \Psh{\omega}/\Prior(1) = \Psh{\omega}$. And as the component $\prior_1 : \Prior(1) \to 1$ must be the identity on the terminal object, the map $\introS : \Psh{\omega} \to \Glob{C}$ corresponding to our choice of $\introF$ becomes the identity under this identification. 
 
-Furthermore, the map $\Hom_C(1, \introS(-)) : \Psh{\omega} \to \Psh{\omega}$ can be seen to be the right adjoint to $\Prior$; thus, it is $\Later$. Finally, as for the $\introN$ corresponding to our $\introF$, this will be the map $\latermap : \id \to \Later$ given by pulling $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$.]
+Furthermore, the map $\Hom_C(1, \introS(-)) : \Psh{\omega} \to \Psh{\omega}$ can be seen to be the right adjoint to $\Prior$; thus, it is $\Later$. Finally, as for the $\introN$ corresponding to our $\introF$, this will be the map $\latermap : \id \to \Later$ given by pulling $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$. \TODOinline{Flesh this out more?}
 \end{construction}
 
 This way of viewing $\Psh{\omega}$ as a locally introspective theory is illustrative. Unfortunately, this is not an introspective theory, as our $C = \pullAlong{\Prior}\left(\Psh{\omega}/-\right) \rangle$ is merely locally \repsmall/, not \repsmall/ simpliciter.
 
-We do not have that $\Ob(C)$ is itself an object of $\Psh{\omega}$. Essentially, the obstruction is that $C(\yoneda(n)) = \Psh{\omega}/\Prior(\yoneda(n)) = \Psh{\omega}/\yoneda(\mathrm{max}(n - 1, 0))$ has a proper class of objects, but the presheaves in $\Psh{\omega}$ are set-valued.
+We do not have that $\Ob(C)$ is itself an object of $\Psh{\omega}$. Essentially, the obstruction is that $C(\yoneda(n)) = \Psh{\omega}/\Prior(\yoneda(n)) = \Psh{\omega}/\yoneda(n - 1)$ (for $n \geq 1$) has a proper class of objects, but the presheaves in $\Psh{\omega}$ are set-valued.
 
 We might naively try to ameliorate this problem by replacing $\Psh{\omega} = \Set^{\omega}$ by $\left(\Set'\right)^{\omega}$ where $\Set'$ is some full subcategory of $\Set$, such as sets of cardinality below some particular inaccessible cardinal. But it is soon seen that such a uniform cardinality constraint across all $n \in \omega$ will not be workable for fixing the issue.
 
@@ -277,60 +280,65 @@ Thus, we have an $\omega$-indexed \setsmall/ strict lexcategory $C'(n) = \PshUnd
 
 Also note that once $\Set_0, \Set_1, \ldots, \Set_{n - 1}$ are determined, we have already determined what $\PshUnderN{n}$ is.
 
-Thus, we may readily inductively choose $\Set_n$ for each $n$ such that both $\Ob(\PshUnderN{n})$ and $\Mor(\PshUnderN{n})$ are among the objects of $\Set_n$.
+Thus, we may readily inductively choose $\Set_n$ for each $n$ such that both $\Ob(\PshUnderN{n})$ and $\Mor(\PshUnderN{n})$ are among the objects of $\Set_n$. 
 
-One such choice, for example, is where we take each $\Set_n$ to comprise the sets of rank less than \TODO.
+[For example, we may satisfy this condition by choosing $\Set_n$ to be the von Neumann universe $V_{(n + 1) \times \omega}$ of sets of rank less than $(n + 1) \times \omega$. Many other possibilities are available, this is only one suggestion.]
 
-When we choose $\Set_n$ in this manner, we have that $C'$ is not only internal to $\Psh{\omega}$, but indeed lives within its full subcategory $\PshUnder$.
+When we choose $\Set_n$ satisfying this condition, we have that $C'$ is not only internal to $\Psh{\omega}$, but indeed lives within its full subcategory $\PshUnder$.
 
-We now flesh $\langle \PshUnder, C'\rangle$ out into an introspective theory, by defining an appropriate $\introS$ and $\introN$. Much like before, $\Glob{C'}$ is readily identified with $\PshUnder$ and we take  $\introS$ to be this identification. As just as before, we find that under this identification, $\Hom_C(1, -)$ acts as $\Later$, so we may take $\introN$ to be $\latermap$. \TODOinline{Flesh this out more.}
+We now flesh $\langle \PshUnder, C'\rangle$ out into an introspective theory, by defining an appropriate $\introS$ and $\introN$. Much like before, $\Glob{C'}$ is readily identified with $\PshUnder$ and we take  $\introS$ to be this identification. As just as before, we find that under this identification, $\Hom_C(1, -)$ acts as $\Later$, so we may take $\introN$ to be $\latermap : \id \to \Later$. \TODOinline{Flesh this out more.}
 
-This completes the description of $\langle \PshUnder, C' \rangle$ as an introspective theory  (relative to any suitable choice of the categories $\{\Set_n\}_{n \in \omega}$).
+This completes the description of $\langle \PshUnder, C' \rangle$ as an introspective theory  (relative to any suitable choice of the $\{\Set_n\}_{n \in \omega}$).
 \end{construction}
 
-\paragraph{A more archetypal example}
+\paragraph{Presheaf examples related to the modalities considered in Kripke frames}
 
-\TODOinline{Finish writing out the details on this example. Get rid of the "hopefully" words. Write out a naive version first, without size conditions, then show the obstruction, to motivate the size condition. Perhaps write out first a model like the topos of trees, where T and C are essentially the same, then do the more archetypal example after that.}
+Here, we consider examples of locally introspective and introspective theories based not just on $\Psh{\omega}$, but also on the relation between this and the discrete product of countably many copies of $\Set$. This is of particular note in connection with Kripke frames (see \TODOinline{cite later chapter}).
 
 \begin{construction}
-The following example takes place in the context of a metatheory such as ZF.
+Let $<$ be a transitive relation on a discrete set $|P|$. The reflexive closure $\leq$ of $<$ equips $|P|$ as a preorder $P$. Let $Q$ be $P$ augmented with one further element $\infty$ which is greater than every element from $P$,
 
-In the following, by a ZF-set, I mean a set in the sense of ZF; that is, an element of the cumulative hierarchy, which comes with a well-defined rank (keep in mind that two bijective ZF-sets may have very different ranks!).
+There is an inclusion functor $i : |P| \to Q$, and this induces correspondingly a functor $\pullAlong{i} : \Psh{Q} \to \Psh{|P|}$.
 
-We make use both of the fact that ZF is a material rather than structural set theory (so that ZF-sets come with well-defined ranks), and of the fact that ZF's Axiom of Replacement ensures the existence of the cumulative hierarchy at least as far as (indeed much further than) $V_{\omega^2}$. [Note that the following construction could not be carried out as written in a weaker context such as the internal logic of a topos with natural numbers object, where the cumulative hierarchy needn't go further than $V_{\omega \times 2}$.]
+By $|P|_{< q}$ (where $q$ is any value in $Q$), we mean the discrete subset of $|P|$ comprising those values which, within $Q$, are less than $q$. Note that when $p \leq q$, there is an obvious forgetful functor from $\Psh{|P|_{< q}}$ to $\Psh{|P|_{< p}}$ given by projecting away unnecessary components. The composition of any number of such forgetful functors is another forgetful functor of the same form.
 
-First of all, consider some sequence $W_1, W_2, W_3, \ldots$, indexed by positive integers, where each $W_i$ is a \setsmall/ full sublexcategory of $\Set$, and each $W_j$ can be seen as an internal lexcategory within $W_i$ (that is, $\Mor(W_j)$ is among the objects of $W_i$) for $j < i$.
+Thus, we obtain a $Q$-indexed lexcategory $C(q) = \Psh{|P|_{< q}}$. \TODOinline{Demonstrate this is in fact locally \repsmall/.} We will now equip $\langle \Psh{Q}, C \rangle$ as a locally introspective theory by providing a suitable $\introS$ and $\introN$.
 
-For example, we can take the positive limit stages of the von Neumann hierarchy, with $W_i = V_{\omega \times i}$ for positive integer $i$. Each of these is a full sublexcategory of $\Set$ (closed under finite limits because ranks of finite limits can be taken as at most finitely greater than the supremum of the ranks of all factors), and each $W_j$ can be seen as an internal lexcategory within $W_i$, for $j < i$.
+Note that $\Glob{C} = \Psh{|P|_{< \infty}} = \Psh{|P|}$. (Here, the addition of $\infty$ into $Q$ plays an important role when $P$ contains maximal elements. If we took $C$ to be merely a $P$-indexed category, then we would find that $\Glob{C}$ ignored any maximal elements in $P$. This is the only motivation for our introduction of $\infty$.)
 
-Now, consider the positive integers both as a poset $P$ and as a discrete category $|P|$. Of course, the latter has an inclusion functor into the former.
+Thus, $\pullAlong{i} : \Psh{Q} \to \Glob{C}$. We may refer to this also as $\introS$.
 
-We can consider presheaves on $P$, which comprise $\Psh{P}$, and we can consider presheaves on $|P|$, which comprise $\Psh{|P|}$. The inclusion functor $|P| \to P$ gives us a forgetful functor $\Psh{P} \to \Psh{|P|}$. Because finite limits in presheaf categories are computed componentwise, this forgetful functor is a lexfunctor.
+Furthermore, note that for $X \in \Psh{Q}$, we have that $\Hom_C(1, \introS(X))$ is the presheaf on $Q$ which assigns to $q \in Q$ the product of $X(p)$ over all $p < q$, with restriction maps given by forgetting components as appropriate. \TODOinline{Demonstrate this}.
 
-Now let us consider a particular full subcatgory of $\Psh{|P|}$. An object of $\Psh{|P|}$ is a sequence of sets $s_1, s_2, s_3, \ldots$. The full subcategory we are interested in is comprised of those objects where each $s_i$ is one of the sets in $W_i$. This is like imposing a smallness constraint, but the sense of \quote{smallness} is not constant but grows ever looser as we go further into the sequence.
-
-This full subcategory of $\Psh{|P|}$ is equivalently the product of $W_i$ over all positive integers $i$. Because the $W_i$ are closed under finite limits, we have that this is indeed a full sublexcategory of $\Psh{|P|}$.
-
-This full sublexcategory of $\Psh{|P|}$ induces as its preimage under the forgetful lexfunctor $\Psh{P} \to \Psh{|P|}$ also a full sublexcategory of $\Psh{P}$. Let us call this $T$. That is, $T$ comprises those presheaves on the positive integers whose $i$-th set is an element of $W_i$.
-
-This is the first piece of the introspective theory we are building here.
-
-Secondly, let us consider a particular internal lexcategory $C$ within $T$. Specifically, the $i$-th component of $C$ is the product of the lexcategories $W_j$ over all $j < i$. As for the action of the presheaf as we go from higher-indexed components to lower-indexed components, we simply project away the no longer needed factors.
-
-Hopefully it is clear what I mean by this and clear that it does indeed define a lexcategory $C$ internal to $T$. (In particular, all the lexcategorical structure commutes appropriately with the presheaf actions because all the lexcategorical structure is defined componentwise on these products and the presheaf actions just project away components.)
-
-What's more, hopefully it is clear that the global aspect of $C$ is precisely the product of $W_i$ over all positive integers $i$. This is precisely the full sublexcategory of $\Psh{|P|}$ which $T$ maps into under our aforementioned forgetful lexfunctor. Thus, said forgetful functor acts as a lexfunctor $\introS$ from $T$ into the global aspect of $C$.
-
-Under this correspondence, it is hopefully also clear that given an object $c$ in the global aspect of $C$, which can be viewed as a sequence of sets $s_1, s_2, s_3, \ldots$ with $s_i$ in $W_i$, the corresponding object $\Hom_C(1, c)$ in $T$ is such that its $i$-th set is the product of $s_j$ over $j < i$, with presheaf action again given by projecting away unneeded factors.
-
-Thus, the natural transformation $\introN$ that we need to make this an introspective theory amounts to the following: Its component at any object of $T$ given by sets $s_1, s_2, s_3, \ldots$, should have an $i$-th component which is a function from $s_i$ to the product of $s_j$ over all $j < i$. We obtain this function just from the presheaf action for the given object of $T$, and observe that this does indeed satisfy the appropriate properties to comprise a morphism in $T$. For the naturality of this transformation, we need to know that any morphism in $T$ commutes appropriately with these presheaf actions, and indeed it will by the definition of morphisms in $T$.
-
-Thus, $\langle T, C, \introS, \introN \rangle$ comprises an introspective theory.
+Thus, we have a map $\introN : \id_{\Psh{Q}} \to \Hom_{C}(1, \introS(-))$, such that $\introN_X(q) : X(q) \to \Hom_C(1, \introS(X))(q)$ is given by the product of all the restriction maps out of $X(q)$ (these restriction maps being part of the structure of the presheaf $X$ itself). \TODOinline{Flesh this out.}
 \end{construction}
 
-This is an important archetypal example. It corresponds closely to the interpretation of GL modal logic using a Kripke frame given by a sequence of worlds indexed by positive integers, each world accessing the lower-indexed worlds. It is hopefully clear how an analogous construction works for any other well-founded Kripke frame (at any rate, we will discuss this more in the Models chapter).
+This is an important archetypal example. It corresponds closely to the interpretation of K4 modal logic using a transitive Kripke frame. However, as in our previous example, we have the issue that this is only a locally introspective theory and not an introspective theory. Once again, the various aspects of $C$ comprise a proper class of objects, too many for $\Ob(C)$ to be given by a set-valued presheaf, preventing $C$ from being \repsmall/. And as in our previous example, we will again address this by imposing variable cardinality constraints on our presheaves.
 
-\TODOinline{Discuss the modal operator in this context, in the Modal logic chapter}
+\begin{construction}
+We will from hereon out assume that the preorder $P$ is in fact well-founded (and thus so is $Q$). Suppose given \setsmall/ full sublexcategories $\Set_q$ of $\Set$ for each $q \in Q$. (It's not actually necessary that we restrict to such a subcategory at $q = \infty$, but for uniformity's sake, we do this for now.).
+
+\newcommand{\PshUnderQ}[1]{\mathrm{Psh}'(|P|_{<#1})}
+\newcommand{\PshUnderQInf}{\mathrm{Psh}'(Q)}
+
+We define $\PshUnderQInf$ to be the full sublexcategory of $\Psh{Q}$ comprising presheaves $X$ for which $X(q) \in \Set_q$ for each $q \in Q$. And we analogously define $\PshUnderQ{q}$ to be the full sublexcategory of $\Psh{|P|_{< q}}$ comprising presheaves $X$ for which $X(p) \in \Set_p$ for each $p < q$.
+
+There are obvious restriction maps from $\PshUnderQ{q}$ to $\PshUnderQ{p}$ for $p < q$ given by projection away of components. As a result, we have a $\Psh{Q}$-internal lexcategory $C'$ whose component at $q \in Q$ is given by $\PshUnderQ{q}$.
+
+We may inductively choose our $\Set_q$ so that $\Ob(\PshUnderQ{q})$ and $\Mor(\PshUnderQ{q})$ are both objects of $\Set_q$ for each $q \in Q$. When we have done so, it follows that $C'$ is not merely internal to $\Psh{Q}$ but furthermore lives within $\PshUnderQInf$.
+
+We observe that there is an obvious forgetful lexfunctor $\introS : \PshUnderQInf \to \Glob{C'} = \PshUnderQ{\infty}$, given by simply forgetting the aspect at $\infty$ and the restriction maps.
+
+We observe as above that for $X \in \PshUnderQInf$, we have that $\Hom_{C'}(1, \introS(X))$ is the presheaf on $Q$ which assigns to $q \in Q$ the product of $X(p)$ over all $p < q$, with restriction maps given by forgetting components as appropriate.
+
+Finally, we define $\introN$ in the same way as above, with $\introN_X(q) : X(q) \to \Hom_{C'}(1, \introS(X))(q)$ given by the product of all the restriction maps out of $X(q)$.
+
+In this way, we have constructed an introspective theory $\langle PshUnderQInf, C' \rangle$.
+\end{construction}
+
+This is an important archetypal example. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame.
+
+\TODOinline{Discuss the modal operator in this context, either here or in the Modal logic chapter}
 
 \subsection{Basic constructions}
 Now let us discuss some general constructions for building new (pre-)introspective theories from old ones or from other data.

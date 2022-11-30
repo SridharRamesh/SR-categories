@@ -521,4 +521,43 @@ However, locally introspective (locally) cartesian closed theories cannot be ful
 \end{observation}
 
 \TODOinline{Perhaps note somewhere that we can readily produce introspective theories or geminal categories without natural numbers objects, since we can produce trivial examples from any lexcategory, and there are lexcategories without natural numbers objects. The trivial examples are trivial, but this suffices to establish that the (nontrivial!) free examples also lack natural numbers objects. Thus, the Goedelian phenomena have nothing fundamentally to do with natural numbers objects.}
+
+\subsection{Old example of the Kripke frame introspective theory on naturals}
+\TODOinline{Finish writing out the details on this example. Get rid of the "hopefully" words. Write out a naive version first, without size conditions, then show the obstruction, to motivate the size condition.}
+
+\begin{construction}
+The following example takes place in the context of a metatheory such as ZF.
+
+In the following, by a ZF-set, I mean a set in the sense of ZF; that is, an element of the cumulative hierarchy, which comes with a well-defined rank (keep in mind that two bijective ZF-sets may have very different ranks!).
+
+We make use both of the fact that ZF is a material rather than structural set theory (so that ZF-sets come with well-defined ranks), and of the fact that ZF's Axiom of Replacement ensures the existence of the cumulative hierarchy at least as far as (indeed much further than) $V_{\omega^2}$. [Note that the following construction could not be carried out as written in a weaker context such as the internal logic of a topos with natural numbers object, where the cumulative hierarchy needn't go further than $V_{\omega \times 2}$.]
+
+First of all, consider some sequence $W_1, W_2, W_3, \ldots$, indexed by positive integers, where each $W_i$ is a \setsmall/ full sublexcategory of $\Set$, and each $W_j$ can be seen as an internal lexcategory within $W_i$ (that is, $\Mor(W_j)$ is among the objects of $W_i$) for $j < i$.
+
+For example, we can take the positive limit stages of the von Neumann hierarchy, with $W_i = V_{\omega \times i}$ for positive integer $i$. Each of these is a full sublexcategory of $\Set$ (closed under finite limits because ranks of finite limits can be taken as at most finitely greater than the supremum of the ranks of all factors), and each $W_j$ can be seen as an internal lexcategory within $W_i$, for $j < i$.
+
+Now, consider the positive integers both as a poset $P$ and as a discrete category $|P|$. Of course, the latter has an inclusion functor into the former.
+
+We can consider presheaves on $P$, which comprise $\Psh{P}$, and we can consider presheaves on $|P|$, which comprise $\Psh{|P|}$. The inclusion functor $|P| \to P$ gives us a forgetful functor $\Psh{P} \to \Psh{|P|}$. Because finite limits in presheaf categories are computed componentwise, this forgetful functor is a lexfunctor.
+
+Now let us consider a particular full subcatgory of $\Psh{|P|}$. An object of $\Psh{|P|}$ is a sequence of sets $s_1, s_2, s_3, \ldots$. The full subcategory we are interested in is comprised of those objects where each $s_i$ is one of the sets in $W_i$. This is like imposing a smallness constraint, but the sense of \quote{smallness} is not constant but grows ever looser as we go further into the sequence.
+
+This full subcategory of $\Psh{|P|}$ is equivalently the product of $W_i$ over all positive integers $i$. Because the $W_i$ are closed under finite limits, we have that this is indeed a full sublexcategory of $\Psh{|P|}$.
+
+This full sublexcategory of $\Psh{|P|}$ induces as its preimage under the forgetful lexfunctor $\Psh{P} \to \Psh{|P|}$ also a full sublexcategory of $\Psh{P}$. Let us call this $T$. That is, $T$ comprises those presheaves on the positive integers whose $i$-th set is an element of $W_i$.
+
+This is the first piece of the introspective theory we are building here.
+
+Secondly, let us consider a particular internal lexcategory $C$ within $T$. Specifically, the $i$-th component of $C$ is the product of the lexcategories $W_j$ over all $j < i$. As for the action of the presheaf as we go from higher-indexed components to lower-indexed components, we simply project away the no longer needed factors.
+
+Hopefully it is clear what I mean by this and clear that it does indeed define a lexcategory $C$ internal to $T$. (In particular, all the lexcategorical structure commutes appropriately with the presheaf actions because all the lexcategorical structure is defined componentwise on these products and the presheaf actions just project away components.)
+
+What's more, hopefully it is clear that the global aspect of $C$ is precisely the product of $W_i$ over all positive integers $i$. This is precisely the full sublexcategory of $\Psh{|P|}$ which $T$ maps into under our aforementioned forgetful lexfunctor. Thus, said forgetful functor acts as a lexfunctor $\introS$ from $T$ into the global aspect of $C$.
+
+Under this correspondence, it is hopefully also clear that given an object $c$ in the global aspect of $C$, which can be viewed as a sequence of sets $s_1, s_2, s_3, \ldots$ with $s_i$ in $W_i$, the corresponding object $\Hom_C(1, c)$ in $T$ is such that its $i$-th set is the product of $s_j$ over $j < i$, with presheaf action again given by projecting away unneeded factors.
+
+Thus, the natural transformation $\introN$ that we need to make this an introspective theory amounts to the following: Its component at any object of $T$ given by sets $s_1, s_2, s_3, \ldots$, should have an $i$-th component which is a function from $s_i$ to the product of $s_j$ over all $j < i$. We obtain this function just from the presheaf action for the given object of $T$, and observe that this does indeed satisfy the appropriate properties to comprise a morphism in $T$. For the naturality of this transformation, we need to know that any morphism in $T$ commutes appropriately with these presheaf actions, and indeed it will by the definition of morphisms in $T$.
+
+Thus, $\langle T, C, \introS, \introN \rangle$ comprises an introspective theory.
+\end{construction}
 \fileend
