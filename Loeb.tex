@@ -38,7 +38,7 @@ If $\langle T, C \rangle$ is a locally introspective theory where any of $\Box_T
 From \magicref{LoebTransfer}, when considering the definitions of $\Box$ given via the triangle at \magicref{BoxDefn}.
 \end{proof}
 
-(Later, in \TODOinline{cite geminal categories chapter}, we will see an alternative principled reason why we can automatically transfer properties which hold of $C$ in general introspective theories $\langle T, C \rangle$ to properties which hold of $T$ in general introspective theories $\langle T, C \rangle$.)
+(Later, via \magicref{IntrospAsGeminal}, we will see an alternative principled reason why we can automatically transfer properties which hold of $C$ in general introspective theories $\langle T, C \rangle$ to properties which hold of $T$ in general introspective theories $\langle T, C \rangle$.)
 
 Recall that an introspective theory is a locally introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/. In this chapter, we will establish that every introspective theory has the \Loeb/ property with uniqueness (indeed, each $\Box$ endofunctor on each aspect of $T/-$, $C$, or $\Psh{C}$ has the \Loeb/ property with uniqueness \TODOinline{Perhaps explicitly observe somewhere in the previous chapter that our slice introspective theory construction interacts in the expected way with these aspects}).
 
@@ -215,7 +215,7 @@ Suppose given a locally introspective theory $\langle T, C, \introS, \introN \ra
 
 If there is any object $X$ of $T$ with an isomorphism from $X$ to $P(\introS(X))$, then, within the global aspect of $\Psh{C}$, for every $\loebNeg : \Box P \to P$, we obtain an $\omega : 1 \to P$, such that $\omega = g \circ \omega'$, where $\omega' = \Box_{\Psh{C}}(\omega) : 1 \to \Box P$. In other words, we obtain the instance of the \Loeb/ property constrained specifically to $P$.
 
-We get the same result also if, within the global aspect of $C$, there is any object $Y$ along with an isomorphism from $Y$ to $\introS(P(Y))$.
+We get the same result also if, within $\Glob{C}$, there is any object $Y$ along with an isomorphism from $Y$ to $\introS(P(Y))$.
 \end{theorem}
 \begin{proof}
 Any isomorphism $\alpha : X \to P(\introS(X))$ (or even just a retraction) will automatically satisfy the surjectivity-like precondition allowing us to invoke \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagSpecialization}, which takes $\Omega$ as $P(\point_C)$ and $\quotient$ as identity. Everything follows immediately from this, but has just been Yoneda-ized in its phrasing.

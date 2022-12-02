@@ -1,6 +1,6 @@
 \filestart
 
-\section{Scratch work in progress}
+\section{Scratch work in progress or to be deleted}
 
 \subsection{Unorganized draft category-theoretic lemmas}
 
@@ -560,4 +560,11 @@ Thus, the natural transformation $\introN$ that we need to make this an introspe
 
 Thus, $\langle T, C, \introS, \introN \rangle$ comprises an introspective theory.
 \end{construction}
+
+\subsection{Old intro stuff}
+It is worth noting explicitly the similarity and differences between our structures and the structures explored in existing work on guarded recursion with universes. Our structure plus cartesian closure is roughly equivalent to the typical structure of guarded recursion with a universe $u : U \vdash \El(u) : \mathrm{Type}$, plus the novel presumption that the endofunction on $U$ corresponding to the $\later$ operator factors through the global sections map of a $U$-small lexcategory. This $U$-small intermediary may even be taken to be $\later U$ itself. We do not make this correspondence formal but leave its formalization for future work. Thus, relative to such work on guarded recursion, we are both interested in an additional presumption ($U$-smallness) and in the removal of one (cartesian closure).
+
+Adding this $U$-smallness presumption to our theory allows us to \emph{derive} guarded recursion (at both the term and type levels), instead of having to presume guarded recursion by fiat. (Thus, we have also removed a second presumption, while retaining it as a consequence). In this way, our work is notably differentiated from much other literature on guarded recursion. We consider this derivation the primary or most important theorem of this work. (Of course, importance is for others to judge. At any rate, it is the novel result motivating our interest in these structures in the first place.)
+
+Finally, as a fun application of our theory, we exhibit models of a form of material set theory whose comprehension schema resembles unrestricted comprehension except guarded by modal operators in the modal logic GL, further developing a line of inquiry posed by Dana Scott et al in \autocite{FritzScott2018}. In such a set theory, attempts to establish inconsistency via Russell's paradox instead only establish the sentence of modal logic corresponding to \Godel/'s second incompleteness theorem. We demonstrate also how this theory simultaneously satisfies modalized versions of both the Axiom of Foundations and its ostensible opposite, Aczel's Axiom of Anti-Foundation.
 \fileend
