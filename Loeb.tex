@@ -28,6 +28,10 @@ In other words, for every $\Omega \in D$ and $\loebNeg : \Box \Omega \to \Omega$
 If such fixed points are furthermore always unique, we say $\Box$ has the \defined{\Loeb/ property with uniqueness}. (Note that the \Loeb/ property with uniqueness is the same as saying that the unique map $: \Box 1 \to 1$ is an initial $\Box$-algebra.)
 \end{definition}
 
+In this chapter, we will establish that for every introspective theory $\langle T, C \rangle$, each of $\Box_T$, $\Box_C$, and $\Box_{\Psh{C}}$ has the \Loeb/ property with uniqueness (indeed, each $\Box$ endofunctor on each aspect of $T/-$, $C$, or $\Psh{C}$ will have the \Loeb/ property with uniqueness \TODOinline{Perhaps explicitly observe somewhere in the previous chapter that our slice introspective theory construction interacts in the expected way with these aspects}). That such a strong result follows from such a minimal and simple categorical structure motivates much of our interest in the concept of introspective theories.
+
+But before we establish this version of \Loeb/'s theorem for introspective theories in particular, we will develop the theory of the \Loeb/ property and its consequences a little further in abstract. 
+
 \begin{theorem}\label{LoebTransfer}
 Let $D$ and $E$ be categories with terminal objects, and let $M : D \to E$ and $N : E \to D$ be functors preserving terminal objects. Suppose $NM : D \to D$ has the \Loeb/ property. Then so does $MN : E \to E$. Furthermore, if $NM$ has the \Loeb/ property with uniqueness, then so does $MN$.
 \end{theorem}
@@ -37,8 +41,8 @@ This is by the general theorem \TODOinline{Note as a lemma in Preliminaries?} th
 The latter fixed points must exist (or exist uniquely) if $NM : D \to D$ has the \Loeb/ property (or the \Loeb/ property with uniqueness, respectively), and thus in such cases so do the former fixed points, establishing the corresponding property for $MN : E \to E$.
 \end{proof}
 
-\begin{corollary}\label{LoebTransferIntrosp}
-If $\langle T, C \rangle$ is a locally introspective theory where any of $\Box_T$, $\Box_C$, or $\Box_{\Psh{C}}$ has the \Loeb/ property, then all three do. And similarly for the \Loeb/ property with uniqueness. Thus, we may speak overall of $\langle T, C \rangle$ having the \Loeb/ property (without or with uniqueness) to describe this situation.
+\begin{corollary}\label{LoebTransferIntrospWeak}
+If $\langle T, C \rangle$ is a locally introspective theory where any of $\Box_T$, $\Box_C$, or $\Box_{\Psh{C}}$ has the \Loeb/ property, then all three do. And similarly for the \Loeb/ property with uniqueness.
 \end{corollary}
 \begin{proof}
 From \magicref{LoebTransfer}, when considering the definitions of $\Box$ given via the triangle at \magicref{BoxDefn}.
@@ -46,42 +50,60 @@ From \magicref{LoebTransfer}, when considering the definitions of $\Box$ given v
 
 (Later, via \magicref{IntrospAsGeminal}, we will see an alternative principled reason why we can automatically transfer properties which hold of $C$ in general introspective theories $\langle T, C \rangle$ to properties which hold of $T$ in general introspective theories $\langle T, C \rangle$.)
 
-\bigskip
-Recall that an introspective theory is a locally introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/. In this chapter, we will establish that every introspective theory has the \Loeb/ property with uniqueness (indeed, each $\Box$ endofunctor on each aspect of $T/-$, $C$, or $\Psh{C}$ has the \Loeb/ property with uniqueness \TODOinline{Perhaps explicitly observe somewhere in the previous chapter that our slice introspective theory construction interacts in the expected way with these aspects}).
-
-But before we establish this version of \Loeb/'s theorem for introspective theories in particular, we will develop the theory of the \Loeb/ property and its consequences a little further in abstract.
-
-\magicref{LoebTransfer} is a special case of a more general phenomenon, which will also be useful to us later.
-
-\TODOinline{Put definition of coalgebra, algebra, coalgebra-to-algebra map in preliminaries}
-\begin{definition}
-Given an endofunctor $F$ on a category $D$, we say that a map $y : w \to m$ is an $F$-\defined{hylomorphism} from a coalgebra $W : w \to F(w)$ to an algebra $M : F(m) \to m$ just in case the following square commutes:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwxLCJ3Il0sWzAsMCwiRih3KSJdLFsxLDAsIkYobSkiXSxbMSwxLCJtIl0sWzAsMSwiVyJdLFsxLDIsIkYoeCkiXSxbMiwzLCJNIl0sWzAsMywieCIsMl1d
-\[\begin{tikzcd}
-	{F(w)} & {F(m)} \\
-	w & m
-	\arrow["W", from=2-1, to=1-1]
-	\arrow["{F(x)}", from=1-1, to=1-2]
-	\arrow["M", from=1-2, to=2-2]
-	\arrow["x"', from=2-1, to=2-2]
-\end{tikzcd}\]
-
-In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \circ W$.
-\end{definition}
-
-\begin{theorem}\label{HylomorphismTransfer}
-Given categories $D$ and $E$, functors $A : D \to E$ and $B : E \to D$, and $BA$-coalgebra $W : w \to BA(w)$ and $BA$-algebra $M : BA(m) \to m$, the $BA$-hylomorphisms from $W$ to $M$ are in bijective correspondence (via the action of $A$) with the $AB$-hylomorphisms from $A(W) : A(w) \to ABA(w)$ to $A(M) : ABA(m) \to A(m)$.
+\begin{theorem}\label{LoebPropertyLexUniqueness}
+Let $D$ be any lexcategory, and let $\Box : D \to D$ be a terminal-object-preserving endofunctor on $D$. If $\Box$ has the \Loeb/ property, then it furthermore has the \Loeb/ property with uniqueness.
 \end{theorem}
 \begin{proof}
-This is by the general theorem that fixed points of a composition of functions are in bijective correspondence with fixed points of any cyclic rearrangement of that composition. In particular, letting $comp_{x, z}(-) = z \circ - \circ x$, the fixed points of $comp_{W, M}(BA(-))$ are in bijective correspondence with the fixed points of $A(comp_{W, M}(B(-)))$, which is to say, of $comp_{A(W), A(M)}(AB(-))$.
+We must show that, given any two commutative squares as below (with the same $\loebNeg$ on the right hand side of each), the morphisms $\omega$ and $\psi$ are equal:
+
+% https://q.uiver.app/?q=WzAsOCxbMywxLCIxIl0sWzQsMCwiXFxCb3ggXFxPbWVnYSJdLFs0LDEsIlxcT21lZ2EiXSxbMywwLCJcXEJveCAxIl0sWzAsMCwiXFxCb3ggMSJdLFsxLDAsIlxcQm94IFxcT21lZ2EiXSxbMSwxLCJcXE9tZWdhIl0sWzAsMSwiMSJdLFsxLDIsIlxcbG9lYk5lZyJdLFswLDIsIlxccHNpIiwyXSxbMywwLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDEsIlxcQm94IFxccHNpIl0sWzQsNSwiXFxCb3ggXFxvbWVnYSJdLFs1LDYsIlxcbG9lYk5lZyJdLFs0LDcsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzcsNiwiXFxvbWVnYSIsMl1d
+\[\begin{tikzcd}
+	{\Box 1} & {\Box \Omega} && {\Box 1} & {\Box \Omega} \\
+	1 & \Omega && 1 & \Omega
+	\arrow["\loebNeg", from=1-5, to=2-5]
+	\arrow["\psi"', from=2-4, to=2-5]
+	\arrow[Rightarrow, no head, from=1-4, to=2-4]
+	\arrow["{\Box \psi}", from=1-4, to=1-5]
+	\arrow["{\Box \omega}", from=1-1, to=1-2]
+	\arrow["\loebNeg", from=1-2, to=2-2]
+	\arrow[Rightarrow, no head, from=1-1, to=2-1]
+	\arrow["\omega"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+Let $h : H \to 1$ be the equalizer of $\omega$ and $\psi$.  We will have that $\omega = \psi$ just in case $h$ is an isomorphism. As this $h$ is monic, making $H$ a subobject of $1$, we will have that $h$ is an isomorphism just in case there is any map from $1$ to $H$.
+
+Thanks to the \Loeb/ property, this in turn occurs just in case there is some map from $\Box H$ to $H$. And by the definition of $H$ as an equalizer, this occurs just in case there is some map from $\Box H$ to $1$ which gives equal results when composed with $\omega$ and with $\psi$.
+
+But the map $\Box h : \Box H \to 1$ does indeed have this property, as seen in the following diagram (where the top left square commutes because $h; \omega = h; \psi$):
+
+% https://q.uiver.app/?q=WzAsOCxbMCwyLCIxIl0sWzEsMSwiXFxCb3ggXFxPbWVnYSJdLFsxLDIsIlxcT21lZ2EiXSxbMCwxLCJcXEJveCAxIl0sWzAsMCwiXFxCb3ggSCJdLFsxLDAsIlxcQm94IDEiXSxbMiwwLCIxIl0sWzIsMSwiXFxPbWVnYSJdLFsxLDIsIlxcbG9lYk5lZyJdLFswLDIsIlxccHNpIiwyXSxbMywwLCIiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFszLDEsIlxcQm94IFxccHNpIl0sWzQsMywiXFxCb3ggaCIsMl0sWzQsNSwiXFxCb3ggaCJdLFs1LDEsIlxcQm94IFxcb21lZ2EiLDJdLFs1LDYsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsNywiXFxvbWVnYSJdLFsxLDcsIlxcbG9lYk5lZyJdXQ==
+\[\begin{tikzcd}
+	{\Box H} & {\Box 1} & 1 \\
+	{\Box 1} & {\Box \Omega} & \Omega \\
+	1 & \Omega
+	\arrow["\loebNeg", from=2-2, to=3-2]
+	\arrow["\psi"', from=3-1, to=3-2]
+	\arrow[Rightarrow, no head, from=2-1, to=3-1]
+	\arrow["{\Box \psi}", from=2-1, to=2-2]
+	\arrow["{\Box h}"', from=1-1, to=2-1]
+	\arrow["{\Box h}", from=1-1, to=1-2]
+	\arrow["{\Box \omega}"', from=1-2, to=2-2]
+	\arrow[Rightarrow, no head, from=1-2, to=1-3]
+	\arrow["\omega", from=1-3, to=2-3]
+	\arrow["\loebNeg", from=2-2, to=2-3]
+\end{tikzcd}\]
+
+This completes the proof.
 \end{proof}
 
-Note that the square diagram in \magicref{LoebPropertyDefn} amounts to a $\Box$-hylomorphism. In this way, \magicref{LoebTransfer} is a special case of \magicref{HylomorphismTransfer}.
+\begin{corollary}\label{LoebTransferIntrospStrong}
+If $\langle T, C \rangle$ is a locally introspective theory where any of $\Box_T$, $\Box_C$, or $\Box_{\Psh{C}}$ has the \Loeb/ property (without presumed uniqueness), then all three have the \Loeb/ property with uniqueness.
 
-\TODOinline{What was I going to do with this more general theorem? It may be unnecessary.}
-
-\TODOinline{Perhaps compare to the discussion in "Conjugate Hylomorphisms" by Hinze et al. Though this does not discuss this particular theorem!}
+When we speak of a locally introspective theory as having the \defined{\Loeb/ property}, we mean that this situation holds of it.
+\end{corollary}
+\begin{proof}
+By \magicref{LoebTransferIntrospWeak} and \magicref{LoebPropertyLexUniqueness}.
+\end{proof}
 
 \subsection{Lawvere's fixed point theorem}\label{LawvereFPTSection}
 Let us refresh the reader on Lawvere's fixed point theorem \autocite{lawvere1969diagonal}, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure. We shall first review a proof of Lawvere's fixed point theorem close in spirit to Lawvere's framing of his result.
@@ -308,7 +330,7 @@ Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$ a
 
 Then for every globally defined $\loebNeg : \Box P \to P$, we obtain a globally defined $\omega : 1 \to P$, such that $\loebNeg \circ (\Box \omega) = \omega$.
 
-In other words, keeping in mind the equivalences and terminology of \magicref{LoebTransferIntrosp}, we have demonstrated that every introspective theory has the \Loeb/ property.
+In other words, keeping in mind the equivalences and terminology of \magicref{LoebTransferIntrospStrong}, we have demonstrated that every introspective theory has the \Loeb/ property. We may conclude that $\Box_T$, $\Box_C$, and $\Box_{\Psh{C}}$ all have the \Loeb/ property with uniqueness.
 \closeNamed{theorem}
 
 We can consider the particular case where $P$ is $C$-\repsmall/, just as $\Box P$ is. In other words, where $P(-) = \Hom_C(-, c)$ is the representable presheaf on $C$ represented by some object $c$ of $C$. All traditional accounts of \Loeb/'s theorem are along these lines. But note that we can also just as well consider this \magicref{IntrospLoeb} for non-representable presheaves $P$, a significant generalization of the traditional viewpoint.
@@ -343,7 +365,7 @@ Let $D$ be any category with terminal object and let $\Box : D \to D$ be any ter
 
 Suppose also given a $D$-indexed functor $f : \Box E \to E$, and let the endofunctor $F$ on the global aspect of $E$ be given by first applying $\Box$ to arrive in the global aspect of $\Box E$, then applying $f$ to arrive back in the global aspect of $E$.
 
-If $\Box$ has the \Loeb/ property, then there is an $F$-hylomorphism between any $F$-coalgebra $W : w \to F(w)$ and any $F$-algebra $M : F(m) \to m$ in the global aspect of $E$. And if $\Box$ furthermore has the \Loeb/ property with uniqueness, then this hylomorphism is unique.
+If $\Box$ has the \Loeb/ property, then there is an $F$-hylomorphism (as in \magicref{HylomorphismDefn}) between any $F$-coalgebra $W : w \to F(w)$ and any $F$-algebra $M : F(m) \to m$ in the global aspect of $E$. And if $\Box$ furthermore has the \Loeb/ property with uniqueness, then this hylomorphism is unique.
 \end{theorem}
 \begin{proof}
 A hylomorphism from $W$ to $M$ is a fixed point of $x \mapsto M \circ F(x) \circ W : \Hom_E(w, m) \to \Hom_E(w, m)$. But as $F(x) = f(\Box x)$, this is the same as a fixed point for $x \mapsto g(\Box x)$ where $g(-)$ is defined by $M \circ f(-) \circ W : \Box \Hom_E(w, m) \to \Hom_E(w, m)$. 
@@ -359,6 +381,7 @@ Let $E$ be an arbitrary object of $D$ (thus, a \repsmall/ $D$-indexed set) and l
 
 As $E$ is a discrete category, observe that any $F$-coalgebra or $F$-algebra in the global aspect of $E$ amounts to a fixed point of $f \circ \Box(-) : \Hom_D(1, E) \to \Hom_D(1, E)$. The \Loeb/ property tells us such fixed points exist, while \magicref{CoalgToAlg} tells us there is a hylomorphism between any such fixed points. But as $E$ is a discrete category, such a hylomorphism amounts to just an equality between the two elements of $\Hom_D(1, E)$. Thus, any two such fixed points are equal, which is to say, we have the \Loeb/ property with uniqueness.
 \end{proof}
+\TODOinline{Note that the above is an alternate proof, or rather an alternate presentation of the same proof, of \magicref{LoebPropertyLexUniqueness}.}
 
 Note that \magicref{LexLoebIsWithUniqueness} makes essential use of the structure available in a lexcategory, beyond what is merely available in a category with finite products. There are many examples of finite-product-preserving endofunctors on categories with finite products which have the \Loeb/ property but which do not have the \Loeb/ property with uniqueness (for example, when considering the identity endofunctor on the category whose objects are complete lattices and whose morphisms are arbitrary monotonic maps). It is perhaps easy to miss how the finite limit structure of $D$ has been used in the argument for \magicref{LexLoebIsWithUniqueness}. At one point within its invocation of \magicref{CoalgToAlg}, the argument considers the object $\Box \Hom_E(w, m)$ for parallel $w, m \in \Hom_D(1, E)$. As such, it depends upon the fact that $\Hom_E(w, m)$ is a \repsmall/ $D$-indexed set. This object $\Hom_E(w, m)$ of $D$ is given by an equalizer between parallel maps from $1$ to $E$ in $D$; this is where the fact that $D$ is a lexcategory is essential.
 
@@ -407,6 +430,12 @@ But by generalizing the argument to introspective theories, we are able to expan
 ----
 
 \sTODOinline{Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on |G'|, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.}
+
+\subsection{As applied to our archetypal examples}
+\TODO
+
+\subsection{Recap}
+\TODO
 
 \subsection{Relating variations on Lawvere's fixed point theorem}\label{LawvereFPTReduxSection}
 Although not important for our main narrative, we note here some further comments on the relation of Lawvere's fixed point theorem to generalizations of ours or others.
@@ -481,11 +510,5 @@ The desired result now follows by \magicref{LawveresFixedPointTheorem}.
 \TODOinline{Remarks on Cantor's theorem, Liar's paradox, and Y combinator as examples of Lawvere's fixed point theorem. Cantor's theorem is a contrapositive statement using surjection. Liar's paradox is a contrapositive statement using a retraction/isomorphism. Y combinator is a positive statement using a retraction, and also involves passing to a slice category. Note that the reason we presume in Cantor's theorem that negation on $\Omega$ has no fixed points is because of another instance of Lawvere's fixed point theorem, via Liar's paradox!}
 
 \TODOinline{Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how our more general formulation allows us to correct this.}
-
-\subsection{Recap}
-\TODO
-
-\subsection{As applied to our archetypal examples}
-\TODO
 
 \fileend

@@ -1082,4 +1082,37 @@ A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the init
 
 With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does not internalize. In particular, we do NOT know internal to $\IAU$ that the global sections functor from $\IAU'$ to the self-indexing $\IAU/-$ is arithmetic, or even that it preserves the initial object (this would violate \Goedel/'s second incompleteness theorem).
 
+\begin{definition}
+Given an endofunctor $F$ on a category, we say a morphism of the form $M : F(m) \to m$ is an $F$-\defined{algebra}, and dually, a morphism of the form $W : w \to F(w)$ is an $F$-\defined{coalgebra}. \TODOinline{Define algebra and coalgebra maps}.
+\end{definition}
+
+\begin{definition}\label{HylomorphismDefn}
+Given an endofunctor $F$, we say that a map $y : w \to m$ is an $F$-\defined{hylomorphism} from a coalgebra $W : w \to F(w)$ to an algebra $M : F(m) \to m$ just in case the following square commutes:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwxLCJ3Il0sWzAsMCwiRih3KSJdLFsxLDAsIkYobSkiXSxbMSwxLCJtIl0sWzAsMSwiVyJdLFsxLDIsIkYoeCkiXSxbMiwzLCJNIl0sWzAsMywieCIsMl1d
+\[\begin{tikzcd}
+	{F(w)} & {F(m)} \\
+	w & m
+	\arrow["W", from=2-1, to=1-1]
+	\arrow["{F(x)}", from=1-1, to=1-2]
+	\arrow["M", from=1-2, to=2-2]
+	\arrow["x"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \circ W$.
+\end{definition}
+
+\TODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
+
+\begin{theorem}\label{HylomorphismTransfer}
+Given categories $D$ and $E$, functors $A : D \to E$ and $B : E \to D$, and $BA$-coalgebra $W : w \to BA(w)$ and $BA$-algebra $M : BA(m) \to m$, the $BA$-hylomorphisms from $W$ to $M$ are in bijective correspondence (via the action of $A$) with the $AB$-hylomorphisms from $A(W) : A(w) \to ABA(w)$ to $A(M) : ABA(m) \to A(m)$.
+\end{theorem}
+\begin{proof}
+This is by the general theorem that fixed points of a composition of functions are in bijective correspondence with fixed points of any cyclic rearrangement of that composition. In particular, letting $comp_{x, z}(-) = z \circ - \circ x$, the fixed points of $comp_{W, M}(BA(-))$ are in bijective correspondence with the fixed points of $A(comp_{W, M}(B(-)))$, which is to say, of $comp_{A(W), A(M)}(AB(-))$.
+\end{proof}
+
+\TODOinline{What was I going to do with this more general theorem? It may be unnecessary. I seem to have remarked at one point that \magicref{LoebTransfer} is a special case of \magicref{HylomorphismTransfer}, but this does not seem to be important.}
+
+\TODOinline{Perhaps compare to the discussion in "Conjugate Hylomorphisms" by Hinze et al. Though this does not discuss this particular theorem!}
+
 \fileend
