@@ -46,11 +46,12 @@ From \magicref{LoebTransfer}, when considering the definitions of $\Box$ given v
 
 (Later, via \magicref{IntrospAsGeminal}, we will see an alternative principled reason why we can automatically transfer properties which hold of $C$ in general introspective theories $\langle T, C \rangle$ to properties which hold of $T$ in general introspective theories $\langle T, C \rangle$.)
 
+\bigskip
 Recall that an introspective theory is a locally introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/. In this chapter, we will establish that every introspective theory has the \Loeb/ property with uniqueness (indeed, each $\Box$ endofunctor on each aspect of $T/-$, $C$, or $\Psh{C}$ has the \Loeb/ property with uniqueness \TODOinline{Perhaps explicitly observe somewhere in the previous chapter that our slice introspective theory construction interacts in the expected way with these aspects}).
 
 But before we establish this version of \Loeb/'s theorem for introspective theories in particular, we will develop the theory of the \Loeb/ property and its consequences a little further in abstract.
 
-\magicref{LoebTransfer} is a special case of a more general phenomenon, which will also be useful to us later. \TODOinline{What was I going to do with this more general phenomenon? I seem to have lost track}
+\magicref{LoebTransfer} is a special case of a more general phenomenon, which will also be useful to us later.
 
 \TODOinline{Put definition of coalgebra, algebra, coalgebra-to-algebra map in preliminaries}
 \begin{definition}
@@ -78,7 +79,9 @@ This is by the general theorem that fixed points of a composition of functions a
 
 Note that the square diagram in \magicref{LoebPropertyDefn} amounts to a $\Box$-hylomorphism. In this way, \magicref{LoebTransfer} is a special case of \magicref{HylomorphismTransfer}.
 
-\TODOinline{Perhaps compare to the discussion in "Conjugate Hylomorphisms" by Hinze et al.}
+\TODOinline{What was I going to do with this more general theorem? It may be unnecessary.}
+
+\TODOinline{Perhaps compare to the discussion in "Conjugate Hylomorphisms" by Hinze et al. Though this does not discuss this particular theorem!}
 
 \subsection{Lawvere's fixed point theorem}\label{LawvereFPTSection}
 Let us refresh the reader on Lawvere's fixed point theorem \autocite{lawvere1969diagonal}, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure. We shall first review a proof of Lawvere's fixed point theorem close in spirit to Lawvere's framing of his result.
@@ -310,7 +313,7 @@ In other words, keeping in mind the equivalences and terminology of \magicref{Lo
 
 We can consider the particular case where $P$ is $C$-\repsmall/, just as $\Box P$ is. In other words, where $P(-) = \Hom_C(-, c)$ is the representable presheaf on $C$ represented by some object $c$ of $C$. All traditional accounts of \Loeb/'s theorem are along these lines. But note that we can also just as well consider this \magicref{IntrospLoeb} for non-representable presheaves $P$, a significant generalization of the traditional viewpoint.
 
-Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. \TODOinline{Cite a simple counterexample.} However, we shall see later on that there are some natural examples of locally introspective theories that still have this property. \TODOinline{Perhaps discuss the idea of a locally introspective theory where every object is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property.}
+Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. \TODOinline{Cite a simple counterexample. For example, any locally cartesian closed category can be trivially equipped as a locally introspective theory, with $\Box_T$ as the identity, but this will only satisfy the \Loeb/ property if we are looking at the terminal category. This is the observation of \magicref{LocallyCartesianLoeb}.} However, we shall see later on that there are some natural examples of locally introspective theories that still have this property. \TODOinline{Perhaps discuss the idea of a locally introspective theory where every object is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property. This can then be related to our archetypal examples of locally introspective theories based on presheaf categories.}
 
 \subsection{Uniformity of the \Loeb/ property}
 Keeping in mind also how we can construct slice introspective theories, a la \magicref{IntrospSlice}, we get also the following corollary:
@@ -366,10 +369,8 @@ Consider the same setup as of \magicref{CoalgToAlg}, and presume $\Box$ has the 
 In that context, \magicref{CoalgToAlg} says that every $F$-coalgebra has a \emph{unique} hylomorphism into every $F$-algebra. In the particular case that the coalgebra is invertible, this can be read as a morphism between algebras, and establishes that the coalgebra's inverse is an initial algebra. Dually, for any invertible algebra, this establishes its inverse as a terminal coalgebra.
 \end{proof}
 
-\begin{TODOblock}
-
 \TODOinline{Link this to \magicref{IntrospTyConFixedPoints}}
-
+\begin{TODOblock}
 The above applies to every slice category of $T$, to every aspect of $C$, and to every aspect of $\Psh{C}$, by \magicref{IntrospTransfersEverywhere}. But it does not apply to slice categories of $C$ or slice categories of $\Psh{C}$!
 \end{TODOblock}
 
