@@ -38,7 +38,7 @@ We shall also introduce some further generalizations of this concept, in order t
 
 The example-oriented reader may immediately demand an example of a pre-introspective theory, to orient themselves. Here is the simplest example (or class of examples) of a pre-introspective theory:
 
-\begin{example} \label{TrivialPreIntrospIndexed}
+\begin{example} \label{TrivialPreIntrosp}
 Let $T$ be any lexcategory. Then we have a pre-introspective theory $\langle T, T/-, \id \rangle$. That is, a pre-introspective theory in which $C$ is taken to be the self-indexing itself, with $\introF$ as the identity.
 \end{example}
 
@@ -98,7 +98,7 @@ A \defined{locally introspective theory} is a pre-introspective theory $\langle 
 
 \TODOinline{Note in preliminaries that the self-indexing is locally small on a locally cartesian closed category.}
 
-Almost all results we discuss for introspective theories will admit generalization to locally introspective theories. The sole major exception is the derivation of \Loeb/'s theorem in \TODO. However, because that one result is so important to us, our main interest in this document is in discussing introspective theories, rather than locally introspective theories more generally.
+Almost all the results we discuss for introspective theories admit straightforward generalization to locally introspective theories. The sole major exception is the derivation of \Loeb/'s theorem in \TODO. However, because that one result is so important to us, our main interest in this document is in discussing introspective theories, rather than locally introspective theories more generally.
 
 \subsection{Archetypal examples}
 
@@ -217,7 +217,7 @@ The examples in the latter half of this section are closely related to the use o
 
 In both examples in this section, we first construct a locally introspective theory using an unrestricted presheaf category. We then impose some cardinality constraints to cut these down into introspective theories.
 
-All the constructions in this chapter are unified and vastly generalized in \TODOinline{cite later chapter}.
+All the constructions in this section are unified and vastly generalized in \magicref{GeneralPresheafLocalIntrosp} and \magicref{CardinalityConstrainedPresheafIntrosp}.
 
 \paragraph{Presheaf examples related to step-indexing in guarded recursion}
 
@@ -302,7 +302,7 @@ Let $<$ be a transitive relation on a discrete set $|P|$. The reflexive closure 
 
 There is an inclusion functor $i : |P| \to Q$, and this induces correspondingly a functor $\pullAlong{i} : \Psh{Q} \to \Psh{|P|}$.
 
-By $|P|_{< q}$ (where $q$ is any value in $Q$), we mean the discrete subset of $|P|$ comprising those values which, within $Q$, are less than $q$. Note that when $p \leq q$, there is a forgetful functor from $\Psh{|P|_{< q}}$ to $\Psh{|P|_{< p}}$ induced by the inclusion of $|P|_{< p}$ into $|P|_{< q}$. The composition of any number of such forgetful functors is another forgetful functor of the same form.
+By $|P|_{< q}$ (where $q$ is any value in $Q$), we mean the discrete subset of $|P|$ comprising those values which, within $Q$, are less than $q$. Note that when $p \leq q$, there is a forgetful functor from $\Psh{|P|_{< q}}$ to $\Psh{|P|_{< p}}$ induced by the inclusion of $|P|_{< p}$ into $|P|_{< q}$. Any composition of such forgetful functors is another forgetful functor of the same form.
 
 Thus, we obtain a $Q$-indexed lexcategory $C(q) = \Psh{|P|_{< q}}$. \TODOinline{Demonstrate this is in fact locally \repsmall/.} We will now equip $\langle \Psh{Q}, C \rangle$ as a locally introspective theory by providing a suitable $\introS$ and $\introN$.
 
@@ -400,6 +400,8 @@ Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete
 
 Perhaps more generally, whenever we have a lexfunctor from $T$ to $S$, we can left or right Kan extend along this lexfunctor to turn a (pre)(locally)(actual)introspective theory structure on $T$ into such structure on $S$? Using the fact that left Kan extension along lexfunctors is lex, and left Kan extension along arbitrary functors takes representables to representables. Or the fact that right Kan extension along arbitrary functors is Lex. The slice category construction is then also the special case of this where we consider the lex map from $T$ into $T/t$ (which has an adjoint).}
 
+\sTODOinline{This also means that the self-indexing is not just an indexed lexcategory, but an indexed pre-/locally/fully introspective theory, according as to the base.}
+
 \begin{construction}\label{SubPreIntrosp}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory\footnote{That is, a full subcategory whose inclusion functor is a lexfunctor.} of $T$, then $\langle S, C, \introF \rangle$ is a pre-introspective theory, where we now consider $\introF$ as restricted to acting on $S$.
 \end{construction}
@@ -435,12 +437,6 @@ Finally, the requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is
 
 Next, we show the unique factorization property. \TODO.
 \end{proof}
-
-\begin{construction}\label{TrivialPreIntrosp}
-If $T$ is any lexcategory, it can be equipped as a pre-introspective theory, taking $C$ to be given by the self-indexing, and $\introS$ and $\introN$ to be the canonical isomorphisms of the appropriate type. (This is the same construction as discussed at \cref{TrivialPreIntrospIndexed}.)
-
-This will be a locally introspective theory just in case $T$ is locally cartesian closed. However, it will be an introspective theory only in the trivial case that $T$ is the terminal category. This will follow from the categorical \Loeb/'s theorem we develop in the next chapter.
-\end{construction}
 
 \subsection{The interaction of \texorpdfstring{$\introS$}{S} and \texorpdfstring{$\introN$}{N}}
 We gather here two small but useful lemmas for reasoning about (pre-)introspective theories, concerning the interaction of $\introS$ and $\introN$.

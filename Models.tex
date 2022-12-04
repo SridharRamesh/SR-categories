@@ -104,11 +104,11 @@ For every \setsmall/ lexcategory $Th$, there is an initial object within $\initM
 \begin{proof}
 This is in exactly the same way that we have familiar constructions such as of the initial NNO-topos, the initial arithmetic universe, the initial lexcategory with countable products, etc.
 
-In more detail, the category of strict lexcategories with internal initial models of $Th$, and strict lexfunctors strictly preserving these internal initial models, is the category of models of an infinitary quasi-equational theory (whose infinitary operations have arity bounded by a cardinal dependent on the size of $Th$), and thus has an initial object. This initial strict structure furthermore is initial in the non-strict context, because all the relevant operations (finite limits, initial models of $Th$) are given by universal properties, so that any functor out of the initial strict structure preserving these in a non-strict sense is canonically isomorphic to a functor preserving these strictly on the nose.
+In more detail, the category of strict lexcategories with internal initial models of $Th$, and strict lexfunctors strictly preserving these internal initial models, is the category of models of an infinitary quasi-equational theory (whose infinitary operations have arity bounded by a \setsmall/ cardinal dependent on the size of $Th$), and thus has an initial object. This initial strict structure furthermore is initial in the non-strict context, because all the relevant operations (finite limits, initial models of $Th$) are given by universal properties, so that any functor out of the initial strict structure preserving these in a non-strict sense is canonically isomorphic to a functor preserving these strictly on the nose.
 \end{proof}
 
 \begin{construction}
-If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}. This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $T$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
+If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}. This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $Th$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
 
 We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ where $\introS$ is a map in $\initMod{Th}$.
 \end{construction}
@@ -138,7 +138,7 @@ Then we may apply a modification of \magicref{CommaKanStrongSigmesque} to conclu
 \subsubsection{A self-initializing theory with uncountable and uncomputable flavor}
 \TODOinline{Consider the free topos with countable (co)products, which has an internal free topos with countable (co)products as well, with internal and external views coinciding on what things have or preserve countable coproducts.}
 
-\TODOinline{Note that this contains true arithmetic, but is still subject to \Loeb/'s theorem and \Goedel/'s incompleteness theorems. Its just that its consistency sentence isn't expressible in first-order arithmetic or indeed by quantification over naturals.}
+\TODOinline{Note that this contains true arithmetic (in the sense of all true statements in the language of first-order arithmetic), but is still subject to \Loeb/'s theorem and \Goedel/'s incompleteness theorems. It's just that its consistency sentence isn't expressible in first-order arithmetic; that is, this structure is not definable in first-order arithmetic.}
 
 \sTODOinline{A self-initializing theory with countable but uncomputable flavor}
 

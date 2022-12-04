@@ -9,7 +9,15 @@ We will take all categories we work with to be locally small (which is to say, w
 
 In particular, we do not bother explicitly stating size restrictions on an arbitrary category $C$ before using the Yoneda embedding of $C$ into $\Set^{C^{op}}$. Only in situations where there is some risk that it would not be possible to simply interpret $\Set$ as suitably large relative to $C$ do we bother making explicit comment on size issues.
 
-We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We occasionally write $n ; m$ to mean $m \circ n$. We write $\id_X$ or just $\id$ for the identity morphism on an object $X$. When $C$ is a category, we occasionally write $c \in C$ to mean that $c$ is an object of $C$. We usually write $\Hom_C(a, b)$ to mean the morphisms from $a$ to $b$ in $C$, but we sometimes write $C(a, b)$ instead, especially when $C$ is a 2-category so that $C(a, b)$ is not merely a set but a 1-category.
+We write $m \circ n$ or just $mn$ for composition of morphisms $n : X \to Y$, $m : Y \to Z$ in a category. We occasionally write $n ; m$ to mean $m \circ n$. We write $\id_X$ or just $\id$ for the identity morphism on an object $X$. We also use parallel lines without arrowheads to denote identity morphisms (or canonical isomorphisms) in diagrams, like so:
+
+% https://q.uiver.app/?q=WzAsMixbMCwwLCJBIl0sWzEsMCwiQiJdLFswLDEsIiIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+\[\begin{tikzcd}
+	A & B
+	\arrow[Rightarrow, no head, from=1-1, to=1-2]
+\end{tikzcd}\]
+
+When $C$ is a category, we occasionally write $c \in C$ to mean that $c$ is an object of $C$. We usually write $\Hom_C(a, b)$ to mean the morphisms from $a$ to $b$ in $C$, but we sometimes write $C(a, b)$ instead, especially when $C$ is a 2-category so that $C(a, b)$ is not merely a set but a 1-category.
 
 We use the term \defined{lexcategory} for a category with finite limits. We use the term \defined{lexfunctor} for a functor preserving finite limits, whose domain and codomain are both lexcategories. By $\LexCat$, we mean the 2-category of lexcategories, lexfunctors, and natural transformations. We will not generally be explicit about making distinctions between $f(a \times b)$ and $f(a) \times f(b)$, etc, when $f$ is a lexfunctor, but shall instead write with the ordinary fluency for working with limit-preserving functors. (Similarly, we use $\FinProdCat$ for the 2-category of finite product categories (i.e., categories with finite products), functors preserving finite products, and natural transformations.)
 
@@ -716,77 +724,10 @@ Structures internal to $\IAU$ can be thought of as codes for computably enumerab
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
 
 \begin{definition}
-An \defined{NNO-topos} is \TODO.
+A \defined{topos} is \TODO. If it has an NNO, we call it an an \defined{NNO-topos}.
 \end{definition}
 
-\subsection{Localization}
-The reader is advised that we only ultimately make one use of the results in this section (at \TODO). Thus, the reader may skip this section unless and until interested in the details of that particular result.
-
-\begin{definition}
-For any category $C$, and any set of morphisms $M$ of $C$, we may consider freely adjoining inverses to the morphisms in $M$. This process is called \defined{localization}, and the resulting category is denoted $C[M^{-1}]$. Thus, we have a localization functor $f : C \to C[M^{-1}]$ such that $f$ sends every morphism in $M$ to an isomorphism, and for any $g : C \to D$ which also sends every morphism in $M$ to an isomorphism, there is a unique functor $h : C[M^{-1}] \to D$ such that $h \circ f = g$.
-\end{definition}
-
-\begin{lemma}
-Any localization functor is essentially surjective on objects (eso).
-\end{lemma}
-
-\begin{lemma}\label{LocalizingTransform}
-Let $C$ be a category, let $M$ be some set of morphisms of $C$, and let $f : C \to C[M^{-1}]$ be the corresponding localization. Then given any category $D$ and parallel functors $g_1, g_2 : C[M^{-1}] \to D$, we have that each natural transformation from $g_1 \circ f$ to $g_2 \circ f$ is the whiskering along $f$ of a unique natural transformation from $g_1$ to $g_2$. Thus, $\Cat(C[M^{-1}], D)$ comprises a full subcategory of $\Cat(C, D)$.
-\end{lemma}
-\begin{proof}
-Consider the comma category $(\id_D, \id_D)$. A functor $k : C \to (\id_D, \id_D)$ corresponds (via its composition with the two projections out of the comma category) to two functors $h_1, h_2 : C \to D$, along with a natural transformation from $h_1$ to $h_2$. As a morphism in a comma category is invertible just in case both of its projections are, we find that such $k$ sends all of $M$ to isomorphisms just in case each of $h_1$ and $h_2$ do. In this case, $k$ factors uniquely through $f$, providing us with a unique corresponding functor $k' : C[M^{-1}] \to (\id_D, \id_D)$ such that $k = k' \circ f$. But such a $k'$ corresponds to any natural transformation between the unique factorizations of $h_1$ and $h_2$ through $f$, whose whiskering along $f$ yields our original natural transformation from $h_1$ to $h_2$. \TODOinline{Draw diagram}
-\end{proof}
-
-\begin{definition}\label{DefnLexLocalization}
-Let $C$ be a lexcategory. If there is some lexfunctor on $C$ (with any codomain), such that $M$ is the set of morphisms taken to isomorphisms by this lexfunctor, then we say $C[M^{-1}]$ is a \defined{lex localization}.
-\end{definition}
-
-Lex localizations admit a tractable explicit construction using the \quote{calculus of right fractions}, which in particular decomposes each morphism in $C[M^{-1}]$ as the inverse of a morphism from $M$ followed by a morphism from $C$. The details of this calculus of fractions construction are given in \autocite{gabrielzisman1967}, among other references (see also \autocite{BorceuxHandbook1} and \autocite{kashiwara2006}). 
-
-This calculus of fractions construction immediately gives us the following result:
-\begin{lemma}\label{LexLocalizationEso}
-If $f : C \to C[M^{-1}]$ is a lex localization, then for each object $c \in C$, the induced functor from $C/c$ to $C[M^{-1}]/f(c)$ is essentially surjective on objects.
-\end{lemma}
-
-We also have the following result:
-
-\begin{lemma}\label{LexLocalizationLemma}
-Lex localizations are not just localizations qua category but also qua lexcategory, in that if $f : C \to C[M^{-1}]$ is a lex localization, then $C[M^{-1}]$ is a lexcategory, $f$ is a lexfunctor, and any lexfunctor out of $C$ which factors through $f$ (necessarily uniquely) is such that this factorization is itself a lexfunctor.
-
-(There is of course a precisely dual result for categories with, and functors preserving, finite colimits.)
-\end{lemma}
-\begin{proof}
-This is given by the combination of Propositions 3.1, 3.2, and 3.4 from \autocite{gabrielzisman1967}.
-\end{proof}
-
-\begin{lemma}\label{ConservativeFaithfulLemma}
-If a lexfunctor is conservative (i.e., any morphism it sends to an isomorphism is already an isomorphism), then it is faithful.
-\end{lemma}
-\begin{proof}
-Let lexfunctor $f : C \to D$ and $m_1, m_2 : c_1 \to c_2$ in $C$ be given such that $f(m_1) = f(m_2)$. The equalizer of $f(m_1)$ and $f(m_2)$ is therefore an isomorphism. But this is the same as $f$ applied to the equalizer of $m_1$ and $m_2$, which therefore (by the conservativity of $f$) must already be an isomorphism. Thus $m_1$ and $m_2$ equal.
-\end{proof}
-
-\begin{lemma}\label{IsLexLocalizationLemma}
-Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomorphisms by $h$, let $f : C \to C[M^{-1}]$ be the corresponding lex localization, and let $g : C[M^{-1}] \to D$ be the uniquely determined lexfunctor such that $h = g \circ f$.
-
-Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every slice in $D/h(c)$ is isomorphic to $h$ applied to some slice in $C/c$ (i.e., $h$ restricted to any slice category is eso).
-\end{lemma}
-\begin{proof}
-Suppose $h$ satisfies the surjectivity properties. We must show that $g$ is essentially surjective on objects, full, and faithful.
-
-That $g$ is essentially surjective on objects follows from the fact that $h = gf$ is eso when acting on $C/1$.
-
-Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2)$ is given by $g$ applied to some morphism in $Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. \TODO
-
-Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
-\end{proof}
-
-\begin{lemma}\label{ArithmeticLocalization}
-Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to another arithmetic universe be given, and let $M$ be the set of morphisms of $C$ which are sent to isomorphisms by said arithmetic functor. Then letting $f : C \to C[M^{-1}]$ be the corresponding localization (an \defined{arithmetic localization}), we have that this is also the localization qua arithmetic universe, in that $C[M^{-1}]$ is an arithmetic universe, $f$ is an arithmetic functor, and any arithmetic functor out of $C$ which factors (necessarily uniquely) through $f$ is such that this factorization is itself an arithmetic functor.
-\end{lemma}
-\begin{proof}
-\TODOinline{This is all straightforward by the general techniques of GZ, but I'm not bothered to write it out right now. Demonstrating that $C[M^{-1}]$ has NNOs and list objects is the one nonstraightforwardish aspect, for which it is useful to keep in mind that in an arithmetic universe, there is an isomorphism between \quote{lists of Xes, along with one Y} and \quote{lists of Xes, along with a sequence of Ys of length one greater, each Y being suitably related to the previous one in that applying some fixed isomorphism to Y_i yields the same result as applying some other fixed map to X x Y_i}}.
-\end{proof}
+\TODOinline{Note that toposes with countable products also have countable coproducts. Note that toposes with countable coproducts automatically have NNOs given as a countable copower of the terminal object. Note that presheaf categories are toposes.}
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
@@ -935,10 +876,10 @@ Here, we use solid arrows to denote special $1$-cells. The dashed arrow $f_Y$ is
 Because the comma object is special (by left comma-stability), it has a unique special map from $0$. By the universal property of a comma object, along with our presumption that the projections jointly create special structure, this means there is a unique triple of special $a : 0 \to A$, special $b : 0 \to 0$, and 2-cell $: f_X \circ a \to f_Y \circ b$. Because of the initiality of $0$, we know that $a$ must be the unique special map from $0$ to $A$, while $b$ must be the identity on $0$. Thus, we conclude there is a unique 2-cell from this $f_X \circ a$ to $f_Y$. As $f_X \circ a$ must be the unique special map from $0$ to $\omega$, while $f_Y$ was an arbitrary map in $D$, we can conclude that the unique special map from $0$ to $\omega$ is initial within $D(0, \omega)$.
 \end{proof}
 
-\subsection{Internal and initial model terminology}
-\TODOinline{Move this somewhere appropriate.}
+\subsection{Initial models}
+\TODOinline{Better title for this section, or move this material somewhere appropriate.}
 \begin{definition}\label{LexModelTerminology}
-Given a lexfunctor $F : T \to S$, we may sometimes call this a \defined{model} or \defined{internal model} of $T$ in $S$. If $F$ is initial within the category $\LexCat(T, S)$, then we naturally call this an initial model of $T$ in $S$. Of course, as with any initial objects, if there is any initial model of $T$ in $S$, then there is a unique one up to unique isomorphism.
+Given a lexfunctor $F : T \to S$, we may sometimes call this a \defined{model} or \defined{internal model} of $T$ in $S$. If $F$ is initial within the category $\LexCat(T, S)$, then we naturally call this an \defined{initial model} of $T$ in $S$. Of course, as with any initial objects, if there is any initial model of $T$ in $S$, then there is a unique one up to unique isomorphism.
 
 If $S_1$ has an initial model of $T$ given by $F: T \to S_1$, and $H : S_1 \to S_2$ is a lexfunctor such that $H \circ F$ is an initial model of $T$ in $S_2$, then we say $H$ preserves initial models of $T$.
 \end{definition}
@@ -968,10 +909,10 @@ In other words, the restriction of $\LexCat$ to lexcategories having, and lexfun
 Thanks to \magicref{InitialModelsAreLeftKanExtensions}, this is the instance of \magicref{CommaKan} within $\LexCat$ where $A$ is taken to be the initial lexcategory and $B$ is taken to be $T$.
 \end{proof}
 
+\TODOinline{Relate the following material in this section to the following section on presentations of quasi-equational theories.}
 \begin{definition}\label{FiniteLexTheory}
 A \defined{finitely axiomatized lex theory} is a lexcategory $T$ which is generated from the initial lexcategory by finitely many operations of freely adjoining a new object, freely adjoining a new morphism between existing objects, or freely making two existing parallel morphisms equal (all these free constructions are meant in the sense of free lexcategories, of course).
 \end{definition}
-\TODOinline{Relate the above to the following chapter on presentations as quasi-equational theories.}
 
 \begin{theorem}\label{NNOToposInternalInitialFinite}
 Any NNO-topos has an initial internal model of any finitely axiomatized lex theory. Such initial internal models are furthermore preserved by functors preserving NNO-topos structure.
@@ -1010,7 +951,7 @@ Next, we note that a topos with countable products also has countable coproducts
 
 We make also the following observations:
 \begin{observation}
-The theories of NNO-toposes and of arithmetic universes both finitely axiomatized lex theories.
+The theory of NNO-toposes and the theory of arithmetic universes are finitely axiomatized lex theories.
 \end{observation}
 
 \begin{observation}
@@ -1059,6 +1000,75 @@ More generally, given an arbitrary lexcategory $T'$, if we make a choice of stri
 All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but furthermore have $k$-ary products, for all $k$ drawn from some fixed set of infinite cardinalities $K$. (Such categories in fact have all limits of diagrams whose object and morphism cardinalities are in $K$ or finite, by the usual reduction to products and binary equalizers.)
 \end{observation}
 
+\subsection{Localization}
+The reader is advised that we only ultimately make one use of the results in this section (at \TODO). Thus, the reader may skip this section unless and until interested in the details of that particular result.
+
+\begin{definition}
+For any category $C$, and any set of morphisms $M$ of $C$, we may consider freely adjoining inverses to the morphisms in $M$. This process is called \defined{localization}, and the resulting category is denoted $C[M^{-1}]$. Thus, we have a localization functor $f : C \to C[M^{-1}]$ such that $f$ sends every morphism in $M$ to an isomorphism, and for any $g : C \to D$ which also sends every morphism in $M$ to an isomorphism, there is a unique functor $h : C[M^{-1}] \to D$ such that $h \circ f = g$.
+\end{definition}
+
+\begin{lemma}
+Any localization functor is essentially surjective on objects (eso).
+\end{lemma}
+
+\begin{lemma}\label{LocalizingTransform}
+Let $C$ be a category, let $M$ be some set of morphisms of $C$, and let $f : C \to C[M^{-1}]$ be the corresponding localization. Then given any category $D$ and parallel functors $g_1, g_2 : C[M^{-1}] \to D$, we have that each natural transformation from $g_1 \circ f$ to $g_2 \circ f$ is the whiskering along $f$ of a unique natural transformation from $g_1$ to $g_2$. Thus, $\Cat(C[M^{-1}], D)$ comprises a full subcategory of $\Cat(C, D)$.
+\end{lemma}
+\begin{proof}
+Consider the comma category $\comma{\id_D}{\id_D}$. A functor $k : C \to \comma{\id_D}{\id_D}$ corresponds (via its composition with the two projections out of the comma category) to two functors $h_1, h_2 : C \to D$, along with a natural transformation from $h_1$ to $h_2$. As a morphism in a comma category is invertible just in case both of its projections are, we find that such $k$ sends all of $M$ to isomorphisms just in case each of $h_1$ and $h_2$ do. In this case, $k$ factors uniquely through $f$, providing us with a unique corresponding functor $k' : C[M^{-1}] \to \comma{\id_D}{\id_D}$ such that $k = k' \circ f$. But such a $k'$ corresponds to any natural transformation between the unique factorizations of $h_1$ and $h_2$ through $f$, whose whiskering along $f$ yields our original natural transformation from $h_1$ to $h_2$. \TODOinline{Draw diagram}
+\end{proof}
+
+\begin{definition}\label{DefnLexLocalization}
+Let $C$ be a lexcategory. If there is some lexfunctor on $C$ (with any codomain), such that $M$ is the set of morphisms taken to isomorphisms by this lexfunctor, then we say $C[M^{-1}]$ is a \defined{lex localization}.
+\end{definition}
+
+Lex localizations admit a tractable explicit construction using the \quote{calculus of right fractions}, which in particular decomposes each morphism in $C[M^{-1}]$ as the inverse of a morphism from $M$ followed by a morphism from $C$. The details of this calculus of fractions construction are given in \autocite{gabrielzisman1967}, among other references (see also \autocite{BorceuxHandbook1} and \autocite{kashiwara2006}). 
+
+This calculus of fractions construction immediately gives us the following result:
+\begin{lemma}\label{LexLocalizationEso}
+If $f : C \to C[M^{-1}]$ is a lex localization, then for each object $c \in C$, the induced functor from $C/c$ to $C[M^{-1}]/f(c)$ is essentially surjective on objects.
+\end{lemma}
+
+We also have the following result:
+
+\begin{lemma}\label{LexLocalizationLemma}
+Lex localizations are not just localizations qua category but also qua lexcategory, in that if $f : C \to C[M^{-1}]$ is a lex localization, then $C[M^{-1}]$ is a lexcategory, $f$ is a lexfunctor, and any lexfunctor out of $C$ which factors through $f$ (necessarily uniquely) is such that this factorization is itself a lexfunctor.
+
+(There is of course a precisely dual result for categories with, and functors preserving, finite colimits.)
+\end{lemma}
+\begin{proof}
+This is given by the combination of Propositions 3.1, 3.2, and 3.4 from \autocite{gabrielzisman1967}.
+\end{proof}
+
+\begin{lemma}\label{ConservativeFaithfulLemma}
+If a lexfunctor is conservative (i.e., any morphism it sends to an isomorphism is already an isomorphism), then it is faithful.
+\end{lemma}
+\begin{proof}
+Let lexfunctor $f : C \to D$ and $m_1, m_2 : c_1 \to c_2$ in $C$ be given such that $f(m_1) = f(m_2)$. The equalizer of $f(m_1)$ and $f(m_2)$ is therefore an isomorphism. But this is the same as $f$ applied to the equalizer of $m_1$ and $m_2$, which therefore (by the conservativity of $f$) must already be an isomorphism. Thus $m_1$ and $m_2$ equal.
+\end{proof}
+
+\begin{lemma}\label{IsLexLocalizationLemma}
+Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomorphisms by $h$, let $f : C \to C[M^{-1}]$ be the corresponding lex localization, and let $g : C[M^{-1}] \to D$ be the uniquely determined lexfunctor such that $h = g \circ f$.
+
+Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every slice in $D/h(c)$ is isomorphic to $h$ applied to some slice in $C/c$ (i.e., $h$ restricted to any slice category is eso).
+\end{lemma}
+\begin{proof}
+Suppose $h$ satisfies the surjectivity properties. We must show that $g$ is essentially surjective on objects, full, and faithful.
+
+That $g$ is essentially surjective on objects follows from the fact that $h = gf$ is eso when acting on $C/1$.
+
+Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2)$ is given by $g$ applied to some morphism in $Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. \TODO
+
+Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
+\end{proof}
+
+\begin{lemma}\label{ArithmeticLocalization}
+Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to another arithmetic universe be given, and let $M$ be the set of morphisms of $C$ which are sent to isomorphisms by said arithmetic functor. Then letting $f : C \to C[M^{-1}]$ be the corresponding localization (an \defined{arithmetic localization}), we have that this is also the localization qua arithmetic universe, in that $C[M^{-1}]$ is an arithmetic universe, $f$ is an arithmetic functor, and any arithmetic functor out of $C$ which factors (necessarily uniquely) through $f$ is such that this factorization is itself an arithmetic functor.
+\end{lemma}
+\begin{proof}
+\TODOinline{This is all straightforward by the general techniques of GZ, but I'm not bothered to write it out right now. Demonstrating that $C[M^{-1}]$ has NNOs and list objects is the one nonstraightforwardish aspect, for which it is useful to keep in mind that in an arithmetic universe, there is an isomorphism between \quote{lists of Xes, along with one Y} and \quote{lists of Xes, along with a sequence of Ys of length one greater, each Y being suitably related to the previous one in that applying some fixed isomorphism to Y_i yields the same result as applying some other fixed map to X x Y_i}}.
+\end{proof}
+
 \subsection{Miscellaneous}
 \TODOinline{Organize this, or determine what can be thrown out from here}
 \begin{observation}\label{InitialWrtSet}
@@ -1103,16 +1113,5 @@ In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \ci
 \end{definition}
 
 \TODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
-
-\begin{theorem}\label{HylomorphismTransfer}
-Given categories $D$ and $E$, functors $A : D \to E$ and $B : E \to D$, and $BA$-coalgebra $W : w \to BA(w)$ and $BA$-algebra $M : BA(m) \to m$, the $BA$-hylomorphisms from $W$ to $M$ are in bijective correspondence (via the action of $A$) with the $AB$-hylomorphisms from $A(W) : A(w) \to ABA(w)$ to $A(M) : ABA(m) \to A(m)$.
-\end{theorem}
-\begin{proof}
-This is by the general theorem that fixed points of a composition of functions are in bijective correspondence with fixed points of any cyclic rearrangement of that composition. In particular, letting $comp_{x, z}(-) = z \circ - \circ x$, the fixed points of $comp_{W, M}(BA(-))$ are in bijective correspondence with the fixed points of $A(comp_{W, M}(B(-)))$, which is to say, of $comp_{A(W), A(M)}(AB(-))$.
-\end{proof}
-
-\TODOinline{What was I going to do with this more general theorem? It may be unnecessary. I seem to have remarked at one point that \magicref{LoebTransfer} is a special case of \magicref{HylomorphismTransfer}, but this does not seem to be important.}
-
-\TODOinline{Perhaps compare to the discussion in "Conjugate Hylomorphisms" by Hinze et al. Though this does not discuss this particular theorem!}
 
 \fileend
