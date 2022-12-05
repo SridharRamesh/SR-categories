@@ -58,8 +58,11 @@
 \theoremstyle{redstyle}
 \newtheorem*{TODOblock}{TO DO}
 
+% Currently this does not count TODOblocks or hidden sTODOs.
+\newcounter{TODOcounter}
+
 % Warning! LaTeX will swallow the following space stupidly in this command. You may have to place a backslash-space after it instead.
-\newcommand{\TODO}{{\color{red} TO DO}}
+\newcommand{\TODO}{\stepcounter{TODOcounter}{\color{red} TO DO}}
 \newcommand{\TODOinline}[1]{\TODO\ {\color{red} #1}}
 
 \newif\ifHideStodo

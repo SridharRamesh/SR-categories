@@ -570,4 +570,25 @@ Finally, as a fun application of our theory, we exhibit models of a form of mate
 
 \subsection{Homomorphisms}
 Given pre-introspective theories $\langle T_1, C_1, \introF_1 \rangle$ and $\langle T_2, C_2, \introF_2 \rangle$, a pre-introspective theory homomorphism between them is a lexfunctor $H_1 : T_1 \to T_2$ along with a natural isomorphism between \TODO
+
+\subsection{Uniformity/absoluteness of the \Loeb/ property}
+\TODOinline{Perhaps let's remove this section. Anyone who cares can perhaps see how to obtain its results from looking at suitable aspects/slice categories, and anyone who doesn't care needn't be bothered to think about it.}
+
+Using this last observation about slice introspective theories, we see that the fixed points generated for $P \in \Psh{C}$ are generated uniformly by a fixed point combinator, in the following sense:
+\begin{theorem}
+For any introspective theory $\langle T, C \rangle$, any object $t$ in $T$, and any object $P$ in the $t$-defined aspect of $\Psh{C}$, there is a morphism $Loeb : P(\Box P) \to P(1_C)$ in the slice category $T/t$ such that \TODO.
+
+(Note that applying $\introF$ to this morphism $Loeb : P(\Box P) \to P(1_C)$ gives us a morphism $: \Box((\Box P) \implies P) \to \Box P$ in the $t$-defined aspect of $C$, with the analogous fixed point property.)
+\end{theorem}
+\begin{proof}
+Consider the \Loeb/ property as applied to the generic element of $P(\Box P)$ in the slice introspective theory $(T/t)/P(\Box P)$.
+\end{proof}
+
+\begin{TODOblock}
+Show that the equalizer from X to []X to X equalized against $\id_X$ is $1$:
+
+Note that the uniqueness property for $\Box_T$ can be captured via an equalizer diagram in $T$, like so: \TODOinline{And similarly an equalizer diagram in $T$ captures the uniqueness property for $\Box_{\Psh{C}}$; however, no such diagram in $\Psh{C}$ captures the uniqueness property}
+
+Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there were a map from $1$ to $E$, then $a$ and $b$ would be equal. In just the same way, taking this equalizer diagram's image under the lexfunctor $\introS$, we see that any value in $\Hom_C(1, \introS(E))$ would lead to $\introS(a)$ and $\introS(b)$ being equal, thus corresponding to equal maps from $1$ to $\introS(P(1))$ in $C$. Transporting $f$ back along these two would yield equal values, therefore. But transporting $f$ back along these two yields $a$ and $b$ respectively, so we would have that $a$ and $b$ are equal. This argument yields a morphism from $\Hom_C(1, \introS(E))$ to $E$ in $T$. Applying $\introS$ to this, we have a morphism in $C$, which lives in $Q(\introS(Q(1)))$, where $Q$ is the presheaf on $C$ represented by $\introS(E)$. Applying \TODOinline{cite LocallyIntrospLoeb} to this, we get an element of $Q(1)$, which is to say, a global element of $\introS(E)$ in $C$. This makes $\introS(a)$ and $\introS(b)$ equal as global points of $\introS(P(1))$ in $C$. And by transporting $f$ back along these, we conclude as before that $a$ and $b$ are equal. \TODOinline{Word this all better}
+\end{TODOblock}
 \fileend

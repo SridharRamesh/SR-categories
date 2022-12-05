@@ -140,9 +140,9 @@ Lawvere originally states this theorem specifically for the case where $T$ is a 
 
 Having observed that we can just as well frame the theorem with any of its objects drawn from $\Psh{T}$ rather than $T$, the reader might then well wonder why in our framing we have allowed some objects to be in $\Psh{T}$ but still constrained others (such as $X$) to come from $T$. We chose this particular framing partly as this is closest to the applications we have in mind, and also partly for what amount to stylistic reasons. In particular, having stated the theorem in this form, interpreting the surjectivity condition on $\App$ only requires quantification over the set of morphisms from object $X$ to presheaf $\Omega$ (i.e., the set $\Omega(X)$), instead of requiring quantification over the class of natural transformations from a presheaf $X$ to another presheaf $\Omega$ (which is potentially a proper class, if $T$ is proper-class-sized). But this is not really of much importance, and again the more general form of the theorem follows readily from the ostensibly less general one.
 
-\autocite{lawvere1969diagonal} also only states this theorem in the particular case where $\point$ is a terminal object. In general, we can always pass from $T$ to a slice category $T/\point$, and in so doing we will turn what was $\point$-defined data in $T$ into globally defined data in $T/\point$. So constraining $\point$ to be a terminal object does not constrain the theorem excessively. However, it does constrain the theorem slightly, in that interpreting the surjectivity precondition in $T/\point$ in this way results in a stronger (that is, less often satisfied) surjectivity precondition than in the more flexible framing of the theorem we have given: The surjectivity condition in $T/\point$ would amount to requiring that for every $F : \point \times X \to \Omega$ in $\Psh{T}$, we could find a corresponding $f$. However, we have only required surjectivity with respect to the more constrained set of $F : X \to \Omega$ in $\Psh{T}$.
+\autocite{lawvere1969diagonal} also only states this theorem in the particular case where $\point$ is a terminal object. In general, we can always pass from $T$ to a slice category $T/\point$, and in so doing we will turn what was $\point$-defined data in $T$ into globally defined data in $T/\point$ (a la \magicref{AspectIsSliceGlobal}). So constraining $\point$ to be a terminal object does not constrain the theorem excessively. However, it does constrain the theorem slightly, in that interpreting the surjectivity precondition in $T/\point$ in this way results in a stronger (that is, less often satisfied) surjectivity precondition than in the more flexible framing of the theorem we have given: The surjectivity condition in $T/\point$ would amount to requiring that for every $F : \point \times X \to \Omega$ in $\Psh{T}$, we could find a corresponding $f$. However, we have only required surjectivity with respect to the more constrained set of $F : X \to \Omega$ in $\Psh{T}$.
 
-We do not actually need this extra flexibility. For our purposes, just like Lawvere's, it would suffice to always take $\point$ to be a terminal object. But we note the availability of this flexibility all the same (if only for the purpose of comparison at the end of this chapter to other variants on Lawvere's fixed point theorem recently noted in the literature, such as \magicref{MagmoidalFixedPointTheorem}).
+We do not actually need this extra flexibility for proving our main result. For our purposes, just like Lawvere's, it would suffice to always take $\point$ to be a terminal object. But we note the availability of this flexibility all the same (if only for the purpose of comparison at the end of this chapter to other variants on Lawvere's fixed point theorem recently noted in the literature, such as \magicref{MagmoidalFixedPointTheorem}).
 
 Even this loosened surjectivity presumption is still far overkill as far as the needs of the argument go. All that really matters is for one specific definable value to be in the range of $\App'$. But in general practice and for our specific purposes, this is always established because of some such surjectivity condition anyway, so that seems the most useful framing in which to give the theorem.
 
@@ -252,7 +252,7 @@ Specifically, keep in mind via the Yoneda lemma that the data of a map from $c \
 
 The invocation of \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagSpecialization} will give us a global element $\omega$ of $\Omega = P(\point_C)$ such that $\omega = \pullAlong{\omega'}{\loebNeg}$, where $\omega' = \introN_{\Omega}(\omega)$ is a global element of $\Box P(\point_C)$. Again, by the Yoneda lemma, such an $\omega$ corresponds to a map from $1$ to $P$ in the global aspect of $\Psh{C}$, such an $\omega'$ corresponds to a map from $1$ to $\Box P$ (specifically, $\omega' = \Box \omega$, by \magicref{SMatchesN}), and our equation relating $\omega$ and $\omega'$ is that that $\omega = \loebNeg \circ \omega'$.
 
-For the last remark about starting from a fixed point for $\introS(P(-))$ rather than a fixed point for $P(\introS(-))$, observe that if we have a $Y$ isomorphic to $\introS(P(Y))$, then by taking $X$ to be $P(Y)$, we obtain an $X$ isomorphic to $P(\introS(X))$. (This is a special case of the bijective correspondence between fixed points of cyclic rearrangements of compositions we have already observed at \TODO).
+For the last remark about starting from a fixed point for $\introS(P(-))$ rather than a fixed point for $P(\introS(-))$, observe that if we have a $Y$ isomorphic to $\introS(P(Y))$, then by taking $X$ to be $P(Y)$, we obtain an $X$ isomorphic to $P(\introS(X))$.\footnote{This is a special case of the bijective correspondence between fixed points of cyclic rearrangements of compositions we also observed within the proof of \magicref{LoebTransfer}.}
 
 \sTODOinline{That is, let $F$ and $G$ be arbitrary covariant or contravariant functors, not necessarily of the same variance as each other. Note that fixed points up to isomorphism of $F \circ G$ are in correspondence with fixed points up to isomorphism of $G \circ F$, with the functors $G$ and $F$ carrying out the two directions of the correspondence. (For that matter, we can also observe that values $X$ which retract onto $F(G(X))$ induce values $Y$ which retract onto $G(F(Y))$, although this is no longer a 1 : 1 correspondence). In this particular case, this means that fixed points up to isomorphism of the contravariant endofunctor $P(\introS(-))$ on $T$ are in correspondence with fixed points up to isomorphism of the contravariant endofunctor $\introS(P(-))$ on the global aspect of $C$. \TODOinline{Make something in the preliminaries about fixed points of compositions and cyclic change of composition, then cite it here and elsewhere in this chapter}}
 \end{proof}
@@ -329,38 +329,21 @@ Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$ a
 
 Then for every globally defined $\loebNeg : \Box P \to P$, we obtain a globally defined $\omega : 1 \to P$, such that $\loebNeg \circ (\Box \omega) = \omega$.
 
-In other words, the global aspect of $\Box_{\Psh{C}}$ has the \Loeb/ property. As this applies to all introspective theories, we can apply this also to any slice introspective theory of the given one to conclude (using \magicref{SliceBoxIsAspectBox}) that every aspect of $\Box_{\Psh{C}}$ has the \Loeb/ property. Keeping in mind the equivalences and terminology of \magicref{LoebTransferIntrosp}, we may conclude that every aspect of $\Box_{T/-}$, $\Box_C$, and $\Box_{\Psh{C}}$ all have the \Loeb/ property with uniqueness, which we summarize by saying that every introspective theory has the \Loeb/ property.
+In other words, the global aspect of $\Box_{\Psh{C}}$ has the \Loeb/ property. Keeping in mind the equivalences of \magicref{LoebTransferIntrosp}, we may conclude that the global aspects of $\Box_{T/-}$, $\Box_C$, and $\Box_{\Psh{C}}$ all have the \Loeb/ property with uniqueness.
 \closeNamed{theorem}
 
 We can consider the particular case where $P$ is $C$-\repsmall/, just as $\Box P$ is. In other words, where $P(-) = \Hom_C(-, c)$ is the representable presheaf on $C$ represented by some object $c$ of $C$. All traditional accounts of \Loeb/'s theorem are along these lines. But note that we can also just as well consider this \magicref{IntrospLoeb} for non-representable presheaves $P$, a significant generalization of the traditional viewpoint.
 
 Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. \TODOinline{Cite a simple counterexample. For example, any locally cartesian closed category can be trivially equipped as a locally introspective theory, with $\Box_T$ as the identity, but this will only satisfy the \Loeb/ property if we are looking at the terminal category. This is the observation of \magicref{LocallyCartesianLoeb}.} However, we shall see later on that there are some natural examples of locally introspective theories that still have this property. \TODOinline{Perhaps discuss the idea of a locally introspective theory where every object, or indeed every slice, is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property (at every aspect). This can then be related to our archetypal examples of locally introspective theories based on presheaf categories.}
 
-\subsection{Uniformity of the \Loeb/ property}
-Keeping in mind also how we can construct slice introspective theories, a la \magicref{IntrospSlice}, we get also the following corollary:
 \begin{corollary}\label{IntrospTransfersEverywhere}
-For any introspective theory $\langle T, C \rangle$, the induced endolexfunctors $\Box$ on each slice category $T/t$ and on each $t$-defined aspect of $\Psh{C}$ all have the \Loeb/ property, for $t \in T$.
+For any introspective theory $\langle T, C \rangle$, every aspect of $\Box_T$, $\Box_C$, and $\Box_{\Psh{C}}$ has the \Loeb/ property with uniqueness.
+
+In other words, every introspective theory has the \Loeb/ property, in the terminology of \magicref{LoebTransferIntrosp}.
 \end{corollary}
-
-Beware, however! We do not in general have that slice categories of $C$ have the \Loeb/ property! \TODOinline{Expand on this. Link to our discussion of the interaction of cartesian closure and the \Loeb/ property. Beware that the $t$-defined aspect of $C$ is not the same as some slice category of the global aspect of $C$; that is, the concept of different aspects of $C$ qua $T$-indexed category is distinct from the concept of different aspects of $C$ qua its self-indexing}
-
-Using this last observation about slice introspective theories, we see that the fixed points generated for $P \in \Psh{C}$ are generated uniformly by a fixed point combinator, in the following sense:
-\begin{theorem}
-For any introspective theory $\langle T, C \rangle$, any object $t$ in $T$, and any object $P$ in the $t$-defined aspect of $\Psh{C}$, there is a morphism $Loeb : P(\Box P) \to P(1_C)$ in the slice category $T/t$ such that \TODO.
-
-(Note that applying $\introF$ to this morphism $Loeb : P(\Box P) \to P(1_C)$ gives us a morphism $: \Box((\Box P) \implies P) \to \Box P$ in the $t$-defined aspect of $C$, with the analogous fixed point property.)
-\end{theorem}
 \begin{proof}
-Consider the \Loeb/ property as applied to the generic element of $P(\Box P)$ in the slice introspective theory $(T/t)/P(\Box P)$.
+By \magicref{SliceBoxIsAspectBox}, each aspect of any of these $\Box$ functors is the global aspect of the corresponding $\Box$ functor on the corresponding slice introspective theory. Thus, we simply invoke \magicref{IntrospLoeb} on this slice introspective theory.
 \end{proof}
-
-\begin{TODOblock}
-Show that the equalizer from X to []X to X equalized against $\id_X$ is $1$:
-
-Note that the uniqueness property for $\Box_T$ can be captured via an equalizer diagram in $T$, like so: \TODOinline{And similarly an equalizer diagram in $T$ captures the uniqueness property for $\Box_{\Psh{C}}$; however, no such diagram in $\Psh{C}$ captures the uniqueness property}
-
-Consider the equalizer $E$ of $a$ and $b$. This is a subobject of $1$. If there were a map from $1$ to $E$, then $a$ and $b$ would be equal. In just the same way, taking this equalizer diagram's image under the lexfunctor $\introS$, we see that any value in $\Hom_C(1, \introS(E))$ would lead to $\introS(a)$ and $\introS(b)$ being equal, thus corresponding to equal maps from $1$ to $\introS(P(1))$ in $C$. Transporting $f$ back along these two would yield equal values, therefore. But transporting $f$ back along these two yields $a$ and $b$ respectively, so we would have that $a$ and $b$ are equal. This argument yields a morphism from $\Hom_C(1, \introS(E))$ to $E$ in $T$. Applying $\introS$ to this, we have a morphism in $C$, which lives in $Q(\introS(Q(1)))$, where $Q$ is the presheaf on $C$ represented by $\introS(E)$. Applying \TODOinline{cite LocallyIntrospLoeb} to this, we get an element of $Q(1)$, which is to say, a global element of $\introS(E)$ in $C$. This makes $\introS(a)$ and $\introS(b)$ equal as global points of $\introS(P(1))$ in $C$. And by transporting $f$ back along these, we conclude as before that $a$ and $b$ are equal. \TODOinline{Word this all better}
-\end{TODOblock}
 
 \subsection{More on the \Loeb/ property in abstract: Uniqueness, initiality/terminality, and hylomorphisms}\label{LoebPropertyReduxSection}
 \TODOinline{We should perhaps move this material back to the beginning of the chapter to join the rest of the material on the \Loeb/ property in abstract? We originally moved it to the end so as to not delay getting to our main result that introspective theories automatically satisfy the \Loeb/ property, but perhaps that was an odd organizational choice.}
@@ -402,9 +385,6 @@ In that context, \magicref{CoalgToAlg} says that every $F$-coalgebra has a \emph
 \end{proof}
 
 \TODOinline{Link this to \magicref{IntrospTyConFixedPoints}}
-\begin{TODOblock}
-The above applies to every slice category of $T$, to every aspect of $C$, and to every aspect of $\Psh{C}$, by \magicref{IntrospTransfersEverywhere}. But it does not apply to slice categories of $C$ or slice categories of $\Psh{C}$!
-\end{TODOblock}
 
 \begin{observation}
 Note that this uniqueness means that the apparent dependence on various arbitrary choices in our proof of the bootstrapping theorem doesn't matter in the end. We get the same result no matter what.

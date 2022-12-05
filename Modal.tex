@@ -33,7 +33,7 @@ Between these, we also have a cycle of $T$-indexed lexfunctors, like so:
 Here, the bottom arrow is the Yoneda embedding, sending each object of $C$ to the corresponding representable presheaf. The right arrow takes a presheaf on $C$ to its evaluation at the terminal object of $C$; that is, to its global elements. The left arrow is the $\introF$ which is part of the structure of an introspective theory.
 
 \begin{observation}\label{SliceBoxIsAspectBox}
-The $t$-aspect of the above triangle of indexed lexfunctors is the same as the global aspect of the same triangle of indexed lexfunctors relative to the slice introspective theory $T/t$ given by \magicref{IntrospSlice}. \TODOinline{Word this better and prove it.}
+Via \magicref{AspectIsSliceGlobal}, we have the $t$-aspect of the above triangle of indexed lexfunctors is the same as the global aspect of the same triangle of indexed lexfunctors relative to the slice introspective theory $T/t$ given by \magicref{IntrospSlice}. \TODOinline{Word this better.}
 \end{observation}
 
 \begin{definition}\label{BoxDefn}
@@ -50,7 +50,7 @@ When we want to clarify precisely the domain we are operating on, we will write 
 As the Yoneda embedding is naturally thought of as the inclusion of a full sub-lexcategory, identifying $C$ with the corresponding representable presheaves within $\Psh{C}$, we may also think of $\Box_{\Psh{C}}$ as a $T$-indexed lexfunctor from $\Psh{C}$ to $C$. That is, as the composition of merely the top two arrows above.
 \end{definition}
 
-The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all (and the rest of this chapter as well) descends to corresponding structure on their global aspects as well. Keep in mind, in the global aspect context, $\introF$ is the same as $\introS$, so wherever in the above we discussed $\introF$, a corresponding statement holds as well for $\introS$, when considering just the global aspect. We may write $\Box_{T}$ for the global aspect of $\Box_{T/-}$ (which is an endolexfunctor of $T$).
+The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexed lexcategories, but this all (and the rest of this chapter as well) descends to corresponding structure on their global aspects as well. In particular, we may write $\Box_{T}$ to denote the global aspect of $\Box_{T/-}$. Keep in mind, the global aspect of $\introF$ is $\introS$, so wherever in the above we discussed $\introF$, this may be rewritten as $\introS$ when considering just the global aspect.
 
 \bigskip
 \begin{remark}\label{BoxNotationSmallnessConcerns}
@@ -60,6 +60,8 @@ Similarly, the reason we restricted attention to locally introspective theories 
 \end{remark}
 
 \subsection{Box preservation}
+\TODOinline{This section may not be particularly necessary. We may remove it.}
+
 Note that, having set up these various notions of $\Box$, we find that $\Box$ and each of the maps in the diagram \quote{commutes} in the appropriate sense; that is, they can be seen as preserving each other.
 
 For example, $\introF$ preserves $\Box$, in that both $\introF(\Box(-))$ and $\Box(\introF(-))$ yield the same $T$-indexed functor from the self-indexing of $T$ to $C$. This is readily seen by unwinding their definitions: These are both $\introF(\Hom_C(1, \introF(-)))$.
@@ -145,6 +147,6 @@ We have defined the $\Box$ operator in the context of locally introspective theo
 
 In the next chapter, we will show that in an introspective theory, the $\Box$ furthermore satisfies the \Loeb/ property of the modal logic GL (aka, \quote{provability logic}).
 
-Later, we shall also show the converses making these results tight: The rules which hold in general of the $\Box$ operator in a locally introspective theory are no stronger than (thus, precisely equal to) those of K4, while the rules which hold in general of the $\Box$ operator in an introspective theory are no stronger than (thus, precisely equal to) those of GL.
+Later \TODOinline{Or rather, in the very prior section, when discussing our Kripke frame archetypal examples}, we shall also show the converses making these results tight: The rules which hold in general of the $\Box$ operator in a locally introspective theory are no stronger than (thus, precisely equal to) those of K4, while the rules which hold in general of the $\Box$ operator in an introspective theory are no stronger than (thus, precisely equal to) those of GL.
 
 \fileend
