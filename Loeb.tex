@@ -6,9 +6,11 @@ In this chapter, we prove our most important theorem, justifying the significanc
 
 The key results of this chapter are those covered in \magicref{PreIntrospDiagSection} and \magicref{IntrospDiagSection}, culminating in \magicref{IntrospLoeb}, our most important theorem. All material in those sections is original to this work.
 
-The material on the \Loeb/ property in general categories in \magicref{LoebPropertySection} and \magicref{LoebPropertyReduxSection} includes some observations which can also be found (either explicitly or implicitly) in existing literature. We give our own exposition of this material, which felt important to include in a clean and complete exposition of the significance of our key result \magicref{IntrospLoeb}. In particular, we confirm how these general \Loeb/ property results continue to be applicable in our particular introspective theory context, even without common presumptions such as cartesian closure, and even with care paid to distinguish the roles of $T$, $C$, and $\Psh{C}$ in a general introspective theory $\langle T, C \rangle$.
+The material on the \Loeb/ property in general categories in \magicref{LoebPropertySection} includes some observations which can also be found (either explicitly or implicitly) in existing literature. We give our own exposition of this material, which felt important to include in a clean and complete exposition of the significance of our key result \magicref{IntrospLoeb}. In particular, we confirm how these general \Loeb/ property results continue to be applicable in our particular introspective theory context, even without common presumptions such as cartesian closure, and even with care paid to distinguish the roles of $T$, $C$, and $\Psh{C}$ in a general introspective theory $\langle T, C \rangle$.
 
 The discussion in \magicref{LawvereFPTSection} concerns Lawvere's fixed point theorem, which of course is not original to us, but we also include some reframing and generalization of this which is due to us rather than Lawvere. The discussion in \magicref{LawvereFPTReduxSection} compares our reframing to some other reframings of Lawvere's fixed point theorem in the existing literature.
+
+The sole theorem in \magicref{NoSmallSelfIndexing} is the same theorem as proven in \autocite{PittsTaylor1989}. We re-note it here simply to observe that it follows as a special case of our more general \magicref{IntrospLoeb}.
 
 \subsection{The \Loeb/ property in abstract}\label{LoebPropertySection}
 \begin{definition}\label{LoebPropertyDefn}
@@ -27,6 +29,10 @@ In other words, for every $\Omega \in D$ and $\loebNeg : \Box \Omega \to \Omega$
 
 If such fixed points are furthermore always unique, we say $\Box$ has the \defined{\Loeb/ property with uniqueness}. (Note that the \Loeb/ property with uniqueness is the same as saying that the unique map $: \Box 1 \to 1$ is an initial $\Box$-algebra.)
 \end{definition}
+
+\begin{observation}\label{KnasterTarskiExample}
+For example, the identity endofunctor on the category of complete lattices and monotonic maps between them has the \Loeb/ property (this amounts to the famed Knaster-Tarski fixed point theorem). However, this does not have the \Loeb/ property with uniqueness. \TODOinline{Is it worth pointing out this example? We use it as a counterexample on two occasions below, but perhaps there is no need for such counterexample-illustration.}
+\end{observation}
 
 In this chapter, we will establish that for every introspective theory $\langle T, C \rangle$, each aspect of each of $\Box_{T/-}$, $\Box_C$, and $\Box_{\Psh{C}}$ has the \Loeb/ property with uniqueness. That such a strong result follows from such a minimal and simple categorical structure motivates much of our interest in the concept of introspective theories.
 
@@ -89,6 +95,12 @@ But the map $\Box h : \Box H \to 1$ does indeed have this property, as seen in t
 This completes the proof.
 \end{proof}
 
+\begin{remark}
+Note that \magicref{LoebPropertyLexUniqueness} makes essential use of the structure available in a lexcategory. We can see this by considering the example from \magicref{KnasterTarskiExample}, which has the \Loeb/ property but not the \Loeb/ property with uniqueness. This is possible as the category of complete lattices and arbitrary monotonic maps lacks equalizers.
+\end{remark}
+
+The application of these abstract results to locally introspective theories in particular is like so:
+
 \begin{theorem}\label{LoebTransferIntrosp}
 If $\langle T, C \rangle$ is a locally introspective theory and $t$ is an object of $T$ such that at least one of $\Box_{T/-}$, $\Box_C$, or $\Box_{\Psh{C}}$ has the \Loeb/ property (without presumed uniqueness) at its $t$-aspect, then all three have the \Loeb/ property with uniqueness at their $t$-aspect.
 
@@ -100,6 +112,69 @@ By \magicref{LoebTransfer}, when considering the definitions of the various $\Bo
 
 \begin{remark}
 In the above proof, we used \magicref{LoebTransfer} to transfer the \Loeb/ property from $\Box_C$ to $\Box_{T/-}$. Later, via \magicref{IntrospAsGeminal}, we will learn an alternative reason why we can automatically transfer properties which hold of $C$ in all introspective theories $\langle T, C \rangle$ to properties which hold of $T$ in all introspective theories $\langle T, C \rangle$.
+\end{remark}
+
+\magicref{LoebPropertyLexUniqueness} is only a special case of a much broader and important theorem which we now discuss.
+
+\begin{theorem}\label{CoalgToAlg}
+Let $D$ be any lexcategory and let $\Box : D \to D$ be any terminal-object-preserving functor. Let $E$ be any \repsmall/ $D$-indexed category. (Note that $\Box$ acting on $E$ induces also another \repsmall/ $D$-indexed category $\Box E$ \sTODOinline{Note in preliminaries how the choice of internal category presenting these indexed categories doesn't matter, as $\Box$ acts on the internal functors between these too}, as well as a functor from each $d$-defined aspect of $E$ to the $(\Box d)$-defined aspect of $\Box E$, for $d \in D$. In particular, as $\Box$ is terminal-object-preserving, $\Box$ acts as a functor from the global aspect of $E$ to the global aspect of $\Box E$.) 
+
+Suppose also given a $D$-indexed functor $f : \Box E \to E$, and let the endofunctor $F$ on the global aspect of $E$ be given by first applying $\Box$ to arrive in the global aspect of $\Box E$, then applying $f$ to arrive back in the global aspect of $E$.
+
+If $\Box$ has the \Loeb/ property, then there is an $F$-hylomorphism (as in \magicref{HylomorphismDefn}) between any $F$-coalgebra $W : w \to F(w)$ and any $F$-algebra $M : F(m) \to m$ in the global aspect of $E$. And if $\Box$ furthermore has the \Loeb/ property with uniqueness, then this hylomorphism is unique.
+\end{theorem}
+\begin{proof}
+A hylomorphism from $W$ to $M$ is a fixed point of $x \mapsto M \circ F(x) \circ W : \Hom_E(w, m) \to \Hom_E(w, m)$. But as $F(x) = f(\Box x)$, this is the same as a fixed point for $x \mapsto g(\Box x)$ where $g(-)$ is defined by $M \circ f(-) \circ W : \Box \Hom_E(w, m) \to \Hom_E(w, m)$. 
+
+The hylomorphisms from $W$ to $M$ are thus the same as the fixed points given by the \Loeb/ property with respect to this $g$. This completes the proof.
+\end{proof}
+
+\sTODOinline{The above theorem \magicref{CoalgToAlg} generalizes a little further than we've stated it. It is not quite necessary that $E$ be small overall, nor that $D$ have any limits beyond a terminal object. It would suffice for the hom-sets between globally defined objects of $E$ to be small (this is the structure of an enriched category). But it seems not worth the extra hassle of explaining what $\Box E$ means in that situation right now, and every use we will make of this is anyway covered by the description above.}
+
+We now demonstrate how \magicref{LoebPropertyLexUniqueness} can be seen as a special case of \magicref{CoalgToAlg}.
+\begin{corollary}\label{LoebPropertyLexUniquenessRedux}
+Let $D$ be any lexcategory\sTODOinline{Or any category with terminal object and equalizers, but for now we will go ahead and presume binary products as well for convenience}, and let $\Box : D \to D$ be a terminal-object-preserving endofunctor on $D$. If $\Box$ has the \Loeb/ property, then it furthermore has the \Loeb/ property with uniqueness.
+\end{corollary}
+\begin{proof}
+Let $E$ be an arbitrary object of $D$ (thus, a \repsmall/ $D$-indexed set) and let us construe this also as a \repsmall/ $D$-indexed discrete category. Let $f : \Box E \to E$ be an arbitrary map in $D$, and as above, let us take $F : \Hom_D(1, E) \to \Hom_D(1, E)$ to be given as the composition of $\Box : \Hom_D(1, E) \to \Hom_D(1, \Box E)$ with $f \circ - : \Hom_D(1, \Box E) \to \Hom_D(1, E)$.
+
+As $E$ is a discrete category, observe that any $F$-coalgebra or $F$-algebra in the global aspect of $E$ amounts to a fixed point of $f \circ \Box(-) : \Hom_D(1, E) \to \Hom_D(1, E)$. The \Loeb/ property tells us such fixed points exist, while \magicref{CoalgToAlg} tells us there is a hylomorphism between any such fixed points. But as $E$ is a discrete category, such a hylomorphism amounts to just an equality between the two elements of $\Hom_D(1, E)$. Thus, any two such fixed points are equal, which is to say, we have the \Loeb/ property with uniqueness.
+\end{proof}
+It is perhaps easy to miss how the presumption of equalizers in $D$ has been used in the argument for \magicref{LoebPropertyLexUniquenessRedux}. At one point within its invocation of \magicref{CoalgToAlg}, the argument considers the object $\Box \Hom_E(w, m)$ for parallel $w, m \in \Hom_D(1, E)$. As such, it depends upon the fact that $\Hom_E(w, m)$ is a \repsmall/ $D$-indexed set. This object $\Hom_E(w, m)$ of $D$ is given by an equalizer between parallel maps from $1$ to $E$ in $D$; this is where the fact that $D$ is a lexcategory is essential.
+
+\begin{corollary}\label{InitialTerminalCoincidence}
+Consider the same setup as of \magicref{CoalgToAlg}, and presume $\Box$ has the \Loeb/ property with uniqueness (as we now know follows automatically from the presumption that $D$ is a lexcategory). Then any fixed point of $F$ (in the sense of an object $e$ of the global aspect of $E$ along with an isomorphism between $e$ and $F(e)$) is simultaneously an initial $F$-algebra and a terminal $F$-coalgebra. In particular, any two such fixed points are isomorphic, via a unique $F$-algebra isomorphism.
+\end{corollary}
+\begin{proof}
+In that context, \magicref{CoalgToAlg} says that every $F$-coalgebra has a \emph{unique} hylomorphism into every $F$-algebra. In the particular case that the coalgebra is invertible, this can be read as a morphism between algebras, and establishes that the coalgebra's inverse is an initial algebra. Dually, for any invertible algebra, this establishes its inverse as a terminal coalgebra.
+\end{proof}
+
+\TODOinline{Link this to \magicref{IntrospTyConFixedPoints}}
+
+\TODOinline{Note after our later bootstrapping section that this uniqueness means that ultimately, the apparent dependence on various arbitrary choices in our proof of the bootstrapping theorem doesn't matter in the end. We get the same result no matter what.}
+
+\begin{remark}
+The argument we have given for \magicref{CoalgToAlg} and thus for \magicref{InitialTerminalCoincidence} is essentially the same as that given for Lemma 7.6 in \autocite{birkedal2011first}. For convenience for our purposes, we have framed this in terms of internal categories, though in \autocite{birkedal2011first} it is more properly framed as about enriched categories more generally. On the other hand, this argument is given in \autocite{birkedal2011first} in a context where the uniqueness of the \Loeb/ property has already been presumed, whereas we have noted that this argument can also be given in a context where only the weaker \Loeb/ property without uniqueness has been presumed, and then this argument can be used to in fact derive said uniqueness in a lexcategory.
+
+Arguments establishing that the weaker \Loeb/ property entails the \Loeb/ property with uniqueness in contexts with identity types have been noted in the literature on guarded recursion. For example, as Theorem V.8 in \autocite{birkedal2013universes} and as Theorem 9.5 in \autocite{birkedal2021Multimodal}. However, we are unaware of any prior observation in the literature that this uniqueness can also be understood as a special case of the existence of coalgebra-to-algebra hylomorphisms, unifying those arguments.
+\end{remark}
+
+\begin{theorem}\label{CCCLoebUniqueness}
+The identity endofunctor on a cartesian closed category has the \Loeb/ property with uniqueness just in case the category is the trivial terminal category.
+\end{theorem}
+\begin{proof}
+By applying the \Loeb/ property with uniqueness to $\id_{B^A}$ from $\Box (B^A) = (B^A)$ to $B^A$, for arbitrary objects $A$ and $B$, we find that each $B^A$ has a unique global element, which is to say, there is a unique map between any pair of objects. Thus all objects become isomorphic to the terminal object.
+\end{proof}
+
+\begin{corollary}\label{CCCLoebLex}
+The identity endofunctor on a cartesian closed category with equalizers has the \Loeb/ property just in case the category is the trivial terminal category.
+\end{corollary}
+\begin{proof}
+By combining \magicref{CCCLoebUniqueness} and \magicref{LoebPropertyLexUniqueness}.
+\end{proof}
+
+\begin{remark}
+The example from \magicref{KnasterTarskiExample} shows that it is possible for the identity endofunctor on a nontrivial cartesian closed category to have the \Loeb/ property, so long as neither uniqueness nor equalizers are presumed.
 \end{remark}
 
 \subsection{Lawvere's fixed point theorem}\label{LawvereFPTSection}
@@ -345,74 +420,24 @@ In other words, every introspective theory has the \Loeb/ property, in the termi
 By \magicref{SliceBoxIsAspectBox}, each aspect of any of these $\Box$ functors is the global aspect of the corresponding $\Box$ functor on the corresponding slice introspective theory. Thus, we simply invoke \magicref{IntrospLoeb} on this slice introspective theory.
 \end{proof}
 
-\subsection{More on the \Loeb/ property in abstract: Uniqueness, initiality/terminality, and hylomorphisms}\label{LoebPropertyReduxSection}
-\TODOinline{We should perhaps move this material back to the beginning of the chapter to join the rest of the material on the \Loeb/ property in abstract? We originally moved it to the end so as to not delay getting to our main result that introspective theories automatically satisfy the \Loeb/ property, but perhaps that was an odd organizational choice.}
-
-In this section, we establish results on the uniqueness of the fixed points given by the \Loeb/ property for our introspective theories, as well as their initiality or terminality in certain contexts. We note that similar arguments to those given in this section have already been given in the literature on guarded recursion; for example, in \autocite{birkedal2011first} and in \autocite{birkedal2013universes}. We record these results here to explicitly confirm that they will hold in our particular setting (with $T$, $C$, and $\Psh{C}$ distinguished, with no assumption of cartesian closure, with no form of \Loeb/'s property directly assumed but rather this having been derived from other assumptions as in the prior sections, with no natural transformation from identity to $\Box$ on $C$ nor on $\Psh{C}$, etc.). We also observe that the uniqueness argument and the initiality/terminality argument are unified in a way that we do not believe has been stated before.
-
-The key theorem for this entire section is the following:
-
-\begin{theorem}\label{CoalgToAlg}
-Let $D$ be any category with terminal object and let $\Box : D \to D$ be any terminal-object-preserving functor. Let $E$ be any \repsmall/ $D$-indexed category. (Note that $\Box$ acting on $E$ induces also another \repsmall/ $D$-indexed category $\Box E$ \TODOinline{Note in preliminaries how the choice of internal category presenting these indexed categories doesn't matter, as $\Box$ acts on the internal functors between these too}, as well as a functor from each $d$-defined aspect of $E$ to the $(\Box d)$-defined aspect of $\Box E$, for $d \in D$. In particular, as $\Box$ is terminal-object-preserving, $\Box$ acts as a functor from the global aspect of $E$ to the global aspect of $\Box E$.) 
-
-Suppose also given a $D$-indexed functor $f : \Box E \to E$, and let the endofunctor $F$ on the global aspect of $E$ be given by first applying $\Box$ to arrive in the global aspect of $\Box E$, then applying $f$ to arrive back in the global aspect of $E$.
-
-If $\Box$ has the \Loeb/ property, then there is an $F$-hylomorphism (as in \magicref{HylomorphismDefn}) between any $F$-coalgebra $W : w \to F(w)$ and any $F$-algebra $M : F(m) \to m$ in the global aspect of $E$. And if $\Box$ furthermore has the \Loeb/ property with uniqueness, then this hylomorphism is unique.
-\end{theorem}
-\begin{proof}
-A hylomorphism from $W$ to $M$ is a fixed point of $x \mapsto M \circ F(x) \circ W : \Hom_E(w, m) \to \Hom_E(w, m)$. But as $F(x) = f(\Box x)$, this is the same as a fixed point for $x \mapsto g(\Box x)$ where $g(-)$ is defined by $M \circ f(-) \circ W : \Box \Hom_E(w, m) \to \Hom_E(w, m)$. 
-
-The hylomorphisms from $W$ to $M$ are thus the same as the fixed points given by the \Loeb/ property with respect to this $g$. This completes the proof.
-\end{proof}
-
-\begin{corollary}\label{LoebPropertyLexUniquenessRedux}
-If $\Box : D \to D$ is any terminal-object-preserving endofunctor on a lexcategory with the \Loeb/ property, then it furthermore has the \Loeb/ property with uniqueness.
-\end{corollary}
-\begin{proof}
-Let $E$ be an arbitrary object of $D$ (thus, a \repsmall/ $D$-indexed set) and let us construe this also as a \repsmall/ $D$-indexed discrete category. Let $f : \Box E \to E$ be an arbitrary map in $D$, and as above, let us take $F : \Hom_D(1, E) \to \Hom_D(1, E)$ to be given as the composition of $\Box : \Hom_D(1, E) \to \Hom_D(1, \Box E)$ with $f \circ - : \Hom_D(1, \Box E) \to \Hom_D(1, E)$.
-
-As $E$ is a discrete category, observe that any $F$-coalgebra or $F$-algebra in the global aspect of $E$ amounts to a fixed point of $f \circ \Box(-) : \Hom_D(1, E) \to \Hom_D(1, E)$. The \Loeb/ property tells us such fixed points exist, while \magicref{CoalgToAlg} tells us there is a hylomorphism between any such fixed points. But as $E$ is a discrete category, such a hylomorphism amounts to just an equality between the two elements of $\Hom_D(1, E)$. Thus, any two such fixed points are equal, which is to say, we have the \Loeb/ property with uniqueness.
-\end{proof}
-\TODOinline{Note that the above is an alternate proof, or rather an alternate presentation of the same proof, of \magicref{LoebPropertyLexUniqueness}.}
-
-Note that \magicref{LoebPropertyLexUniquenessRedux} makes essential use of the structure available in a lexcategory, beyond what is merely available in a category with finite products. There are many examples of terminal-object-preserving endofunctors on categories with finite products which have the \Loeb/ property but which do not have the \Loeb/ property with uniqueness (for example, when considering the identity endofunctor on the category whose objects are complete lattices and whose morphisms are arbitrary monotonic maps, or the identity endofunctor on the category of partial functions between sets). It is perhaps easy to miss how the finite limit structure of $D$ has been used in the argument for \magicref{LoebPropertyLexUniquenessRedux}. At one point within its invocation of \magicref{CoalgToAlg}, the argument considers the object $\Box \Hom_E(w, m)$ for parallel $w, m \in \Hom_D(1, E)$. As such, it depends upon the fact that $\Hom_E(w, m)$ is a \repsmall/ $D$-indexed set. This object $\Hom_E(w, m)$ of $D$ is given by an equalizer between parallel maps from $1$ to $E$ in $D$; this is where the fact that $D$ is a lexcategory is essential.
-
-\begin{corollary}\label{InitialTerminalCoincidence}
-Consider the same setup as of \magicref{CoalgToAlg}, and presume $\Box$ has the \Loeb/ property with uniqueness (as we have just seen follows from the \Loeb/ property simpliciter when $D$ has finite limits). Then any fixed point of $F$ (in the sense of an object $e$ of the global aspect of $E$ along with an isomorphism between $e$ and $F(e)$) is simultaneously an initial $F$-algebra and a terminal $F$-coalgebra. In particular, any two such fixed points are isomorphic, via a unique $F$-algebra isomorphism.
-\end{corollary}
-\begin{proof}
-In that context, \magicref{CoalgToAlg} says that every $F$-coalgebra has a \emph{unique} hylomorphism into every $F$-algebra. In the particular case that the coalgebra is invertible, this can be read as a morphism between algebras, and establishes that the coalgebra's inverse is an initial algebra. Dually, for any invertible algebra, this establishes its inverse as a terminal coalgebra.
-\end{proof}
-
-\TODOinline{Link this to \magicref{IntrospTyConFixedPoints}}
-
-\begin{observation}
-Note that this uniqueness means that the apparent dependence on various arbitrary choices in our proof of the bootstrapping theorem doesn't matter in the end. We get the same result no matter what.
-\end{observation}
-
-\begin{remark}
-The argument we have given for \magicref{CoalgToAlg} and thus for \magicref{InitialTerminalCoincidence} is essentially the same as that given for Lemma 7.6 in \autocite{birkedal2011first}. However, we have stated it in our slightly different framework of introspective theories, and we use it to derive uniqueness for the \Loeb/ property, whereas the argument is given in \autocite{birkedal2011first} in a context where the uniqueness of the \Loeb/ property has already been assumed.
-
-Arguments establishing that the \Loeb/ property entails the \Loeb/ property with uniqueness in contexts with identity types have been noted in the literature on guarded recursion. For example, as Theorem V.8 in \autocite{birkedal2013universes} and as Theorem 9.5 in \autocite{birkedal2021Multimodal}. However, we are unaware of any prior observation in the literature that this uniqueness can also be understood as a special case of the existence of coalgebra-to-algebra hylomorphisms, unifying those arguments.
-
-Finally, as opposed to the usual conventions of the guarded recursion literature, we stress that these arguments can be given in contexts where no natural transformation from identity to $\Box$ is presumed (indeed, this is important for us, as no such natural transformation exists in general for the $\Box_C$ or $\Box_{\Psh{C}}$ of an introspective theory $\langle T, C \rangle$), and also they do not depend on cartesian closure.
-\end{remark}
+\subsection{The self-indexing cannot be small}\label{NoSmallSelfIndexing}
+\TODOinline{Perhaps move this into another section instead of giving it a dedicated section.}
 
 \begin{theorem}\label{LocallyCartesianLoeb}
-Let $T$ be any lexcategory, and equip it as an introspective theory $\langle T, C, \introF \rangle = \langle T, T/-, \id \rangle$ by taking $C$ to be $T$'s self-indexing and $\introF$ to be the identity (a la \magicref{TrivialPreIntrosp}). Recall that this will be locally introspective (that is, the self-indexing will be locally \repsmall/) precisely when $T$ is locally cartesian closed.
+Let $T$ be any lexcategory, and equip it as an introspective theory $\langle T, C, \introF \rangle = \langle T, T/-, \id \rangle$ by taking $C$ to be $T$'s self-indexing and $\introF$ to be the identity (a la \magicref{TrivialPreIntrosp}). Recall from \magicref{LocallySmallSelfIndexing} that this will be locally introspective (that is, the self-indexing will be locally \repsmall/) precisely when $T$ is locally cartesian closed.
 
 This will furthermore be introspective (that is, the self-indexing will be \repsmall/) only when $T$ is the trivial terminal category.
 \end{theorem}
 \begin{proof}
-For a lexcategory $T$ equipped as a pre-introspective theory in this way, the operation $\Box_T$ acts as the identity. Thus, every object of $T$ acts as a fixed point of $\Box_T$ up to isomorphism. If this is furthermore an introspective theory, then by our observation on uniqueness of such fixed points in an introspective theory, it follows that every object of $T$ is isomorphic, and thus every object of $T$ is a terminal object.
+For a lexcategory $T$ equipped as a pre-introspective theory in this way, the operation $\Box_T$ acts as the identity.
+
+And by \magicref{IntrospLoeb}, if $T$ is an introspective theory, then $\Box_T$ will have the \Loeb/ property with uniqueness.
+
+But by \magicref{CCCLoebUniqueness}, the identity endofunctor on a cartesian closed lexcategory has the \Loeb/ property with uniqueness only when the category is the trivial terminal category.
 \end{proof}
 This triviality result was demonstrated in \autocite{PittsTaylor1989} by an essentially identical argument to the argument we have given, when the abstractions in our argument are unwound to this special case.
 
-But by generalizing the argument to introspective theories, we are able to expand from this negative result (there are no nontrivial locally cartesian closed categories whose self-indexing is \repsmall/) to a positive result (there are many nontrivial examples of introspective theories, which all end up satisfying the \Loeb/ property with uniqueness and all the further corollaries of this we've been discussing).
-
-----
-
-\sTODOinline{Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on |G'|, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.}
+But by generalizing to introspective theories, we are able to expand from this negative result (there are no nontrivial locally cartesian closed categories whose self-indexing is \repsmall/) to a positive result (there are many nontrivial examples of introspective theories, which all end up satisfying the \Loeb/ property with uniqueness and all the further corollaries of this we've been discussing).
 
 \subsection{As applied to our archetypal examples}
 \TODO

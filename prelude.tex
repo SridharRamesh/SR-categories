@@ -77,6 +77,9 @@
 % For subfiles, in a toggle-able way
 \newif\ifsubfiles
 
+% For TODO counters, in a toggle-able way
+\newif\ifDisplayTODOCount
+
 \newcommand{\filestart}{
     \ifsubfiles
     %\documentclass[./main.tex]{subfiles}
@@ -91,9 +94,13 @@
     \fi
 }
 \newcommand{\fileinclude}[1]{
+    \setcounter{TODOcounter}{0}
     \ifsubfiles
     \newpage \subfile{#1}
     \else
     \include{#1}
+    \fi
+    \ifDisplayTODOCount
+    {\color{red} There are \theTODOcounter\; TO DOs remaining in this section.}
     \fi
 }
