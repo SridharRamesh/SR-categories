@@ -163,7 +163,7 @@ Arguments establishing that the weaker \Loeb/ property entails the \Loeb/ proper
 The identity endofunctor on a cartesian closed category has the \Loeb/ property with uniqueness just in case the category is the trivial terminal category.
 \end{theorem}
 \begin{proof}
-By applying the \Loeb/ property with uniqueness to $\id_{B^A}$ from $\Box (B^A) = (B^A)$ to $B^A$, for arbitrary objects $A$ and $B$, we find that each $B^A$ has a unique global element, which is to say, there is a unique map between any pair of objects. Thus all objects become isomorphic to the terminal object.
+Taking $\Box$ to be this identity endofunctor and applying the \Loeb/ property with uniqueness to the morphism $\id_{B^A} : \Box(B^A) \to (B^A)$, for arbitrary objects $A$ and $B$, we find that each $B^A$ has a unique global element, which is to say, there is a unique map between any pair of objects. Thus all objects become isomorphic to the terminal object.
 \end{proof}
 
 \begin{corollary}\label{CCCLoebLex}
@@ -173,9 +173,9 @@ The identity endofunctor on a cartesian closed category with equalizers has the 
 By combining \magicref{CCCLoebUniqueness} and \magicref{LoebPropertyLexUniqueness}.
 \end{proof}
 
-\begin{remark}
+\begin{observation}
 The example from \magicref{KnasterTarskiExample} shows that it is possible for the identity endofunctor on a nontrivial cartesian closed category to have the \Loeb/ property, so long as neither uniqueness nor equalizers are presumed.
-\end{remark}
+\end{observation}
 
 \subsection{Lawvere's fixed point theorem}\label{LawvereFPTSection}
 Let us refresh the reader on Lawvere's fixed point theorem \autocite{lawvere1969diagonal}, which captures the general structure of many diagonalization arguments and their relationship to cartesian closed structure. We shall first review a proof of Lawvere's fixed point theorem close in spirit to Lawvere's framing of his result.
@@ -420,7 +420,7 @@ In other words, every introspective theory has the \Loeb/ property, in the termi
 By \magicref{SliceBoxIsAspectBox}, each aspect of any of these $\Box$ functors is the global aspect of the corresponding $\Box$ functor on the corresponding slice introspective theory. Thus, we simply invoke \magicref{IntrospLoeb} on this slice introspective theory.
 \end{proof}
 
-\subsection{The self-indexing cannot be small}\label{NoSmallSelfIndexing}
+\subsection{The self-indexing cannot be small, except trivially}\label{NoSmallSelfIndexing}
 \TODOinline{Perhaps move this into another section instead of giving it a dedicated section.}
 
 \begin{theorem}\label{LocallyCartesianLoeb}
@@ -462,7 +462,7 @@ And to give a $g$ in the global aspect of $P(\introS(\Omega)) = \Omega^\Omega$ i
 
 This matches all the presumptions of \magicref{PreIntrospDiag} up with corresponding presumptions from \magicref{LawveresFixedPointTheorem}, and the conclusion we then obtain from \magicref{PreIntrospDiag} is readily seen to be the same as the conclusion from \magicref{LawveresFixedPointTheorem}.
 
-The above shows how to obtain \magicref{LawveresFixedPointTheorem} as an instance of \magicref{PreIntrospDiag} when $T$ is a lexcategory and $\Omega$ is an object of $T$. We then obtain \magicref{LawveresFixedPointTheorem} in full (that is, for arbitrary categories $T$ and $T$-indexed sets $\Omega$) from this special case, by first replacing $T$ with $\Psh{T}$, as noted at \TODOinline{Cite our previous discussion}.
+The above shows how to obtain \magicref{LawveresFixedPointTheorem} as an instance of \magicref{PreIntrospDiag} when $T$ is a lexcategory and $\Omega$ is an object of $T$. We then obtain \magicref{LawveresFixedPointTheorem} in full (that is, for arbitrary categories $T$ and $T$-indexed sets $\Omega$) from this special case, by first replacing $T$ with $\Psh{T}$, as noted in our discussion following our presentation of \magicref{LawveresFixedPointTheorem}.
 \end{proof}
 
 We also note in passing that another interesting generalization of \magicref{LawveresFixedPointTheorem} was recently remarked upon in \autocite{roberts2021substructural}. The following (or rather, its contrapositive) was given as Theorem 11 there. We shall present our own proof.

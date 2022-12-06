@@ -79,9 +79,9 @@ The self-initializing situation is of course the special case of the super-initi
 
 There are a number of self- and super-initializing theories in the wild, which thus immediately give us examples of geminal categories in the wild.
 
-For example: It is straightforward to show that every NNO-topos has internal initial models of every finitely axiomatizable lex theory, preserved by every NNO-topos homomorphism \TODOinline{Cite in preliminaries}.
+For example: It is straightforward to show that every NNO-topos has internal initial models of every finitely axiomatizable lex theory, preserved by every NNO-topos homomorphism. This was the observation of \magicref{NNOToposInternalInitialFinite}
 
-It is a little more difficult, but also possible to show that more generally, every arithmetic universe has internal initial models of every finitely axiomatizable lex theory, preserved by every arithmetic functor. \TODOinline{Cite in preliminaries}
+It is a little more difficult, but also possible to show that more generally, every arithmetic universe has internal initial models of every finitely axiomatizable lex theory, preserved by every arithmetic functor. This was the observation of \magicref{AUInternalInitialFinite}.
 
 Thus, any finitely axiomatizable extension of the theory of arithmetic universes is self-initializing. More generally, given any $Th$ extending the theory of arithmetic universes, and any finitely axiomatizable $Th'$ extending $Th$, the extension of $Th$ to $Th'$ is super-initializing. 
 
@@ -91,7 +91,7 @@ This immediately gives us many examples of geminal categories using the above co
 
 We have discussed all this just in the context of geminal categories, but this extends to give analogous constructions of introspective theories as well. We discuss these next.
 
-\TODOinline{Maybe delete most of this section (except for the definitions of self- and super-initializing theories) and only give examples of introspective theories.}
+\sTODOinline{Maybe delete most of this section (except for the definitions of self- and super-initializing theories) and only give examples of introspective theories.}
 
 \subsubsection{The theory of initial models as an introspective theory}
 Throughout the following, we say say an initial object in a category of the form $\LexCat(T, S)$ is an initial model of $T$ internal to $S$. Given lexcategories $S$ and $S'$ both containing initial internal models of $T$, we say a lexfunctor from $S$ to $S'$ preserves initial models of $T$ if its composition with the initial model of $T$ in $S$ is the initial model of $T$ in $S'$.
@@ -148,7 +148,7 @@ Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic uni
 \end{construction}
 
 \begin{observation}
-Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $IAU$ (which exists thanks to \TODOinline{cite from Preliminaries}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
+Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $IAU$ (which exists thanks to \magicref{AUInternalInitialFinite} and \magicref{NNOToposAndAUAreFinitelyAxiomatized}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
 \end{observation}
 \TODOinline{Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence, since the global sections functor on $\IAU$ is also the unique arithmetic functor to $\Set$ (as both are initial among lexfunctors), so that $\Glob{\IAU'} = \IAU$, which has the identity as its only endoarithmetic functor.}
 
@@ -178,11 +178,11 @@ Since $!_{\ZfinSigma} : \IAU \to \ZfinSigma$ was, as noted above, the same as th
 This concludes the proof.
 \end{proof}
 
-Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
+Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization (in the sense of \magicref{LocalizeIntrosp}) is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
 
 \TODOinline{Observe that in this section we constructed the initial arithmetic universe as an introspective theory. This is different in flavor from the previous section, where we constructed the initial NNO-topos or the like not as an introspective theory but as a geminal category.}
 
-\subsection{Models based on presheaf categories}
+\subsection{Models based on presheaf categories}\label{ModelsBasedOnPresheafCategories}
 \subsubsection{The general construction, yielding locally introspective theories}
 
 \begin{construction}\label{GeneralPresheafLocalIntrosp}
@@ -190,7 +190,7 @@ Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories $D$ and 
 
 Furthermore, suppose given some subset of the morphisms of $S$ which is closed under composition on either side with arbitrary morphisms. That is, suppose given some bifunctor $\SpecialHom_S(-, =) : S^{op} \times S \to \Set$ which is a subfunctor of $\Hom_S(-, =) : S^{op} \times S \to \Set$.
 
-By currying, we may read this $\SpecialHom$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. This extends to a endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which is a left adjoint, like so (\TODOinline{Discuss Yoneda extension in preliminaries}): \TODO.
+By currying, we may read this $\SpecialHom$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. This extends to a endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which is a left adjoint, like so: \TODOinline{Discuss Yoneda extension in preliminaries}
 
 We may now define a locally introspective theory $\langle \Psh{S}, C\rangle$ like so:
 
@@ -216,9 +216,7 @@ Here, we take the $\Psh{S}$-indexed lexcategory $C$ to be the bottom composite p
 This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} using a map derived from the inclusion of $\Prior$ into the identity on $\Psh{S}$.
 \end{construction}
 
-\TODOinline{Discuss the K4 example of this general construction, including the issue of augmenting with a new maximal element. Relate to introductory examples from the first chapter}
-
-\TODOinline{Discuss the topos of trees example of this general construction}
+\TODOinline{Relate to introductory examples from the first chapter}
 
 Unfortunately, the above construction does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \TODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}.
 
@@ -244,7 +242,7 @@ Note that $K$-decorations of the terminal presheaf amount to the same thing as o
 
 Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-decoration of $P_2$ back to a $K$-decoration of $P_1$. \TODOinline{Describe details or is it obvious? We compose $f$ for $P_2$ with the action of $m$ to get $f$ for $P_1$, and we literally take the pullback of $\pi$ for $P_2$ along $m$ to get $\pi$ for $P_1$}. This is strictly functorial, and thus we get a contravariant map from $\Psh{X}$ to $\Set$.
 
-It is also straightforward to observe that this map takes small colimits in $\Psh{X}$ to small limits in $\Set$. Thus, by \TODOinline{Put lemma in preliminaries}, this is in fact $\Psh{X}$-small. We obtain a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the pullback of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
+It is also straightforward to observe that this map takes small colimits in $\Psh{X}$ to small limits in $\Set$. Thus, by \TODOinline{Put lemma in preliminaries explaining that any small colimit-to-limit preserving presheaf on a presheaf category is representable}, this is in fact $\Psh{X}$-small. We obtain a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the pullback of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
 
 We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice; call this $\KFiberPsh{K}{X}$. This indexed category has a small set of objects (given by $\KDecObject{K}{X}$), and is locally small (as it is a full subcategory of $\Psh{X}/-$, which is locally small by the local cartesian closure of $\Psh{X}$). Thus, it is a small indexed category. Indeed, it can be seen as an internal indexed category with set of objects specifically $\KDecObject{K}{X}$.
 
@@ -320,6 +318,8 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 \TODOinline{Observe that this argument depends on the Axiom of Replacement. It would fail in ZFC - Replacement for the same reason that one could not construct $\bigcup_{n \in \nat} \mathcal{P}^n(\nat)$ or $\prod_{n \in \nat} \mathcal{P}^n(\nat)$.}
 
 \TODOinline{Observe that we get \Loeb/'s theorem for our locally introspective theory from \Loeb/'s theorem for our fully introspective theory, by picking sufficiently large ramps for any particular instance.}
+
+\TODOinline{Relate to introductory examples from the first chapter}
 
 \subsection{Recap}
 \TODO

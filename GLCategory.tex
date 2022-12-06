@@ -13,7 +13,7 @@ We will also discuss a partial converse of sorts, a way to extract an introspect
 \subsection{Strict introspective theories}
 It will be technically convenient for us to work in this chapter with a slightly less \quote{presentation-free} variant of our notion of introspective theories.
 
-\begin{definition}
+\begin{definition}\label{StrictIntrospDefn}
 A \defined{strict introspective theory} is a strict lexcategory $T$, a lexcategory $C$ internal to $T$, a strict lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from $\id_T$ to $\Hom_C(1, \introS(-))$.
 \end{definition}
 
@@ -53,7 +53,7 @@ A \defined{homomorphism} between strict introspective theories $\langle T_1, C_1
 	\arrow["\introS", from=1-3, to=2-3]
 \end{tikzcd}\]
 
-In the above diagram, the bottom arrow indicates the action of $H$ as a homomorphism from the global aspect of the $T_1$-internal structure $C_1$, to the global aspect of the corresponding $T_2$-internal structure $H[C_1] = C_2$.
+(In the above diagram, the bottom arrow is using the notation from \magicref{MultiplyInternal} to indicate the action of $H$ as a homomorphism from the global aspect of the $T_1$-internal structure $C_1$, to the global aspect of the corresponding $T_2$-internal structure $H[C_1] = C_2$.)
 \end{definition}
 
 Such homomorphisms are closed under composition and thus we obtain the category of strict introspective theories.
@@ -304,9 +304,9 @@ Put in other words, for any essentially algebraic theory $Th$ such that models o
 
 For simplicity as a first introduction, everything done previously was the special case where $Th$ was simply the theory of strict lexcategories itself. But now we describe the more general results, which follow by almost exactly the same reasoning as used before:
 
-\TODOinline{Now we can duplicate all of the above, except for the result that introspective theories are themselves geminal categories, for \quote{geminal gadgets} more generally. That is, the left adjoint mentioned above is given by a general construction perfectly analogous to the one we used to construct the concept of geminal categories above.}
+\TODOinline{Now we can duplicate all of the above, except for the result that introspective theories are themselves geminal categories, for \quote{geminal gadgets} more generally. (That one result becomes the result that introspective theories extending the theory of gadgets are themselves geminal categories whose internal geminal categories are furthermore geminal gadgets.) That is, the left adjoint mentioned above is given by a general construction perfectly analogous to the one we used to construct the concept of geminal categories above.}
 
-\TODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
+\sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
 \subsection{Modal logic in geminal categories}
 \TODOinline{Rewrite this just in terms of the internal $\Box_C$ in the initial introspective theory, which then automatically applies to arbitrary geminal categories.}
@@ -324,7 +324,7 @@ Given an introspective theory $\langle T, C, \introS, \introN \rangle$, if we th
 
 Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-internal geminal category with underlying lexcategory $C$, and then apply the box notation from \magicref{BoxForGeminal}, we find that for $c, d \in C$, we have $\Box(c \implies d) = \Hom_{\introS[C]}(\introN_{\Ob(c)}(c), \introN_{\Ob(c)}(d))$. When $c$ and $d$ are globally defined, we can use \magicref{SMatchesN} to show this equal to $\Hom_{\introS[C]}(\introS(c), \introS(d)) =  \introS(\Hom_C(c, d))$. This exactly matches the definition of $\Box_C (c \implies d)$ used with introspective theories from \magicref{BoxDefn}.
 
-\TODOinline{When $c$ and $d$ are not globally defined, then what?}
+\TODOinline{When $c$ and $d$ are not globally defined, then what? Presumably the box notation should not be well-defined on arbitrary slice categories of a geminal category. But in this last comment, we really mean to be looking at the $\Ob(C)^2$-aspect of $\Box_C$ in an introspective theory.}
 \end{observation}
 
 \TODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our two main classes of example into here.}
@@ -414,7 +414,7 @@ Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_
 
 We also clearly have a projection lexfunctor from $G_0$ to $C_0$ which does indeed take the internal geminal category to $\gamma$.
 
-\TODOinline{Show that this has the terminality property, and clean up this writing.}
+\TODOinline{Show that this has the terminality property, and clean up this writing. Should we have made $H$ a strict lexfunctor between strict lexcategories above?}
 
 Suppose given any arbitrary geminal category $K = \langle K_0, K'_1; P_0, P'_1 \rangle$ and lexfunctor $H_0 : K_0 \to C_0$ such that $H[\InteriorGeminal{K}] = \gamma$. Observe that we also have a lexfunctor $H_1 : K_0 \to C_1$ given by $H_1 = \InducedHomo{H_0}{K'_1} \circ P_0$. Thus, we obtain a unique lexfunctor $H : C_0 \to G_0$ whose two projections are $H_0$ and $H_1$. We shall show that $H$ is a geminal category homomorphism, and the unique one with the appropriate properties. \TODO
 \closeDetails

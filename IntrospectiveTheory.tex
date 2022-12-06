@@ -86,7 +86,7 @@ The definition of an introspective theory remains exactly as before (\cref{DefnI
 An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is small.
 \end{definition}
 
-While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The reduction of the full indexed lexfunctor $\introF$ to just its global aspect ($\introS$) and a natural transformation between 1-functors means much less data around to explicitly fuss about. In particular, when we wish to turn this into a lex definition in section \TODO, we will find the appropriate coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
+While it may sometimes be easier to prove theorems about (pre-)introspective theories by using \cref{DefnPreIntrospIndexed}, it will often be easier to show structures actually are (pre-)introspective theories by using \cref{DefnPreIntrospSN}. But this is not the only benefit of \cref{DefnPreIntrospSN}. The reduction of the full indexed lexfunctor $\introF$ to just its global aspect ($\introS$) and a natural transformation between 1-functors means much less data around to explicitly fuss about. In particular, when we wish to strictify this into a lex definition eventually at \magicref{StrictIntrospHomoDefn}, we will find the appropriate coherence conditions much easier to manage. It will also be easier to define the appropriate notion of homomorphisms between (pre-)introspective theories by thinking about \cref{DefnPreIntrospSN}.
 
 \Cref{DefnPreIntrospSN} also allows us to quickly appreciate the significance of introspective theories from a functorial semantics point of view. An introspective theory is precisely an essentially algebraic theory (this is the role of $T$) extending the theory of lexcategories (this is the role of $C$), such that every model of the theory (which thus has an underlying lexcategory as its interpretation of $C$) is equipped with a designated homomorphism (this is the role of $\introN$) into an internal model of that same theory in its underlying lexcategory (this is the role of $\introS$). In short, every model has a homomorphism into a further internal model.
 
@@ -96,7 +96,7 @@ It will be useful for us also to consider sometimes the following concept, inter
 A \defined{locally introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is locally \repsmall/.
 \end{definition}
 
-Almost all the results we discuss for introspective theories admit straightforward generalization to locally introspective theories. The sole major exception is the derivation of \Loeb/'s theorem in \TODO. However, because that one result is so important to us, our main interest in this document is in discussing introspective theories, rather than locally introspective theories more generally.
+Almost all the results we discuss for introspective theories admit straightforward generalization to locally introspective theories. The sole major exception is the derivation of \Loeb/'s theorem for introspective theories in \magicref{IntrospLoeb}. However, because that one result is so important to us, our main interest in this document is in discussing introspective theories, rather than locally introspective theories more generally.
 
 \subsection{Archetypal examples}
 
@@ -205,7 +205,7 @@ While we have above constructed introspective theories $\langle \ZfinSigma, \Inn
 \end{warningenv}
 
 \subsubsection{Examples based on presheaf categories}
-\TODOinline{Should we perhaps delete part or all of this section entirely and just cover its material in \magicref{GeneralPresheafLocalIntrosp} and \magicref{CardinalityConstrainedPresheafIntrosp} and ensuing discussion there? Or is it useful for readers to see all four of the constructions in this section up front as introductory examples?}
+\sTODOinline{Should we perhaps delete part or all of this section entirely and just cover its material in \magicref{GeneralPresheafLocalIntrosp} and \magicref{CardinalityConstrainedPresheafIntrosp} and ensuing discussion there? Or is it useful for readers to see all four of the constructions in this section up front as introductory examples?}
 
 In this subsection, we will give some other instructive examples of introspective theories based on presheaf categories. These examples are of a very different flavor from those based on logical theories as in the previous section, thus helping to illustrate the generality of the notion of introspective theory.
 
@@ -217,9 +217,9 @@ In both examples in this section, we first construct a locally introspective the
 
 All the constructions in this section are unified and vastly generalized in \magicref{GeneralPresheafLocalIntrosp} and \magicref{CardinalityConstrainedPresheafIntrosp}.
 
-\paragraph{Presheaf examples related to step-indexing in guarded recursion}
+\paragraph{Presheaf example related to step-indexing in guarded recursion}
 
-We present this example in terms of presheaves over the natural numbers (which comprise the so-called topos of trees), but analogous examples may be constructed for presheaves over arbitrary categories; see the generalization at \TODOinline{cite later chapter}. We focus on presheaves over the natural numbers in this introductory example as it is perhaps the simplest nontrivial presheaf category to consider, and also as the \quote{later} modality on the topos of trees which is at the core of this example is much studied in the literature on guarded recursion.
+We present this example in terms of presheaves over the natural numbers (which comprise the so-called topos of trees), but analogous examples may be constructed for presheaves over arbitrary categories; see the generalization at \magicref{ModelsBasedOnPresheafCategories}. We focus on presheaves over the natural numbers in this introductory example as it is perhaps the simplest nontrivial presheaf category to consider, and also as the \quote{later} modality on the topos of trees which is at the core of this example is much studied in the literature on guarded recursion (e.g., as in \cite{birkedal2011first}).
 
 \begin{construction}
 Let $\omega$ be the poset of natural numbers with their usual ordering, and consider the category of presheaves $\Psh{\omega}$ (often called the topos of trees). We will equip this as a locally introspective theory.
@@ -338,8 +338,6 @@ In this way, we have constructed an introspective theory $\langle \PshUnderQInf,
 
 This is an important archetypal example. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame.
 
-\TODOinline{Discuss the modal operator in this context, either here or in the Modal logic chapter}
-
 \TODOinline{Stress that this Kripke frame example is very different from the first example, even if $P$ is taken to be $\omega$.}
 
 \subsection{Basic constructions}
@@ -380,7 +378,7 @@ The 2-cell labelled $\Sigma$ above indicates the action of $\Sigma$ when acting 
 By \magicref{RepsmallRightAdjoint} or \magicref{RepLocallySmallRightAdjoint}, if $\Sigma$ has a right adjoint, we can further observe that if $C$ is small or locally small, then so respectively will be $\pullAlong{\Sigma} C$.
 \end{proof}
 
-\sTODOinline{Note that functors between lexcategories preserving pullbacks and having right adjoints are commonly studied; this is the same as the notion of a geometric functor into a slice category. So there is a panoply of examples of this construction.}
+\sTODOinline{Note that functors between lexcategories preserving pullbacks and having right adjoints are commonly studied; this is the same as the notion of a geometric functor into a slice category. So there is a panoply of examples of this construction. But actually, the geometric embedding of sheaves into presheaves only directly allows us to take introspective theories on sheaf categories and obtain from them introspective theories on presheaf categories, via the above, since the direction of the left adjoint sheafification functor is from the presheaf category to the sheaf category. It feels like the opposite is what we would want. If we want to take an introspective theory on a presheaf category to an introspective theory on a sheaf category, what we should do instead is sheafify C to get C' along with a map from C to C', then take $\Sigma$ in the above to be the inclusion functor from sheaves into presheaves. This inclusion doesn't have to have a right adjoint, but C' will automatically be representable over the sheaf category (basically by definition), and thus we get an introspective theory on sheaves. This may also apply in some way to our cardinality-constrained presheaf categories but we'll have to think about the interaction of that with sheafification. Presumably, we'll need to choose ramps which are suitably closed so that the cardinality-constrained presheaves are closed under sheafification. Some version of this probably applies also to merely locally introspective theories. Let's move this note into the Examples chapter section on presheaves.}
 
 A particular special case of the above which is often of importance is the following:
 
@@ -408,15 +406,22 @@ By \cref{IntrospPullback} again, taking $\Sigma$ to be the inclusion functor.
 \end{proof}
 
 \begin{construction}\label{SubCPreIntrosp}
-If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a full sub-lexcategory of $C$ containing the range of $\introF$, then $\langle T, D, \introF \rangle$ is a pre-introspective theory (where $\introF$ is now taken to have codomain $D$).
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $T$-indexed full sub-lexcategory of $C$ containing the range of $\introF$, then $\langle T, D, \introF \rangle$ is a pre-introspective theory (where $\introF$ is now taken to have codomain $D$).
 \end{construction}
 
 The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$.
 
-\begin{TODOblock}
-Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way. (We could also take limits of strict introspective theories more generally, but that involves talking about object equality, which we don't really want to do.). We can also take sub-introspective theories generated as the hull of subsets of their objects and morphisms, or other such free constructions.
-\end{TODOblock}
+\bigskip
+The concepts of pre-introspective, locally introspective, or introspective theories are all nearly essentially algebraic concepts (\quote{nearly}, in that these involve categories up to equivalence rather than strict categories up to isomorphism). Thus these concepts automatically have available all the same properties as for any such nearly essentially algebraic concept. For example, we have free constructions, as are the subject of of our later chapter \magicref{GeminalChapter}. And we have Cartesian products in the straightforward way:
 
+\begin{construction}
+Let $K$ be any set, and suppose for each $k \in K$ we are given some pre-introspective theory $\langle T_k, C_k \rangle$. Then we may define the product of these pre-introspective theories in the obvious way. That is, we take the lexcategory $T = \prod_{k \in K} T_k$, and we define also a $T$-indexed lexcategory $C$, such that $C(t)$ for any object $t = \{ t_k \}_{k \in K}$ in $T$ is the product of $C_k(t_k)$ over each $k \in K$. Similarly, we define the reindexing functors in $C$ componentwise using the reindexing functors the various $C_k$, and we also define $\introF : T/- \to C$ componentwise using the $\introF$ for the various pre-introspective theories $\langle T_k, C_k \rangle$. It is readily seen that the result is furthermore locally introspective or introspective if each $\langle T_k, C_k \rangle$ is locally introspective or introspective, respectively.
+\end{construction}
+
+\sTODOinline{Make the useful observations that the theory of introspective theories is essentially lex, and that we can take therefore take products of introspective theories in the straightforward way. (We could also take limits of strict introspective theories more generally, but that involves talking about object equality, which we don't really want to do.). We can also take sub-introspective theories generated as the hull of subsets of their objects and morphisms, or other such free constructions.}
+
+\bigskip
+\TODOinline{Since we use the following only once, perhaps we should move it to its one use, at \magicref{Sigma1ModelIAUConnection}?}
 \begin{construction}\label{LocalizeIntrosp}
 If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $f : T \to T[M^{-1}]$ is a lex localization in the sense of \magicref{DefnLexLocalization}, and every morphism in $M$ is sent to an isomorphism by $\introS$, then $f$ acts as an introspective theory homomorphism from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C) \rangle$.
 

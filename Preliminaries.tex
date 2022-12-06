@@ -646,7 +646,9 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
 \subsection{Multiply internal structures}\label{MultiplyInternal}
-\TODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$}
+\TODOinline{If this material is not used prior to the Geminal Categories chapter, we should perhaps move it into the beginning of that chapter instead.}
+
+\TODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$.}
 
 Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
 
@@ -950,7 +952,7 @@ Next, we note that a topos with countable products also has countable coproducts
 \end{proof}
 
 We make also the following observations:
-\begin{observation}
+\begin{observation}\label{NNOToposAndAUAreFinitelyAxiomatized}
 The theory of NNO-toposes and the theory of arithmetic universes are finitely axiomatized lex theories.
 \end{observation}
 
@@ -1001,7 +1003,7 @@ All of the concepts and results in this subsection generalize completely smoothl
 \end{observation}
 
 \subsection{Localization}
-The reader is advised that we only ultimately make one use of the results in this section (at \TODO). Thus, the reader may skip this section unless and until interested in the details of that particular result.
+The reader is advised that we only ultimately make one use of the results in this section (at \magicref{Sigma1ModelIAUConnection} calling upon \magicref{LocalizeIntrosp}). Thus, the reader may skip this section unless and until interested in the details of that particular result.
 
 \begin{definition}
 For any category $C$, and any set of morphisms $M$ of $C$, we may consider freely adjoining inverses to the morphisms in $M$. This process is called \defined{localization}, and the resulting category is denoted $C[M^{-1}]$. Thus, we have a localization functor $f : C \to C[M^{-1}]$ such that $f$ sends every morphism in $M$ to an isomorphism, and for any $g : C \to D$ which also sends every morphism in $M$ to an isomorphism, there is a unique functor $h : C[M^{-1}] \to D$ such that $h \circ f = g$.
@@ -1115,7 +1117,7 @@ In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \ci
 \TODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
 
 \begin{theorem}\label{LocallySmallSelfIndexing}
-The self-indexing of a lexcategory $T$ is locally small just in case $T$ is locally cartesian closed.
+The self-indexing of a lexcategory $T$ is locally small just in case $T$ is locally cartesian closed. \TODOinline{Define locally cartesian closed. Include a terminal object in the definition so that this entails being cartesian closed.}
 \end{theorem}
 \begin{proof}
 \TODO

@@ -100,7 +100,6 @@
     \else
     \include{#1}
     \fi
-    \ifDisplayTODOCount
-    {\color{red} There are \theTODOcounter\; TO DOs remaining in this section.}
-    \fi
+    \newcounter{#1Counter}
+    \setcounter{#1Counter}{\value{TODOcounter}}
 }
