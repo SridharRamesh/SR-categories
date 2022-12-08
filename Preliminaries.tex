@@ -148,7 +148,7 @@ $\pullAlong{f}$ takes any representable presheaf with representing object $t$ in
 Any functor of the form $\pullAlong{f}$ preserves finite limits.
 \end{theorem}
 \begin{proof}
-This can be seen in several ways. Perhaps most familiarly, this can be seen from the fact that (co)limits in a a functor category are computed pointwise where the pointwise (co)limits exist, and of course set-sized (co)limits all exist in $\Set$. Secondly, when the domain of $f$ is a small category, it can be seen from the fact that $\pullAlong{f}$ has left and right adjoints (the left and right Kan extensions along $\op{f}$), so that $\pullAlong{f}$ in fact preserves ALL (co)limits that happen to exist, regardless of size. We can also note that $\pullAlong{f}(P) = \Hom(f(-), P)$, which is manifestly limit preserving (though this argument does not generalize as easily to colimit-preservation).
+This can be seen in several ways. Perhaps most familiarly, this can be seen from the fact that (co)limits in a a functor category are computed pointwise where the pointwise (co)limits exist, and of course set-sized (co)limits all exist in $\Set$. Secondly, when the domain of $f$ is a \setsmall/ category, it can be seen from the fact that $\pullAlong{f}$ has left and right adjoints (the left and right Kan extensions along $\op{f}$), so that $\pullAlong{f}$ in fact preserves ALL (co)limits that happen to exist, regardless of size. We can also note that $\pullAlong{f}(P) = \Hom(f(-), P)$, which is manifestly limit preserving (though this argument does not generalize as easily to colimit-preservation).
 \end{proof}
 
 We also define more generally the concept of a function between indexed sets having \repsmall/ fibers:
@@ -200,7 +200,7 @@ Maps with \repsmall/ fibers are closed under composition.
 
 When we presume $g$ to have \repsmall/ fibers, we find that $t$ is \repsmall/. Then when we presume $f$ to have \repsmall/ fibers, we find that $s$ is \repsmall/. The composition of the individual pullback squares yields a pullback rectangle, which allows us to conclude that the composition $g \circ f$ has \repsmall/ fibers.
 
-The above illustrates the argument for binary composition, by simply composing pullbacks. The argument for $n$-ary composition for any finite $n$ works inductively in the same way (note that the base $0$-ary case works in the same way as well; the pullback of an identity morphism is an identity morphism, and an identity morphism with small codomain has small domain).
+The above illustrates the argument for binary composition, by simply composing pullbacks. The argument for $n$-ary composition for any finite $n$ works inductively in the same way (note that the base $0$-ary case works in the same way as well; the pullback of an identity morphism is an identity morphism, and an identity morphism with \repsmall/ codomain has \repsmall/ domain).
 \end{proof}
 
 \begin{theorem}
@@ -324,7 +324,7 @@ Still, all the same notational conventions apply to indexed categories. E.g., gi
 
 We now might like to speak about an indexed category being \repsmall/, in the sense that its collection of objects and its collection of morphisms are both \repsmall/. This is the essence of the definition we will indeed adopt (at \magicref{RepsmallCategoryDefn}) but there is one pitfall to be aware of here, related to the just mentioned subtlety. We generally speak about categories in such a way as that they do not come with a particular notion of their set of objects, as such. That is, two categories may be equivalent (in the technical sense of \quote{equivalent} within the 2-category $\Cat$) though presented with different ostensible sets of objects. For example, a category presented as comprised of one terminal object, and a category presented as comprised of two isomorphic terminal objects, are equivalent categories; there is no pseudofunctor from the 2-category of categories, functors, and natural isomorphisms to $\Set$ which would send the first of these to a one-element set and the second to a two-element set. We are to treat them as the \quote{same} category. So to speak about a category as having a particular set of objects, we must imagine it as carrying more fine-grained equality structure on its objects than we normally do.
 
-Though a category does not have a well-defined set of objects, it \emph{does} have a well-defined set of morphisms between any two given objects. Thus, there is no such difficulty in defining when an indexed category is locally small.
+Though a category does not have a well-defined set of objects, it \emph{does} have a well-defined set of morphisms between any two given objects. Thus, there is no such difficulty in defining when an indexed category is locally \repsmall/.
 \begin{definition}\label{LocallyRepmallDefn}
 Given a $T$-indexed category $C$, an object $t$ of $T$ and any two objects $a$ and $b$ in $C(t)$, we can define a $T$-indexed set whose aspect at objects $r$ of $T$ is the set $\{ (m, n) \mid m \in \Hom_T(r, t), n \in \Hom_{C(r)}(\pullAlong{m} a, \pullAlong{m} b) \}$, with the obvious corresponding action on morphisms of $T$. If the $T$-indexed set defined in this way is \repsmall/ for every object $t$ of $T$ and objects $a$ and $b$ in $C(t)$, then we say $C$ is \defined{locally \repsmall/}.
 \end{definition}
@@ -333,7 +333,7 @@ Note that this is the same as saying that $\langle \cod, \dom \rangle : \Mor(C) 
 
 In particular, we have the following result:
 \begin{theorem}\label{RepLocallySmallRightAdjoint}
-If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullbacks, and $C$ is a $T$-indexed locally small category, then the composition of $C$ with $L$ to yield a $Q$-indexed category is also locally small.
+If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullbacks, and $C$ is a $T$-indexed locally \repsmall/ category, then the composition of $C$ with $L$ to yield a $Q$-indexed category is also locally \repsmall/.
 \end{theorem}
 \begin{proof}
 By the reasoning of \magicref{RepSmallRightAdjointFibers}, as applied to the map $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$, although $\Ob(C)$ need not itself be thought of as carrying an equality relation as such.
@@ -662,11 +662,11 @@ We may iterate this process. Suppose now that $C_2$ is the global aspect of some
 
 And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
 
-Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally small lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
+Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
 
 Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \TODOinline{Clarify that n here can't be 0.}
 
-Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally small lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \TODOinline{Write out why this is so}
+Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \TODOinline{Write out why this is so}
 
 Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
 
@@ -700,7 +700,7 @@ If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F
 
 Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
 
-Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable smallness conditions, but they are probably more easily understood in the presentation just given.
+Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
 
 \subsection{Arithmetic universes and other special kinds of category}
 \TODOinline{This section isn't ready yet. I just thought I should have these definitions somewhere, if I'm going to reference them later. Mainly the definition of arithmetic universe.}

@@ -129,7 +129,7 @@ A hylomorphism from $W$ to $M$ is a fixed point of $x \mapsto M \circ F(x) \circ
 The hylomorphisms from $W$ to $M$ are thus the same as the fixed points given by the \Loeb/ property with respect to this $g$. This completes the proof.
 \end{proof}
 
-\sTODOinline{The above theorem \magicref{CoalgToAlg} generalizes a little further than we've stated it. It is not quite necessary that $E$ be small overall, nor that $D$ have any limits beyond a terminal object. It would suffice for the hom-sets between globally defined objects of $E$ to be small (this is the structure of an enriched category). But it seems not worth the extra hassle of explaining what $\Box E$ means in that situation right now, and every use we will make of this is anyway covered by the description above.}
+\sTODOinline{The above theorem \magicref{CoalgToAlg} generalizes a little further than we've stated it. It is not quite necessary that $E$ be \repsmall/ overall, nor that $D$ have any limits beyond a terminal object. It would suffice for the hom-sets between globally defined objects of $E$ to be \repsmall/ (this is the structure of an enriched category). But it seems not worth the extra hassle of explaining what $\Box E$ means in that situation right now, and every use we will make of this is anyway covered by the description above.}
 
 We now demonstrate how \magicref{LoebPropertyLexUniqueness} can be seen as a special case of \magicref{CoalgToAlg}.
 \begin{corollary}\label{LoebPropertyLexUniquenessRedux}
@@ -387,7 +387,7 @@ Thus, $\alpha(f) = F$ as an element of $P(\introS(X))$, establishing the require
 
 Thus, all presumptions are satisfied for us to be able to apply \magicref{PreIntrospDiag} with these definitions, for an arbitrary globally defined element $g$ of $P(\introS(\Omega))$.
 
-In particular, let an arbitrary $(T, C)$-indexed set $G$ be given (\TODOinline{satisfying the appropriate smallness conditions to be in $\Psh{C}$; local $T$-\repsmall/ness}). In fact, it suffices for $G$ to be merely $(T, \Ob(\core{C}))$-indexed, where $\Ob(\core{C})$ is the set of objects of $C$ modulo isomorphism.
+In particular, let an arbitrary $(T, C)$-indexed set $G$ be given (\TODOinline{satisfying the appropriate \repsmallness/ conditions to be in $\Psh{C}$; local $T$-\repsmallness/}). In fact, it suffices for $G$ to be merely $(T, \Ob(\core{C}))$-indexed, where $\Ob(\core{C})$ is the set of objects of $C$ modulo isomorphism.
 
 This will be presented by a slice in $T/\Ob(C_{strict})$ (the slice whose fiber at any object $c_{strict}$ of $C_{strict}$ is the set $G(c)$, where $c$ is the object of $C$ presented by $c_{strict}$). By applying $\introS$ to this slice, we get a globally defined object of $C/\introS(\Ob(C_{strict}))$, which is to say, a global element of $P(\introS(\Omega))$. Take this to be our $\loebNeg$.
 
@@ -420,7 +420,7 @@ In other words, every introspective theory has the \Loeb/ property, in the termi
 By \magicref{SliceBoxIsAspectBox}, each aspect of any of these $\Box$ functors is the global aspect of the corresponding $\Box$ functor on the corresponding slice introspective theory. Thus, we simply invoke \magicref{IntrospLoeb} on this slice introspective theory.
 \end{proof}
 
-\subsection{The self-indexing cannot be small, except trivially}\label{NoSmallSelfIndexing}
+\subsection{The self-indexing cannot be \repsmall/, except trivially}\label{NoSmallSelfIndexing}
 \TODOinline{Perhaps move this into another section instead of giving it a dedicated section.}
 
 \begin{theorem}\label{LocallyCartesianLoeb}
