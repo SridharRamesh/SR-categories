@@ -5,7 +5,9 @@
 \subsection{Higher categorical terminology conventions}
 We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
-We will take all categories we work with to be locally small (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being small as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
+We generally use the terminology \quote{\setsmall/} rather than \quote{small}, reserving the word \quote{small} to describe representability/internality of indexed structures, as we will discuss in the next section.
+
+We will take all categories we work with to be locally \setsmall/ (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being \setsmall/ as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
 
 In particular, we do not bother explicitly stating size restrictions on an arbitrary category $C$ before using the Yoneda embedding of $C$ into $\Set^{C^{op}}$. Only in situations where there is some risk that it would not be possible to simply interpret $\Set$ as suitably large relative to $C$ do we bother making explicit comment on size issues.
 
@@ -52,7 +54,7 @@ In contexts where it is clear what presheaf $P$ we have in mind, we may also wri
 
 In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets. We sometimes use the notation $\Glob{P}$ to refer to the global aspect of an indexed set $P$.
 
-\begin{definition}
+\begin{definition}\label{RepsmallDefn}
 We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable.
 \end{definition}
 
@@ -527,7 +529,7 @@ We can replace all references to finite limit structure above with finite produc
 By \magicref{Lemma1}, we can see $T/-$ as a contravariant functor from a lexcategory $T$ to $\LexCat/T$. And similarly for $T//-$ in terms of finite product structure.
 
 \begin{theorem}\label{SelfIndexingIsFree}
-$T[1 \to -]$ is equivalent to $T/-$, when the latter is viewed as a contravariant functor from a lexcategory $T$ to $\LexCat/T$ via \magicref{Lemma1}.
+$T[1 \to -]$ is equivalent to $T/-$, when the latter is viewed as a contravariant functor from a lexcategory $T$ to $T/\LexCat$ via \magicref{Lemma1}.
 
 (And in just the same way, for a category with finite products $T$, we have that $T[[1 \to -]]$ is equivalent to $T//-$.)
 \end{theorem}
@@ -627,7 +629,7 @@ Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it w
 
 We say a $(T, C)$-indexed category $P$ is $T$-\repsmall/ if, for any $t$-defined object $c$ of $C$, the corresponding $P(c)$ \TODOinline{This has to be defined, when $t$ is not $1$} is given by an object in $T/t$. \TODO. When $C$ is presented by a strict category $C_{strict}$, this is equivalent to saying that the corresponding map into $\Ob(C_{strict})$ has $T$-\repsmall/ fibers. \TODOinline{Perhaps before discussing (T, C)-indexed sets for T-indexed categories C, we should discuss (T, C)-indexed sets for T-indexed sets C. This is just looking at slice categories in $\Psh{T}$, but the motivation may be useful.}
 
-We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed sets $P$ in cases where $C$ is in fact $T$-small, and furthermore $P$ is $T$-small. \TODOinline{Define what it means for $P$ to be $T$-small. Show how this leads to a simpler representation of $P$ as living internally to $T$}
+We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed sets $P$ in cases where $C$ is in fact $T$-\repsmall/, and furthermore $P$ is $T$-\repsmall/. \TODOinline{Define what it means for $P$ to be $T$-\repsmall/. Show how this leads to a simpler representation of $P$ as living internally to $T$}
 
 The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given merely the data of a fibration as a functor between categories, one can recover the indexed category which gave rise to it.
 
@@ -1079,7 +1081,7 @@ In our metatheory, we have access to the following principle: If M is the term m
 \begin{proof}
 The proof is by the exact same proof that shows M's initiality with respect to set-sized gadgets.
 
-Alternatively, the proof can be carried out like so: Firstly, for existence of a map from M to Set, we take the finitely many finitary operations of our theory and note that the hull definable from these within Set describes a small (indeed, countable) subgadget of Set. M will have by initiality a homomorphism into this subgadget, and thus into Set itself. As for uniqueness, consider any two homomorphisms from M to Set. Again, their ranges will be small subgadgets of Set, and we can take the union of those ranges, close under the operations of our theory, and find some other small subgadget of Set containing them both. M will have a unique homomorphism into this enveloping subgadget, and thus the parallel homomorphisms of M must have been equal.
+Alternatively, the proof can be carried out like so: Firstly, for existence of a map from M to Set, we take the finitely many finitary operations of our theory and note that the hull definable from these within Set describes a \setsmall/ (indeed, countable) subgadget of Set. M will have by initiality a homomorphism into this subgadget, and thus into Set itself. As for uniqueness, consider any two homomorphisms from M to Set. Again, their ranges will be \setsmall/ subgadgets of Set, and we can take the union of those ranges, close under the operations of our theory, and find some other \setsmall/ subgadget of Set containing them both. M will have a unique homomorphism into this enveloping subgadget, and thus the parallel homomorphisms of M must have been equal.
 \end{proof}
 
 Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
@@ -1117,7 +1119,7 @@ In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \ci
 \TODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
 
 \begin{theorem}\label{LocallySmallSelfIndexing}
-The self-indexing of a lexcategory $T$ is locally small just in case $T$ is locally cartesian closed. \TODOinline{Define locally cartesian closed. Include a terminal object in the definition so that this entails being cartesian closed.}
+The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed. \TODOinline{Define locally cartesian closed. Include a terminal object in the definition so that this entails being cartesian closed.}
 \end{theorem}
 \begin{proof}
 \TODO

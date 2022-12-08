@@ -29,7 +29,7 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$ or of the pair $\langle T, C \rangle$, when this would not cause confusion. We will frequently use the same name $\introF$ as though it applies to all introspective theories simultaneously, in the same way that notation like $+$ or $\times$ is overloaded as applying over all rings simultaneously.
 
 \begin{definition} \label{DefnIntrospIndexed}
-An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/.
+An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/\footnote{We remind the reader that we use this terminology in the sense of \magicref{RepsmallDefn} and \magicref{RepsmallCategoryDefn}, and it has nothing to do with being \setsmall/. Rather, it rather means that $C$ is presented by an internal category.}.
 \end{definition}
 
 We shall show in later chapters how this simple concept of an introspective theory already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
@@ -59,7 +59,9 @@ Nontrivial introspective theories do exist and we will give some archetypal exam
 We shall now make an observation about an alternative but equivalent way to specify the data of a pre-introspective theory.
 
 \begin{theorem}\label{SNCorrespondence}
-Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS$ from $T$ to the global aspect of $C$, along with specifying maps from each $t \in T$ to $\Hom_C(1, \introS(t))$, naturally in $t$.
+Given a lexcategory $T$ and a $T$-indexed lexcategory $C$, specifying a pre-introspective theory $\langle T, C, \introF \rangle$ (i.e., specifying a $T$-indexed lexfunctor from the self-indexing $T/-$ to $C$) is equivalent to specifying a (non-indexed) lexfunctor $\introS : T \to \Glob{C}$, along with specifying maps $\introN_t$ from each $t \in T$ to $\Hom_C(1, \introS(t))$, naturally in $t$.
+
+That is, keeping in mind that $\Hom_C(1, \introS(-)) : T \to \Psh{T}$, and recalling that we also identify $T$ with a full subcategory of $\Psh{T}$ via the Yoneda embedding $\yoneda : T \to \Psh{T}$, the last part of the above is asking for a natural transformation $\introN : \yoneda \to \Hom_C(1, \introS(-))$.
 \end{theorem}
 
 \begin{proof}
@@ -75,7 +77,7 @@ It wasn't fundamentally important that we were dealing with lexcategories here. 
 As a result of \cref{SNCorrespondence}, we can give an alternative definition equivalent to \cref{DefnPreIntrospIndexed}:
 
 \begin{definition}\label{DefnPreIntrospSN}
-A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$.
+A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcategory $C$, a lexfunctor $\introS$ from $T$ to the global aspect of $C$, and a natural transformation $\introN$ from each $t \in \Ob(T)$ to $\Hom_C(1, \introS(t))$. (That is, $\introN : \yoneda \to \Hom_C(1, \introS(-))$, where $\yoneda$ and $\Hom_C(1, \introS(-))$ are parallel functors from $T$ to $\Psh{T}$.)
 \end{definition}
 
 Much as before, we may write out $\langle T, C, \introS, \introN \rangle$ to be fully explicit, but in typical abuse of language, will refer to a pre-introspective theory by simply naming $T$ or the pair $\langle T, C\rangle$. We will frequently use the same names $\introS$ and $\introN$ as though they apply simultaneously to all such structures (in the same way that notation like $+$ and $\times$ is overloaded as applicable to separate rings simultaneously).
@@ -221,7 +223,7 @@ All the constructions in this section are unified and vastly generalized in \mag
 
 We present this example in terms of presheaves over the natural numbers (which comprise the so-called topos of trees), but analogous examples may be constructed for presheaves over arbitrary categories; see the generalization at \magicref{ModelsBasedOnPresheafCategories}. We focus on presheaves over the natural numbers in this introductory example as it is perhaps the simplest nontrivial presheaf category to consider, and also as the \quote{later} modality on the topos of trees which is at the core of this example is much studied in the literature on guarded recursion (e.g., as in \cite{birkedal2011first}).
 
-\begin{construction}
+\begin{construction}\label{StepIndexingLocallyIntrosp}
 Let $\omega$ be the poset of natural numbers with their usual ordering, and consider the category of presheaves $\Psh{\omega}$ (often called the topos of trees). We will equip this as a locally introspective theory.
 
 The functor $\mathrm{Succ} : n : \omega \mapsto n + 1 : \omega$ induces correspondingly a functor $\pullAlong{\mathrm{Succ}} : \Psh{\omega} \to \Psh{\omega}$. For convenience, we will use the name $\Prior$ to refer to this endofunctor on $\Psh{\omega}$. Thus, $\Prior(P)(n) = P(n + 1)$ for $n \in \omega$.
@@ -313,7 +315,11 @@ Furthermore, note that for $X \in \Psh{Q}$, we have that $\Hom_C(1, \introS(X))$
 Thus, we have a map $\introN : \id_{\Psh{Q}} \to \Hom_{C}(1, \introS(-))$, such that $\introN_X(q) : X(q) \to \Hom_C(1, \introS(X))(q)$ is given by the product of all the restriction maps out of $X(q)$ (these restriction maps being part of the structure of the presheaf $X$ itself). \TODOinline{Flesh this out.}
 \end{construction}
 
-This is an important archetypal example. It corresponds closely to the interpretation of K4 modal logic using a transitive Kripke frame. However, as in our previous example, we have the issue that this is only a locally introspective theory and not an introspective theory. Once again, the various aspects of $C$ comprise a proper class of objects, too many for $\Ob(C)$ to be given by a set-valued presheaf, preventing $C$ from being \repsmall/. And as in our previous example, we will again address this by imposing variable cardinality constraints on our presheaves.
+\begin{observation}
+The reader is advised to keep in mind that this last construction is very different from \magicref{StepIndexingLocallyIntrosp}, even if $P$ is chosen to be the poset $\omega$ of natural numbers. This distinction is emphasized again in the later discussion at \TODOinline{cite Modal Logic discussion of these examples}.
+\end{observation}
+
+This is an important archetypal example of a locally introspective theory. It corresponds closely to the interpretation of K4 modal logic using a transitive Kripke frame. However, just as at the beginning of our previous example, we have the issue that this is only a locally introspective theory and not an introspective theory. Once again, the various aspects of $C$ comprise a proper class of objects, too many for $\Ob(C)$ to be given by a set-valued presheaf, preventing $C$ from being \repsmall/. And as in our previous example, we will again address this by imposing variable cardinality constraints on our presheaves.
 
 \begin{construction}
 We will from hereon out assume that the preorder $P$ is in fact well-founded (and thus so is $Q$). Suppose given \setsmall/ full sublexcategories $\Set_q$ of $\Set$ for each $q \in Q$. (It's not actually necessary that we restrict to such a subcategory at $q = \infty$, but for uniformity's sake, we do this for now.).
@@ -336,9 +342,7 @@ Finally, we define $\introN$ in the same way as above, with $\introN_X(q) : X(q)
 In this way, we have constructed an introspective theory $\langle \PshUnderQInf, C' \rangle$.
 \end{construction}
 
-This is an important archetypal example. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame.
-
-\TODOinline{Stress that this Kripke frame example is very different from the first example, even if $P$ is taken to be $\omega$.}
+This is an important archetypal example of an introspective theory. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame.
 
 \subsection{Basic constructions}
 Now let us discuss some general constructions for building new (pre-)introspective theories from old ones or from other data.
@@ -386,7 +390,9 @@ A particular special case of the above which is often of importance is the follo
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $t$ is any object in $T$, then the slice category $T/t$ can be equipped in a natural way as a pre-introspective theory as well. If we start from an introspective or locally introspective theory, then so respectively will be the result of this construction.
 \closeNamed{construction}
 \begin{proof}[Details]
-By the previous construction (\cref{IntrospPullback}), using the forgetful functor $\Sigma : T/t \to T$, which preserves pullbacks and has a right adjoint.
+By the previous construction (\cref{IntrospPullback}), using the forgetful functor $\Sigma : T/t \to T$, which preserves pullbacks and has a right adjoint (given by pullback).
+
+(Note that in this case, the corresponding 2-cell from $(T/t)/-$ to $T/\Sigma(-)$ is an equivalence, by how iterated slice categories amount to slice categories simpliciter.)
 \end{proof}
 
 When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean.
@@ -410,6 +416,8 @@ If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $
 \end{construction}
 
 The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$.
+
+\TODOinline{Illustrate above, and give a name to the concept of this combination.}
 
 \bigskip
 The concepts of pre-introspective, locally introspective, or introspective theories are all nearly essentially algebraic concepts (\quote{nearly}, in that these involve categories up to equivalence rather than strict categories up to isomorphism). Thus these concepts automatically have available all the same properties as for any such nearly essentially algebraic concept. For example, we have free constructions, as are the subject of of our later chapter \magicref{GeminalChapter}. And we have Cartesian products in the straightforward way:
