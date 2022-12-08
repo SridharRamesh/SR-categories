@@ -5,6 +5,8 @@
 \subsection{Higher categorical terminology conventions}
 We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
+\TODOinline{Make sure all uses of the word "small/" make use of the macro!}
+\DiscussSmallNotation
 We generally use the terminology \quote{\setsmall/} rather than \quote{small}, reserving the word \quote{small} to describe representability/internality of indexed structures, as we will discuss in the next section.
 
 We will take all categories we work with to be locally \setsmall/ (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being \setsmall/ as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
@@ -54,6 +56,7 @@ In contexts where it is clear what presheaf $P$ we have in mind, we may also wri
 
 In the particular case where $t$ is a terminal object, we may refer to the aspect at $t$ of an indexed set as its \defined{global aspect}. By the Yoneda lemma, this global aspect data $P(1)$ of a presheaf $P$ on category $T$ is the same as the data of a map from the terminal object $1$ to $P$, which is the same as the data of a map from the constantly $1$ presheaf to $P$. This is also the same as the data of the limit of $P$, thought of a $\op{T}$-indexed diagram. In this way, even if $T$ does not have a terminal object, we may still speak of the global aspect of $T$-indexed sets. We sometimes use the notation $\Glob{P}$ to refer to the global aspect of an indexed set $P$.
 
+\DiscussSmallNotation
 \begin{definition}\label{RepsmallDefn}
 We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable.
 \end{definition}
@@ -391,6 +394,7 @@ Note that a \repsmall/ strict category indexed over a category with finite limit
 
 In the same way as all the above, we adopt the following convention even for non-indexed categories, which can be thought of as categories indexed by the terminal category $1$.
 
+\DiscussSmallNotation
 \begin{definition}
 We say \defined{\catsmall/ category} to mean a category which is presented by some (\setsmall/) strict category. And we say \defined{\catsmall/ lexcategory} to mean a lexcategory which is presented by some (\setsmall/) strict lexcategory. In particular, it is for us true by definition that all \catsmall/ lexcategories admit presentations with chosen basic limits.
 \end{definition}

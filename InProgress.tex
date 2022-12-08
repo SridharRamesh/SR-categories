@@ -362,20 +362,20 @@ By an \quote{inverse category} is meant a category whose non-identity morphisms 
 Given an inverse category $T$ and an object $t \in T$, we will say \quote{$T_{< t}$} in the following to mean the full subcategory of $T$ consisting only of objects from which there is some non-identity morphism to $t$. And we will say \quote{$T_{\leq t}$} to mean the full subcategory of $T$ consisting only of objects from which there is some morphism to $t$ (thus, $T_{\leq t}$ comprises the objects of $T_{< t}$ along with $t$ itself).
 
 \begin{construction}
-Let $T$ be a small inverse category. Suppose given a system of operators $F_t$ such that each $F_t$ takes as input a small full subcategory of $\Psh{T_{< t}}$ and produces as output a small full subcategory of $\Psh{T_{\leq t}}$.
+Let $T$ be a \setsmall/ inverse category. Suppose given a system of operators $F_t$ such that each $F_t$ takes as input a \setsmall/ full subcategory of $\Psh{T_{< t}}$ and produces as output a \setsmall/ full subcategory of $\Psh{T_{\leq t}}$.
 
-Then we may recursively define small full subcategories $P_{< t}$ of each $\Psh{T_{< t}}$ and full subcategories $P_{\leq t}$ of each $\Psh{T_{\leq t}}$ such that each $P_{\leq t}$ is given by applying $F_t$ to the corresponding $P_{< t}$, while each $P_{< t}$ comprises precisely those presheaves in $\Psh{T_{< t}}$ whose restriction to any $\Psh{T_{\leq s}}$ for $s < t$ lies in $P_{\leq s}$. (Note that this is indeed small, using our stipulations that $T$ and the outputs from $F_t$ are small.)
+Then we may recursively define \setsmall/ full subcategories $P_{< t}$ of each $\Psh{T_{< t}}$ and full subcategories $P_{\leq t}$ of each $\Psh{T_{\leq t}}$ such that each $P_{\leq t}$ is given by applying $F_t$ to the corresponding $P_{< t}$, while each $P_{< t}$ comprises precisely those presheaves in $\Psh{T_{< t}}$ whose restriction to any $\Psh{T_{\leq s}}$ for $s < t$ lies in $P_{\leq s}$. (Note that this is indeed \setsmall/, using our stipulations that $T$ and the outputs from $F_t$ are \setsmall/.)
 
-We may then in the same manner define overall a small full subcategory $P$ of $\Psh{T}$, comprising precisely those presheaves whose restriction to any $T_{\leq t}$ lies in $P_{\leq t}$.
+We may then in the same manner define overall a \setsmall/ full subcategory $P$ of $\Psh{T}$, comprising precisely those presheaves whose restriction to any $T_{\leq t}$ lies in $P_{\leq t}$.
 
-A common special case of the above is when each operator $F_t$ is of the following form: There is a map $G_t$ from small full subcategories of $\Psh{T_{< t}}$ to small full subcategories of $\Set$, and $F_t$ sends any small full subcategory $x$ of $\Psh{T_{< t}}$ to the small full subcategory of $\Psh{T_{\leq t}}$ comprising those presheaves whose value at $t$ lies in $G_t(x)$ and whose restriction to $\Psh{T_{< t}}$ lies in $x$.
+A common special case of the above is when each operator $F_t$ is of the following form: There is a map $G_t$ from \setsmall/ full subcategories of $\Psh{T_{< t}}$ to \setsmall/ full subcategories of $\Set$, and $F_t$ sends any \setsmall/ full subcategory $x$ of $\Psh{T_{< t}}$ to the \setsmall/ full subcategory of $\Psh{T_{\leq t}}$ comprising those presheaves whose value at $t$ lies in $G_t(x)$ and whose restriction to $\Psh{T_{< t}}$ lies in $x$.
 
 In this case, our recursive construction of $P$ comprises precisely those presheaves in $\Psh{T}$ whose value at each object $t$ lies in some corresponding full subcategory $g_t$ of $\Set$. $P_{< t}$ and $P_{\leq t}$ are similarly defined using the same $g_t$, and each $g_t$ is given by applying $G_t$ to $P_{< t}$.
 \end{construction}
 
-The operators $F_t$ can easily be chosen to always yield outputs closed under finite limits, and/or closed under countable limits, and/or closed under topos operations, and/or containing all of a designated small number of presheaves, etc, without harm to the result still being small.
+The operators $F_t$ can easily be chosen to always yield outputs closed under finite limits, and/or closed under countable limits, and/or closed under topos operations, and/or containing all of a designated \setsmall/ number of presheaves, etc, without harm to the result still being \setsmall/.
 
-In particular, we may apply the above taking $G_t$ to be the operator which, for any small full subcategory $x$ of $\Psh{T_{< t}}$, picks out the smallest full sublexcategory of $\Set$ containing $x$ as an internal category. \TODOinline{Strictness concerns here? We need $x$ to come with the data of a designated set of objects. We should thread this through everywhere; everything should be thought of as strict categories here, and we are talking about strict small full subcategories, etc.}
+In particular, we may apply the above taking $G_t$ to be the operator which, for any \setsmall/ full subcategory $x$ of $\Psh{T_{< t}}$, picks out the minimum full sublexcategory of $\Set$ containing $x$ as an internal category. \TODOinline{Strictness concerns here? We need $x$ to come with the data of a designated set of objects. We should thread this through everywhere; everything should be thought of as strict categories here, and we are talking about strict \setsmall/ full subcategories, etc.}
 
 \TODOinline{Discuss how topos operations like powerset are defined in a presheaf topos $\Psh{T}$ at an object $t$ only with dependence on the values at $\Psh{T_{\leq t}}$. This is because $\Psh{T_{\leq t}}$ can be identified with a slice topos of $\Psh{T}$, specifically over a suitable subterminal object. (And a similar property holds of our $\Box$ operator...). This has the effect that if each $F_t$ produces a $P_{\leq t}$ closed under topos operations, then each $P_{< t}$ and $P$ itself will be closed under topos operations.}
 
@@ -384,20 +384,20 @@ Let functor $i : D \to S$ be given. We will also associate to every object $s \i
 \end{construction}
 
 \begin{lemma}
-Let $A$ be a small set of objects of a locally small topos $B$, such that $A$ is closed under finite limits and power objects. Then the objects of $B$ which arise as subobjects of objects in $A$ comprise a small full subtopos of $B$.
+Let $A$ be a \setsmall/ set of objects of a locally \setsmall/ topos $B$, such that $A$ is closed under finite limits and power objects. Then the objects of $B$ which arise as subobjects of objects in $A$ comprise a \setsmall/ full subtopos of $B$.
 \end{lemma}
 
 \begin{lemma}
-For any small set of objects of $\Set$, there is a small full subtopos of $\Set$ containing those objects.
+For any \setsmall/ set of objects of $\Set$, there is a \setsmall/ full subtopos of $\Set$ containing those objects.
 \end{lemma}
 \begin{proof}
-Consider the collection $A$ of all objects of $\Set$ generable from the given small set using finite products and power objects, then apply the above lemma.
+Consider the collection $A$ of all objects of $\Set$ generable from the given \setsmall/ set using finite products and power objects, then apply the above lemma.
 \end{proof}
 
 \begin{construction}
 Throughout the following, we take all categories (or lexcategories or toposes, etc) to be strict, including $\Set$.
 
-Let $i : D \to S$ be an arbitrary functor between small categories. We will assign a small full subtopos of $\Set$ to each object of $S$. Using $i$, this induces also such an assignment to each object of $D$. Each of these small full subtoposes will also contain $D$ and $S$ themselves. As a result, the correspondingly constrained presheaf categories on $D$ and on $S$ will themselves be subtoposes of the unconstrained presheaf categories.
+Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories. We will assign a \setsmall/ full subtopos of $\Set$ to each object of $S$. Using $i$, this induces also such an assignment to each object of $D$. Each of these \setsmall/ full subtoposes will also contain $D$ and $S$ themselves. As a result, the correspondingly constrained presheaf categories on $D$ and on $S$ will themselves be subtoposes of the unconstrained presheaf categories.
 
 Furthermore, we request that on each $s \in S$, the corresponding full subtopos of $\Set$ contains the constrained category of presheaves on ($D$ restricted to objects whose image under $i$ is below $s$). This can be inductively achieved so long as $S$ is well-founded qua category. Or maybe, it should be some kind of limit here that we consider, hm.
 
@@ -408,7 +408,7 @@ Our $i$ clearly continues to induce a functor from the constrained presheaves on
 
 Suppose given a category $S_{\leq s}$ such that for all $t < s \in S_{\leq s}$, we have an associated (lex-closed) cardinal $K_t$. Now we consider $K-\Psh{S_{\leq s}}$, meaning the presheaves constrained by these cardinality restrictions, with no cardinality restriction at $s$ itself. This maps into unconstrained $\Psh{S_{\leq s}}$. This maps into $\Psh{S_{< s}}$ by a process corresponding to our $H$. This in turn induces a map into $\Psh{D_{< s}}$, where $D_{< s}$ is the subcategory of $D$ that maps into $S_{< s}$ under the map from $D$ to $S$. There is a sub-lexcategory of $\Psh{D_{< s}}$ which we may call $K-\Psh{D_{< s}}$, using the cardinality restrictions on each object of $D$ from the associated object of $S$. This induces a sub-lexcategory of the self-indexing of $\Psh{D_{< s}}$, which we may call $K-\Psh{D_{< s}}/\Psh{D_{< s}}$ (given a lexcategory $L$ with sub-lexcategory $M$, we may consider the sub-lexcategory of $L/-$ comprising those slices whose pullback above any object of $M$ has domain in $M$ as well). 
 
-So, taking this indexed lexcategory $K-\Psh{D_{< s}}/\Psh{D_{< s}}$ and transporting it along all our maps into a lexcategory indexed over $K-\Psh{S_{\leq s}}$, we may ask for this to be small. Is this the case? Our claim is that this is always small whenever the corresponding constructions are small at each $K-\Psh{S_{\leq t}}$ for $t < s$. \TODO. Because this is small, it has a representing object, and this representing object allows us to now add a cardinality constraint at $s$ itself, which just has to be large enough to contain the value at $s$ of the representing object, for the whole thing to be small even over the subcategory $K'-\Psh{S_{\leq s}}$ of $K-\Psh{S_{\leq s}}$, where $K'$ has been augmented to include this extra cardinality constraint at $s$.
+So, taking this indexed lexcategory $K-\Psh{D_{< s}}/\Psh{D_{< s}}$ and transporting it along all our maps into a lexcategory indexed over $K-\Psh{S_{\leq s}}$, we may ask for this to be \setsmall/. Is this the case? Our claim is that this is always \setsmall/ whenever the corresponding constructions are \setsmall/ at each $K-\Psh{S_{\leq t}}$ for $t < s$. \TODO. Because this is \setsmall/, it has a representing object, and this representing object allows us to now add a cardinality constraint at $s$ itself, which just has to be large enough to contain the value at $s$ of the representing object, for the whole thing to be small even over the subcategory $K'-\Psh{S_{\leq s}}$ of $K-\Psh{S_{\leq s}}$, where $K'$ has been augmented to include this extra cardinality constraint at $s$.
 
 For the \TODO, there should always be a representing object inside unconstrained $\Psh{S_{\leq s}}$, which we obtain by just examining the corresponding values at $S_{\leq s}$ (identified with its Yoneda embedding) itself (plus some reasoning about how all other presheaves are colimits of representable ones, and the indexed category of interest respects these colimits; \TODO). Ok, here it may be important that the Yoneda embedding of $s$ actually lies within $K-\Psh{S_{\leq s}}$, so our cardinality constraints need to be loose enough to contain all of $S$, say. Now if we look at the indexed category of interest at $s$, it becomes a certain slice category within $K-\Psh{D_{< s}}$. Since $K-\Psh{D_{< s}}$ itself is set-sized, this is set-sized, and so we just need that particular set to be within our cardinality constraint at $s$. (Plus whatever reasoning about how stuff at $t < s$ is automatic from restrictions to $S_{\leq t}$; \TODO).
 
@@ -425,7 +425,7 @@ What's more, K-Psh(S) extends also to a set-sized full subcategory of the self-i
 \subsubsection{Old stuff from Models chapter on presheaf models}
 There are two flavors of models here: Those which give introspective theories (these come from well-founded trees using a certain size restriction; e.g., considering a model based on the von Neumann universe/cumulative hierarchy), and those which give only locally introspective theories with \Loeb/'s theorem fixed points (these come from arbitrary well-founded trees; these are related to the models used in guarded recursion theory, but our distinction between the roles of $T$ and $C$ has previously gone unnoticed and allows us to interpret these models as not proving $\lnot \lnot \Box 0$). We discuss the latter construction first, as it is simpler, and a step en route to grasping the former construction.
 
-\TODOinline{Wherever above I put a set-sized constraint on a category (such as $S$ or $D$), it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too small: they must include presheaves of sufficiently high cardinality relative to the original category.}
+\TODOinline{Wherever above I put a set-sized constraint on a category (such as $S$ or $D$), it sounds like I am constraining the category to not be too large. But really what this amounts to is to say that the corresponding presheaf category we are considering must not be too little: they must include presheaves of sufficiently high cardinality relative to the original category.}
 
 
 \begin{TODOblock}
