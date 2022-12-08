@@ -1,6 +1,6 @@
 NEW TODO NOTES:
 
-1. Replace "small" with "repsmall" throughout document.
+1. Replace "\wordsmall/" with "\repsmall/" throughout document.
 
 2. Write up size constraint thing for well-founded models of introspective theories.
 
@@ -55,7 +55,7 @@ The right result of the above sort should be that given any GLS lattice T' and G
 
 Actually, it may be easy to do something of the above sort for well-founded orders directly, and then appeal to the known relationship between GL and well-founded orders. To think about well-founded orders, it's something like working within the corresponding presheaf topos, but not quite. (Yes, this has now been worked out in the document.)
 
-In T-indexed world, it's like there are large sets (actual sets, arbitrary presheaves), and small sets (objects of T, representable presheaves). All arguments are just like that. An enriched category is like a large but locally small category, an internal category is like a small category. Many of our arguments do not depend on the smallness of C, just its local smallness.
+In T-indexed world, it's like there are large sets (actual sets, arbitrary presheaves), and \repsmall/ sets (objects of T, representable presheaves). All arguments are just like that. An enriched category is like a large but locally \repsmall/ category, an internal category is like a \repsmall/ category. Many of our arguments do not depend on the \repsmallness/ of C, just its local \repsmallness/.
 
 ***
 

@@ -5,9 +5,9 @@
 \subsection{Higher categorical terminology conventions}
 We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
-\TODOinline{Make sure all uses of the word "small/" make use of the macro!}
+\TODOinline{Make sure all uses of the word "\wordsmall/" make use of the macro!}
 \DiscussSmallNotation
-We generally use the terminology \quote{\setsmall/} rather than \quote{small}, reserving the word \quote{small} to describe representability/internality of indexed structures, as we will discuss in the next section.
+We generally use the terminology \quote{\setsmall/} rather than \quote{\wordsmall/}, to avoid potential conflict with the use of the word \quote{\wordsmall/} to describe representability/internality of indexed structures, as we will discuss in the next section.
 
 We will take all categories we work with to be locally \setsmall/ (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being \setsmall/ as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
 
@@ -61,9 +61,15 @@ In the particular case where $t$ is a terminal object, we may refer to the aspec
 We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable.
 \end{definition}
 
-It is perhaps a bit misleading to use \quote{small}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the smallest indexed set, the one which constantly takes the value of the empty set, is never \repsmall/ in this technical representability sense. But the analogy to the familiar distinction between \quote{small} sets and non-\quote{small} proper classes is often a fruitful one, motivating this terminology. Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{small} in essentially the same way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that this notion of \repsmall/ is equivalent also to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.
+This notion is also sometimes called \quote{\wordsmall/} in the literature on indexed or fibered categories (especially in derived senses like \quote{locally \wordsmall/}), which we will discuss shortly).
 
-The word \quote{small} of course has a conventional meaning of set-sized (as opposed to proper-class-sized). When we wish to be clear that this is what we mean and not risk confusion with \repsmall/, we will say explicitly \defined{\setsmall/}.
+But it is perhaps a bit misleading to use \quote{\wordsmall/}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the \wordsmall/est indexed set, the one which constantly takes the value of the empty set, is never \wordsmall/ in the sense of being representable.
+
+The analogy of representability to the familiar distinction between \quote{\wordsmall/} sets and non-\quote{\wordsmall/} proper classes is often a fruitful one, motivating this terminology. Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{small} in essentially the same way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that this notion of \repsmall/ is equivalent also to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.
+
+However, to avoid confusion, we stick with only referring to this notion as \quote{representable} for now. \TODOinline{Reader beware! Previous versions of this document used the word \wordsmall/ for this notion, and while I think I have caught and transferred all instances of this, there may be some stray ones remaining.}
+
+When we wish to be clear that we are referring to the distinction between set-sized and proper-class-sized, we will say \quote{\setsmall/}, rather than saying \quote{\wordsmall/}. We will shy away from using the word \quote{\wordsmall/} altogether.
 
 \begin{convention}
 Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$. And conversely, given a \repsmall/ $T$-indexed set $P$, we freely write also $P$ to name an object in $T$ representing $P$, rather than explicitly writing $\yoneda^{-1}(P)$.
@@ -396,10 +402,10 @@ In the same way as all the above, we adopt the following convention even for non
 
 \DiscussSmallNotation
 \begin{definition}
-We say \defined{\catsmall/ category} to mean a category which is presented by some (\setsmall/) strict category. And we say \defined{\catsmall/ lexcategory} to mean a lexcategory which is presented by some (\setsmall/) strict lexcategory. In particular, it is for us true by definition that all \catsmall/ lexcategories admit presentations with chosen basic limits.
+We say \defined{\repsmall/ category} to mean a category which is presented by some (\setsmall/) strict category. And we say \defined{\repsmall/ lexcategory} to mean a lexcategory which is presented by some (\setsmall/) strict lexcategory. In particular, it is for us true by definition that all \repsmall/ lexcategories admit presentations with chosen basic limits.
 \end{definition}
 
-Note that all the ordinary constructions of category theory which produce \setsmall/ categories or lexcategories from other such data in fact furthermore produce \catsmall/ categories or \catsmall/ lexcategories from analogous inputs. So this convention does not change very much, except it saves us some pedantry in the scope of some claims we make which might otherwise fail in contexts without the Axiom of Choice (where a random category found in the wild, instead of constructed by hand, could conceivably have finite limits without admitting any presentation with chosen basic limits, or some such pathology).
+Note that all the ordinary constructions of category theory which produce \setsmall/ categories or lexcategories from other such data in fact furthermore produce \repsmall/ categories or \repsmall/ lexcategories from analogous inputs. So this convention does not change very much, except it saves us some pedantry in the scope of some claims we make which might otherwise fail in contexts without the Axiom of Choice (where a random category found in the wild, instead of constructed by hand, could conceivably have finite limits without admitting any presentation with chosen basic limits, or some such pathology).
 
 We note without detailed proof (\TODOinline{Give or cite proofs}) some strictification results which will be useful to us later.
 

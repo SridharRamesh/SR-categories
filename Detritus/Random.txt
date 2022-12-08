@@ -1,4 +1,4 @@
-Just as we can extend a GL category C forward along a lexfunctor from C to D (internal to an introspective theory), we can also sometimes extend it backwards along a lexfunctor from D to C; specifically, when the now D-indexed category C1 is furthermore D-small.
+Just as we can extend a GL category C forward along a lexfunctor from C to D (internal to an introspective theory), we can also sometimes extend it backwards along a lexfunctor from D to C; specifically, when the now D-indexed category C1 is furthermore D-\repsmall/.
 
 In particular, we can take D to be something like the maps m : X -> []X such that []m = J_{[]X} : []X -> [][]X and squares between these in C, and then the resulting GL-category D should be furthermore an introspective theory.
 
@@ -44,7 +44,7 @@ Objects live in X, morphisms live in Y
 
 Free such structure which admits a map from the self-indexing of X.
 
-And X, and a map from X to Ys, and a map from the self-indexing of X to C, but also C is suitably small.
+And X, and a map from X to Ys, and a map from the self-indexing of X to C, but also C is suitably \repsmall/.
 
 T is Set, and C is some Set-indexed category whose objects comprise a Set and morphisms above any object comprise a value in the self-indexing T.
 The self-indexing assigns to every Set s the category T^s. Hm.
