@@ -5,10 +5,6 @@
 \subsection{Higher categorical terminology conventions}
 We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
-\TODOinline{Make sure all uses of the word "\wordsmall/" make use of the macro!}
-\DiscussSmallNotation
-We generally use the terminology \quote{\setsmall/} rather than \quote{\wordsmall/}, to avoid potential conflict with the use of the word \quote{\wordsmall/} to describe representability/internality of indexed structures, as we will discuss in the next section.
-
 We will take all categories we work with to be locally \setsmall/ (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being \setsmall/ as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
 
 In particular, we do not bother explicitly stating size restrictions on an arbitrary category $C$ before using the Yoneda embedding of $C$ into $\Set^{C^{op}}$. Only in situations where there is some risk that it would not be possible to simply interpret $\Set$ as suitably large relative to $C$ do we bother making explicit comment on size issues.
@@ -61,15 +57,15 @@ In the particular case where $t$ is a terminal object, we may refer to the aspec
 We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish to emphasize which indexing category we are talking about) if the corresponding presheaf is representable.
 \end{definition}
 
-This notion is also sometimes called \quote{\wordsmall/} in the literature on indexed or fibered categories (especially in derived senses like \quote{locally \wordsmall/}), which we will discuss shortly).
+\begin{remark}
+This notion is also sometimes referred to with the word \quote{\wordsmall/} in the literature on indexed or fibered categories (especially in derived senses like describing an indexed category as \quote{\wordsmall/} or \quote{locally \wordsmall/}). Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{\wordsmall/} in essentially this way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that representability is equivalent also to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.
 
-But it is perhaps a bit misleading to use \quote{\wordsmall/}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the \wordsmall/est indexed set, the one which constantly takes the value of the empty set, is never \wordsmall/ in the sense of being representable.
+But it is perhaps a bit misleading to use \quote{\wordsmall/}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the \wordsmall/est indexed set, the one which constantly takes the value of the empty set, is never \quote{\wordsmall/} in the sense of being representable!
 
-The analogy of representability to the familiar distinction between \quote{\wordsmall/} sets and non-\quote{\wordsmall/} proper classes is often a fruitful one, motivating this terminology. Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{small} in essentially the same way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that this notion of \repsmall/ is equivalent also to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.
+The analogy of representability to the familiar distinction between \quote{\wordsmall/} sets and non-\quote{\wordsmall/} proper classes is often a fruitful one, motivating this terminology. However, to avoid confusion, we stick with only referring to this notion as \quote{representable} for now. \TODOinline{Reader beware! Previous versions of this document used the word \quote{\wordsmall/} for this notion, and while I think I have caught and transferred all instances of this, there is always the possibility I have missed or reinserted a stray one somewhere.}
 
-However, to avoid confusion, we stick with only referring to this notion as \quote{representable} for now. \TODOinline{Reader beware! Previous versions of this document used the word \wordsmall/ for this notion, and while I think I have caught and transferred all instances of this, there may be some stray ones remaining.}
-
-When we wish to be clear that we are referring to the distinction between set-sized and proper-class-sized, we will say \quote{\setsmall/}, rather than saying \quote{\wordsmall/}. We will shy away from using the word \quote{\wordsmall/} altogether.
+When we wish to refer to the distinction between set-sized and proper-class-sized, we will say \quote{\setsmall/}, rather than saying \quote{\wordsmall/}. We will shy away from using the word \quote{\wordsmall/} altogether.
+\end{remark}
 
 \begin{convention}
 Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$. And conversely, given a \repsmall/ $T$-indexed set $P$, we freely write also $P$ to name an object in $T$ representing $P$, rather than explicitly writing $\yoneda^{-1}(P)$.

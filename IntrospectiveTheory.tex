@@ -28,8 +28,12 @@ A \defined{pre-introspective theory} is a lexcategory $T$, a $T$-indexed lexcate
 
 We write out the triple $\langle T, C, \introF \rangle$ to refer to a pre-introspective theory when we wish to be fully explicit about its structure. But in typical abuse of language, we also often refer to it simply by the name of its underlying lexcategory $T$ or of the pair $\langle T, C \rangle$, when this would not cause confusion. We will frequently use the same name $\introF$ as though it applies to all introspective theories simultaneously, in the same way that notation like $+$ or $\times$ is overloaded as applying over all rings simultaneously.
 
+\DiscussSmallNotation
+% If we use \wordsmall/ for \repsmall/, then have the following as a footnote on \repsmall/ here:
+% \footnote{We remind the reader that we use this terminology in the sense of \magicref{RepsmallDefn} and \magicref{RepsmallCategoryDefn}, and it has nothing to do with being \setsmall/. Rather, it rather means that $C$ is presented by an internal category.}
+
 \begin{definition} \label{DefnIntrospIndexed}
-An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/\footnote{We remind the reader that we use this terminology in the sense of \magicref{RepsmallDefn} and \magicref{RepsmallCategoryDefn}, and it has nothing to do with being \setsmall/. Rather, it rather means that $C$ is presented by an internal category.}.
+An \defined{introspective theory} is a pre-introspective theory $\langle T, C \rangle$ in which $C$ is \repsmall/\footnote{We reminder the reader that this means $C$ is presented by an internal category in $T$.}.
 \end{definition}
 
 We shall show in later chapters how this simple concept of an introspective theory already suffices to exhibit and capture all the fundamental phenomena of \Goedel/\ codes, diagonalization, the \Goedel/\ incompleteness theorems, and \Loeb/'s theorem. And we shall show that all the traditional instances of \Goedel/'s incompleteness phenomena arise from special cases of this purely algebraic structure. We will also demonstrate functorial fixed point results for this structure, and show some interesting applications of these.
@@ -350,13 +354,14 @@ Now let us discuss some general constructions for building new (pre-)introspecti
 \begin{construction}\label{IntrospInternalMap}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and any lexfunctor $G : C \to D$ is given for some other $T$-indexed lexcategory $D$, then $\langle T, D, G \circ \introF \rangle$ is itself a pre-introspective theory, like so: 
 
+% https://q.uiver.app/?q=WzAsMixbMCwwLCJcXG9we1R9Il0sWzIsMCwiXFxMZXhDYXQiXSxbMCwxLCJDIiwxXSxbMCwxLCJULy0iLDAseyJvZmZzZXQiOi01fV0sWzAsMSwiRCIsMix7Im9mZnNldCI6NX1dLFszLDIsIlxcaW50cm9GIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjQwfX1dLFsyLDQsIkciLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6NDAsInRhcmdldCI6MjB9fV1d
 \[\begin{tikzcd}
-	{\op{T}} && {\LexCat}
-	\arrow["{T/-}"{name=0}, from=1-1, to=1-3, shift left=5]
-	\arrow["{C}"{name=1, description}, from=1-1, to=1-3]
-	\arrow["{D}"{name=2, swap}, from=1-1, to=1-3, shift right=5]
-	\arrow[Rightarrow, "{\introF}"', from=0, to=1]
-	\arrow[Rightarrow, "{G}"', from=1, to=2]
+	{\op{T}} && \LexCat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "C"{description}, from=1-1, to=1-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{T/-}", shift left=5, from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "D"', shift right=5, from=1-1, to=1-3]
+	\arrow["\introF"', shorten <=1pt, shorten >=3pt, Rightarrow, from=1, to=0]
+	\arrow["G"', shorten <=3pt, shorten >=1pt, Rightarrow, from=0, to=2]
 \end{tikzcd}\]
 
 Of course, this yields an introspective or locally introspective theory just in case $D$ is \repsmall/ or locally \repsmall/, respectively.
@@ -417,7 +422,29 @@ If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $
 
 The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$.
 
-\TODOinline{Illustrate above, and give a name to the concept of this combination.}
+\begin{construction}\label{FullSubIntrosp}
+When a pre-introspective theory $\langle S, D, G \rangle$ is obtained from a pre-introspective theory $\langle T, C, \introF \rangle$ by the combination of \magicref{SubPreIntrosp} and \magicref{SubCPreIntrosp} as illustrated below, we say that $\langle S, D, G \rangle$ is a \defined{sub-introspection} of $\langle T, C, \introF \rangle$.
+
+% https://q.uiver.app/?q=WzAsNSxbMiwwLCJcXG9we1R9Il0sWzQsMCwiXFxMZXhDYXQiXSxbMCwwLCJcXG9we1N9Il0sWzAsMiwiXFxvcHtTfSJdLFs0LDIsIlxcTGV4Q2F0Il0sWzAsMSwiVC8tIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMiwwLCJcXG9we2l9IiwyXSxbMiwxLCJUJy8tIiwwLHsib2Zmc2V0IjotNSwiY3VydmUiOi01fV0sWzMsNCwiUy8tIiwwLHsib2Zmc2V0IjotNX1dLFszLDQsIkQiLDFdLFszLDQsIlxccHVsbEFsb25ne2l9QyIsMix7Im9mZnNldCI6NX1dLFs1LDYsIlxcaW50cm9GIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDAsImkiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzEwLDExLCJqIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjIwfX1dLFs5LDEwLCJHIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjQwfX1dXQ==
+\[\begin{tikzcd}
+	{\op{S}} && {\op{T}} && \LexCat \\
+	\\
+	{\op{S}} &&&& \LexCat
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{T/-}", shift left=2, from=1-3, to=1-5]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-3, to=1-5]
+	\arrow["{\op{i}}"', from=1-1, to=1-3]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{T'/-}", shift left=5, curve={height=-30pt}, from=1-1, to=1-5]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "{S/-}", shift left=5, from=3-1, to=3-5]
+	\arrow[""{name=4, anchor=center, inner sep=0}, "D"{description}, from=3-1, to=3-5]
+	\arrow[""{name=5, anchor=center, inner sep=0}, "{\pullAlong{i}C}"', shift right=5, from=3-1, to=3-5]
+	\arrow["\introF"', shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
+	\arrow["i"', shorten <=4pt, Rightarrow, from=2, to=1-3]
+	\arrow["j"', shorten <=3pt, shorten >=1pt, Rightarrow, from=4, to=5]
+	\arrow["G"', shorten <=1pt, shorten >=3pt, Rightarrow, from=3, to=4]
+\end{tikzcd}\]
+
+In the above pair of diagrams, $i : S \to T$ is the inclusion exhibiting $S$ as a full sublexcategory of $T$ (thus, $i$ is a full and faithful lexfunctor). Similarly, $j : D \to \pullAlong{i} C$ is the inclusion exhibiting $D$ as an indexed full sublexcategory of $\pullAlong{i}C$ (thus, $j$ is an indexed lexfunctor, all of whose aspects are full and faithful). Both shown composite 2-cells from $S/-$ to $\pullAlong{i} C$ are taken to be identical; that is, the composite 2-cell of the top diagram is taken to factor through the inclusion $j$, thus yielding $G$.
+\end{construction}
 
 \bigskip
 The concepts of pre-introspective, locally introspective, or introspective theories are all nearly essentially algebraic concepts (\quote{nearly}, in that these involve categories up to equivalence rather than strict categories up to isomorphism). Thus these concepts automatically have available all the same properties as for any such nearly essentially algebraic concept. For example, we have free constructions, as are the subject of of our later chapter \magicref{GeminalChapter}. And we have Cartesian products in the straightforward way:
