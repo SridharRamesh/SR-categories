@@ -273,8 +273,8 @@ Rather, what will fix the issue is to impose a variable cardinality constraint: 
 \newcommand{\PshUnderN}[1]{\mathrm{Psh}'(\omega_{<#1})}
 \newcommand{\PshUnder}{\mathrm{Psh}'(\omega)}
 
-\begin{construction}
-Let $\Set_n$ for each  $n \in \omega$ be a \setsmall/ full sublexcategory of $\Set$. By $\PshUnder$, we mean the full sublexcategory of $\Psh{\omega}$ comprising presheaves $P$ such that $P(m) \in \Set_m$ for all $m \in \omega$.
+\begin{construction}\label{StepIndexingIntrosp}
+Let $\Set_n$ for each  $n \in \omega$ be a \setsmall/ full sublexcategory of $\Set$. We shall think of each $\Set_n$ as a strict category. By $\PshUnder$, we mean the full sublexcategory of $\Psh{\omega}$ comprising presheaves $P$ such that $P(m) \in \Set_m$ for all $m \in \omega$.
 
 By $\omega_{< n}$, we mean the sub-poset of $\omega$ restricted to those naturals which are less than $n$. By $\PshUnderN{n}$, we mean the full sublexcategory of $\Psh{\omega_{< n}}$ comprising presheaves such that $P(m) \in \Set_m$ for each $m < n$.
 
@@ -301,7 +301,7 @@ This completes the description of $\langle \PshUnder, C' \rangle$ as an introspe
 
 Here, we consider examples of locally introspective and introspective theories based on Kripke frames. Of note, our first construction of a locally introspective theory works for any transitive Kripke frame (corresponding to the K4 modal logic). When we attempt to make an introspective theory of this by imposing cardinality constraints, we will find we are only able to do this if the transitive Kripke frame is furthermore well-founded (corresponding to the GL modal logic).
 
-\begin{construction}
+\begin{construction}\label{KripkeLocallyIntrosp}
 Let $<$ be a transitive relation on a discrete set $|P|$. The reflexive closure $\leq$ of $<$ equips $|P|$ as a preorder $P$. Let $Q$ be $P$ augmented with one further element $\infty$ which is greater than every element from $P$.
 
 There is an inclusion functor $i : |P| \to Q$, and this induces correspondingly a functor $\pullAlong{i} : \Psh{Q} \to \Psh{|P|}$.
@@ -325,8 +325,8 @@ The reader is advised to keep in mind that this last construction is very differ
 
 This is an important archetypal example of a locally introspective theory. It corresponds closely to the interpretation of K4 modal logic using a transitive Kripke frame. However, just as at the beginning of our previous example, we have the issue that this is only a locally introspective theory and not an introspective theory. Once again, the various aspects of $C$ comprise a proper class of objects, too many for $\Ob(C)$ to be given by a set-valued presheaf, preventing $C$ from being \repsmall/. And as in our previous example, we will again address this by imposing variable cardinality constraints on our presheaves.
 
-\begin{construction}
-We will from hereon out assume that the preorder $P$ is in fact well-founded (and thus so is $Q$). Suppose given \setsmall/ full sublexcategories $\Set_q$ of $\Set$ for each $q \in Q$. (It's not actually necessary that we restrict to such a subcategory at $q = \infty$, but for uniformity's sake, we do this for now.).
+\begin{construction}\label{KripkeIntrosp}
+We will from hereon out assume that the preorder $P$ is in fact well-founded (and thus so is $Q$). Suppose given \setsmall/ full sublexcategories $\Set_q$ of $\Set$ for each $q \in Q$. (It's not actually necessary that we restrict to such a subcategory at $q = \infty$, but for uniformity's sake, we do this for now.). We shall think of each $\Set_q$ as a strict category.
 
 \newcommand{\PshUnderQ}[1]{\mathrm{Psh}'(|P|_{<#1})}
 \newcommand{\PshUnderQInf}{\mathrm{Psh}'(Q)}
@@ -343,7 +343,7 @@ We observe as above that for $X \in \PshUnderQInf$, we have that $\Hom_{C'}(1, \
 
 Finally, we define $\introN$ in the same way as above, with $\introN_X(q) : X(q) \to \Hom_{C'}(1, \introS(X))(q)$ given by the product of all the restriction maps $: X(q) \to X(p)$ for $p < q$.
 
-In this way, we have constructed an introspective theory $\langle \PshUnderQInf, C' \rangle$.
+In this way, we have constructed an introspective theory $\langle \PshUnderQInf, C' \rangle$ (relative to any suitable choice of the $\{\Set_q\}_{q \in Q}$).
 \end{construction}
 
 This is an important archetypal example of an introspective theory. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame.
@@ -400,7 +400,7 @@ By the previous construction (\cref{IntrospPullback}), using the forgetful funct
 (Note that in this case, the corresponding 2-cell from $(T/t)/-$ to $T/\Sigma(-)$ is an equivalence, by how iterated slice categories amount to slice categories simpliciter.)
 \end{proof}
 
-When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean.
+When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean. \sTODOinline{Do we actually use this abuse of language?}
 
 \sTODOinline{This freely augments $T$ with a single global point of $t$. There should be some generalization of the above that freely augments $T$ with as many global points of as many types as we like; that is, given a lexfunctor $M$ from $T$ to $\Set$ serving as a particular model of $T$, we should be able to freely augment $T$ to $T[M]$ such that all $T[M]$'s models extend $M$. I believe this amounts to Definition 7.14 of "A General Framework for the Semantics of Type
 Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete Type Theories").
@@ -409,21 +409,21 @@ Perhaps more generally, whenever we have a lexfunctor from $T$ to $S$, we can le
 
 \sTODOinline{This also means that the self-indexing is not just an indexed lexcategory, but an indexed pre-/locally/fully introspective theory, according as to the base.}
 
-\begin{construction}\label{SubPreIntrosp}
-If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory\footnote{That is, a full subcategory whose inclusion functor is a lexfunctor.} of $T$, then $\langle S, C, \introF \rangle$ is a pre-introspective theory, where we now consider $\introF$ as restricted to acting on $S$.
+\begin{construction}\label{SubTPreIntrosp}
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $S$ is a full sub-lexcategory of $T$ (thus, with a full and faithful inclusion lexfunctor $i : S \to T$), then $\langle S, \pullAlong{i} C \rangle$ can be equipped in a natural way as a pre-introspective theory as well.
 \end{construction}
 \begin{proof}[Details]
-By \cref{IntrospPullback} again, taking $\Sigma$ to be the inclusion functor.
+By \cref{IntrospPullback} again, taking $\Sigma$ to be the inclusion functor $i$.
 \end{proof}
 
 \begin{construction}\label{SubCPreIntrosp}
 If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $T$-indexed full sub-lexcategory of $C$ containing the range of $\introF$, then $\langle T, D, \introF \rangle$ is a pre-introspective theory (where $\introF$ is now taken to have codomain $D$).
 \end{construction}
 
-The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$.
+The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$. Thus, we obtain the following notion:
 
-\begin{construction}\label{FullSubIntrosp}
-When a pre-introspective theory $\langle S, D, G \rangle$ is obtained from a pre-introspective theory $\langle T, C, \introF \rangle$ by the combination of \magicref{SubPreIntrosp} and \magicref{SubCPreIntrosp} as illustrated below, we say that $\langle S, D, G \rangle$ is a \defined{sub-introspection} of $\langle T, C, \introF \rangle$.
+\begin{construction}\label{SubIntrospectionDefn}
+When a pre-introspective theory $\langle S, D, G \rangle$ is obtained from a pre-introspective theory $\langle T, C, \introF \rangle$ by the combination of \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp} as illustrated below, we say that $\langle S, D, G \rangle$ is a \defined{sub-introspection} of $\langle T, C, \introF \rangle$.
 
 % https://q.uiver.app/?q=WzAsNSxbMiwwLCJcXG9we1R9Il0sWzQsMCwiXFxMZXhDYXQiXSxbMCwwLCJcXG9we1N9Il0sWzAsMiwiXFxvcHtTfSJdLFs0LDIsIlxcTGV4Q2F0Il0sWzAsMSwiVC8tIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMiwwLCJcXG9we2l9IiwyXSxbMiwxLCJUJy8tIiwwLHsib2Zmc2V0IjotNSwiY3VydmUiOi01fV0sWzMsNCwiUy8tIiwwLHsib2Zmc2V0IjotNX1dLFszLDQsIkQiLDFdLFszLDQsIlxccHVsbEFsb25ne2l9QyIsMix7Im9mZnNldCI6NX1dLFs1LDYsIlxcaW50cm9GIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDAsImkiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzEwLDExLCJqIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjIwfX1dLFs5LDEwLCJHIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjQwfX1dXQ==
 \[\begin{tikzcd}
@@ -445,6 +445,8 @@ When a pre-introspective theory $\langle S, D, G \rangle$ is obtained from a pre
 
 In the above pair of diagrams, $i : S \to T$ is the inclusion exhibiting $S$ as a full sublexcategory of $T$ (thus, $i$ is a full and faithful lexfunctor). Similarly, $j : D \to \pullAlong{i} C$ is the inclusion exhibiting $D$ as an indexed full sublexcategory of $\pullAlong{i}C$ (thus, $j$ is an indexed lexfunctor, all of whose aspects are full and faithful). Both shown composite 2-cells from $S/-$ to $\pullAlong{i} C$ are taken to be identical; that is, the composite 2-cell of the top diagram is taken to factor through the inclusion $j$, thus yielding $G$.
 \end{construction}
+
+Observe that our constructions \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp} were given as sub-introspections of \magicref{StepIndexingLocallyIntrosp} and \magicref{KripkeLocallyIntrosp}, respectively. \TODOinline{Make this clearer; it may not be clear that the internal categories used were in fact full subcategories of the restriction of the original self-indexing.}
 
 \bigskip
 The concepts of pre-introspective, locally introspective, or introspective theories are all nearly essentially algebraic concepts (\quote{nearly}, in that these involve categories up to equivalence rather than strict categories up to isomorphism). Thus these concepts automatically have available all the same properties as for any such nearly essentially algebraic concept. For example, we have free constructions, as are the subject of of our later chapter \magicref{GeminalChapter}. And we have Cartesian products in the straightforward way:

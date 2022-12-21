@@ -149,7 +149,7 @@ Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic uni
 \end{construction}
 
 \begin{observation}
-Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $IAU$ (which exists thanks to \magicref{AUInternalInitialFinite} and \magicref{NNOToposAndAUAreFinitelyAxiomatized}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
+Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $\IAU$ (which exists thanks to \magicref{AUInternalInitialFinite} and \magicref{NNOToposAndAUAreFinitelyAxiomatized}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
 \end{observation}
 \TODOinline{Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence, since the global sections functor on $\IAU$ is also the unique arithmetic functor to $\Set$ (as both are initial among lexfunctors), so that $\Glob{\IAU'} = \IAU$, which has the identity as its only endoarithmetic functor.}
 
@@ -221,9 +221,11 @@ This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D
 
 Unfortunately, the above construction does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \TODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}.
 
-But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next section.
+But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next section.
 
 \subsubsection{Presheaves with variable cardinality constraints}
+
+The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
 
 \newcommand{\KFiberPsh}[2]{\Psh{#2}/_{#1}-}
 
@@ -231,21 +233,21 @@ But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a 
 
 \newcommand{\KDecObject}[2]{#1\mathrm{-Dec}(#2)}
 
-Let $X$ be a category internal to $\Set$, and let $K$ be a function from $\Ob(X)$ to sets of sets. We call any choice of such $K$ a \defined{ramp} on $X$.
+Let $X$ be a category internal to $\Set$, and let $K$ be a function from $\Ob(X)$ to sets of sets\footnote{It might be better to say that the outputs of $K$ are set-indexed sets. At any rate, we shall think of each $K(x)$ as a genuine set, whose elements can be compared for equality.}. We call any choice of such $K$ a \defined{ramp} on $X$.
 
 By a $K$-presheaf on $X$, we mean a presheaf $E$ on $X$ such that $E(x) \in K(x)$ for each $x \in X$. These comprise a full subcategory of $\Psh{X}$, which we may call $\KPshGlobal{K}{X}$.
 
-More generally, given an arbitrary presheaf $P$ on $X$, we define the notion of a $K$-decoration on $P$. This is a function $f$ which assigns to each $x \in X$ and $p \in P(x)$ an element $f(x, p) \in K(x)$, along with a presheaf $E$ on $X$ and a slice $\pi : E \to P$ in $\Psh{X}/P$ satisfying the condition on its fibers that $\pi_x^{-1}(p) = f(x, p)$ for each $x \in X$ and $p \in P(x)$. (Thus, all that is left to specify in $E$ is its restriction maps, in a compatible fashion with the morphism structure of $X$ and with the projection map to $P$.)
+More generally, given an arbitrary presheaf $P$ on $X$, we define the notion of a \defined{$K$-decoration} on $P$. This is a function $f$ which assigns to each $x \in X$ and $p \in P(x)$ an element $f(x, p) \in K(x)$, along with a presheaf $E$ on $X$ and a slice $\pi : E \to P$ in $\Psh{X}/P$ satisfying the condition on its fibers that $\pi_x^{-1}(p) = f(x, p)$ for each $x \in X$ and $p \in P(x)$. (Thus, all that is left to specify in $E$ is its restriction maps, in a compatible fashion with the morphism structure of $X$ and with the projection map to $P$.)
 
-That is, a $K$-decoration of $P$ is a presheaf over $P$ whose fibers at each aspect $P(x)$ of $P$ are each given by elements of the corresponding $K(x)$. Thinking of each $K(x)$ as a genuine set whose elements can be compared for equality, the $K$-decorations of $P$ also comprise a genuine set (they can be compared for equality and it is readily observed that in size they comprise a set rather than a proper class).
+That is, a $K$-decoration of $P$ is a presheaf over $P$ whose fibers at each aspect $P(x)$ of $P$ are each given by elements of the corresponding $K(x)$. Note that the $K$-decorations of $P$ comprise a set (they can be compared for equality, and it is readily observed that in size they comprise a set rather than a proper class).
 
 Note that $K$-decorations of the terminal presheaf amount to the same thing as objects of $\KPshGlobal{K}{X}$.
 
-Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-decoration of $P_2$ back to a $K$-decoration of $P_1$. \TODOinline{Describe details or is it obvious? We compose $f$ for $P_2$ with the action of $m$ to get $f$ for $P_1$, and we literally take the pullback of $\pi$ for $P_2$ along $m$ to get $\pi$ for $P_1$}. This is strictly functorial, and thus we get a contravariant map from $\Psh{X}$ to $\Set$.
+Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-decoration of $P_2$ back to a $K$-decoration of $P_1$. \TODOinline{Describe details or is it obvious? We compose $f$ for $P_2$ with the action of $m$ to get $f$ for $P_1$, and we literally take the pullback of $\pi$ for $P_2$ along $m$ to get $\pi$ for $P_1$}. This is strictly functorial, and thus we get a contravariant map from $\Psh{X}$ to $\Set$ which assigns to any $P \in \Psh{X}$ the set of $K$-decorations of $P$, with reindexings as just described.
 
-It is also straightforward to observe that this map takes \setsmall/ colimits in $\Psh{X}$ to \setsmall/ limits in $\Set$. Thus, by \TODOinline{Put lemma in preliminaries explaining that any \setsmall/ colimit-to-limit preserving presheaf on a presheaf category is representable}, this is in fact $\Psh{X}$-\repsmall/. We obtain a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the pullback of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
+It is also straightforward to observe that this map takes \setsmall/ colimits in $\Psh{X}$ to \setsmall/ limits in $\Set$. Thus, by \TODOinline{Put lemma in preliminaries explaining that any \setsmall/ colimit-to-limit preserving presheaf on a presheaf category is representable}, this is in fact $\Psh{X}$-\repsmall/. That is to say, we have a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the reindexing of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
 
-We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice; call this $\KFiberPsh{K}{X}$. This indexed category has a \repsmall/ set of objects (given by $\KDecObject{K}{X}$), and is locally \repsmall/ (as it is a full subcategory of $\Psh{X}/-$, which is locally \repsmall/ by the local cartesian closure of $\Psh{X}$). Thus, it is a \repsmall/ indexed category. Indeed, it can be seen as an internal indexed category with set of objects specifically $\KDecObject{K}{X}$.
+We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice. Call this $\KFiberPsh{K}{X}$. This indexed category is locally \repsmall/ (as it is a full subcategory of $\Psh{X}/-$, which is locally \repsmall/ by the local cartesian closure of $\Psh{X}$), and it can also be taken as having a \repsmall/ set of objects (given by $\KDecObject{K}{X}$). Thus, it can be taken to be an internal category.
 
 Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our previous observation about $K$-decorations of the terminal presheaf.
 
@@ -253,7 +255,7 @@ Observe that if each $K(x)$ for $x \in X$ is closed under finite products and su
 
 Observe that the conditions defining a $K$-decoration of $P \in \Psh{X}$ only depend on the values of $K(x)$ at $x \in X$ for which $P(x)$ is inhabited. The values of $K$ at $x$ for which $P(x)$ is empty play no role. In other words, the aspect of $\KFiberPsh{K}{X}$ at presheaf $P$ only depends on the value of $K$ at $x \in X$ for which $P(x)$ is inhabited.
 
-Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$; we may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. [For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes.]
+Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$. We may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. [For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes.]
 
 \TODOinline{Observe how $\pullAlong{i}$ restricts as a 2-cell to these cardinality constrained presheaves.}
 

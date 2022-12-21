@@ -81,7 +81,7 @@ Furthermore, each of our $\Box$ operators comes with a natural transformation fr
 
 For the $\Box$ operator on $T$ this is clear, as the natural transformation $\introN$ from identity to $\Box$ encodes the even stronger property $t \vdash \Box t$. The 4 axiom is the special case where $t$ here is of the form $\Box A$.
 
-\TODOinline{Address that $\introN$ should be read as an indexed operation acting on each aspect of $T/-$.}
+\TODOinline{Address that $\introN$ should be read as an indexed operation acting on each aspect of $T/-$. This can be seen by looking at $\introN$ relative to a slice introspective theory.}
 
 % https://q.uiver.app/?q=WzAsMyxbMiwwLCJULy0iXSxbMCwyLCJDIl0sWzQsMiwiXFxQc2h7Q30iXSxbMCwxLCJcXGludHJvRiIsMl0sWzEsMiwiYyBcXG1hcHN0byBcXEhvbV9DKC0sIGMpIiwyXSxbMiwwLCJQIFxcbWFwc3RvIFAoMSkiLDJdLFswLDQsIlxcaW50cm9OIDogXFxpZF9UIFxcdG8gXFxCb3hfVCIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
@@ -137,7 +137,10 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 
 \sTODOinline{Citation to Boolos and other modal logic references at some point}
 
-\sTODOinline{Add commentary on how our box is actually a bifunctor instead of a single functor, as we do not presume cartesian closure. Add commentary on the case where we have cartesian closure, including how this reduces to a single box functor (either for the introspective theory or geminal category case), and including the relationship with double negation/Booleanness when Lob's theorem is introduced}
+\sTODOinline{Add commentary on how box extends to a bifunctor, even without presuming cartesian closure. Add commentary on the relationship with double negation/Booleanness when Lob's theorem is introduced}
+
+\subsection{As applied to sub-introspections}
+\TODOinline{If $i : S \to T$ is the inclusion of a full sublexcategory, and the pre-introspective theory $\langle S, \pullAlong{i} C \rangle$ is obtained from the locally introspective theory $\langle T, C \rangle$, then we get a map from $S \to \Psh{S}$ which acts morally like $\Box_S$ by $\Hom_{\pullAlong{i}C}(1, \introS(-))$, and this also matches the map we get by composing $i : S \to T$, with $\Box_T : T \to T$, with $\pullAlong{i} : T \to \Psh{S}$. In this sense, $S$ and $T$ agree on $\Box$. If $S$ is closed under $\Box_T$, we can put this more nicely.}
 
 \subsection{As applied to our archetypal examples}
 \TODO
