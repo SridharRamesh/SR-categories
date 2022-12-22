@@ -288,7 +288,7 @@ Also note that once $\Set_0, \Set_1, \ldots, \Set_{n - 1}$ are determined, we ha
 
 Thus, we may inductively choose $\Set_n$ for each $n$ such that both $\Ob(\PshUnderN{n})$ and $\Mor(\PshUnderN{n})$ are among the objects of $\Set_n$. 
 
-[For example, we may satisfy this condition by choosing $\Set_n$ to be the von Neumann universe $V_{(n + 1) \times \omega}$ of sets of rank less than $(n + 1) \times \omega$. Many other possibilities are available, this is only one suggestion.]
+[For example, we may satisfy this condition by choosing $\Set_n$ for each $n$ to be the von Neumann universe $V_{(n + 1) \times \omega}$ of sets of rank less than $(n + 1) \times \omega$. Many other possibilities are available, this is only one suggestion.]
 
 When we choose $\Set_n$ satisfying this inductive condition, we have that $C'$ is not only internal to $\Psh{\omega}$, but indeed is internal to its full subcategory $\PshUnder$.
 
@@ -417,33 +417,38 @@ By \cref{IntrospPullback} again, taking $\Sigma$ to be the inclusion functor $i$
 \end{proof}
 
 \begin{construction}\label{SubCPreIntrosp}
-If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $T$-indexed full sub-lexcategory of $C$ containing the range of $\introF$, then $\langle T, D, \introF \rangle$ is a pre-introspective theory (where $\introF$ is now taken to have codomain $D$).
+If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $T$-indexed full sub-lexcategory of $C$ containing the range of $\introF$ (thus, such that $\introF = i \circ \introF'$ for a uniquely determined $\introF' : T/- \to D$, where $i : D \to C$ is the inclusion), then $\langle T, D, \introF' \rangle$ is a pre-introspective theory.
+
+[In this case, conversely, $\langle T, C, \introF \rangle$ is obtained from $\langle T, D, \introF' \rangle$ and $i : D \to C$ via \magicref{IntrospInternalMap}.]
 \end{construction}
 
-The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$. Thus, we obtain the following notion:
+The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$. In particular, the following scenario will be of note to us:
 
 \begin{construction}\label{SubIntrospectionDefn}
-When a pre-introspective theory $\langle S, D, G \rangle$ is obtained from a pre-introspective theory $\langle T, C, \introF \rangle$ by the combination of \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp} as illustrated below, we say that $\langle S, D, G \rangle$ is a \defined{sub-introspection} of $\langle T, C, \introF \rangle$.
+Let $\langle T, C, \introF \rangle$ be a pre-introspective theory, let $S$ be a full sublexcategory of $T$ (with inclusion $i : S \to T$), and let $D$ be a $T$-indexed full sub-lexcategory of $C$ (with inclusion $j : D \to C$). Suppose furthermore that this $D$ is of the form $i(D')$ for some \repsmall/ $S$-indexed lexcategory $D'$. (It follows that this $D'$ is identified with $\pullAlong{i} D$.)
 
-% https://q.uiver.app/?q=WzAsNSxbMiwwLCJcXG9we1R9Il0sWzQsMCwiXFxMZXhDYXQiXSxbMCwwLCJcXG9we1N9Il0sWzAsMiwiXFxvcHtTfSJdLFs0LDIsIlxcTGV4Q2F0Il0sWzAsMSwiVC8tIiwwLHsib2Zmc2V0IjotMn1dLFswLDEsIkMiLDIseyJvZmZzZXQiOjJ9XSxbMiwwLCJcXG9we2l9IiwyXSxbMiwxLCJUJy8tIiwwLHsib2Zmc2V0IjotNSwiY3VydmUiOi01fV0sWzMsNCwiUy8tIiwwLHsib2Zmc2V0IjotNX1dLFszLDQsIkQiLDFdLFszLDQsIlxccHVsbEFsb25ne2l9QyIsMix7Im9mZnNldCI6NX1dLFs1LDYsIlxcaW50cm9GIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDAsImkiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzEwLDExLCJqIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjQwLCJ0YXJnZXQiOjIwfX1dLFs5LDEwLCJHIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjQwfX1dXQ==
+Finally, suppose also that $\introF$ restricted to $S$ has range restricted to $D$, in that there is a (uniquely determined) $\introF'$ making the following composite 2-cells equal:
+
+% https://q.uiver.app/?q=WzAsNixbMCwwLCJcXG9we1N9Il0sWzIsMCwiXFxvcHtUfSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzAsMiwiXFxvcHtTfSJdLFsyLDIsIlxcb3B7VH0iXSxbNCwyLCJcXExleENhdCJdLFswLDEsIlxcb3B7aX0iLDJdLFsxLDIsIlQvLSIsMCx7Im9mZnNldCI6LTJ9XSxbMSwyLCJDIiwyLHsib2Zmc2V0IjoyfV0sWzAsMiwiUy8tIiwwLHsiY3VydmUiOi01fV0sWzMsNCwiXFxvcHtpfSIsMl0sWzQsNSwiRCIsMCx7Im9mZnNldCI6LTJ9XSxbMyw1LCJTLy0iLDAseyJjdXJ2ZSI6LTV9XSxbNCw1LCJDIiwyLHsib2Zmc2V0IjoyfV0sWzcsOCwiXFxpbnRyb0YiLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzksMSwiaSIsMix7ImxhYmVsX3Bvc2l0aW9uIjo3MCwic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dLFsxMSwxMywiaiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbMTIsNCwiXFxpbnRyb0YnIiwyLHsibGFiZWxfcG9zaXRpb24iOjkwLCJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV1d
 \[\begin{tikzcd}
 	{\op{S}} && {\op{T}} && \LexCat \\
 	\\
-	{\op{S}} &&&& \LexCat
+	{\op{S}} && {\op{T}} && \LexCat
+	\arrow["{\op{i}}"', from=1-1, to=1-3]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{T/-}", shift left=2, from=1-3, to=1-5]
 	\arrow[""{name=1, anchor=center, inner sep=0}, "C"', shift right=2, from=1-3, to=1-5]
-	\arrow["{\op{i}}"', from=1-1, to=1-3]
-	\arrow[""{name=2, anchor=center, inner sep=0}, "{T'/-}", shift left=5, curve={height=-30pt}, from=1-1, to=1-5]
-	\arrow[""{name=3, anchor=center, inner sep=0}, "{S/-}", shift left=5, from=3-1, to=3-5]
-	\arrow[""{name=4, anchor=center, inner sep=0}, "D"{description}, from=3-1, to=3-5]
-	\arrow[""{name=5, anchor=center, inner sep=0}, "{\pullAlong{i}C}"', shift right=5, from=3-1, to=3-5]
+	\arrow[""{name=2, anchor=center, inner sep=0}, "{S/-}", curve={height=-30pt}, from=1-1, to=1-5]
+	\arrow["{\op{i}}"', from=3-1, to=3-3]
+	\arrow[""{name=3, anchor=center, inner sep=0}, "D", shift left=2, from=3-3, to=3-5]
+	\arrow[""{name=4, anchor=center, inner sep=0}, "{S/-}", curve={height=-30pt}, from=3-1, to=3-5]
+	\arrow[""{name=5, anchor=center, inner sep=0}, "C"', shift right=2, from=3-3, to=3-5]
 	\arrow["\introF"', shorten <=1pt, shorten >=1pt, Rightarrow, from=0, to=1]
-	\arrow["i"', shorten <=4pt, Rightarrow, from=2, to=1-3]
-	\arrow["j"', shorten <=3pt, shorten >=1pt, Rightarrow, from=4, to=5]
-	\arrow["G"', shorten <=1pt, shorten >=3pt, Rightarrow, from=3, to=4]
+	\arrow["i"'{pos=0.7}, shorten <=3pt, Rightarrow, from=2, to=1-3]
+	\arrow["j"', shorten <=1pt, shorten >=1pt, Rightarrow, from=3, to=5]
+	\arrow["{\introF'}"'{pos=0.9}, shorten <=3pt, Rightarrow, from=4, to=3-3]
 \end{tikzcd}\]
 
-In the above pair of diagrams, $i : S \to T$ is the inclusion exhibiting $S$ as a full sublexcategory of $T$ (thus, $i$ is a full and faithful lexfunctor). Similarly, $j : D \to \pullAlong{i} C$ is the inclusion exhibiting $D$ as an indexed full sublexcategory of $\pullAlong{i}C$ (thus, $j$ is an indexed lexfunctor, all of whose aspects are full and faithful). Both shown composite 2-cells from $S/-$ to $\pullAlong{i} C$ are taken to be identical; that is, the composite 2-cell of the top diagram is taken to factor through the inclusion $j$, thus yielding $G$.
+Then $\langle S, D', \introF' \rangle$ is an introspective theory, which we refer to as a \defined{sub-introspection} of $\langle T, C, \introF \rangle$.
 \end{construction}
 
 Observe that our constructions \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp} were given as sub-introspections of \magicref{StepIndexingLocallyIntrosp} and \magicref{KripkeLocallyIntrosp}, respectively. \TODOinline{Make this clearer; it may not be clear that the internal categories used were in fact full subcategories of the restriction of the original self-indexing.}

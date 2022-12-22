@@ -1133,4 +1133,11 @@ The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is
 
 \TODOinline{Go through this document and give evocative names instead of just numbers to any theorem, construction, etc, which we will reference a lot, for which such a name would be useful.}
 
+\begin{theorem}\label{RepSmallPresheavesOnPresheaves}
+Let $C$ be any category, and let $P$ in $\Psh{\Psh{C}}$ be given. This $P$ is $\Psh{C}$-\repsmall/ just in case $P$ turns \setsmall/ colimits in $\Psh{C}$ (i.e., \setsmall/ limits in $\op{\Psh{C}}$) into \setsmall/ limits in $\Set$.
+\end{theorem}
+\begin{proof}
+The necessity of this condition is clear, from the fact that any representable functor preserves limits. As for its sufficiency, we may consider the map $P(\yoneda(-)) : \op{C} \to \Set$. \TODOinline{Invoke the Yoneda lemma to show this gives the right effect on \repsmall/ elements of $\Psh{C}$, and then invoke the fact that all objects $\Psh{C}$ are \setsmall/ colimits of representable objects to argue this gives the right effect in general.}
+\end{proof}
+
 \fileend
