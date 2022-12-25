@@ -274,11 +274,7 @@ At any rate, we shall find the added flexibility of allowing a relation in place
 
 \subsection{Presheaf diagonalization for pre-introspective theories}\label{PreIntrospDiagSection}
 \openNamed{theorem}{Pre-introspective Diagonalization}\label{PreIntrospDiag}
-Let $T$ be a category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $\point_C$ be any object in the global aspect of $C$, and let $\introN$ be a map from $t$ to $\Hom_C(\point_C, \introS(t))$, natural in $t \in T$. Furthermore, let $\point_T$ be an object of $T$.
-
-(For example, we have all the above structure if $\langle T, C, \introS, \introN \rangle$ is a pre-introspective theory, with $\point_C$ and $\point_T$ as terminal objects. This is the case we are interested in, but we note that the following argument does not make use of all this structure.)
-
-Throughout the following, we use \quote{point of} as shorthand for \quote{element of the $\point_T$-aspect of}.
+Let $\langle T, C, \introS, \introN \rangle$ be a pre-introspective theory. Let $\point_T$ be the terminal object of $T$ and let $\point_C$ be the terminal object of $C$.\footnote{We use this $\star$ notation rather than $1$ notation so that we can make the observation that this theorem's proof actually applies more generally, not depending on any limit structure. It would suffice to let $T$ be any category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $\introN$ be a map from $t$ to $\Hom_C(\point_C, \introS(t))$, natural in $t \in T$, let $\point_T$ be any object of $T$, and let $\point_C$ be any globally defined object of $C$.} Throughout the following, we use \quote{point of} as shorthand for \quote{element of the $\point_T$-aspect of}.
 
 Furthermore, let $P$ be a $(T, C)$-indexed set \TODOinline{Make sure we discuss doubly-indexed sets in the Preliminaries}. We will write in the following $P(c)$ to mean the $T$-indexed set $t \mapsto P(t, c)$, for globally defined objects $c$ of $C$.
 

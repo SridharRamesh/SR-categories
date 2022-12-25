@@ -146,10 +146,26 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 \TODO
 
 \subsubsection{ZF-Fin examples}
+Recall from \magicref{SigmaModelComplex} the introspective theory $\langle \ZfinSigma, \InnerZfin, \introS, \introN \rangle$, where $\ZfinSigma$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, $\InnerZfin$ is the lexcategory internal to $\ZfinSigma$ of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite, $\introS$ assigns to each piece of $\ZfinSigma$ the corresponding (globally defined) piece of $\InnerZfin$, and $\introN$ is the $\Sigma_1$-definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
+
+Let us now consider the behavior of $\Box_{\ZfinSigma} : \ZfinSigma \to \ZfinSigma$, defined by $\Hom_{\InnerZfin}(1, \introS(-))$. \TODO
+
+And let us now consider the behavior of the $\ZfinSigma$-internal endolexfunctor $\Box_{\InnerZfin} : \InnerZfin \to \InnerZfin$. For convenience, we shall just look at its global aspect. Presuming the soundness of ZF-Finite in our metatheory for further convenience, we have that $\Glob{\InnerZfin}$ is identified with $\Zfin$, the lexcategory of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite. Thus, we are considering $\Box_{\Zfin} : \Zfin \to \Zfin$, defined by $\introS(\Hom_{\Zfin}(1, -))$. \TODO
+
+\TODOinline{Discuss subterminals, as propositions, and how the box operator matches with the provability operator on these.}
+
+\subsubsection{Kripke frame example}
+Recall the locally introspective theory $\langle \Psh{Q}, C \rangle$ from \magicref{KripkeLocallyIntrosp}, constructed from a transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a poset using the $<$ relation. Our definition of $C$ was such that $\Glob{C} = \Psh{|P|} = \Set^{|P|}$. Our definition of $\introS : \Psh{Q} \to \Psh{|P|}$ was the forgetful functor which ignores the $<$ relation and $\infty$ element in $Q$. Our definition of $C$ also ensures that $\Hom_C(1, -) : \Psh{|P|} \to \Psh{Q}$ sent $f \in \Psh{|P|}$ to the presheaf $F$ on $Q$ such that $F(q)$ is the product of $f(p)$ over all $p < q$, with restriction maps given by projection.
+
+Thus, $\Box_{\Psh{|P|}}$ and $\Box_{\Psh{Q}}$ act as \TODO.
+
+\TODOinline{Discuss subterminals, as propositions, and how the box operator matches with the ordinary interpretation of the box operator in Kripke frames on them.}
+
+\TODOinline{Discuss how this descends to the sub-introspection which is a fully introspective theory}
 
 \subsubsection{Step-indexing example}
 
-\subsubsection{Kripke frame example}
+\TODO
 
 \subsection{Recap}
 We have defined the $\Box$ operator in the context of locally introspective theories, and shown that it satisfies the rules of K4 modal logic.
