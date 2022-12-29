@@ -400,7 +400,7 @@ By the previous construction (\cref{IntrospPullback}), using the forgetful funct
 (Note that in this case, the corresponding 2-cell from $(T/t)/-$ to $T/\Sigma(-)$ is an equivalence, by how iterated slice categories amount to slice categories simpliciter.)
 \end{proof}
 
-When we abuse language and speak of $T/t$ as an introspective theory, the above construction is what we mean. \sTODOinline{Do we actually use this abuse of language?}
+When we abuse language and speak of $\slicePreIntrosp{T}{t}$ as an introspective theory, the above construction is what we mean. \sTODOinline{Do we actually use this abuse of language?}
 
 \sTODOinline{This freely augments $T$ with a single global point of $t$. There should be some generalization of the above that freely augments $T$ with as many global points of as many types as we like; that is, given a lexfunctor $M$ from $T$ to $\Set$ serving as a particular model of $T$, we should be able to freely augment $T$ to $T[M]$ such that all $T[M]$'s models extend $M$. I believe this amounts to Definition 7.14 of "A General Framework for the Semantics of Type
 Theory" by Uemura, or section 5.4 of Uemura's PhD thesis ("Abstract and Concrete Type Theories").
@@ -425,7 +425,7 @@ If $\langle T, C, \introF \rangle$ is a pre-introspective theory, and $D$ is a $
 The last two constructions are often fruitfully combined: Given a pre-introspective theory $\langle T, C, \introF \rangle$, we may first pass from $T$ to a sub-lexcategory $S$ of $T$ and then, after having done so, find that $\introF$ when restricted to $S$ factors through a sub-lexcategory $D$ of $C$. In particular, the following scenario will be of note to us:
 
 \begin{construction}\label{SubIntrospectionDefn}
-Let $\langle T, C, \introF \rangle$ be a pre-introspective theory, let $S$ be a full sublexcategory of $T$ (with inclusion $i : S \to T$), and let $D$ be a $T$-indexed full sub-lexcategory of $C$ (with inclusion $j : D \to C$). Suppose furthermore that this $D$ is of the form $i(D')$ for some \repsmall/ $S$-indexed lexcategory $D'$. (It follows that this $D'$ is identified with $\pullAlong{i} D$.)
+Let $\langle T, C, \introF \rangle$ be a pre-introspective theory, let $S$ be a full sublexcategory of $T$ (with inclusion $i : S \to T$), and let $D$ be a $T$-indexed full sub-lexcategory of $C$ (with inclusion $j : D \to C$). Suppose furthermore that this $D$ is of the form $i[D']$ for some \repsmall/ $S$-indexed lexcategory $D'$. (It follows that this $D'$ is identified with $\pullAlong{i} D$.)
 
 Finally, suppose also that $\introF$ restricted to $S$ has range restricted to $D$, in that there is a (uniquely determined) $\introF'$ making the following composite 2-cells equal:
 

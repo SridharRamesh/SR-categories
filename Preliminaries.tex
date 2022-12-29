@@ -1140,4 +1140,20 @@ Let $C$ be any category, and let $P$ in $\Psh{\Psh{C}}$ be given. This $P$ is $\
 The necessity of this condition is clear, from the fact that any representable functor preserves limits. As for its sufficiency, we may consider the map $P(\yoneda(-)) : \op{C} \to \Set$. \TODOinline{Invoke the Yoneda lemma to show this gives the right effect on \repsmall/ elements of $\Psh{C}$, and then invoke the fact that all objects $\Psh{C}$ are \setsmall/ colimits of representable objects to argue this gives the right effect in general.}
 \end{proof}
 
+\begin{construction}\label{FunctorAs2Cell}
+Given any pullback-preserving functor $f : A \to B$ between lexcategories, we have that the action of $f$ on slice categories of $A$ also acts as an indexed lexfunctor between the $A$-indexed lexcategories $A/-$ and $B/f(-)$. We may refer to this indexed lexfunctor also by the same name $f$, in slight abuse of language. Thus, we obtain a diagram of the following sort:
+
+% https://q.uiver.app/?q=WzAsMyxbMCwwLCJBIl0sWzIsMCwiQiJdLFs0LDAsIlxcTGV4Q2F0Il0sWzEsMiwiQi8tIiwyXSxbMCwxLCJmIiwyXSxbMCwyLCJBLy0iLDAseyJjdXJ2ZSI6LTV9XSxbNSwxLCJmIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	A && B && \LexCat
+	\arrow["{B/-}"', from=1-3, to=1-5]
+	\arrow["f"', from=1-1, to=1-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{A/-}", curve={height=-30pt}, from=1-1, to=1-5]
+	\arrow["f", shorten <=3pt, Rightarrow, from=0, to=1-3]
+\end{tikzcd}\]
+\end{construction}
+\openDetails
+Given any slice or commutative triangle in $A$, we may apply $f$ to it to get a slice or commutative triangle in $B$, and because finite limits in slice categories are computed via pullbacks, this action preserves those finite limits.
+\closeDetails
+
 \fileend

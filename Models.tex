@@ -184,14 +184,16 @@ Clearly, there is nothing special about ZF-Finite in the above. From any traditi
 \TODOinline{Observe that in this section we constructed the initial arithmetic universe as an introspective theory. This is different in flavor from the previous section, where we constructed the initial NNO-topos or the like not as an introspective theory but as a geminal category.}
 
 \subsection{Models based on presheaf categories}\label{ModelsBasedOnPresheafCategories}
-\subsubsection{The general construction, yielding locally introspective theories}
+In this section, we will develop an introspective theory construction which unifies and vastly generalizes \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
+
+\subsubsection{The general construction yielding locally introspective theories}
 
 \begin{construction}\label{GeneralPresheafLocalIntrosp}
 Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories $D$ and $S$.
 
 Furthermore, suppose given some subset of the morphisms of $S$ which is closed under composition on either side with arbitrary morphisms. That is, suppose given some bifunctor $\SpecialHom_S(-, =) : S^{op} \times S \to \Set$ which is a subfunctor of $\Hom_S(-, =) : S^{op} \times S \to \Set$.
 
-By currying, we may read this $\SpecialHom$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. This extends to a endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which is a left adjoint, like so: \TODOinline{Discuss Yoneda extension in preliminaries}
+By currying, we may read this $\SpecialHom_S$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. This extends to a endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which is a left adjoint, like so: \TODOinline{Discuss Yoneda extension in preliminaries}
 
 We may now define a locally introspective theory $\langle \Psh{S}, C\rangle$ like so:
 
@@ -221,11 +223,13 @@ This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D
 
 Unfortunately, the above construction does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \TODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}.
 
-But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next section.
+But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next sections.
 
 \subsubsection{Presheaves with variable cardinality constraints}
 
 The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
+
+\TODOinline{Improve notation throughout the following.}
 
 \newcommand{\KFiberPsh}[2]{\Psh{#2}/_{#1}-}
 
@@ -233,7 +237,7 @@ The details in this section may seem like a lot. Bear with me! We are simply abs
 
 \newcommand{\KDecObject}[2]{#1\mathrm{-Dec}(#2)}
 
-Let $X$ be a category internal to $\Set$, and let $K$ be a function from $\Ob(X)$ to sets of sets\footnote{It might be better to say that the outputs of $K$ are set-indexed sets. At any rate, we shall think of each $K(x)$ as a genuine set, whose elements can be compared for equality.}. We call any choice of such $K$ a \defined{ramp} on $X$.
+Let $X$ be a category internal to $\Set$, and let $K$ be a function from $\Ob(X)$ to sets of sets\footnote{It might be better to say that the outputs of $K$ are set-indexed sets. At any rate, we shall think of each $K(x)$ as a genuine set, whose elements both can be compared for equality and have associated sets.}. We call any choice of such $K$ a \defined{ramp} on $X$.
 
 By a $K$-presheaf on $X$, we mean a presheaf $E$ on $X$ such that $E(x) \in K(x)$ for each $x \in X$. These comprise a full subcategory of $\Psh{X}$, which we may call $\KPshGlobal{K}{X}$.
 
@@ -247,24 +251,73 @@ Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-
 
 It is also straightforward to observe that this map takes \setsmall/ colimits in $\Psh{X}$ to \setsmall/ limits in $\Set$. Thus, by \magicref{RepSmallPresheavesOnPresheaves}, this is in fact $\Psh{X}$-\repsmall/. That is to say, we have a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the reindexing of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
 
-We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice. Call this $\KFiberPsh{K}{X}$. This indexed category is locally \repsmall/ (as it is a full subcategory of $\Psh{X}/-$, which is locally \repsmall/ by the local cartesian closure of $\Psh{X}$), and it can also be taken as having a \repsmall/ set of objects (given by $\KDecObject{K}{X}$). Thus, it can be taken to be an internal category.
+We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice. Call this $\KFiberPsh{K}{X}$. This $\Psh{X}$-indexed category is locally \repsmall/ (as it is a full subcategory of $\Psh{X}/-$, which is locally \repsmall/ by the local cartesian closure of $\Psh{X}$), and it can also be taken as having a \repsmall/ set of objects (given by $\KDecObject{K}{X}$). Thus, it can be taken to be a $\Psh{X}$-internal category, which is to say, an $X$-indexed \setsmall/ strict category.
 
 Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our previous observation about $K$-decorations of the terminal presheaf.
 
 Observe that if each $K(x)$ for $x \in X$ is closed under finite products and subsets, then each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, and $\KFiberPsh{K}{X}$ is in fact a full sublexcategory of the self-indexing $\Psh{X}/-$, with $\KPshGlobal{K}{X}$ accordingly being a full sublexcategory of $\Psh{X}$. \TODOinline{More details on this point? Also, may want to invoke lemma from the Preliminaries that a \repsmall/ indexed category whose every aspect is a lexcategory and whose every reindexing preserves finite limits non-strictly is in fact an internal lexcategory?}. From now on, we will always make this assumption on our ramps $K$. [It would actually suffice for our purposes to make the slightly weaker presumption that each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, but for convenience, we go ahead and presume here closure under arbitrary subsets.]
 
-Observe that the conditions defining a $K$-decoration of $P \in \Psh{X}$ only depend on the values of $K(x)$ at $x \in X$ for which $P(x)$ is inhabited. The values of $K$ at $x$ for which $P(x)$ is empty play no role. In other words, the aspect of $\KFiberPsh{K}{X}$ at presheaf $P$ only depends on the value of $K$ at $x \in X$ for which $P(x)$ is inhabited.
+Observe that the conditions defining a $K$-decoration of $P \in \Psh{X}$ only depend on the values of $K(x)$ at $x \in X$ for which $P(x)$ is inhabited. The values of $K$ at $x$ for which $P(x)$ is empty play no role. In other words, the aspect of the $\Psh{X}$-internal category $\KFiberPsh{K}{X}$ at presheaf $P$ only depends on the value of $K$ at $x \in X$ for which $P(x)$ is inhabited. 
 
-Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$. We may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. [For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes.]
+When we consider $\KFiberPsh{K}{X}$ instead as an $X$-indexed structure, its aspect at $x \in X$ is the same as its aspect as a $\Psh{X}$-internal structure at $\yoneda(x)$. By the above, this only depends on the values of $K$ at $y$ for which $\yoneda(x)(y) = \Hom_X(y, x)$ is inhabited.
 
-\TODOinline{Observe how $\pullAlong{i}$ restricts as a 2-cell to these cardinality constrained presheaves.}
+Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$. We may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. [For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes.] Given our presumption of closure under finite limits on the ramps, this is a lexfunctor between lexcategories.
 
-\subsubsection{Modifying the general construction to use these constraints}
+We thus have the following commutative square of lexfunctors, where the unlabelled arrows are the inclusion lexfunctors:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDIsIlxcb3B7XFxQc2h7RH19Il0sWzAsMiwiXFxvcHtcXFBzaHtTfX0iXSxbMywwLCJcXG9we1xcS1BzaEdsb2JhbHtLX0R9e0R9fSJdLFsyLDEsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMCwyLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsMywiXFxvcHtcXGxlZnQoXFxwdWxsQWxvbmd7aX1cXHJpZ2h0KX0iLDFdLFszLDEsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XV0=
+\[\begin{tikzcd}
+	{\op{\KPshGlobal{K_S}{S}}} &&& {\op{\KPshGlobal{K_D}{D}}} \\
+	\\
+	{\op{\Psh{S}}} &&& {\op{\Psh{D}}}
+	\arrow["{\op{\left(\pullAlong{i}\right)}}"', from=3-1, to=3-4]
+	\arrow[tail, from=1-1, to=3-1]
+	\arrow["{\op{\left(\pullAlong{i}\right)}}"{description}, from=1-1, to=1-4]
+	\arrow[tail, from=1-4, to=3-4]
+\end{tikzcd}\]
+
+Indeed, this commutative diagram sits within the following diagram of lexfunctors and indexed lexfunctors:
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMCwyLCJcXG9we1xcUHNoe1N9fSJdLFsxLDEsIlxcb3B7XFxLUHNoR2xvYmFse0tfRH17RH19Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9IiwxXSxbMCwzLCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV0sWzAsNCwiXFxvcHtcXGxlZnQoXFxwdWxsQWxvbmd7aX1cXHJpZ2h0KX0iLDFdLFs0LDEsIlxcS1BzaEdsb2JhbHtLX0R9e0R9Ly0iLDFdLFs0LDIsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNSw0LCJcXHB1bGxBbG9uZ3tpfSIsMSx7InNob3J0ZW4iOnsic291cmNlIjoyMH19XSxbMTAsMiwiIiwxLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfSwic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dXQ==
+\[\begin{tikzcd}
+	{\op{\KPshGlobal{K_S}{S}}} &&& \LexCat \\
+	& {\op{\KPshGlobal{K_D}{D}}} \\
+	{\op{\Psh{S}}} &&& {\op{\Psh{D}}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\KPshGlobal{K_S}{S}/-}", from=1-1, to=1-4]
+	\arrow["{\op{\left(\pullAlong{i}\right)}}"', from=3-1, to=3-4]
+	\arrow["{\KFiberPsh{K_D}{D}}"{description}, from=3-4, to=1-4]
+	\arrow[tail, from=1-1, to=3-1]
+	\arrow["{\op{\left(\pullAlong{i}\right)}}"{description}, from=1-1, to=2-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\KPshGlobal{K_D}{D}/-}"{description}, from=2-2, to=1-4]
+	\arrow[tail, from=2-2, to=3-4]
+	\arrow["{\pullAlong{i}}"{description}, shorten <=4pt, Rightarrow, from=0, to=2-2]
+	\arrow[shorten <=9pt, Rightarrow, 2tail, from=1, to=3-4]
+\end{tikzcd}\]
+
+In the above diagram, unlabelled arrows are canonical inclusions of full sublexcategories. In particular, the unlabelled right 2-cell is the way in which $\KPshGlobal{K_D}{D}$ is an indexed full sublexcategory of $\KFiberPsh{K_D}{D}$ \TODOinline{Why?}.
+
+The top 2-cell $\pullAlong{i}$ is the one obtained from $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$ by \magicref{FunctorAs2Cell}. The bottom left \quote{triangle} (or square drawn as triangle) is our just previously mentioned commutative square.
+
+Overloading names yet again, we may compress this last diagram into a composite 2-cell which we shall also name $\pullAlong{i}$, like so:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMCwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDEsIlxcS1BzaEdsb2JhbHtLX1N9e1N9Ly0iXSxbMywyLCJcXG9we1xcbGVmdChcXHB1bGxBbG9uZ3tpfVxccmlnaHQpfSIsMl0sWzIsMSwiXFxLRmliZXJQc2h7S19EfXtEfSIsMV0sWzAsMywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFs0LDUsIlxccHVsbEFsb25ne2l9IiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	{\op{\KPshGlobal{K_S}{S}}} &&& \LexCat \\
+	\\
+	{\op{\Psh{S}}} &&& {\op{\Psh{D}}}
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\KPshGlobal{K_S}{S}/-}", from=1-1, to=1-4]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\op{\left(\pullAlong{i}\right)}}"', from=3-1, to=3-4]
+	\arrow["{\KFiberPsh{K_D}{D}}"{description}, from=3-4, to=1-4]
+	\arrow[tail, from=1-1, to=3-1]
+	\arrow["{\pullAlong{i}}"', shorten <=9pt, shorten >=9pt, Rightarrow, from=0, to=1]
+\end{tikzcd}\]
+
+\subsubsection{Cardinality-constraining the general construction to yield introspective theories}
 
 From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S}, \ldots \rangle$ in which $\introF$ is given by the composite 2-cell in the following diagram:
 
 \begin{construction}\label{CardinalityConstrainedPresheafIntrosp}
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9IiwxXSxbNCwzLCJcXGlkIl0sWzAsNF0sWzQsMywiXFxvcHtcXFByaW9yfSIsMix7ImN1cnZlIjo1fV0sWzUsNiwiXFxwdWxsQWxvbmd7aX0iLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzgsMTAsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9IiwxXSxbNCwzLCJcXGlkIl0sWzAsNCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFs0LDMsIlxcb3B7XFxQcmlvcn0iLDIseyJjdXJ2ZSI6NX1dLFs1LDYsIlxccHVsbEFsb25ne2l9IiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDEwLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
 \[\begin{tikzcd}
 	{\op{\KPshGlobal{K_S}{S}}} &&& \LexCat \\
 	\\
@@ -273,16 +326,16 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 	\arrow[""{name=1, anchor=center, inner sep=0}, "{\op{\left(\pullAlong{i}\right)}}"', from=3-2, to=3-4]
 	\arrow["{\KFiberPsh{K_D}{D}}"{description}, from=3-4, to=1-4]
 	\arrow[""{name=2, anchor=center, inner sep=0}, "\id", from=3-1, to=3-2]
-	\arrow[from=1-1, to=3-1]
+	\arrow[tail, from=1-1, to=3-1]
 	\arrow[""{name=3, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=3-1, to=3-2]
 	\arrow["{\pullAlong{i}}"', shorten <=9pt, shorten >=9pt, Rightarrow, from=0, to=1]
 	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=2, to=3]
 \end{tikzcd}\]
 \end{construction}
 
-\TODOinline{Relate this to the following diagrams, relating it to our original general construction}
+\TODOinline{Relate this to the following diagrams, relating it to our original general construction as a sub-introspection, in the sense of \magicref{SubIntrospectionDefn}.}
 
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9Il0sWzQsMywiXFxpZCJdLFswLDRdLFs0LDMsIlxcb3B7XFxQcmlvcn0iLDIseyJjdXJ2ZSI6NX1dLFsyLDEsIlxcUHNoe0R9Ly0iLDIseyJjdXJ2ZSI6NX1dLFs1LDYsIlxccHVsbEFsb25ne2l9IiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDEwLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzcsMTEsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9Il0sWzQsMywiXFxpZCJdLFswLDQsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNCwzLCJcXG9we1xcUHJpb3J9IiwyLHsiY3VydmUiOjV9XSxbMiwxLCJcXFBzaHtEfS8tIiwyLHsiY3VydmUiOjV9XSxbNSw2LCJcXHB1bGxBbG9uZ3tpfSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbOCwxMCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs3LDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV1d
 \[\begin{tikzcd}
 	{\op{\KPshGlobal{K_S}{S}}} &&&& \LexCat \\
 	\\
@@ -291,15 +344,15 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 	\arrow[""{name=1, anchor=center, inner sep=0}, "{\op{\left(\pullAlong{i}\right)}}"', from=3-2, to=3-4]
 	\arrow[""{name=2, anchor=center, inner sep=0}, "{\KFiberPsh{K_D}{D}}", from=3-4, to=1-5]
 	\arrow[""{name=3, anchor=center, inner sep=0}, "\id", from=3-1, to=3-2]
-	\arrow[from=1-1, to=3-1]
+	\arrow[tail, from=1-1, to=3-1]
 	\arrow[""{name=4, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=3-1, to=3-2]
 	\arrow[""{name=5, anchor=center, inner sep=0}, "{\Psh{D}/-}"', curve={height=30pt}, from=3-4, to=1-5]
 	\arrow["{\pullAlong{i}}"', shorten <=9pt, shorten >=9pt, Rightarrow, from=0, to=1]
 	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=3, to=4]
-	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, from=2, to=5]
+	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, 2tail, from=2, to=5]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbNCwzLCJcXGlkIl0sWzAsNF0sWzQsMywiXFxvcHtcXFByaW9yfSIsMix7ImN1cnZlIjo1fV0sWzIsMSwiXFxQc2h7RH0vLSIsMix7ImN1cnZlIjo1fV0sWzMsMSwiXFxQc2h7U30vLSIsMV0sWzcsOSwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFsxMSwxMCwiXFxwdWxsQWxvbmd7aX0iLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV0sWzUsMTEsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbNCwzLCJcXGlkIl0sWzAsNCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFs0LDMsIlxcb3B7XFxQcmlvcn0iLDIseyJjdXJ2ZSI6NX1dLFsyLDEsIlxcUHNoe0R9Ly0iLDIseyJjdXJ2ZSI6NX1dLFszLDEsIlxcUHNoe1N9Ly0iLDFdLFs3LDksIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbMTEsMTAsIlxccHVsbEFsb25ne2l9IiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs1LDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV1d
 \[\begin{tikzcd}
 	{\op{\KPshGlobal{K_S}{S}}} &&&& \LexCat \\
 	\\
@@ -307,22 +360,22 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{\KPshGlobal{K_S}{S}/-}", from=1-1, to=1-5]
 	\arrow["{\op{\left(\pullAlong{i}\right)}}"', from=3-2, to=3-4]
 	\arrow[""{name=1, anchor=center, inner sep=0}, "\id", from=3-1, to=3-2]
-	\arrow[from=1-1, to=3-1]
+	\arrow[tail, from=1-1, to=3-1]
 	\arrow[""{name=2, anchor=center, inner sep=0}, "{\op{\Prior}}"', curve={height=30pt}, from=3-1, to=3-2]
 	\arrow[""{name=3, anchor=center, inner sep=0}, "{\Psh{D}/-}"', curve={height=30pt}, from=3-4, to=1-5]
 	\arrow[""{name=4, anchor=center, inner sep=0}, "{\Psh{S}/-}"{description}, from=3-2, to=1-5]
 	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, from=1, to=2]
 	\arrow["{\pullAlong{i}}", shorten <=13pt, shorten >=13pt, Rightarrow, from=4, to=3]
-	\arrow[shorten <=6pt, shorten >=6pt, Rightarrow, from=0, to=4]
+	\arrow[shorten <=6pt, shorten >=6pt, Rightarrow, 2tail, from=0, to=4]
 \end{tikzcd}\]
 
 \TODOinline{Observe that we can pick a suitable ramp to make a fully introspective theory, when $S$ is well-founded under special maps.}
 
-\TODOinline{Observe that this argument depends on the Axiom of Replacement. It would fail in ZFC - Replacement for the same reason that one could not construct $\bigcup_{n \in \nat} \mathcal{P}^n(\nat)$ or $\prod_{n \in \nat} \mathcal{P}^n(\nat)$.}
+\sTODOinline{Observe that this argument depends on the Axiom of Replacement. It would fail in ZFC - Replacement for the same reason that one could not construct $\bigcup_{n \in \nat} \mathcal{P}^n(\nat)$ or $\prod_{n \in \nat} \mathcal{P}^n(\nat)$. For the same reason, guarded recursion at the type level requires the Axiom of Replacement, even in our original non-cardinality-constrained locally introspective theory of presheaves over a well-founded order.}
 
 \TODOinline{Observe that we get \Loeb/'s theorem for our locally introspective theory from \Loeb/'s theorem for our fully introspective theory, by picking sufficiently large ramps for any particular instance.}
 
-\TODOinline{Relate to introductory examples from the first chapter}
+\TODOinline{Relate to introductory examples from the first chapter.}
 
 \subsection{Recap}
 \TODO
