@@ -225,7 +225,7 @@ Unfortunately, the above construction does not in general yield a fully introspe
 
 But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next sections.
 
-\subsubsection{Presheaves with variable cardinality constraints}
+\subsubsection{Presheaves with variable cardinality constraints (aka, ramps)}
 
 The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
 
@@ -257,10 +257,13 @@ Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our
 
 Observe that if each $K(x)$ for $x \in X$ is closed under finite products and subsets, then each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, and $\KFiberPsh{K}{X}$ is in fact a full sublexcategory of the self-indexing $\Psh{X}/-$, with $\KPshGlobal{K}{X}$ accordingly being a full sublexcategory of $\Psh{X}$. \TODOinline{More details on this point? Also, may want to invoke lemma from the Preliminaries that a \repsmall/ indexed category whose every aspect is a lexcategory and whose every reindexing preserves finite limits non-strictly is in fact an internal lexcategory?}. From now on, we will always make this assumption on our ramps $K$. [It would actually suffice for our purposes to make the slightly weaker presumption that each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, but for convenience, we go ahead and presume here closure under arbitrary subsets.]
 
+When ramps are closed under finite limits in this way, observe that any slice in $\KPshGlobal{K}{X}$ is in fact a $K$-decoration. That is, given $f : Q \to P$ in $\KPshGlobal{K}{X}$, we have for each $x \in X$ and each $p \in P(x)$ that the fiber $f^{-1}(p)$ is in $K(x)$ (as it can be defined as a pullback $1 \times_{P(x)} Q(x)$). Thus, the self-indexing $\KPshGlobal{K}{X}/-$ is an indexed full sublexcategory of $\KFiberPsh{K}{X}$.\footnote{This inclusion needn't be an equivalence. There may be $K$-decorations of $P \in \KPshGlobal{K}{X}$ which do not come from morphisms whose domain is also in  $\KPshGlobal{K}{X}$, as we've made no presumption that each $K(x)$ be closed under sums indexed by any set in $K(x)$. But we have this one direction of inclusion.}
+
 Observe that the conditions defining a $K$-decoration of $P \in \Psh{X}$ only depend on the values of $K(x)$ at $x \in X$ for which $P(x)$ is inhabited. The values of $K$ at $x$ for which $P(x)$ is empty play no role. In other words, the aspect of the $\Psh{X}$-internal category $\KFiberPsh{K}{X}$ at presheaf $P$ only depends on the value of $K$ at $x \in X$ for which $P(x)$ is inhabited. 
 
 When we consider $\KFiberPsh{K}{X}$ instead as an $X$-indexed structure, its aspect at $x \in X$ is the same as its aspect as a $\Psh{X}$-internal structure at $\yoneda(x)$. By the above, this only depends on the values of $K$ at $y$ for which $\yoneda(x)(y) = \Hom_X(y, x)$ is inhabited.
 
+\subsubsection{Having ramps on two categories}
 Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$. We may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. [For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes.] Given our presumption of closure under finite limits on the ramps, this is a lexfunctor between lexcategories.
 
 We thus have the following commutative square of lexfunctors, where the unlabelled arrows are the inclusion lexfunctors:
@@ -294,7 +297,7 @@ Indeed, this commutative diagram sits within the following diagram of lexfunctor
 	\arrow[shorten <=9pt, Rightarrow, 2tail, from=1, to=3-4]
 \end{tikzcd}\]
 
-In the above diagram, unlabelled arrows are canonical inclusions of full sublexcategories. In particular, the unlabelled right 2-cell is the way in which $\KPshGlobal{K_D}{D}$ is an indexed full sublexcategory of $\KFiberPsh{K_D}{D}$ \TODOinline{Why?}.
+In the above diagram, unlabelled arrows are canonical inclusions of full sublexcategories. In particular, the unlabelled right 2-cell is the way in which $\KPshGlobal{K_D}{D}/-$ is an indexed full sublexcategory of $\KFiberPsh{K_D}{D}$.
 
 The top 2-cell $\pullAlong{i}$ is the one obtained from $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$ by \magicref{FunctorAs2Cell}. The bottom left \quote{triangle} (or square drawn as triangle) is our just previously mentioned commutative square.
 
