@@ -257,7 +257,7 @@ Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our
 
 Observe that if each $K(x)$ for $x \in X$ is closed under finite products and subsets, then each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, and $\KFiberPsh{K}{X}$ is in fact a full sublexcategory of the self-indexing $\Psh{X}/-$, with $\KPshGlobal{K}{X}$ accordingly being a full sublexcategory of $\Psh{X}$. \TODOinline{More details on this point? Also, may want to invoke lemma from the Preliminaries that a \repsmall/ indexed category whose every aspect is a lexcategory and whose every reindexing preserves finite limits non-strictly is in fact an internal lexcategory?}. From now on, we will always make this assumption on our ramps $K$. [It would actually suffice for our purposes to make the slightly weaker presumption that each $K(x)$ comprises the objects of a full sublexcategory of $\Set$, but for convenience, we go ahead and presume here closure under arbitrary subsets.]
 
-When ramps are closed under finite limits in this way, observe that any slice in $\KPshGlobal{K}{X}$ is in fact a $K$-decoration. That is, given $f : Q \to P$ in $\KPshGlobal{K}{X}$, we have for each $x \in X$ and each $p \in P(x)$ that the fiber $f^{-1}(p)$ is in $K(x)$ (as it can be defined as a pullback $1 \times_{P(x)} Q(x)$). Thus, the self-indexing $\KPshGlobal{K}{X}/-$ is an indexed full sublexcategory of $\KFiberPsh{K}{X}$.\footnote{This inclusion needn't be an equivalence. There may be $K$-decorations of $P \in \KPshGlobal{K}{X}$ which do not come from morphisms whose domain is also in  $\KPshGlobal{K}{X}$, as we've made no presumption that each $K(x)$ be closed under sums indexed by any set in $K(x)$. But we have this one direction of inclusion.}
+When ramps are closed under finite limits in this way, observe that any slice in $\KPshGlobal{K}{X}$ is in fact a $K$-decoration. That is, given $f : Q \to P$ in $\KPshGlobal{K}{X}$, we have for each $x \in X$ and each $p \in P(x)$ that the fiber $f^{-1}(p)$ is in $K(x)$ (as it can be defined as a pullback $1 \times_{P(x)} Q(x)$). Thus, the self-indexing $\KPshGlobal{K}{X}/-$ is an indexed full sublexcategory of $\KFiberPsh{K}{X}$.\footnote{This inclusion needn't be an equivalence. There may be further $K$-decorations of $P \in \KPshGlobal{K}{X}$ whose domain (qua morphism into $P$) is not in  $\KPshGlobal{K}{X}$, as we've made no presumption that each $K(x)$ be closed under sums indexed by any set in $K(x)$. But we have this one direction of inclusion.}
 
 Observe that the conditions defining a $K$-decoration of $P \in \Psh{X}$ only depend on the values of $K(x)$ at $x \in X$ for which $P(x)$ is inhabited. The values of $K$ at $x$ for which $P(x)$ is empty play no role. In other words, the aspect of the $\Psh{X}$-internal category $\KFiberPsh{K}{X}$ at presheaf $P$ only depends on the value of $K$ at $x \in X$ for which $P(x)$ is inhabited. 
 
@@ -317,9 +317,9 @@ Overloading names yet again, we may compress this last diagram into a composite 
 
 \subsubsection{Cardinality-constraining the general construction to yield introspective theories}
 
-From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S}, \ldots \rangle$ in which $\introF$ is given by the composite 2-cell in the following diagram:
-
 \begin{construction}\label{CardinalityConstrainedPresheafIntrosp}
+From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S}, C, \introF \rangle$ in which $\introF$ is given by the composite 2-cell in the following diagram, with the $\KPshGlobal{K_S}{S}$-indexed lexcategory $C$ as the codomain of this 2-cell:
+
 % https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9IiwxXSxbNCwzLCJcXGlkIl0sWzAsNCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFs0LDMsIlxcb3B7XFxQcmlvcn0iLDIseyJjdXJ2ZSI6NX1dLFs1LDYsIlxccHVsbEFsb25ne2l9IiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDEwLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
 \[\begin{tikzcd}
 	{\op{\KPshGlobal{K_S}{S}}} &&& \LexCat \\
@@ -336,6 +336,7 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 \end{tikzcd}\]
 \end{construction}
 
+\begin{TODOblock}
 \TODOinline{Relate this to the following diagrams, relating it to our original general construction as a sub-introspection, in the sense of \magicref{SubIntrospectionDefn}.}
 
 % https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFs0LDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9Il0sWzQsMywiXFxpZCJdLFswLDQsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1vbm8ifX19XSxbNCwzLCJcXG9we1xcUHJpb3J9IiwyLHsiY3VydmUiOjV9XSxbMiwxLCJcXFBzaHtEfS8tIiwyLHsiY3VydmUiOjV9XSxbNSw2LCJcXHB1bGxBbG9uZ3tpfSIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XSxbOCwxMCwiIiwwLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs3LDExLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9LCJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtb25vIn19fV1d
@@ -371,6 +372,9 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 	\arrow["{\pullAlong{i}}", shorten <=13pt, shorten >=13pt, Rightarrow, from=4, to=3]
 	\arrow[shorten <=6pt, shorten >=6pt, Rightarrow, 2tail, from=0, to=4]
 \end{tikzcd}\]
+\end{TODOblock}
+
+Under suitable conditions on the ramp, the pre-introspective theory described in \magicref{CardinalityConstrainedPresheafIntrosp} is in fact an introspective theory. This happens precisely if \TODO.
 
 \TODOinline{Observe that we can pick a suitable ramp to make a fully introspective theory, when $S$ is well-founded under special maps.}
 
