@@ -229,9 +229,9 @@ But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a 
 
 The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
 
-\TODOinline{Improve notation throughout the following.}
+\TODOinline{Improve notation and readability throughout the following.}
 
-\newcommand{\KFiberPsh}[2]{\Psh{#2}/_{#1}-}
+\newcommand{\KFiberPsh}[2]{\mathrm{RPsh}_{#1}(#2)}
 
 \newcommand{\KPshGlobal}[2]{\operatorname{Psh}_{#1}(#2)}
 
@@ -251,7 +251,9 @@ Given a map $m : P_1 \to P_2$ in $\Psh{X}$, we straightforwardly can pull a $K$-
 
 It is also straightforward to observe that this map takes \setsmall/ colimits in $\Psh{X}$ to \setsmall/ limits in $\Set$. Thus, by \magicref{RepSmallPresheavesOnPresheaves}, this is in fact $\Psh{X}$-\repsmall/. That is to say, we have a particular object $\KDecObject{K}{X}$ in $\Psh{X}$ and a $K$-decoration of $\KDecObject{K}{X}$, such that any $K$-decoration of any object in $\Psh{X}$ is the reindexing of this one along a unique morphism. In particular, this gives us a slice above $\KDecObject{K}{X}$ such that every other slice with $K$-sized fibers, so to speak, is a pullback of this one.
 
+\begin{construction}\label{KFiberPsh}
 We may now consider the full subcategory of the self-indexing $\Psh{X}/-$ restricted to pullbacks of this generic slice. Call this $\KFiberPsh{K}{X}$. This $\Psh{X}$-indexed category is locally \repsmall/ (as it is a full subcategory of $\Psh{X}/-$, which is locally \repsmall/ by the local cartesian closure of $\Psh{X}$), and it can also be taken as having a \repsmall/ set of objects (given by $\KDecObject{K}{X}$). Thus, it can be taken to be a $\Psh{X}$-internal category, which is to say, an $X$-indexed \setsmall/ strict category.
+\end{construction}
 
 Note that the global aspect of $\KFiberPsh{K}{X}$ is $\KPshGlobal{K}{X}$, by our previous observation about $K$-decorations of the terminal presheaf.
 
@@ -259,12 +261,18 @@ Observe that if each $K(x)$ for $x \in X$ is closed under finite products and su
 
 When ramps are closed under finite limits in this way, observe that any slice in $\KPshGlobal{K}{X}$ is in fact a $K$-decoration. That is, given $f : Q \to P$ in $\KPshGlobal{K}{X}$, we have for each $x \in X$ and each $p \in P(x)$ that the fiber $f^{-1}(p)$ is in $K(x)$ (as it can be defined as a pullback $1 \times_{P(x)} Q(x)$). Thus, the self-indexing $\KPshGlobal{K}{X}/-$ is an indexed full sublexcategory of $\KFiberPsh{K}{X}$.\footnote{This inclusion needn't be an equivalence. There may be further $K$-decorations of $P \in \KPshGlobal{K}{X}$ whose domain (qua morphism into $P$) is not in  $\KPshGlobal{K}{X}$, as we've made no presumption that each $K(x)$ be closed under sums indexed by any set in $K(x)$. But we have this one direction of inclusion.}
 
+\begin{observation}\label{KFiberPshDependence}
 Observe that the conditions defining a $K$-decoration of $P \in \Psh{X}$ only depend on the values of $K(x)$ at $x \in X$ for which $P(x)$ is inhabited. The values of $K$ at $x$ for which $P(x)$ is empty play no role. In other words, the aspect of the $\Psh{X}$-internal category $\KFiberPsh{K}{X}$ at presheaf $P$ only depends on the value of $K$ at $x \in X$ for which $P(x)$ is inhabited. 
 
 When we consider $\KFiberPsh{K}{X}$ instead as an $X$-indexed structure, its aspect at $x \in X$ is the same as its aspect as a $\Psh{X}$-internal structure at $\yoneda(x)$. By the above, this only depends on the values of $K$ at $y$ for which $\yoneda(x)(y) = \Hom_X(y, x)$ is inhabited.
+\end{observation}
 
 \subsubsection{Having ramps on two categories}
-Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$. We may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. [For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes.] Given our presumption of closure under finite limits on the ramps, this is a lexfunctor between lexcategories.
+Observe that if we are given an arbitrary functor $i: D \to S$, along with ramps $K_S$ on $S$ and $K_D$ on $D$ satisfying the compatibility condition that $K_S(i(d)) \subseteq K_D(d)$ for each $d \in D$, then applying $\pullAlong{i} : \Psh{S} \to \Psh{D}$ to a presheaf in $\KPshGlobal{K_S}{S}$ yields a presheaf in $\KPshGlobal{K_D}{D}$. We may refer to this restricted action by the same name $\pullAlong{i} : \KPshGlobal{K_S}{S} \to \KPshGlobal{K_D}{D}$. Given our presumption of closure under finite limits on the ramps, this is a lexfunctor between lexcategories.
+
+\begin{definition}\label{KDConvenienceDefn}
+[For convenience, we may go ahead and even define $K_D$ as $K_S \circ i$ to ensure the compatibility condition, though this is stronger than needed for our purposes. To simplify our exposition, we will from now on presume $K_D$ is defined from $K_S$ in this way.]
+\end{definition}
 
 We thus have the following commutative square of lexfunctors, where the unlabelled arrows are the inclusion lexfunctors:
 
@@ -318,7 +326,7 @@ Overloading names yet again, we may compress this last diagram into a composite 
 \subsubsection{Cardinality-constraining the general construction to yield introspective theories}
 
 \begin{construction}\label{CardinalityConstrainedPresheafIntrosp}
-From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S}, C, \introF \rangle$ in which $\introF$ is given by the composite 2-cell in the following diagram, with the $\KPshGlobal{K_S}{S}$-indexed lexcategory $C$ as the codomain of this 2-cell:
+From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S}, C, \introF \rangle$ in which $\introF$ is given by the composite 2-cell in the following diagram, and $C$ is given by the codomain of this $\introF$:
 
 % https://q.uiver.app/?q=WzAsNSxbMCwwLCJcXG9we1xcS1BzaEdsb2JhbHtLX1N9e1N9fSJdLFszLDAsIlxcTGV4Q2F0Il0sWzMsMiwiXFxvcHtcXFBzaHtEfX0iXSxbMSwyLCJcXG9we1xcUHNoe1N9fSJdLFswLDIsIlxcb3B7XFxQc2h7U319Il0sWzAsMSwiXFxLUHNoR2xvYmFse0tfU317U30vLSJdLFszLDIsIlxcb3B7XFxsZWZ0KFxccHVsbEFsb25ne2l9XFxyaWdodCl9IiwyXSxbMiwxLCJcXEtGaWJlclBzaHtLX0R9e0R9IiwxXSxbNCwzLCJcXGlkIl0sWzAsNCwiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibW9ubyJ9fX1dLFs0LDMsIlxcb3B7XFxQcmlvcn0iLDIseyJjdXJ2ZSI6NX1dLFs1LDYsIlxccHVsbEFsb25ne2l9IiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dLFs4LDEwLCIiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
 \[\begin{tikzcd}
@@ -374,9 +382,24 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 \end{tikzcd}\]
 \end{TODOblock}
 
-Under suitable conditions on the ramp, the pre-introspective theory described in \magicref{CardinalityConstrainedPresheafIntrosp} is in fact an introspective theory. This happens precisely if \TODO.
+We now consider the question of when the pre-introspective theory described in \magicref{CardinalityConstrainedPresheafIntrosp} is in fact an introspective theory. This happens precisely if the $C$ we have defined is $\KPshGlobal{K_S}{S}$-\repsmall/. As $\KFiberPsh{K_D}{D}$ is $\Psh{D}$-\repsmall/ (by the comments at \magicref{KFiberPsh}), and $\pullAlong{i}$ and $\Prior$ both have right adjoints, we automatically have (by \magicref{RepsmallRightAdjoint}) that our $C$ corresponds to a lexcategory internal to $\Psh{S}$ (aka, an $S$-indexed lexcategory). However, the inclusion of $\KPshGlobal{K_S}{S}$ into $\Psh{S}$ cannot in general be expected to have a right adjoint, so we cannot conclude that $C$ is $\KPshGlobal{K_S}{S}$-\repsmall/ in this way. We may think of $\Ob(C)$ and $\Mor(C)$ as living within $\Psh{S}$, but do not know that they will live within its full subcategory $\KPshGlobal{K_S}{S}$.
 
-\TODOinline{Observe that we can pick a suitable ramp to make a fully introspective theory, when $S$ is well-founded under special maps.}
+However, under suitable conditions on the ramps, we can arrange for this to happen as well. For $t, s \in S$, let $t < s$ be defined to mean that $\SpecialHom_S(t, s)$ is inhabited. We can show the following:
+
+\begin{observation}
+The $s$-aspect of $C$, where $s \in S$, depends only on the values of the ramp $K_S$ at objects $< s$.
+\end{observation}
+\begin{proof}
+By definition, the $s$-aspect of $C$ is the aspect of $\KFiberPsh{K_D}{D}$ at $\pullAlong{i}(\Prior(\yoneda(s)))$. By \magicref{KFiberPshDependence}, this depends only on the value of $K_D$ at those objects in $D$ at which the presheaf $\pullAlong{i}(\Prior(\yoneda(s)))$ is inhabited.
+
+And by definition, $\Prior(\yoneda(s))$ is a presheaf on $S$ which is inhabited only at $t < s$. Thus, $\pullAlong{i}(\Prior(\yoneda(s)))$ is a presheaf on $D$ which is inhabited only at $d$ for which $i(d) < s$.
+
+Thus, the $s$-aspect of $C$ depends only the values of the ramp $K_D$ at $d \in D$ for which $i(d) < s$. Since $K_D(d)$ was defined (at \magicref{KDConvenienceDefn}) as $K_S(i(d))$, this is to say that the dependence is only on the values of the ramp $K_S$ at objects $< s$.
+\end{proof}
+
+Thus, we will have that $C$ is $\KPshGlobal{K_S}{S}$-\repsmall/, yielding an introspective theory, just in case for each $s \in S$, we have that $K_S(s)$ contains a certain set (the $s$-aspect of $\Mor(C)$) determined by the values of $K_S(t)$ at $t < s$. If the $<$ relation is well-founded, we can readily recursively choose the values of $K_S$ to always satisfy this condition, by simply choosing at each stage the minimal full sublexcategory of $\Set$ generated by the required set. (Indeed, we could just as well arrange in essentially the same way for each $K_S(s)$ to also any \setsmall/ other number of sets of interest.)
+
+Thus, when the $<$ relation corresponding to $\SpecialHom_S$ is well-founded, we can choose a ramp $K_S$ such that we obtain an introspective theory by the above contruction (and we can furthermore do so in such a way that $\KPshGlobal{K_S}{S}$ includes many other desired objects of $\Psh{S}$, so long as the number of desired objects is \setsmall/).
 
 \sTODOinline{Observe that this argument depends on the Axiom of Replacement. It would fail in ZFC - Replacement for the same reason that one could not construct $\bigcup_{n \in \nat} \mathcal{P}^n(\nat)$ or $\prod_{n \in \nat} \mathcal{P}^n(\nat)$. For the same reason, guarded recursion at the type level requires the Axiom of Replacement, even in our original non-cardinality-constrained locally introspective theory of presheaves over a well-founded order.}
 
