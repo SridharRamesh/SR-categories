@@ -72,7 +72,7 @@ Given object $c$ of $C$, and locally $T$-\repsmall/ presheaf $P$ on $C$, we will
 
 Note that for any locally $T$-\repsmall/ presheaf $P$ on $C$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, by considering the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
 
-\subsection{Modal logic and axiom 4}
+\subsection{Modal logic and axiom 4}\label{ModalAxiom4Section}
 The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in later remarks.
 
 The key point here is that the rules of the $\Box$ operator in a Kripke normal modal logic are essentially the rules of a lex endofunctor on a lexcategory, and any of our $\Box$ operators is certainly lex as a composite of lex functors.
@@ -92,7 +92,7 @@ For the $\Box$ operator on $T$ this is clear, as the natural transformation $\in
 	\arrow["{\introN : \id_T \to \Box_T}"{description}, shorten >=7pt, Rightarrow, from=1-3, to=0]
 \end{tikzcd}\]
 
-Keeping in mind \magicref{SliceBoxIsAspectBox}, this extends automatically to an indexed $\Box$ endofunctor on $T/-$, whose aspect at each $t \in T$ is given by the above diagram relative to the slice introspective theory $\slicePreIntrosp{T}{t}$. \sTODOinline{Remark on how these $\introN$ do indeed assemble into an indexed functor; i.e., the reindexing of $\introN$ at a globally defined object is the same as the slice introspective theory's $\introN$ at this object.}
+Keeping in mind \magicref{SliceBoxIsAspectBox},  this extends automatically to an indexed endofunctor on $T/-$, which we may call $\Box_{T/-}$, whose aspect at each $t \in T$ is given by the above diagram relative to the slice locally introspective theory $\slicePreIntrosp{T}{t}$. \sTODOinline{Remark on how these $\introN$ do indeed assemble into an indexed functor; i.e., the reindexing of $\introN$ at a globally defined object is the same as the slice introspective theory's $\introN$ at this object.} We abuse notation slightly in the following diagram and write $\introN$ for the map from identity to $\Box_{T/-}$ whose each aspect is given by the appropriate instance of the previous diagram.
 
 % https://q.uiver.app/?q=WzAsMyxbMiwwLCJULy0iXSxbMCwyLCJDIl0sWzQsMiwiXFxQc2h7Q30iXSxbMCwxLCJcXGludHJvRiIsMl0sWzEsMiwiYyBcXDsgXFxtYXBzdG8gXFxIb21fQygtLCBjKSIsMl0sWzIsMCwiUCBcXG1hcHN0byBQKDEpIiwyXSxbMCw0LCJcXGludHJvTiA6IFxcaWRfe1QvLX0gXFx0byBcXEJveF97VC8tfSIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
@@ -152,9 +152,6 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 
 \sTODOinline{Add commentary on how box extends to a bifunctor, even without presuming cartesian closure. Add commentary on the relationship with double negation/Booleanness when Lob's theorem is introduced}
 
-\subsection{As applied to sub-introspections}
-\TODOinline{If $i : S \to T$ is the inclusion of a full sublexcategory, and the pre-introspective theory $\langle S, \pullAlong{i} C \rangle$ is obtained from the locally introspective theory $\langle T, C \rangle$, then we get a map from $S \to \Psh{S}$ which acts morally like $\Box_S$ by $\Hom_{\pullAlong{i}C}(1, \introS(-))$, and this also matches the map we get by composing $i : S \to T$, with $\Box_T : T \to T$, with $\pullAlong{i} : T \to \Psh{S}$. In this sense, $S$ and $T$ agree on $\Box$. If $S$ is closed under $\Box_T$, we can put this more nicely.}
-
 \subsection{As applied to our archetypal examples}
 \TODO
 
@@ -170,23 +167,37 @@ Next, we turn our attention to the $\ZfinSigma$-internal endolexfunctor $\Box : 
 \TODOinline{Discuss subterminals, as propositions, and how the box operator matches with the provability operator on these.}
 
 \subsubsection{Kripke frame example}
-Recall the locally introspective theory $\langle \Psh{Q}, C \rangle$ from \magicref{KripkeLocallyIntrosp}, constructed from a transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a poset using the $<$ relation. Our definition of $C$ was such that $\Glob{C} = \Psh{|P|} = \Set^{|P|}$. Our definition of $\introS : \Psh{Q} \to \Psh{|P|}$ was the forgetful functor which ignores the $<$ relation and $\infty$ element in $Q$. Our definition of $C$ also ensures that $\Hom_C(1, -) : \Psh{|P|} \to \Psh{Q}$ sent $f \in \Psh{|P|}$ to the presheaf $F$ on $Q$ such that $F(q)$ is the product of $f(p)$ over all $p < q$, with restriction maps given by projection.
+Recall the locally introspective theory $\langle \Psh{Q}, C \rangle$ from \magicref{KripkeLocallyIntrosp}, constructed from a transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a preorder category using the $<$ relation. Our definition of $C$ was such that $\Glob{C} = \Psh{|P|} = \Set^{|P|}$. Our definition of $\introS : \Psh{Q} \to \Psh{|P|}$ was the forgetful functor which ignores the $<$ relation and $\infty$ element in $Q$. Our definition of $C$ also ensures that $\Hom_C(1, -) : \Psh{|P|} \to \Psh{Q}$ sent $f \in \Psh{|P|}$ to the presheaf $F$ on $Q$ such that $F(q)$ is the product of $f(p)$ over all $p < q$, with restriction maps given by projection.
 
-Thus, $\Box_{\Psh{|P|}}$ and $\Box_{\Psh{Q}}$ act as \TODO.
+Thus, $\Box_{\Psh{|P|}}$ acts like so: For $F \in \Psh{|P|}$ and $x \in P$, we have that $\Box_{\Psh{|P|}}(F)(x) = \introS(\Hom_C(1, F))$ is the product of $F(y)$ over all $y < x$.
 
-\TODOinline{Discuss subterminals, as propositions, and how the box operator matches with the ordinary interpretation of the box operator in Kripke frames on them.}
+Similarly, $\Box_{\Psh{Q}}$ acts like so: For $F \in \Psh{Q}$ and $x \in Q$, we have that $\Box_{\Psh{Q}}(F)(x)$ is the product of $F(y)$ over all $y < x$. (This $\Box_{\Psh{Q}}(F)$ furthermore is equipped with restriction maps given by projection.)
 
-\TODOinline{Discuss how this descends to the sub-introspection which is a fully introspective theory}
+In particular, we may consider the special case of subterminal presheaves, amounting to propositions which may be true in some places while not in others. Subterminal presheaves in $\Psh{|P|}$ are simply subsets of $P$. Given such a subset $F \subseteq P$, the above tells us that $\Box_{\Psh{|P|}}(F)$ is identified with the (downwards closed) subset of $P$ containing precisely those $x$ such that all $y < x$ are contained in $F$.
+
+Similarly, subterminal presheaves in $\Psh{Q}$ are simply downwards closed subsets of $Q$. Given such a downwards closed subset $F \subseteq Q$, the above tells us that $\Box_{\Psh{Q}}(F)$ is identified with the downwards closed subset of $Q$ containing precisely those $x$ such that all $y < x$ are contained in $F$.
+
+Thus, our notion of $\Box$ acts on these subterminal presheaves in precisely the manner of the traditional interpretation of the $\Box$ operator in Kripke frames. 
+
+In this way, we may note that any identity which holds of the $\Box_C$ operator in all locally introspective theories $\langle T, C \rangle$ must be an identity which holds of the $\Box$ operator on propositions in Kripke frames constructed from a transitive $<$ relation. This in turn is well known to entail holding of the $\Box$ operator in the modal logic K4 \sTODOinline{cite}. Thus, in this sense (which we refrain from stating formally for now, though it clearly could be turned into various formal statements), the logic of the $\Box$ operator in locally introspective theories is no stronger than the modal logic K4. We've also already seen in \magicref{ModalAxiom4Section} that it is at least as strong as the modal logic K4, and thus the logic of the $\Box$ operator in general locally introspective theories can be identified with K4.
+
+In the above, we discussed the locally introspective theory constructed by \magicref{KripkeLocallyIntrosp} from a transitive relation $<$. Recall that, in the particular case where $<$ is furthermore well-founded, we may impose cardinality constraints in a suitable fashion to turn this into an introspective theory (this being \magicref{KripkeIntrosp}). The nature of the $\Box$ operators on the introspective theory \magicref{KripkeIntrosp} will be essentially the same as for \magicref{KripkeLocallyIntrosp}, since the former is a sub-introspection of the latter \TODOinline{Discuss the interaction between $\Box$ and sub-introspecitons}, and thus again will match the traditional interpretation of the box operator in Kripke frames. In this way, we find that the logic of the $\Box_C$ operators in introspective theories $\langle T, C \rangle$ is no stronger than that of the $\Box$ operator in well-founded transitive Kripke frames, which is well known to correspond to the modal logic GL (given by K4 + \Loeb/'s theorem). In the next chapter, we will prove the remarkable fact that \Loeb/'s theorem (and thus all of GL) is validated in all introspective theories, so that the logic of the $\Box_C$ operator in introspective theories can be said to be precisely that of the modal logic GL.
 
 \subsubsection{Step-indexing example}
 
 \TODO
 
+\subsubsection{As applied to sub-introspections}
+\TODOinline{If $i : S \to T$ is the inclusion of a full sublexcategory, and the pre-introspective theory $\langle S, \pullAlong{i} C \rangle$ is obtained from the locally introspective theory $\langle T, C \rangle$, then we get a map from $S \to \Psh{S}$ which acts morally like $\Box_S$ by $\Hom_{\pullAlong{i}C}(1, \introS(-))$, and this also matches the map we get by composing $i : S \to T$, with $\Box_T : T \to T$, with $\pullAlong{i} : T \to \Psh{S}$. In this sense, $S$ and $T$ agree on $\Box$. If $S$ is closed under $\Box_T$, we can put this more nicely.}
+
 \subsection{Recap}
-We have defined the $\Box$ operator in the context of locally introspective theories, and shown that it satisfies the rules of K4 modal logic.
+We have defined the $\Box$ operator in the context of locally introspective theories $\langle T, C \rangle$, acting on each of $T$, $C$, and $\Psh{C}$.
 
-In the next chapter, we will show that in an introspective theory, the $\Box$ furthermore satisfies the \Loeb/ property of the modal logic GL (aka, \quote{provability logic}).
+We have furthermore shown how each of these $\Box$ operators satisfies the rules of K4 modal logic.
 
-Later \TODOinline{Or rather, in the very prior section, when discussing our Kripke frame archetypal examples}, we shall also show the converses making these results tight: The rules which hold in general of the $\Box$ operator in a locally introspective theory are no stronger than (thus, precisely equal to) those of K4, while the rules which hold in general of the $\Box$ operator in an introspective theory are no stronger than (thus, precisely equal to) those of GL.
+We have also seen that the traditional interpretation of K4 modal logic in Kripke frames is a special case of our $\Box$ operator for locally introspective theories (thus letting us conclude a tight correspondence between locally introspective theories and K4 modal logic).
 
+The traditional provability operator on ZF-Finite (or just as well, on Peano Arithmetic) was also seen as a special case of our $\Box$ operator on an introspective theory. And the step-indexing operator considered in guarded recursion on the topos of trees was also seen as a special case of our $\Box$ operator on locally introspective or introspective theories.
+
+In the next chapter, we will show that in any introspective theory, the $\Box$ furthermore satisfies the \Loeb/ property of the modal logic GL (aka, \quote{provability logic}). Thus, the correspondence between locally introspective theories and the modal logic K4 is complemented by a correspondence between introspective theories and the modal logic GL.
 \fileend

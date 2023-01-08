@@ -230,9 +230,9 @@ We present this example in terms of presheaves over the natural numbers (which c
 \begin{construction}\label{StepIndexingLocallyIntrosp}
 Let $\omega$ be the poset of natural numbers with their usual ordering, and consider the category of presheaves $\Psh{\omega}$ (often called the topos of trees). We will equip this as a locally introspective theory.
 
-The functor $\mathrm{Succ} : n : \omega \mapsto n + 1 : \omega$ induces correspondingly a functor $\pullAlong{\mathrm{Succ}} : \Psh{\omega} \to \Psh{\omega}$. For convenience, we will use the name $\Prior$ to refer to this endofunctor on $\Psh{\omega}$. Thus, $\Prior(P)(n) = P(n + 1)$ for $n \in \omega$.
+The functor $\mathrm{Successor} : n : \omega \mapsto n + 1 : \omega$ induces correspondingly a functor $\pullAlong{\mathrm{Successor}} : \Psh{\omega} \to \Psh{\omega}$. For convenience, we will use the name $\Prior$ rather than $\pullAlong{\mathrm{Successor}}$ to refer to this endofunctor on $\Psh{\omega}$. Thus, $\Prior(P)(n) = P(n + 1)$ for $n \in \omega$.
 
-The map $n \leq n + 1$ from identity to $\mathrm{Succ}$ as endofunctors on $\omega$ induces a corresponding map from $\Prior$ to identity as endofunctors on $\Psh{\omega}$ (keeping in mind the contravariance of presheaves). We shall write $\prior : \Prior \to \id$ for this map.
+The map $n \leq n + 1$ from identity to $\mathrm{Successor}$ as endofunctors on $\omega$ induces a corresponding map from $\Prior$ to identity as endofunctors on $\Psh{\omega}$ (keeping in mind the contravariance of presheaves). We shall write $\prior : \Prior \to \id$ for this map.
 
 Also, as with any functor between presheaf categories given by composition in this manner, $\Prior$ has a right adjoint, given by right Kan extension. [The right adjoint of $\Prior$ may be called $\Later$, or is often called $\later$ in guarded recursion literature. It can be described by $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$ for $n \in \omega$, with the obvious corresponding actions on restriction maps and on morphisms between presheaves. Note that we may pull the map $\prior : \Prior \to \id$ through the adjunction $\Prior \dashv \Later$ to obtain a corresponding map $\latermap : \id \to \Later$.]
 
@@ -253,7 +253,7 @@ What remains to equip $\langle \Psh{\omega}, C \rangle$ as a locally introspecti
 
 Again, keep in mind the contravariance of indexed structures here, so that $\prior : \Prior \to \id$ does indeed act as a map from any $\Psh{\omega}$-indexed structure $X$ into the corresponding $\pullAlong{\Prior}(X)$.
 
-Thus, we have constructed a locally introspective theory $\langle \Psh{\omega}, C \rangle$ with $\introF$ given by whiskering $\prior$ as in the above diagram.
+Thus, we have constructed a locally introspective theory $\langle \Psh{\omega}, C, \introF \rangle$.
 
 It may be illustrative to alternatively describe this $\introF$ in terms of its corresponding $\introS$ and $\introN$.
 
@@ -268,7 +268,7 @@ We do not have that $\Ob(C)$ is itself an object of $\Psh{\omega}$. Essentially,
 
 We might naively try to ameliorate this problem by replacing $\Psh{\omega} = \Set^{\omega}$ by $\left(\Set'\right)^{\omega}$ where $\Set'$ is some full subcategory of $\Set$, such as sets of cardinality below some particular cardinal. But it is soon seen that such a uniform cardinality constraint across all $n \in \omega$ will not be workable for fixing the issue.
 
-Rather, what will fix the issue is to impose a variable cardinality constraint: We shall consider those presheaves whose values at each $n$ come from a particular full sublexcategory $\Set_n$ of $\Set$, where these restrictions get looser as $n$ gets larger.
+Rather, what will fix the issue is to impose a varying cardinality constraint: We shall consider those presheaves whose values at each $n$ come from a particular full sublexcategory $\Set_n$ of $\Set$, where these restrictions get looser as $n$ gets larger.
 
 \newcommand{\PshUnderN}[1]{\mathrm{Psh}'(\omega_{<#1})}
 \newcommand{\PshUnder}{\mathrm{Psh}'(\omega)}
@@ -278,13 +278,13 @@ Let $\Set_n$ for each  $n \in \omega$ be a \setsmall/ full sublexcategory of $\S
 
 By $\omega_{< n}$, we mean the sub-poset of $\omega$ restricted to those naturals which are less than $n$. By $\PshUnderN{n}$, we mean the full sublexcategory of $\Psh{\omega_{< n}}$ comprising presheaves such that $P(m) \in \Set_m$ for each $m < n$.
 
-Observe that each $\PshUnderN{n}$ can be viewed as a \setsmall/ strict lexcategory. Its collection of objects and its collection of morphisms are readily seen to comprise bona fide sets. 
+Observe that each $\PshUnderN{n}$ is a \setsmall/ strict lexcategory. Its collection of objects and its collection of morphisms are readily seen to comprise bona fide sets. 
 
 We also have obvious restriction maps from $\PshUnderN{n}$ to $\PshUnderN{m}$ for $m \leq n$ induced by the inclusion of $\omega_{< m}$ into $\omega_{< n}$, and any composition of such restriction maps yields the appropriate such restriction map.
 
 Thus, we have an $\omega$-indexed \setsmall/ strict lexcategory $C'(n) = \PshUnderN{n}$. In other words, this $C'$ is a lexcategory internal to $\Psh{\omega}$.
 
-Also note that once $\Set_0, \Set_1, \ldots, \Set_{n - 1}$ are determined, we have already determined what $\PshUnderN{n}$ is.
+Also note that once $\Set_0, \Set_1, \ldots, \Set_{n - 1}$ are determined, we have already determined what $\PshUnderN{n}$ is. That is, $\PshUnderN{n}$ does not depend on the choices of $\Set_m$ for $m \geq n$.
 
 Thus, we may inductively choose $\Set_n$ for each $n$ such that both $\Ob(\PshUnderN{n})$ and $\Mor(\PshUnderN{n})$ are among the objects of $\Set_n$. 
 
@@ -292,7 +292,7 @@ Thus, we may inductively choose $\Set_n$ for each $n$ such that both $\Ob(\PshUn
 
 When we choose $\Set_n$ satisfying this inductive condition, we have that $C'$ is not only internal to $\Psh{\omega}$, but indeed is internal to its full subcategory $\PshUnder$.
 
-We now flesh $\langle \PshUnder, C'\rangle$ out into an introspective theory, by defining an appropriate $\introS$ and $\introN$. Much like before, $\Glob{C'}$ is readily identified with $\PshUnder$ and we take  $\introS$ to be this identification. As just as before, we find that under this identification, $\Hom_C(1, -)$ acts as $\Later$, so we may take $\introN$ to be $\latermap : \id \to \Later$. \TODOinline{Flesh this out more.}
+We now flesh $\langle \PshUnder, C'\rangle$ out into an introspective theory, by defining an appropriate $\introS$ and $\introN$. Much like before, $\Glob{C'}$ is readily identified with $\PshUnder$ and we take  $\introS$ to be this identification. As just as before, we find that under this identification, $\Hom_C(1, -)$ acts as $\Later$, so we may take $\introN$ to be $\latermap : \id \to \Later$. \sTODOinline{Flesh this out more.}
 
 This completes the description of $\langle \PshUnder, C' \rangle$ as an introspective theory  (relative to any suitable choice of the $\{\Set_n\}_{n \in \omega}$).
 \end{construction}
@@ -451,7 +451,7 @@ Finally, suppose also that $\introF$ restricted to $S$ has range restricted to $
 Then $\langle S, D', \introF' \rangle$ is an introspective theory, which we refer to as a \defined{sub-introspection} of $\langle T, C, \introF \rangle$.
 \end{construction}
 
-Observe that our constructions \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp} were given as sub-introspections of \magicref{StepIndexingLocallyIntrosp} and \magicref{KripkeLocallyIntrosp}, respectively. \TODOinline{Make this clearer; it may not be clear that the internal categories used were in fact full subcategories of the restriction of the original self-indexing.}
+Observe that our constructions \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp} were given as sub-introspections of \magicref{StepIndexingLocallyIntrosp} and \magicref{KripkeLocallyIntrosp}, respectively. \sTODOinline{Make this clearer; it may not be clear that the internal categories used were in fact full subcategories of the restriction of the original self-indexing.}
 
 \bigskip
 The concepts of pre-introspective, locally introspective, or introspective theories are all nearly essentially algebraic concepts (\quote{nearly}, in that these involve categories up to equivalence rather than strict categories up to isomorphism). Thus these concepts automatically have available all the same properties as for any such nearly essentially algebraic concept. For example, we have free constructions, as are the subject of of our later chapter \magicref{GeminalChapter}. And we have Cartesian products in the straightforward way:
