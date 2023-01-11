@@ -136,7 +136,7 @@ This concludes the definition of a geminal category internal to $C_0$.
 
 By a \defined{geminal category} simpliciter, we mean of course the case where $C_0 = \Set$. (Note that in this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect, as the global sections functor from $\Set$ to $\Set$ is the identity.). We wrote out here the definition for general $C_0$, instead of specifically for $C_0 = \Set$, in order to emphasize certain symmetries in this definition.
 
-When being fully explicit, we reference a geminal category by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $|K|$ to refer to its underlying lexcategory $C'_1$.
+When being fully explicit, we reference a geminal category by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $\underlying{K}$ to refer to its underlying lexcategory $C'_1$.
 
 All aforementioned structure apart from $C_0$ itself has been given as $i$-tuply internal to $C_0$ for some $i > 0$. Thus, all of this structure is indeed given by diagrams within $C_0$.
 
@@ -163,14 +163,14 @@ Given two geminal categories $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3
 \end{definition}
 
 \begin{theorem}\label{GeminalContainsGeminal}
-Given any geminal category $K = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$, we have also that $\langle C'_2, C'_3, C'_4, \ldots; F'_2, F'_3, F'_4 \ldots \rangle$ comprises a geminal category internal to $|K| = C'_1$. We refer to this internal geminal category as $\InteriorGeminal{K}$.
+Given any geminal category $K = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$, we have also that $\langle C'_2, C'_3, C'_4, \ldots; F'_2, F'_3, F'_4 \ldots \rangle$ comprises a geminal category internal to $\underlying{K} = C'_1$. We refer to this internal geminal category as $\InteriorGeminal{K}$.
 
 We furthermore have that $F'_1$ acts as a geminal category homomorphism from $K$ to the global aspect of $\InteriorGeminal{K}$. We refer to this homomorphism as $\IntoSelf{K} : K \to \Gamma[\InteriorGeminal{K}]$.
 \end{theorem}
 \begin{proof}
 This is all direct by definition.
 
-For the first part, each condition imposed upon each $C'_{i}$ or $F'_{i}$ in the definition of a geminal category comes with an analogous condition imposed upon $C'_{i + 1}$ or $F'_{i + 1}$. Thus, it is immediate that the given $\InteriorGeminal{K}$ satisfies the conditions to be a geminal category internal to $|K|$.
+For the first part, each condition imposed upon each $C'_{i}$ or $F'_{i}$ in the definition of a geminal category comes with an analogous condition imposed upon $C'_{i + 1}$ or $F'_{i + 1}$. Thus, it is immediate that the given $\InteriorGeminal{K}$ satisfies the conditions to be a geminal category internal to $\underlying{K}$.
 
 For the second part, the definition of a geminal category directly imposes upon $F'_1$ precisely the conditions which are necessary for $F'_1$ to comprise a geminal category homomorphism from $K$ to the global aspect of $\InteriorGeminal{K}$. In particular, equation $E_1$ from \magicref{VerboseGeminalCatDefn} is identical to the commutative diagram from \magicref{VerboseGeminalCatHomoDefn}, in this context.
 \end{proof}
@@ -184,11 +184,11 @@ Thus, strict lexfunctors from $\GLCatTheory$ to any other strict lexcategory $D$
 
 Let $K$ denote the $\GLCatTheory$-internal geminal category corresponding to the identity functor on $\GLCatTheory$.
 
-By \magicref{GeminalContainsGeminal} in the internal logic of $\GLCatTheory$, we obtain also a geminal category $\InteriorGeminal{K}$ internal to $|K|$, as well as a homomorphism $\IntoSelf{K} : K \to \Gamma[\InteriorGeminal{K}]$.
+By \magicref{GeminalContainsGeminal} in the internal logic of $\GLCatTheory$, we obtain also a geminal category $\InteriorGeminal{K}$ internal to $\underlying{K}$, as well as a homomorphism $\IntoSelf{K} : K \to \Gamma[\InteriorGeminal{K}]$.
 
-Thus, there is some strict lexfunctor $\introS$ from $\GLCatTheory$ to the global aspect of $|K|$, corresponding to $\InteriorGeminal{K}$. Furthermore, there is some natural transformation $\introN$ from the identity functor on $\GLCatTheory$ to $\Hom_{|K|}(1, \introS(-))$, corresponding to $\IntoSelf{K}$.
+Thus, there is some strict lexfunctor $\introS$ from $\GLCatTheory$ to the global aspect of $\underlying{K}$, corresponding to $\InteriorGeminal{K}$. Furthermore, there is some natural transformation $\introN$ from the identity functor on $\GLCatTheory$ to $\Hom_{\underlying{K}}(1, \introS(-))$, corresponding to $\IntoSelf{K}$.
 
-Putting this together, we have a strict introspective theory $\langle \GLCatTheory, |K|, \introS, \introN \rangle$.
+Putting this together, we have a strict introspective theory $\langle \GLCatTheory, \underlying{K}, \introS, \introN \rangle$.
 \end{construction}
 
 \sTODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory. The difficulty with turning this into an introspective theory is that the property we really depend on from the free lexcategory $L$ with an internal gadget of some sort is not just the 1-categorical property that it has a unique homomorphism to every other gadget, but the 2-categorical property that the category of homomorphisms from it to another lexcategory and natural transformations between those is equivalent to the 1-category of internal gadgets within that codomain lexcategory. This is true for lexcategories, but not necessarily for other doctrines, and I believe this is related to how $\Hom(1, -)$ is always a lexfunctor (thus turning internal models into genuine models,) but not always an X-functor. The subtle role of this in the above proof should be highlighted.}
@@ -403,7 +403,7 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 \TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
 
 \begin{construction}
-For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : |G| \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$. This co-free $G$ admits a tractable explicit description as $C_0 \times |\gamma|$ suitably equipped.
+For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : \underlying{G} \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$. This co-free $G$ admits a tractable explicit description as $C_0 \times \underlying{\gamma}$ suitably equipped.
 \end{construction}
 \openDetails
 Let $\gamma = \langle C'_1, C'_2; F'_1, F'_2 \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion.
@@ -424,8 +424,8 @@ Suppose given any arbitrary geminal category $K = \langle K_0, K'_1; P_0, P'_1 \
 \subsection{Recap}
 \TODO
 
-\TODOinline{Close this chapter with a discussion of how, in many contexts in mathematics, it is the geminal categories (the $\Glob{C}$) which seem to play a more primary role than the introspective theories (the $T$). For example, we are typically more interested in the full syntactic category of PA than the $\Sigma_1$-restricted syntactic category, or in presheaves on the discrete set of worlds (including arbitrary subsets of worlds as propositions) rather than specifically those presheaves which respect the accessibility relation (restricting us to only the \quote{open} propositions). Why, then, has our development of ideas in this document focused on introspective theories rather than geminal categories? This is partly a matter of taste. We could have taken geminal categories as the fundamental notion, and not considered any introspective theory other than the theory of geminal categories. We could still derive \Loeb/'s theorem for geminal categories and so on. But the definition of introspective theories is much cleaner than that of geminal categories, and permits this extraction of the definition of geminal categories as its initial model, which is a beautiful result, helping to motivate the definition of geminal categories. Having the three- or four-axiom concept of an introspective theory also sometimes helps us more easily recognize that an example is a geminal category, without having to verify the six axioms of a geminal category directly. Also, having the concept of introspective theories clarifies which presheaves we can apply Löb's theorem to. To emphasize this last point, it would be very useful to have an explicit example of a presheaf on a geminal category which we CANNOT apply Löb's theorem to (or perhaps cannot even make sense of the box operator applied to).}
+\TODOinline{Close this chapter with a discussion of how, in many contexts in mathematics, it is the geminal categories (the $\Glob{C}$) which seem to play a more primary role than the introspective theories (the $T$). For example, we are typically more interested in the full syntactic category of PA than the $\Sigma_1$-restricted syntactic category, or in presheaves on the discrete set of worlds (including arbitrary subsets of worlds as propositions) rather than specifically those presheaves which respect the accessibility relation (restricting us to only the \quote{open} propositions). Why, then, has our development of ideas in this document focused on introspective theories rather than geminal categories? This is partly a matter of taste. We could have taken geminal categories as the fundamental notion, and not considered any introspective theory other than the theory of geminal categories. We could still derive \Loeb/'s theorem for geminal categories and so on. But the definition of introspective theories is much cleaner than that of geminal categories, and permits this extraction of the definition of geminal categories as its initial model, which is a beautiful result, helping to motivate the definition of geminal categories. Having the three- or four-axiom concept of an introspective theory also sometimes helps us more easily recognize that an example is a geminal category, without having to verify the six axioms of a geminal category directly. Also, having the concept of introspective theories clarifies which presheaves we can apply Löb's theorem (or \magicref{IntrospTyConFixedPoints}) to. To emphasize this last point, it would be very useful to have an explicit example of a presheaf on a geminal category which we CANNOT apply Löb's theorem to (or perhaps cannot even make sense of the box operator applied to).}
 
-\sTODOinline{Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on |G'|, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.}
+\sTODOinline{Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on \underlying{G'}, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.}
 
 \fileend
