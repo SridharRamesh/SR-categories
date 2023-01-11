@@ -9,13 +9,11 @@ The following notation will be very convenient for us going forward. It is also 
 
 Let $\langle T, C \rangle$ be a locally introspective theory.
 
-\TODOinline{Convention about using P(c) instead of P(t, c) to note t-indexed sets given by a doubly-indexed set}
-
-We say a presheaf on $C$ is locally $T$-\repsmall/ if the map from its total space of elements to $\Ob(C)$ has $T$-\repsmall/ fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$. Put another way, such a presheaf is a $T$-indexed functor between the $T$-indexed categories $\op{C}$ and $T/-$.
+Let $P$ be a $(T, C)$-indexed set in the sense of \TODOinline{Cite preliminaries; note also our convention about using P(c) instead of P(t, c) to note t-indexed sets given by a doubly-indexed set}. We say this $P$ is a locally $T$-\repsmall/ presheaf on $C$ if the map from its total space of elements to $\Ob(C)$ has $T$-\repsmall/ fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$. Put another way, such a presheaf amounts to a $T$-indexed functor between the $T$-indexed categories $\op{C}$ and $T/-$.
 
 Note that the category of locally $T$-\repsmall/ presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$. (In more detail, the $T$-indexed category $C$ gives rise in an obvious way, by reversing arrows, to another $T$-indexed category $\op{C}$. We then have that the two $T$-indexed categories $\op{C}$ and $T/-$ are objects of $\Cat^{\op{T}}$. But $\Cat^{\op{T}}$ is a cartesian closed 2-category (in much the same way that $\Set^{\op{T}}$ is a cartesian closed category, at least when $\Set$ or $\Cat$ are interpreted expansively enough to include sets or categories of comparable size to $T$), and thus we can form within it the exponential object for $T/-$ raised to the power $\op{C}$. This exponential object is the $T$-indexed category we call $\Psh{C}$.)
 
-\TODOinline{The above probably belongs in the Preliminaries on doubly-indexed sets.}
+\TODOinline{The above probably all belongs in the Preliminaries on doubly-indexed sets.}
 
 Thus, we have three $T$-indexed lexcategories of note: $T$ itself (considered as a $T$-indexed category through the self-indexing $T/-$), $C$, and $\Psh{C}$.
 
@@ -70,7 +68,7 @@ We also have that taking $\Hom_C(1, -)$ preserves $\Box$ in the same way. $\Hom_
 
 Given object $c$ of $C$, and locally $T$-\repsmall/ presheaf $P$ on $C$, we will write $c \implies P$ to indicate the exponential presheaf $P^c$. That is, the presheaf $P(- \times c)$. We may also write $c \implies d$ where $d$ is an object of $C$ as well, to mean $c \implies P$ for the presheaf $P = \Hom_C(-, d)$ represented by $d$. Thus, $c \implies d$ is the presheaf $\Hom_C(- \times c, d)$.
 
-Note that for any locally $T$-\repsmall/ presheaf $P$ on $C$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, by considering the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
+Note that for any locally $T$-\repsmall/ presheaf $P$ on $C$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, in the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
 
 \subsection{Modal logic and axiom 4}\label{ModalAxiom4Section}
 The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in later remarks.
@@ -105,7 +103,7 @@ Keeping in mind \magicref{SliceBoxIsAspectBox},  this extends automatically to a
 	\arrow["{\introN : \id_{T/-} \to \Box_{T/-}}"{description}, shorten >=7pt, Rightarrow, from=1-3, to=0]
 \end{tikzcd}\]
 
-\TODOinline{In the following diagrams, either $C$ and $\Psh{C}$ actually refer to the global aspect, or $T$ actually refers to $T/-$.}
+\TODOinline{In the following diagrams, either $C$ and $\Psh{C}$ actually refer to the global aspect, or $T$ actually refers to $T/-$ and $\introN$ to the corresponding indexed transformation, as in the diagram immediately above.}
 
 We do not have such a strong natural transformation from identity to $\Box$ as acting on the other corners of the triangle ($C$ or $\Psh{C}$). However, by taking the natural transformation from $t$ to $\Box_T t$, whiskering it on both sides along the trips from any other corner of the triangle into and out of $T$, and then applying the commutativity of $\Box$ with each leg of the triangle, we get a natural transformation from $\Box$ to $\Box \Box$ at each other corner of the triangle as well.
 
@@ -153,20 +151,21 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 \sTODOinline{Add commentary on how box extends to a bifunctor, even without presuming cartesian closure. Add commentary on the relationship with double negation/Booleanness when Lob's theorem is introduced}
 
 \subsection{As applied to our archetypal examples}
+
+\subsubsection{ZF-Finite examples}
 \TODO
 
-\subsubsection{ZF-Fin examples}
 Recall from \magicref{SigmaModelComplex} the introspective theory $\langle \ZfinSigma, \InnerZfin, \introS, \introN \rangle$, where $\ZfinSigma$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, $\InnerZfin$ is the lexcategory internal to $\ZfinSigma$ of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite, $\introS$ assigns to each piece of $\ZfinSigma$ the corresponding (globally defined) piece of $\InnerZfin$, and $\introN$ is the $\Sigma_1$-definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
 
-Let us now consider the behavior of our $\Box$ operators here. For convenience of discussion, we will look at their global aspects.
+Let us now consider the behavior of our $\Box$ operators here. For convenience of discussion, we will discuss just their global aspects.
 
-First, observe that we have $\Box : \ZfinSigma \to \ZfinSigma$, defined by $\Hom_{\InnerZfin}(1, \introS(-))$. \TODO
+First, observe that we have $\Box_{\ZfinSigma} : \ZfinSigma \to \ZfinSigma$, defined by $\Hom_{\InnerZfin}(1, \introS(-))$. \TODO
 
 Next, we turn our attention to the $\ZfinSigma$-internal endolexfunctor $\Box : \InnerZfin \to \InnerZfin$. Again, we shall just look at its global aspect. Presuming the soundness of ZF-Finite in our metatheory for further convenience, we have that $\Glob{\InnerZfin}$ is identified with $\Zfin$, the lexcategory of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite. Thus, we are considering $\Box : \Zfin \to \Zfin$, defined by $\introS(\Hom_{\Zfin}(1, -))$. \TODO
 
 \TODOinline{Discuss subterminals, as propositions, and how the box operator matches with the provability operator on these.}
 
-\subsubsection{Kripke frame example}
+\subsubsection{Kripke frame example}\label{KripkeFrameModel}
 Recall the locally introspective theory $\langle \Psh{Q}, C \rangle$ from \magicref{KripkeLocallyIntrosp}, constructed from a transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a preorder category using the $<$ relation. Our definition of $C$ was such that $\Glob{C} = \Psh{|P|} = \Set^{|P|}$. Our definition of $\introS : \Psh{Q} \to \Psh{|P|}$ was the forgetful functor which ignores the $<$ relation and $\infty$ element in $Q$. Our definition of $C$ also ensures that $\Hom_C(1, -) : \Psh{|P|} \to \Psh{Q}$ sent $f \in \Psh{|P|}$ to the presheaf $F$ on $Q$ such that $F(q)$ is the product of $f(p)$ over all $p < q$, with restriction maps given by projection.
 
 Thus, $\Box_{\Psh{|P|}}$ acts like so: For $F \in \Psh{|P|}$ and $x \in P$, we have that $\Box_{\Psh{|P|}}(F)(x) = \introS(\Hom_C(1, F))$ is the product of $F(y)$ over all $y < x$.
@@ -181,18 +180,18 @@ Thus, our notion of $\Box$ acts on these subterminal presheaves in precisely the
 
 In this way, we may note that any identity which holds of the $\Box_C$ operator in all locally introspective theories $\langle T, C \rangle$ must be an identity which holds of the $\Box$ operator on propositions in Kripke frames constructed from a transitive $<$ relation. This in turn is well known to entail holding of the $\Box$ operator in the modal logic K4 \sTODOinline{cite}. Thus, in this sense (which we refrain from stating formally for now, though it clearly could be turned into various formal statements), the logic of the $\Box$ operator in locally introspective theories is no stronger than the modal logic K4. We've also already seen in \magicref{ModalAxiom4Section} that it is at least as strong as the modal logic K4, and thus the logic of the $\Box$ operator in general locally introspective theories can be identified with K4.
 
-In the above, we discussed the locally introspective theory constructed by \magicref{KripkeLocallyIntrosp} from a transitive relation $<$. Recall that, in the particular case where $<$ is furthermore well-founded, we may impose cardinality constraints in a suitable fashion to turn this into an introspective theory (this being \magicref{KripkeIntrosp}). The nature of the $\Box$ operators on the introspective theory \magicref{KripkeIntrosp} will be essentially the same as for \magicref{KripkeLocallyIntrosp}, since the former is a sub-introspection of the latter \TODOinline{Discuss the interaction between $\Box$ and sub-introspecitons}, and thus again will match the traditional interpretation of the box operator in Kripke frames. In this way, we find that the logic of the $\Box_C$ operators in introspective theories $\langle T, C \rangle$ is no stronger than that of the $\Box$ operator in well-founded transitive Kripke frames, which is well known to correspond to the modal logic GL (given by K4 + \Loeb/'s theorem). In the next chapter, we will prove the remarkable fact that \Loeb/'s theorem (and thus all of GL) is validated in all introspective theories, so that the logic of the $\Box_C$ operator in introspective theories can be said to be precisely that of the modal logic GL.
+In the above, we discussed the locally introspective theory constructed by \magicref{KripkeLocallyIntrosp} from a transitive relation $<$. Recall that, in the particular case where $<$ is furthermore well-founded, we may impose cardinality constraints in a suitable fashion to turn this into an introspective theory (this being \magicref{KripkeIntrosp}). The nature of the $\Box$ operators on the introspective theory \magicref{KripkeIntrosp} will be essentially the same as for \magicref{KripkeLocallyIntrosp}, since the former is a sub-introspection of the latter \TODOinline{Discuss the interaction between $\Box$ and sub-introspections}, and thus again will match the traditional interpretation of the box operator in Kripke frames. In this way, we find that the logic of the $\Box_C$ operators in introspective theories $\langle T, C \rangle$ is no stronger than that of the $\Box$ operator in well-founded transitive Kripke frames, which is well known to correspond to the modal logic GL (given by K4 + \Loeb/'s theorem). In the next chapter, we will prove the remarkable fact that \Loeb/'s theorem (and thus all of GL) is validated in all introspective theories, so that the logic of the $\Box_C$ operator in introspective theories can be said to be precisely that of the modal logic GL.
 
-\subsubsection{Step-indexing example}
+\subsubsection{Step-indexing example}\label{StepIndexingModal}
 Recall the locally introspective theory $\langle \Psh{\omega}, C \rangle$ from \magicref{StepIndexingLocallyIntrosp}, in which $\introS : \Psh{\Omega} \to \Glob{C}$ acts as an equivalence. It was also observed in that construction that $\Hom_C(1, \introS(-)) : \Psh{\omega} \to \Psh{\omega}$ acts as the operator $\Later$, such that $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$, for $P \in \Psh{\omega}$ and $n \in \omega$.
 
 Thus, the operator $\Box_{\Psh{\omega}}$ here is precisely this operator $\Later$.
 
-Note that this is quite distinct from the $\Box$ operator obtained for $\magicref{KripkeLocallyIntrosp}$ as discussed above, even when considering the poset $\omega$. The distinction is that $\Later(P)(n)$, for positive $n$, is not the product of $P(m)$ at all $m < n$ but rather simply their limit, $P(n - 1)$.
+Note that this is quite distinct from the $\Box$ operator obtained for \magicref{KripkeLocallyIntrosp} as discussed above, even when considering the poset $\omega$. The distinction is that $\Later(P)(n)$, for positive $n$, is not the product of $P(m)$ at all $m < n$ but rather simply their limit, $P(n - 1)$.
 
 However, this distinction is not visible when considering only subterminal presheaves in $\Psh{\omega}$. These amount to downwards closed subsets of $\omega$, and for such a downwards closed subset $F \subseteq \omega$, we will have that $\Box_{\Psh{\omega}}$ is the downwards closed subset of $\omega$ which includes $n$ just in case either $n = 0$ or $n - 1 \in F$, which in turn happens just in case all $m < n$ are contained in $F$. This again is the same behavior as the traditional $\Box$ operator on a Kripke frame corresponding to $\omega$. Note however that in this locally introspective theory, we do not have the ability to discuss propositions which are not downwards closed.
 
-The $\Box$ operators on \magicref{StepIndexingIntrosp} are again essentially the same as those on \magicref{StepIndexingLocallyIntrosp}, as the former is given by sub-introspection of the latter \TODOinline{Again, discuss how sub-introspections relate to the $\Box$ operators}.
+The $\Box$ operators on the introspective theory \magicref{StepIndexingIntrosp} are again essentially the same as those on the locally introspective theory \magicref{StepIndexingLocallyIntrosp}, as the former is a sub-introspection of the latter \TODOinline{Again, discuss how sub-introspections relate to the $\Box$ operators}.
 
 \subsubsection{As applied to sub-introspections}
 \TODOinline{If $i : S \to T$ is the inclusion of a full sublexcategory, and the pre-introspective theory $\langle S, \pullAlong{i} C \rangle$ is obtained from the locally introspective theory $\langle T, C \rangle$, then we get a map from $S \to \Psh{S}$ which acts morally like $\Box_S$ by $\Hom_{\pullAlong{i}C}(1, \introS(-))$, and this also matches the map we get by composing $i : S \to T$, with $\Box_T : T \to T$, with $\pullAlong{i} : T \to \Psh{S}$. In this sense, $S$ and $T$ agree on $\Box$. If $S$ is closed under $\Box_T$, we can put this more nicely.}

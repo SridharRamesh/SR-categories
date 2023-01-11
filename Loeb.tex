@@ -31,7 +31,7 @@ If such fixed points are furthermore always unique, we say $\Box$ has the \defin
 \end{definition}
 
 \begin{observation}\label{KnasterTarskiExample}
-For example, the identity endofunctor on the category of complete lattices and monotonic maps between them has the \Loeb/ property (this amounts to the Knaster-Tarski fixed point theorem). However, this does not have the \Loeb/ property with uniqueness. \TODOinline{Is it worth pointing out this example? We use it as a counterexample on two occasions below, but perhaps there is no need for such counterexample-illustration.}
+For example, the identity endofunctor on the category of complete lattices and monotonic maps between them has the \Loeb/ property (this amounts to the Knaster-Tarski fixed point theorem). However, this does not have the \Loeb/ property with uniqueness. \sTODOinline{Is it worth pointing out this example? We use it as a counterexample on two occasions below, but perhaps there is no need for such counterexample-illustration.}
 \end{observation}
 
 In this chapter, we will establish that for every introspective theory $\langle T, C \rangle$, each aspect of each of $\Box_{T/-}$, $\Box_C$, and $\Box_{\Psh{C}}$ has the \Loeb/ property with uniqueness. That such a strong result follows from such a minimal and simple categorical structure motivates much of our interest in the concept of introspective theories.
@@ -276,7 +276,7 @@ At any rate, we shall find the added flexibility of allowing a relation in place
 \openNamed{theorem}{Pre-introspective Diagonalization}\label{PreIntrospDiag}
 Let $\langle T, C, \introS, \introN \rangle$ be a pre-introspective theory. Let $\point_T$ be the terminal object of $T$ and let $\point_C$ be the terminal object of $C$.\footnote{We use this $\star$ notation rather than $1$ notation so that we can make the observation that this theorem's proof actually applies more generally, not depending on any limit structure. It would suffice to let $T$ be any category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $\introN$ be a map from $t$ to $\Hom_C(\point_C, \introS(t))$, natural in $t \in T$, let $\point_T$ be any object of $T$, and let $\point_C$ be any globally defined object of $C$.} Throughout the following, we use \quote{point of} as shorthand for \quote{element of the $\point_T$-aspect of}.
 
-Furthermore, let $P$ be a $(T, C)$-indexed set \TODOinline{Make sure we discuss doubly-indexed sets in the Preliminaries}. We will write in the following $P(c)$ to mean the $T$-indexed set $t \mapsto P(t, c)$, for globally defined objects $c$ of $C$.
+Furthermore, let $P$ be a $(T, C)$-indexed set \TODOinline{Make sure we discuss doubly-indexed sets in the Preliminaries, then link to that discussion here}. We will write in the following $P(c)$ to mean the $T$-indexed set $t \mapsto P(t, c)$, for globally defined objects $c$ of $C$.
 
 Suppose also given some object $\Omega$ in $T$ with a map $\quotient : \Omega \to P(\point_C)$ such that the induced function $\quotient \circ - : \Hom(X \times X, \Omega) \to \Hom(X \times X, P(\point_C))$ is surjective.
 
@@ -323,7 +323,7 @@ Specifically, keep in mind via the Yoneda lemma that the data of a map from $c \
 
 The invocation of \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagSpecialization} will give us a global element $\omega$ of $\Omega = P(\point_C)$ such that $\omega = \pullAlong{\omega'}{\loebNeg}$, where $\omega' = \introN_{\Omega}(\omega)$ is a global element of $\Box P(\point_C)$. Again, by the Yoneda lemma, such an $\omega$ corresponds to a map from $1$ to $P$ in the global aspect of $\Psh{C}$, such an $\omega'$ corresponds to a map from $1$ to $\Box P$ (specifically, $\omega' = \Box \omega$, by \magicref{SMatchesN}), and our equation relating $\omega$ and $\omega'$ is that that $\omega = \loebNeg \circ \omega'$.
 
-For the last remark about starting from a fixed point for $\introS(P(-))$ rather than a fixed point for $P(\introS(-))$, observe that if we have a $Y$ isomorphic to $\introS(P(Y))$, then by taking $X$ to be $P(Y)$, we obtain an $X$ isomorphic to $P(\introS(X))$.\footnote{This is a special case of the bijective correspondence between fixed points of cyclic rearrangements of compositions we also observed within the proof of \magicref{LoebTransfer}.}
+For the last remark about starting from a fixed point for $\introS(P(-))$ rather than a fixed point for $P(\introS(-))$, observe that if we have a $Y$ isomorphic to $\introS(P(Y))$, then by taking $X$ to be $P(Y)$, we obtain an $X$ isomorphic to $P(\introS(X))$.\footnote{This is a special case of the bijective correspondence between fixed points of cyclic rearrangements of compositions, which we also observed within the proof of \magicref{LoebTransfer}.}
 
 \sTODOinline{That is, let $F$ and $G$ be arbitrary covariant or contravariant functors, not necessarily of the same variance as each other. Note that fixed points up to isomorphism of $F \circ G$ are in correspondence with fixed points up to isomorphism of $G \circ F$, with the functors $G$ and $F$ carrying out the two directions of the correspondence. (For that matter, we can also observe that values $X$ which retract onto $F(G(X))$ induce values $Y$ which retract onto $G(F(Y))$, although this is no longer a 1 : 1 correspondence). In this particular case, this means that fixed points up to isomorphism of the contravariant endofunctor $P(\introS(-))$ on $T$ are in correspondence with fixed points up to isomorphism of the contravariant endofunctor $\introS(P(-))$ on the global aspect of $C$. \TODOinline{Make something in the preliminaries about fixed points of compositions and cyclic change of composition, then cite it here and elsewhere in this chapter}}
 \end{proof}
@@ -339,9 +339,15 @@ We can see in the types of this last theorem the outline of \Loeb/'s theorem. Bu
 
 Incredibly, we can bootstrap away this isomorphism precondition, in the context of an introspective theory. That is, in the context of an introspective theory, we can use one particular instance of \magicref{PreIntrospDiag} itself to provide the very isomorphisms necessary in order to then re-invoke \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagFromIso}.
 
-Our plan is to consider the $(T, C)$-indexed set $P$ which assigns to every object $c$ of $C$ the set of isomorphism classes of $C/c$, with the action of $P$ on morphisms of $C$ correspondingly being given by pullback. That is, $P(t, c)$ is the set of $t$-defined objects of $C/c$ modulo $t$-defined isomorphisms of $C/c$. Note that this set of objects modulo isomorphism is well-defined even though $C$ is only a category and not a strict category! \TODOinline{Note that this $P$ is NOT in general $T$-\repsmall/, because $T$ does not in general have quotient objects.}
+Our plan is to consider the $(T, C)$-indexed set $P$ which assigns to every object $c$ of $C$ the set of isomorphism classes of $C/c$, with the action of $P$ on morphisms of $C$ correspondingly being given by pullback. That is, $P(t, c)$ is the set of $t$-defined objects of $C/c$ modulo $t$-defined isomorphisms of $C/c$.
 
-The reindexing action of this $P$ along morphisms in $T$ (reinterpreting $t_2$-defined data as $t_1$-defined data along any morphism $: t_1 \to t_2$ in $T$) is straightforward. As for reindexing along morphisms in $C$, for any fixed $t$ and any $t$-defined morphism $m : c_1 \to c_2$ of $C$, the action $P(t, m) : P(t, c_2) \to P(t, c_1)$ is given by pullback in the lexcategory $C$ along $m$; that is, this is given by $\pullAlong{m} : C/c_2 \to C/c_1$ considered as acting on isomorphism classes of objects. \TODOinline{Maybe move all this to the Preliminaries in the section on doubly-indexed sets}. Note that reindexing along morphisms in $C$ is indeed strictly functorial, because we are working with objects modulo isomorphism rather than with objects simpliciter.
+\sTODOinline{Perhaps note the following nuances or perhaps not:
+
+Note that this $P$ will not in general be $T$-\repsmall/, because $T$ does not in general have quotient objects. However, this will cause no difficulties.
+
+Note also that this $P$ is well-defined even though $C$ is taken only as a category and not a strict category, as even though a category does not have a well-defined set of objects, it still has a well-defined set of isomorphism classes of objects.}
+
+The reindexing action of this $P$ along morphisms in $T$ (reinterpreting $t_2$-defined data as $t_1$-defined data along any morphism $: t_1 \to t_2$ in $T$) is straightforward. As for reindexing along morphisms in $C$, for any fixed $t$ and any $t$-defined morphism $m : c_1 \to c_2$ of $C$, the action $P(t, m) : P(t, c_2) \to P(t, c_1)$ is given by pullback in the lexcategory $C$ along $m$; that is, this is given by $\pullAlong{m} : C/c_2 \to C/c_1$ considered as acting on isomorphism classes of objects. \TODOinline{Maybe move all this to the Preliminaries in the section on doubly-indexed sets}. Note that reindexing along morphisms in $C$ is indeed strictly functorial, because we are working with isomorphism classes of objects rather than with objects simpliciter.
 
 We now choose any internal category $C_{strict}$ in $T$ which presents $C$ (by definition, such an internal category exists in an introspective theory; there may be multiple non-isomorphic such internal categories presenting $C$, but any will do for our purposes) and we take $\Omega$ to be $\Ob(C_{strict})$, with $\quotient : \Omega \to P(1)$ sending each object of each aspect of $C_{strict}$ to its isomorphism class within the corresponding aspect of $C$. Note that every component of $\quotient$ as a natural transformation between presheaves on $T$ is surjective (because $C$ is presented by $C_{strict}$, the isomorphism classes of $C$ and of $C_{strict}$ are the same, and there is clearly a surjection from the objects of $C_{strict}$ (at any aspect) onto the isomorphism classes of $C_{strict}$ (at the same aspect)). Thus in particular the component of $\quotient$ at the object $X \times X$ of $T$ is surjective. \TODOinline{Mention something about how this is a well-defined map of indexed sets; that is, $\quotient$ interacts appropriately with pullback}. 
 
@@ -383,7 +389,7 @@ Thus, $\alpha(f) = F$ as an element of $P(\introS(X))$, establishing the require
 
 Thus, all presumptions are satisfied for us to be able to apply \magicref{PreIntrospDiag} with these definitions, for an arbitrary globally defined element $g$ of $P(\introS(\Omega))$.
 
-In particular, let an arbitrary $(T, C)$-indexed set $G$ be given (\TODOinline{satisfying the appropriate \repsmallness/ conditions to be in $\Psh{C}$; local $T$-\repsmallness/}). In fact, it suffices for $G$ to be merely $(T, \Ob(\core{C}))$-indexed, where $\Ob(\core{C})$ is the set of objects of $C$ modulo isomorphism.
+In particular, let an arbitrary $(T, C)$-indexed set $G$ be given (\TODOinline{satisfying the appropriate \repsmallness/ conditions to be in $\Psh{C}$; local $T$-\repsmallness/}). In fact, it suffices for $G$ to be merely $(T, \core{C})$-indexed, where $\core{C}$ is the subcategory of $C$ containing only invertible morphisms.
 
 This will be presented by a slice in $T/\Ob(C_{strict})$ (the slice whose fiber at any object $c_{strict}$ of $C_{strict}$ is the set $G(c)$, where $c$ is the object of $C$ presented by $c_{strict}$). By applying $\introS$ to this slice, we get a globally defined object of $C/\introS(\Ob(C_{strict}))$, which is to say, a global element of $P(\introS(\Omega))$. Take this to be our $\loebNeg$.
 
@@ -391,7 +397,7 @@ Invoking \magicref{PreIntrospDiag} (on the introspective theory $\langle T, C, \
 
 Thus, we have proven the following:
 \begin{theorem}\label{IntrospTyConFixedPoints}
-For any introspective theory $\langle T, C \rangle$, and any \TODOinline{locally $T$-\repsmall/} $(T, \Ob(\core{C}))$-indexed set $G$, there is some object $Y$ in the global aspect of $C$ along with a globally defined isomorphism from $Y$ to $\introS(G(Y))$.
+For any introspective theory $\langle T, C \rangle$, and any \TODOinline{locally $T$-\repsmall/} $(T, \core{C})$-indexed set $G$, there is some object $Y$ in the global aspect of $C$ along with a globally defined isomorphism from $Y$ to $\introS(G(Y))$.
 \end{theorem}
 
 Combining this with \magicref{PreIntrospDiagFromIso} to eliminate the latter's isomorphism precondition, we now reach the following conclusion:
@@ -436,7 +442,25 @@ This triviality result was demonstrated in \autocite{PittsTaylor1989} by an esse
 But by generalizing to introspective theories, we are able to expand from this negative result (there are no nontrivial locally cartesian closed categories whose self-indexing is \repsmall/) to a positive result (there are many nontrivial examples of introspective theories, which all end up satisfying the \Loeb/ property with uniqueness and all the further corollaries of this we've been discussing).
 
 \subsection{As applied to our archetypal examples}
+Here we discuss the application of \magicref{IntrospTyConFixedPoints} and \magicref{IntrospLoeb} to our archetypal examples of introspective theories.
+
 \TODO
+\subsubsection{ZF-Finite examples}
+\TODO
+
+\subsubsection{Kripke frame example}
+\newcommand{\PshUnderQInf}{\mathrm{Psh}'(Q)}
+
+Recall the introspective theory $\langle \PshUnderQInf, C' \rangle$ from \magicref{KripkeIntrosp}, constructed from a well-founded transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a preorder category using the $<$ relation. This construction also makes use of certain cardinality constraints, from which $\PshUnderQInf$ is defined as a suitable full sublexcategory of $\Psh{Q}$. \TODO
+
+\TODOinline{Discussion of type-level fixed points}
+
+\TODOinline{Discussion of \Loeb/'s theorem}
+
+\subsubsection{Step-indexing example}
+\TODOinline{Discussion of type-level fixed points}
+
+\TODOinline{Discussion of \Loeb/'s theorem}
 
 \subsection{Recap}
 \TODO
@@ -513,6 +537,6 @@ The desired result now follows by \magicref{LawveresFixedPointTheorem}.
 
 \sTODOinline{Remarks on Cantor's theorem, Liar's paradox, and Y combinator as examples of Lawvere's fixed point theorem. Cantor's theorem is a contrapositive statement using surjection. Liar's paradox is a contrapositive statement using a retraction/isomorphism. Y combinator is a positive statement using a retraction, and also involves passing to a slice category. Note that the reason we presume in Cantor's theorem that negation on $\Omega$ has no fixed points is because of another instance of Lawvere's fixed point theorem, via Liar's paradox!}
 
-\TODOinline{Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how our more general formulation allows us to correct this.}
+\TODOinline{Point out the error in Yonofsky's discussion of Kleene's recursion theorem and how our more general related-point formulation allows us to correct this.}
 
 \fileend
