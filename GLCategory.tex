@@ -327,7 +327,7 @@ Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-inter
 \TODOinline{When $c$ and $d$ are not globally defined, then what? Presumably the box notation should not be well-defined on arbitrary slice categories of a geminal category. But in this last comment, we really mean to be looking at the $\Ob(C)^2$-aspect of $\Box_C$ in an introspective theory.}
 \end{observation}
 
-\TODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our two main classes of example into here.}
+\TODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
 
 \subsection{Co-free introspective theories}
 
@@ -403,20 +403,74 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 \TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
 
 \begin{construction}
-For any lexcategory $C_0$ with an internal geminal category $\gamma$, there is a terminal geminal category $G$ equipped with a lexfunctor $H : \underlying{G} \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$. This co-free $G$ admits a tractable explicit description as $C_0 \times \underlying{\gamma}$ suitably equipped.
+For any strict lexcategory $C_0$ with an internal geminal category $\gamma$, there is a geminal category $G$ equipped with a strict lexfunctor $H : \underlying{G} \to C_0$ satisfying $H[\InteriorGeminal{G}] = \gamma$, which is terminal among all so equipped geminal categories (in the sense that for any other such geminal category $K$ with strict lexfunctor $J : \underlying{K} \to C_0$ satisfying $J[\InteriorGeminal{K}] = \gamma$, there is a unique geminal category homomorphism $M : K \to G$ such that $H \circ M = J$). This co-free $G$ admits a tractable explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped.
 \end{construction}
 \openDetails
-Let $\gamma = \langle C'_1, C'_2; F'_1, F'_2 \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion.
+Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
 
-Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2; \phi'_1, \phi'_2 \rangle$ internal to $G_0$, with $G'_1 = C'_1 \times C'_2$. 
+Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2, G'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$ internal to $G_0$, with each $G'_n = C'_n \times C'_{n + 1}$ and $\phi'_n = F'_n \times F'_{n + 1}$, for $n \geq 1$.
 
-Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $\langle G_0, G'_1; \phi_0, \phi'_1 \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were).
+Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \TODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
 
-We also clearly have a projection lexfunctor from $G_0$ to $C_0$ which does indeed take the internal geminal category to $\gamma$.
+We also clearly have a projection lexfunctor $H$ from $\underlying{G} = C_0 \times C_1$ to $C_0$, and by unfolding definitions, this does indeed satisfy $H[\InteriorGeminal{G}] = \gamma$.
 
-\TODOinline{Show that this has the terminality property, and clean up this writing. Should we have made $H$ a strict lexfunctor between strict lexcategories above?}
+Suppose given any geminal category $K = \langle K_0, K'_1; P_0, P'_1 \rangle$ and lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$. A lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times C_1$ is given by a pair of lexfunctors $J_0 : K_0 \to C_0$ and $J_1 : K_0 \to C_1$. Since $H$ is simply projection of the $C_0$ component, we will have that $H \circ M = J$ precisely when $J_0 = J$. Thus, specifying such $M$ is given by specifying $J_1$ alone. We must show that there is a unique $J_1$ making this $M$ into a geminal category homomorphism from $K$ to $G$.
 
-Suppose given any arbitrary geminal category $K = \langle K_0, K'_1; P_0, P'_1 \rangle$ and lexfunctor $H_0 : K_0 \to C_0$ such that $H[\InteriorGeminal{K}] = \gamma$. Observe that we also have a lexfunctor $H_1 : K_0 \to C_1$ given by $H_1 = \InducedHomo{H_0}{K'_1} \circ P_0$. Thus, we obtain a unique lexfunctor $H : C_0 \to G_0$ whose two projections are $H_0$ and $H_1$. We shall show that $H$ is a geminal category homomorphism, and the unique one with the appropriate properties. \TODO
+Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, adapted to this context, we see the conditions for such $M$ to be a geminal category homomorphism. First of all, we must have that $M[\InteriorGeminal{K}] = \InteriorGeminal{G}$, which is to say, $J[\InteriorGeminal{K}] = \gamma$ (which has already been presumed) and $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$. On top of this, the final condition for $M$ to be a geminal category homomorphism is that the following diagram commutes:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJcXEdsb2J7TVtLJ18xXX0gPSBDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJcXEdsb2J7S18xJ30iXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wID0gKGNfMCwgY18xKSBcXG1hcHN0byAoY18xLCBGXzEoY18xKSkiXV0=
+\[\begin{tikzcd}
+	{K_0} && {C_0 \times C_1} \\
+	\\
+	{\Glob{K_1'}} && {\Glob{M[K'_1]} = C_1 \times C_2}
+	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
+	\arrow["{P_0}"', from=1-1, to=3-1]
+	\arrow["{\InducedHomo{M}{K'_1}}"', from=3-1, to=3-3]
+	\arrow["{\phi_0 = (c_0, c_1) \mapsto (c_1, F_1(c_1))}", from=1-3, to=3-3]
+\end{tikzcd}\]
+
+This diagram is equivalent to the combination of the following two diagrams, which separately consider its $C_1$ and $C_2$ components:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJcXEdsb2J7SltLJ18xXX0gPSBDXzEiXSxbMCwyLCJcXEdsb2J7S18xJ30iXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0snXzF9IiwyXSxbMSwyLCIoY18wLCBjXzEpIFxcbWFwc3RvIGNfMSJdLFswLDIsIkpfMSIsMV0sWzEsOCwiIiwwLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	{K_0} && {C_0 \times C_1} \\
+	\\
+	{\Glob{K_1'}} && {\Glob{J[K'_1]} = C_1}
+	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
+	\arrow["{P_0}"', from=1-1, to=3-1]
+	\arrow["{\InducedHomo{J}{K'_1}}"', from=3-1, to=3-3]
+	\arrow["{(c_0, c_1) \mapsto c_1}", from=1-3, to=3-3]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}"{description}, from=1-1, to=3-3]
+	\arrow[shorten >=7pt, Rightarrow, no head, from=1-3, to=0]
+\end{tikzcd}\]
+
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJcXEdsb2J7Sl8xW0snXzFdfSA9IENfMiJdLFswLDIsIlxcR2xvYntLXzEnfSJdLFsxLDEsIkNfMSJdLFswLDEsIk0gPSBcXGxhbmdsZSBKLCBKXzEgXFxyYW5nbGUiXSxbMCwzLCJQXzAiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMl0sWzEsMiwiKGNfMCwgY18xKSBcXG1hcHN0byBGXzEoY18xKSJdLFswLDQsIkpfMSIsMV0sWzQsMiwiRl8xIiwxXSxbMSw0LCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	{K_0} && {C_0 \times C_1} \\
+	& {C_1} \\
+	{\Glob{K_1'}} && {\Glob{J_1[K'_1]} = C_2}
+	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
+	\arrow["{P_0}"', from=1-1, to=3-1]
+	\arrow["{\InducedHomo{J_1}{K'_1}}"', from=3-1, to=3-3]
+	\arrow["{(c_0, c_1) \mapsto F_1(c_1)}", from=1-3, to=3-3]
+	\arrow["{J_1}"{description}, from=1-1, to=2-2]
+	\arrow["{F_1}"{description}, from=2-2, to=3-3]
+	\arrow[Rightarrow, no head, from=1-3, to=2-2]
+\end{tikzcd}\]
+
+From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K'_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the diagram for the $C_2$ component, as well as the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$.
+
+For the latter, we have the chain of equations $J_1[\InteriorGeminal{K}]$ 
+
+$ = \InducedHomo{J}{K'_1} [P_0[\InteriorGeminal{K}]] $ 
+
+$= \InducedHomo{J}{K'_1} (\InteriorGeminal{\InteriorGeminal{K}}) $ 
+
+$= \InteriorGeminal{J[\InteriorGeminal{K}]} $ 
+
+$= \InteriorGeminal{\gamma}$.
+
+As for the former, what we must verify is the following: \TODO
 \closeDetails
 
 \TODOinline{Observe that the above two co-free constructions can be combined, to find the terminal introspective theory with a suitable lexfunctor into a given lexcategory yielding a given internal geminal category}
