@@ -413,42 +413,47 @@ Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}
 Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \TODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
 
 We also clearly have a projection lexfunctor $H$ from $\underlying{G} = C_0 \times C_1$ to $C_0$, and by unfolding definitions, this does indeed satisfy $H[\InteriorGeminal{G}] = \gamma$.
+\closeDetails
+Having described the construction's details, we now prove that this construction has the stated terminality property:
 
-Suppose given any geminal category $K = \langle K_0, K'_1; P_0, P'_1 \rangle$ and lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$. A lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times C_1$ is given by a pair of lexfunctors $J_0 : K_0 \to C_0$ and $J_1 : K_0 \to C_1$. Since $H$ is simply projection of the $C_0$ component, we will have that $H \circ M = J$ precisely when $J_0 = J$. Thus, specifying such $M$ is given by specifying $J_1$ alone. We must show that there is a unique $J_1$ making this $M$ into a geminal category homomorphism from $K$ to $G$.
+\begin{proof}
+Suppose given any geminal category $K = \langle K_0, K'_1, K'_2, \ldots; P_0, P'_1, P'_2, \ldots \rangle$ and lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$. As ever, we will use unprimed names for the global aspects of primed names.
+
+A lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times C_1$ is given by a pair of lexfunctors $J_0 : K_0 \to C_0$ and $J_1 : K_0 \to C_1$. Since $H$ is simply projection of the $C_0$ component, we will have that $H \circ M = J$ precisely when $J_0 = J$. Thus, specifying such $M$ is given by specifying $J_1$ alone. We must show that there is a unique $J_1$ making this $M$ into a geminal category homomorphism from $K$ to $G$.
 
 Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, adapted to this context, we see the conditions for such $M$ to be a geminal category homomorphism. First of all, we must have that $M[\InteriorGeminal{K}] = \InteriorGeminal{G}$, which is to say, $J[\InteriorGeminal{K}] = \gamma$ (which has already been presumed) and $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$. On top of this, the final condition for $M$ to be a geminal category homomorphism is that the following diagram commutes:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJcXEdsb2J7TVtLJ18xXX0gPSBDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJcXEdsb2J7S18xJ30iXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wID0gKGNfMCwgY18xKSBcXG1hcHN0byAoY18xLCBGXzEoY18xKSkiXV0=
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wIFxcOyAgW1xcdGV4dHt3aGljaCBpc30gXFw7IChjXzAsIGNfMSkgXFxtYXBzdG8gKGNfMSwgRl8xKGNfMSkpXSJdXQ==
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	\\
-	{\Glob{K_1'}} && {\Glob{M[K'_1]} = C_1 \times C_2}
+	{K_1} && {C_1 \times C_2}
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{M}{K'_1}}"', from=3-1, to=3-3]
-	\arrow["{\phi_0 = (c_0, c_1) \mapsto (c_1, F_1(c_1))}", from=1-3, to=3-3]
+	\arrow["{\phi_0 \;  [\text{which is} \; (c_0, c_1) \mapsto (c_1, F_1(c_1))]}", from=1-3, to=3-3]
 \end{tikzcd}\]
 
-This diagram is equivalent to the combination of the following two diagrams, which separately consider its $C_1$ and $C_2$ components:
+This diagram commutes just in case both of the following diagrams commute, which separately consider its $C_1$ and $C_2$ components:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJcXEdsb2J7SltLJ18xXX0gPSBDXzEiXSxbMCwyLCJcXEdsb2J7S18xJ30iXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0snXzF9IiwyXSxbMSwyLCIoY18wLCBjXzEpIFxcbWFwc3RvIGNfMSJdLFswLDIsIkpfMSIsMV0sWzEsOCwiIiwwLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0snXzF9IiwyXSxbMSwyLCIoY18wLCBjXzEpIFxcbWFwc3RvIGNfMSJdLFswLDIsIkpfMSIsMV0sWzEsOCwiIiwwLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	\\
-	{\Glob{K_1'}} && {\Glob{J[K'_1]} = C_1}
+	{K_1} && {C_1}
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{J}{K'_1}}"', from=3-1, to=3-3]
 	\arrow["{(c_0, c_1) \mapsto c_1}", from=1-3, to=3-3]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}"{description}, from=1-1, to=3-3]
-	\arrow[shorten >=7pt, Rightarrow, no head, from=1-3, to=0]
+	\arrow[shorten >=6pt, Rightarrow, no head, from=1-3, to=0]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJcXEdsb2J7Sl8xW0snXzFdfSA9IENfMiJdLFswLDIsIlxcR2xvYntLXzEnfSJdLFsxLDEsIkNfMSJdLFswLDEsIk0gPSBcXGxhbmdsZSBKLCBKXzEgXFxyYW5nbGUiXSxbMCwzLCJQXzAiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMl0sWzEsMiwiKGNfMCwgY18xKSBcXG1hcHN0byBGXzEoY18xKSJdLFswLDQsIkpfMSIsMV0sWzQsMiwiRl8xIiwxXSxbMSw0LCIiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzIiXSxbMCwyLCJLXzEiXSxbMSwxLCJDXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0pfMX17SydfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gRl8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDIsIkZfMSIsMV0sWzEsNCwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	& {C_1} \\
-	{\Glob{K_1'}} && {\Glob{J_1[K'_1]} = C_2}
+	{K_1} && {C_2}
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{J_1}{K'_1}}"', from=3-1, to=3-3]
@@ -458,20 +463,44 @@ This diagram is equivalent to the combination of the following two diagrams, whi
 	\arrow[Rightarrow, no head, from=1-3, to=2-2]
 \end{tikzcd}\]
 
-From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K'_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the diagram for the $C_2$ component, as well as the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$.
+From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K'_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$, as well as the condition of the commutative diagram for the $C_2$ component.
 
-For the latter, we have the chain of equations $J_1[\InteriorGeminal{K}]$ 
+\bigskip
+For the former condition, we have the chain of equations $J_1[\InteriorGeminal{K}]$ 
 
 $ = \InducedHomo{J}{K'_1} [P_0[\InteriorGeminal{K}]] $ 
 
-$= \InducedHomo{J}{K'_1} (\InteriorGeminal{\InteriorGeminal{K}}) $ 
+$= \InducedHomo{J}{K'_1} [\InteriorGeminal{\InteriorGeminal{K}}] $ 
 
 $= \InteriorGeminal{J[\InteriorGeminal{K}]} $ 
 
-$= \InteriorGeminal{\gamma}$.
+$= \InteriorGeminal{\gamma}$. \sTODOinline{Are we sure all these equations are correct?}
 
-As for the former, what we must verify is the following: \TODO
-\closeDetails
+\bigskip
+And as for the final commutativity condition, this follows like so:
+
+% https://q.uiver.app/?q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJLXzEiXSxbNiwwLCJDXzEiXSxbNiwyLCJDXzIiXSxbMiwwLCJLXzEiXSxbMiwyLCJLXzIiXSxbMCwxLCJQXzAiLDJdLFsyLDMsIkZfMSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLJ18xfSIsMl0sWzAsMiwiSl8xIiwwLHsiY3VydmUiOi01fV0sWzEsNSwiXFxJbmR1Y2VkSG9tb3tQXzB9e0snXzF9Il0sWzUsMywiXFxJbmR1Y2VkSG9tb3tKfXtLJ18yfSJdLFs0LDUsIlBfMSJdLFsxLDMsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMix7ImN1cnZlIjo1fV0sWzEwLDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNCwiIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	{K_0} && {K_1} &&&& {C_1} \\
+	\\
+	{K_1} && {K_2} &&&& {C_2}
+	\arrow["{P_0}"', from=1-1, to=3-1]
+	\arrow["{F_1}", from=1-7, to=3-7]
+	\arrow["{P_0}"', from=1-1, to=1-3]
+	\arrow["{\InducedHomo{J}{K'_1}}"', from=1-3, to=1-7]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}", curve={height=-30pt}, from=1-1, to=1-7]
+	\arrow["{\InducedHomo{P_0}{K'_1}}", from=3-1, to=3-3]
+	\arrow["{\InducedHomo{J}{K'_2}}", from=3-3, to=3-7]
+	\arrow["{P_1}", from=1-3, to=3-3]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\InducedHomo{J_1}{K'_1}}"', curve={height=30pt}, from=3-1, to=3-7]
+	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, no head, from=0, to=1-3]
+	\arrow[shorten >=5pt, Rightarrow, no head, from=3-3, to=1]
+\end{tikzcd}\]
+
+In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K'_1} \circ P_0$, and the bottom equation follows from this definition as well \TODOinline{we may wish to clarify the reader's understanding of $\InducedHomo{J}{K'_2}$, which involves a doubly internal structure}. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P'_1] = F'_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \TODOinline{Make sure this all makes sense.}
+
+This completes the proof of the terminality property of $G$.
+\end{proof}
 
 \TODOinline{Observe that the above two co-free constructions can be combined, to find the terminal introspective theory with a suitable lexfunctor into a given lexcategory yielding a given internal geminal category}
 
