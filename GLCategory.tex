@@ -258,6 +258,8 @@ It is immediate in the definition of a strict introspective theory that $C$ is a
 As for $\introN_{C}$, meaning the components of the natural transformation $\introN$ at the objects of $C$, this gives us a $T$-internal lexfunctor from $C$ to $\Hom_C(1, \introS[C]) = \Gamma[\introS[C]]$. This is the fourth ingredient of \magicref{CompactGeminalCatDefn}.
 
 What remains are to verify equations $E_1$ and $E_2$. In this context, $E_1$ is a special case of \magicref{SMatchesN}, while $E_2$ is given by the naturality of $\introN$ with respect to the components of $\introN_C$ themselves.
+
+This completes the construction. We observe furthermore that strict introspective theory homomorphisms are automatically geminal category homomorphisms between the geminal categories obtained by this construction.
 \end{proof}
 
 There is another closely related construction which is of even more importance:
@@ -309,7 +311,7 @@ For simplicity as a first introduction, everything done previously was the speci
 \sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
 \subsection{Modal logic in geminal categories}
-\TODOinline{Rewrite this just in terms of the internal $\Box_C$ in the initial introspective theory, which then automatically applies to arbitrary geminal categories.}
+\TODOinline{Rewrite this just in terms of the internal $\Box_C$ in the initial introspective theory, which then automatically applies to arbitrary geminal categories. Also discuss how \Loeb/'s theorem holds in any geminal category.}
 
 The significance of our constellation of constructions turning introspective theories into geminal categories may be further illuminated by thinking about box notation for geminal categories.
 
@@ -324,21 +326,29 @@ Given an introspective theory $\langle T, C, \introS, \introN \rangle$, if we th
 
 Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-internal geminal category with underlying lexcategory $C$, and then apply the box notation from \magicref{BoxForGeminal}, we find that for $c, d \in C$, we have $\Box(c \implies d) = \Hom_{\introS[C]}(\introN_{\Ob(c)}(c), \introN_{\Ob(c)}(d))$. When $c$ and $d$ are globally defined, we can use \magicref{SMatchesN} to show this equal to $\Hom_{\introS[C]}(\introS(c), \introS(d)) =  \introS(\Hom_C(c, d))$. This exactly matches the definition of $\Box_C (c \implies d)$ used with introspective theories from \magicref{BoxDefn}.
 
-\TODOinline{When $c$ and $d$ are not globally defined, then what? Presumably the box notation should not be well-defined on arbitrary slice categories of a geminal category. But in this last comment, we really mean to be looking at the $\Ob(C)^2$-aspect of $\Box_C$ in an introspective theory.}
+\sTODOinline{When $c$ and $d$ are not globally defined, then what? Presumably the box notation should not be well-defined on arbitrary slice categories of a geminal category. But in this last comment, we really mean to be looking at the $\Ob(C)^2$-aspect of $\Box_C$ in an introspective theory.}
 \end{observation}
 
-\TODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
+\sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
 
-\subsection{Co-free introspective theories}
+\subsection{Co-free introspective theories and geminal categories}
+
+We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
 
 \begin{construction}\label{BoxCoalgebrasInGeminal}
 Let $\langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category. Because $\Box_{C_1}$ is an endolexfunctor, the category of $\Box_{C_1}$-coalgebras is a lexcategory, with its forgetful functor to $C_1$ creating finite limits (by the analogous reasoning to \magicref{CommaCategoryColimits} for inserters rather than comma categories; indeed, this category of coalgebras can be seen as a (non-full) sublexcategory of the comma category $\comma{\id}{\Box_{C_1}}$). As $C_1$ is in fact a strict lexcategory, we can thus equip the category of $\Box_{C_1}$-coalgebras as a strict lexcategory, with its forgetful functor to $C_1$ creating basic limits (note that it is fine here if $\Box_{C_1}$ does not preserve basic limits on the nose; all that mattered was that it preserves finite limits in the non-strict-sense).
 \end{construction}
 
 \begin{construction}
-For any geminal category $C_1$, there is a terminal strict introspective theory equipped with a geminal category homomorphism to $C_1$. This co-free introspective theory admits a tractable explicit description, as a certain subcategory of the coalgebras for $\Box_{C_1}$, suitably equipped.
+Construing strict introspective theories as geminal categories via \magicref{IntrospAsGeminal} gives us a functor from the category of strict introspective theories to the category of geminal categories (or more generally, a functor from the category of $V$-internal strict introspective theories to the category of $V$-internal geminal categories, for any fixed lexcategory $V$). This functor has a right adjoint.
+
+As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction. Indeed, the value of this right adjoint at a geminal category $C_1$ can be given in terms of a suitable subcategory of the $\Box_{C_1}$-coalgebras.
 \end{construction}
 \openDetails
+For linguistic convenience, we discuss the construction with $V$ taken as $\Set$, but it will be manifest that the same explicit construction works for any ambient lexcategory $V$.
+
+We are tasked with showing that, for any geminal category $C_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C_1$.
+
 Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
 
 By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C_1} \circ H$. In detail, this is seen via the following commutative diagram:
@@ -403,7 +413,11 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 \TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
 
 \begin{construction}
-For any strict lexcategory $C_0$ with an internal geminal category $\gamma$, there is a geminal category $G$ equipped with a strict lexfunctor $H : \underlying{G} \to C_0$ satisfying $H[\InteriorGeminal{G}] = \gamma$, which is terminal among all so equipped geminal categories (in the sense that for any other such geminal category $K$ with strict lexfunctor $J : \underlying{K} \to C_0$ satisfying $J[\InteriorGeminal{K}] = \gamma$, there is a unique geminal category homomorphism $M : K \to G$ such that $H \circ M = J$). This co-free $G$ admits a tractable explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped.
+Consider the functor from the category of geminal categories to the category of strict lexcategories with a designated internal geminal category, given by sending any geminal category $G$ to the strict lexcategory $|G|$ with internal geminal category $\InteriorGeminal{G}$. This functor has a right adjoint.
+
+In other words, for any strict lexcategory $C_0$ with an internal geminal category $\gamma$, there is a geminal category $G$ equipped with a strict lexfunctor $H : \underlying{G} \to C_0$ satisfying $H[\InteriorGeminal{G}] = \gamma$, which is terminal among all so equipped geminal categories (in the sense that for any other such geminal category $K$ with strict lexfunctor $J : \underlying{K} \to C_0$ satisfying $J[\InteriorGeminal{K}] = \gamma$, there is a unique geminal category homomorphism $M : K \to G$ such that $H \circ M = J$).
+
+This co-free $G$ admits an explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped. (Indeed, just as before, this whole construction can be carried out internal to an arbitrary ambient lexcategory.)
 \end{construction}
 \openDetails
 Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
@@ -436,7 +450,7 @@ Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, adapted to this context, w
 
 This diagram commutes just in case both of the following diagrams commute, which separately consider its $C_1$ and $C_2$ components:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0snXzF9IiwyXSxbMSwyLCIoY18wLCBjXzEpIFxcbWFwc3RvIGNfMSJdLFswLDIsIkpfMSIsMV0sWzEsOCwiIiwwLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0snXzF9IiwyXSxbMSwyLCIoY18wLCBjXzEpIFxcbWFwc3RvIGNfMSJdLFswLDIsIkpfMSIsMV1d
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	\\
@@ -445,11 +459,10 @@ This diagram commutes just in case both of the following diagrams commute, which
 	\arrow["{P_0}"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{J}{K'_1}}"', from=3-1, to=3-3]
 	\arrow["{(c_0, c_1) \mapsto c_1}", from=1-3, to=3-3]
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}"{description}, from=1-1, to=3-3]
-	\arrow[shorten >=6pt, Rightarrow, no head, from=1-3, to=0]
+	\arrow["{J_1}"{description}, from=1-1, to=3-3]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzIiXSxbMCwyLCJLXzEiXSxbMSwxLCJDXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0pfMX17SydfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gRl8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDIsIkZfMSIsMV0sWzEsNCwiIiwxLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzIiXSxbMCwyLCJLXzEiXSxbMSwxLCJDXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0pfMX17SydfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gRl8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDIsIkZfMSIsMV1d
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	& {C_1} \\
@@ -460,8 +473,9 @@ This diagram commutes just in case both of the following diagrams commute, which
 	\arrow["{(c_0, c_1) \mapsto F_1(c_1)}", from=1-3, to=3-3]
 	\arrow["{J_1}"{description}, from=1-1, to=2-2]
 	\arrow["{F_1}"{description}, from=2-2, to=3-3]
-	\arrow[Rightarrow, no head, from=1-3, to=2-2]
 \end{tikzcd}\]
+
+In each of the above diagrams, the top-right triangle trivially commutes, so the commutativity condition for the overall square is equivalent to the commutativity of the bottom-left triangle.
 
 From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K'_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$, as well as the condition of the commutative diagram for the $C_2$ component.
 
@@ -479,25 +493,25 @@ $= \InteriorGeminal{\gamma}$. \sTODOinline{Are we sure all these equations are c
 \bigskip
 And as for the final commutativity condition, this follows like so:
 
-% https://q.uiver.app/?q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJLXzEiXSxbNiwwLCJDXzEiXSxbNiwyLCJDXzIiXSxbMiwwLCJLXzEiXSxbMiwyLCJLXzIiXSxbMCwxLCJQXzAiLDJdLFsyLDMsIkZfMSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLJ18xfSIsMl0sWzAsMiwiSl8xIiwwLHsiY3VydmUiOi01fV0sWzEsNSwiXFxJbmR1Y2VkSG9tb3tQXzB9e0snXzF9Il0sWzUsMywiXFxJbmR1Y2VkSG9tb3tKfXtLJ18yfSJdLFs0LDUsIlBfMSJdLFsxLDMsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMix7ImN1cnZlIjo1fV0sWzEwLDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNCwiIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% https://q.uiver.app/?q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJLXzEiXSxbNSwwLCJDXzEiXSxbNSwyLCJDXzIiXSxbMiwwLCJLXzEiXSxbMiwyLCJLXzIiXSxbMCwxLCJQXzAiLDJdLFsyLDMsIkZfMSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLJ18xfSIsMl0sWzAsMiwiSl8xIiwwLHsiY3VydmUiOi01fV0sWzEsNSwiXFxJbmR1Y2VkSG9tb3tQXzB9e0snXzF9Il0sWzUsMywiXFxJbmR1Y2VkSG9tb3tKfXtLJ18yfSJdLFs0LDUsIlBfMSJdLFsxLDMsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMix7ImN1cnZlIjo1fV0sWzEwLDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNCwiIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 \[\begin{tikzcd}
-	{K_0} && {K_1} &&&& {C_1} \\
+	{K_0} && {K_1} &&& {C_1} \\
 	\\
-	{K_1} && {K_2} &&&& {C_2}
+	{K_1} && {K_2} &&& {C_2}
 	\arrow["{P_0}"', from=1-1, to=3-1]
-	\arrow["{F_1}", from=1-7, to=3-7]
+	\arrow["{F_1}", from=1-6, to=3-6]
 	\arrow["{P_0}"', from=1-1, to=1-3]
-	\arrow["{\InducedHomo{J}{K'_1}}"', from=1-3, to=1-7]
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}", curve={height=-30pt}, from=1-1, to=1-7]
+	\arrow["{\InducedHomo{J}{K'_1}}"', from=1-3, to=1-6]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}", curve={height=-30pt}, from=1-1, to=1-6]
 	\arrow["{\InducedHomo{P_0}{K'_1}}", from=3-1, to=3-3]
-	\arrow["{\InducedHomo{J}{K'_2}}", from=3-3, to=3-7]
+	\arrow["{\InducedHomo{J}{K'_2}}", from=3-3, to=3-6]
 	\arrow["{P_1}", from=1-3, to=3-3]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "{\InducedHomo{J_1}{K'_1}}"', curve={height=30pt}, from=3-1, to=3-7]
-	\arrow[shorten <=5pt, shorten >=5pt, Rightarrow, no head, from=0, to=1-3]
-	\arrow[shorten >=5pt, Rightarrow, no head, from=3-3, to=1]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "{\InducedHomo{J_1}{K'_1}}"', curve={height=30pt}, from=3-1, to=3-6]
+	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, no head, from=0, to=1-3]
+	\arrow[shorten >=4pt, Rightarrow, no head, from=3-3, to=1]
 \end{tikzcd}\]
 
-In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K'_1} \circ P_0$, and the bottom equation follows from this definition as well \TODOinline{we may wish to clarify the reader's understanding of $\InducedHomo{J}{K'_2}$, which involves a doubly internal structure}. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P'_1] = F'_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \TODOinline{Make sure this all makes sense.}
+In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K'_1} \circ P_0$, and the bottom equation follows from this definition as well \sTODOinline{we may wish to clarify the reader's understanding of $\InducedHomo{J}{K'_2}$, which involves a doubly internal structure}. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P'_1] = F'_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \TODOinline{Make sure this all makes sense.}
 
 This completes the proof of the terminality property of $G$.
 \end{proof}
@@ -507,7 +521,9 @@ This completes the proof of the terminality property of $G$.
 \subsection{Recap}
 \TODO
 
-\TODOinline{Close this chapter with a discussion of how, in many contexts in mathematics, it is the geminal categories (the $\Glob{C}$) which seem to play a more primary role than the introspective theories (the $T$). For example, we are typically more interested in the full syntactic category of PA than the $\Sigma_1$-restricted syntactic category, or in presheaves on the discrete set of worlds (including arbitrary subsets of worlds as propositions) rather than specifically those presheaves which respect the accessibility relation (restricting us to only the \quote{open} propositions). Why, then, has our development of ideas in this document focused on introspective theories rather than geminal categories? This is partly a matter of taste. We could have taken geminal categories as the fundamental notion, and not considered any introspective theory other than the theory of geminal categories. We could still derive \Loeb/'s theorem for geminal categories and so on. But the definition of introspective theories is much cleaner than that of geminal categories, and permits this extraction of the definition of geminal categories as its initial model, which is a beautiful result, helping to motivate the definition of geminal categories. Having the three- or four-axiom concept of an introspective theory also sometimes helps us more easily recognize that an example is a geminal category, without having to verify the six axioms of a geminal category directly. Also, having the concept of introspective theories clarifies which presheaves we can apply Löb's theorem (or \magicref{IntrospTyConFixedPoints}) to. To emphasize this last point, it would be very useful to have an explicit example of a presheaf on a geminal category which we CANNOT apply Löb's theorem to (or perhaps cannot even make sense of the box operator applied to).}
+\TODOinline{Close this chapter with a discussion of how, in many contexts in mathematics, it is the geminal categories (the $\Glob{C}$) which seem to play a more primary role than the introspective theories (the $T$). For example, we are typically more interested in the full syntactic category of PA than the $\Sigma_1$-restricted syntactic category, or in presheaves on the discrete set of worlds (including arbitrary subsets of worlds as propositions) rather than specifically those presheaves which respect the accessibility relation (restricting us to only the \quote{open} propositions). Why, then, has our development of ideas in this document focused on introspective theories rather than geminal categories? This is partly a matter of taste. We could have taken geminal categories as the fundamental notion, and not considered any introspective theory other than the theory of geminal categories. We could still derive \Loeb/'s theorem for geminal categories and so on. But the definition of introspective theories is much cleaner than that of geminal categories, and permits this extraction of the definition of geminal categories as its initial model, which is a beautiful result, helping to motivate the definition of geminal categories. Having the three- or four-axiom concept of an introspective theory also sometimes helps us more easily recognize that an example is a geminal category, without having to verify the six axioms of a geminal category directly. Also, having the concept of introspective theories clarifies which presheaves we can apply Löb's theorem (or \magicref{IntrospTyConFixedPoints}) to. To emphasize this last point, it would be very useful to have an explicit example of a presheaf on a geminal category which we CANNOT apply Löb's theorem to (or perhaps cannot even make sense of the box operator applied to).
+
+We should have a discussion section on comparing and contrasting introspective theories and geminal categories, and the motivation to study both and their relation.}
 
 \sTODOinline{Demonstrate that we do NOT get Loeb's theorem internal to a geminal category G for arbitrary presheaves P on \underlying{G'}, thus demonstrating the necessity of the presheaf existing within an introspective theory. The presheaf needs to be parametrized by a parameter from an object of an enclosing introspective theory. So P(S(X)) |- []P(S(X)) is available.}
 
