@@ -345,7 +345,7 @@ Construing strict introspective theories as geminal categories via \magicref{Int
 As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction. Indeed, the value of this right adjoint at a geminal category $C_1$ can be given in terms of a suitable subcategory of the $\Box_{C_1}$-coalgebras.
 \end{construction}
 \openDetails
-For linguistic convenience, we discuss the construction with $V$ taken as $\Set$, but it will be manifest that the same explicit construction works for any ambient lexcategory $V$.
+For linguistic convenience, we shall in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
 
 We are tasked with showing that, for any geminal category $C_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C_1$.
 
@@ -411,6 +411,10 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 ----
 
 \TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
+
+\begin{corollary}
+As left adjoints preserve initial objects, the above tells us that the initial strict introspective theory (which we described in \magicref{InitialIntrospectiveTheory}) is also the initial geminal category.
+\end{corollary}
 
 \begin{construction}
 Consider the functor from the category of geminal categories to the category of strict lexcategories with a designated internal geminal category, given by sending any geminal category $G$ to the strict lexcategory $|G|$ with internal geminal category $\InteriorGeminal{G}$. This functor has a right adjoint.
