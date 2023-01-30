@@ -108,7 +108,7 @@ Almost all the results we discuss for introspective theories admit straightforwa
 
 Let us now finally give the example-oriented reader a nontrivial example of an introspective theory by which to orient themselves. (On the other hand, the reader who prefers to consider abstract definitions without immediately diving into worked out examples of a highly concrete flavor may skip any or all of this section at this introductory time if they find its details a distraction. To each reader at their own taste!).
 
-\subsubsection{Example based on a traditional logical theory}
+\subsubsection{Example based on a traditional logical theory}\label{ZFFiniteSection}
 In this subsection, we will give two closely related examples. The first example we present is somewhat atypical of general introspective theories, but important nonetheless. It is very similar to the arithmetic universe constructions considered by Joyal in his account of \Godel/'s incompleteness theorem and by others following up on this (Joyal himself never published this work, but a detailed account has been given in \autocite{van2020g}, building off the formalization of the initial arithmetic universe given in \autocite{maietti10a}). 
 
 Although very similar, the category we use in this first example is not exactly the same as the initial arithmetic universe considered in \autocite{van2020g} and \autocite{maietti10a}. The variant and presentation we give is intended to feel natural to an audience of traditional logicians. The connection of this construction to the initial arithmetic universe will be discussed in more detail later at \magicref{Sigma1ModelIAUConnection}.
@@ -223,8 +223,9 @@ In both examples in this section, we first construct a locally introspective the
 
 All the constructions in this section are unified and vastly generalized in \magicref{GeneralPresheafLocalIntrosp} and \magicref{CardinalityConstrainedPresheafIntrosp}.
 
-\paragraph{Presheaf example related to step-indexing in guarded recursion}
+\paragraph{Presheaf example related to step-indexing in guarded recursion}\label{StepIndexingSection}
 
+\bigskip
 We present this example in terms of presheaves over the natural numbers (which comprise the so-called topos of trees), but analogous examples may be constructed for presheaves over arbitrary categories; see the generalization at \magicref{ModelsBasedOnPresheafCategories}. We focus on presheaves over the natural numbers in this introductory example as it is perhaps the simplest nontrivial presheaf category to consider, and also as the \quote{later} modality on the topos of trees which is at the core of this example is much studied in the literature on guarded recursion (e.g., as in \cite{birkedal2011first}).
 
 \begin{construction}\label{StepIndexingLocallyIntrosp}
@@ -297,8 +298,9 @@ We now flesh $\langle \PshUnder, C'\rangle$ out into an introspective theory, by
 This completes the description of $\langle \PshUnder, C' \rangle$ as an introspective theory  (relative to any suitable choice of the $\{\Set_n\}_{n \in \omega}$).
 \end{construction}
 
-\paragraph{Presheaf examples related to Kripke frames}
+\paragraph{Presheaf examples related to Kripke frames}\label{KripkeFrameSection}
 
+\bigskip
 Here, we consider examples of locally introspective and introspective theories based on Kripke frames. Of note, our first construction of a locally introspective theory works for any transitive Kripke frame (corresponding to the K4 modal logic). When we attempt to make an introspective theory of this by imposing cardinality constraints, we will find we are only able to do this if the transitive Kripke frame is furthermore well-founded (corresponding to the GL modal logic).
 
 \begin{construction}\label{KripkeLocallyIntrosp}

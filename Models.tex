@@ -7,9 +7,9 @@ In previous chapters, we have defined introspective theories and geminal categor
 
 There are two broad classes of models/examples of note in this chapter:
 
-Firstly, there are those which are similar in flavor to the traditional instances of \Goedel/ian phenomena studied in logic. These are based on logical theories which have some internal ability to discuss themselves, such as Peano Arithmetic, or higher-order intuitionistic logic, or the like. Here, it has long been recognized that \Goedel/ian phenomena arise at the propositional level, but the full phenomenon of guarded recursion which we proved for introspective theories in \TODO in has not been noted in these contexts before. We also give an example of a model of this sort which goes well beyond computability or even countability, thus beyond many traditional approaches to presenting the \Goedel/ian phenomena in logic.
+Firstly, there are those which are similar in flavor to the traditional instances of \Goedel/ian phenomena studied in logic. These are based on logical theories which have some internal ability to discuss themselves, such as Peano Arithmetic, or higher-order intuitionistic logic, or the like. Here, it has long been recognized that \Goedel/ian phenomena arise at the propositional level, but the full phenomenon of guarded recursion for types and terms which we proved for introspective theories in \magicref{IntrospTyConFixedPoints} and \magicref{IntrospLoeb} has not been noted in these contexts before. We also give an example of a model of this sort which goes well beyond computability or even countability, thus beyond many traditional approaches to presenting the \Goedel/ian phenomena in logic.
 
-The second class of models/examples we consider are based on presheaves over categories with a suitably well-founded subset of morphisms. Here, the existence of guarded recursion is straightforward, but it is the unification with our general theory which is of note. Among these models are examples like step-indexing in the topos of trees, the canonical model discussed in the literature on guarded recursion. Distinct from this are also models which capture the traditional interpretation of GL modal logic in well-founded transitive Kripke frames. We stress that we are able with these latter models to faithfully interpret traditional Boolean GL modal logic, unlike step-indexing in the topos of trees, which validates the sentence $\neg \neg \Box 0$. \TODOinline{Clarify what we mean by this. Connect to the archetypal examples from the beginning.}
+The second class of models/examples we consider are based on presheaves over categories with a suitably well-founded subset of morphisms. Here, the existence of guarded recursion is straightforward, but it is the unification with our general theory which is of note. Among these models are examples like step-indexing in the topos of trees, the canonical model discussed in the literature on guarded recursion. Distinct from this are also models which capture the traditional interpretation of GL modal logic in well-founded transitive Kripke frames. We stress that we are able with these latter models to faithfully interpret traditional Boolean GL modal logic, unlike step-indexing in the topos of trees, whose non-Boolean logic validates such sentences as $\neg \neg \Box 0$ which are not theorems of GL.
 
 \subsection{The main initiality-based construction}
 \begin{construction}\label{SpecialInitialIntrosp}
@@ -20,14 +20,15 @@ Then we obtain a unique lexfunctor $\introS \in Special(T, \Glob{C})$, by the in
 Furthermore, by \magicref{CommaKanStrongSigmesque}, we have that $\id_T$ is initial within $\LexCat(T, T)$. Thus, in particular, there is a unique natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$. In this way, we obtain an introspective theory $\langle T, C, \introS, \introN \rangle$.
 \end{construction}
 
-\TODOinline{What was the following theorem for? We don't seem to use it anywhere. It seems we wanted it to illustrate the significance of the above construction, as an initial object among \quote{special} introspective theories. We should perhaps note that significance in words explicitly as well, then. But this calls for talking about introspective theory homomorphisms in a non-strict sense, something we've largely avoided. We can describe this informally in passing, I suppose.}
+\sTODOinline{What was the following theorem for? We don't seem to use it anywhere. It seems we wanted it to illustrate the significance of the above construction, as an initial object among \quote{special} introspective theories. We should perhaps note that significance in words explicitly as well, then. But this calls for talking about introspective theory homomorphisms in a non-strict sense, something we've largely avoided. We can describe this informally in passing, I suppose.}
+
 \begin{theorem}\label{SpecialInitialIntrospIsInitial}
 Let $Special$ and $\langle T, C, \introS, \introN \rangle$ be given as in \magicref{SpecialInitialIntrosp} above.
 
-Consider also any other introspective theory $\langle T', C', \introS', \introN' \rangle$ such that $\introS' : T' \to \Glob{C'}$ lives in $Special$. By the initiality of $T$ within $Special$, we get a unique special lexfunctor $H : T \to T'$. If this $H$ is such that $H[C] = C'$, then this $H$ is also an introspective theory homomorphism (in the sense of \TODOinline{cite}). The condition that $H$ interacts appropriately with $\introS$ and $\introS'$ is automatic by the initiality of $T$ within $Special$. Furthermore, the condition that $H$ interacts appropriately with $\introN$ and $\introN'$ is automatic by the fact that $H$ is initial within $\LexCat(T, T')$, thanks to \magicref{CommaKanStrongSigmesque}.
+Consider also any other introspective theory $\langle T', C', \introS', \introN' \rangle$ such that $\introS' : T' \to \Glob{C'}$ lives in $Special$. By the initiality of $T$ within $Special$, we get a unique special lexfunctor $H : T \to T'$. If this $H$ is such that $H[C] = C'$, then this $H$ is also an introspective theory homomorphism (in the sense of \magicref{StrictIntrospHomoDefn}, suitably modified for the non-strict context). The condition that $H$ interacts appropriately with $\introS$ and $\introS'$ is automatic by the initiality of $T$ within $Special$. Furthermore, the condition that $H$ interacts appropriately with $\introN$ and $\introN'$ is automatic by the fact that $H$ is initial within $\LexCat(T, T')$, thanks to \magicref{CommaKanStrongSigmesque}.
 \end{theorem}
 
-\subsection{Self-initializing and super-initializing theories}
+\subsection{Self-initializing and super-initializing theories}\label{SelfInitializingSection}
 \subsubsection{The initial model as a geminal category}
 \begin{construction}\label{InitoGeminalYieldsGeminal}
 Suppose given some lexcategory $Th$ (the theory of \quote{gadgets}), along with a lexcategory $C$ internal to $Th$ (the underlying lexcategory of a gadget).
@@ -88,7 +89,7 @@ Thus, any finitely axiomatizable extension of the theory of arithmetic universes
 
 This immediately gives us many examples of geminal categories using the above construction. For example, as one random example among myriad, we can obtain a geminal category $\langle G_1, G_2 \rangle$ where $G_1$ is the initial cartesian closed arithmetic universe and $G_2$ is its internal initial NNO-topos satisfying the internal axiom of choice.
 
-\TODOinline{Note that when a theory is super-initializing, then we have that in the geminal category $\gamma = \langle G_1 G_2; F_1, F_2 \rangle$, $G_3 = F_1[G_2]$ is also an initial supergadget internal to $G_2$, and $F_3 = F_1[F_2]$ is a supergadget homomorphism. Thus, $\InteriorGeminal{\gamma}$ is itself given by the same construction of a geminal category for the self-initializing theory of supergadgets.}
+\sTODOinline{Note that when a theory is super-initializing, then we have that in the geminal category $\gamma = \langle G_1 G_2; F_1, F_2 \rangle$, $G_3 = F_1[G_2]$ is also an initial supergadget internal to $G_2$, and $F_3 = F_1[F_2]$ is a supergadget homomorphism. Thus, $\InteriorGeminal{\gamma}$ is itself given by the same construction of a geminal category for the self-initializing theory of supergadgets.}
 
 We have discussed all this just in the context of geminal categories, but this extends to give analogous constructions of introspective theories as well. We discuss these next.
 
@@ -119,7 +120,7 @@ There is an extension of the above construction to super-initializing theories. 
 \begin{construction}
 Let $i : Th \to Th'$ be a lexfunctor, such that models of $Th$ are considered gadgets, models of $Th'$ are considered supergadgets, and via $i$ every supergadget is thought of as having an underlying gadget.
 
-Given a lexcategory $L$, we will say that a $Th'$-initial model of $Th$ in $L$ is an internal gadget $\alpha$ in $L$, along with, for every internal supergadget $\beta$ in $L$, a chosen gadget homomorphism from $h_\beta : \alpha \to \beta$, such that furthermore, these chosen homomorphisms are closed under postcomposition with supergadget homomorphisms (that is, for any supergadget homomorphism $f : \beta \to \beta'$ in $L$, we have that $f \circ h_{\beta} = h_{\beta'}$, as gadget homomorphisms). \TODOinline{Illustrate this diagrammatically}. Note that this structure is NOT given by a universal property! There may be multiple non-equivalent ways to choose such structure within $L$.
+Given a lexcategory $L$, we will say that a $Th'$-initial model of $Th$ in $L$ is an internal gadget $\alpha$ in $L$, along with, for every internal supergadget $\beta$ in $L$, a chosen gadget homomorphism from $h_\beta : \alpha \to \beta$, such that furthermore, these chosen homomorphisms are closed under postcomposition with supergadget homomorphisms (that is, for any supergadget homomorphism $f : \beta \to \beta'$ in $L$, we have that $f \circ h_{\beta} = h_{\beta'}$, as gadget homomorphisms). \sTODOinline{Illustrate this diagrammatically}. Note that this structure is NOT given by a universal property! There may be multiple non-equivalent ways to choose such structure within $L$.
 
 We may define a 2-category $Special$ whose objects are lexcategories along with a choice of $Th'$-initial models of $Th$ in these lexcategories. The 1-cells of $Special$ will be lexfunctors which preserve these $Th'$-initial models of $Th$, in the sense of taking designated gadgets and homomorphisms to designated gadgets and homomorphisms. 2-cells between these are just ordinary natural transformations. There is an obvious 2-functor from this $Special$ to $\LexCat$.
 
@@ -133,10 +134,10 @@ By a modification of \magicref{CommaKan}, we find a unique way to equip $\comma{
 
 Then we may apply a modification of \magicref{CommaKanStrongSigmesque} to conclude that the identity on $A$ has a unique natural transformation into $f_Y$ whose induced action on $G$ is a designated homomorphism.
 
-\TODOinline{Clean up this entire writeup. Or maybe scrap this theorem for the time being, since no one will care about it?}
+\sTODOinline{Clean up this entire writeup. Or maybe scrap this theorem for the time being, since no one will care about it?}
 \end{construction}
 
-\subsubsection{A self-initializing theory with uncountable and uncomputable flavor}
+\subsubsection{A self-initializing theory with uncountable and uncomputable flavor}\label{ToposWithCountableProductsSection}
 \TODOinline{Note that all our arguments concerning self-initializing theories immediately adapt just as well to self-initializing countably lex theories.
 
 Thus, let us consider a particular example of a self-initializing countably lex theory. Consider toposes with countable (co)products. Any such topos has an internal free topos with countable (co)products as well, with internal and external views coinciding on what things have or preserve countable coproducts. Thus, the (countably lex) theory of such toposes is self-initializing (qua countably lex theory), and in this way we obtain a geminal category (the free such topos) and an introspective theory (the initial object within the category of countably lex categories with initial internal such toposes).}
@@ -147,17 +148,18 @@ Thus, let us consider a particular example of a self-initializing countably lex 
 
 \sTODOinline{A self-initializing theory with countable but uncomputable flavor}
 
-\subsection{The initial arithmetic universe}
+\subsection{The initial arithmetic universe}\label{IAUSection}
 \begin{construction}\label{IAUAsIntrospGeneral}
 Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic universe internal to $\IAU$. Then by the combination of \magicref{SpecialInitialIntrosp} and \magicref{CommaStableArithmetic}, we obtain an introspective theory $\langle \IAU, C, \introS, \introN \rangle$ in which $\introS : \IAU \to \Glob{C}$ is the unique such arithmetic functor, and the natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$ is uniquely determined.
 \end{construction}
 
 \begin{observation}
-Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe internal to $\IAU$ (which exists thanks to \magicref{AUInternalInitialFinite} and \magicref{NNOToposAndAUAreFinitelyAxiomatized}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
-\end{observation}
-\TODOinline{Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence, since the global sections functor on $\IAU$ is also the unique arithmetic functor to $\Set$ (as both are initial among lexfunctors), so that $\Glob{\IAU'} = \IAU$, which has the identity as its only endoarithmetic functor.}
+Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe $\IAU'$ internal to $\IAU$ (which exists thanks to \magicref{AUInternalInitialFinite} and \magicref{NNOToposAndAUAreFinitelyAxiomatized}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
 
-Note that nothing was special about the initial arithmetic universe for \magicref{IAUAsIntrospGeneral}; it was just an invocation of our general construction \magicref{SpecialInitialIntrosp}. We could similarly construct introspective theories using initial objects of any kind of structure left comma-stable over $\LexCat$, given any structure of the same kind internal to the initial one. What's noteworthy about $\IAU$ is just that it happens to actually contain interesting internal structures (such as internal categories corresponding to Peano Arithmetic, to ZFC, to the initial internal arithmetic universe, etc), whereas the initial lexcategory, or initial regular category, or initial lexcategory with finite pullback-stable colimits, or such things, all have a paucity of interesting internal structures.
+Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence. This is because the global sections functor $\Hom_{\IAU}(1, -) : \IAU \to \Set$ is an arithmetic functor, by \magicref{GlobalIsArithmeticOnIAU}. Thus, as arithmetic functors preserve the initial internal models obtained by \magicref{AUInternalInitialFinite}, we have that $\Glob{\IAU'} = \IAU$. Thus, the unique arithmetic functor from $\IAU$ to $\Glob{\IAU'}$ [which we have taken as $\introS$] is an equivalence.
+\end{observation}
+
+Note that little was uniquely special about the initial arithmetic universe $\IAU$ for being able to be equipped as an introspective theory in this manner. It was just an invocation of our general construction \magicref{SpecialInitialIntrosp}. We could similarly construct introspective theories using initial objects of any kind of structure left comma-stable over $\LexCat$, given any structure of the same kind internal to the initial one. What's noteworthy about $\IAU$ is just that it happens to actually contain interesting internal structures (such as internal categories corresponding to Peano Arithmetic, to ZFC, to the initial internal arithmetic universe, etc), whereas the initial lexcategory, or initial regular category, or initial lexcategory with finite pullback-stable colimits, or such things, all have a paucity of interesting internal structures.
 
 We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding example of an introspective theory based on traditional logical theories, from \magicref{SigmaModelComplex}.
 
@@ -167,7 +169,7 @@ The introspective theory described in \magicref{SigmaModelComplex} is the maxima
 \begin{proof}
 Recall the categories $\Zfin$ and $\ZfinSigma$ from \magicref{SigmaModelComplex}. Here, $\Zfin$ is an exact category whose objects and morphisms correspond to definable classes and graphs of functions between these in the theory ZF-Finite, with morphisms taken modulo provable equality in ZF-Finite. While $\ZfinSigma$ is the subcategory of $\Zfin$ where the definability conditions are further restricted to $\Sigma_1$-definability.
 
-It is readily verified that $\Zfin$ is an arithmetic universe. Thus, there is a unique arithmetic functor $!_{\Zfin} : \IAU \to \Zfin$. Let $M$ be the set of morphisms in $\IAU$ which are taken to isomorphisms by this $!_{\Zfin}$. By \magicref{ArithmeticLocalization}, this $!_{\Zfin}$ factors uniquely through the arithmetic localization $\IAU[M^{-1}]$. \TODOinline{Illustrate}. Using \magicref{IsLexLocalizationLemma}, it is straightforwardly, if tediously, verified that this $\IAU[M^{-1}]$ is in fact $\ZfinSigma$, with $!_{\Zfin}$ thus being the unique arithmetic functor from $\IAU$ to $\ZfinSigma$ followed by the inclusion from $\ZfinSigma$ to $\Zfin$. That is to say, the role played by the $\Sigma_1$ constraints in defining $\ZfinSigma$ is precisely to make $\ZfinSigma$ an arithmetic localization of $\IAU$.
+It is readily verified that $\Zfin$ is an arithmetic universe. Thus, there is a unique arithmetic functor $!_{\Zfin} : \IAU \to \Zfin$. Let $M$ be the set of morphisms in $\IAU$ which are taken to isomorphisms by this $!_{\Zfin}$. By \magicref{ArithmeticLocalization}, this $!_{\Zfin}$ factors uniquely through the arithmetic localization $\IAU[M^{-1}]$. \sTODOinline{Illustrate}. Using \magicref{IsLexLocalizationLemma}, it is straightforwardly, if tediously, verified that this $\IAU[M^{-1}]$ is in fact $\ZfinSigma$, with $!_{\Zfin}$ thus being the unique arithmetic functor from $\IAU$ to $\ZfinSigma$ followed by the inclusion from $\ZfinSigma$ to $\Zfin$. That is to say, the role played by the $\Sigma_1$ constraints in defining $\ZfinSigma$ is precisely to make $\ZfinSigma$ an arithmetic localization of $\IAU$.
 
 \newcommand{\IAUGlob}{\mathrm{Glob}_{\IAU}}
 Note also that, as $\Zfin$ and $\ZfinSigma$ are both computably enumerable arithmetic universes internal to $\Set$, we find, in keeping with \magicref{ComputableMeansIAUInternal}, that these are the images in $\Set$ of arithmetic universes internal to the initial arithmetic universe $\IAU$. That is, letting $\IAUGlob$ be the unique arithmetic functor from $\IAU$ to $\Set$ (which is the same as the global sections functor $\Hom_{\IAU}(1, -)$, thanks to \magicref{GlobalIsArithmeticOnIAU}), we have arithmetic universes $\IAUGlob^{-1}[\Zfin]$ and $\IAUGlob^{-1}[\ZfinSigma]$ such that the images of these under $\IAUGlob$ are $\Zfin$ and $\ZfinSigma$, respectively.
@@ -185,7 +187,7 @@ This concludes the proof.
 
 Clearly, there is nothing special about ZF-Finite in the above. From any traditional computably enumerable logical theory extending, say, Peano Arithmetic (though even this is much stronger than necessary), we get a computably enumerable arithmetic universe in the style of $\InnerZfin$, which is coded by some arithmetic universe $C$ internal to $\IAU$. For example, we can do this with ZFC, or vNBG, or ZFC + \quote{ZFC is not consistent}, or any such thing. For each of these, we get correspondingly an introspective theory $\langle IAU, C \rangle$ via \magicref{IAUAsIntrospGeneral}, whose maximal localization (in the sense of \magicref{LocalizeIntrosp}) is perfectly analogous to the introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$ from \magicref{SigmaModelComplex}. Also, by looking at $\Glob{C}$ within this introspective theory $\langle IAU, C \rangle$, we also obtain in each such case a suitable geminal category whose underlying lexcategory is the one whose objects and morphisms correspond to arbitrary definable classes and definable graphs of functions between them modulo provable equivalence in the chosen logical theory.
 
-\TODOinline{Observe that in this section we constructed the initial arithmetic universe as an introspective theory. This is different in flavor from the previous section, where we constructed the initial NNO-topos or the like not as an introspective theory but as a geminal category.}
+\sTODOinline{Observe that in this section we constructed the initial arithmetic universe as an introspective theory. This is different in flavor from the previous section, where we constructed the initial NNO-topos or the like not as an introspective theory but as a geminal category.}
 
 \subsection{Models based on presheaf categories}\label{ModelsBasedOnPresheafCategories}
 In this section, we will develop an introspective theory construction which unifies and vastly generalizes \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
@@ -233,7 +235,7 @@ But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a 
 
 The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
 
-\TODOinline{Improve notation and readability throughout the following.}
+\sTODOinline{Improve notation and readability throughout the following.}
 
 \newcommand{\KFiberPsh}[2]{\mathrm{RPsh}_{#1}(#2)}
 
@@ -409,9 +411,8 @@ Thus, when the $<$ relation corresponding to $\SpecialHom_S$ is well-founded, we
 
 \sTODOinline{Observe that this argument depends on the Axiom of Replacement. It would fail in ZFC - Replacement for the same reason that one could not construct $\bigcup_{n \in \nat} \mathcal{P}^n(\nat)$ or $\prod_{n \in \nat} \mathcal{P}^n(\nat)$. For the same reason, guarded recursion at the type level requires the Axiom of Replacement, even in our original non-cardinality-constrained locally introspective theory of presheaves over a well-founded order.}
 
-\TODOinline{Observe that we get \Loeb/'s theorem for our locally introspective theory from \Loeb/'s theorem for our fully introspective theory, by picking sufficiently large ramps for any particular instance.}
+\sTODOinline{Observe that we get \Loeb/'s theorem for our locally introspective theory from \Loeb/'s theorem for our fully introspective theory, by picking sufficiently large ramps for any particular instance.}
 
-\subsection{Recap}
-\TODO
+\sTODOinline{Recap section for this chapter}
 
 \fileend

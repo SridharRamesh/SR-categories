@@ -295,7 +295,9 @@ Finally, the commutative diagram concerning $\introS$ in \magicref{StrictIntrosp
 The conjunction of these conditions clearly is uniquely satisfied by $\gamma$. This completes the proof.
 \end{proof}
 
+\begin{observation}\label{EveryIntrospModelsInitialIntrospRemark}
 Given the result of \magicref{InitialIntrospectiveTheory}, we can rephrase \magicref{IntrospAsGeminal} as telling us that every strict introspective theory is a model of the initial introspective theory, so to speak. In other words, there is a lexfunctor interpreting the initial introspective theory into the theory of strict introspective theories. This is quite remarkable!
+\end{observation}
 
 \subsection{Geminal gadgets}
 We have now successfully described the initial introspective theory. But we can also take our free construction results a bit further than this.
@@ -331,7 +333,7 @@ Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-inter
 
 \sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
 
-\subsection{Co-free introspective theories and geminal categories}
+\subsection{Co-free introspective theories and geminal categories}\label{CofreeGeminalSection}
 
 We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
 
@@ -428,7 +430,7 @@ Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle
 
 Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2, G'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$ internal to $G_0$, with each $G'_n = C'_n \times C'_{n + 1}$ and $\phi'_n = F'_n \times F'_{n + 1}$, for $n \geq 1$.
 
-Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \TODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
+Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \sTODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
 
 We also clearly have a projection lexfunctor $H$ from $\underlying{G} = C_0 \times C_1$ to $C_0$, and by unfolding definitions, this does indeed satisfy $H[\InteriorGeminal{G}] = \gamma$.
 \closeDetails
@@ -515,7 +517,7 @@ And as for the final commutativity condition, this follows like so:
 	\arrow[shorten >=4pt, Rightarrow, no head, from=3-3, to=1]
 \end{tikzcd}\]
 
-In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K'_1} \circ P_0$, and the bottom equation follows from this definition as well \sTODOinline{we may wish to clarify the reader's understanding of $\InducedHomo{J}{K'_2}$, which involves a doubly internal structure}. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P'_1] = F'_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \TODOinline{Make sure this all makes sense.}
+In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K'_1} \circ P_0$, and the bottom equation follows from this definition as well \sTODOinline{we may wish to clarify the reader's understanding of $\InducedHomo{J}{K'_2}$, which involves a doubly internal structure}. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P'_1] = F'_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \sTODOinline{Make sure this all makes sense.}
 
 This completes the proof of the terminality property of $G$.
 \end{proof}

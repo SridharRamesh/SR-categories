@@ -42,7 +42,7 @@ But before we establish this version of \Loeb/'s theorem for introspective theor
 Let $D$ and $E$ be categories with terminal objects, and let $M : D \to E$ and $N : E \to D$ be functors preserving terminal objects. Suppose $NM : D \to D$ has the \Loeb/ property. Then so does $MN : E \to E$. Furthermore, if $NM$ has the \Loeb/ property with uniqueness, then so does $MN$.
 \end{theorem}
 \begin{proof}
-This is by the general theorem \TODOinline{Note as a lemma in Preliminaries?} that fixed points of a composition of functions are in bijection with fixed points of any cyclic rearrangement of that composition. In particular, letting $comp_x(y) = x \circ y$, the fixed points of $\omega_E \mapsto comp_{\loebNeg}(M(N(\omega_E)))$ are in bijection with the fixed points of $\omega_D \mapsto N (comp_{{\loebNeg}}(M(\omega_D)))$, which is to say, of $\omega_D \mapsto comp_{N({\loebNeg})}(N (M (\omega_D)))$.
+This is by the general theorem \sTODOinline{Note as a lemma in Preliminaries?} that fixed points of a composition of functions are in bijection with fixed points of any cyclic rearrangement of that composition. In particular, letting $comp_x(y) = x \circ y$, the fixed points of $\omega_E \mapsto comp_{\loebNeg}(M(N(\omega_E)))$ are in bijection with the fixed points of $\omega_D \mapsto N (comp_{{\loebNeg}}(M(\omega_D)))$, which is to say, of $\omega_D \mapsto comp_{N({\loebNeg})}(N (M (\omega_D)))$.
 
 The latter fixed points must exist (or exist uniquely) if $NM : D \to D$ has the \Loeb/ property (or the \Loeb/ property with uniqueness, respectively), and thus in such cases so do the former fixed points, establishing the corresponding property for $MN : E \to E$.
 \end{proof}
@@ -411,7 +411,7 @@ In other words, the global aspect of $\Box_{\Psh{C}}$ has the \Loeb/ property. K
 
 We can consider the particular case where $P$ is $C$-\repsmall/, just as $\Box P$ is. In other words, where $P(-) = \Hom_C(-, c)$ is the representable presheaf on $C$ represented by some object $c$ of $C$. All traditional accounts of \Loeb/'s theorem are along these lines. But note that we can also just as well consider this \magicref{IntrospLoeb} for non-representable presheaves $P$, a significant generalization of the traditional viewpoint.
 
-Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. \TODOinline{Cite a simple counterexample. For example, any locally cartesian closed category can be trivially equipped as a locally introspective theory, with $\Box_T$ as the identity, but this will only satisfy the \Loeb/ property if we are looking at the terminal category. This is the observation of \magicref{LocallyCartesianLoeb}.} However, we shall see later on that there are some natural examples of locally introspective theories that still have this property. \TODOinline{Perhaps discuss the idea of a locally introspective theory where every object, or indeed every slice, is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property (at every aspect). This can then be related to our archetypal examples of locally introspective theories based on presheaf categories.}
+Although we have just proven that this property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. \sTODOinline{Cite a simple counterexample. For example, any locally cartesian closed category can be trivially equipped as a locally introspective theory, with $\Box_T$ as the identity, but this will only satisfy the \Loeb/ property if we are looking at the terminal category. This is the observation of \magicref{LocallyCartesianLoeb}.} However, we shall see later on that there are some natural examples of locally introspective theories that still have this property. \sTODOinline{Perhaps discuss the idea of a locally introspective theory where every object, or indeed every slice, is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property (at every aspect). This can then be related to our archetypal examples of locally introspective theories based on presheaf categories.}
 
 \begin{corollary}\label{IntrospTransfersEverywhere}
 For any introspective theory $\langle T, C \rangle$, every aspect of $\Box_T$, $\Box_C$, and $\Box_{\Psh{C}}$ has the \Loeb/ property with uniqueness.
@@ -423,7 +423,7 @@ By \magicref{SliceBoxIsAspectBox}, each aspect of any of these $\Box$ functors i
 \end{proof}
 
 \subsection{The self-indexing cannot be \repsmall/, except trivially}\label{NoSmallSelfIndexing}
-\TODOinline{Perhaps move this into another section instead of giving it a dedicated section.}
+\sTODOinline{Perhaps move this into another section instead of giving it a dedicated section.}
 
 \begin{theorem}\label{LocallyCartesianLoeb}
 Let $T$ be any lexcategory, and equip it as an introspective theory $\langle T, C, \introF \rangle = \langle T, T/-, \id \rangle$ by taking $C$ to be $T$'s self-indexing and $\introF$ to be the identity (a la \magicref{TrivialPreIntrosp}). Recall from \magicref{LocallySmallSelfIndexing} that this will be locally introspective (that is, the self-indexing will be locally \repsmall/) precisely when $T$ is locally cartesian closed.
@@ -462,8 +462,7 @@ Recall the introspective theory $\langle \PshUnderQInf, C' \rangle$ from \magicr
 
 \TODOinline{Discussion of \Loeb/'s theorem}
 
-\subsection{Recap}
-\TODO
+\sTODOinline{Have a recap section}
 
 \subsection{Relating variations on Lawvere's fixed point theorem}\label{LawvereFPTReduxSection}
 Although not important for our main narrative, we note here some further comments on the relation of Lawvere's fixed point theorem to generalizations of ours or others.

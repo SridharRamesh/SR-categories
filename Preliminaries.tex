@@ -368,7 +368,7 @@ We now go further in defining a \defined{strict lexcategory}. Here, we mean more
 In the same way, we can also speak of a \defined{strict category with finite products}, or any similar such categorical structure.
 \end{definition}
 
-It is important for us to make this demand of chosen basic limits and their preservation on the nose in order to ensure that $\StrictLexCat$ is the category of models and homomorphisms of an essentially algebraic theory. This will be important to us later (see section \TODO).
+It is important for us to make this demand of chosen basic limits and their preservation on the nose in order to ensure that $\StrictLexCat$ is the category of models and homomorphisms of an essentially algebraic theory (a fact we will make use of in \magicref{GeminalChapter}).
 
 This business of \defined{basic limits} will require more explanation, another technical subtlety. What I mean by this is like so: Consider for example the concept of a category with a terminal object. And now consider the concept of a category with a pair of terminal objects, a terminal object A and a terminal object B. Ordinarily, we would like to say these are equivalent concepts or equivalent theories. They give rise to equivalent 2-categories (of categories with terminal objects, functors taking terminal objects to terminal objects, and natural transformations between these). However, the concept of a strict category with a single chosen terminal object, and the concept of a strict category with two chosen terminal objects A and B, are not equivalent concepts. We can ask questions in the one case that we cannot in the other; for example, in the latter case, we can distinguish between those models in which A and B are equal objects and those models in which A and B are not equal objects, merely isomorphic. This is reflected also in these giving rise to non-equivalent 1-categories of models (in which the objects are strict categories with the designated terminal objects, and the morphisms are functors preserving designated terminal objects on the nose). So when we seek to strictify the concept of a category with a terminal object, we really must make a choice as to how we choose to designate the terminal object; once or multiply.
 
@@ -940,7 +940,7 @@ There is a stronger generalization of the above available to us, though it takes
 Any arithmetic universe has an initial internal model of any finitely axiomatized lex theory. Such initial internal models are furthermore preserved by arithmetic functors.
 \end{theorem}
 \begin{proof}
-This standard result is the motivation for most of the interest in arithmetic universe. It is implicit in \TODOinline{Cite Maetti} and noted explicitly in \TODOinline{other cites}.
+This standard result is the motivation for most of the interest in arithmetic universes. Details for the special case of finite product theories are given in \autocite{maietti05}, which notes also that the same argument can be extended to lex theories. This is also implicit in the constructions of \autocite{maietti03} and \autocite{maietti10a}, and is noted explicitly in \autocite{vickersSlides}.
 \end{proof}
 
 There is also a variant of \magicref{NNOToposInternalInitialFinite} of note:
