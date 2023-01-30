@@ -36,7 +36,7 @@ We will now give a series of related definitions, concerning what are called ind
 
 As we give these definitions, we will also observe a basic stock of theorems about them. Again, we make no claim to originality with these preliminaries. They simply may be useful to remind the reader of, or to give labels to in order to reference as we use them.
 
-The reader who is already very familiar with these notions and just unfamiliar with our conventions of vocabulary is advised to just skim these preliminaries on initial read and then return as needed when faced with unfamiliar vocabulary. Frankly, the reader who is not very familiar with these notions is also given similar advice. No need to spend all one's time reading proofs and details of lemmas up front. It is probably best to read a bit of the preliminaries to get the lay of the land, then go off and read the actual content and come back as needed. But who knows? To each reader, their own reading style may be best. \TODOinline{Figure out exactly the roadmap or reading advice we want to give.}
+The reader who is already very familiar with these notions and just unfamiliar with our conventions of vocabulary is advised to just skim these preliminaries on initial read and then return as needed when faced with unfamiliar vocabulary. Frankly, the reader who is not very familiar with these notions is also given similar advice. No need to spend all one's time reading proofs and details of lemmas up front. It is probably best to read a bit of the preliminaries to get the lay of the land, then go off and read the actual content and come back as needed. But who knows? To each reader, their own reading style may be best. \sTODOinline{Figure out exactly the roadmap or reading advice we want to give.}
 
 The key notion upon which everything else builds is the following:
 
@@ -60,11 +60,11 @@ We say an indexed set is \defined{\repsmall/} (or $T$-\repsmall/, when we wish t
 \end{definition}
 
 \begin{remark}
-This notion is also sometimes referred to with the word \quote{\wordsmall/} in the literature on indexed or fibered categories (especially in derived senses like describing an indexed category as \quote{\wordsmall/} or \quote{locally \wordsmall/}). Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{\wordsmall/} in essentially this way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that representability is equivalent also to the standard notion \quote{tiny}; see \url{https://ncatlab.org/nlab/show/tiny+object#in_presheaf_categories}.
+This notion is also sometimes referred to with the word \quote{\wordsmall/} in the literature on indexed or fibered categories (especially in derived senses like describing an indexed category as \quote{\wordsmall/} or \quote{locally \wordsmall/}). Cf. Definition 7.3.3 in \autocite{jacobs1999categorical}, which uses the word \quote{\wordsmall/} in essentially this way. When the indexing category $T$ has finite limits (or even just splittings of idempotents), note that representability is equivalent also to the standard notion \quote{tiny}; see \autocite{nLabTinyObject}.
 
 But it is perhaps a bit misleading to use \quote{\wordsmall/}-derived terminology here, as this notion is not closed under subobjects. Indeed, what might be considered the \wordsmall/est indexed set, the one which constantly takes the value of the empty set, is never \quote{\wordsmall/} in the sense of being representable!
 
-The analogy of representability to the familiar distinction between \quote{\wordsmall/} sets and non-\quote{\wordsmall/} proper classes is often a fruitful one, motivating this terminology. However, to avoid confusion, we stick with only referring to this notion as \quote{representable} for now. \TODOinline{Reader beware! Previous versions of this document used the word \quote{\wordsmall/} for this notion, and while I think I have caught and transferred all instances of this, there is always the possibility I have missed or reinserted a stray one somewhere.}
+The analogy of representability to the familiar distinction between \quote{\wordsmall/} sets and non-\quote{\wordsmall/} proper classes is often a fruitful one, motivating this terminology. However, to avoid confusion, we stick with only referring to this notion as \quote{representable} for now. \sTODOinline{Reader beware! Previous versions of this document used the word \quote{\wordsmall/} for this notion, and while I think I have caught and transferred all instances of this, there is always the possibility I have missed or reinserted a stray one somewhere.}
 
 When we wish to refer to the distinction between set-sized and proper-class-sized, we will say \quote{\setsmall/}, rather than saying \quote{\wordsmall/}. We will shy away from using the word \quote{\wordsmall/} altogether.
 \end{remark}
@@ -343,9 +343,9 @@ If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullb
 By the reasoning of \magicref{RepSmallRightAdjointFibers}, as applied to the map $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$, although $\Ob(C)$ need not itself be thought of as carrying an equality relation as such.
 \end{proof}
 
-\TODOinline{Discuss how a(n indexed) category has a well-defined (indexed) set of objects modulo isomorphism, i.e., set of isomorphism classes of objects}.
+\sTODOinline{Discuss how a(n indexed) category has a well-defined (indexed) set of objects modulo isomorphism, i.e., set of isomorphism classes of objects}.
 
-\TODOinline{Discuss how a set carries a canonical structure as a strict category, the categories presented by these are discrete categories, and in this way sets are also equivalent to discrete categories. In particular, in this way, an indexed set is the same as an indexed discrete category.}
+\sTODOinline{Discuss how a set carries a canonical structure as a strict category, the categories presented by these are discrete categories, and in this way sets are also equivalent to discrete categories. In particular, in this way, an indexed set is the same as an indexed discrete category.}
 
 \subsection{Strict categories and internal categories}
 These bothers around the ill-defined set of objects of a general indexed category shall take us down some technical digressions for a bit, before we return to our big picture ideas. (Please keep in mind, the nuances of this section mostly do not matter for a big picture understanding. The main part of this document where such details might matter is in being rigorous in our chapter on geminal categories. We recommend that on a first read, the reader ignore all discussion of strictification or distinction between strict and non-strict concepts, in order to pick up the big picture ideas. The reader can then pay attention to these details on later more scrupulous re-reads as desired.)
@@ -405,7 +405,7 @@ We say \defined{\repsmall/ category} to mean a category which is presented by so
 
 Note that all the ordinary constructions of category theory which produce \setsmall/ categories or lexcategories from other such data in fact furthermore produce \repsmall/ categories or \repsmall/ lexcategories from analogous inputs. So this convention does not change very much, except it saves us some pedantry in the scope of some claims we make which might otherwise fail in contexts without the Axiom of Choice (where a random category found in the wild, instead of constructed by hand, could conceivably have finite limits without admitting any presentation with chosen basic limits, or some such pathology).
 
-We note without detailed proof (\TODOinline{Give or cite proofs}) some strictification results which will be useful to us later.
+We note without detailed proof \sTODOinline{Give or cite proofs} some strictification results which will be useful to us later.
 
 \begin{theorem}\label{StrictifyLexfunctor}
 Given a strict lexcategory $D$, a lexcategory $C$, and a lexfunctor $f : C \to D$, there is some strict lexcategory $C'$ and strict lexfunctor $f' : C' \to D$ such that $f$ and $f'$ are equivalent within the slice 2-category $\Cat/D$.
@@ -467,7 +467,7 @@ Furthermore, if $D$ and $C$ are parallel functors from $Y$ to $X$, then a natura
 \begin{proof}
 The first half of the lemma is just the combination of \magicref{FunctorsActOnSlices} and \magicref{CategoryIsGlobalSlices}.
 
-The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), so that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data.
+The second half is also straightforward to mechanically verify when $X$ is a 1-category. This lemma should be understood as a triviality. But we will take some care to write out in detail an abstract demonstration that works just as well when $X$ is a 2-category (or indeed, when all categories involved are of whatever higher dimension), such that (in keeping with our linguistic convention) the functors involved are pseudofunctors, the natural transformations are pseudonatural transformations, etc, without having to get our hands dirty manually fussing about higher-dimensional coherence data.
 
 Throughout the remainder of this proof, all references to \quote{category}, \quote{functor}, etc, are in the sense of whatever dimension of higher-categories encapsulates both $Y$ and $X$.
 
@@ -522,8 +522,6 @@ Finally, let us consider what a natural transformation between $D \circ q$ and $
 \end{tikzcd}\]
 
 such that the rightmost arrow of this diagram corresponds to some arrow $\introS$ in $X$ whose domain is $(D \circ q)(0_Z) = D(0)$ and whose codomain is $(C \circ q)(0_Z) = C(0)$, and such that the bottom arrow of this diagram corresponds to a natural transformation from $D \circ q \circ i \iso D$ to $C \circ q \circ i \iso C$. The 2-cell in the above diagram then corresponds to the remaining data necessary for us to construe this natural transformation from $D$ to $C$ as simply the codomain projection of a natural transformation between $D'$ and $\introS^{*} \circ C'$, the functors from $Y$ to $D(0)/X$ as mentioned in the statement of this lemma.
-
-\TODOinline{Phew! That made a mountain out of a molehill. But perhaps people sometimes appreciate such written-out detail.}
 \end{proof}
 
 In order to state the next theorem, some terminology:
@@ -542,7 +540,7 @@ $T[1 \to -]$ is equivalent to $T/-$, when the latter is viewed as a contravarian
 (And in just the same way, for a category with finite products $T$, we have that $T[[1 \to -]]$ is equivalent to $T//-$.)
 \end{theorem}
 \begin{proof}
-This is a standard observation (see 1.10.15 of Bart Jacobs' \quote{Categorical logic and type theory}, although this claims it without proof). \TODOinline{This is probably also in Uemura with details somewhere?}
+This is a standard observation (see 1.10.15 of \autocite{jacobs1999categorical}, although this claims it without proof).
 
 It is also simple enough to show, so we will write out the argument:
 
@@ -668,7 +666,7 @@ And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i +
 
 Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
 
-Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \TODOinline{Clarify that n here can't be 0.}
+Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \sTODOinline{Clarify that n here can't be 0. Or rather, for $n = 0$, we have to understand $0$-tuply internal structures as structures internal to $\Set$.}
 
 Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \TODOinline{Write out why this is so}
 
@@ -743,7 +741,7 @@ A \defined{topos} is \TODO. If it has an NNO, we call it an an \defined{NNO-topo
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
-\TODOinline{I've been inconsistent about my notation for comma categories, between (f, g) and (f/g). I need to hunt down everywhere and switch it to a standardized notation. If we use the slash notation, perhaps we should note how slice categories are a special case of comma categories.}
+\sTODOinline{I've been inconsistent about my notation for comma categories, between (f, g) and (f/g). I need to hunt down everywhere and switch it to a standardized notation. If we use the slash notation, perhaps we should note how slice categories are a special case of comma categories.}
 
 \begin{theorem}[The Comma-Kan Lemma] \label{CommaKan}
 Suppose, within some 2-category, we have the following comma object and left Kan extensions:
@@ -779,7 +777,7 @@ We may compute as follows: By the universal property of the comma object $\comma
 
 Thus, we do indeed get a 1-cell $m : B \to \comma{f_X}{f_Y}$ whose composition with each projection $\pi$ matches $\Lan_q(s; \pi)$. What remains is only to show that $m$ is indeed $\Lan_q s$.
 
-Let an arbitrary $k : B \to \comma{f_X}{f_Y}$ be given. By the universal property of the comma category again, we have that 2-cells from $m$ to $k$ are in correspondence with choices of 2-cells from $m ; \pi$ to $k ; \pi$ for each projection $\pi$, such that both resulting composite 2-cells from $m; \pi_X; f_X$ to $k ; \pi_y; f_Y$ are equal. But each $m ; \pi = \Lan_q(s; \pi)$, so a 2-cell from this to $k ; \pi$ amounts to a 2-cell from $s; \pi$ to $q; k ; \pi$. A choice of such 2-cells satisfying the coherence condition is, again by the universal property of the comma category $\comma{f_X}{f_Y}$, the same thing as a 2-cell from $s$ to $q; k$. Thus, we have shown $\Hom(m, k) = \Hom(s, (q; k))$, which establishes $m$ as satisfying the universal property defining $\Lan_q s$. This completes the proof. \TODOinline{Add details to this last paragraph on the coherence conditions}
+Let an arbitrary $k : B \to \comma{f_X}{f_Y}$ be given. By the universal property of the comma category again, we have that 2-cells from $m$ to $k$ are in correspondence with choices of 2-cells from $m ; \pi$ to $k ; \pi$ for each projection $\pi$, such that both resulting composite 2-cells from $m; \pi_X; f_X$ to $k ; \pi_y; f_Y$ are equal. But each $m ; \pi = \Lan_q(s; \pi)$, so a 2-cell from this to $k ; \pi$ amounts to a 2-cell from $s; \pi$ to $q; k ; \pi$. A choice of such 2-cells satisfying the coherence condition is, again by the universal property of the comma category $\comma{f_X}{f_Y}$, the same thing as a 2-cell from $s$ to $q; k$. Thus, we have shown $\Hom(m, k) = \Hom(s, (q; k))$, which establishes $m$ as satisfying the universal property defining $\Lan_q s$. This completes the proof. \sTODOinline{Add details to this last paragraph on the coherence conditions}
 
 (The dualized result of course follows automatically.) 
 \end{proof}
@@ -1006,7 +1004,7 @@ Note that this last property does not hold when $\classifying{\theoryT}$ is repl
 
 Finally, we note that \autocite{palmgrenvickers} shows us how to take any strict lexcategory $T$ which presents a lexcategory $T'$ to some quasi-equational theory $\LexCatToTheory{T}$ such that $\LexCat(T', -)$ is in natural correspondence with $\modelsIn{\LexCatToTheory{T}}{-}$.
 
-More generally, given an arbitrary lexcategory $T'$, if we make a choice of strict lexcategory $T$ which presents $T'$, then we may for convenience use the name $\LexCatToTheory{T'}$ to refer to $\LexCatToTheory{T}$, even though this strictly speaking depends on the choice of $T$ and not merely on $T'$. Regardless of the exact quasi-equational theory produced, we will in any case still have the property that $\LexCat(T', -)$ and $\modelsIn{\LexCatToTheory{T'}}{-}$ are in correspondence. \TODOinline{We may not actually use this abuse of language in the end after all, in which case we can delete this paragraph.}
+More generally, given an arbitrary lexcategory $T'$, if we make a choice of strict lexcategory $T$ which presents $T'$, then we may for convenience use the name $\LexCatToTheory{T'}$ to refer to $\LexCatToTheory{T}$, even though this strictly speaking depends on the choice of $T$ and not merely on $T'$. Regardless of the exact quasi-equational theory produced, we will in any case still have the property that $\LexCat(T', -)$ and $\modelsIn{\LexCatToTheory{T'}}{-}$ are in correspondence. \sTODOinline{We may not actually use this abuse of language in the end after all, in which case we can delete this paragraph.}
 
 \begin{observation}
 All of the concepts and results in this subsection generalize completely smoothly to theories in correspondence with categories which not only have finite limits but furthermore have $k$-ary products, for all $k$ drawn from some fixed set of infinite cardinalities $K$. (Such categories in fact have all limits of diagrams whose object and morphism cardinalities are in $K$ or finite, by the usual reduction to products and binary equalizers.)
@@ -1027,7 +1025,7 @@ Any localization functor is essentially surjective on objects (eso).
 Let $C$ be a category, let $M$ be some set of morphisms of $C$, and let $f : C \to C[M^{-1}]$ be the corresponding localization. Then given any category $D$ and parallel functors $g_1, g_2 : C[M^{-1}] \to D$, we have that each natural transformation from $g_1 \circ f$ to $g_2 \circ f$ is the whiskering along $f$ of a unique natural transformation from $g_1$ to $g_2$. Thus, $\Cat(C[M^{-1}], D)$ comprises a full subcategory of $\Cat(C, D)$.
 \end{lemma}
 \begin{proof}
-Consider the comma category $\comma{\id_D}{\id_D}$. A functor $k : C \to \comma{\id_D}{\id_D}$ corresponds (via its composition with the two projections out of the comma category) to two functors $h_1, h_2 : C \to D$, along with a natural transformation from $h_1$ to $h_2$. As a morphism in a comma category is invertible just in case both of its projections are, we find that such $k$ sends all of $M$ to isomorphisms just in case each of $h_1$ and $h_2$ do. In this case, $k$ factors uniquely through $f$, providing us with a unique corresponding functor $k' : C[M^{-1}] \to \comma{\id_D}{\id_D}$ such that $k = k' \circ f$. But such a $k'$ corresponds to any natural transformation between the unique factorizations of $h_1$ and $h_2$ through $f$, whose whiskering along $f$ yields our original natural transformation from $h_1$ to $h_2$. \TODOinline{Draw diagram}
+Consider the comma category $\comma{\id_D}{\id_D}$. A functor $k : C \to \comma{\id_D}{\id_D}$ corresponds (via its composition with the two projections out of the comma category) to two functors $h_1, h_2 : C \to D$, along with a natural transformation from $h_1$ to $h_2$. As a morphism in a comma category is invertible just in case both of its projections are, we find that such $k$ sends all of $M$ to isomorphisms just in case each of $h_1$ and $h_2$ do. In this case, $k$ factors uniquely through $f$, providing us with a unique corresponding functor $k' : C[M^{-1}] \to \comma{\id_D}{\id_D}$ such that $k = k' \circ f$. But such a $k'$ corresponds to any natural transformation between the unique factorizations of $h_1$ and $h_2$ through $f$, whose whiskering along $f$ yields our original natural transformation from $h_1$ to $h_2$. \sTODOinline{Draw diagram}
 \end{proof}
 
 \begin{definition}\label{DefnLexLocalization}
