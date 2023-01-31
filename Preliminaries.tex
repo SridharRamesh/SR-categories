@@ -438,7 +438,7 @@ Note in the above that our flexibility in considering an indexed category as a p
 
 The self-indexing $T/-$ of a lexcategory $T$ is not in general \repsmall/, nor even locally \repsmall/. Given two globally defined objects $A$ and $B$ of the self-indexed category, their corresponding hom-set $\Hom_{T/-}(A, B)$ amounts to the presheaf $\Hom_{T}(A \times -, B)$ on $T$, which is to say, the exponential $B^A$ within $\Psh{T}$. This indexed set is \repsmall/ just in case an exponential object $B^A$ already exists within $T$. This extends in the same way to non-globally-defined objects of the self-indexed category (considered as globally defined over some slice category of $T$ instead, a la \magicref{AspectIsSliceGlobal}), and so the self-indexing of $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed. Even if we do not have local cartesian closure in full, note that when $A = 1$, the exponential $B^A$ always is given by $B$ itself, so that hom-sets whose domain is $1$ are always \repsmall/ within the self-indexed category, with $\Hom_{T/-}(1, B)$ being the same as $B$ itself. In this way, the global sections presheaf upon the self-indexed category yields the canonical equivalence between the self-indexed category and the category of \repsmall/ sets. \TODOinline{Here, we are talking about a presheaf on an indexed category. Perhaps that should wait till after the section on doubly indexed sets}
 
-\TODOinline{Get rid of stuff like the following about finite product categories, since we've decided to only focus for now  on the lex case of everything.}
+\sTODOinline{Get rid of stuff like the following about finite product categories, since we've decided to only focus for now  on the lex case of everything.}
 \begin{definition}
 In the same way, we can also speak of an \defined{indexed category with finite products}, and indeed, from any category with finite products $T$ (or even just a category with binary products), we obtain a $T$-indexed category with finite products by considering the functor $T//-$ which assigns to each object $t$ of $T$ the full subcategory of $T/t$ consisting of projection slices (slices given by the projection $: t \times s \to t$ for some object $s$ of $T$), and whose action on morphisms is again given by pullback (the pullback of a projection being another projection in a canonical way). We refer to this as the \defined{simple self-indexing} of $T$. Note that $T//t$ can also be thought of as the Kleisli category for the $t \times -$ comonad; that is, the objects of $T//t$ are the same as the objects of $T$, while a morphism $: s_1 \to s_2$ in $T//t$ is the same as a morphism $: t \times s_1 \to s_2$ in $T$, with suitable composition structure.
 
@@ -705,20 +705,18 @@ Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simpl
 Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
 
 \subsection{Arithmetic universes and other special kinds of category}
-\TODOinline{This section isn't ready yet. I just thought I should have these definitions somewhere, if I'm going to reference them later. Mainly the definition of arithmetic universe.}
-
-In addition to categories simpliciter and lexcategories, we have various other augmentations of the basic notion of category which are occasionally of interest:
+In addition to categories simpliciter and lexcategories, we have various other augmentations of the basic notion of category which are occasionally of interest. All of the following notions are standard in the literature. We note them here simply for reference (particularly the notion of \quote{arithmetic universe}, which is perhaps less well known than the others).
 
 \begin{definition}
-A \defined{regular} category is \TODO. If \TODO, we call it \defined{effective regular} or \defined{exact}.
+A \defined{regular} category is \TODO. If \TODO, we call it \defined{exact} (this is called \quote{effective regular} by some authors).
 \end{definition}
 
 \begin{definition}
-A \defined{lextensive} category is \TODO.
+An \defined{extensive} category is \TODO.
 \end{definition}
 
 \begin{definition}
-A category with \defined{NNO} is \TODO.
+A category with a \defined{natural numbers object} (abbreviated \defined{NNO}) is \TODO.
 \end{definition}
 
 \begin{definition}\label{DefnIAU}
@@ -734,7 +732,11 @@ Structures internal to $\IAU$ can be thought of as codes for computably enumerab
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
 
 \begin{definition}
-A \defined{topos} is \TODO. If it has an NNO, we call it an an \defined{NNO-topos}.
+A \defined{cartesian closed category} is a category with finite products, in which each functor $A \times -$ for any object $A$ has a right adjoint. A \defined{locally cartesian closed category} is a lexcategory in which each slice category is cartesian closed; equivalently, in which each reindexing functor of the self-indexing has a right adjoint.
+\end{definition}
+
+\begin{definition}
+A \defined{topos} is a cartesian closed category with a subobject classifier \sTODOinline{Define subobject classifier}. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}.) If a topos has an NNO, we call it an an \defined{NNO-topos}.
 \end{definition}
 
 \TODOinline{Note that toposes with countable products also have countable coproducts. Note that toposes with countable coproducts automatically have NNOs given as a countable copower of the terminal object. Note that presheaf categories are toposes.}
@@ -819,7 +821,7 @@ In this case, we say that the restriction of $D$ to $Special$ is \defined{left c
 
 In this language, \magicref{CommaCategoryColimits} shows that the restriction of $\Cat$ to categories having, and functors preserving, finite colimits is left comma-stable within $\Cat$. And dually, $\LexCat$ is right comma-stable within $\Cat$.
 
-\TODOinline{More generally, our Comma-Kan lemma tells us that for any functor q : A -> B, the objects having, and maps preserving, left/right Kan extensions along q comprises a left/right comma-stable sub-category. The non-exactness portions of the following results are all instances of this.}
+\sTODOinline{More generally, our Comma-Kan lemma tells us that for any functor q : A -> B, the objects having, and maps preserving, left/right Kan extensions along q comprises a left/right comma-stable sub-category. The non-exactness portions of the following results are all instances of this.}
 
 We note here a number of left comma-stable sub-2-categories of $\LexCat$, all similarly demonstrable as corollaries of \magicref{CommaKan}:
 
@@ -887,7 +889,7 @@ Because the comma object is special (by left comma-stability), it has a unique s
 \end{proof}
 
 \subsection{Initial models}
-\TODOinline{Better title for this section, or move this material somewhere appropriate.}
+\sTODOinline{Better title for this section, or move this material somewhere appropriate.}
 \begin{definition}\label{LexModelTerminology}
 Given a lexfunctor $F : T \to S$, we may sometimes call this a \defined{model} or \defined{internal model} of $T$ in $S$. If $F$ is initial within the category $\LexCat(T, S)$, then we naturally call this an \defined{initial model} of $T$ in $S$. Of course, as with any initial objects, if there is any initial model of $T$ in $S$, then there is a unique one up to unique isomorphism.
 
@@ -919,7 +921,7 @@ In other words, the restriction of $\LexCat$ to lexcategories having, and lexfun
 Thanks to \magicref{InitialModelsAreLeftKanExtensions}, this is the instance of \magicref{CommaKan} within $\LexCat$ where $A$ is taken to be the initial lexcategory and $B$ is taken to be $T$.
 \end{proof}
 
-\TODOinline{Relate the following material in this section to the following section on presentations of quasi-equational theories.}
+\sTODOinline{Relate the following material in this section to the following section on presentations of quasi-equational theories.}
 \begin{definition}\label{FiniteLexTheory}
 A \defined{finitely axiomatized lex theory} is a lexcategory $T$ which is generated from the initial lexcategory by finitely many operations of freely adjoining a new object, freely adjoining a new morphism between existing objects, or freely making two existing parallel morphisms equal (all these free constructions are meant in the sense of free lexcategories, of course).
 \end{definition}
@@ -1067,7 +1069,7 @@ Suppose $h$ satisfies the surjectivity properties. We must show that $g$ is esse
 
 That $g$ is essentially surjective on objects follows from the fact that $h = gf$ is eso when acting on $C/1$.
 
-Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2)$ is given by $g$ applied to some morphism in $Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. \TODO
+Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2)$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. \TODO
 
 Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
 \end{proof}
@@ -1092,7 +1094,7 @@ Alternatively, the proof can be carried out like so: Firstly, for existence of a
 
 Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
 
-\TODOinline{Move the following somewhere where it belongs}
+\sTODOinline{Move the following somewhere where it belongs}
 \begin{theorem}\label{GlobalIsArithmeticOnIAU}
 The global sections functor $\Hom_{\IAU}(1, -)$ is the unique arithmetic functor from the initial arithmetic universe $\IAU$ to $\Set$.
 \end{theorem}
@@ -1103,7 +1105,21 @@ A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the init
 With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does not internalize. In particular, we do NOT know internal to $\IAU$ that the global sections functor from $\IAU'$ to the self-indexing $\IAU/-$ is arithmetic, or even that it preserves the initial object (this would violate \Goedel/'s second incompleteness theorem).
 
 \begin{definition}
-Given an endofunctor $F$ on a category, we say a morphism of the form $M : F(m) \to m$ is an $F$-\defined{algebra}, and dually, a morphism of the form $W : w \to F(w)$ is an $F$-\defined{coalgebra}. \TODOinline{Define algebra and coalgebra maps}.
+Given an endofunctor $F$ on a category, we say a morphism of the form $M : F(m) \to m$ is an $F$-\defined{algebra}, and dually, a morphism of the form $W : w \to F(w)$ is an $F$-\defined{coalgebra}.
+
+More generally, we say an $F$-algebra map from $M_1$ to $M_2$ is a commutative square of the following form:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwxLCJtXzEiXSxbMCwwLCJGKG1fMSkiXSxbMSwwLCJGKG1fMikiXSxbMSwxLCJtXzIiXSxbMSwwLCJNXzEiLDJdLFsxLDIsIkYoeCkiXSxbMiwzLCJNXzIiXSxbMCwzLCJ4IiwyXV0=
+\[\begin{tikzcd}
+	{F(m_1)} & {F(m_2)} \\
+	{m_1} & {m_2}
+	\arrow["{M_1}"', from=1-1, to=2-1]
+	\arrow["{F(x)}", from=1-1, to=1-2]
+	\arrow["{M_2}", from=1-2, to=2-2]
+	\arrow["x"', from=2-1, to=2-2]
+\end{tikzcd}\]
+
+These compose in the obvious way, giving rise to a category of $F$-algebras, and in the obvious dual fashion, we also obtain a category of $F$-coalgebras.
 \end{definition}
 
 \begin{definition}\label{HylomorphismDefn}
@@ -1122,7 +1138,7 @@ Given an endofunctor $F$, we say that a map $y : w \to m$ is an $F$-\defined{hyl
 In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \circ W$.
 \end{definition}
 
-\TODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
+\sTODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
 
 \begin{theorem}\label{LocallySmallSelfIndexing}
 The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed. \TODOinline{Define locally cartesian closed. Include a terminal object in the definition so that this entails being cartesian closed.}

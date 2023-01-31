@@ -27,9 +27,9 @@ Clearly, any strict introspective theory presents some introspective theory. Con
 Any introspective theory $\langle T, C, \introS, \introN \rangle$ is presented by some strict introspective theory.
 \end{theorem}
 \begin{proof}
-Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$. By definition of the \repsmallness/ of $C$, we can choose some lexcategory $C_{int}$ internal to $T$ (up to isomorphism of indexed strict lexcategories) which presents the $T$-indexed category $C$ (up to equivalence of indexed categories).
+Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$. By definition of the \repsmallness/ of $C$, we can choose some lexcategory $C_{int}$ internal to $T$ which presents the $T$-indexed category $C$. (That is, even though $C$ itself is only specified up to equivalence of indexed categories, we can choose a specific presentation of it by a \repsmall/ indexed strict category $C_{int}$ which is specified  more fine-grainedly up to isomorphism of indexed strict categories.)
 
-Now using \TODO, let $T_{strict}$ be some strict lexcategory which presents $T$ and which has the freeness property that \TODO. Because $T'$ presents $T$, we can choose some specific internal lexcategory $C_{strict}$ in $T_{strict}$ (up to equality!) which presents $C_{int}$. Because $C_{strict}$ presents $C_{int}$ which in turn presents $C$, $\introS$ can be viewed as a (non-strict) lexfunctor from $T$ to the global aspect of $C_{strict}$. Now using the freeness property of $T_{strict}$, we obtain a strict lexfunctor $\introS_{strict}$ from $T_{strict}$ to the global aspect of $C_{strict}$, such that $\introS_{strict}$ presents $\introS$.
+Now using \TODO, let $T_{strict}$ be some strict lexcategory which presents $T$ and which has the freeness property that \TODO. Because $T'$ presents $T$, we can choose some specific internal lexcategory $C_{strict}$ in $T_{strict}$ (this $C_{strict}$ being specified up to equality!) which presents $C_{int}$. Because $C_{strict}$ presents $C_{int}$ which in turn presents $C$, $\introS$ can be viewed as a (non-strict) lexfunctor from $T$ to the global aspect of $C_{strict}$. Now using the freeness property of $T_{strict}$, we obtain a strict lexfunctor $\introS_{strict}$ from $T_{strict}$ to the global aspect of $C_{strict}$, such that $\introS_{strict}$ presents $\introS$.
 
 Finally, we deal with $\introN$. Natural transformations are essentially unaffected by strictness considerations. That is, given parallel strict functors $A_{strict}$ and $B_{strict}$, natural transformations between these are in bijection with natural transformations between the non-strict functors these present. So our original $\introN$ corresponds to a unique natural transformation between the identity on $T_{strict}$ and $\Hom_{C_{strict}}(1, \introS_{strict}(-))$.
 
@@ -407,12 +407,10 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 	\arrow["{4_c}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-\TODOinline{Explain above diagram}
+\sTODOinline{Explain above diagram}
 \closeDetails
 
-----
-
-\TODOinline{Show that by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
+\TODOinline{Write out details of how, by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
 
 \begin{corollary}
 As left adjoints preserve initial objects, the above tells us that the initial strict introspective theory (which we described in \magicref{InitialIntrospectiveTheory}) is also the initial geminal category.
@@ -522,12 +520,11 @@ In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{
 This completes the proof of the terminality property of $G$.
 \end{proof}
 
-\TODOinline{Observe that the above two co-free constructions can be combined, to find the terminal introspective theory with a suitable lexfunctor into a given lexcategory yielding a given internal geminal category}
+\sTODOinline{Observe that the above two co-free constructions can be combined, to find the terminal introspective theory with a suitable lexfunctor into a given lexcategory yielding a given internal geminal category}
 
-\subsection{Recap}
-\TODO
+\sTODOinline{Do a recap section}
 
-\TODOinline{Close this chapter with a discussion of how, in many contexts in mathematics, it is the geminal categories (the $\Glob{C}$) which seem to play a more primary role than the introspective theories (the $T$). For example, we are typically more interested in the full syntactic category of PA than the $\Sigma_1$-restricted syntactic category, or in presheaves on the discrete set of worlds (including arbitrary subsets of worlds as propositions) rather than specifically those presheaves which respect the accessibility relation (restricting us to only the \quote{open} propositions). Why, then, has our development of ideas in this document focused on introspective theories rather than geminal categories? This is partly a matter of taste. We could have taken geminal categories as the fundamental notion, and not considered any introspective theory other than the theory of geminal categories. We could still derive \Loeb/'s theorem for geminal categories and so on. But the definition of introspective theories is much cleaner than that of geminal categories, and permits this extraction of the definition of geminal categories as its initial model, which is a beautiful result, helping to motivate the definition of geminal categories. Having the three- or four-axiom concept of an introspective theory also sometimes helps us more easily recognize that an example is a geminal category, without having to verify the six axioms of a geminal category directly. Also, having the concept of introspective theories clarifies which presheaves we can apply Löb's theorem (or \magicref{IntrospTyConFixedPoints}) to. To emphasize this last point, it would be very useful to have an explicit example of a presheaf on a geminal category which we CANNOT apply Löb's theorem to (or perhaps cannot even make sense of the box operator applied to).
+\sTODOinline{Close this chapter with a discussion of how, in many contexts in mathematics, it is the geminal categories (the $\Glob{C}$) which seem to play a more primary role than the introspective theories (the $T$). For example, we are typically more interested in the full syntactic category of PA than the $\Sigma_1$-restricted syntactic category, or in presheaves on the discrete set of worlds (including arbitrary subsets of worlds as propositions) rather than specifically those presheaves which respect the accessibility relation (restricting us to only the \quote{open} propositions). Why, then, has our development of ideas in this document focused on introspective theories rather than geminal categories? This is partly a matter of taste. We could have taken geminal categories as the fundamental notion, and not considered any introspective theory other than the theory of geminal categories. We could still derive \Loeb/'s theorem for geminal categories and so on. But the definition of introspective theories is much cleaner than that of geminal categories, and permits this extraction of the definition of geminal categories as its initial model, which is a beautiful result, helping to motivate the definition of geminal categories. Having the three- or four-axiom concept of an introspective theory also sometimes helps us more easily recognize that an example is a geminal category, without having to verify the six axioms of a geminal category directly. Also, having the concept of introspective theories clarifies which presheaves we can apply Löb's theorem (or \magicref{IntrospTyConFixedPoints}) to. To emphasize this last point, it would be very useful to have an explicit example of a presheaf on a geminal category which we CANNOT apply Löb's theorem to (or perhaps cannot even make sense of the box operator applied to).
 
 We should have a discussion section on comparing and contrasting introspective theories and geminal categories, and the motivation to study both and their relation.}
 
