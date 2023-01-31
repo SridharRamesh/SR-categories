@@ -10,6 +10,57 @@ This last statement is easy to misinterpret, so let me be a bit more clear as to
 
 We will also discuss a partial converse of sorts, a way to extract an introspective theory from a geminal category, with the extracted introspective theory having a certain terminality property (that is, we construct a sort of co-free introspective theory induced by the given geminal category).
 
+\subsection{Multiply internal structures}\label{MultiplyInternal}
+Before we get to the main material of this chapter, it will be necessary to discuss the concept of \quote{multiply internal} structures, which are used heavily throughout this chapter.
+
+\sTODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$.}
+
+Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
+
+We may iterate this process. Suppose now that $C_2$ is the global aspect of some lexcategory internal to $C_1$, which in turn remains the global aspect of some lexcategory internal to $C_0$. We can now speak of structures internal to $C_2$ as being triply internal to $C_0$.
+
+And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
+
+Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
+
+Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \sTODOinline{Clarify that n here can't be 0. Or rather, for $n = 0$, we have to understand $0$-tuply internal structures as structures internal to $\Set$.}
+
+Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \sTODOinline{Write out why this is so}
+
+Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
+
+Next, observe that if $F : C \to D$ is a lexfunctor between lexcategories, and $S$ is some structure internal to $C$, then not only do we have $F(S)$ as a similar structure internal to $D$, but furthermore, the action of $F$ induces a homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may use the same name $F$ to refer to this induced homomorphism $F : \Glob{S} \to \Glob{F(S)}$ as well, or we may refer to it as $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$ to be explicit.
+
+In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F : \Glob{S_2} \to \Glob{F(S_2)}$ as well, or we may refer to it as $\InducedHomo{F}{S}$ to be explicit.
+
+The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
+
+This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal homomorphism $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
+
+\begin{lemma}\label{InducedGlobalCommute}
+If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$ (in the sense of a canonical natural isomorphism). That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
+
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEdsb2J7UX0iXSxbMCwzLCJcXEdsb2J7RihRKX0iXSxbMywwLCJDIl0sWzMsMywiRCJdLFsxLDEsIm0iXSxbMSwyLCJGKG0pIl0sWzIsMSwiXFxIb21fUSgxLCBtKSJdLFsyLDIsIkYoXFxIb21fUSgxLCBtKSkgPSBcXEhvbV97RihRKX0oMSwgRihtKSkiXSxbMCwxLCJcXEluZHVjZWRIb21ve0Z9e1F9IiwyXSxbMCwyLCJcXEdhbW1hX1EiXSxbMSwzLCJcXEdhbW1hX3tGKFEpfSIsMl0sWzQsNiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsyLDMsIkYiXV0=
+\[\begin{tikzcd}
+	{\Glob{Q}} &&& C \\
+	& m & {\Hom_Q(1, m)} \\
+	& {F(m)} & {F(\Hom_Q(1, m)) = \Hom_{F(Q)}(1, F(m))} \\
+	{\Glob{F(Q)}} &&& D
+	\arrow["{\InducedHomo{F}{Q}}"', from=1-1, to=4-1]
+	\arrow["{\Gamma_Q}", from=1-1, to=1-4]
+	\arrow["{\Gamma_{F(Q)}}"', from=4-1, to=4-4]
+	\arrow[maps to, from=2-2, to=2-3]
+	\arrow[maps to, from=2-2, to=3-2]
+	\arrow[maps to, from=3-2, to=3-3]
+	\arrow[maps to, from=2-3, to=3-3]
+	\arrow["F", from=1-4, to=4-4]
+\end{tikzcd}\]
+\end{lemma}
+
+Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
+
+Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
+
 \subsection{Strict introspective theories}
 It will be technically convenient for us to work in this chapter with a slightly less \quote{presentation-free} variant of our notion of introspective theories.
 
@@ -61,7 +112,7 @@ Such homomorphisms are closed under composition and thus we obtain the category 
 As the category of models of an essentially algebraic theory, this category must have an initial object. That is, there is a strict introspective theory with a unique homomorphism into any other strict introspective theory. In this chapter, we will find a tractable explicit description of this initial strict introspective theory.
 
 \subsection{Defining geminal categories}
-We make heavy use in this section of the conventions from \magicref{MultiplyInternal}, with which the reader may wish to reacquaint themselves. \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
+\sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
 \begin{definition}[Geminal category]\label{VerboseGeminalCatDefn}
 A \defined{geminal category} internal to lexcategory $C_0$ consists of several ingredients:

@@ -1,6 +1,6 @@
 \filestart
 
-\section{Modal logic}
+\section{Modal logic}\label{ModalChapter}
 \subsection{Preview}
 In this chapter, we will show how to interpret the $\Box$ operator of traditional modal logic in the context of introspective theories (or their generalizations). In particular, after defining the $\Box$ operator in this context, we observe in this chapter how it satisfies the rules of the modal logic K4.
 
@@ -151,8 +151,6 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 \subsection{As applied to our archetypal examples}
 
 \subsubsection{ZF-Finite examples}
-\TODO
-
 Recall from \magicref{SigmaModelComplex} the introspective theory $\langle \ZfinSigma, \InnerZfin, \introS, \introN \rangle$, where $\ZfinSigma$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, $\InnerZfin$ is the lexcategory internal to $\ZfinSigma$ of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite, $\introS$ assigns to each piece of $\ZfinSigma$ the corresponding (globally defined) piece of $\InnerZfin$, and $\introN$ is the $\Sigma_1$-definable function which sends any hereditarily finite set to the canonical term describing it, as well as witnessing the provable entailment from truth to provability for $\Sigma_1$ formulae.
 
 Let us now consider the behavior of our $\Box$ operators here. For convenience of discussion, we will discuss just their global aspects.
@@ -163,7 +161,7 @@ Next, we turn our attention to the $\ZfinSigma$-internal endolexfunctor $\Box : 
 
 \TODOinline{Discuss subterminals, as propositions, and how the box operator matches with the provability operator on these.}
 
-\subsubsection{Kripke frame example}\label{KripkeFrameModel}
+\subsubsection{Kripke frame example}\label{KripkeFrameModal}
 Recall the locally introspective theory $\langle \Psh{Q}, C \rangle$ from \magicref{KripkeLocallyIntrosp}, constructed from a transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a preorder category using the $<$ relation. Our definition of $C$ was such that $\Glob{C} = \Psh{|P|} = \Set^{|P|}$. Our definition of $\introS : \Psh{Q} \to \Psh{|P|}$ was the forgetful functor which ignores the $<$ relation and $\infty$ element in $Q$. Our definition of $C$ also ensures that $\Hom_C(1, -) : \Psh{|P|} \to \Psh{Q}$ sent $f \in \Psh{|P|}$ to the presheaf $F$ on $Q$ such that $F(q)$ is the product of $f(p)$ over all $p < q$, with restriction maps given by projection.
 
 Thus, $\Box_{\Psh{|P|}}$ acts like so: For $F \in \Psh{|P|}$ and $x \in P$, we have that $\Box_{\Psh{|P|}}(F)(x) = \introS(\Hom_C(1, F))$ is the product of $F(y)$ over all $y < x$.

@@ -2,7 +2,7 @@
 
 \section{Category-theoretic preliminaries}
 
-\subsection{Higher categorical terminology conventions}
+\subsection{Higher categorical terminology conventions}\label{PreliminariesTerminologyConventions}
 We assume familiarity with sets, functions, categories, functors, natural transformations, limits, presheaves, $\Set$, $\Cat$, all in the ordinary sense. At times, we may also call upon some comfort with concepts such as 2-categories, and abstract Kan extensions and comma objects within these. It will also be very useful to have some familiarity with functorial semantics and internal algebraic structures such as internal categories.
 
 We will take all categories we work with to be locally \setsmall/ (which is to say, we will take $\Set$ to be large enough to include the hom-set between any two objects of any category we work with). Generally speaking, we are interested in the categories we work with being \setsmall/ as well, except for those particular large categories such as $\Set$, $\Set^X$, $\Cat$, etc. Wherever paying explicit attention to such size issues is important, we will make some explicit note. Otherwise, we do not.
@@ -29,14 +29,14 @@ Similarly, if we ever describe diagrams involving functors between categories as
 
 (That all said, nothing we do is higher-dimensional than 2-categorical, so everything could in theory be strictified in some fashion, if so desired.)
 
-\TODOinline{Give evocative names instead of just numbers to any theorem, construction, etc, in this document for which such a name would be useful.}
-
 \subsection{Indexed sets and \repsmall/ness}
 We will now give a series of related definitions, concerning what are called indexed structures. The notions being described in this section are all old hat, none of them are newly invented by us, but we wish to pin them down with particular names to establish a language for easily talking about the things we wish to talk about in the rest of this document.
 
 As we give these definitions, we will also observe a basic stock of theorems about them. Again, we make no claim to originality with these preliminaries. They simply may be useful to remind the reader of, or to give labels to in order to reference as we use them.
 
 The reader who is already very familiar with these notions and just unfamiliar with our conventions of vocabulary is advised to just skim these preliminaries on initial read and then return as needed when faced with unfamiliar vocabulary. Frankly, the reader who is not very familiar with these notions is also given similar advice. No need to spend all one's time reading proofs and details of lemmas up front. It is probably best to read a bit of the preliminaries to get the lay of the land, then go off and read the actual content and come back as needed. But who knows? To each reader, their own reading style may be best. \sTODOinline{Figure out exactly the roadmap or reading advice we want to give.}
+
+\TODOinline{Give evocative names instead of just numbers to any theorem, construction, etc, in this document for which such a name would be useful.}
 
 The key notion upon which everything else builds is the following:
 
@@ -429,14 +429,20 @@ Then in particular, for each basis finite limit shape, we can consider the case 
 \end{proof}
 Note that it is NOT true that any indexed strict category which has finite limits (qua indexed category) can furthermore be equipped as an indexed strict lexcategory (without modification to the indexed strict category structure)! The former has reindexing functors which need only preserve finite limits in a non-strict-sense, while the latter's chosen basic limits must be such that all reindexing functors preserve basic limits on-the-nose. So it is rather remarkable that we get this for free once our indexed strict category is furthermore \repsmall/.
 
-\subsection{Self-indexing and slice categories}
+\subsection{Self-indexing and slice categories}\label{PreliminariesSelfIndexing}
 \begin{definition}
 Note that, from any lexcategory $T$ (or even just a category with pullbacks), we obtain a $T$-indexed lexcategory by considering the functor $T/-$ which assigns to each object $t$ of $T$ the slice category $T/t$, and whose action on morphisms is given by pullback. We refer to this as the \defined{self-indexing} of $T$.
 \end{definition}
 
 Note in the above that our flexibility in considering an indexed category as a pseudofunctor into $\Cat$, rather than a strict functor into $\StrictCat$, pays off in letting us not worry about how to choose specific pullback slices in a strictly functorial way.
 
-The self-indexing $T/-$ of a lexcategory $T$ is not in general \repsmall/, nor even locally \repsmall/. Given two globally defined objects $A$ and $B$ of the self-indexed category, their corresponding hom-set $\Hom_{T/-}(A, B)$ amounts to the presheaf $\Hom_{T}(A \times -, B)$ on $T$, which is to say, the exponential $B^A$ within $\Psh{T}$. This indexed set is \repsmall/ just in case an exponential object $B^A$ already exists within $T$. This extends in the same way to non-globally-defined objects of the self-indexed category (considered as globally defined over some slice category of $T$ instead, a la \magicref{AspectIsSliceGlobal}), and so the self-indexing of $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed. Even if we do not have local cartesian closure in full, note that when $A = 1$, the exponential $B^A$ always is given by $B$ itself, so that hom-sets whose domain is $1$ are always \repsmall/ within the self-indexed category, with $\Hom_{T/-}(1, B)$ being the same as $B$ itself. In this way, the global sections presheaf upon the self-indexed category yields the canonical equivalence between the self-indexed category and the category of \repsmall/ sets. \TODOinline{Here, we are talking about a presheaf on an indexed category. Perhaps that should wait till after the section on doubly indexed sets}
+The self-indexing $T/-$ of a lexcategory $T$ is not in general \repsmall/, nor even locally \repsmall/. Given two globally defined objects $A$ and $B$ of the self-indexed category, their corresponding hom-set $\Hom_{T/-}(A, B)$ amounts to the presheaf $\Hom_{T}(A \times -, B)$ on $T$, which is to say, the exponential $B^A$ within $\Psh{T}$. This indexed set is \repsmall/ just in case an exponential object $B^A$ already exists within $T$. This extends in the same way to non-globally-defined objects of the self-indexed category (considered as globally defined over some slice category of $T$ instead, a la \magicref{AspectIsSliceGlobal}), and so we have the following:
+
+\begin{theorem}\label{LocallySmallSelfIndexing}
+The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed.
+\end{theorem}
+
+Even when we do not have local cartesian closure in full, note that when $A = 1$, the exponential $B^A$ always is given by $B$ itself, so that hom-sets whose domain is $1$ are always \repsmall/ within the self-indexed category, with $\Hom_{T/-}(1, B)$ being the same as $B$ itself.
 
 \sTODOinline{Get rid of stuff like the following about finite product categories, since we've decided to only focus for now  on the lex case of everything.}
 \begin{definition}
@@ -589,7 +595,7 @@ The analogues of \magicref{SelfIndexingIsFree} automatically also follow for $T[
 And in just the same way also for $T[[1 \to -]]$ for any categorical structure extending the structure of a category with finite products which automatically transfers from an instance of that structure to its simple self-indexing (e.g., for cartesian closed categories).
 \end{observation}
 
-\subsection{Double or multiple indexing}
+\subsection{Double or multiple indexing}\label{PreliminariesMultipleIndexing}
 At this point, for any algebraic-categorical notion $S$ (e.g., the notion of a commutative ring, or the notion of a lexcategory), we also have a definition of the notion of a pair of a category and an instance of notion $S$ indexed over that category.
 
 We can thus iterate this process. In particular, we can speak of a $T$-indexed (category $C$ and $C$-indexed set $P$). We can call this also a $(T, C)$-indexed set $P$. Let us observe in more detail what this amounts to.
@@ -641,7 +647,7 @@ The construction $\Groth_T C$ is called the Grothendieck construction. By projec
 
 Thus, the data of an indexed category is equivalent to the data of a fibration. The entire machinery of indexed categories can therefore equivalently be presented in terms of fibrations. For this reason, fibrations are also called fibered categories. In particular, one can give a more intrinsic account of the conditions under which an arbitrary functor is a fibration. Furthermore, any natural transformation between $T$-indexed categories induces a corresponding map between the corresponding fibrations in $\Cat/T$, and again the natural transformation can be recovered from this map, and again a more intrinsic account can be given of which maps arise in this way. Some things are easier to describe in a fibration-based presentation. Other things are more difficult. For our purposes (using the general language of indexed structures ultimately for the goal of understanding specifically \repsmall/ or internal structures), we felt the indexed category presentation was the most apt. Thus, we will not describe the theory of fibered categories further. We use the Grothendieck construction only for the correspondence between $(\Groth_T C)$-indexed sets and $(T, C)$-indexed sets.
 
-Of course, this construction can be iterated further now. A $(T, C)$-indexed category $D$ is a $(\Groth_T C)$-indexed category (i.e., a contravariant functor from $\Groth_T C$ to $\Cat$), and thus gives rise to another category $\Groth_{\Groth_T C} D$. Structures indexed over $\Groth_{\Groth_T C} D$ can be called $(T, C, D)$-indexed structures. And so on ad infinitum. Do not worry, we will not need to explicitly consider this to any further depth of indexing. \TODOinline{But see the next section on multiply internal structures}
+Of course, this construction can be iterated further now. A $(T, C)$-indexed category $D$ is a $(\Groth_T C)$-indexed category (i.e., a contravariant functor from $\Groth_T C$ to $\Cat$), and thus gives rise to another category $\Groth_{\Groth_T C} D$. Structures indexed over $\Groth_{\Groth_T C} D$ can be called $(T, C, D)$-indexed structures. And so on ad infinitum. Do not worry, we will not need to explicitly consider this to any further depth of indexing. \sTODOinline{But see the next section on multiply internal structures}
 
 \TODOinline{Discuss the concept of being $T$-\repsmall/ vs. $C$-\repsmall/ when $(T, C)$-indexed}
 
@@ -652,57 +658,6 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 (Keep in mind also that an honest-to-goodness actual structure, living in $\Set$, is like the zero-ary case of indexing; it's indexed by the empty string of categories $()$, but can be seen in a trivial way as $T$-indexed for any category $T$).
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
-
-\subsection{Multiply internal structures}\label{MultiplyInternal}
-\TODOinline{If this material is not used prior to the Geminal Categories chapter, we should perhaps move it into the beginning of that chapter instead.}
-
-\TODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$.}
-
-Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
-
-We may iterate this process. Suppose now that $C_2$ is the global aspect of some lexcategory internal to $C_1$, which in turn remains the global aspect of some lexcategory internal to $C_0$. We can now speak of structures internal to $C_2$ as being triply internal to $C_0$.
-
-And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
-
-Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
-
-Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$. By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \sTODOinline{Clarify that n here can't be 0. Or rather, for $n = 0$, we have to understand $0$-tuply internal structures as structures internal to $\Set$.}
-
-Note also that if $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \TODOinline{Write out why this is so}
-
-Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
-
-Next, observe that if $F : C \to D$ is a lexfunctor between lexcategories, and $S$ is some structure internal to $C$, then not only do we have $F(S)$ as a similar structure internal to $D$, but furthermore, the action of $F$ induces a homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may use the same name $F$ to refer to this induced homomorphism $F : \Glob{S} \to \Glob{F(S)}$ as well, or we may refer to it as $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$ to be explicit.
-
-In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F : \Glob{S_2} \to \Glob{F(S_2)}$ as well, or we may refer to it as $\InducedHomo{F}{S}$ to be explicit.
-
-The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
-
-This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal homomorphism $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
-
-\begin{lemma}\label{InducedGlobalCommute}
-If $F : C \to D$ is a lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$ (in the sense of a canonical natural isomorphism). That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
-
-% https://q.uiver.app/?q=WzAsOCxbMCwwLCJcXEdsb2J7UX0iXSxbMCwzLCJcXEdsb2J7RihRKX0iXSxbMywwLCJDIl0sWzMsMywiRCJdLFsxLDEsIm0iXSxbMSwyLCJGKG0pIl0sWzIsMSwiXFxIb21fUSgxLCBtKSJdLFsyLDIsIkYoXFxIb21fUSgxLCBtKSkgPSBcXEhvbV97RihRKX0oMSwgRihtKSkiXSxbMCwxLCJcXEluZHVjZWRIb21ve0Z9e1F9IiwyXSxbMCwyLCJcXEdhbW1hX1EiXSxbMSwzLCJcXEdhbW1hX3tGKFEpfSIsMl0sWzQsNiwiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs0LDUsIiIsMCx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNSw3LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzYsNywiIiwyLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFsyLDMsIkYiXV0=
-\[\begin{tikzcd}
-	{\Glob{Q}} &&& C \\
-	& m & {\Hom_Q(1, m)} \\
-	& {F(m)} & {F(\Hom_Q(1, m)) = \Hom_{F(Q)}(1, F(m))} \\
-	{\Glob{F(Q)}} &&& D
-	\arrow["{\InducedHomo{F}{Q}}"', from=1-1, to=4-1]
-	\arrow["{\Gamma_Q}", from=1-1, to=1-4]
-	\arrow["{\Gamma_{F(Q)}}"', from=4-1, to=4-4]
-	\arrow[maps to, from=2-2, to=2-3]
-	\arrow[maps to, from=2-2, to=3-2]
-	\arrow[maps to, from=3-2, to=3-3]
-	\arrow[maps to, from=2-3, to=3-3]
-	\arrow["F", from=1-4, to=4-4]
-\end{tikzcd}\]
-\end{lemma}
-
-Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
-
-Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
 
 \subsection{Arithmetic universes and other special kinds of category}
 In addition to categories simpliciter and lexcategories, we have various other augmentations of the basic notion of category which are occasionally of interest. All of the following notions are standard in the literature. We note them here simply for reference (particularly the notion of \quote{arithmetic universe}, which is perhaps less well known than the others).
@@ -730,10 +685,6 @@ Structures internal to $\IAU$ can be thought of as codes for computably enumerab
 \end{observation}
 
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
-
-\begin{definition}
-A \defined{cartesian closed category} is a category with finite products, in which each functor $A \times -$ for any object $A$ has a right adjoint. A \defined{locally cartesian closed category} is a lexcategory in which each slice category is cartesian closed; equivalently, in which each reindexing functor of the self-indexing has a right adjoint.
-\end{definition}
 
 \begin{definition}
 A \defined{topos} is a cartesian closed category with a subobject classifier \sTODOinline{Define subobject classifier}. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}). If a topos has an NNO, we call it an an \defined{NNO-topos}.
@@ -1139,11 +1090,6 @@ In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \ci
 \end{definition}
 
 \sTODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
-
-\begin{theorem}\label{LocallySmallSelfIndexing}
-The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed.
-\end{theorem}
-\sTODOinline{Proof}
 
 \begin{theorem}\label{RepSmallPresheavesOnPresheaves}
 Let $C$ be any \setsmall/ category, and let $P$ in $\Psh{\Psh{C}}$ be given. This $P$ is $\Psh{C}$-\repsmall/ just in case $P$ turns \setsmall/ colimits in $\Psh{C}$ (i.e., \setsmall/ limits in $\op{\Psh{C}}$) into \setsmall/ limits in $\Set$.

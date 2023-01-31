@@ -149,9 +149,7 @@ Consider the same setup as of \magicref{CoalgToAlg}, and presume $\Box$ has the 
 In that context, \magicref{CoalgToAlg} says that every $F$-coalgebra has a \emph{unique} hylomorphism into every $F$-algebra. In the particular case that the coalgebra is invertible, this can be read as a morphism between algebras, and establishes that the coalgebra's inverse is an initial algebra. Dually, for any invertible algebra, this establishes its inverse as a terminal coalgebra.
 \end{proof}
 
-\TODOinline{Link this to \magicref{IntrospTyConFixedPoints}}
-
-\TODOinline{Note after our later bootstrapping section that this uniqueness means that ultimately, the apparent dependence on various arbitrary choices in our proof of the bootstrapping theorem doesn't matter in the end. We get the same result no matter what.}
+\sTODOinline{Link this to \magicref{IntrospTyConFixedPoints}. Note after our later bootstrapping section that this uniqueness means that ultimately, the apparent dependence on various arbitrary choices in our proof of the bootstrapping theorem doesn't matter in the end. We get the same result no matter what.}
 
 \begin{remark}
 The argument we have given for \magicref{CoalgToAlg} and thus for \magicref{InitialTerminalCoincidence} is essentially the same as that given for Lemma 7.6 in \autocite{birkedal2011first}. For convenience for our purposes, we have framed this in terms of internal categories, though in \autocite{birkedal2011first} it is more properly framed as about enriched categories more generally. On the other hand, this argument is given in \autocite{birkedal2011first} in a context where the uniqueness of the \Loeb/ property has already been presumed, whereas we have noted that this argument can also be given in a context where only the weaker \Loeb/ property without uniqueness has been presumed, and then this argument can be used to in fact derive said uniqueness in a lexcategory.
@@ -389,7 +387,7 @@ Thus, $\alpha(f) = F$ as an element of $P(\introS(X))$, establishing the require
 
 Thus, all presumptions are satisfied for us to be able to apply \magicref{PreIntrospDiag} with these definitions, for an arbitrary globally defined element $g$ of $P(\introS(\Omega))$.
 
-In particular, let an arbitrary $(T, C)$-indexed set $G$ be given (\TODOinline{satisfying the appropriate \repsmallness/ conditions to be in $\Psh{C}$; local $T$-\repsmallness/}). In fact, it suffices for $G$ to be merely $(T, \core{C})$-indexed, where $\core{C}$ is the subcategory of $C$ containing only invertible morphisms.
+In particular, let $G$ be an arbitrary globally defined object of $\Psh{C}$. In fact, it suffices for $G$ merely to have reindexing along isomorphisms rather than arbitrary morphisms of $C$; that is, for $G$ to be an object of $\Psh{\core{C}}$, where $\core{C}$ is the subcategory of $C$ containing only invertible morphisms.
 
 This will be presented by a slice in $T/\Ob(C_{strict})$ (the slice whose fiber at any object $c_{strict}$ of $C_{strict}$ is the set $G(c)$, where $c$ is the object of $C$ presented by $c_{strict}$). By applying $\introS$ to this slice, we get a globally defined object of $C/\introS(\Ob(C_{strict}))$, which is to say, a global element of $P(\introS(\Omega))$. Take this to be our $\loebNeg$.
 
@@ -397,7 +395,7 @@ Invoking \magicref{PreIntrospDiag} (on the introspective theory $\langle T, C, \
 
 Thus, we have proven the following:
 \begin{theorem}\label{IntrospTyConFixedPoints}
-For any introspective theory $\langle T, C \rangle$, and any \TODOinline{locally $T$-\repsmall/} $(T, \core{C})$-indexed set $G$, there is some object $Y$ in the global aspect of $C$ along with a globally defined isomorphism from $Y$ to $\introS(G(Y))$.
+For any introspective theory $\langle T, C \rangle$, and any globally defined object $G$ of $\Psh{\core{C}}$, there is some globally defined object $Y$ of $C$ along with a globally defined isomorphism from $Y$ to $\introS(G(Y))$.
 \end{theorem}
 
 Combining this with \magicref{PreIntrospDiagFromIso} to eliminate the latter's isomorphism precondition, we now reach the following conclusion:

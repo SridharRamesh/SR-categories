@@ -199,7 +199,7 @@ Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories $D$ and 
 
 Furthermore, suppose given some subset of the morphisms of $S$ which is closed under composition on either side with arbitrary morphisms. That is, suppose given some bifunctor $\SpecialHom_S(-, =) : S^{op} \times S \to \Set$ which is a subfunctor of $\Hom_S(-, =) : S^{op} \times S \to \Set$.
 
-By currying, we may read this $\SpecialHom_S$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. This extends to a endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which is a left adjoint, like so: \TODOinline{Discuss Yoneda extension in preliminaries}
+By currying, we may read this $\SpecialHom_S$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. As the Yoneda embedding exhibits $\Psh{S}$ as the free cocompletion of $S$ under \setsmall/ colimits, we may extend this subfunctor of the Yoneda embedding to an endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which preserves \setsmall/ colimits. By the adjoint functor theorem, this $\Prior$ is a left adjoint. \sTODOinline{Discuss this Yoneda extension process in preliminaries; it can alternatively be described as left Kan extension along the Yoneda embedding. Is it actually true that we should say \quote{subfunctor of the identity} here, or should we just say that we have a map into the identity, not necessarily monic?}
 
 We may now define a locally introspective theory $\langle \Psh{S}, C\rangle$ like so:
 
@@ -225,9 +225,15 @@ Here, we take the $\Psh{S}$-indexed lexcategory $C$ to be the bottom composite p
 This construction can be seen as \magicref{TrivialPreIntrosp} applied to $\Psh{D}$, followed by \magicref{IntrospPullback} using the pullback-preserving functor $\pullAlong{i} : \Psh{S} \to \Psh{D}$, followed by \magicref{IntrospInternalMap} using a map derived from the inclusion of $\Prior$ into the identity on $\Psh{S}$.
 \end{construction}
 
-\TODOinline{Relate to introductory examples from the first chapter}
+\begin{observation}\label{PresheafArchetypesInstantiateGeneralLocallyIntrosp}
+Our archetypal examples of locally introspective theories \magicref{StepIndexingLocallyIntrosp} and \magicref{KripkeLocallyIntrosp} were each instances of \magicref{GeneralPresheafLocalIntrosp}. 
 
-Unfortunately, the above construction does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \sTODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}.
+Specifically, \magicref{StepIndexingLocallyIntrosp} was the instance where $i$ is the identity functor on the poset $\omega$ of natural numbers, with $\SpecialHom(a, b)$ being uniquely inhabited when $a < b$ and otherwise empty.
+
+And \magicref{KripkeLocallyIntrosp} was the instance where $i$ is the inclusion of $|P|$ into $Q$ (where $P$ is an arbitrary poset, $|P|$ is its underlying discrete set, and $Q$ is $P$ augmented with a new maximum element), and again $\SpecialHom(a, b)$ was taken to be uniquely inhabited when $a < b$ and otherwise empty.
+\end{observation}
+
+Unfortunately, this \magicref{GeneralPresheafLocalIntrosp} does not in general yield a fully introspective theory. We cannot expect this $C$ to be \repsmall/. \sTODOinline{And indeed, many examples of the above construction will not satisfy \Loeb/'s theorem, most easily seen for K4 frames that are not GL}
 
 But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next sections.
 
@@ -350,7 +356,9 @@ From the above, we have a pre-introspective theory $\langle \KPshGlobal{K_S}{S},
 \end{tikzcd}\]
 \end{construction}
 
-\TODOinline{Observe that our two presheaf-based introspective theories from the first chapter (\magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}) were both instances of this construction.}
+\begin{observation}\label{PresheafArchetypesInstantiateGeneralIntrosp}
+Our archetypal examples of introspective theories \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp} were both instances of \magicref{CardinalityConstrainedPresheafIntrosp}, in the same manner as in \magicref{PresheafArchetypesInstantiateGeneralLocallyIntrosp}.
+\end{observation}
 
 We now consider the question of when the pre-introspective theory described in \magicref{CardinalityConstrainedPresheafIntrosp} is in fact an introspective theory. This happens precisely if the $C$ we have defined is $\KPshGlobal{K_S}{S}$-\repsmall/. As $\KFiberPsh{K_D}{D}$ is $\Psh{D}$-\repsmall/ (by the comments at \magicref{KFiberPsh}), and $\pullAlong{i}$ and $\Prior$ both have right adjoints, we automatically have (by \magicref{RepsmallRightAdjoint}) that our $C$ corresponds to a lexcategory internal to $\Psh{S}$ (aka, an $S$-indexed lexcategory). However, the inclusion of $\KPshGlobal{K_S}{S}$ into $\Psh{S}$ will not in general have a right adjoint, so we cannot conclude that $C$ is $\KPshGlobal{K_S}{S}$-\repsmall/ in this same way. We may think of $\Mor(C)$ as an object within $\Psh{S}$, but do not know that this lives within its full subcategory $\KPshGlobal{K_S}{S}$. This will happen just in case, for every $s \in S$, the $s$-aspect of $\Mor(C)$ is contained in $K_S(s)$.
 
