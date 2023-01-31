@@ -405,18 +405,24 @@ We say \defined{\repsmall/ category} to mean a category which is presented by so
 
 Note that all the ordinary constructions of category theory which produce \setsmall/ categories or lexcategories from other such data in fact furthermore produce \repsmall/ categories or \repsmall/ lexcategories from analogous inputs. So this convention does not change very much, except it saves us some pedantry in the scope of some claims we make which might otherwise fail in contexts without the Axiom of Choice (where a random category found in the wild, instead of constructed by hand, could conceivably have finite limits without admitting any presentation with chosen basic limits, or some such pathology).
 
-We note without detailed proof \sTODOinline{Give or cite proofs} some strictification results which will be useful to us later.
+We note without detailed proof some strictification results which will be useful to us later. \sTODOinline{Give or cite proofs}
 
+\sTODOinline{We don't end up using the following:
 \begin{theorem}\label{StrictifyLexfunctor}
 Given a strict lexcategory $D$, a lexcategory $C$, and a lexfunctor $f : C \to D$, there is some strict lexcategory $C'$ and strict lexfunctor $f' : C' \to D$ such that $f$ and $f'$ are equivalent within the slice 2-category $\Cat/D$.
 \end{theorem}
+}
+
+\begin{theorem}\label{FreeStrictifyLexcategory}
+Given any lexcategory $T$, there is a strict lexcategory $T_{strict}$ which presents $T$, such that furthermore, for any lexfunctor $f : T \to L$ into a strict lexcategory $L$, there is a strict lexfunctor $f_{strict} : T_{strict} \to L$ which presents $f$.
+\end{theorem}
 
 \begin{theorem}\label{StrictifyIndexedCategory}
-Any indexed category is equivalent to some indexed strict category.
+Any indexed category is presented by some indexed strict category.
 \end{theorem}
 
 \begin{theorem}\label{StrictifyIndexedLexcategory}
-Any indexed lexcategory is equivalent to some indexed strict lexcategory.
+Any indexed lexcategory is presented by some indexed strict lexcategory.
 \end{theorem}
 
 \begin{theorem}\label{StrictifyInternalCategoryToInternalLexcategory}
@@ -663,19 +669,21 @@ Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure
 In addition to categories simpliciter and lexcategories, we have various other augmentations of the basic notion of category which are occasionally of interest. All of the following notions are standard in the literature. We note them here simply for reference (particularly the notion of \quote{arithmetic universe}, which is perhaps less well known than the others).
 
 \begin{definition}
-A \defined{regular} category is \TODO. If \TODO, we call it \defined{exact} (this is called \quote{effective regular} by some authors).
+A \defined{regular} category is a lexcategory with pullback-stable image factorization. If furthermore every congruence is a kernel pair, we call it \defined{exact} (this is called \quote{effective regular} by some authors).
 \end{definition}
 
 \begin{definition}
-An \defined{extensive} category is \TODO.
+An \defined{extensive} category is a category $C$ with finite coproducts, on which the coproduct operation induces an equivalence between $C/a \times C/b$ and $C/(a \times b)$ for all objects $a, b \in C$.
 \end{definition}
 
 \begin{definition}
-A category with a \defined{natural numbers object} (abbreviated \defined{NNO}) is \TODO.
+A \defined{natural numbers object} (abbreviated \defined{NNO}) in a category with a terminal object is an object $N$ along with maps $z : 1 \to N$ and $s : N \to N$, which is initial among all objects with such structure, in the sense that for any other object $N'$ with maps $z' : 1 \to N'$ and $s : N' \to N'$, there is a unique map $m : N \to N'$ satisfying $m \circ z = z'$ and $m \circ s = s' \circ m$. \sTODOinline{Illustrate}
+
+More generally, a category with finite products is said to have \quote{list objects} if for every object $X$, there is an object $L$ with maps $z : 1 \to L$ and $s : X \times L \to L$, which is initial among all objects with such structure, in the sense that for any other object $L'$ with maps $z' : 1 \to L'$ and $s' : X \times L' \to L'$, there is a unique map $m : L \to L'$ satisfying $m \circ z = z'$ and such that $m \circ s = s' \circ (\id_X \times m)$.
 \end{definition}
 
 \begin{definition}\label{DefnIAU}
-An \defined{arithmetic universe} is a category which is exact and extensive with pullback-stable list objects. \TODO. An \defined{arithmetic functor} is one which preserves all this structure.
+An \defined{arithmetic universe} is a category which is exact and extensive with pullback-stable list objects (see \autocite{maietti10a}). An \defined{arithmetic functor} is one which preserves all this structure.
 \end{definition}
 
 We denote the initial arithmetic universe as $\IAU$.
@@ -687,7 +695,7 @@ Structures internal to $\IAU$ can be thought of as codes for computably enumerab
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
 
 \begin{definition}
-A \defined{topos} is a cartesian closed category with a subobject classifier \sTODOinline{Define subobject classifier}. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}). If a topos has an NNO, we call it an an \defined{NNO-topos}.
+A \defined{topos} is a cartesian closed lexcategory with a subobject classifier. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}). If a topos has an NNO, we call it an an \defined{NNO-topos}.
 \end{definition}
 
 \TODOinline{Note that toposes with countable products also have countable coproducts. Note that toposes with countable coproducts automatically have NNOs given as a countable copower of the terminal object. Note that presheaf categories are toposes.}
@@ -922,7 +930,7 @@ The theory of toposes with countable products is a finitely axiomatized countabl
 \end{observation}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
-\TODOinline{We only make slight use of this section currently and perhaps it can ultimately be left out.}
+\sTODOinline{We only make slight use of this section currently and perhaps it can ultimately be left out.}
 
 The significance of lexcategories with respect to logic is that they capture, in a presentation-independent way (a la Lawvere's functorial semantics), those logical theories given by various sorts, partially defined finitary operations on those sorts (whose domain of definition is given by the constraint that some finitely many other compositions of operations are simultaneously equal), and universal entailments between equations between compositions of such operations (more precisely, entailments from finite conjunctions of equations to equations).
 

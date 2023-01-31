@@ -2,13 +2,15 @@
 
 \section{Geminal categories: The free introspective theory}\label{GeminalChapter}
 \subsection{Preview}
-In this chapter, we give an explicit yet tractably compact description of the initial introspective theory (which we call the theory of \quote{geminal categories}).
+In this chapter, we build the machinery to give an explicit yet tractably compact description of the initial introspective theory (which we call the theory of \quote{geminal categories}). This is the key result of this chapter.
 
 We also show the remarkable result that any strict introspective theory can itself be equipped in a natural way as a model of this initial introspective theory; that is, any strict introspective theory can be seen as a geminal category.
 
-This last statement is easy to misinterpret, so let me be a bit more clear as to what I mean by this. I do not mean the trivial statement that every introspective theory extends the initial introspective theory. Rather, I mean that the theory of strict introspective theories extends the initial introspective theory (even though the theory of strict introspective theories is not itself an introspective theory).
+(This last statement is easy to misinterpret, so let me be a bit more clear as to what I mean by this. I do not mean the trivial statement that every introspective theory extends the initial introspective theory. Rather, I mean that the theory of strict introspective theories extends the initial introspective theory (even though the theory of strict introspective theories is not itself an introspective theory).)
 
 We will also discuss a partial converse of sorts, a way to extract an introspective theory from a geminal category, with the extracted introspective theory having a certain terminality property (that is, we construct a sort of co-free introspective theory induced by the given geminal category).
+
+This chapter requires some preliminary concepts to be established in \magicref{MultiplyInternal} and \magicref{StrictIntrospSection}. The basic definitions concerning geminal categories are then given in \magicref{GeminalFirstDefnSection} through \magicref{GeminalSecondDefnSection}. After all this machinery has been built, the key result that the theory of geminal categories is in fact the initial introspective theory is ultimately demonstrated in \magicref{InitialIntrospectiveTheorySection}. We then discuss co-free constructions in \magicref{CofreeGeminalSection}.
 
 \subsection{Multiply internal structures}\label{MultiplyInternal}
 Before we get to the main material of this chapter, it will be necessary to discuss the concept of \quote{multiply internal} structures, which are used heavily throughout this chapter.
@@ -61,7 +63,7 @@ Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simpl
 
 Multiply internal structures can equivalently be thought of as multiply indexed structures satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
 
-\subsection{Strict introspective theories}
+\subsection{Strict introspective theories}\label{StrictIntrospSection}
 It will be technically convenient for us to work in this chapter with a slightly less \quote{presentation-free} variant of our notion of introspective theories.
 
 \begin{definition}\label{StrictIntrospDefn}
@@ -80,7 +82,7 @@ Any introspective theory $\langle T, C, \introS, \introN \rangle$ is presented b
 \begin{proof}
 Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$. By definition of the \repsmallness/ of $C$, we can choose some lexcategory $C_{int}$ internal to $T$ which presents the $T$-indexed category $C$. (That is, even though $C$ itself is only specified up to equivalence of indexed categories, we can choose a specific presentation of it by a \repsmall/ indexed strict category $C_{int}$ which is specified  more fine-grainedly up to isomorphism of indexed strict categories.)
 
-Now using \TODO, let $T_{strict}$ be some strict lexcategory which presents $T$ and which has the freeness property that \TODO. Because $T'$ presents $T$, we can choose some specific internal lexcategory $C_{strict}$ in $T_{strict}$ (this $C_{strict}$ being specified up to equality!) which presents $C_{int}$. Because $C_{strict}$ presents $C_{int}$ which in turn presents $C$, $\introS$ can be viewed as a (non-strict) lexfunctor from $T$ to the global aspect of $C_{strict}$. Now using the freeness property of $T_{strict}$, we obtain a strict lexfunctor $\introS_{strict}$ from $T_{strict}$ to the global aspect of $C_{strict}$, such that $\introS_{strict}$ presents $\introS$.
+Now using \magicref{FreeStrictifyLexcategory}, let $T_{strict}$ be some strict lexcategory which presents $T$ and which has the freeness property that any lexfunctor from $T$ to a strict lexcategory $L$ is presented by some strict lexfunctor from $T_{strict}$ to $L$. Because $T_{strict}$ presents $T$, we can choose some specific internal lexcategory $C_{strict}$ in $T_{strict}$ (this $C_{strict}$ being specified up to equality!) which presents $C_{int}$. Because $C_{strict}$ presents $C_{int}$ which in turn presents $C$, $\introS$ can be viewed as a (non-strict) lexfunctor from $T$ to the global aspect of $C_{strict}$. Now using the freeness property of $T_{strict}$, we obtain a strict lexfunctor $\introS_{strict}$ from $T_{strict}$ to the global aspect of $C_{strict}$, such that $\introS_{strict}$ presents $\introS$.
 
 Finally, we deal with $\introN$. Natural transformations are essentially unaffected by strictness considerations. That is, given parallel strict functors $A_{strict}$ and $B_{strict}$, natural transformations between these are in bijection with natural transformations between the non-strict functors these present. So our original $\introN$ corresponds to a unique natural transformation between the identity on $T_{strict}$ and $\Hom_{C_{strict}}(1, \introS_{strict}(-))$.
 
@@ -111,7 +113,7 @@ Such homomorphisms are closed under composition and thus we obtain the category 
 
 As the category of models of an essentially algebraic theory, this category must have an initial object. That is, there is a strict introspective theory with a unique homomorphism into any other strict introspective theory. In this chapter, we will find a tractable explicit description of this initial strict introspective theory.
 
-\subsection{Defining geminal categories}
+\subsection{Defining geminal categories}\label{GeminalFirstDefnSection}
 \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
 \begin{definition}[Geminal category]\label{VerboseGeminalCatDefn}
@@ -244,7 +246,7 @@ Putting this together, we have a strict introspective theory $\langle \GLCatTheo
 
 \sTODOinline{Note that there is a more limited analogue of the above, where we observe that the free X with an internal geminal Y is itself a geminal X, whenever Y extends X and X extends the notion of a lexcategory. The difficulty with turning this into an introspective theory is that the property we really depend on from the free lexcategory $L$ with an internal gadget of some sort is not just the 1-categorical property that it has a unique homomorphism to every other gadget, but the 2-categorical property that the category of homomorphisms from it to another lexcategory and natural transformations between those is equivalent to the 1-category of internal gadgets within that codomain lexcategory. This is true for lexcategories, but not necessarily for other doctrines, and I believe this is related to how $\Hom(1, -)$ is always a lexfunctor (thus turning internal models into genuine models,) but not always an X-functor. The subtle role of this in the above proof should be highlighted.}
 
-\subsection{Compactly defined geminal categories}
+\subsection{Compactly defined geminal categories}\label{GeminalSecondDefnSection}
 The above all amounts to an infinitary presentation of the theory of geminal categories. For this reason, we call it the \quote{verbose presentation} of geminal categories. However, it turns out this same theory can be finitely axiomatized as well.
 
 \begin{definition}[Geminal category, compact presentation]\label{CompactGeminalCatDefn}
@@ -324,7 +326,7 @@ This is the result of first obtaining the geminal category $\gamma = \langle T, 
 
 We now are ready to prove our main result about geminal categories.
 
-\subsection{The free introspective theory}
+\subsection{The free introspective theory}\label{InitialIntrospectiveTheorySection}
 \begin{theorem}\label{InitialIntrospectiveTheory}
 The strict introspective theory given in \magicref{GLCatTheoryIsIntrosp} is the initial strict introspective theory.
 \end{theorem}
