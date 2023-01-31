@@ -315,9 +315,9 @@ This is by exactly the same arguments as we have just given. All the results and
 \sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
 \subsection{Modal logic in geminal categories}
-\sTODOinline{Rewrite this just in terms of the internal $\Box_C$ in the initial introspective theory, which then automatically applies to arbitrary geminal categories. Also discuss how \Loeb/'s theorem holds in any geminal category.}
-
-\TODOinline{Discuss how every geminal category inherits a box operator modelling the GL modal logic, from the $\Box_C$ operator in the introspective theory of geminal categories.}
+\begin{observation}
+In every introspective theory $\langle T, C \rangle$, we have a $T$-internal endofunctor $\Box_C$ on $C$ modeling the modal logic GL. Thus, this is in particular true of the initial introspective theory, which by \magicref{InitialIntrospectiveTheory} is the theory of geminal categories. Thus, any geminal category $K$ comes with such an operation $\Box_{|K|}$ on $|K|$, and this operation is furthermore preserved by geminal category homomorphisms.
+\end{observation}
 
 \sTODOinline{Old stuff; rewrite or eliminate:
 The significance of our constellation of constructions turning introspective theories into geminal categories may be further illuminated by thinking about box notation for geminal categories.
@@ -414,9 +414,9 @@ Not only that, but every coalgebra in the range of $\beta$ has the following pro
 \end{tikzcd}\]
 
 \sTODOinline{Explain above diagram}
-\closeDetails
 
 \TODOinline{Write out details of how, by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
+\closeDetails
 
 \begin{corollary}
 As left adjoints preserve initial objects, the above tells us that the initial strict introspective theory (which we described in \magicref{InitialIntrospectiveTheory}) is also the initial geminal category.
