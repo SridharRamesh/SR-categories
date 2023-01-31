@@ -29,7 +29,7 @@ Similarly, if we ever describe diagrams involving functors between categories as
 
 (That all said, nothing we do is higher-dimensional than 2-categorical, so everything could in theory be strictified in some fashion, if so desired.)
 
-\TODOinline{Go through this document and give evocative names instead of just numbers to any theorem, construction, etc, which we will reference a lot, for which such a name would be useful.}
+\TODOinline{Give evocative names instead of just numbers to any theorem, construction, etc, in this document for which such a name would be useful.}
 
 \subsection{Indexed sets and \repsmall/ness}
 We will now give a series of related definitions, concerning what are called indexed structures. The notions being described in this section are all old hat, none of them are newly invented by us, but we wish to pin them down with particular names to establish a language for easily talking about the things we wish to talk about in the rest of this document.
@@ -720,7 +720,7 @@ A category with a \defined{natural numbers object} (abbreviated \defined{NNO}) i
 \end{definition}
 
 \begin{definition}\label{DefnIAU}
-An \defined{arithmetic universe} is a category which is exact and extensive with pullback-stable list objects. \TODO
+An \defined{arithmetic universe} is a category which is exact and extensive with pullback-stable list objects. \TODO. An \defined{arithmetic functor} is one which preserves all this structure.
 \end{definition}
 
 We denote the initial arithmetic universe as $\IAU$.
@@ -736,7 +736,7 @@ A \defined{cartesian closed category} is a category with finite products, in whi
 \end{definition}
 
 \begin{definition}
-A \defined{topos} is a cartesian closed category with a subobject classifier \sTODOinline{Define subobject classifier}. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}.) If a topos has an NNO, we call it an an \defined{NNO-topos}.
+A \defined{topos} is a cartesian closed category with a subobject classifier \sTODOinline{Define subobject classifier}. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}). If a topos has an NNO, we call it an an \defined{NNO-topos}.
 \end{definition}
 
 \TODOinline{Note that toposes with countable products also have countable coproducts. Note that toposes with countable coproducts automatically have NNOs given as a countable copower of the terminal object. Note that presheaf categories are toposes.}
@@ -971,7 +971,7 @@ The theory of toposes with countable products is a finitely axiomatized countabl
 \end{observation}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
-\TODOinline{Perhaps we will not end up using anything from this section and it can be deleted.}
+\TODOinline{We only make slight use of this section currently and perhaps it can ultimately be left out.}
 
 The significance of lexcategories with respect to logic is that they capture, in a presentation-independent way (a la Lawvere's functorial semantics), those logical theories given by various sorts, partially defined finitary operations on those sorts (whose domain of definition is given by the constraint that some finitely many other compositions of operations are simultaneously equal), and universal entailments between equations between compositions of such operations (more precisely, entailments from finite conjunctions of equations to equations).
 
@@ -1078,11 +1078,11 @@ Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFait
 Let $C$ be an arithmetic universe, let some arithmetic functor from $C$ to another arithmetic universe be given, and let $M$ be the set of morphisms of $C$ which are sent to isomorphisms by said arithmetic functor. Then letting $f : C \to C[M^{-1}]$ be the corresponding localization (an \defined{arithmetic localization}), we have that this is also the localization qua arithmetic universe, in that $C[M^{-1}]$ is an arithmetic universe, $f$ is an arithmetic functor, and any arithmetic functor out of $C$ which factors (necessarily uniquely) through $f$ is such that this factorization is itself an arithmetic functor.
 \end{lemma}
 \begin{proof}
-\TODOinline{This is all straightforward by the general techniques of GZ, but I'm not bothered to write it out right now. Demonstrating that $C[M^{-1}]$ has NNOs and list objects is the one nonstraightforwardish aspect, for which it is useful to keep in mind that in an arithmetic universe, there is an isomorphism between \quote{lists of Xes, along with one Y} and \quote{lists of Xes, along with a sequence of Ys of length one greater, each Y being suitably related to the previous one in that applying some fixed isomorphism to Y_i yields the same result as applying some other fixed map to X x Y_i}}.
+This is all straightforward by the general techniques of \autocite{gabrielzisman1967}. We omit the details. \sTODOinline{Demonstrating that $C[M^{-1}]$ has NNOs and list objects is the one nonstraightforwardish aspect, for which it is useful to keep in mind that in an arithmetic universe, there is an isomorphism between \quote{lists of Xes, along with one Y} and \quote{lists of Xes, along with a sequence of Ys of length one greater, each Y being suitably related to the previous one in that applying some fixed isomorphism to Y_i yields the same result as applying some other fixed map to X x Y_i}.}
 \end{proof}
 
 \subsection{Miscellaneous}
-\TODOinline{Organize this, or determine what can be thrown out from here}
+\sTODOinline{Organize this, or determine what can be thrown out from here}
 \begin{observation}\label{InitialWrtSet}
 In our metatheory, we have access to the following principle: If M is the term model of some finitely axiomatized lex theory of gadgets, and Set is also a gadget (but a large one), then M not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from M to Set.
 \end{observation}
@@ -1141,17 +1141,15 @@ In other words, just in case $x$ is a fixed point of $x \mapsto M \circ F(x) \ci
 \sTODOinline{Note that algebra maps out of an isomorphism qua algebra correspond to hylomorphism maps out of the sme isomorphism qua coalgebra, and dually for maps into the isomorphism.}
 
 \begin{theorem}\label{LocallySmallSelfIndexing}
-The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed. \TODOinline{Define locally cartesian closed. Include a terminal object in the definition so that this entails being cartesian closed.}
+The self-indexing of a lexcategory $T$ is locally \repsmall/ just in case $T$ is locally cartesian closed.
 \end{theorem}
-\begin{proof}
-\TODO
-\end{proof}
+\sTODOinline{Proof}
 
 \begin{theorem}\label{RepSmallPresheavesOnPresheaves}
-Let $C$ be any category, and let $P$ in $\Psh{\Psh{C}}$ be given. This $P$ is $\Psh{C}$-\repsmall/ just in case $P$ turns \setsmall/ colimits in $\Psh{C}$ (i.e., \setsmall/ limits in $\op{\Psh{C}}$) into \setsmall/ limits in $\Set$.
+Let $C$ be any \setsmall/ category, and let $P$ in $\Psh{\Psh{C}}$ be given. This $P$ is $\Psh{C}$-\repsmall/ just in case $P$ turns \setsmall/ colimits in $\Psh{C}$ (i.e., \setsmall/ limits in $\op{\Psh{C}}$) into \setsmall/ limits in $\Set$.
 \end{theorem}
 \begin{proof}
-The necessity of this condition is clear, from the fact that any representable functor preserves limits. As for its sufficiency, we may consider the map $P(\yoneda(-)) : \op{C} \to \Set$. \TODOinline{Invoke the Yoneda lemma to show this gives the right effect on \repsmall/ elements of $\Psh{C}$, and then invoke the fact that all objects $\Psh{C}$ are \setsmall/ colimits of representable objects to argue this gives the right effect in general.}
+The necessity of this condition is clear, from the fact that any representable functor preserves limits. As for its sufficiency, we may consider the map $P(\yoneda(-)) : \op{C} \to \Set$. This is an object $X$ of $\Psh{C}$, and thus also represents a presheaf $\yoneda(X) = \Hom_{\Psh{C}}(-, X)$ on $\Psh{C}$. By the Yoneda lemma, this $\yoneda(X)$ agrees with $P$ on those objects of $\Psh{C}$ which are $C$-\repsmall/. As all objects in $\Psh{C}$ are \setsmall/ colimits of such objects, and both $P$ and any \repsmall/ presheaf turn \setsmall/ colimits into limits, it follows that this $\yoneda(X)$ agrees with $P$ in general.
 \end{proof}
 
 \begin{construction}\label{FunctorAs2Cell}

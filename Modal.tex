@@ -90,7 +90,7 @@ For the $\Box$ operator on $T$ this is clear, as the natural transformation $\in
 	\arrow["{\introN : \id_T \to \Box_T}"{description}, shorten >=7pt, Rightarrow, from=1-3, to=0]
 \end{tikzcd}\]
 
-Keeping in mind \magicref{SliceBoxIsAspectBox},  this extends automatically to an indexed endofunctor on $T/-$, which we may call $\Box_{T/-}$, whose aspect at each $t \in T$ is given by the above diagram relative to the slice locally introspective theory $\slicePreIntrosp{T}{t}$. \sTODOinline{Remark on how these $\introN$ do indeed assemble into an indexed functor; i.e., the reindexing of $\introN$ at a globally defined object is the same as the slice introspective theory's $\introN$ at this object.} We abuse notation slightly in the following diagram and write $\introN$ for the map from identity to $\Box_{T/-}$ whose each aspect is given by the appropriate instance of the previous diagram.
+Keeping in mind \magicref{SliceBoxIsAspectBox},  this extends automatically to an indexed endofunctor on $T/-$, which we may call $\Box_{T/-}$, whose aspect at each $t \in T$ is given by the above diagram relative to the slice locally introspective theory $\slicePreIntrosp{T}{t}$. \sTODOinline{Remark on how these $\introN$ do indeed assemble into an indexed functor; i.e., the reindexing of $\introN$ at a globally defined object is the same as the slice introspective theory's $\introN$ at this object.} (We abuse notation slightly in the following diagram and write $\introN$ for the map from identity to $\Box_{T/-}$ whose each aspect is given by the appropriate instance of the previous diagram.)
 
 % https://q.uiver.app/?q=WzAsMyxbMiwwLCJULy0iXSxbMCwyLCJDIl0sWzQsMiwiXFxQc2h7Q30iXSxbMCwxLCJcXGludHJvRiIsMl0sWzEsMiwiYyBcXDsgXFxtYXBzdG8gXFxIb21fQygtLCBjKSIsMl0sWzIsMCwiUCBcXG1hcHN0byBQKDEpIiwyXSxbMCw0LCJcXGludHJvTiA6IFxcaWRfe1QvLX0gXFx0byBcXEJveF97VC8tfSIsMSx7InNob3J0ZW4iOnsidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
@@ -103,15 +103,13 @@ Keeping in mind \magicref{SliceBoxIsAspectBox},  this extends automatically to a
 	\arrow["{\introN : \id_{T/-} \to \Box_{T/-}}"{description}, shorten >=7pt, Rightarrow, from=1-3, to=0]
 \end{tikzcd}\]
 
-\TODOinline{In the following diagrams, either $C$ and $\Psh{C}$ actually refer to the global aspect, or $T$ actually refers to $T/-$ and $\introN$ to the corresponding indexed transformation, as in the diagram immediately above.}
-
 We do not have such a strong natural transformation from identity to $\Box$ as acting on the other corners of the triangle ($C$ or $\Psh{C}$). However, by taking the natural transformation from $t$ to $\Box_T t$, whiskering it on both sides along the trips from any other corner of the triangle into and out of $T$, and then applying the commutativity of $\Box$ with each leg of the triangle, we get a natural transformation from $\Box$ to $\Box \Box$ at each other corner of the triangle as well.
 
 (The general principle here is that, given morphisms $f$ and $g$ between the same pair of objects in opposite directions, composing with $f$ on one side and $g$ on the other turns $(gf)^n$ into $(fg)^{n + 1}$, and thus whiskering in this way turns a natural transformation $: (gf)^n \to (gf)^m$ into a natural transformation $: (fg)^{n + 1} \to (fg)^{m + 1}$)
 
-% https://q.uiver.app/?q=WzAsOCxbMSwwLCJcXFBzaHtDfSJdLFsyLDAsIlQiXSxbMywxLCJDIl0sWzQsMSwiXFxQc2h7Q30iXSxbNSwwLCJUIl0sWzMsMF0sWzYsMCwiQyJdLFswLDAsIkMiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XSxbMSw0LCJcXGlkX1QiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDZdLFsyLDYsIlxcQm94X0MiLDIseyJjdXJ2ZSI6NX1dLFs3LDBdLFs3LDYsIlxcQm94X0MiLDAseyJjdXJ2ZSI6LTV9XSxbNywyLCJcXEJveF9DIiwyXSxbMTIsMTAsIlxcaW50cm9OIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwLCJ0YXJnZXQiOjIwfX1dXQ==
+% https://q.uiver.app/?q=WzAsOCxbMSwwLCJcXFBzaHtDfSJdLFsyLDAsIlQvLSJdLFszLDEsIkMiXSxbNCwxLCJcXFBzaHtDfSJdLFs1LDAsIlQvLSJdLFszLDBdLFs2LDAsIkMiXSxbMCwwLCJDIl0sWzAsMV0sWzEsMl0sWzIsM10sWzMsNF0sWzEsNCwiXFxpZF9UIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNCw2XSxbMiw2LCJcXEJveF9DIiwyLHsiY3VydmUiOjV9XSxbNywwXSxbNyw2LCJcXEJveF9DIiwwLHsiY3VydmUiOi01fV0sWzcsMiwiXFxCb3hfQyIsMl0sWzEyLDEwLCJcXGludHJvTiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
 \[\begin{tikzcd}
-	C & {\Psh{C}} & T & {} && T & C \\
+	C & {\Psh{C}} & {T/-} & {} && {T/-} & C \\
 	&&& C & {\Psh{C}}
 	\arrow[from=1-2, to=1-3]
 	\arrow[from=1-3, to=2-4]
@@ -126,9 +124,9 @@ We do not have such a strong natural transformation from identity to $\Box$ as a
 	\arrow["\introN"', shorten <=4pt, shorten >=4pt, Rightarrow, from=1, to=0]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsNyxbMCwwLCJcXFBzaHtDfSJdLFsxLDAsIlQiXSxbMiwxLCJDIl0sWzMsMSwiXFxQc2h7Q30iXSxbNCwwLCJUIl0sWzIsMF0sWzUsMCwiQyJdLFswLDFdLFsxLDJdLFsyLDNdLFszLDRdLFsxLDQsIlxcaWRfVCIsMCx7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzQsNl0sWzMsNiwiXFxCb3hfe1xcUHNoe0N9fSIsMl0sWzAsMywiXFxCb3hfe1xcUHNoe0N9fSIsMix7ImN1cnZlIjo1fV0sWzAsNiwiXFxCb3hfe1xcUHNoe0N9fSIsMCx7ImN1cnZlIjotNX1dLFsxMSw5LCJcXGludHJvTiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH19XV0=
+% https://q.uiver.app/?q=WzAsNyxbMCwwLCJcXFBzaHtDfSJdLFsxLDAsIlQvLSJdLFsyLDEsIkMiXSxbMywxLCJcXFBzaHtDfSJdLFs0LDAsIlQvLSJdLFsyLDBdLFs1LDAsIkMiXSxbMCwxXSxbMSwyXSxbMiwzXSxbMyw0XSxbMSw0LCJcXGlkX1QiLDAseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFs0LDZdLFszLDYsIlxcQm94X3tcXFBzaHtDfX0iLDJdLFswLDMsIlxcQm94X3tcXFBzaHtDfX0iLDIseyJjdXJ2ZSI6NX1dLFswLDYsIlxcQm94X3tcXFBzaHtDfX0iLDAseyJjdXJ2ZSI6LTV9XSxbMTEsOSwiXFxpbnRyb04iLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
 \[\begin{tikzcd}
-	{\Psh{C}} & T & {} && T & C \\
+	{\Psh{C}} & {T/-} & {} && {T/-} & C \\
 	&& C & {\Psh{C}}
 	\arrow[from=1-1, to=1-2]
 	\arrow[from=1-2, to=2-3]
