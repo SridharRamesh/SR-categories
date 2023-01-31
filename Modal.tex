@@ -9,11 +9,7 @@ The following notation will be very convenient for us going forward. It is also 
 
 Let $\langle T, C \rangle$ be a locally introspective theory.
 
-Let $P$ be a $(T, C)$-indexed set in the sense of \TODOinline{Cite preliminaries; note also our convention about using P(c) instead of P(t, c) to note t-indexed sets given by a doubly-indexed set}. We say this $P$ is a locally $T$-\repsmall/ presheaf on $C$ if the map from its total space of elements to $\Ob(C)$ has $T$-\repsmall/ fibers. In other words, $P(c)$ is represented by an object of $T/t$ for each $t$-definable object $c$ of $C$. Put another way, such a presheaf amounts to a $T$-indexed functor between the $T$-indexed categories $\op{C}$ and $T/-$.
-
-Note that the category of locally $T$-\repsmall/ presheaves on $C$ is itself a $T$-indexed lexcategory. We will refer to this as $\Psh{C}$. (In more detail, the $T$-indexed category $C$ gives rise in an obvious way, by reversing arrows, to another $T$-indexed category $\op{C}$. We then have that the two $T$-indexed categories $\op{C}$ and $T/-$ are objects of $\Cat^{\op{T}}$. But $\Cat^{\op{T}}$ is a cartesian closed 2-category (in much the same way that $\Set^{\op{T}}$ is a cartesian closed category, at least when $\Set$ or $\Cat$ are interpreted expansively enough to include sets or categories of comparable size to $T$), and thus we can form within it the exponential object for $T/-$ raised to the power $\op{C}$. This exponential object is the $T$-indexed category we call $\Psh{C}$.)
-
-\TODOinline{The above probably all belongs in the Preliminaries on doubly-indexed sets.}
+Recall from \magicref{PreliminariesMultipleIndexing} the $T$-indexed category $\Psh{C}$ (the appropriate notion of the category of presheaves on $C$ when $C$ is an indexed category rather than a category simpliciter).
 
 Thus, we have three $T$-indexed lexcategories of note: $T$ itself (considered as a $T$-indexed category through the self-indexing $T/-$), $C$, and $\Psh{C}$.
 
@@ -52,9 +48,9 @@ The above was all discussed for $T$, $C$, and $\Psh{C}$ considered as $T$-indexe
 
 \bigskip
 \begin{remark}\label{BoxNotationSmallnessConcerns}
-The reason we restricted attention here to locally $T$-\repsmall/ presheaves, rather than arbitrary presheaves, is so that the map $P \mapsto P(1)$ can indeed be taken as always landing back within $T$ and not within $T$-indexed sets more generally.
+The reason we restricted attention here to $T$-\repsmall/ $(T, C)$-indexed sets (these being the objects of $\Psh{C}$ as we've defined it), rather than arbitrary $(T, C)$-indexed sets, is so that the map $P \mapsto P(1)$ can indeed be taken as always landing back within $T$, and not within $\Psh{T}$ more generally.
 
-Similarly, the reason we restricted attention to locally introspective theories (i.e., the case where $C$ is locally $T$-\repsmall/) and not to pre-introspective theories more generally is so that the Yoneda embedding $c \mapsto \Hom_C(-, c)$ does indeed land within the locally $T$-\repsmall/ presheaves, rather than arbitrary presheaves.
+Similarly, the reason we restricted attention to locally introspective theories (i.e., the case where $C$ is locally $T$-\repsmall/) and not to pre-introspective theories more generally is so that the Yoneda embedding $c \mapsto \Hom_C(-, c)$ does indeed yield $T$-\repsmall/ $(T, C)$-indexed sets.
 \end{remark}
 
 \subsection{Box preservation}
@@ -64,11 +60,11 @@ Note that, having set up these various notions of $\Box$, we find that $\Box$ an
 
 For example, $\introF$ preserves $\Box$, in that both $\introF(\Box(-))$ and $\Box(\introF(-))$ yield the same $T$-indexed functor from the self-indexing of $T$ to $C$. This is readily seen by unwinding their definitions: These are both $\introF(\Hom_C(1, \introF(-)))$.
 
-We also have that taking $\Hom_C(1, -)$ preserves $\Box$ in the same way. $\Hom_C(1, \Box(-)) = \Box(\Hom_C(1, -)) = \Hom_C(1, \introF(\Hom_C(1, -)))$. More generally, consider the map $G$ which assigns to every locally $T$-\repsmall/ presheaf $P$ upon $C$ its object of global elements $P(1)$. Then $G$ preserves $\Box$ in the same way: $G(\Box P) = \Box(G(P)) = \Hom_C(1, \introF(P(1)))$.
+We also have that taking $\Hom_C(1, -)$ preserves $\Box$ in the same way. $\Hom_C(1, \Box(-)) = \Box(\Hom_C(1, -)) = \Hom_C(1, \introF(\Hom_C(1, -)))$. More generally, consider the map $G$ which assigns to every $P \in \Psh{C}$ its object of global elements $P(1)$. Then $G$ preserves $\Box$ in the same way: $G(\Box P) = \Box(G(P)) = \Hom_C(1, \introF(P(1)))$.
 
-Given object $c$ of $C$, and locally $T$-\repsmall/ presheaf $P$ on $C$, we will write $c \implies P$ to indicate the exponential presheaf $P^c$. That is, the presheaf $P(- \times c)$. We may also write $c \implies d$ where $d$ is an object of $C$ as well, to mean $c \implies P$ for the presheaf $P = \Hom_C(-, d)$ represented by $d$. Thus, $c \implies d$ is the presheaf $\Hom_C(- \times c, d)$.
+Given object $c$ of $C$, and $P \in \Psh{C}$, we will write $c \implies P$ to indicate the exponential presheaf $P^c$. That is, the presheaf $P(- \times c)$. We may also write $c \implies d$ where $d$ is an object of $C$ as well, to mean $c \implies P$ for the presheaf $P = \Hom_C(-, d)$ represented by $d$. Thus, $c \implies d$ is the presheaf $\Hom_C(- \times c, d)$.
 
-Note that for any locally $T$-\repsmall/ presheaf $P$ on $C$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, in the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
+Note that for any $P \in \Psh{C}$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, in the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
 
 \subsection{Modal logic and axiom 4}\label{ModalAxiom4Section}
 The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in later remarks.

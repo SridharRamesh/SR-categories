@@ -34,9 +34,9 @@ We will now give a series of related definitions, concerning what are called ind
 
 As we give these definitions, we will also observe a basic stock of theorems about them. Again, we make no claim to originality with these preliminaries. They simply may be useful to remind the reader of, or to give labels to in order to reference as we use them.
 
-The reader who is already very familiar with these notions and just unfamiliar with our conventions of vocabulary is advised to just skim these preliminaries on initial read and then return as needed when faced with unfamiliar vocabulary. Frankly, the reader who is not very familiar with these notions is also given similar advice. No need to spend all one's time reading proofs and details of lemmas up front. It is probably best to read a bit of the preliminaries to get the lay of the land, then go off and read the actual content and come back as needed. But who knows? To each reader, their own reading style may be best. \sTODOinline{Figure out exactly the roadmap or reading advice we want to give.}
+The reader who is already very familiar with these notions and just unfamiliar with our conventions of vocabulary is advised to just skim these preliminaries on initial read and then return as needed when faced with unfamiliar vocabulary. Frankly, the reader who is not very familiar with these notions is also given similar advice. No need to spend all one's time reading proofs and details of lemmas up front. It is probably best to read a bit of the preliminaries to get the lay of the land, then go off and read the actual content and come back as needed. But who knows? To each reader, their own reading style may be best.
 
-\TODOinline{Give evocative names instead of just numbers to any theorem, construction, etc, in this document for which such a name would be useful.}
+\sTODOinline{Give evocative names instead of just numbers to any theorem, construction, etc, in this document for which such a name would be useful.}
 
 The key notion upon which everything else builds is the following:
 
@@ -68,6 +68,8 @@ The analogy of representability to the familiar distinction between \quote{\word
 
 When we wish to refer to the distinction between set-sized and proper-class-sized, we will say \quote{\setsmall/}, rather than saying \quote{\wordsmall/}. We will shy away from using the word \quote{\wordsmall/} altogether.
 \end{remark}
+
+{\color{red} Reader beware. I've changed my mind before on what word is ideal to use for this concept and may change my mind again in the future. For now, I am using \quote{\repsmall/}, but in future iterations of this document I may change all such instances to \quote{small} or \quote{repsmall} or some such thing, depending on what seems to best convey the right intuitions while feeling suitably lightweight.}
 
 \begin{convention}
 Via the Yoneda embedding (which we denote $\yoneda$), we identify $T$ itself as the full subcategory of \repsmall/ $T$-indexed sets within the category of all $T$-indexed sets. In this way, we may speak, for example, of functions from objects of $T$ to $T$-indexed sets. That is, when $t$ is an object of $T$, we will readily write $t$ also to mean the Yoneda embedding of $t$, when we wish to treat it as a \repsmall/ $T$-indexed set; we will usually not explicitly write $\yoneda(t)$. And conversely, given a \repsmall/ $T$-indexed set $P$, we freely write also $P$ to name an object in $T$ representing $P$, rather than explicitly writing $\yoneda^{-1}(P)$.
@@ -641,13 +643,15 @@ Thus, we can resummarize all of these conditions like so: We create a category d
 	\arrow[from=2-3, to=3-5]
 \end{tikzcd}\]
 
-Then, a $(T, C)$-indexed set is just the same as as a $(\Groth_T C)$-indexed set. This also gives us easily the right notion of maps between $(T, C)$-indexed sets. They are just maps between the corresponding $(\Groth_T C)$-indexed sets (i.e., natural transformations between presheaves on $\Groth_T C$). In this way, we can speak about $(\Groth_T C)$-indexed structures more generally than mere sets.
+Then, a $(T, C)$-indexed set is just the same as as a $(\Groth_T C)$-indexed set. This also gives us easily the right notion of maps between $(T, C)$-indexed sets. They are just maps between the corresponding $(\Groth_T C)$-indexed sets (i.e., natural transformations between presheaves on $\Groth_T C$). In this way, we can speak about $(T, C)$-indexed structures more generally than mere sets.
 
-Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except if there is some existing ambiguity where objects of $T$ and globally defined objects of $C$ have been given the same name (as could happen with terminal objects named $1$). If there is ever any such ambiguity, it should be cleared up by context.
+Given a $(T, C)$-indexed set $P$, and a globally defined object $c$ of $C$, it will often be convenient for us to speak of $P(c)$, meaning the $T$-indexed set which takes $t$ to $P(t, c)$. [More generally, given any $t$-defined object $c$ of $C$, we can in the same way consider $P(c)$ as a $(T/t)$-indexed set.\sTODOinline{Explain this}]. This might be seen as conflicting with the natural notation $P(t)$ for objects $t$ of $T$ to denote the $t$-aspect of $P$ (a presheaf on the $t$-aspect of $C$). Generally this will not cause ambiguity, except if there is some existing ambiguity where objects of $T$ and globally defined objects of $C$ have been given the same name (as could happen with terminal objects named $1$). If there is ever any such ambiguity, it should be cleared up by context.
 
-We say a $(T, C)$-indexed category $P$ is $T$-\repsmall/ if, for any $t$-defined object $c$ of $C$, the corresponding $P(c)$ \TODOinline{This has to be defined, when $t$ is not $1$} is given by an object in $T/t$. \TODO. When $C$ is presented by a strict category $C_{strict}$, this is equivalent to saying that the corresponding map into $\Ob(C_{strict})$ has $T$-\repsmall/ fibers. \TODOinline{Perhaps before discussing (T, C)-indexed sets for T-indexed categories C, we should discuss (T, C)-indexed sets for T-indexed sets C. This is just looking at slice categories in $\Psh{T}$, but the motivation may be useful.}
+We say a $(T, C)$-indexed structure $P$ is $T$-\repsmall/ if, for any $t$-defined object $c$ of $C$, the corresponding $(T/t)$-indexed structure $P(c)$ is $(T/t)$-\repsmall/. When $C$ is presented by a strict category $C_{strict}$, this is equivalent to saying that the corresponding map into $\Ob(C_{strict})$ has $T$-\repsmall/ fibers. \sTODOinline{Perhaps before discussing (T, C)-indexed sets for T-indexed categories C, we should discuss (T, C)-indexed sets for T-indexed sets C. This is just looking at slice categories in $\Psh{T}$, but the motivation may be useful.}
 
-We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed sets $P$ in cases where $C$ is in fact $T$-\repsmall/, and furthermore $P$ is $T$-\repsmall/. \TODOinline{Define what it means for $P$ to be $T$-\repsmall/. Show how this leads to a simpler representation of $P$ as living internally to $T$}
+Put another way, a $T$-\repsmall/ $(T, C$)-indexed set amounts to a $T$-indexed functor between the $T$-indexed categories $\op{C}$ and $T/-$. In this way, we get a $T$-indexed category $\Psh{C}$, acting as the $T$-indexed category of presheaves on $C$ whose value at any object of $C$ is $T$-\repsmall/. (In more detail, the $T$-indexed category $C$ gives rise in an obvious way, by reversing arrows, to another $T$-indexed category $\op{C}$. We then have that the two $T$-indexed categories $\op{C}$ and $T/-$ are objects of $\Cat^{\op{T}}$. But $\Cat^{\op{T}}$ is a cartesian closed 2-category (in much the same way that $\Set^{\op{T}}$ is a cartesian closed category, at least when $\Set$ or $\Cat$ are interpreted expansively enough to include sets or categories of comparable size to $T$), and thus we can form within it the exponential object for $T/-$ raised to the power $\op{C}$. This exponential object is the $T$-indexed category we call $\Psh{C}$.)
+
+We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed structures in cases where $C$ is in fact $T$-\repsmall/, and furthermore $P$ is $T$-\repsmall/. \sTODOinline{Show how this leads to a simpler representation of $P$ as living internally to $T$}
 
 The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given merely the data of a fibration as a functor between categories, one can recover the indexed category which gave rise to it.
 
@@ -655,7 +659,7 @@ Thus, the data of an indexed category is equivalent to the data of a fibration. 
 
 Of course, this construction can be iterated further now. A $(T, C)$-indexed category $D$ is a $(\Groth_T C)$-indexed category (i.e., a contravariant functor from $\Groth_T C$ to $\Cat$), and thus gives rise to another category $\Groth_{\Groth_T C} D$. Structures indexed over $\Groth_{\Groth_T C} D$ can be called $(T, C, D)$-indexed structures. And so on ad infinitum. Do not worry, we will not need to explicitly consider this to any further depth of indexing. \sTODOinline{But see the next section on multiply internal structures}
 
-\TODOinline{Discuss the concept of being $T$-\repsmall/ vs. $C$-\repsmall/ when $(T, C)$-indexed}
+\sTODOinline{Discuss the concept of being $T$-\repsmall/ vs. $C$-\repsmall/ when $(T, C)$-indexed}
 
 Note also that any structure singly-indexed over $T$ can automatically be thought of as doubly-indexed over $T$ and $C$, where the indexing over $C$ is trivial. This is basically by the fact that the Grothendieck construction for $T$ and $C$ comes with a projection functor to $T$, so that all $T$-indexed structures thus induce, via this functor, a $T$-and-$C$-indexed structure. Thus, we can readily speak of maps between $T$-indexed structures and $(T, C)$-indexed structures, by treating the former as implicitly $(T, C)$-indexed themselves.
 
@@ -665,7 +669,7 @@ Indeed, more generally in the multiply indexed context, any structure indexed ov
 
 Note that a map from a $T$-indexed structure $A$ to a $(T, C)$-indexed structure $B$ thus amounts to a map from $A$ to $\Hom_C(1, B)$, whenever $C$ has a terminal object. So all this high-faluting multiply indexed stuff just amounts to another way of thinking about maps into global aspects.
 
-\subsection{Arithmetic universes and other special kinds of category}
+\subsection{Arithmetic universes, toposes, and other special kinds of category}
 In addition to categories simpliciter and lexcategories, we have various other augmentations of the basic notion of category which are occasionally of interest. All of the following notions are standard in the literature. We note them here simply for reference (particularly the notion of \quote{arithmetic universe}, which is perhaps less well known than the others).
 
 \begin{definition}
@@ -697,8 +701,6 @@ There are many alternative characterizations of $\IAU$. For example, \autocite{m
 \begin{definition}
 A \defined{topos} is a cartesian closed lexcategory with a subobject classifier. (This is sometimes called an \quote{elementary topos} in the literature, to distinguish from the notion of a \quote{Grothendieck topos}). If a topos has an NNO, we call it an an \defined{NNO-topos}.
 \end{definition}
-
-\TODOinline{Note that toposes with countable products also have countable coproducts. Note that toposes with countable coproducts automatically have NNOs given as a countable copower of the terminal object. Note that presheaf categories are toposes.}
 
 \subsection{Comma objects and their interaction with Kan extensions}
 
