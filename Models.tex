@@ -51,6 +51,8 @@ If every gadget has an initial internal gadget, and every gadget homomorphism pr
 In other words, $Th$ is self-initializing if $\LexCat(Th, \Glob{C})$ has an initial object, and this initiality is preserved by $\InducedHomo{f}{C}$ for every lexfunctor $f$ out of $Th$.
 \end{definition}
 
+Thus, \magicref{InitoGeminalYieldsGeminal} shows us how to equip the initial model of any self-initializing theory as a geminal category.
+
 The above all admits a generalization worth noting:
 
 \begin{construction}\label{SuperInitoGeminalYieldsGeminal}
@@ -109,7 +111,7 @@ This is in exactly the same way that we have familiar constructions such as of t
 In more detail, the category of strict lexcategories with internal initial models of $Th$, and strict lexfunctors strictly preserving these internal initial models, is the category of models of an infinitary quasi-equational theory (whose infinitary operations have arity bounded by a \setsmall/ cardinal dependent on the size of $Th$), and thus has an initial object. This initial strict structure furthermore is initial in the non-strict context, because all the relevant operations (finite limits, initial models of $Th$) are given by universal properties, so that any functor out of the initial strict structure preserving these in a non-strict sense is canonically isomorphic to a functor preserving these strictly on the nose.
 \end{proof}
 
-\begin{construction}
+\begin{construction}\label{IntrospFromSelfInitializing}
 If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}. This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $Th$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
 
 We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ where $\introS$ is a map in $\initMod{Th}$.
@@ -138,13 +140,19 @@ Then we may apply a modification of \magicref{CommaKanStrongSigmesque} to conclu
 \end{construction}
 
 \subsubsection{A self-initializing theory with uncountable and uncomputable flavor}\label{ToposWithCountableProductsSection}
-\TODOinline{Note that all our arguments concerning self-initializing theories immediately adapt just as well to self-initializing countably lex theories.
+Note that all our arguments concerning self-initializing theories immediately adapt just as well when all instances of \quote{lexcategory} are replaced by \quote{lexcategory furthermore having countable products}, and all instances of \quote{lexfunctor} are replaced by \quote{lexfunctor furthermore preserving countable products}. We thus obtain the concept of self-initializing countably lex theories. The analogue of \magicref{InitoGeminalYieldsGeminal} then shows us how to equip the initial model of any self-initializing countably lex theory as a geminal category, while the analogue of \magicref{IntrospFromSelfInitializing} furthermore gives us a corresponding introspective theory.
 
-Thus, let us consider a particular example of a self-initializing countably lex theory. Consider toposes with countable (co)products. Any such topos has an internal free topos with countable (co)products as well, with internal and external views coinciding on what things have or preserve countable coproducts. Thus, the (countably lex) theory of such toposes is self-initializing (qua countably lex theory), and in this way we obtain a geminal category (the free such topos) and an introspective theory (the initial object within the category of countably lex categories with initial internal such toposes).}
+In particular, the combination of \magicref{CountableToposInitialInternalCountable} and \magicref{CountableProductToposIsFiniteCountablyLexTheory} tells us that the theory of toposes with countable products is a self-initializing countably lex theory. Thus:
+
+\begin{construction}
+The initial topos with countable products is naturally equipped as a geminal category. Indeed, there is a uniquely determined geminal category $\langle G_1, G_2; F_1, F_2 \rangle$ in which $G_1$ is the initial topos with countable products, $G_2$ is the initial topos with countable products internal to $G_1$, $F_1$ preserves the structure of a topos with countable products, and $F_2$ is in the internal logic of $G_1$ a map preserving the structure of of a topos with countable products.
+\end{construction}
+
+\sTODOinline{Write this all better, more clearly.}
 
 \sTODOinline{Note that we don't actually need all countable (co)products to carry the core ideas of the above construction out. It would suffice to consider the weaker condition of just having countable powers, which for toposes amounts to having the countable copower of 1 (automatically an NNO). Such toposes are described by a self-initializing lex-theory-with-countable-powers. But describing having countable products in full may be easier than describing having finite products and countable powers; that is, lex theories that also have countable products are perhaps easier to talk about than lex theories that also have countable powers.}
 
-\TODOinline{Note that this geminal category/introspective theory contains true arithmetic (in the sense of all true statements in the language of first-order arithmetic), but is still subject to \Loeb/'s theorem and \Goedel/'s incompleteness theorems. It's just that its consistency sentence isn't expressible in first-order arithmetic; that is, this structure is not definable in first-order arithmetic.}
+Note that this structure contains true arithmetic (in the sense of all true statements in the language of first-order arithmetic), and has uncountable hom-sets (thus, too large to admit \Goedel/ coding by mere natural numbers), but like any geminal category is still subject to \Loeb/'s theorem and \Goedel/'s incompleteness theorems. It's just that its consistency sentence isn't expressible in first-order arithmetic; that is, this structure is not definable in first-order arithmetic. Thus, we see quite vividly that these phenomena are not constrained to having anything to do with computability or even countability.
 
 \sTODOinline{A self-initializing theory with countable but uncomputable flavor}
 
