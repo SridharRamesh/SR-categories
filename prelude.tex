@@ -48,6 +48,7 @@
 \usepackage[capitalize, nameinlink]
   {cleveref}                % References named by type and number
 \newcommand*{\parensref}[1]{\hyperref[{#1}]{\nameref*{#1} (\cref*{#1})}}              % References named by explicit name and parenthesized type and number
+\newcommand*{\reverseparensref}[1]{\hyperref[{#1}]{\cref*{#1} (\nameref*{#1})}}   
 
 % It's not ideal that I have to manually keep track of when to use \cref vs. when to use \nameref or \parensref.
 % The following solution is based on https://tex.stackexchange.com/a/66096/231784.
@@ -65,11 +66,11 @@
     \parensref{#1}%
   \fi
 }
-\newcommand{\magicparensref}[1]{%
+\newcommand{\magicreverseparensref}[1]{%
   \if\vcenter\getrefbykeydefault{#1}{name}{}\vcenter
     \cref{#1}%
   \else
-    \parensref{#1}%
+    \reverseparensref{#1}%
   \fi
 }
 
