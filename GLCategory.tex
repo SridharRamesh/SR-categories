@@ -363,10 +363,11 @@ For simplicity as a first introduction, everything done previously was the speci
 
 Specifically, let models of $Th$ be called \quote{gadgets}, and maps between them called \quote{gadget homomorphisms}. Then the free introspective theory extending $Th$ is the theory of \quote{geminal gadgets}, with the definition of a \quote{geminal gadget} being exactly as in either definition of a \quote{geminal category}, but with all instances of lexcategories and lexfunctors replaced by gadgets and gadget homomorphisms.
 
-This is by exactly the same arguments as we have just given. All the results and arguments given earlier in this chapter apply just as well mutatis mutandis when lexcategories and lexfunctors are replaced by gadgets and gadget homomorphisms, except for \magicref{IntrospAsGeminal} (it will not be the case that an arbitrary strict introspective theory can be viewed as a geminal gadget. However, the analogue of the construction \magicref{IntrospContainsGeminal} still holds (i.e., every introspective theory $\langle T, C \rangle$ whose $C$ is the underlying lexcategory of a $T$-internal gadget admits a canonical way to equip $C$ furthermore as a $T$-internal geminal gadget) by a slightly different argument not dependent upon \magicref{IntrospAsGeminal}).
+This is by exactly the same arguments as we have just given. All the results and arguments given earlier in this chapter apply just as well mutatis mutandis when lexcategories and lexfunctors are replaced by gadgets and gadget homomorphisms, except for \magicref{IntrospAsGeminal} (it will not be the case that an arbitrary strict introspective theory can be viewed as a geminal gadget). However, the analogue of the construction \magicref{IntrospContainsGeminal} still holds (i.e., given an introspective theory $\langle T, C \rangle$ such that $C$ is the underlying lexcategory of a gadget, then the geminal category structure $C$ is equipped with by \magicref{IntrospContainsGeminal} furthermore underlies geminal gadget structure).
 
 \sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
+\sTODOinline{
 \subsection{Modal logic in geminal categories}
 \begin{observation}
 In every introspective theory $\langle T, C \rangle$, we have a $T$-internal endofunctor $\Box_C$ on $C$ modeling the modal logic GL. Thus, this is in particular true of the initial introspective theory, which by \magicref{InitialIntrospectiveTheory} is the theory of geminal categories. Thus, any geminal category $K$ comes with such an operation $\Box_{|K|}$ on $|K|$, and this operation is furthermore preserved by geminal category homomorphisms.
@@ -392,18 +393,17 @@ Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-inter
 
 \sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
 
+\sTODOinline{Establish a general property that mapping from Cn to C(n - 1) to Cn matches mapping from Cn to C(n + 1) to Cn, in a geminal category, where the maps to lower indices are given by Gamma and the maps to higher indices are given by F. This is, I think, straightforwardish if we just diagram chase a generic element of Mor(Cn)?}
+}
+
 \subsection{Co-free introspective theories and geminal categories}\label{CofreeGeminalSection}
 
 We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
 
-\begin{construction}\label{BoxCoalgebrasInGeminal}
-Let $\langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category. Because $\Box_{C_1}$ is an endolexfunctor, the category of $\Box_{C_1}$-coalgebras is a lexcategory, with its forgetful functor to $C_1$ creating finite limits (by the analogous reasoning to \magicref{CommaCategoryColimits} for inserters rather than comma categories; indeed, this category of coalgebras can be seen as a (non-full) sublexcategory of the comma category $\comma{\id}{\Box_{C_1}}$). As $C_1$ is in fact a strict lexcategory, we can thus equip the category of $\Box_{C_1}$-coalgebras as a strict lexcategory, with its forgetful functor to $C_1$ creating basic limits (note that it is fine here if $\Box_{C_1}$ does not preserve basic limits on the nose; all that mattered was that it preserves finite limits in the non-strict-sense).
-\end{construction}
-
 \begin{construction}
 Construing strict introspective theories as geminal categories via \magicref{IntrospAsGeminal} gives us a functor from the category of strict introspective theories to the category of geminal categories (or more generally, a functor from the category of $V$-internal strict introspective theories to the category of $V$-internal geminal categories, for any fixed lexcategory $V$). This functor has a right adjoint.
 
-As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction. Indeed, the value of this right adjoint at a geminal category $C_1$ can be given in terms of a suitable subcategory of the $\Box_{C_1}$-coalgebras.
+As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction.
 \end{construction}
 \openDetails
 For linguistic convenience, we shall in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
@@ -411,6 +411,8 @@ For linguistic convenience, we shall in the following take $V$ as $\Set$, but it
 We are tasked with showing that, for any geminal category $C_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C_1$.
 
 Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
+
+Let us use the suggestive name $\Box_{C_1}$ for the endolexfunctor $\Gamma_{C'_2} \circ F_1 : C_1 \to C_1$.
 
 By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C_1} \circ H$. In detail, this is seen via the following commutative diagram:
 

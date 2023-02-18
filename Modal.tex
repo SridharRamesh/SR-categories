@@ -53,6 +53,7 @@ The reason we restricted attention here to $T$-\repsmall/ $(T, C)$-indexed sets 
 Similarly, the reason we restricted attention to locally introspective theories (i.e., the case where $C$ is locally $T$-\repsmall/) and not to pre-introspective theories more generally is so that the Yoneda embedding $c \mapsto \Hom_C(-, c)$ does indeed yield $T$-\repsmall/ $(T, C)$-indexed sets.
 \end{remark}
 
+\sTODOinline{
 \subsection{Box preservation}
 \sTODOinline{This section may not be particularly necessary. We may remove it.}
 
@@ -65,6 +66,7 @@ We also have that taking $\Hom_C(1, -)$ preserves $\Box$ in the same way. $\Hom_
 Given object $c$ of $C$, and $P \in \Psh{C}$, we will write $c \implies P$ to indicate the exponential presheaf $P^c$. That is, the presheaf $P(- \times c)$. We may also write $c \implies d$ where $d$ is an object of $C$ as well, to mean $c \implies P$ for the presheaf $P = \Hom_C(-, d)$ represented by $d$. Thus, $c \implies d$ is the presheaf $\Hom_C(- \times c, d)$.
 
 Note that for any $P \in \Psh{C}$ and object $c$ of $C$, we have that $P(c)$ can be identified with the presheaf $c \implies P$ evaluated at $1$, and thus $\introF(P(c))$ can be identified with $\Box(c \implies P)$. In particular, in the case when $P$ is represented by object $d$, we find that $\Box(c \implies d)$ is naturally identifiable with $\introF(\Hom_C(c, d))$.
+}
 
 \subsection{Modal logic and axiom 4}\label{ModalAxiom4Section}
 The choice of this $\Box$ notation for these purposes is meant to convey an analogy with the $\Box$ operator of modal logic, and in particular, with the provability operator of provability logic. We will explore this more in later remarks.
