@@ -453,31 +453,40 @@ This \quote{no-go} result was demonstrated in \autocite{PittsTaylor1989} by an e
 But by generalizing to introspective theories, we are able to expand from this negative result (there are no nontrivial locally cartesian closed categories whose self-indexing is \repsmall/) to a positive result (there are many nontrivial examples of introspective theories, which all end up satisfying the \Loeb/ property with uniqueness and all the further corollaries of this noted in \magicref{LoebPropertySection}).
 
 \subsection{As applied to our archetypal examples}
-Here we discuss the application of \magicref{IntrospTyConFixedPoints} and \magicref{IntrospLoeb} to our archetypal examples of introspective theories.
+Here we discuss the application of \sTODOinline{\magicref{IntrospTyConFixedPoints} and }\magicref{IntrospLoeb} to our archetypal examples of introspective theories:
 
-\TODO
-\subsubsection{ZF-Finite examples}
-\TODO
+\subsubsection{ZF-Finite examples}\label{ZFFiniteLoebDiscussion}
+Recall from \magicref{SigmaModelComplex} that we have a natural introspective theory $\langle \ZfinSigma, \InnerZfin \rangle$, where $\ZfinSigma$ is the lexcategory of $\Sigma_1$-definable hereditarily finite sets and $\Sigma_1$-definable functions between them up to provable equivalence in ZF-Finite, and $\InnerZfin$ is the lexcategory internal to $\ZfinSigma$ of arbitrary definable sets and arbitrary definable functions between them up to provable equivalence in ZF-Finite.
+
+Recall from the discussion at \magicref{ZFFiniteModal} that the global aspect of $\InnerZfin$ can be identified with $\Zfin$ (the actual category of arbitrary definable sets and functions between them in ZF-Finite) and that the $\Box$ operator acts on this by sending each \quote{the object of $X$es} to \quote{the object of definitions of $X$es within ZF-Finite}. In the particular case where the object in question is subterminal (thus representing a proposition), this amounts to the traditional provability operator sending the proposition $X$ to the proposition \quote{There is a proof in ZF-Finite of X}.
+
+Thus, as applied to these subterminal objects, our \Loeb/ property with uniqueness for this introspective theory is indeed the namesake \Loeb/ property of traditional logic: It tells us that if there is a proof that the provability of $X$ entails $X$, then there is in fact an unconditional proof of $X$. \Goedel/'s second incompleteness theorem follows as the special case of this where $X$ is a manifest falsehood, and \Goedel/'s first incompleteness theorem then readily follows from the second incompleteness theorem.
+
+But we may consider non-subterminal objects as well, and here our \Loeb/ property with uniqueness gives us a form of guarded recursion in the context of such logical theories as ZF-Finite that we are not aware of having been strongly investigated before: For any definable function from definitions of $X$es to actual $X$es, there is a unique (up to provable equivalence) definition of an $X$ which is provably equivalent to the given function applied to its own definition.\footnote{Here, all mentions of definability and provability are with respect to the particular theory ZF-Finite, though analogous constructions of introspective theories can be carried out for other logical theories as well, such as any computably enumerable extension of ZF-Finite, as we later discuss at \magicref{NothingSpecialToZFFinite}.}
+
+We aspire to explore working with this form of guarded recursion further in future work. For now we simply observe it as a vast generalization of the traditional purely propositional interpretation of \Loeb/'s theorem in logic.
 
 \subsubsection{Kripke frame example}
 \newcommand{\PshUnderQInf}{\mathrm{Psh}'(Q)}
 
 Recall the introspective theory $\langle \PshUnderQInf, C' \rangle$ from \magicref{KripkeIntrosp}, constructed from a well-founded transitive relation $<$ on a set $P$, with $Q$ being $P$ augmented with a new maximum element $\infty$ and construed as a preorder category using the $<$ relation. The $\PshUnderQInf$ here is a full sublexcategory of $\Psh{Q}$, defined by certain cardinality constraints, but these cardinality constraints can be taken to be arbitrarily loose such that any \setsmall/ number of particular desired objects of $\Psh{Q}$ can be found within $\PshUnderQInf$.
 
-The elements of $\Glob{\Psh{C'}}$ here are \TODO.
+The global aspect of $C'$ here is a certain full sublexcategory of $\Set^{|P|}$ (again defined by cardinality constraints, which may again be taken to be arbitrarily loose such that any \setsmall/ number of particular desired objects can be found within this). Recall from the discussion at \magicref{KripkeFrameModal} that the $\Box$ operator acts on this such that $\Box F(x)$ is the product of $F(y)$ over all $y < x$, where $F \in \Set^{|P|}$ and $x, y \in P$. For subterminal $F$ acting as propositions, this corresponds to the traditional interpretation of the $\Box$ operator in a Kripke frame, such that $\Box F$ is true at a world just in case $F$ is true at all lower worlds.
 
-Recall from the discussion at \magicref{KripkeFrameModal} that the $\Box$ operator \TODO.
+In this context, the \Loeb/ property with uniqueness which we are given by \magicref{IntrospLoeb} tells us that we may define functions by transfinite recursion: Given at each $x \in P$ a function $g$ from $\prod_{y < x} F(y)$ to $F(x)$, we obtain a uniquely determined function $G$ whose domain is $P$ such that each $G(x)$ is given by $g$ applied to the values of $G$ at $y < x$.
 
-\TODOinline{Discussion of type-level fixed points}
+In the particular case where $F$ is subterminal representing an proposition (that is, an arbitrary subset of $|P|$), this amounts to the principle of transfinite induction or \quote{strong induction}: It tells us that a proposition holds of all of $P$ so long as it holds of any particular $x \in P$ once it holds of all $y < x$.
 
-\TODOinline{Discussion of \Loeb/'s theorem}
+Of course, these principles of transfinite recursion/induction over well-founded transitive relations are well-known and easy to establish directly, without all the machinery of introspective theories. (The induction principle here is after all the very defining characteristic of well-foundedness.) But it is remarkable to observe how these phenomena are in this way unified with the phenomena of \Loeb/'s theorem in traditional logic (as discussed at \magicref{ZFFiniteLoebDiscussion}), not just in the form of the \Loeb/ property result but in the particular derivation of it as well.
 
 \subsubsection{Step-indexing example}
-\TODOinline{Discussion of type-level fixed points}
+The application of our \Loeb/'s theorem with uniqueness results to the introspective theory \magicref{StepIndexingIntrosp} corresponding to step-indexing in the topos of trees is similar to the one just discussed. Recall from the discussion at \magicref{StepIndexingModal} that we here have a $\Box$ operator on (an arbitrarily loose full sublexcategory of) $\Psh{\omega}$, where $\omega$ is the poset of natural numbers, such that $\Box F(0) = 1$ and $\Box F(n + 1) = n$, for $n \in \omega$ and $F \in \Psh{\omega}$.
 
-\TODOinline{Discussion of \Loeb/'s theorem}
+Our \Loeb/ property with uniqueness thus tells us that we may define functions on the natural numbers by the most familiar kind of recursion: Given any specified value at $0$, and any specified way to transform a value at $n$ into a value at $n + 1$ for each $n \in \omega$, there is a unique function on the natural numbers taking on the specified value at $0$ and whose value at each $n + 1$ is derived from its value at $n$ in the specified way.
 
-\sTODOinline{Have a recap section}
+In the particular special case where we are dealing with subterminal objects of $\Psh{\omega}$, these amount to downwards closed subsets of $\omega$, and the above specializes to the principle of ordinary induction for these: Given a downwards closed subset of $\omega$, if it contains $0$ and is closed under successor, then it contains all of $\omega$.
+
+Again, all of this is quite familiar and easy to demonstrate directly without any invocation of the machinery of introspective theories (these amount to the characteristic properties of the natural numbers as a natural numbers object within $\Set$). But again, it is remarkable that we can in this way see these as strongly unified with the analogous properties and the derivation of those properties for our other archetypal examples, including the case of \magicref{ZFFiniteLoebDiscussion} which has no direct relationship to presheaves over a well-founded structure.
 
 \subsection{Relating variations on Lawvere's fixed point theorem}\label{LawvereFPTReduxSection}
 Although not important for our main narrative, we note here some further comments on the relation of Lawvere's fixed point theorem to generalizations of ours or others.
