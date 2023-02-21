@@ -169,7 +169,29 @@ Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence.
 
 Note that little was uniquely special about the initial arithmetic universe $\IAU$ for being able to be equipped as an introspective theory in this manner. It was just an invocation of our general construction \magicref{SpecialInitialIntrosp}. We could similarly construct introspective theories using initial objects of any kind of structure left comma-stable over $\LexCat$, given any structure of the same kind internal to the initial one. What's noteworthy about $\IAU$ is just that it happens to actually contain interesting internal structures (such as internal categories corresponding to Peano Arithmetic, to ZFC, to the initial internal arithmetic universe, etc), whereas the initial lexcategory, or initial regular category, or initial lexcategory with finite pullback-stable colimits, or such things, all have a paucity of interesting internal structures.
 
+\bigskip
 We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding example of an introspective theory based on traditional logical theories, from \magicref{SigmaModelComplex}.
+
+First, we must observe a lemmatic construction, on localizing introspective theories:
+
+\begin{construction}\label{LocalizeIntrosp}
+If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $f : T \to T[M^{-1}]$ is a lex localization in the sense of \magicref{DefnLexLocalization}, and every morphism in $M$ is sent to an isomorphism by $\introS$, then $f$ acts as an introspective theory homomorphism (in the sense of the non-strict analogue of \magicref{StrictIntrospHomoDefn}) from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C) \rangle$.
+
+Furthermore, given any introspective theory homomorphism $h : \langle T, C \rangle \to \langle T_2, C_2 \rangle$ such that $h$ sends every morphism in $M$ to an isomorphism and $h[C] = C_2$, this $h$ factors uniquely through $f$ by an introspective theory homomorphism from $\langle T[M^{-1}], f(C) \rangle$ to $\langle T_2, C_2 \rangle$. In this sense, $\langle T[M^{-1}], f(C) \rangle$ is the localization qua introspective theory of $\langle T, C \rangle$ at $M$.
+
+In particular, for any introspective theory, we can apply the above taking $M$ to be the set of all morphisms sent to isomorphisms by $\introS$. We may call the result the \defined{maximal localization} of our original introspective theory.
+\end{construction}
+\begin{proof}
+If $f : T \to T[M^{-1}]$ is to act as an introspective theory homomorphism, it must be to some introspective theory $\langle T[M^{-1}], C', \introS', \introN' \rangle$. We will show that each of these components are uniquely determined by the requirements of \magicref{StrictIntrospHomoDefn}.
+
+The requirement on $C'$ in \magicref{StrictIntrospHomoDefn} directly determines it as $f(C)$.
+
+The requirement on $\introS'$ is that $\introS' \circ f = \InducedHomo{f}{C} \circ \introS$. Note that the right hand side of this equation sends all morphisms in $M$ to isomorphisms (since $\introS$ already does so). Thus, by the defining property of localization, this uniquely determines $\introS'$ as a functor, and indeed it will be a lexfunctor by \magicref{LexLocalizationLemma}.
+
+Finally, the requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is $\introN$ whiskered along $f$ from the other side. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
+
+Next, we show the unique factorization property. \TODO.
+\end{proof}
 
 \begin{theorem}\label{Sigma1ModelIAUConnection}
 The introspective theory described in \magicref{SigmaModelComplex} is the maximal localization, in the sense of \magicref{LocalizeIntrosp}, of an introspective theory produced by \magicref{IAUAsIntrospGeneral}.

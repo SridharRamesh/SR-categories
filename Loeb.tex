@@ -275,7 +275,7 @@ At any rate, we shall find the added flexibility of allowing a relation in place
 
 \subsection{Presheaf diagonalization for pre-introspective theories}\label{PreIntrospDiagSection}
 \openNamed{theorem}{Pre-introspective Diagonalization}\label{PreIntrospDiag}
-Let $\langle T, C, \introS, \introN \rangle$ be a pre-introspective theory. Let $\point_T$ be the terminal object of $T$ and let $\point_C$ be the terminal object of $C$.\footnote{We use this $\star$ notation rather than $1$ notation so that we can make the observation that this theorem's proof actually applies more generally, not depending on any limit structure. It would suffice to let $T$ be any category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $\introN$ be a map from $t$ to $\Hom_C(\point_C, \introS(t))$, natural in $t \in T$, let $\point_T$ be any object of $T$, and let $\point_C$ be any globally defined object of $C$.} Throughout the following, we use \quote{point of} as shorthand for \quote{element of the $\point_T$-aspect of}.
+Let $\langle T, C, \introS, \introN \rangle$ be a pre-introspective theory. Let $\point_T$ be the terminal object of $T$ and let $\point_C$ be the terminal object of $C$.\footnote{We use this $\star$ notation rather than $1$ notation so that we can make the observation that this theorem's proof actually applies more generally, not depending on any limit structure. It would suffice to let $T$ be any category, let $C$ be a $T$-indexed category, let $\introS$ be a functor from $T$ to the global aspect of $C$, let $\introN$ be a map from $t$ to $\Hom_C(\point_C, \introS(t))$, natural in $t \in T$, let $\point_T$ be any object of $T$, and let $\point_C$ be any globally defined object of $C$. Knowing that the proof makes no use of limit structure may make it easier to follow.} Throughout the following, we use \quote{point of} as shorthand for \quote{element of the $\point_T$-aspect of}.
 
 Furthermore, let $P$ be a $(T, C)$-indexed set, in the sense of \magicref{PreliminariesMultipleIndexing}. We will write in the following $P(c)$ to mean the $T$-indexed set $t \mapsto P(t, c)$, for globally defined objects $c$ of $C$.
 
@@ -340,7 +340,7 @@ This last theorem gives us an instance of the \Loeb/ property, but comes with th
 
 Incredibly, we can bootstrap away this isomorphism precondition, in the context of an introspective theory. That is, in the context of an introspective theory, we can use one particular instance of \magicref{PreIntrospDiag} itself to provide the very isomorphisms necessary in order to then re-invoke \magicref{PreIntrospDiag} via \magicref{PreIntrospDiagFromIso}.
 
-Our plan is to consider the $(T, C)$-indexed set $P$ such that $P(t, c)$ is the set of isomorphism classes of $C(t)/c$, with the action of $P$ on morphisms of $C$ being given by pullback (while the action of $P$ on morphisms of $T$ is given by the reindexing action of the $T$-indexed category $C$).
+Our plan is to consider the $(T, C)$-indexed set $P$ such that $P(t, c)$ is the set of isomorphism classes of $C(t)/c$, with the action of $P$ on morphisms of $C$ being given by pullback (while the action of $P$ on morphisms of $T$ is given by the reindexing action of the $T$-indexed category $C$).\footnote{Note that this $(T, C)$-indexed set $P$ is NOT presumed to be $T$-representable! Indeed, we cannot generally hope for this, as we do not presume $T$ to have any regularity or exactness properties such that we could carry out internal to $T$ such quotienting constructions as would yield the object of isomorphism classes of $C$.}
 
 \sTODOinline{Perhaps note the following nuances or perhaps not:
 
@@ -404,9 +404,9 @@ For any introspective theory $\langle T, C \rangle$, and any globally defined ob
 
 Combining this with \magicref{PreIntrospDiagFromIso} to eliminate the latter's isomorphism precondition, we now reach the following conclusion:
 \openNamed{theorem}{L\"ob's Theorem for Introspective Theories}\label{IntrospLoeb}
-Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$ and any globally defined $P \in \Psh{C}$.
+Suppose given an introspective theory $\langle T, C, \introS, \introN \rangle$.
 
-Then for every globally defined $\loebNeg : \Box P \to P$, we obtain a globally defined $\omega : 1 \to P$, such that $\loebNeg \circ (\Box \omega) = \omega$.
+Then, within $\Glob{\Psh{C}}$, for every object $P$ and morphism $\loebNeg : \Box P \to P$, we obtain an $\omega : 1 \to P$, such that $\loebNeg \circ (\Box \omega) = \omega$.
 
 In other words, the global aspect of $\Box_{\Psh{C}}$ has the \Loeb/ property. Keeping in mind the equivalences of \magicref{LoebTransferIntrosp}, we may conclude that the global aspects of $\Box_{T/-}$, $\Box_C$, and $\Box_{\Psh{C}}$ all have the \Loeb/ property with uniqueness.
 \closeNamed{theorem}
@@ -414,8 +414,6 @@ In other words, the global aspect of $\Box_{\Psh{C}}$ has the \Loeb/ property. K
 \begin{observation}
 We can consider the particular case where $P$ is $C$-\repsmall/, just as $\Box P$ is. In other words, where $P(-) = \Hom_C(-, c)$ is the representable presheaf on $C$ represented by some object $c$ of $C$. All traditional accounts of \Loeb/'s theorem are along these lines. But note that we can also just as well consider this \magicref{IntrospLoeb} for non-representable presheaves $P$, a significant generalization of the traditional viewpoint.
 \end{observation}
-
-Although we have just proven that the \Loeb/ property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories. \sTODOinline{Cite a simple counterexample. For example, any locally cartesian closed category can be trivially equipped as a locally introspective theory, with $\Box_T$ as the identity, but this will only satisfy the \Loeb/ property if we are looking at the terminal category. This is the observation of \magicref{LocallyCartesianLoeb}.} However, we shall see later on that there are some natural examples of locally introspective theories that still have this property. \sTODOinline{Perhaps discuss the idea of a locally introspective theory where every object, or indeed every slice, is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property (at every aspect). This can then be related to our archetypal examples of locally introspective theories based on presheaf categories.}
 
 \begin{corollary}\label{IntrospTransfersEverywhere}
 For any introspective theory $\langle T, C \rangle$, every aspect of $\Box_T$, $\Box_C$, and $\Box_{\Psh{C}}$ has the \Loeb/ property with uniqueness.
@@ -451,6 +449,12 @@ But by \magicref{CCCLoebUniqueness}, the identity endofunctor on a cartesian clo
 This \quote{no-go} result was demonstrated in \autocite{PittsTaylor1989} by an essentially identical argument to the argument we have given, when the abstractions in our argument are unwound to this special case.
 
 But by generalizing to introspective theories, we are able to expand from this negative result (there are no nontrivial locally cartesian closed categories whose self-indexing is \repsmall/) to a positive result (there are many nontrivial examples of introspective theories, which all end up satisfying the \Loeb/ property with uniqueness and all the further corollaries of this noted in \magicref{LoebPropertySection}).
+
+\begin{observation}
+From the above, we see that, though the \Loeb/ property holds for all introspective theories automatically, it does not hold automatically for merely locally introspective theories (as there are many locally cartesian closed categories which are nontrivial. Counterexamples could also be constructed from non-well-founded transitive relations using \magicref{KripkeLocallyIntrosp}.). However, we have also seen there are some natural examples of locally introspective but not fully introspective theories with the property that arbitrarily loose sub-introspections of them can be made into introspective theories, as in the relationship between our archetypal examples \magicref{KripkeLocallyIntrosp} and \magicref{KripkeIntrosp}, or the relationship between our archetypal examples \magicref{StepIndexingLocallyIntrosp} and \magicref{StepIndexingIntrosp}. Such locally introspective theories will thus inherit the \Loeb/ property from their sub-introspections.
+
+\sTODOinline{Perhaps discuss the idea of a locally introspective theory where every object, or indeed every slice, is contained in some "full sub-introspective theory" of it, and how this inherits the Loeb property (at every aspect). This can then be related to our archetypal examples of locally introspective theories based on presheaf categories.}
+\end{observation}
 
 \subsection{As applied to our archetypal examples}
 Here we discuss the application of \sTODOinline{\magicref{IntrospTyConFixedPoints} and }\magicref{IntrospLoeb} to our archetypal examples of introspective theories:
