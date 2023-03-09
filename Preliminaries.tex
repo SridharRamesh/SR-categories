@@ -33,6 +33,8 @@ Similarly, if we ever describe diagrams involving functors between categories as
 
 (That all said, nothing we do is higher-dimensional than 2-categorical, so everything could in theory be strictified in some fashion, if so desired.)
 
+Finally, we note that we often use the word \defined{slice} to refer to an object of a slice category, or say \quote{a slice over $c$} to refer to an object of a slice category $C/c$. This is idiosyncratic, others do not use the word \quote{slice} in this way, but this idiosyncratic habit nonetheless is present throughout the current document.
+
 \subsection{Indexed sets and \repsmallness/}
 We will now give a series of related definitions, concerning what are called indexed structures. The notions being described in this section are all old hat, none of them are newly invented by us, but we wish to pin them down with particular names to establish a language for easily talking about the things we wish to talk about in the rest of this document.
 
@@ -1034,7 +1036,7 @@ Let lexfunctor $f : C \to D$ and $m_1, m_2 : c_1 \to c_2$ in $C$ be given such t
 \begin{lemma}\label{IsLexLocalizationLemma}
 Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomorphisms by $h$, let $f : C \to C[M^{-1}]$ be the corresponding lex localization, and let $g : C[M^{-1}] \to D$ be the uniquely determined lexfunctor such that $h = g \circ f$.
 
-Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every slice in $D/h(c)$ is isomorphic to $h$ applied to some slice in $C/c$ (i.e., $h$ restricted to any slice category is eso).
+Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every object in $D/h(c)$ is isomorphic to $h$ applied to some object in $C/c$ (i.e., the action of $h$ between slice categories is eso).
 \end{lemma}
 \begin{proof}
 Suppose $h$ satisfies this surjectivity property. We must show that $g$ is essentially surjective on objects, full, and faithful.
@@ -1109,7 +1111,7 @@ Specifically, $m$ is given by $g$ applied to the following composition:
 
 This completes the demonstration that $g$ is full.
 
-Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative, and thus completes the proof that $g$ is an equivalence.
+Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative and thus faithful, and thus completes the proof that $g$ is an equivalence.
 \end{proof}
 
 \begin{lemma}\label{ArithmeticLocalization}
@@ -1124,12 +1126,12 @@ Here we collect various lemmas and definitions which we call upon at some point 
 
 \sTODOinline{Organize this, or determine what can be thrown out from here}
 \begin{observation}\label{InitialWrtSet}
-In our metatheory, we have access to the following principle: If M is the term model of some finitely axiomatized lex theory of \quote{gadgets} (for example, the lex theory of NNO-toposes), and Set is also a gadget (but a large one), then M not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from M to Set.
+In our metatheory, we have access to the following principle: If $M$ is the term model of some finitely axiomatized lex theory of \quote{gadgets} (for example, the lex theory of NNO-toposes), and $\Set$ is also a gadget (but a non-\setsmall/ one), then $M$ not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from $M$ to $\Set$.
 \end{observation}
 \begin{proof}
-The proof is by the exact same proof that shows M's initiality with respect to set-sized gadgets.
+The proof is by the exact same proof that shows $M$'s initiality with respect to \setsmall/ gadgets.
 
-Alternatively, the proof can be carried out like so: Firstly, for existence of a map from M to Set, we take the finitely many finitary operations of our theory and note that the hull definable from these within Set describes a \setsmall/ (indeed, countable) subgadget of Set. M will have by initiality a homomorphism into this subgadget, and thus into Set itself. As for uniqueness, consider any two homomorphisms from M to Set. Again, their ranges will be \setsmall/ subgadgets of Set, and we can take the union of those ranges, close under the operations of our theory, and find some other \setsmall/ subgadget of Set containing them both. M will have a unique homomorphism into this enveloping subgadget, and thus the parallel homomorphisms of M must have been equal.
+Alternatively, the proof can be carried out like so: Firstly, for existence of a map from $M$ to $\Set$, we take the finitely many finitary operations of our theory and note that the hull definable from these within Set describes a \setsmall/ (indeed, countable) subgadget of $\Set$. $M$ will have by initiality a homomorphism into this subgadget, and thus into Set itself. As for uniqueness, consider any two homomorphisms from $M$ to $\Set$. Again, their ranges will be \setsmall/ subgadgets of $\Set$, and we can take the union of those ranges, close under the operations of our theory, and find some other \setsmall/ subgadget of Set containing them both. $M$ will have a unique homomorphism into this enveloping subgadget, and thus the parallel homomorphisms of $M$ must have been equal.
 \end{proof}
 
 Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos $T$ with NNO is such that its self-indexing $T/-$ is an indexed topos with NNO, and such that it has an initial internal topos with NNO $T'$ constructed as a term model, and yet there need be no topos-with-NNO homomorphism from $T'$ to $T/-$. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
