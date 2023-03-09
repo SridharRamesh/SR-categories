@@ -349,12 +349,12 @@ If $L : Q \to T$ is a functor with a right adjoint, on a category $Q$ with pullb
 By the reasoning of \magicref{RepSmallRightAdjointFibers}, as applied to the map $\langle \cod, \dom \rangle : \Mor(C) \to \Ob(C) \times \Ob(C)$, although $\Ob(C)$ need not itself be thought of as carrying an equality relation as such.
 \end{proof}
 
-\sTODOinline{Discuss how a(n indexed) category has a well-defined (indexed) set of objects modulo isomorphism, i.e., set of isomorphism classes of objects}.
+\sTODOinline{Discuss how a(n indexed) category has a well-defined (indexed) set of objects modulo isomorphism, i.e., set of isomorphism classes of objects.}
 
 \sTODOinline{Discuss how a set carries a canonical structure as a strict category, the categories presented by these are discrete categories, and in this way sets are also equivalent to discrete categories. In particular, in this way, an indexed set is the same as an indexed discrete category.}
 
 \subsection{Strict categories and internal categories}
-These bothers around the ill-defined set of objects of a general indexed category shall take us down some technical digressions for a bit, before we return to our big picture ideas. (Please keep in mind, the nuances of this section mostly do not matter for a big picture understanding. The main part of this document where such details might matter is in being rigorous in our chapter on geminal categories. We recommend that on a first read, the reader ignore all discussion of strictification or distinction between strict and non-strict concepts, in order to pick up the big picture ideas. The reader can then pay attention to these details on later more scrupulous re-reads as desired.)
+These bothers around the ill-defined set of objects of a general indexed category shall take us down some technical digressions for a bit, before we return to our big picture ideas. (Please keep in mind, the nuances of this section mostly do not matter for a big picture understanding. The main part of this document where such details might matter is in being rigorous in \magicref{GeminalChapter}. We recommend that on a first read, the reader ignore all discussion of strictification or distinction between strict and non-strict concepts, in order to pick up the big picture ideas. The reader can then pay attention to these details on later more scrupulous re-reads as desired.)
 
 \begin{definition}\label{StrictCategoryDefn}
 Specifically, let us say a \defined{strict category} is a set of objects (including the ability to speak about equality of objects in a potentially finer-grained sense than isomorphism) and a set of morphisms, with the usual operations and satisfying the usual equations. We may also speak of a \defined{strict functor}, meaning a homomorphism of such structure that preserves all of it on-the-nose. Strict categories and the strict functors between them comprise the 1-category $\StrictCat$.
@@ -661,7 +661,7 @@ In more detail, the $T$-indexed category $C$ gives rise in an obvious way, by re
 The objects of the global aspect of this $\Psh{C}$ correspond to the $T$-\repsmall/ $(T, C)$-indexed sets.
 \end{definition}
 
-We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed structures $P$ in cases where $C$ is in fact $T$-\repsmall/ and $P$ is also $T$-\repsmall/, thus simply given by a suitable diagram in $T$. But there is one instance in which we will need to explicitly consider a doubly-indexed set without any presumed representability properties (in \magicref{IntrospDiagSection}).
+We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed structures $P$ in cases where $C$ is in fact $T$-\repsmall/ and $P$ is also $T$-\repsmall/, thus simply given by a suitable diagram in $T$. However, there is one important instance in which we will need to explicitly consider a doubly-indexed set without any presumed representability properties (in \magicref{IntrospDiagSection}).
 
 \subsubsection{Further discussion}
 The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given merely the data of a fibration as a functor between categories, one can recover the indexed category which gave rise to it.
@@ -672,7 +672,7 @@ Of course, this construction can be iterated further now. A $(T, C)$-indexed cat
 
 \sTODOinline{Discuss the concept of being $T$-\repsmall/ vs. $C$-\repsmall/ when $(T, C)$-indexed}
 
-Note also that any structure singly-indexed over $T$ can automatically be thought of as doubly-indexed over $T$ and $C$, where the indexing over $C$ is trivial. This is basically by the fact that the Grothendieck construction for $T$ and $C$ comes with a projection functor to $T$, so that all $T$-indexed structures thus induce, via this functor, a $T$-and-$C$-indexed structure. Thus, we can readily speak of maps between $T$-indexed structures and $(T, C)$-indexed structures, by treating the former as implicitly $(T, C)$-indexed themselves.
+Note also that any structure singly-indexed over $T$ can automatically be thought of as doubly-indexed over $T$ and $C$, where the indexing over $C$ is trivial. This is basically by the fact that $\Groth_T C$ comes with a projection functor to $T$, so that each $T$-indexed structure thus induces, via this functor, a $(T, C)$-indexed structure. Thus, we can readily speak of maps between $T$-indexed structures and $(T, C)$-indexed structures, by treating the former as implicitly $(T, C)$-indexed themselves.
 
 Indeed, more generally in the multiply indexed context, any structure indexed over some prefix of a string of categories is automatically indexed over the full string of categories. And in the same way, this allows us to speak of maps between structures indexed by different strings of categories. This is perhaps the main reason for us to bring all this up, just so that we can speak of maps between structures at different levels of indexing.
 
@@ -704,7 +704,7 @@ An \defined{arithmetic universe} is a category which is exact and extensive with
 We denote the initial arithmetic universe as $\IAU$.
 
 \begin{observation}\label{ComputableMeansIAUInternal}
-Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any computer program describing some computably enumerable structure induces a structure of that sort internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic in $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
+Structures internal to $\IAU$ can be thought of as codes for computably enumerable structures. Any computer program describing some computably enumerable structure induces a structure of that sort internal to $\IAU$. (That said, be cautioned that non-isomorphic structures in $\IAU$ can become isomorphic after applying the unique arithmetic functor to $\Set$, non-equal morphisms in $\IAU$ can become equal in $\Set$, etc! This is like how the same function can be computed by different computer programs, sometimes so different that there is no proof (in whatever fixed proof system) that they compute the same function.)
 \end{observation}
 
 There are many alternative characterizations of $\IAU$. For example, \autocite{maietti10a} observes that $\IAU$ is also the initial exact and extensive category with a pullback-stable NNO (thus, without presuming list objects in general). I believe the argument given in that paper actually shows furthermore that $\IAU$ is also the initial exact category with a pullback-stable NNO (thus, without presuming coproducts). \sTODOinline{Indeed, I believe it furthermore shows that any exact NNO-preserving functor out of IAU automatically preserves list objects and binary coproducts. It needn't preserve the initial object, but as the initial object in $\IAU$ is given by the equalizer of the two injections from 1 to 1 + 1 (by disjointness), if this is initial in the codomain as well, then the functor preserves the initial object as well.}
@@ -1041,7 +1041,73 @@ Suppose $h$ satisfies the surjectivity properties. We must show that $g$ is esse
 
 That $g$ is essentially surjective on objects follows from the fact that $h = gf$ is eso when acting on $C/1$.
 
-Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2)$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. \TODO
+Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2))$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. Begin by considering $\langle \id, m \rangle : h(c_1) \to h(c_1) \times h(c_2)$, as in the following commutative diagram:
+
+% https://q.uiver.app/?q=WzAsNCxbMiwwLCJoKGNfMSkiXSxbMiwxLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwxLCJoKGNfMSkiXSxbNCwxLCJoKGNfMikiXSxbMSwyLCJoKFxccGlfe2NfMX0pIl0sWzEsMywiaChcXHBpX3tjXzJ9KSIsMl0sWzAsMSwiXFxsYW5nbGUgXFxpZCwgbSBcXHJhbmdsZSIsMl0sWzAsMywibSJdLFswLDIsIlxcaWQiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+\[\begin{tikzcd}
+	&& {h(c_1)} \\
+	{h(c_1)} && {h(c_1) \times h(c_2) = h(c_1 \times c_2)} && {h(c_2)}
+	\arrow["{h(\pi_{c_1})}", from=2-3, to=2-1]
+	\arrow["{h(\pi_{c_2})}"', from=2-3, to=2-5]
+	\arrow["{\langle \id, m \rangle}"', from=1-3, to=2-3]
+	\arrow["m", from=1-3, to=2-5]
+	\arrow["\id"{description}, Rightarrow, no head, from=1-3, to=2-1]
+\end{tikzcd}\]
+
+Here, $\pi_{c_1}$ and $\pi_{c_2}$ are the projections out of $c_1 \times c_2$, and we keep in mind that as a lexfunctor, $h$ preserves this product cone.
+
+Next, by presumption, this $\langle \id, m \rangle$ is isomorphic, as an object of $D/h(c_1 \times c_2)$, to $h(n)$ for some $n \in C/(c_1 \times c_2)$. Thus, we obtain the following commutative diagram, for some isomorphism $j$:
+
+% https://q.uiver.app/?q=WzAsMyxbMSwwLCJoKGNfMSkiXSxbMSwxLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwwLCJoKFxcZG9tKG4pKSJdLFswLDEsIlxcbGFuZ2xlIFxcaWQsIG0gXFxyYW5nbGUiXSxbMiwxLCJoKG4pIiwxXSxbMiwwLCJqIiwxXSxbMCwyLCJqXnstMX0iLDEseyJjdXJ2ZSI6NX1dXQ==
+\[\begin{tikzcd}
+	{h(\dom(n))} & {h(c_1)} \\
+	& {h(c_1) \times h(c_2) = h(c_1 \times c_2)}
+	\arrow["{\langle \id, m \rangle}", from=1-2, to=2-2]
+	\arrow["{h(n)}"{description}, from=1-1, to=2-2]
+	\arrow["j"{description}, from=1-1, to=1-2]
+	\arrow["{j^{-1}}"{description}, curve={height=30pt}, from=1-2, to=1-1]
+\end{tikzcd}\]
+
+Putting these together, we find that $j = h(n) ; h(\pi_{c_1}) = h(n ; \pi_{c_1})$, as in the following commutative diagram:
+% https://q.uiver.app/?q=WzAsNCxbMSwwLCJoKGNfMSkiXSxbMSwyLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwwLCJoKFxcZG9tKG4pKSJdLFsyLDAsImgoY18xKSJdLFswLDEsIlxcbGFuZ2xlIFxcaWQsIG0gXFxyYW5nbGUiLDFdLFsyLDEsImgobikiLDFdLFsyLDAsImoiLDFdLFswLDMsIlxcaWQiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsImgoXFxwaV97Y18xfSkiLDJdXQ==
+\[\begin{tikzcd}
+	{h(\dom(n))} & {h(c_1)} & {h(c_1)} \\
+	\\
+	& {h(c_1) \times h(c_2) = h(c_1 \times c_2)}
+	\arrow["{\langle \id, m \rangle}"{description}, from=1-2, to=3-2]
+	\arrow["{h(n)}"{description}, from=1-1, to=3-2]
+	\arrow["j"{description}, from=1-1, to=1-2]
+	\arrow["\id"{description}, Rightarrow, no head, from=1-2, to=1-3]
+	\arrow["{h(\pi_{c_1})}"', from=3-2, to=1-3]
+\end{tikzcd}\]
+
+Thus, $j$ is an isomorphism in the range of $h$. Our setup is such that whenever any morphism of the form $h(x) = g(f(x))$ has an inverse, this is given by applying $g$ to an inverse of $f(x)$. Thus, $j^{-1}$ is in the range of $g$ (specifically, $j^{-1} = g(y)$ where $y$ is the inverse of $f(n; \pi_{c_1})$).
+
+Finally, keeping in mind that $h = g \circ f$, we have by the following commutative diagram that $m$ is given by $g$ applied to a morphism from $f(c_1)$ to $f(c_2)$:
+
+% https://q.uiver.app/?q=WzAsNCxbMiwwLCJoKGNfMSkiXSxbMiwxLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbNCwxLCJoKGNfMikiXSxbMCwwLCJoKFxcZG9tKG4pKSJdLFsxLDIsImgoXFxwaV97Y18yfSkiLDJdLFswLDEsIlxcbGFuZ2xlIFxcaWQsIG0gXFxyYW5nbGUiLDJdLFswLDIsIm0iXSxbMCwzLCJqXnstMX0gPSBnKHkpIiwyXSxbMywxLCJoKG4pIiwyXV0=
+\[\begin{tikzcd}
+	{h(\dom(n))} && {h(c_1)} \\
+	&& {h(c_1) \times h(c_2) = h(c_1 \times c_2)} && {h(c_2)}
+	\arrow["{h(\pi_{c_2})}"', from=2-3, to=2-5]
+	\arrow["{\langle \id, m \rangle}"', from=1-3, to=2-3]
+	\arrow["m", from=1-3, to=2-5]
+	\arrow["{j^{-1} = g(y)}"', from=1-3, to=1-1]
+	\arrow["{h(n)}"', from=1-1, to=2-3]
+\end{tikzcd}\]
+
+Specifically, $m$ is given by $g$ applied to the following composition:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJmKFxcZG9tKG4pKSJdLFsyLDAsImYoY18xKSJdLFsyLDEsImYoY18xKSBcXHRpbWVzIGYoY18yKSA9IGYoY18xIFxcdGltZXMgY18yKSJdLFs0LDEsImYoY18yKSJdLFsxLDAsInkiLDJdLFswLDIsImYobikiLDJdLFsyLDMsImYoXFxwaV97Y18yfSkiLDJdXQ==
+\[\begin{tikzcd}
+	{f(\dom(n))} && {f(c_1)} \\
+	&& {f(c_1) \times f(c_2) = f(c_1 \times c_2)} && {f(c_2)}
+	\arrow["y"', from=1-3, to=1-1]
+	\arrow["{f(n)}"', from=1-1, to=2-3]
+	\arrow["{f(\pi_{c_2})}"', from=2-3, to=2-5]
+\end{tikzcd}\]
+
+This completes the demonstration that $g$ is full.
 
 Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
 \end{proof}
@@ -1054,9 +1120,11 @@ This is all straightforward by the general techniques of \autocite{gabrielzisman
 \end{proof}
 
 \subsection{Miscellaneous}
+Here we collect various lemmas and definitions which we call upon at some point later in the document, which did not seem to fit anywhere else.
+
 \sTODOinline{Organize this, or determine what can be thrown out from here}
 \begin{observation}\label{InitialWrtSet}
-In our metatheory, we have access to the following principle: If M is the term model of some finitely axiomatized lex theory of gadgets, and Set is also a gadget (but a large one), then M not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from M to Set.
+In our metatheory, we have access to the following principle: If M is the term model of some finitely axiomatized lex theory of \quote{gadgets} (for example, the lex theory of NNO-toposes), and Set is also a gadget (but a large one), then M not only is initial with respect to set-sized gadgets but also there is a unique homomorphism from M to Set.
 \end{observation}
 \begin{proof}
 The proof is by the exact same proof that shows M's initiality with respect to set-sized gadgets.
@@ -1064,7 +1132,7 @@ The proof is by the exact same proof that shows M's initiality with respect to s
 Alternatively, the proof can be carried out like so: Firstly, for existence of a map from M to Set, we take the finitely many finitary operations of our theory and note that the hull definable from these within Set describes a \setsmall/ (indeed, countable) subgadget of Set. M will have by initiality a homomorphism into this subgadget, and thus into Set itself. As for uniqueness, consider any two homomorphisms from M to Set. Again, their ranges will be \setsmall/ subgadgets of Set, and we can take the union of those ranges, close under the operations of our theory, and find some other \setsmall/ subgadget of Set containing them both. M will have a unique homomorphism into this enveloping subgadget, and thus the parallel homomorphisms of M must have been equal.
 \end{proof}
 
-Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos T with NNO is such that its self-indexing T/- is an indexed topos with NNO, and such that it has an initial internal topos with NNO T' constructed as a term model, and yet there need be no topos-with-NNO homomorphism from T' to T/-. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
+Be cautioned, however, that the reasoning above only works in our metatheory, with typical principles available to us like the ability to reason about subcollections of Set. Analogous reasoning can fail internally; e.g., every topos $T$ with NNO is such that its self-indexing $T/-$ is an indexed topos with NNO, and such that it has an initial internal topos with NNO $T'$ constructed as a term model, and yet there need be no topos-with-NNO homomorphism from $T'$ to $T/-$. (Indeed, in the initial topos-with-NNO, there will not be such a homomorphism, by \Goedel/'s second incompleteness theorem considerations). Similarly for \quote{arithmetic universe} in place of \quote{topos with NNO}.
 
 \sTODOinline{Move the following somewhere where it belongs}
 \begin{theorem}\label{GlobalIsArithmeticOnIAU}
@@ -1074,7 +1142,7 @@ The global sections functor $\Hom_{\IAU}(1, -)$ is the unique arithmetic functor
 A unique arithmetic functor $!$ from IAU to $\Set$ is known to exist by the initiality of IAU (keeping in mind \magicref{InitialWrtSet}). What remains is only to show that this $!$ is the same as the global sections functor. By \magicref{TermModelIsInitialForLex}, we know that the global sections functor is initial among lexfunctors from $\IAU$ to $\Set$. But by \magicref{CommaKanStrongSigmesque} with \magicref{CommaStableArithmetic}, we know that $!$ is also initial among these. Thus, $!$ and the global sections functor are isomorphic (indeed, uniquely isomorphic), completing the proof.
 \end{proof}
 
-With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does not internalize. In particular, we do NOT know internal to $\IAU$ that the global sections functor from $\IAU'$ to the self-indexing $\IAU/-$ is arithmetic, or even that it preserves the initial object (this would violate \Goedel/'s second incompleteness theorem).
+With this last theorem, we must be careful. As it invoked \magicref{InitialWrtSet}, its reasoning does not internalize. In particular, we do NOT have internal to $\IAU$ that the global sections functor from its internal initial arithmetic universe $\IAU'$ to the self-indexing $\IAU/-$ is arithmetic, or even that this preserves the initial object.\footnote{That this does not preserve the initial object can be seen from the combination of \magicref{IntrospLoeb} and the construction observed in \magicref{IAUAsIntrospCanonical}. Essentially, this would violate \Goedel/'s second incompleteness theorem.}
 
 \begin{definition}
 Given an endofunctor $F$ on a category, we say a morphism of the form $M : F(m) \to m$ is an $F$-\defined{algebra}, and dually, a morphism of the form $W : w \to F(w)$ is an $F$-\defined{coalgebra}.
@@ -1120,7 +1188,7 @@ Let $F$ be an arbitrary (not presumed strict) endolexfunctor on a strict lexcate
 Let $C$ be any \setsmall/ category, and let $P$ in $\Psh{\Psh{C}}$ be given. This $P$ is $\Psh{C}$-\repsmall/ just in case $P$ turns \setsmall/ colimits in $\Psh{C}$ (i.e., \setsmall/ limits in $\op{\Psh{C}}$) into \setsmall/ limits in $\Set$.
 \end{theorem}
 \begin{proof}
-The necessity of this condition is clear, from the fact that any representable functor preserves limits. As for its sufficiency, we may consider the map $P(\yoneda(-)) : \op{C} \to \Set$. This is an object $X$ of $\Psh{C}$, and thus also represents a presheaf $\yoneda(X) = \Hom_{\Psh{C}}(-, X)$ on $\Psh{C}$. By the Yoneda lemma, this $\yoneda(X)$ agrees with $P$ on those objects of $\Psh{C}$ which are $C$-\repsmall/. As all objects in $\Psh{C}$ are \setsmall/ colimits of such objects, and both $P$ and any \repsmall/ presheaf turn \setsmall/ colimits into limits, it follows that this $\yoneda(X)$ agrees with $P$ in general.
+The necessity of this condition is clear, from the fact that any representable functor preserves limits. As for its sufficiency, we may consider the map $P(\yoneda(-)) : \op{C} \to \Set$. This is an object $X$ of $\Psh{C}$, and thus also represents a presheaf $\yoneda(X) = \Hom_{\Psh{C}}(-, X)$ on $\Psh{C}$. By the Yoneda lemma, this $\yoneda(X)$ agrees with $P$ on those objects of $\Psh{C}$ which are $C$-\repsmall/. As all objects in $\Psh{C}$ are \setsmall/ colimits of such objects (by the so-called co-Yoneda lemma), and both $P$ and any \repsmall/ presheaf turn \setsmall/ colimits into limits, it follows that this $\yoneda(X)$ agrees with $P$ in general.
 \end{proof}
 
 \begin{construction}\label{FunctorAs2Cell}

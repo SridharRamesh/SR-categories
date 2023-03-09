@@ -161,7 +161,7 @@ Note that this structure contains true arithmetic (in the sense of all true stat
 Let $\IAU$ be the initial arithmetic universe, and let $C$ be any arithmetic universe internal to $\IAU$. Then by the combination of \magicref{SpecialInitialIntrosp} and \magicref{CommaStableArithmetic}, we obtain an introspective theory $\langle \IAU, C, \introS, \introN \rangle$ in which $\introS : \IAU \to \Glob{C}$ is the unique such arithmetic functor, and the natural transformation $\introN : \id_T \to \Hom_C(1, \introS(-))$ is uniquely determined.
 \end{construction}
 
-\begin{observation}
+\begin{observation}\label{IAUAsIntrospCanonical}
 Note that the above construction can be applied using ANY arithmetic universe internal to $\IAU$. One natural choice is where $C$ is taken to be the initial arithmetic universe $\IAU'$ internal to $\IAU$ (which exists thanks to \magicref{AUInternalInitialFinite} and \magicref{NNOToposAndAUAreFinitelyAxiomatized}). In this case, the natural transformation $\introN$ we obtain is the same as the one constructed in Lemma 5.15 of \autocite{van2020g}.
 
 Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence. This is because the global sections functor $\Hom_{\IAU}(1, -) : \IAU \to \Set$ is an arithmetic functor, by \magicref{GlobalIsArithmeticOnIAU}. Thus, as arithmetic functors preserve the initial internal models obtained by \magicref{AUInternalInitialFinite}, we have that $\Glob{\IAU'} = \IAU$. Thus, the unique arithmetic functor from $\IAU$ to $\Glob{\IAU'}$ [which we have taken as $\introS$] is an equivalence.
