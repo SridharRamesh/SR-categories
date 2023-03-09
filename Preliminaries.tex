@@ -1037,11 +1037,11 @@ Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomo
 Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every slice in $D/h(c)$ is isomorphic to $h$ applied to some slice in $C/c$ (i.e., $h$ restricted to any slice category is eso).
 \end{lemma}
 \begin{proof}
-Suppose $h$ satisfies the surjectivity properties. We must show that $g$ is essentially surjective on objects, full, and faithful.
+Suppose $h$ satisfies this surjectivity property. We must show that $g$ is essentially surjective on objects, full, and faithful.
 
-That $g$ is essentially surjective on objects follows from the fact that $h = gf$ is eso when acting on $C/1$.
+That $g$ is essentially surjective on objects follows from the fact that $h = g \circ f$ is eso when acting on $C/1$.
 
-Since $f$ is eso and $h = gf$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2))$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. Begin by considering $\langle \id, m \rangle : h(c_1) \to h(c_1) \times h(c_2)$, as in the following commutative diagram:
+Since $f$ is eso and $h = g \circ f$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2))$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. Begin by considering $\langle \id, m \rangle : h(c_1) \to h(c_1) \times h(c_2)$, as in the following commutative diagram:
 
 % https://q.uiver.app/?q=WzAsNCxbMiwwLCJoKGNfMSkiXSxbMiwxLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwxLCJoKGNfMSkiXSxbNCwxLCJoKGNfMikiXSxbMSwyLCJoKFxccGlfe2NfMX0pIl0sWzEsMywiaChcXHBpX3tjXzJ9KSIsMl0sWzAsMSwiXFxsYW5nbGUgXFxpZCwgbSBcXHJhbmdsZSIsMl0sWzAsMywibSJdLFswLDIsIlxcaWQiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 \[\begin{tikzcd}
@@ -1081,7 +1081,7 @@ Putting these together, we find that $j = h(n) ; h(\pi_{c_1}) = h(n ; \pi_{c_1})
 	\arrow["{h(\pi_{c_1})}"', from=3-2, to=1-3]
 \end{tikzcd}\]
 
-Thus, $j$ is an isomorphism in the range of $h$. Our setup is such that whenever any morphism of the form $h(x) = g(f(x))$ has an inverse, this is given by applying $g$ to an inverse of $f(x)$. Thus, $j^{-1}$ is in the range of $g$ (specifically, $j^{-1} = g(y)$ where $y$ is the inverse of $f(n; \pi_{c_1})$).
+Thus, $j$ is an isomorphism in the range of $h$. Our setup is such that whenever any morphism of the form $h(x) = g(f(x))$ has an inverse, this is given by applying $g$ to an inverse of $f(x)$. Thus, $j^{-1} = g(y)$ where $y : f(c_1) \to f(\dom(n))$ is the inverse of $f(n; \pi_{c_1})$.
 
 Finally, keeping in mind that $h = g \circ f$, we have by the following commutative diagram that $m$ is given by $g$ applied to a morphism from $f(c_1)$ to $f(c_2)$:
 
@@ -1109,7 +1109,7 @@ Specifically, $m$ is given by $g$ applied to the following composition:
 
 This completes the demonstration that $g$ is full.
 
-Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. Since $f$ is eso, we can restrict attention to morphisms in $C[M^{-1}]$ in the range of $f$. We must show that any such morphism which is sent to an isomorphism by $g$ is already an isomorphism. Any such morphism which is sent to an isomorphism by $g$ is by definition $f$ applied to a morphism in $M$. But all morphisms in $M$ are sent to isomorphisms by $f$, completing the proof.
+Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative, and thus completes the proof that $g$ is an equivalence.
 \end{proof}
 
 \begin{lemma}\label{ArithmeticLocalization}
