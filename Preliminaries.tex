@@ -665,7 +665,7 @@ The objects of the global aspect of this $\Psh{C}$ correspond to the $T$-\repsma
 
 We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed structures $P$ in cases where $C$ is in fact $T$-\repsmall/ and $P$ is also $T$-\repsmall/, thus simply given by a suitable diagram in $T$. However, there is one important instance in which we will need to explicitly consider a doubly-indexed set without any presumed representability properties (in \magicref{IntrospDiagSection}).
 
-\subsubsection{Further discussion}
+\subsubsection*{Further discussion}
 The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given merely the data of a fibration as a functor between categories, one can recover the indexed category which gave rise to it.
 
 Thus, the data of an indexed category is equivalent to the data of a fibration. The entire machinery of indexed categories can therefore equivalently be presented in terms of fibrations. For this reason, fibrations are also called fibered categories. In particular, one can give a more intrinsic account of the conditions under which an arbitrary functor is a fibration. Furthermore, any natural transformation between $T$-indexed categories induces a corresponding map between the corresponding fibrations in $\Cat/T$, and again the natural transformation can be recovered from this map, and again a more intrinsic account can be given of which maps arise in this way. Some things are easier to describe in a fibration-based presentation. Other things are more difficult. For our purposes (using the general language of indexed structures ultimately for the goal of understanding specifically \repsmall/ or internal structures), we felt the indexed category presentation was the most apt. Thus, we will not describe the theory of fibered categories further. We use the Grothendieck construction only for the correspondence between $(\Groth_T C)$-indexed sets and $(T, C)$-indexed sets.
@@ -937,11 +937,11 @@ Next, we note that a topos with countable products also has countable coproducts
 
 We make also the following observations:
 \begin{observation}\label{NNOToposAndAUAreFinitelyAxiomatized}
-The theory of NNO-toposes and the theory of arithmetic universes are finitely axiomatized lex theories.
+The theory of (strict) NNO-toposes and the theory of (strict) arithmetic universes are finitely axiomatized lex theories.
 \end{observation}
 
 \begin{observation}\label{CountableProductToposIsFiniteCountablyLexTheory}
-The theory of toposes with countable products is a finitely axiomatized countably lex theory.
+The theory of (strict) toposes with countable products is a finitely axiomatized countably lex theory.
 \end{observation}
 
 \subsection{Quasi-equational theories}\label{QuasiTheoryTheory}
@@ -1036,12 +1036,14 @@ Let lexfunctor $f : C \to D$ and $m_1, m_2 : c_1 \to c_2$ in $C$ be given such t
 \begin{lemma}\label{IsLexLocalizationLemma}
 Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomorphisms by $h$, let $f : C \to C[M^{-1}]$ be the corresponding lex localization, and let $g : C[M^{-1}] \to D$ be the uniquely determined lexfunctor such that $h = g \circ f$.
 
-Then $g$ is an equivalence of categories whenever, for every object $c \in C$, every object in $D/h(c)$ is isomorphic to $h$ applied to some object in $C/c$ (i.e., the action of $h$ between slice categories is eso).
+Then $g$ is conservative (and thus faithful, by \magicref{ConservativeFaithfulLemma}). Furthermore, $g$ is an equivalence of categories whenever, for every object $c \in C$, every object in $D/h(c)$ is isomorphic to $h$ applied to some object in $C/c$ (i.e., the action of $h$ between slice categories is eso).
 \end{lemma}
 \begin{proof}
-Suppose $h$ satisfies this surjectivity property. We must show that $g$ is essentially surjective on objects, full, and faithful.
+First, we show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative (and thus faithful).
 
-That $g$ is essentially surjective on objects follows from the fact that $h = g \circ f$ is eso when acting on $C/1$.
+Now, suppose $h$ is such that its action between slice categories is eso. We already know that $g$ is faithful, so in order to show that $g$ is an equivalence, we must show that $g$ is eso and full.
+
+That $g$ is eso follows from the fact that $h = g \circ f$ is eso when acting on $C/1$.
 
 Since $f$ is eso and $h = g \circ f$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2))$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. Begin by considering $\langle \id, m \rangle : h(c_1) \to h(c_1) \times h(c_2)$, as in the following commutative diagram:
 
@@ -1109,9 +1111,7 @@ Specifically, $m$ is given by $g$ applied to the following composition:
 	\arrow["{f(\pi_{c_2})}"', from=2-3, to=2-5]
 \end{tikzcd}\]
 
-This completes the demonstration that $g$ is full.
-
-Finally, to show that $g$ is faithful, it suffices by \magicref{ConservativeFaithfulLemma} to show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative and thus faithful, and thus completes the proof that $g$ is an equivalence.
+This completes the demonstration that $g$ is full, and thus completes the proof that $g$ is an equivalence.
 \end{proof}
 
 \begin{lemma}\label{ArithmeticLocalization}
