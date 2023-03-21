@@ -117,7 +117,7 @@ As the category of models of an essentially algebraic theory, this category must
 \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
 \begin{definition}[Geminal category]\label{VerboseGeminalCatDefn}
-A \defined{geminal category} internal to lexcategory $C_0$ consists of several ingredients:
+A \defined{geminal category}\footnote{Another evocative name for this concept might be \quote{nesting doll category}.} internal to lexcategory $C_0$ consists of several ingredients:
 
 \begin{itemize}
     \item 
@@ -363,7 +363,7 @@ For simplicity as a first introduction, everything done previously was the speci
 
 Specifically, let models of $Th$ be called \quote{gadgets}, and maps between them called \quote{gadget homomorphisms}. Then the free introspective theory extending $Th$ is the theory of \quote{geminal gadgets}, with the definition of a \quote{geminal gadget} being exactly as in either definition of a \quote{geminal category}, but with all instances of lexcategories and lexfunctors replaced by gadgets and gadget homomorphisms.
 
-This is by exactly the same arguments as we have just given. All the results and arguments given earlier in this chapter apply just as well mutatis mutandis when lexcategories and lexfunctors are replaced by gadgets and gadget homomorphisms, except for \magicref{IntrospAsGeminal} (it will not be the case that an arbitrary strict introspective theory can be viewed as a geminal gadget). However, the analogue of the construction \magicref{IntrospContainsGeminal} still holds (i.e., given an introspective theory $\langle T, C \rangle$ such that $C$ is the underlying lexcategory of a gadget, then the geminal category structure $C$ is equipped with by \magicref{IntrospContainsGeminal} furthermore underlies geminal gadget structure).
+This is by exactly the same arguments as we have just given. All the results and arguments given earlier in this chapter apply just as well mutatis mutandis when lexcategories and lexfunctors are replaced by gadgets and gadget homomorphisms, except for \magicref{IntrospAsGeminal} (it will not be the case that an arbitrary strict introspective theory can be viewed as a geminal gadget). However, the analogue of the construction \magicref{IntrospContainsGeminal} still holds (i.e., given an introspective theory $\langle T, C \rangle$ such that $C$ is the underlying lexcategory of a gadget, then the geminal category structure which $C$ is equipped with by \magicref{IntrospContainsGeminal} furthermore underlies geminal gadget structure).
 
 \sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
@@ -373,27 +373,7 @@ This is by exactly the same arguments as we have just given. All the results and
 In every introspective theory $\langle T, C \rangle$, we have a $T$-internal endofunctor $\Box_C$ on $C$ modeling the modal logic GL. Thus, this is in particular true of the initial introspective theory, which by \magicref{InitialIntrospectiveTheory} is the theory of geminal categories. Thus, any geminal category $K$ comes with such an operation $\Box_{|K|}$ on $|K|$, and this operation is furthermore preserved by geminal category homomorphisms.
 \end{observation}
 
-\sTODOinline{Old stuff; rewrite or eliminate:
-The significance of our constellation of constructions turning introspective theories into geminal categories may be further illuminated by thinking about box notation for geminal categories.
-
-\begin{definition}\label{BoxForGeminal}
-Given a geminal category $\langle C'_1, C'_2; F'_1, F'_2 \rangle$, we may define a bifunctor on $C'_1$ like so: Given objects $c$ and $d$ in $C'_1$, we define $\Box(c \implies d)$ to mean $\Hom_{C'_2}(F'_1(c), F'_1(d))$. We then take $\Box d$ as shorthand for $\Box(1 \implies d)$.
-\end{definition}
-
-This is reminiscent of our previously introduced box notation for introspective theories (where we had both $\Box_T$ and $\Box_C$). And indeed, we will now link all of these box notations:
-
-\begin{observation}
-Given an introspective theory $\langle T, C, \introS, \introN \rangle$, if we think of this as a geminal category with underlying lexcategory $T$ via \magicref{IntrospAsGeminal} and then apply the box notation from \magicref{BoxForGeminal}, we find that for $t, s \in T$, we have $\Box(s \implies t) = \Hom_C(\introS(s), \introS(t))$, and in particular, $\Box t = \Hom_C(1, \introS(t))$. This exactly matches the definition of $\Box_T t$ used for introspective theories from \magicref{BoxDefn}.
-
-Alternatively, if we use \magicref{IntrospContainsGeminal} to obtain a $T$-internal geminal category with underlying lexcategory $C$, and then apply the box notation from \magicref{BoxForGeminal}, we find that for $c, d \in C$, we have $\Box(c \implies d) = \Hom_{\introS[C]}(\introN_{\Ob(c)}(c), \introN_{\Ob(c)}(d))$. When $c$ and $d$ are globally defined, we can use \magicref{SMatchesN} to show this equal to $\Hom_{\introS[C]}(\introS(c), \introS(d)) =  \introS(\Hom_C(c, d))$. This exactly matches the definition of $\Box_C (c \implies d)$ used with introspective theories from \magicref{BoxDefn}.
-
-\sTODOinline{When $c$ and $d$ are not globally defined, then what? Presumably the box notation should not be well-defined on arbitrary slice categories of a geminal category. But in this last comment, we really mean to be looking at the $\Ob(C)^2$-aspect of $\Box_C$ in an introspective theory.}
-\end{observation}
-}
-
 \sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
-
-\sTODOinline{Establish a general property that mapping from Cn to C(n - 1) to Cn matches mapping from Cn to C(n + 1) to Cn, in a geminal category, where the maps to lower indices are given by Gamma and the maps to higher indices are given by F. This is, I think, straightforwardish if we just diagram chase a generic element of Mor(Cn)?}
 }
 
 \subsection{Co-free introspective theories and geminal categories}\label{CofreeGeminalSection}
@@ -434,7 +414,7 @@ By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \B
 
 In the above diagram, the left side is the definition of $\Box_T$ and the right side is the definition of $\Box_{C_1}$. The top rectangle is one of the conditions in \magicref{VerboseGeminalCatHomoDefn} and the bottom rectangle is by \magicref{InducedGlobalCommute}.
 
-Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $\Box_{C_1} \circ H$. Illustrated like so:
+Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $H \circ \Box_T = \Box_{C_1} \circ H$. Illustrated like so:
 
 % https://q.uiver.app/?q=WzAsNixbNCwwLCJDXzEiXSxbNCwxLCJcXEdsb2J7QydfMn0iXSxbNCwyLCJDXzEiXSxbMCwwLCJUIl0sWzEsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkZfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDXzF9IiwwLHsiY3VydmUiOi01fV0sWzMsMCwiSCJdLFszLDQsIlxcaW50cm9TIl0sWzQsMSwiXFxJbmR1Y2VkSG9tb3tIfXtDfSIsMV0sWzQsNSwiXFxHYW1tYV9DIl0sWzUsMiwiSCIsMl0sWzMsNSwiXFxpZCIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDQsIlxcaW50cm9OIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
 \[\begin{tikzcd}
@@ -455,7 +435,7 @@ Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural 
 
 This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor, this $\beta$ is also a strict lexfunctor, when the category of $\Box_{C_1}$-coalgebras is construed as a strict lexcategory in the manner of \magicref{BoxCoalgebrasInGeminal}.
 
-Not only that, but every coalgebra in the range of $\beta$ has the following property:
+Not only that, but every coalgebra $m : c \to \Box c$ in the range of $\beta$ has the property that the following diagram commutes:
 
 % https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
 \[\begin{tikzcd}
