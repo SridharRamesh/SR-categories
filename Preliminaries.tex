@@ -632,9 +632,9 @@ Finally, the reindexings along morphisms of $T$ must preserve in a suitable sens
 
 Using this coherence condition, any reindexing in $C$ followed by a reindexing in $T$ (the left-bottom path) can be turned into an equivalent reindexing in $T$ followed by a reindexing in $C$ (the top-right path). Thus, for any string of reindexings (alternating between reindexings in $C$ and reindexings in $T$), there is a unique reindexing in $T$ followed by a reindexing in $C$ which it is forced equivalent to by the coherence condition and functoriality.
 
-Thus, we can resummarize all of these conditions like so: We create a category denoted $\Groth_{T} C$ (or just $\Groth C$) whose objects are pairs $(t, c)$ where $t$ is an object in $T$ and $c$ is an object in $C(t)$. A morphism in $\Groth C$ from $(s, c)$ to $(t, d)$ is given by a pair $(m, n)$ where $m : s \to t$ in $T$ and $n : c \to C(m)(d)$ in $C(s)$. This represents a reindexing along $m$ followed by a reindexing along $n$, and so by consideration of the previous paragraph, we get also the appropriate composition rule validating our desired coherence condition and automatically ensuring associativity. Specifically, the appropriate composition rule is that $(a, n)$ followed by $(m, b)$ composes to $((a ; m), (C(m)(n) ; b))$, as can be visualized from our above-noted coherence condition like so:
+Thus, we can resummarize all of these conditions like so: We create a category denoted $\Groth_{T} C$ (or just $\Groth C$) whose objects are pairs $(t, c)$ where $t$ is an object in $T$ and $c$ is an object in $C(t)$. A morphism in $\Groth C$ from $(s, c)$ to $(t, d)$ is given by a pair $(m, n)$ where $m : s \to t$ in $T$ and $n : c \to C(m)(d)$ in $C(s)$. This represents a reindexing along $m$ followed by a reindexing along $n$, and so by consideration of the previous paragraph, we get also the appropriate composition rule validating our desired coherence condition and automatically ensuring associativity. Specifically, the appropriate composition rule is that $(a, n) \circ (m, b) = ((a \circ m), (C(m)(n) \circ b))$, as can be visualized from our above-noted coherence condition like so:
 
-% https://q.uiver.app/?q=WzAsNixbMiwwLCJQKHQsIGQpIl0sWzIsMSwiUCh0LCBjKSJdLFs0LDAsIlAocywgQyhtKShkKSkiXSxbNCwxLCJQKHMsIEMobSkoYykpIl0sWzAsMCwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFswLDEsIlAodCwgbikiLDFdLFswLDIsIlAobSkiXSxbMSwzLCJQKG0pIl0sWzIsMywiUChzLCBDKG0pKG4pKSIsMV0sWzQsMCwiUChhKSJdLFszLDUsIlAoYikiXSxbNCwxXSxbMSw1XV0=
+% https://q.uiver.app/?q=WzAsNixbMiwwLCJQKHQsIGQpIl0sWzIsMSwiUCh0LCBjKSJdLFs0LDAsIlAocywgQyhtKShkKSkiXSxbNCwxLCJQKHMsIEMobSkoYykpIl0sWzAsMCwiXFxidWxsZXQiXSxbNCwyLCJcXGJ1bGxldCJdLFswLDEsIlAodCwgbikiLDFdLFswLDIsIlAobSkiXSxbMSwzLCJQKG0pIl0sWzIsMywiUChzLCBDKG0pKG4pKSIsMV0sWzQsMCwiUChhKSJdLFszLDUsIlAocywgYikiXSxbNCwxXSxbMSw1XV0=
 \[\begin{tikzcd}
 	\bullet && {P(t, d)} && {P(s, C(m)(d))} \\
 	&& {P(t, c)} && {P(s, C(m)(c))} \\
@@ -644,7 +644,7 @@ Thus, we can resummarize all of these conditions like so: We create a category d
 	\arrow["{P(m)}", from=2-3, to=2-5]
 	\arrow["{P(s, C(m)(n))}"{description}, from=1-5, to=2-5]
 	\arrow["{P(a)}", from=1-1, to=1-3]
-	\arrow["{P(b)}", from=2-5, to=3-5]
+	\arrow["{P(s, b)}", from=2-5, to=3-5]
 	\arrow[from=1-1, to=2-3]
 	\arrow[from=2-3, to=3-5]
 \end{tikzcd}\]
@@ -666,7 +666,7 @@ The objects of the global aspect of this $\Psh{C}$ correspond to the $T$-\repsma
 We will only rarely need to consider any of this multi-indexing, and to the extent we do, almost always will really only care about $(T, C)$-indexed structures $P$ in cases where $C$ is in fact $T$-\repsmall/ and $P$ is also $T$-\repsmall/, thus simply given by a suitable diagram in $T$. However, there is one important instance in which we will need to explicitly consider a doubly-indexed set without any presumed representability properties (in \magicref{IntrospDiagSection}).
 
 \subsubsection*{Further discussion}
-The construction $\Groth_T C$ is called the Grothendieck construction. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given merely the data of a fibration as a functor between categories, one can recover the indexed category which gave rise to it.
+The construction $\Groth_T C$ is called \defined{the Grothendieck construction}. By projecting out first coordinates, we get a functor from $\Groth_T C$ to $T$; functors which arise in this way are called Grothendieck fibrations, or just fibrations. It turns out, given merely the data of a fibration as a functor between categories, one can recover the indexed category which gave rise to it.
 
 Thus, the data of an indexed category is equivalent to the data of a fibration. The entire machinery of indexed categories can therefore equivalently be presented in terms of fibrations. For this reason, fibrations are also called fibered categories. In particular, one can give a more intrinsic account of the conditions under which an arbitrary functor is a fibration. Furthermore, any natural transformation between $T$-indexed categories induces a corresponding map between the corresponding fibrations in $\Cat/T$, and again the natural transformation can be recovered from this map, and again a more intrinsic account can be given of which maps arise in this way. Some things are easier to describe in a fibration-based presentation. Other things are more difficult. For our purposes (using the general language of indexed structures ultimately for the goal of understanding specifically \repsmall/ or internal structures), we felt the indexed category presentation was the most apt. Thus, we will not describe the theory of fibered categories further. We use the Grothendieck construction only for the correspondence between $(\Groth_T C)$-indexed sets and $(T, C)$-indexed sets.
 
@@ -1039,7 +1039,7 @@ Let $h : C \to D$ be a lexfunctor, let $M$ be the set of morphisms sent to isomo
 Then $g$ is conservative (and thus faithful, by \magicref{ConservativeFaithfulLemma}). Furthermore, $g$ is an equivalence of categories whenever, for every object $c \in C$, every object in $D/h(c)$ is isomorphic to $h$ applied to some object in $C/c$ (i.e., the action of $h$ between slice categories is eso).
 \end{lemma}
 \begin{proof}
-First, we show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative (and thus faithful).
+First, we show that $g$ is conservative. By the calculus of right fractions construction, each morphism $x$ in $C[M^{-1}]$ is of the form $f(m)^{-1}; f(y)$, where $m \in M$ and thus $f(m)$ is an isomorphism. So if $g(x)$ is an isomorphism, so is $g(f(m)); g(x) = g(f(m); x) = g(f(m); f(m)^{-1}; f(y)) = g(f(y)) = h(y)$. Thus, $y \in M$ as well, and thus $f(y)$ is an isomorphism as well, so that $f(m)^{-1}; f(y) = x$ is an isomorphism as well. This completes the proof that $g$ is conservative (and thus faithful).
 
 Now, suppose $h$ is such that its action between slice categories is eso. We already know that $g$ is faithful, so in order to show that $g$ is an equivalence, we must show that $g$ is eso and full.
 

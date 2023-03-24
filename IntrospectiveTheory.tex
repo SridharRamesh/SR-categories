@@ -231,7 +231,7 @@ We present this example in terms of presheaves over the natural numbers (which c
 \begin{construction}\label{StepIndexingLocallyIntrosp}
 Let $\omega$ be the poset of natural numbers with their usual ordering, and consider the category of presheaves $\Psh{\omega}$ (often called the topos of trees). We will equip this as a locally introspective theory.
 
-The functor $\mathrm{Successor} : n : \omega \mapsto n + 1 : \omega$ induces correspondingly a functor $\pullAlong{\mathrm{Successor}} : \Psh{\omega} \to \Psh{\omega}$. For convenience, we will use the name $\Prior$ rather than $\pullAlong{\mathrm{Successor}}$ to refer to this endofunctor on $\Psh{\omega}$. Thus, $\Prior(P)(n) = P(n + 1)$ for $n \in \omega$.
+The functor $\mathrm{Successor}$ given by $ n : \omega \mapsto n + 1 : \omega$ induces correspondingly a functor $\pullAlong{\mathrm{Successor}} : \Psh{\omega} \to \Psh{\omega}$. For convenience, we will use the name $\Prior$ rather than $\pullAlong{\mathrm{Successor}}$ to refer to this endofunctor on $\Psh{\omega}$. Thus, $\Prior(P)(n) = P(n + 1)$ for $n \in \omega$.
 
 The map $n \leq n + 1$ from identity to $\mathrm{Successor}$ as endofunctors on $\omega$ induces a corresponding map from $\Prior$ to identity as endofunctors on $\Psh{\omega}$ (keeping in mind the contravariance of presheaves). We shall write $\prior : \Prior \to \id$ for this map.
 
@@ -327,7 +327,7 @@ Thus, we have a map $\introN : \id_{\Psh{Q}} \to \Hom_{C}(1, \introS(-))$, such 
 The reader is advised to keep in mind that this last construction is very different from \magicref{StepIndexingLocallyIntrosp}, even if $P$ is chosen to be the poset $\omega$ of natural numbers. This distinction is emphasized again in the later discussion at \magicref{KripkeFrameModal} and \magicref{StepIndexingModal}.
 \end{observation}
 
-This is an important archetypal example of a locally introspective theory. It corresponds closely to the interpretation of K4 modal logic using a transitive Kripke frame. However, just as at the beginning of our previous example, we have the issue that this is only a locally introspective theory and not an introspective theory. Once again, the various aspects of $C$ comprise a proper class of objects, too many for $\Ob(C)$ to be given by a set-valued presheaf, preventing $C$ from being \repsmall/. And as in our previous example, we will again address this by imposing variable cardinality constraints on our presheaves.
+This is an important archetypal example of a locally introspective theory. It corresponds closely to the interpretation of K4 modal logic using a transitive Kripke frame (as we will discuss in \magicref{KripkeFrameModal}). However, just as at the beginning of our previous example, we have the issue that this is only a locally introspective theory and not an introspective theory. Once again, the various aspects of $C$ comprise a proper class of objects, too many for $\Ob(C)$ to be given by a set-valued presheaf, preventing $C$ from being \repsmall/. And as in our previous example, we will again address this by imposing variable cardinality constraints on our presheaves.
 
 \begin{construction}\label{KripkeIntrosp}
 We will from hereon out assume that the preorder $P$ is in fact well-founded (and thus so is $Q$). Suppose given \setsmall/ full sublexcategories $\Set_q$ of $\Set$ for each $q \in Q$. (It's not actually necessary that we restrict to such a subcategory at $q = \infty$, but for uniformity's sake, we do this for now.). We shall think of each $\Set_q$ as a strict category.
@@ -352,7 +352,7 @@ In this way, we have constructed an introspective theory $\langle \PshUnderQInf,
 (Furthermore, the $\{\Set_q\}_{q \in Q}$ clearly may be chosen so as that each particular $\Set_q$ contains any \setsmall/ number of particular desired sets, so that $\PshUnderQInf$ contains any \setsmall/ number of particular desired objects of $\Psh{Q}$.)
 \end{construction}
 
-This is an important archetypal example of an introspective theory. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame.
+This is an important archetypal example of an introspective theory. It corresponds closely to the interpretation of GL modal logic using a well-founded Kripke frame (as we will discuss in \magicref{KripkeFrameModal}).
 
 \subsection{Basic constructions}
 Now let us discuss some general constructions for building new (pre-)introspective theories from old ones or from other data.
