@@ -187,7 +187,7 @@ That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma[F'_
 This concludes the definition of a geminal category internal to $C_0$.
 \end{definition}
 
-By a \defined{geminal category} simpliciter, we mean of course the case where $C_0 = \Set$. (Note that in this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect, as the global sections functor from $\Set$ to $\Set$ is the identity.). We wrote out here the definition for general $C_0$, instead of specifically for $C_0 = \Set$, in order to emphasize certain symmetries in this definition.
+By a \defined{geminal category} simpliciter, we mean of course the case where $C_0 = \Set$. (Note that in this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect, as the global elements functor from $\Set$ to $\Set$ is the identity.). We wrote out here the definition for general $C_0$, instead of specifically for $C_0 = \Set$, in order to emphasize certain symmetries in this definition.
 
 When being fully explicit, we reference a geminal category by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $\underlying{K}$ to refer to its underlying lexcategory $C'_1$.
 
@@ -435,7 +435,7 @@ Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural 
 
 This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor, this $\beta$ is also a strict lexfunctor, when the category of $\Box_{C_1}$-coalgebras is construed as a strict lexcategory in the manner of \magicref{BoxCoalgebrasInGeminal}.
 
-Not only that, but every coalgebra $m : c \to \Box c$ in the range of $\beta$ has the property that the following diagram commutes:
+Not only that, but every coalgebra $m : c \to \Box_{C_1} c$ in the range of $\beta$ has the property that the following diagram commutes:
 
 % https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
 \[\begin{tikzcd}
@@ -451,6 +451,24 @@ Not only that, but every coalgebra $m : c \to \Box c$ in the range of $\beta$ ha
 \sTODOinline{Explain above diagram}
 
 \TODOinline{Write out details of how, by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
+
+Let $K$ be the full subcategory of $\Box_{C_1}$ coalgebras with the specified property. It is readily verified that $K$ is closed under the chosen basic limits of $\Box_{C_1}$ \TODOinline{As an equalizer between strict lexfunctors}, and thus $K$ can be seen as a full sub-strict-lexcategory of the $\Box_{C_1}$ coalgebras.
+
+Note that the diagram defining $C'_2$ as an internal lexcategory in $C_1$ is in fact a diagram within the subcategory $K$, as \TODOinline{Cite relevant part of definition of a geminal category}. Thus, we may consider $C'_2$ as a $K$-\repsmall/ lexcategory as well.
+
+Define the strict lexfunctor $\introS : K \to \Glob{C'_2}$ by composing the forgetful functor from $K$ to $C_1$ with $F_1 : C_1 \to \Glob{C'_2}$.
+
+Note that $\Hom_{C_1}(1, \introS(-)) : K \to K$ takes each $m : c \to \Box_{C_1} c$ in $K$ to $4_c : \Box_{C_1} c \to \Box_{C_1} \Box_{C_1} c$, by \TODO.
+
+Finally, define the natural transformation $\introN$ as sending each $m : c \to \Box_{C_1} c$ in $K$ to the following coalgebra map from $m$ to $\Box_{C_1} m$ (the coalgebra map whose underlying map in $C_1$ is $m$ itself). This square commutes because of the defining property of $k$: \TODO.
+
+Thus, we obtain a strict introspective theory $K = \langle K, C'_2, \introS, \introN \rangle$.
+
+Let the strict lexfunctor $k$ be the inclusion of $K$ into the $\Box_{C_1}$ coalgebras, followed by the forgetful functor from the $\Box_{C_1}$ coalgebras to $C_1$. Observe that $k$ acts as a geminal category homomorphism $: K \to C_1$, by \TODO.
+
+Note that the construction of $K$ and $k$ depends only upon the geminal category $C_1$. Furthermore, observe for any strict introspective theory $T$ and geminal category homomorphism $H: T \to C_1$ as above, the $\beta$ as described above becomes the unique strict introspective theory homomorphism from $T$ to $K$ such that $\beta H = k$, by \TODO. 
+
+Thus, the operation turning $C_1$ into $K$ is the right adjoint to the functor turning strict introspective theories into geminal categories.
 \closeDetails
 
 \begin{corollary}
