@@ -31,13 +31,18 @@ Thus, if $S$ is some structure internal to the global aspect of $D$, we find tha
 
 By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \sTODOinline{Clarify that n here can't be 0. Or rather, for $n = 0$, we have to understand $0$-tuply internal structures as structures internal to $\Set$.}
 
-\begin{observation}\label{GlobOfGlob}
-If $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma(S)$. \sTODOinline{Write out why this is so}
+\begin{observation}\label{GlobOfGlobUndetailed}
+If $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma_D(S)$. \sTODOinline{Write out why this is so}
 \end{observation}
 
 Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
 
 Next, observe that if $F : C \to D$ is a lexfunctor between lexcategories, and $S$ is some structure internal to $C$, then not only do we have $F(S)$ as a similar structure internal to $D$, but furthermore, the action of $F$ induces a homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may use the same name $F$ to refer to this induced homomorphism $F : \Glob{S} \to \Glob{F(S)}$ as well, or we may refer to it as $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$ to be explicit.
+
+\newcommand{\GlobIso}{\alpha}
+\begin{observation}\label{GlobOfGlob}
+Expanding on \magicref{GlobOfGlobUndetailed}, if $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the map $\InducedHomo{\Gamma_D}{S} : \Glob{S} \to \Glob{\Gamma_D[S]}$ is an isomorphism.\sTODOinline{Write out why this is so} We refer to this isomorphism as $\GlobIso_S$.
+\end{observation}
 
 In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F : \Glob{S_2} \to \Glob{F(S_2)}$ as well, or we may refer to it as $\InducedHomo{F}{S}$ to be explicit.
 
@@ -157,37 +162,56 @@ Pictorially, this can be envisioned like so:
 
 Here, the first row is structure internal to $C_0$, the second row is structure internal to $C_1$ (thus, doubly internal to the ambient $C_0$), the third row is structure internal to $C_2$ (thus, triply internal to the ambient $C_0$), and so on. We also for convenience use the abbreviation $\Gamma_i$ for $\Gamma_{C'_i} : C_i \to C_{i - 1}$ for $i \geq 1$, illustrating these in the vertical line on the left of the picture.
 
-In keeping with our naming convention, we shall also use $F_i : C_i \to C_{i + 1}$ to refer to the global aspect of $F'_i$. Note that the codomain of $F_i$ is simply $C_{i + 1}$, as \magicref{GlobOfGlob} tells us that $\Glob{\Gamma[C'_{i + 1}]} = \Glob{C'_{i + 1}} = C_{i + 1}$. Thus, these $F_i$ line up more straightforwardly than the $F'_i$:
+\newcommand{\straight}[1]{\widehat{#1}}
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJDXzEiXSxbMSwwLCJDXzIiXSxbMiwwLCJDXzMiXSxbMywwLCJcXGxkb3RzIl0sWzAsMSwiRl8xIl0sWzEsMiwiRl8yIl0sWzIsMywiRl8zIl1d
+In keeping with our naming convention, we shall also use $F_i : C_i \to \Glob{\Gamma_i[C_{i + 1}]}$ to refer to the global aspect of $F'_i$. As \magicref{GlobOfGlob} tells us that $\InducedHomo{\Gamma_i}{C'_{i + 1}} : \Glob{C'_{i + 1}} \to \Glob{\Gamma_i[C'_{i + 1}]}$ is an isomorphism, we can also define $\straight{F}_i : C_i \to C_{i + 1}$ as the unique map making the following diagram commute:
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX2kgPSBcXEdsb2J7QydfaX0iXSxbMiwyLCJDX3tpICsgMX0gPSBcXEdsb2J7Qydfe2kgKyAxfX0iXSxbMiwwLCJcXEdsb2J7XFxHYW1tYV9pW0Nfe2kgKyAxfV19Il0sWzAsMiwiRl9pIl0sWzEsMiwiXFxJbmR1Y2VkSG9tb3tcXEdhbW1hX2l9e0MnX3tpICsgMX19IiwyXSxbMCwxLCJcXHN0cmFpZ2h0e0Z9X2kiLDJdXQ==
+\[\begin{tikzcd}
+	{C_i = \Glob{C'_i}} && {\Glob{\Gamma_i[C_{i + 1}]}} \\
+	\\
+	&& {C_{i + 1} = \Glob{C'_{i + 1}}}
+	\arrow["{F_i}", from=1-1, to=1-3]
+	\arrow["{\InducedHomo{\Gamma_i}{C'_{i + 1}}}"', from=3-3, to=1-3]
+	\arrow["{\straight{F}_i}"', from=1-1, to=3-3]
+\end{tikzcd}\]
+
+These $\straight{F}_i$ are convenient as they line up straightforwardly:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDXzEiXSxbMSwwLCJDXzIiXSxbMiwwLCJDXzMiXSxbMywwLCJcXGxkb3RzIl0sWzAsMSwiXFxzdHJhaWdodHtGfV8xIl0sWzEsMiwiXFxzdHJhaWdodHtGfV8yIl0sWzIsMywiXFxzdHJhaWdodHtGfV8zIl1d
 \[\begin{tikzcd}
 	{C_1} & {C_2} & {C_3} & \ldots
-	\arrow["{F_1}", from=1-1, to=1-2]
-	\arrow["{F_2}", from=1-2, to=1-3]
-	\arrow["{F_3}", from=1-3, to=1-4]
+	\arrow["{\straight{F}_1}", from=1-1, to=1-2]
+	\arrow["{\straight{F}_2}", from=1-2, to=1-3]
+	\arrow["{\straight{F}_3}", from=1-3, to=1-4]
 \end{tikzcd}\]
 
 Finally, the last ingredients we require are some equations:
 
 \begin{itemize}
     \item 
-     We require that $F_i[C'_j] = C'_{j + 1}$ and $F_i[F'_j] = F'_{j + 1}$ for $j > i \geq 1$.
+     We require that $\straight{F}_i[C'_j] = C'_{j + 1}$ and $\straight{F}_i[F'_j] = F'_{j + 1}$ for $j > i \geq 1$.
      
     \item
     Furthermore, we require that the following diagram of lexfunctors internal to $C_{i - 1}$ commutes, for each $i \geq 1$. We call this equation $E_i$.
     
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDIsIlxcR2FtbWFfaSBbXFxHYW1tYV97aSArIDF9IFtDJ197aSArIDJ9XV0iXSxbMiwwLCJcXEdhbW1hX2kgW0MnX3tpICsgMX1dIl0sWzAsMSwiRidfaSIsMl0sWzAsMywiRidfaSJdLFszLDIsIlxcR2FtbWFfaSBbRidfe2kgKyAxfV0iXSxbMSwyLCJcXEluZHVjZWRIb21ve0YnX2l9e0MnX3tpICsgMX19IiwyXV0=
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDIsIlxcR2FtbWFfe1xcR2FtbWFfe2l9W0MnX3tpICsgMX1dfSBbRidfaVtDJ197aSArIDF9XV0iXSxbMywwLCJcXEdhbW1hX2kgW0MnX3tpICsgMX1dIl0sWzMsMiwiXFxHYW1tYV9pIFtcXEdhbW1hX3tpICsgMX0gW0MnX3tpICsgMn1dXSJdLFswLDEsIkYnX2kiLDJdLFswLDMsIkYnX2kiXSxbMSwyLCJcXEluZHVjZWRIb21ve0YnX2l9e0MnX3tpICsgMX19IiwyXSxbMyw0LCJcXEdhbW1hX2kgW0YnX3tpICsgMX1dIl0sWzIsNCwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
 \[\begin{tikzcd}
-	{C'_i} && {\Gamma_i [C'_{i + 1}]} \\
+	{C'_i} &&& {\Gamma_i [C'_{i + 1}]} \\
 	\\
-	{\Gamma_i [C'_{i + 1}]} && {\Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]}
+	{\Gamma_i [C'_{i + 1}]} && {\Gamma_{\Gamma_{i}[C'_{i + 1}]} [F'_i[C'_{i + 1}]]} & {\Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]}
 	\arrow["{F'_i}"', from=1-1, to=3-1]
-	\arrow["{F'_i}", from=1-1, to=1-3]
-	\arrow["{\Gamma_i [F'_{i + 1}]}", from=1-3, to=3-3]
+	\arrow["{F'_i}", from=1-1, to=1-4]
 	\arrow["{\InducedHomo{F'_i}{C'_{i + 1}}}"', from=3-1, to=3-3]
+	\arrow["{\Gamma_i [F'_{i + 1}]}", from=1-4, to=3-4]
+	\arrow[Rightarrow, no head, from=3-3, to=3-4]
 \end{tikzcd}\]
 
 That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}, in severe abuse of notation.
+
+(To derive the identity in the bottom-right of the above diagram, first note that $F'_i[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
+
+Thus, $\Gamma_{\Gamma_{i}[C'_{i + 1}]} [F'_i[C'_{i + 1}]] =$ $\Gamma_{\Gamma_{i}[C'_{i + 1}]} [\InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]] = \Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]$, where the last step is by \magicref{InducedGlobalCommute}.)
 \end{itemize}
 
 This concludes the definition of a geminal category internal to $C_0$.
