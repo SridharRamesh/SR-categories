@@ -35,7 +35,7 @@ Suppose given some lexcategory $Th$ (the theory of \quote{gadgets}), along with 
 
 Furthermore, suppose given an initial gadget $G_1$ with an initial internal gadget $G_2$. That is, suppose given some lexcategory $V$ such that $\LexCat(Th, V)$ has an initial object (our $G_1$) and such that $\LexCat(Th, \Glob{G_1[C]})$ has an initial object (our $G_2$).
 
-Because $G_1$ is initial, we automatically get a unique homomorphism $F_1 : G_1 \to \Gamma{G_2}$. And because $G_2$ is an initial $G$-internal gadget, we automatically get a unique $G_1$-internal homomorphism $F_2 : G_2 \to \Gamma[G_3]$ where $G_3 = F_1[G_2]$.
+Because $G_1$ is initial, we automatically get a unique homomorphism $F_1 : G_1 \to \Gamma[G_2]$. And because $G_2$ is an initial $G$-internal gadget, we automatically get a unique $G_1$-internal homomorphism $F_2 : G_2 \to \Gamma[G_3]$ where $G_3 = F_1[G_2]$.
 
 This setup is thus a geminal gadget internal to $V$ (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
 
@@ -60,7 +60,7 @@ Suppose given some lexfunctor $i : Th \to Th'$, along with a lexcategory $C$ int
 
 Furthermore, suppose given an initial gadget $G_1$ with an initial internal supergadget $G_2$. That is, suppose given some lexcategory $V$ such that $\LexCat(Th, V)$ has an initial object (our $G_1$) and such that $\LexCat(Th', \Glob{G_1[C]})$ has an initial object (our $G_2$).
 
-Because $G_1$ is initial, we automatically get a unique gadget homomorphism $F_1: G_1 \to \Gamma{G_2}$. And because $G_2$ is an initial $G_1$-internal supergadget, we automatically get a unique $G_1$-internal supergadget homomorphism $F_2 : G_2 \to \Gamma[G_3]$ where $G_3 = F_1[G_2]$.
+Because $G_1$ is initial, we automatically get a unique gadget homomorphism $F_1: G_1 \to \Gamma[G_2]$. And because $G_2$ is an initial $G_1$-internal supergadget, we automatically get a unique $G_1$-internal supergadget homomorphism $F_2 : G_2 \to \Gamma[G_3]$ where $G_3 = F_1[G_2]$.
 
 This setup is thus a geminal gadget internal to $V$ (with the equations $E_1$ and $E_2$ of \magicref{CompactGeminalCatDefn} automatically satisfied by the uniqueness observations in the previous paragraph).
 
@@ -98,7 +98,7 @@ We have discussed all this just in the context of geminal categories, but this e
 \sTODOinline{Maybe delete most of this section (except for the definitions of self- and super-initializing theories) and only give examples of introspective theories.}
 
 \subsubsection{The theory of initial models as an introspective theory}
-Throughout the following, we say say an initial object in a category of the form $\LexCat(T, S)$ is an initial model of $T$ internal to $S$. Given lexcategories $S$ and $S'$ both containing initial internal models of $T$, we say a lexfunctor from $S$ to $S'$ preserves initial models of $T$ if its composition with the initial model of $T$ in $S$ is the initial model of $T$ in $S'$.
+Throughout the following, we say an initial object in a category of the form $\LexCat(T, S)$ is an initial model of $T$ internal to $S$. Given lexcategories $S$ and $S'$ both containing initial internal models of $T$, we say a lexfunctor from $S$ to $S'$ preserves initial models of $T$ if its composition with the initial model of $T$ in $S$ is the initial model of $T$ in $S'$.
 
 By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial internal models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
 
@@ -114,7 +114,7 @@ In more detail, the category of strict lexcategories with internal initial model
 \begin{construction}\label{IntrospFromSelfInitializing}
 If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}. This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $Th$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
 
-We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ where $\introS$ is a map in $\initMod{Th}$.
+We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ such that $\introS$ is a map in $\initMod{Th}$.
 \end{construction}
 
 There is an extension of the above construction to super-initializing theories. However, it is a bit trickier. The key issue is to construct, for a super-initializing lexfunctor $i : Th \to Th'$, a lexcategory which captures simultaneously the properties which are shared by initial models of $Th$ and by initial models of $Th'$. We sketch out the construction as follows:
@@ -165,7 +165,7 @@ Note that the above construction can be applied using ANY arithmetic universe in
 Note in this case also that $\introS : \IAU \to \Glob{\IAU'}$ is an equivalence. This is because the global sections functor $\Hom_{\IAU}(1, -) : \IAU \to \Set$ is an arithmetic functor, by \magicref{GlobalIsArithmeticOnIAU}. Thus, as arithmetic functors preserve the initial internal models obtained by \magicref{AUInternalInitialFinite}, we have that $\Glob{\IAU'} = \IAU$. Thus, the unique arithmetic functor from $\IAU$ to $\Glob{\IAU'}$ [which we have taken as $\introS$] is an equivalence.
 \end{observation}
 
-Note that little was uniquely special about the initial arithmetic universe $\IAU$ for being able to be equipped as an introspective theory in this manner. It was just an invocation of our general construction \magicref{SpecialInitialIntrosp}. We could similarly construct introspective theories using initial objects of any kind of structure left comma-stable over $\LexCat$, given any structure of the same kind internal to the initial one. What's noteworthy about $\IAU$ is just that it happens to actually contain interesting internal structures (such as internal categories corresponding to Peano Arithmetic, to ZFC, to the initial internal arithmetic universe, etc), whereas the initial lexcategory, or initial regular category, or initial lexcategory with finite pullback-stable colimits, or such things, all have a paucity of interesting internal structures.
+Note that little was uniquely special about the initial arithmetic universe $\IAU$ for being able to be equipped as an introspective theory in this manner. It was just an invocation of our general construction \magicref{SpecialInitialIntrosp}. We could similarly construct introspective theories using initial objects of any kind of structure left comma-stable over $\LexCat$, given any structure of the same kind internal to the initial one. What's noteworthy about $\IAU$ is just that it happens to actually contain interesting internal structures (such as internal categories corresponding to Peano Arithmetic, to ZFC, to the initial arithmetic universe, etc), whereas the initial lexcategory, or initial regular category, or initial lexcategory with finite pullback-stable colimits, or such things, all have a paucity of interesting internal structures.
 
 \bigskip
 We now use \magicref{IAUAsIntrospGeneral} to give a fuller account of our original guiding example of an introspective theory based on traditional logical theories, from \magicref{SigmaModelComplex}.
