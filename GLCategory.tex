@@ -15,6 +15,9 @@ This chapter requires some preliminary concepts to be established in \magicref{M
 \subsection{Multiply internal structures}\label{MultiplyInternal}
 Before we get to the main material of this chapter, it will be helpful to introduce the concept of \quote{multiply internal} structures, which are used heavily throughout this chapter.
 
+First, a small remark on notation: Recall that if we have a lexfunctor $F : C \to D$ and a structure $S$ internal to $C$, then we obtain a structure $F(S)$ of the same sort internal to $D$. Often, we shall write $F[S]$ for this instead of $F(S)$, to emphasize this particular operation as visually distinct from all the other ways in which parentheses can be used.
+
+\bigskip
 \sTODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$.}
 
 Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
@@ -23,32 +26,51 @@ We may iterate this process. Suppose now that $C_2$ is the global aspect of some
 
 And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
 
-Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing.
+Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing. (In particular, when writing $\Gamma[S]$ with no subscript on the $\Gamma$, we always mean $\Gamma_X[S]$ where $S$ is singly internal to $X$, though $X$ may in turn be internal or multiply internal to some other category.)\sTODOinline{If we never use unsubscripted $\Gamma$ anymore, we should get rid of these mentions of it.}
 
-(In particular, when writing $\Gamma(S)$ with no subscript on the $\Gamma$, we always mean $\Gamma_X(S)$ where $S$ is singly internal to $X$, though $X$ may in turn be internal or multiply internal to some other category.)
+Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D[S]$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma[S]$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma[S]$.
 
-Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D(S)$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma(S)$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma(S)$.
+Note that any lexcategory $C$ can also be thought of as a lexcategory internal to $\Set$, and thus $\Gamma_C$ in this instance is the same as $\Glob{-} : C \to \Set$. In this case, we may write $\LabeledGlob{C}$ for this map, to emphasize that we are specifically dealing with a global sections lexfunctor whose domain is $C$ and whose codomain is $\Set$.
 
-By applying this process $m$ times in a row, we can turn any $(n + m)$-tuply internal structure $S$ into a corresponding $n$-tuply internal structure $\Gamma^m(S)$, where $\Gamma^m$ is slight abuse of notation for applying $m$ different global sections functors in a row. \sTODOinline{Clarify that n here can't be 0. Or rather, for $n = 0$, we have to understand $0$-tuply internal structures as structures internal to $\Set$.}
+\begin{definition}\label{InducedHomoDefn}
+Recall \magicref{TermModelIsInitialForLex}, which tells us that, for any lexcategory $B$, the global sections functor $\LabeledGlob{B}$ is initial among all lexfunctors from $B$ to $\Set$. Thus, for any lexfunctor $F : B \to C$, we obtain a unique natural transformation as in the following diagram:
 
-\begin{observation}\label{GlobOfGlobUndetailed}
-If $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the global aspect of $S$ is the same as the global aspect of $\Gamma_D(S)$. \sTODOinline{Write out why this is so}
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJCIl0sWzIsMCwiXFxTZXQiXSxbMSwxLCJDIl0sWzAsMSwiXFxMYWJlbGVkR2xvYntCfSJdLFswLDIsIkYiLDJdLFsyLDEsIlxcTGFiZWxlZEdsb2J7Q30iLDJdLFszLDIsIiEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+	B && \Set \\
+	& C
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\LabeledGlob{B}}", from=1-1, to=1-3]
+	\arrow["F"', from=1-1, to=2-2]
+	\arrow["{\LabeledGlob{C}}"', from=2-2, to=1-3]
+	\arrow["{!}", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=2-2]
+\end{tikzcd}\]
+
+In this way, for any $B$-internal structure $S$, we obtain a homomorphism from $\LabeledGlob{B}(S)$ to $\LabeledGlob{C}(F[S])$. We refer to this homomorphism as $\InducedHomo{F}{S}$.
+
+This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : B \to C$ is an internal lexfunctor between $V$-internal lexcategories, and $S$ is some structure internal to the global aspect of $B$ (thus doubly internal to $V$), we get a $V$-internal homomorphism $\InducedHomo{F}{S} : \Gamma_B[S] \to \Gamma_C[F(S)]$ in the same way.
+\end{definition}
+
+\begin{observation}\label{GlobOfGlob}
+If $C$ is a lexcategory and $B$ is the global aspect of some $C$-indexed locally representable lexcategory $B'$, then $\LabeledGlob{B}(-) = \Hom_{\LabeledGlob{C}(B')}(1, -)$ $ = \Hom_{C}(1, \Hom_{B'}(1, -)) $ $ = \LabeledGlob{C}(\Gamma_{B'}(-))$. Thus, $\LabeledGlob{B}$ and $\LabeledGlob{C} \circ \Gamma_{B'}$ are isomorphic. As the former is initial among lexfunctors from $B$ to $\Set$, so is the latter, and thus in this case the natural transformation described in \magicref{InducedHomoDefn} becomes an isomorphism:
+
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJCID0gXFxHbG9ie0InfSJdLFsyLDAsIlxcU2V0Il0sWzEsMSwiQyJdLFswLDEsIlxcTGFiZWxlZEdsb2J7Qn0iXSxbMCwyLCJcXEdhbW1hX3tCJ30iLDJdLFsyLDEsIlxcTGFiZWxlZEdsb2J7Q30iLDJdLFszLDIsIiEiLDAseyJzaG9ydGVuIjp7InNvdXJjZSI6MjAsInRhcmdldCI6MjB9fV1d
+\[\begin{tikzcd}
+	{B = \Glob{B'}} && \Set \\
+	& C
+	\arrow[""{name=0, anchor=center, inner sep=0}, "{\LabeledGlob{B}}", from=1-1, to=1-3]
+	\arrow["{\Gamma_{B'}}"', from=1-1, to=2-2]
+	\arrow["{\LabeledGlob{C}}"', from=2-2, to=1-3]
+	\arrow["{!}", shorten <=3pt, shorten >=3pt, Rightarrow, from=0, to=2-2]
+\end{tikzcd}\]
+
+That is to say, $\InducedHomo{\Gamma_{B'}}{S} : \Glob{S} \to \Glob{\Gamma_{B'}[S]}$ is always an isomorphism.
 \end{observation}
-
-Indeed, if $S$ is internal to some lexcategory $C$, we can think of $C$ as itself internal to $\Set$, and thus $S$ as doubly internal to $\Set$, and then $\Gamma(S)$ is itself the global aspect of $S$. More generally, if $S$ is $n$-tuply internal to some lexcategory $C$, we can in the same way think of $S$ as $(n + 1)$-tuply internal to $\Set$, and then the global aspect of $S$ is given by $\Gamma^n(S)$.
 
 Next, observe that if $F : C \to D$ is a lexfunctor between lexcategories, and $S$ is some structure internal to $C$, then not only do we have $F(S)$ as a similar structure internal to $D$, but furthermore, the action of $F$ induces a homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may use the same name $F$ to refer to this induced homomorphism $F : \Glob{S} \to \Glob{F(S)}$ as well, or we may refer to it as $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$ to be explicit.
-
-\newcommand{\GlobIso}{\alpha}
-\begin{observation}\label{GlobOfGlob}
-Expanding on \magicref{GlobOfGlobUndetailed}, if $C$ is a lexcategory, $D$ is a $C$-indexed locally \repsmall/ lexcategory, and $S$ is a $\Glob{D}$-internal structure, then the map $\InducedHomo{\Gamma_D}{S} : \Glob{S} \to \Glob{\Gamma_D[S]}$ is an isomorphism.\sTODOinline{Write out why this is so} We refer to this isomorphism as $\GlobIso_S$.
-\end{observation}
 
 In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F : \Glob{S_2} \to \Glob{F(S_2)}$ as well, or we may refer to it as $\InducedHomo{F}{S}$ to be explicit.
 
 The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
-
-This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : C \to D$ is an internal lexfunctor between internal lexcategories, and $S$ is some multiply internal structure in $C$, we get an internal homomorphism $\InducedHomo{F}{S} : \Gamma(S) \to \Gamma(F(S))$ in the same way.
 
 \begin{lemma}\label{InducedGlobalCommute}
 If $F : C \to D$ is a strict lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$. That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
@@ -69,8 +91,6 @@ If $F : C \to D$ is a strict lexfunctor, and $Q$ is a $C$-internal lexcategory, 
 	\arrow["F"', from=4-1, to=4-4]
 \end{tikzcd}\]
 \end{lemma}
-
-Sometimes, we write $F[S]$ instead of $F(S)$ to make clear that we are not simply using parentheses to group compositions of functors, but rather, specifically mean the application of $F$ to an internal or multiply internal structure $S$.
 
 Multiply internal structures can equivalently be thought of as multiply indexed structures (in the sense of \magicref{PreliminariesMultipleIndexing}) satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
 
@@ -127,6 +147,10 @@ As the category of models of an essentially algebraic theory, this category must
 \subsection{Defining geminal categories}\label{GeminalFirstDefnSection}
 \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
+\newcommand{\straight}[1]{\widehat{#1}}
+
+We will give two different presentations of the definition of \quote{geminal categories}. First, in this section, we give a definition using several infinite sequences of data and of equations. These infinite sequences will be highly redundant in that their first few entries suffice to derive all their later entries, but the advantage of this verbose definition is that it has convenient symmetries. Later, at \magicref{CompactGeminalCatDefn}, we will see a much more compact definition eliminating these redundancies.
+
 \begin{definition}[Geminal category]\label{VerboseGeminalCatDefn}
 A \defined{geminal category}\footnote{Another evocative name for this concept might be \quote{nesting doll category}.} internal to lexcategory $C_0$ consists of several ingredients:
 
@@ -162,8 +186,6 @@ Pictorially, this can be envisioned like so:
 
 Here, the first row is structure internal to $C_0$, the second row is structure internal to $C_1$ (thus, doubly internal to the ambient $C_0$), the third row is structure internal to $C_2$ (thus, triply internal to the ambient $C_0$), and so on. We also for convenience use the abbreviation $\Gamma_i$ for $\Gamma_{C'_i} : C_i \to C_{i - 1}$ for $i \geq 1$, illustrating these in the vertical line on the left of the picture.
 
-\newcommand{\straight}[1]{\widehat{#1}}
-
 In keeping with our naming convention, we shall also use $F_i : C_i \to \Glob{\Gamma_i[C_{i + 1}]}$ to refer to the global aspect of $F'_i$. As \magicref{GlobOfGlob} tells us that $\InducedHomo{\Gamma_i}{C'_{i + 1}} : \Glob{C'_{i + 1}} \to \Glob{\Gamma_i[C'_{i + 1}]}$ is an isomorphism, we can also define $\straight{F}_i : C_i \to C_{i + 1}$ as the unique map making the following diagram commute:
 
 % https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX2kgPSBcXEdsb2J7QydfaX0iXSxbMiwyLCJDX3tpICsgMX0gPSBcXEdsb2J7Qydfe2kgKyAxfX0iXSxbMiwwLCJcXEdsb2J7XFxHYW1tYV9pW0Nfe2kgKyAxfV19Il0sWzAsMiwiRl9pIl0sWzEsMiwiXFxJbmR1Y2VkSG9tb3tcXEdhbW1hX2l9e0MnX3tpICsgMX19IiwyXSxbMCwxLCJcXHN0cmFpZ2h0e0Z9X2kiLDJdXQ==
@@ -191,6 +213,8 @@ Finally, the last ingredients we require are some equations:
 \begin{itemize}
     \item 
      We require that $\straight{F}_i[C'_j] = C'_{j + 1}$ and $\straight{F}_i[F'_j] = F'_{j + 1}$ for $j > i \geq 1$.
+
+     (Note that this is referring to the induced action of $\straight{F} : C_i \to C_{i + 1}$ in taking structures $(j-i)$-tuply internal to $C_i$ to structures $(j - i)$-tuply internal to $C_{i + 1}$.)
      
     \item
     Furthermore, we require that the following diagram of lexfunctors internal to $C_{i - 1}$ commutes, for each $i \geq 1$. We call this equation $E_i$.
@@ -297,9 +321,9 @@ That is, a compactly presented geminal category internal to $C_0$ consists of th
     
     (Here, $C'_3$ is defined as $F_1[C'_2]$.)
     
-    \item The equation $\InducedHomo{F'_1}{C'_{2}} \circ F'_1 = \Gamma[F'_2] \circ F'_1$, internal to $C_0$. We call this equation $E_1$.
+    \item The equation $\InducedHomo{F'_1}{C'_{2}} \circ F'_1 = \Gamma_1[F'_2] \circ F'_1$, internal to $C_0$. We call this equation $E_1$.
     
-    \item The equation $\InducedHomo{F'_2}{C'_{3}} \circ F'_2 = \Gamma[F'_3] \circ F'_2$, internal to $C_1$. We call this equation $E_2$.
+    \item The equation $\InducedHomo{F'_2}{C'_{3}} \circ F'_2 = \Gamma_2[F'_3] \circ F'_2$, internal to $C_1$. We call this equation $E_2$.
     
     (Here, $F'_3$ is defined as $F_1[F'_2]$.)
 \end{itemize}
@@ -313,15 +337,17 @@ Clearly, the structure defining a compactly presented geminal category is part o
 The structure of a compactly presented geminal category uniquely determines the further structure of a geminal category (as originally defined in \magicref{VerboseGeminalCatDefn})).
 \end{theorem}
 \begin{proof}
-By definition, in a geminal category, we must have that $F_1[C'_j] = C'_{j + 1}$ and $F_1[F'_j] = F'_{j + 1}$ for each $j > 2$.
+Throughout the following, as before, we define each $\straight{F}_i$ from the corresponding $F_i$ by $\InducedHomo{\Gamma_i}{C'_{i + 1}} \circ \straight{F}_i = F_i$.
 
-Accordingly, if we are given the structure in \magicref{CompactGeminalCatDefn}, and we are to extend it to all the further structure in \magicref{VerboseGeminalCatDefn}, it inductively must be the case that $C'_j = F_1^{j - 2}[C'_2]$ and $F'_j = F_1^{j - 2}[F'_2]$ for each $j > 2$. Adopt these definitions throughout the following accordingly.
+By definition, in a geminal category, we must have that $\straight{F}_1[C'_j] = C'_{j + 1}$ and $\straight{F}_1[F'_j] = F'_{j + 1}$ for each $j > 2$.
+
+Accordingly, if we are given the structure in \magicref{CompactGeminalCatDefn}, and we are to extend it to all the further structure in \magicref{VerboseGeminalCatDefn}, it inductively must be the case that $C'_j = \straight{F}_1^{j - 2}[C'_2]$ and $F'_j = \straight{F}_1^{j - 2}[F'_2]$ for each $j > 2$. Adopt these definitions throughout the following accordingly.
 
 The equations given to us directly in the compact presentation are the equations $E_1$ and $E_2$ of the verbose presentation. Furthermore, we obtain the equation $E_i$ for $i > 2$ by applying $F_1^{n - 1}$ to $E_2$.
 
-What remains is only to see that each $F_i$ for $i > 1$ also takes $C'_j$ to $C'_{j + 1}$ and takes $F'_j$ to $F'_{j + 1}$, for $j > i \geq 1$.
+What remains is only to see that each $\straight{F}_i$ for $i > 1$ also takes $C'_j$ to $C'_{j + 1}$ and takes $F'_j$ to $F'_{j + 1}$, for $j > i \geq 1$.
 
-We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $F_{i + 1}[C'_j] = F_{i + 1} [F_i [C'_{j - 1}]] = F_i [F_i [C'_{j - 1}]] = F_i [C'_j] = C'_{j + 1}$, where the second step is by $E_i$ and the other steps are by our induction hypothesis. And similarly with $F'$ in place of $C'$ throughout as well.
+We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then $\straight{F}_{i + 1}[C'_j] = \straight{F}_{i + 1} [\straight{F}_i [C'_{j - 1}]] = \straight{F}_i [\straight{F}_i [C'_{j - 1}]] = \straight{F}_i [C'_j] = C'_{j + 1}$, where the second step is by the global aspect of $E_i$ and the other steps are by our induction hypothesis. And similarly with $F'$ in place of $C'$ throughout as well.
 \end{proof}
 
 \begin{corollary}\label{CompactGeminalCatHomoDefn}
@@ -338,7 +364,7 @@ From a strict introspective theory $\langle T, C, \introS, \introN \rangle$, we 
 \begin{proof}
 It is immediate in the definition of a strict introspective theory that $C$ is a lexcategory internal to $T$, and $\introS$ is a lexfunctor from $T$ to $\Glob{C}$. This gives us the first three out of the six ingredients of \magicref{CompactGeminalCatDefn}.
 
-As for $\introN_{C}$, meaning the components of the natural transformation $\introN$ at the objects of $C$, this gives us a $T$-internal lexfunctor from $C$ to $\Hom_C(1, \introS[C]) = \Gamma[\introS[C]]$. This is the fourth ingredient of \magicref{CompactGeminalCatDefn}.
+As for $\introN_{C}$ (meaning the components of the natural transformation $\introN$ at the objects of the diagram within $T$ which defines the $T$-internal lexcategory $C$), this gives us a $T$-internal lexfunctor from $C$ to $\Hom_C(1, \introS[C]) = \Gamma[\introS[C]]$. This is the fourth ingredient of \magicref{CompactGeminalCatDefn}.
 
 What remains are to verify equations $E_1$ and $E_2$. In this context, $E_1$ is a special case of \magicref{SMatchesN}, while $E_2$ is given by the naturality of $\introN$ with respect to the components of $\introN_C$ themselves.
 
@@ -513,11 +539,11 @@ In other words, for any strict lexcategory $C_0$ with an internal geminal catego
 This co-free $G$ admits an explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped. (Indeed, just as before, this whole construction can be carried out internal to an arbitrary ambient lexcategory.)
 \end{construction}
 \openDetails
-Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names denote global aspects of primed names, in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
+Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names denote global aspects of primed names and let $\straight{F}_1 : C_1 \to C_2$ be defined from $F'_1$ in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
 
 Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2, G'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$ internal to $G_0$, with each $G'_n = C'_n \times C'_{n + 1}$ and $\phi'_n = F'_n \times F'_{n + 1}$, for $n \geq 1$.
 
-Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \sTODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
+Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, \straight{F}_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \sTODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
 
 We also clearly have a projection lexfunctor $H$ from $\underlying{G} = C_0 \times C_1$ to $C_0$, and by unfolding definitions, this does indeed satisfy $H[\InteriorGeminal{G}] = \gamma$.
 \closeDetails
@@ -530,7 +556,7 @@ A lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times C_1
 
 Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, adapted to this context, we see the conditions for such $M$ to be a geminal category homomorphism. First of all, we must have that $M[\InteriorGeminal{K}] = \InteriorGeminal{G}$, which is to say, $J[\InteriorGeminal{K}] = \gamma$ (which has already been presumed) and $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$. On top of this, the final condition for $M$ to be a geminal category homomorphism is that the following diagram commutes:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wIFxcOyAgW1xcdGV4dHt3aGljaCBpc30gXFw7IChjXzAsIGNfMSkgXFxtYXBzdG8gKGNfMSwgRl8xKGNfMSkpXSJdXQ==
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wIFxcOyAgW1xcdGV4dHt3aGljaCBpc30gXFw7IChjXzAsIGNfMSkgXFxtYXBzdG8gKGNfMSwgXFxzdHJhaWdodHtGfV8xKGNfMSkpXSJdXQ==
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	\\
@@ -538,7 +564,7 @@ Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, adapted to this context, w
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{M}{K'_1}}"', from=3-1, to=3-3]
-	\arrow["{\phi_0 \;  [\text{which is} \; (c_0, c_1) \mapsto (c_1, F_1(c_1))]}", from=1-3, to=3-3]
+	\arrow["{\phi_0 \;  [\text{which is} \; (c_0, c_1) \mapsto (c_1, \straight{F}_1(c_1))]}", from=1-3, to=3-3]
 \end{tikzcd}\]
 
 This diagram commutes just in case both of the following diagrams commute, which separately consider its $C_1$ and $C_2$ components:
@@ -555,7 +581,7 @@ This diagram commutes just in case both of the following diagrams commute, which
 	\arrow["{J_1}"{description}, from=1-1, to=3-3]
 \end{tikzcd}\]
 
-% https://q.uiver.app/?q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzIiXSxbMCwyLCJLXzEiXSxbMSwxLCJDXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0pfMX17SydfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gRl8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDIsIkZfMSIsMV1d
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzIiXSxbMCwyLCJLXzEiXSxbMSwxLCJDXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0pfMX17SydfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gXFxzdHJhaWdodHtGfV8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDIsIlxcc3RyYWlnaHR7Rn1fMSIsMV1d
 \[\begin{tikzcd}
 	{K_0} && {C_0 \times C_1} \\
 	& {C_1} \\
@@ -563,9 +589,9 @@ This diagram commutes just in case both of the following diagrams commute, which
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{J_1}{K'_1}}"', from=3-1, to=3-3]
-	\arrow["{(c_0, c_1) \mapsto F_1(c_1)}", from=1-3, to=3-3]
+	\arrow["{(c_0, c_1) \mapsto \straight{F}_1(c_1)}", from=1-3, to=3-3]
 	\arrow["{J_1}"{description}, from=1-1, to=2-2]
-	\arrow["{F_1}"{description}, from=2-2, to=3-3]
+	\arrow["{\straight{F}_1}"{description}, from=2-2, to=3-3]
 \end{tikzcd}\]
 
 In each of the above diagrams, the top-right triangle trivially commutes, so the commutativity condition for the overall square is equivalent to the commutativity of the bottom-left triangle.
@@ -586,13 +612,13 @@ $= \InteriorGeminal{\gamma}$. \sTODOinline{Are we sure all these equations are c
 \bigskip
 And as for the final commutativity condition, this follows like so:
 
-% https://q.uiver.app/?q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJLXzEiXSxbNSwwLCJDXzEiXSxbNSwyLCJDXzIiXSxbMiwwLCJLXzEiXSxbMiwyLCJLXzIiXSxbMCwxLCJQXzAiLDJdLFsyLDMsIkZfMSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLJ18xfSIsMl0sWzAsMiwiSl8xIiwwLHsiY3VydmUiOi01fV0sWzEsNSwiXFxJbmR1Y2VkSG9tb3tQXzB9e0snXzF9Il0sWzUsMywiXFxJbmR1Y2VkSG9tb3tKfXtLJ18yfSJdLFs0LDUsIlBfMSJdLFsxLDMsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMix7ImN1cnZlIjo1fV0sWzEwLDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNCwiIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJLXzEiXSxbNSwwLCJDXzEiXSxbNSwyLCJDXzIiXSxbMiwwLCJLXzEiXSxbMiwyLCJLXzIiXSxbMCwxLCJQXzAiLDJdLFsyLDMsIlxcc3RyYWlnaHR7Rn1fMSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLJ18xfSIsMl0sWzAsMiwiSl8xIiwwLHsiY3VydmUiOi01fV0sWzEsNSwiXFxJbmR1Y2VkSG9tb3tQXzB9e0snXzF9Il0sWzUsMywiXFxJbmR1Y2VkSG9tb3tKfXtLJ18yfSJdLFs0LDUsIlBfMSJdLFsxLDMsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMix7ImN1cnZlIjo1fV0sWzEwLDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNCwiIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 \[\begin{tikzcd}
 	{K_0} && {K_1} &&& {C_1} \\
 	\\
 	{K_1} && {K_2} &&& {C_2}
 	\arrow["{P_0}"', from=1-1, to=3-1]
-	\arrow["{F_1}", from=1-6, to=3-6]
+	\arrow["{\straight{F}_1}", from=1-6, to=3-6]
 	\arrow["{P_0}"', from=1-1, to=1-3]
 	\arrow["{\InducedHomo{J}{K'_1}}"', from=1-3, to=1-6]
 	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}", curve={height=-30pt}, from=1-1, to=1-6]
