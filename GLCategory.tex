@@ -20,13 +20,19 @@ First, a small remark on notation: Recall that if we have a lexfunctor $F : C \t
 \bigskip
 \sTODOinline{Relate the following to the $\cartwith{\theoryT}$ operation. An (n+1)-tuply internal model of $\theoryT$ is an internal model of $\cartwith{}^n T$.}
 
+\begin{definition}
 Let $C_0$ be a lexcategory, and let $C_1$ be the global aspect of a lexcategory internal to $C_0$. Now suppose given some structure $S$ internal to $C_1$. We may say that this structure $S$ is \defined{doubly internal} to $C_0$.
 
-We may iterate this process. Suppose now that $C_2$ is the global aspect of some lexcategory internal to $C_1$, which in turn remains the global aspect of some lexcategory internal to $C_0$. We can now speak of structures internal to $C_2$ as being triply internal to $C_0$.
+We may iterate this process. Suppose now that $C_2$ is the global aspect of some lexcategory internal to $C_1$, which in turn remains the global aspect of some lexcategory internal to $C_0$. We can now speak of structures internal to $C_2$ as being \defined{triply internal} to $C_0$.
 
-And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$-tuply internal to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
+And in general, given a sequence $C_0, C_1, C_2, \ldots, C_n$ where each $C_{i + 1}$ is the global aspect of a lexcategory internal to $C_i$, we may speak of structures internal to $C_n$ as being $(n + 1)$\definedManualIndexSort{-tuply internal}{tuply internal} to $C_0$ (and in the same way $n$-tuply internal to $C_1$, $(n - 1)$-tuply internal to $C_2$, and so on). That is, we recursively define an $(n + 1)$-tuply internal structure as a structure internal to the global aspect of an $n$-tuply internal lexcategory, with the base case being that the only $0$-tuply internal lexcategory of some $C$ is $C$ itself.
 
-Next, observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing. (In particular, when writing $\Gamma[S]$ with no subscript on the $\Gamma$, we always mean $\Gamma_X[S]$ where $S$ is singly internal to $X$, though $X$ may in turn be internal or multiply internal to some other category.)\sTODOinline{If we never use unsubscripted $\Gamma$ anymore, we should get rid of these mentions of it.}
+(Multiply internal structures can equivalently be thought of as multiply indexed structures (in the sense of \magicref{PreliminariesMultipleIndexing}) satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.)
+\end{definition}
+
+\begin{definition}
+Observe that whenever $C$ is a lexcategory and $D$ is a $C$-indexed locally \repsmall/ lexcategory, the global sections functor $\Hom_D(1, -)$ can be seen as an indexed lexfunctor from $D$ to the self-indexing $C/-$; in particular, the global aspect of this lets us see $\Hom_D(1, -)$ as a lexfunctor from the global aspect of $D$ to $C$ itself. Let us write $\Gamma_D : \Glob{D} \to C$ to refer to this last lexfunctor, or drop the subscript and write simply $\Gamma$ where there is no need to disambiguate which $D$ we are referencing. (In particular, when writing $\Gamma[S]$ with no subscript on the $\Gamma$, we always mean $\Gamma_X[S]$ where $S$ is singly internal to $X$, though $X$ may in turn be internal or multiply internal to some other category.)\sTODOinline{If we never use unsubscripted $\Gamma$ anymore, we should get rid of these mentions of it.}
+\end{definition}
 
 Thus, if $S$ is some structure internal to the global aspect of $D$, we find that $\Gamma_D[S]$ is a structure of the same sort internal to $C$. In this way, any doubly-internal structure $S$ yields a singly-internal structure $\Gamma[S]$, and more generally, any $(n + 1)$-tuply internal structure $S$ yields an $n$-tuply internal structure $\Gamma[S]$.
 
@@ -66,12 +72,6 @@ If $C$ is a lexcategory and $B$ is the global aspect of some $C$-indexed locally
 That is to say, $\InducedHomo{\Gamma_{B'}}{S} : \Glob{S} \to \Glob{\Gamma_{B'}[S]}$ is always an isomorphism.
 \end{observation}
 
-Next, observe that if $F : C \to D$ is a lexfunctor between lexcategories, and $S$ is some structure internal to $C$, then not only do we have $F(S)$ as a similar structure internal to $D$, but furthermore, the action of $F$ induces a homomorphism from any $c$-indexed aspect of $S$ to the $F(c)$-indexed aspect of $F(S)$. In particular, there is an induced homomorphism from the global aspect of $S$ to the global aspect of $F(S)$. We may use the same name $F$ to refer to this induced homomorphism $F : \Glob{S} \to \Glob{F(S)}$ as well, or we may refer to it as $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$ to be explicit.
-
-In particular, if $S$ is an internal lexcategory, then our original lexfunctor $F : C \to D$ induces also a lexfunctor $F : \Glob{S} \to \Glob{F(S)}$. If in turn, we also have some lexcategory $S_2$ internal to $\Glob{S}$, then again in the same way, we have an induced lexfunctor from $\Glob{S_2}$ to $\Glob{F(S_2)}$. And again, in convenient abuse of notation, we may refer to this induced lexfunctor as $F : \Glob{S_2} \to \Glob{F(S_2)}$ as well, or we may refer to it as $\InducedHomo{F}{S}$ to be explicit.
-
-The upshot of all this is that a lexfunctor $F : C \to D$ induces also for each $n$-tuply internal structure $S$ in $C$, also an $n$-tuply internal structure $F(S)$ in $D$, as well as a homomorphism $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F(S)}$, all in a suitably coherent way.
-
 \begin{lemma}\label{InducedGlobalCommute}
 If $F : C \to D$ is a strict lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$. That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
 
@@ -92,7 +92,11 @@ If $F : C \to D$ is a strict lexfunctor, and $Q$ is a $C$-internal lexcategory, 
 \end{tikzcd}\]
 \end{lemma}
 
-Multiply internal structures can equivalently be thought of as multiply indexed structures (in the sense of \magicref{PreliminariesMultipleIndexing}) satisfying suitable \repsmallness/ conditions, but they are probably more easily understood in the presentation just given.
+\begin{definition}\label{TransferNDefn}
+Note that any structure $S$ which is $n$-tuply internal to a lexcategory $C$ (for $n \geq 1$) is ultimately described by some kind of diagram within $C$, and thus taken by a lexfunctor $F : C \to D$ to a structure of the same sort $n$-tuply internal to $D$ as well. It is natural to refer to this as $F[S]$ in the same way as for singly internal $S$.
+
+This operation $\TransferN{n}{F}{S}$ for multiply internal $S$ can be inductively understood like so: The base case is when $S$ is singly internal to the domain of $F$, in which case $\TransferN{1}{F}{S}$ is just $F(S)$ in the ordinary way. On the other hand, if $S$ is $n$-tuply internal to $\dom(F)$ for $n \geq 2$, then there is some $\dom(F)$-internal lexcategory $B'$ such that $S$ is $(n - 1)$-tuply internal to $\Glob{B'}$. In this case, we have also the lexfunctor $\InducedHomo{F}{B'} : \Glob{B'} \to \Glob{F[B']}$, and thus we can understand $\TransferN{n}{F}{S}$ as meaning $\TransferN{n - 1}{\InducedHomo{F}{B'}}{S}$, reducing us from the $n$-tuply internal case to the $(n - 1)$-tuply internal case.
+\end{definition}
 
 \subsection{Strict introspective theories}\label{StrictIntrospSection}
 It will be technically convenient for us to work in this chapter with a slightly less \quote{presentation-free} variant of our notion of introspective theories.
@@ -125,19 +129,41 @@ Strict introspective theories are slightly more convenient than introspective th
 As with any essentially algebraic theory, we get automatically a corresponding notion of homomorphism.
 
 \begin{definition}\label{StrictIntrospHomoDefn}
-A \defined{homomorphism} between strict introspective theories $\langle T_1, C_1, \introS, \introN \rangle$ and $\langle T_2, C_2, \introS, \introN \rangle$ is a strict lexfunctor $H : T_1 \to T_2$ such that $H[C_1] = C_2$, $H[\introN_t] = \introN_{H(t)}$ for each object $t$ of $T_1$ (i.e., the whiskerings of $H$ along the two $\introN$s match), and the following diagram commutes:
+A \defined{homomorphism} between strict introspective theories $\langle T_1, C_1, \introS, \introN \rangle$ and $\langle T_2, C_2, \introS, \introN \rangle$ is a strict lexfunctor $H : T_1 \to T_2$ such that $H[C_1] = C_2$, and $\InducedHomo{H}{C_1} \circ \introS = \introS \circ H$, and $H[\introN_t] = \introN_{H(t)}$ for each object $t$ of $T_1$.
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJUXzEiXSxbMiwwLCJUXzIiXSxbMCwxLCJcXEdsb2J7Q18xfSJdLFsyLDEsIlxcR2xvYntDXzJ9Il0sWzAsMSwiSCJdLFswLDIsIlxcaW50cm9TIiwyXSxbMiwzLCJcXEluZHVjZWRIb21ve0h9e0NfMX0iLDJdLFsxLDMsIlxcaW50cm9TIl1d
+The condition relating $H$ to $\introS$ is illustrated like so:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUXzEiXSxbMiwwLCJUXzIiXSxbMCwxLCJcXEdsb2J7Q18xfSJdLFsyLDEsIlxcR2xvYntIW0NfMV19ID0gXFxHbG9ie0NfMn0iXSxbMCwxLCJIIl0sWzAsMiwiXFxpbnRyb1MiLDJdLFsyLDMsIlxcSW5kdWNlZEhvbW97SH17Q18xfSIsMl0sWzEsMywiXFxpbnRyb1MiXV0=
 \[\begin{tikzcd}
 	{T_1} && {T_2} \\
-	{\Glob{C_1}} && {\Glob{C_2}}
+	{\Glob{C_1}} && {\Glob{H[C_1]} = \Glob{C_2}}
 	\arrow["H", from=1-1, to=1-3]
 	\arrow["\introS"', from=1-1, to=2-1]
 	\arrow["{\InducedHomo{H}{C_1}}"', from=2-1, to=2-3]
 	\arrow["\introS", from=1-3, to=2-3]
 \end{tikzcd}\]
 
-(In the above diagram, the bottom arrow is using the notation from \magicref{MultiplyInternal} to indicate the action of $H$ as a homomorphism from the global aspect of the $T_1$-internal structure $C_1$, to the global aspect of the corresponding $T_2$-internal structure $H[C_1] = C_2$.)
+The condition relating $H$ to $\introN$ is that the following two natural transformations are equal:
+
+% https://q.uiver.app/#q=WzAsOCxbMiwwLCJUXzEiXSxbMywwLCJUXzIiXSxbMCwwLCJUXzEiXSxbMSwxLCJcXEdsb2J7Q18xfSJdLFswLDIsIlRfMSJdLFsxLDIsIlRfMiJdLFszLDIsIlRfMiJdLFsyLDMsIlxcR2xvYntDXzJ9Il0sWzAsMSwiSCIsMl0sWzIsMCwiXFxpZCJdLFsyLDMsIlxcaW50cm9TIiwyXSxbMywwLCJcXEhvbV97Q18xfSgxLCAtKSIsMl0sWzQsNSwiSCIsMl0sWzUsNiwiXFxpZCJdLFs1LDcsIlxcaW50cm9TIiwyXSxbNyw2LCJcXEhvbV97Q18yfSgxLCAtKSIsMl0sWzksMywiXFxpbnRyb04iLDIseyJzaG9ydGVuIjp7InNvdXJjZSI6MjB9fV0sWzEzLDcsIlxcaW50cm9OIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+\[\begin{tikzcd}
+	{T_1} && {T_1} & {T_2} \\
+	& {\Glob{C_1}} \\
+	{T_1} & {T_2} && {T_2} \\
+	&& {\Glob{C_2}}
+	\arrow["H"', from=1-3, to=1-4]
+	\arrow[""{name=0, anchor=center, inner sep=0}, "\id", from=1-1, to=1-3]
+	\arrow["\introS"', from=1-1, to=2-2]
+	\arrow["{\Hom_{C_1}(1, -)}"', from=2-2, to=1-3]
+	\arrow["H"', from=3-1, to=3-2]
+	\arrow[""{name=1, anchor=center, inner sep=0}, "\id", from=3-2, to=3-4]
+	\arrow["\introS"', from=3-2, to=4-3]
+	\arrow["{\Hom_{C_2}(1, -)}"', from=4-3, to=3-4]
+	\arrow["\introN"', shorten <=3pt, Rightarrow, from=0, to=2-2]
+	\arrow["\introN"', shorten <=3pt, Rightarrow, from=1, to=4-3]
+\end{tikzcd}\]
+
+That the codomains of these two natural transformations are equal follows from the previous conditions.
 \end{definition}
 
 Such homomorphisms are closed under composition and thus we obtain the category of strict introspective theories.
@@ -165,7 +191,7 @@ Thus, each $C'_{i + n}$ is $n$-tuply internal to $C_i$.
 
 \begin{itemize}
     \item
-    The second ingredient comprising a geminal category is an infinite sequence of internal lexfunctors $F'_1, F'_2, F'_3, \ldots$, where each $F'_i : C'_i \to \Gamma_{C'_i}[C'_{i + 1}]$ is internal to $C_{i - 1}$ (for $i \geq 1$).
+    The second ingredient comprising a geminal category is an infinite sequence of internal lexfunctors $F'_1, F'_2, F'_3, \ldots$, where each $F'_i : C'_i \to \Gamma[C'_{i + 1}]$ is internal to $C_{i - 1}$ (for $i \geq 1$).
 \end{itemize}
 
 Pictorially, this can be envisioned like so: 
@@ -212,9 +238,9 @@ Finally, the last ingredients we require are some equations:
 
 \begin{itemize}
     \item 
-     We require that $\straight{F}_i[C'_j] = C'_{j + 1}$ and $\straight{F}_i[F'_j] = F'_{j + 1}$ for $j > i \geq 1$.
+     We require that $\TransferN{j - i}{\straight{F}_i}{C'_j} = C'_{j + 1}$ and $\TransferN{j - i}{\straight{F}_i}{F'_j} = F'_{j + 1}$ for $j > i \geq 1$.
 
-     (Note that this is referring to the induced action of $\straight{F} : C_i \to C_{i + 1}$ in taking structures $(j-i)$-tuply internal to $C_i$ to structures $(j - i)$-tuply internal to $C_{i + 1}$.)
+     (We are using \magicref{TransferNDefn} here to apply $\straight{F}_i$ to structures multiply internal to its domain $C_i$.)
      
     \item
     Furthermore, we require that the following diagram of lexfunctors internal to $C_{i - 1}$ commutes, for each $i \geq 1$. We call this equation $E_i$.
@@ -231,7 +257,7 @@ Finally, the last ingredients we require are some equations:
 	\arrow[Rightarrow, no head, from=3-3, to=3-4]
 \end{tikzcd}\]
 
-That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}, in severe abuse of notation.
+That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed in abuse of notation as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}, as it amounts to saying in the internal logic of $C_{i - 1}$ that $F'_i [F'_i[x]] = F'_{i + 1}[F'_{i}[x]]$ for all structures $x$ internal to $C'_i$.\footnote{Keeping in mind that in $F'_i [F'_i[x]]$ the outer $F'_i$ is interpreted as $\InducedHomo{F'_i, C'_{i + 1}}$ a la \magicref{TransferNDefn}, while in $F'_{i + 1}[F'_{i}[x]]$ the application of the internal lexfunctor $F'_{i + 1}$ to a value in the global aspect $\Gamma_i [C'_{i + 1}]$ of its domain really means applying the global aspect lexfunctor $\Gamma_i[F'_{i + 1}]$.}
 
 (To derive the identity in the bottom-right of the above diagram, first note that $F'_i[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
 
@@ -268,6 +294,8 @@ Given two geminal categories $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3
 	\arrow["{\phi'_1}", from=1-3, to=3-3]
 \end{tikzcd}\]
 \end{definition}
+
+(In the above, $H[C'_i]$ and $H[F'_i]$ makes use of \magicref{TransferNDefn} to denote the application of $H$ to multiply internal structures.)
 
 \begin{theorem}\label{GeminalContainsGeminal}
 Given any geminal category $K = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$, we have also that $\langle C'_2, C'_3, C'_4, \ldots; F'_2, F'_3, F'_4 \ldots \rangle$ comprises a geminal category internal to $\underlying{K} = C'_1$. We refer to this internal geminal category as $\InteriorGeminal{K}$.
