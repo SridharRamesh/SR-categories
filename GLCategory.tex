@@ -173,6 +173,7 @@ As the category of models of an essentially algebraic theory, this category must
 \subsection{Defining geminal categories}\label{GeminalFirstDefnSection}
 \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
+\newcommand{\bent}[1]{#1}
 \newcommand{\straight}[1]{\widehat{#1}}
 
 We will give two different presentations of the definition of \quote{geminal categories}. First, in this section, we give a definition using several infinite sequences of data and of equations. These infinite sequences will be highly redundant in that their first few entries suffice to derive all their later entries, but the advantage of this verbose definition is that it has convenient symmetries. Later, at \magicref{CompactGeminalCatDefn}, we will see a much more compact definition eliminating these redundancies.
@@ -214,9 +215,9 @@ Here, the first row is structure internal to $C_0$, the second row is structure 
 
 In keeping with our naming convention, we shall also use $F_i : C_i \to \Glob{\Gamma_i[C_{i + 1}]}$ to refer to the global aspect of $F'_i$. As \magicref{GlobOfGlob} tells us that $\InducedHomo{\Gamma_i}{C'_{i + 1}} : \Glob{C'_{i + 1}} \to \Glob{\Gamma_i[C'_{i + 1}]}$ is an isomorphism, we can also define $\straight{F}_i : C_i \to C_{i + 1}$ as the unique map making the following diagram commute:
 
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX2kgPSBcXEdsb2J7QydfaX0iXSxbMiwyLCJDX3tpICsgMX0gPSBcXEdsb2J7Qydfe2kgKyAxfX0iXSxbMiwwLCJcXEdsb2J7XFxHYW1tYV9pW0Nfe2kgKyAxfV19Il0sWzAsMiwiRl9pIl0sWzEsMiwiXFxJbmR1Y2VkSG9tb3tcXEdhbW1hX2l9e0MnX3tpICsgMX19IiwyXSxbMCwxLCJcXHN0cmFpZ2h0e0Z9X2kiLDJdXQ==
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX2kgPSBcXEdsb2J7QydfaX0iXSxbMiwyLCJDX3tpICsgMX0gPSBcXEdsb2J7Qydfe2kgKyAxfX0iXSxbMiwwLCJcXEdsb2J7XFxHYW1tYV9pW0MnX3tpICsgMX1dfSJdLFswLDIsIkZfaSJdLFsxLDIsIlxcSW5kdWNlZEhvbW97XFxHYW1tYV9pfXtDJ197aSArIDF9fSIsMl0sWzAsMSwiXFxzdHJhaWdodHtGfV9pIiwyXV0=
 \[\begin{tikzcd}
-	{C_i = \Glob{C'_i}} && {\Glob{\Gamma_i[C_{i + 1}]}} \\
+	{C_i = \Glob{C'_i}} && {\Glob{\Gamma_i[C'_{i + 1}]}} \\
 	\\
 	&& {C_{i + 1} = \Glob{C'_{i + 1}}}
 	\arrow["{F_i}", from=1-1, to=1-3]
@@ -245,11 +246,11 @@ Finally, the last ingredients we require are some equations:
     \item
     Furthermore, we require that the following diagram of lexfunctors internal to $C_{i - 1}$ commutes, for each $i \geq 1$. We call this equation $E_i$.
     
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDIsIlxcR2FtbWFfe1xcR2FtbWFfe2l9W0MnX3tpICsgMX1dfSBbRidfaVtDJ197aSArIDF9XV0iXSxbMywwLCJcXEdhbW1hX2kgW0MnX3tpICsgMX1dIl0sWzMsMiwiXFxHYW1tYV9pIFtcXEdhbW1hX3tpICsgMX0gW0MnX3tpICsgMn1dXSJdLFswLDEsIkYnX2kiLDJdLFswLDMsIkYnX2kiXSxbMSwyLCJcXEluZHVjZWRIb21ve0YnX2l9e0MnX3tpICsgMX19IiwyXSxbMyw0LCJcXEdhbW1hX2kgW0YnX3tpICsgMX1dIl0sWzIsNCwiIiwyLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XV0=
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDIsIlxcR2FtbWFfe1xcR2FtbWFfe2l9W0MnX3tpICsgMX1dfSBbXFxiZW50e0Z9X2lbQydfe2kgKyAxfV1dIl0sWzMsMCwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFszLDIsIlxcR2FtbWFfaSBbXFxHYW1tYV97aSArIDF9IFtDJ197aSArIDJ9XV0iXSxbMCwxLCJGJ19pIiwyXSxbMCwzLCJGJ19pIl0sWzEsMiwiXFxJbmR1Y2VkSG9tb3tGJ19pfXtDJ197aSArIDF9fSIsMl0sWzMsNCwiXFxHYW1tYV9pIFtGJ197aSArIDF9XSJdLFsyLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 \[\begin{tikzcd}
 	{C'_i} &&& {\Gamma_i [C'_{i + 1}]} \\
 	\\
-	{\Gamma_i [C'_{i + 1}]} && {\Gamma_{\Gamma_{i}[C'_{i + 1}]} [F'_i[C'_{i + 1}]]} & {\Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]}
+	{\Gamma_i [C'_{i + 1}]} && {\Gamma_{\Gamma_{i}[C'_{i + 1}]} [\bent{F}_i[C'_{i + 1}]]} & {\Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]}
 	\arrow["{F'_i}"', from=1-1, to=3-1]
 	\arrow["{F'_i}", from=1-1, to=1-4]
 	\arrow["{\InducedHomo{F'_i}{C'_{i + 1}}}"', from=3-1, to=3-3]
@@ -259,7 +260,7 @@ Finally, the last ingredients we require are some equations:
 
 That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed in abuse of notation as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}.
 
-(To derive the identity in the bottom-right of the above diagram, first note that $F'_i[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
+(To derive the identity in the bottom-right of the above diagram, first note that $\bent{F}_i[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
 
 Thus, $\Gamma_{\Gamma_{i}[C'_{i + 1}]} [F'_i[C'_{i + 1}]] =$ $\Gamma_{\Gamma_{i}[C'_{i + 1}]} [\InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]] = \Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]$, where the last step is by \magicref{InducedGlobalCommute}.)
 \end{itemize}
@@ -365,15 +366,15 @@ Clearly, the structure defining a compactly presented geminal category is part o
 The structure of a compactly presented geminal category uniquely determines the further structure of a geminal category (as originally defined in \magicref{VerboseGeminalCatDefn})).
 \end{theorem}
 \begin{proof}
-Throughout the following, as before, we define each $\straight{F}_i$ from the corresponding $F_i$ by $\InducedHomo{\Gamma_i}{C'_{i + 1}} \circ \straight{F}_i = F_i$.
+Throughout the following, as before, we define each $\straight{F}_i$ from the corresponding $F'_i$ by $\straight{F}_i = \left(\InducedHomo{\Gamma_i}{C'_{i + 1}}\right)^{-1} \circ \Glob{F_i} : C_i \to C_{i + 1}$.
 
-By definition, in a geminal category, we must have that $\straight{F}_1[C'_j] = C'_{j + 1}$ and $\straight{F}_1[F'_j] = F'_{j + 1}$ for each $j > 2$.
+By definition, in a geminal category, we must have that $C'_j = \straight{F}_1[C'_{j - 1}]$ and $F'_j = \straight{F}_1[F'_{j - 1}]$ for each $j > 2$.
 
-Accordingly, if we are given the structure in \magicref{CompactGeminalCatDefn}, and we are to extend it to all the further structure in \magicref{VerboseGeminalCatDefn}, it inductively must be the case that $C'_j = \straight{F}_1^{j - 2}[C'_2]$ and $F'_j = \straight{F}_1^{j - 2}[F'_2]$ for each $j > 2$. Adopt these definitions throughout the following accordingly.
+Accordingly, if we are given the structure in \magicref{CompactGeminalCatDefn}, and we are to extend it to all the further structure in \magicref{VerboseGeminalCatDefn}, we may use the above particular recurrences to inductively define $C'_j$ and $F'_j$ for each $j > 2$, ultimately in terms of the base cases of $j \in \{1, 2\}$ which we have been given. Adopt these definitions throughout the following accordingly.
 
-The equations given to us directly in the compact presentation are the equations $E_1$ and $E_2$ of the verbose presentation. Furthermore, we obtain the equation $E_i$ for $i > 2$ by applying $F_1^{n - 1}$ to $E_2$.
+The equations given to us directly in the compact presentation are the equations $E_1$ and $E_2$ of the verbose presentation. Furthermore, we again obtain the equation $E_i$ for each $i > 2$ inductively by applying $\straight{F}_1$ to $E_{i - 1}$.
 
-What remains is only to see that each $\straight{F}_i$ for $i > 1$ also takes $C'_j$ to $C'_{j + 1}$ and takes $F'_j$ to $F'_{j + 1}$, for $j > i \geq 1$.
+What remains is only to see that each $\straight{F}_i$ takes $C'_j$ to $C'_{j + 1}$ and takes $F'_j$ to $F'_{j + 1}$, for $j > i \geq 1$.
 
 We prove this by induction on $i$. For the base case of $i = 1$, we have ensured this by construction. As for the inductive step, suppose we know this already holds for $i$. Then for $j > i + 1$ we have $\straight{F}_{i + 1}[C'_j] = \straight{F}_{i + 1} [\straight{F}_i [C'_{j - 1}]] = \InducedHomo{\straight{F}_i}{C'_{i + 1}} [\straight{F}_i [C'_{j - 1}]] = \straight{F}_i [\straight{F}_i [C'_{j - 1}]] = \straight{F}_i [C'_j] = C'_{j + 1}$, where the second step is by the global aspect of $E_i$ (along with some applications of \magicref{GlobOfGlob}), the third step is by \magicref{TransferNDefn}, and the other steps are by our induction hypothesis. And similarly with $F'$ in place of $C'$ throughout as well.
 \end{proof}
@@ -476,9 +477,9 @@ We are tasked with showing that, for any geminal category $C_1$, there is a suit
 
 We will first give the details of the construction, and then give the proof that it has the terminality property.
 
-Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category. Let us use the suggestive name $\Box_{C_1}$ for the endolexfunctor $\Gamma_{C'_2} \circ F_1 : C_1 \to C_1$. Via \magicref{BoxCoalgebrasInGeminal}, the category of $\Box_{C_1}$-coalgebras is a strict lexcategory.
+Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C = \introF(\Hom_C(1, -)): C \to C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C^2$ built from $\introN$. As this applies in particular to the introspective theory of \TODO (where $\introF(\Hom_C(1, -)) = $ \TODO), we find that any geminal category $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ \TODOinline{Should make $C_1$ into $C'_1$ throughout} comes with an endolexfunctor $\Box_{C_1} = \Gamma_{C'_2} \circ \straight{F}_1 : C_1 \to C_1$, along with a natural transformation $4 : \Box_{C_1} \to \Box_{C_1} \Box_{C_1}$ corresponding to the action of $F'_2$.
 
-Among these $\Box_{C_1}$-coalgebras, there are some coalgebras $m : c \to \Box_{C_1} c$ with the property that the following diagram commutes:
+Via \magicref{BoxCoalgebrasInGeminal}, the category of $\Box_{C_1}$-coalgebras is a strict lexcategory. Among these $\Box_{C_1}$-coalgebras, there are some coalgebras $m : c \to \Box_{C_1} c$ with the property that the following diagram commutes:
 
 % https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
 \[\begin{tikzcd}
@@ -491,11 +492,26 @@ Among these $\Box_{C_1}$-coalgebras, there are some coalgebras $m : c \to \Box_{
 	\arrow["{4_c}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-\TODOinline{Explain diagram}
-
 Let $K$ be the full subcategory of those $\Box_{C_1}$-coalgebras with the specified property. It is readily seen that this $K$ is closed under the finite limits of the category of $\Box_{C_1}$-coalgebras, and thus is itself a strict lexcategory. (Indeed, $K$ can be defined as the equalizer of two strict lexfunctors from the $\Box_{C_1}$-coalgebras to the $\Box_{C_1}^2$-coalgebras.)
 
-It is readily verified that $K$ is closed under the chosen basic limits of $\Box_{C_1}$ \TODOinline{As an equalizer between strict lexfunctors}, and thus $K$ can be seen as a full sub-strict-lexcategory of the $\Box_{C_1}$ coalgebras.
+Note that we have the following commutative diagram of internal lexfunctors in $C_1$:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDJ18yIl0sWzAsMiwiXFxCb3hfe0NfMX0gQydfMiJdLFszLDAsIlxcQm94X3tDXzF9IEMnXzIiXSxbMywyLCJcXEJveF97Q18xfSBcXEJveF97Q18xfSBDJ18yIl0sWzAsMSwiRidfMiIsMl0sWzAsMiwiRidfMiJdLFsyLDMsIlxcQm94X3tDXzF9IEYnXzIgPSBcXEdhbW1hX3tDJ18yfSBbXFxzdHJhaWdodHtGfV8xW0YnXzJdXSA9IFxcR2FtbWFfe0MnXzJ9W0YnXzNdIl0sWzEsMywiNF97QydfMn0gPSBcXEluZHVjZWRIb21ve0YnXzJ9e0MnXzJ9IiwyXV0=
+\[\begin{tikzcd}
+	{C'_2} &&& {\Box_{C_1} C'_2} \\
+	\\
+	{\Box_{C_1} C'_2} &&& {\Box_{C_1} \Box_{C_1} C'_2}
+	\arrow["{F'_2}"', from=1-1, to=3-1]
+	\arrow["{F'_2}", from=1-1, to=1-4]
+	\arrow["{\Box_{C_1} F'_2 = \Gamma_{C'_2} [\straight{F}_1[F'_2]] = \Gamma_{C'_2}[F'_3]}", from=1-4, to=3-4]
+	\arrow["{4_{C'_2} = \InducedHomo{F'_2}{C'_2}}"', from=3-1, to=3-4]
+\end{tikzcd}\]
+
+This diagram commutes by equation $E_2$. But this is also the commutative diagram which establishes that the internal lexcategory $F'_2: C'_2 \to \Box_{C_1} C'_2$ within the category of $\Box_{C_1}$-coalgebras is furthermore within its subcategory $K$.
+
+Note that the map $\straight{F}_1 : C_1 \to C_2$ is such that its range \TODO. Thus it acts as a map from $C_1$ to the global aspect of this $K$-internal lexcategory. By composing this with the projection functor from $K$ to $C_1$, we get a map $\introS$ from $K$ to the global aspect of this $K$-internal lexcategory.
+
+Finally, for $\introN$, \TODO.
 
 \closeDetails
 
@@ -594,7 +610,7 @@ In other words, for any strict lexcategory $C_0$ with an internal geminal catego
 This co-free $G$ admits an explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped. (Indeed, just as before, this whole construction can be carried out internal to an arbitrary ambient lexcategory.)
 \end{construction}
 \openDetails
-Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names denote global aspects of primed names and let $\straight{F}_1 : C_1 \to C_2$ be defined from $F'_1$ in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
+Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names of lexcategories denote global aspects of primed names and let $\straight{F}_1 : C_1 \to C_2$ be defined from $F'_1$ in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
 
 Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2, G'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$ internal to $G_0$, with each $G'_n = C'_n \times C'_{n + 1}$ and $\phi'_n = F'_n \times F'_{n + 1}$, for $n \geq 1$.
 
