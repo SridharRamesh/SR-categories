@@ -95,7 +95,7 @@ If $F : C \to D$ is a strict lexfunctor, and $Q$ is a $C$-internal lexcategory, 
 \begin{definition}\label{TransferNDefn}
 Note that any structure $S$ which is $n$-tuply internal to a lexcategory $C$ (for $n \geq 1$) is ultimately described by some kind of diagram within $C$, and thus taken by a lexfunctor $F : C \to D$ to a structure of the same sort $n$-tuply internal to $D$ as well. It is natural to refer to this as $F[S]$ in the same way as for singly internal $S$.
 
-This operation $\TransferN{n}{F}{S}$ for multiply internal $S$ can be inductively understood like so: The base case is when $S$ is singly internal to the domain of $F$, in which case $\TransferN{1}{F}{S}$ is just $F(S)$ in the ordinary way. On the other hand, if $S$ is $n$-tuply internal to $\dom(F)$ for $n \geq 2$, then there is some $\dom(F)$-internal lexcategory $B'$ such that $S$ is $(n - 1)$-tuply internal to $\Glob{B'}$. In this case, we have also the lexfunctor $\InducedHomo{F}{B'} : \Glob{B'} \to \Glob{F[B']}$, and thus we can understand $\TransferN{n}{F}{S}$ as meaning $\TransferN{n - 1}{\InducedHomo{F}{B'}}{S}$, reducing us from the $n$-tuply internal case to the $(n - 1)$-tuply internal case.
+This operation $\TransferN{n}{F}{S}$ for multiply internal $S$ can be inductively understood like so: The base case is when $S$ is singly internal to the domain of $F$, in which case $\TransferN{1}{F}{S}$ is just the ordinary application of $F$ to yield a structure singly internal to the codomain of $F$. On the other hand, if $S$ is $n$-tuply internal to $\dom(F)$ for $n \geq 2$, then there is some $\dom(F)$-internal lexcategory $B'$ such that $S$ is $(n - 1)$-tuply internal to $\Glob{B'}$. In this case, we have also the lexfunctor $\InducedHomo{F}{B'} : \Glob{B'} \to \Glob{F[B']}$, and thus we can understand $\TransferN{n}{F}{S}$ as meaning $\TransferN{n - 1}{\InducedHomo{F}{B'}}{S}$, reducing us from the $n$-tuply internal case to the $(n - 1)$-tuply internal case.
 \end{definition}
 
 \subsection{Strict introspective theories}\label{StrictIntrospSection}
@@ -175,7 +175,7 @@ As the category of models of an essentially algebraic theory, this category must
 
 \newcommand{\straight}[1]{\widehat{#1}}
 
-We will give two different presentations of the definition of \quote{geminal categories}. First, in this section, we give a definition using several infinite sequences of data and of equations. These infinite sequences will be highly redundant in that their first few entries suffice to derive all their later entries, but the advantage of this verbose definition is that it has convenient symmetries. Later, at \magicref{CompactGeminalCatDefn}, we will see a much more compact definition eliminating these redundancies.
+We will give two different presentations of the definition of \quote{geminal categories}. First, in this section, we give a definition using several infinite sequences of data and of equations. These infinite sequences will be highly redundant in that their first few entries suffice to derive all their later entries, but the advantage of this verbose definition is that it is made manifest how the definition contains a nested copy of itself.\footnote{In the manner which is sometimes outside of mathematics called \quote{the Droste effect}.} Later, at \magicref{CompactGeminalCatDefn}, we will see a much more compact definition eliminating these redundancies.
 
 \begin{definition}[Geminal category]\label{VerboseGeminalCatDefn}
 A \defined{geminal category}\footnote{Another evocative name for this concept might be \quote{nesting doll category}.} internal to lexcategory $C_0$ consists of several ingredients:
@@ -295,7 +295,7 @@ Given two geminal categories $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3
 \end{tikzcd}\]
 \end{definition}
 
-(In the above, $H[C'_i]$ and $H[F'_i]$ makes use of \magicref{TransferNDefn} to denote the application of $H$ to multiply internal structures.)
+(In the above, $H[C'_i]$ and $H[F'_i]$ make use of \magicref{TransferNDefn} to denote the application of $H$ to multiply internal structures.)
 
 \begin{theorem}\label{GeminalContainsGeminal}
 Given any geminal category $K = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$, we have also that $\langle C'_2, C'_3, C'_4, \ldots; F'_2, F'_3, F'_4 \ldots \rangle$ comprises a geminal category internal to $\underlying{K} = C'_1$. We refer to this internal geminal category as $\InteriorGeminal{K}$.
@@ -439,7 +439,7 @@ Given the result of \magicref{InitialIntrospectiveTheory}, we can rephrase \magi
 \subsection{Geminal gadgets}
 We have now successfully described the initial introspective theory. But we can also take our free construction results a bit further than this.
 
-Specifically, every introspective theory is, among other things, an essentially algebraic theory extending the theory of strict lexcategories. That is, we have a functor from the category of introspective theories to the category of extensions of the essentially algebraic theory of strict lexcategories (essentially, this functor takes $\langle T, C, \introS, \introN \rangle$ to $\langle T, C \rangle$). This functor has a left adjoint.
+Specifically, every introspective theory is, among other things, an essentially algebraic theory extending the theory of strict lexcategories. That is, we have a functor from the category of strict introspective theories to the category of strict lexcategories with a designated internal lexcategory (this functor takes $\langle T, C, \introS, \introN \rangle$ to $\langle T, C \rangle$). This functor has a left adjoint.
 
 Put in other words, for any essentially algebraic theory $Th$ such that models of $Th$ come with an underlying strict lexcategory, there is a free strict introspective theory $\langle T, C, \introS, \introN \rangle$ with a designated $T$-internal model of $Th$ with underlying lexcategory $C$.
 
@@ -472,11 +472,11 @@ As this works for arbitrary lexcategories $V$, this right adjoint admits an expl
 \openDetails
 For linguistic convenience, we shall in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
 
-We are tasked with showing that, for any geminal category $C_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C_1$.
+We are tasked with showing that, for any geminal category $C'_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C'_1$.
 
 We will first give the details of the construction, and then give the proof that it has the terminality property.
 
-Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C = \introF(\Hom_C(1, -)): C \to C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C^2$ built from $\introN$. As this applies in particular to the introspective theory of \TODO (where $\introF(\Hom_C(1, -)) = $ \TODO), we find that any geminal category $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ \TODOinline{Should make $C_1$ into $C'_1$ throughout} comes with an endolexfunctor $\Box_{C_1} = \Gamma_{C'_2} \circ \straight{F}_1 : C_1 \to C_1$, along with a natural transformation $4 : \Box_{C_1} \to \Box_{C_1} \Box_{C_1}$ corresponding to the action of $F'_2$.
+Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C = \introF(\Hom_C(1, -)): C \to C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C \Box_C$ built from $\introN$. As this applies in particular to the introspective theory $\langle \GLCatTheory, |K| \rangle$ of \magicref{GLCatTheoryIsIntrosp} (where $\introF(\Hom_C(1, -)) = $ \TODO), we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ \TODOinline{Should make $C_1$ into $C'_1$ throughout} comes with an endolexfunctor $\Box_{C_1} = \Gamma_{C'_2} \circ \straight{F}_1 : C_1 \to C_1$, along with a natural transformation $4 : \Box_{C_1} \to \Box_{C_1} \Box_{C_1}$ corresponding to the action of $F'_2$.
 
 Via \magicref{BoxCoalgebrasInGeminal}, the category of $\Box_{C_1}$-coalgebras is a strict lexcategory. Among these $\Box_{C_1}$-coalgebras, there are some coalgebras $m : c \to \Box_{C_1} c$ with the property that the following diagram commutes:
 
@@ -491,7 +491,7 @@ Via \magicref{BoxCoalgebrasInGeminal}, the category of $\Box_{C_1}$-coalgebras i
 	\arrow["{4_c}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-Let $K$ be the full subcategory of those $\Box_{C_1}$-coalgebras with the specified property. It is readily seen that this $K$ is closed under the finite limits of the category of $\Box_{C_1}$-coalgebras, and thus is itself a strict lexcategory. (Indeed, $K$ can be defined as the equalizer of two strict lexfunctors from the $\Box_{C_1}$-coalgebras to the $\Box_{C_1}^2$-coalgebras.)
+Let $Z$ be the full subcategory of those $\Box_{C_1}$-coalgebras with the specified property. It is readily seen that this $Z$ is closed under the finite limits of the category of $\Box_{C_1}$-coalgebras, and thus is itself a strict lexcategory. (Indeed, $Z$ can be defined as the equalizer of two strict lexfunctors from the $\Box_{C_1}$-coalgebras to the $\Box_{C_1}^2$-coalgebras.)
 
 Note that we have the following commutative diagram of internal lexfunctors in $C_1$:
 
@@ -506,19 +506,79 @@ Note that we have the following commutative diagram of internal lexfunctors in $
 	\arrow["{4_{C'_2} = \InducedHomo{F'_2}{C'_2}}"', from=3-1, to=3-4]
 \end{tikzcd}\]
 
-This diagram commutes by equation $E_2$. But this is also the commutative diagram which establishes that the internal lexcategory $F'_2: C'_2 \to \Box_{C_1} C'_2$ within the category of $\Box_{C_1}$-coalgebras is furthermore within its subcategory $K$.
+This diagram commutes by equation $E_2$. But this is also the commutative diagram which establishes that the internal lexcategory $F'_2: C'_2 \to \Box_{C_1} C'_2$ within the category of $\Box_{C_1}$-coalgebras is furthermore within its subcategory $Z$. When thinking of $F'_2$ as an internal lexcategory within $Z$ in this way, let us call it $Z_2$.
 
-Note that the map $\straight{F}_1 : C_1 \to C_2$ is such that its range \TODO. Thus it acts as a map from $C_1$ to the global aspect of this $K$-internal lexcategory. By composing this with the projection functor from $K$ to $C_1$, we get a map $\introS$ from $K$ to the global aspect of this $K$-internal lexcategory.
+Note that the strict lexfunctor $\straight{F}_1 : C_1 \to \Glob{C'_2}$ is such that for any object or morphism $x$ of $C_1$, if we interpret $\straight{F}_1(x)$ as a morphism from $1$ to $\Ob(C'_2)$ or $\Mor(C'_2)$, we obtain a commutative diagram of the following form:
 
-Finally, for $\introN$, \TODO.
+% https://q.uiver.app/#q=WzAsNCxbMywwLCJcXE9iKEMnXzIpIFxcOyBcXHRleHR7b3J9IFxcOyBcXE1vcihDJ18yKSJdLFszLDIsIlxcQm94X3tDXzF9IFxcbGVmdCggXFxPYihDJ18yKSBcXDsgXFx0ZXh0e29yfSBcXDsgXFxNb3IoQydfMikgXFxyaWdodCkiXSxbMCwwLCIxIl0sWzAsMiwiXFxCb3hfe0NfMX0gMSA9IDEiXSxbMCwxLCJGJ18yIl0sWzIsMCwiXFxzdHJhaWdodHtGfV8xKHgpIl0sWzMsMSwiXFxCb3hfe0NfMX0gXFxsZWZ0KCBcXHN0cmFpZ2h0e0Z9XzEoeCkgIFxccmlnaHQpID0gXFxHYW1tYV97QydfMn0gW1xcc3RyYWlnaHR7Rn1fMVtcXHN0cmFpZ2h0e0Z9XzEoeCldXSIsMl0sWzIsMywiISIsMl1d
+\[\begin{tikzcd}
+	1 &&& {\Ob(C'_2) \; \text{or} \; \Mor(C'_2)} \\
+	\\
+	{\Box_{C_1} 1 = 1} &&& {\Box_{C_1} \left( \Ob(C'_2) \; \text{or} \; \Mor(C'_2) \right)}
+	\arrow["{F'_2}", from=1-4, to=3-4]
+	\arrow["{\straight{F}_1(x)}", from=1-1, to=1-4]
+	\arrow["{\Box_{C_1} \left( \straight{F}_1(x)  \right) = \Gamma_{C'_2} [\straight{F}_1[\straight{F}_1(x)]]}"', from=3-1, to=3-4]
+	\arrow["{!}"', from=1-1, to=3-1]
+\end{tikzcd}\]
+
+That this diagram commutes is by equation $E_1$. Thus $\straight{F}_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $\straight{F}_1$ acts as a strict lexfunctor from $C_1$ to the global aspect of $Z_2$. By composing this with the projection functor from $Z$ to $C_1$, we get a strict lexfunctor $\introS$ from $Z$ to the global aspect of this $Z$-internal lexcategory. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C_1$, but this will indeed be the correct one for our purposes!)
+
+Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes morphisms to the corresponding naturality square for $4$. Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a map from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose carrier is the morphism $m$ itself, as described by the following commutative diagram:
+
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
+\[\begin{tikzcd}
+	c && {\Box c} \\
+	\\
+	{\Box c} && {\Box^2 c}
+	\arrow["m"', from=1-1, to=3-1]
+	\arrow["m", from=1-1, to=1-3]
+	\arrow["{\Box m}", from=1-3, to=3-3]
+	\arrow["{4_c}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+In the above commutative diagram within $C'_1$, the top arrow is the coalgebra $m$, while the bottom arrow is the coalgebra $\Hom_{Z_2}(1, \introS(m))$. The left arrow is thus the carrier of a coalgebra morphism from the former to the latter, and the diagram overall commutes because this is the defining condition for $m$ to be within $Z$.
+
+These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural transformation $\introN$ between $\id_Z$ and $\Hom_{Z_2}(1, \introS(-))$ whose naturality is demonstrated like so: Consider any two coalgebras $m_1$ and $m_2$ in $Z$ and a coalgebra map $h : m_1 \to m_2$. The condition for $h$ to be a coalgebra map is the very same as the naturality square for this $\introN$:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsImQiXSxbMiwyLCJcXEJveCBkIl0sWzAsMSwibV8xIiwyXSxbMCwyLCJoIl0sWzIsMywibV8yIl0sWzEsMywiXFxCb3ggaCIsMl1d
+\[\begin{tikzcd}
+	c && d \\
+	\\
+	{\Box c} && {\Box d}
+	\arrow["{m_1}"', from=1-1, to=3-1]
+	\arrow["h", from=1-1, to=1-3]
+	\arrow["{m_2}", from=1-3, to=3-3]
+	\arrow["{\Box h}"', from=3-1, to=3-3]
+\end{tikzcd}\]
+
+Thus we have an introspective theory $Z = \langle Z, Z_2, \introS, \introN \rangle$.
+
+Furthermore, we have a projection lexfunctor $\pi : Z \to C_1$, sending coalgebras to their carriers. By construction, this is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzIsMCwiQydfMSJdLFsyLDIsIlxcR2xvYntcXHBpW1pfMl19ID0gXFxHbG9ie0NfMid9Il0sWzAsMiwiXFxHbG9ie1pfMn0iXSxbMCwxLCJcXHBpIl0sWzAsMywiXFxpbnRyb1MiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97XFxwaX17Wl8yfSIsMl0sWzEsMiwiRidfMSJdXQ==
+\[\begin{tikzcd}
+	Z && {C'_1} \\
+	\\
+	{\Glob{Z_2}} && {\Glob{\pi[Z_2]} = \Glob{C_2'}}
+	\arrow["\pi", from=1-1, to=1-3]
+	\arrow["\introS"', from=1-1, to=3-1]
+	\arrow["{\InducedHomo{\pi}{Z_2}}"', from=3-1, to=3-3]
+	\arrow["{F'_1}", from=1-3, to=3-3]
+\end{tikzcd}\]
+
+This establishes $\pi$ as a geminal category homomorphism from $Z$ to $C_1$.
 
 \closeDetails
 
+Having described the introspective theory $Z$ and its geminal category homomorphism $\pi$ to $C_1$, we now prove its terminality among all introspective theories with a designated geminal category homomorphism to $C_1$:
+
 \begin{proof}
 
-Let $C_1 = \langle C_1, C'_2; F_1, F'_2 \rangle$ be a geminal category, let $T = \langle T, C, \introS, \introN \rangle$ be a strict introspective theory (which we can also construe as a geminal category via \magicref{IntrospAsGeminal}), and let $H : T \to C_1$ be a geminal category homomorphism.
+Let $T = \langle T, C \rangle$ be an arbitrary strict introspective theory, and let $H : T \to C'_1$ be a geminal category homomorphism. We will show that there is a unique strict introspective theory homomorphism $\beta : T \to Z$ such that $\pi \circ \beta = H$.
 
-Let us use the suggestive name $\Box_{C_1}$ for the endolexfunctor $\Gamma_{C'_2} \circ F_1 : C_1 \to C_1$.
+The condition $\pi \circ \beta = H$ tells us right away what the carriers of the coalgebras and coalgebra morphisms produced by $\beta$ must be. Furthermore, our construction of $\introN_z$ for objects $z$ of $Z$ is such $\pi (\introN_z)$ in $C'_1$ is the very same as the coalgebra $z$ itself. Thus, for any object $t \in T$, the specific coalgebra $\beta(t)$ must be the one given by $\pi (\introN_{\beta(t)})$, which by virtue of $\beta$ being a strict introspective theory homomorphism is the same as $\pi (\beta (\introN_t)) = H(\introN_t)$.
+
+Thus, the uniqueness of $\beta$ is assured and what remains is only to see that a $\beta$ so-constructed is indeed a strict introspective theory homomorphism. First, let us see that we in fact do have such a $\beta : T \to Z$ as a strict lexfunctor:
 
 By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C_1} \circ H$. In detail, this is seen via the following commutative diagram:
 
