@@ -53,7 +53,7 @@ Recall \magicref{TermModelIsInitialForLex}, which tells us that, for any lexcate
 
 In this way, for any $B$-internal structure $S$, we obtain a homomorphism from $\LabeledGlob{B}(S)$ to $\LabeledGlob{C}(F[S])$. We refer to this homomorphism as $\InducedHomo{F}{S}$.
 
-This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : B \to C$ is an internal lexfunctor between $V$-internal lexcategories, and $S$ is some structure internal to the global aspect of $B$ (thus doubly internal to $V$), we get a $V$-internal homomorphism $\InducedHomo{F}{S} : \Gamma_B[S] \to \Gamma_C[F(S)]$ in the same way.
+This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : B \to C$ is an internal lexfunctor between $V$-internal lexcategories, and $S$ is some structure internal to the global aspect of $B$ (thus doubly internal to $V$), we get a $V$-internal homomorphism $\InducedHomo{F}{S} : \Gamma_B[S] \to \Gamma_C[F[S]]$ in the same way. (Note that $F[S]$ here, the application of an internal lexfunctor $F : B \to C$ to a structure in the global aspect of $B$, is the same as what could also be called $\Glob{F}[S]$ where $\Glob{F} : \Glob{B} \to \Glob{C}$.)
 \end{definition}
 
 \begin{observation}\label{GlobOfGlob}
@@ -173,7 +173,6 @@ As the category of models of an essentially algebraic theory, this category must
 \subsection{Defining geminal categories}\label{GeminalFirstDefnSection}
 \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
-\newcommand{\bent}[1]{#1}
 \newcommand{\straight}[1]{\widehat{#1}}
 
 We will give two different presentations of the definition of \quote{geminal categories}. First, in this section, we give a definition using several infinite sequences of data and of equations. These infinite sequences will be highly redundant in that their first few entries suffice to derive all their later entries, but the advantage of this verbose definition is that it has convenient symmetries. Later, at \magicref{CompactGeminalCatDefn}, we will see a much more compact definition eliminating these redundancies.
@@ -188,7 +187,7 @@ A \defined{geminal category}\footnote{Another evocative name for this concept mi
 
 Thus, each $C'_{i + n}$ is $n$-tuply internal to $C_i$.
 
-(Throughout the following, it will be useful to keep in mind that we are using these general naming habits: Primed names are used for internal structures, while the corresponding unprimed names indicate the corresponding global aspects. Furthermore, names subscripted with index $i$ arise from structure internal to $C_{i - 1}$.)
+(Throughout the following, it will be useful to keep in mind that we are using these general naming habits: Primed names are used for internal structures, while unprimed names certain corresponding global structures. Furthermore, names subscripted with index $i$ arise from structure internal to $C_{i - 1}$.)
 
 \begin{itemize}
     \item
@@ -213,14 +212,14 @@ Pictorially, this can be envisioned like so:
 
 Here, the first row is structure internal to $C_0$, the second row is structure internal to $C_1$ (thus, doubly internal to the ambient $C_0$), the third row is structure internal to $C_2$ (thus, triply internal to the ambient $C_0$), and so on. We also for convenience use the abbreviation $\Gamma_i$ for $\Gamma_{C'_i} : C_i \to C_{i - 1}$ for $i \geq 1$, illustrating these in the vertical line on the left of the picture.
 
-In keeping with our naming convention, we shall also use $F_i : C_i \to \Glob{\Gamma_i[C_{i + 1}]}$ to refer to the global aspect of $F'_i$. As \magicref{GlobOfGlob} tells us that $\InducedHomo{\Gamma_i}{C'_{i + 1}} : \Glob{C'_{i + 1}} \to \Glob{\Gamma_i[C'_{i + 1}]}$ is an isomorphism, we can also define $\straight{F}_i : C_i \to C_{i + 1}$ as the unique map making the following diagram commute:
+From the internal lexfunctor $F'_i : C'_i \to \Gamma_i [C'_{i + 1}]$, we shall also define a lexfunctor $\straight{F}_i : C_i \to C_{i + 1}$ like so: As \magicref{GlobOfGlob} tells us that $\InducedHomo{\Gamma_i}{C'_{i + 1}} : \Glob{C'_{i + 1}} \to \Glob{\Gamma_i[C'_{i + 1}]}$ is an isomorphism, we take $\straight{F}_i : C_i \to C_{i + 1}$ to be the unique map making the following diagram commute:
 
-% https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX2kgPSBcXEdsb2J7QydfaX0iXSxbMiwyLCJDX3tpICsgMX0gPSBcXEdsb2J7Qydfe2kgKyAxfX0iXSxbMiwwLCJcXEdsb2J7XFxHYW1tYV9pW0MnX3tpICsgMX1dfSJdLFswLDIsIkZfaSJdLFsxLDIsIlxcSW5kdWNlZEhvbW97XFxHYW1tYV9pfXtDJ197aSArIDF9fSIsMl0sWzAsMSwiXFxzdHJhaWdodHtGfV9pIiwyXV0=
+% https://q.uiver.app/#q=WzAsMyxbMCwwLCJDX2kgPSBcXEdsb2J7QydfaX0iXSxbMiwyLCJDX3tpICsgMX0gPSBcXEdsb2J7Qydfe2kgKyAxfX0iXSxbMiwwLCJcXEdsb2J7XFxHYW1tYV9pW0MnX3tpICsgMX1dfSJdLFswLDIsIlxcR2xvYntGJ19pfSJdLFsxLDIsIlxcSW5kdWNlZEhvbW97XFxHYW1tYV9pfXtDJ197aSArIDF9fSIsMl0sWzAsMSwiXFxzdHJhaWdodHtGfV9pIiwyXV0=
 \[\begin{tikzcd}
 	{C_i = \Glob{C'_i}} && {\Glob{\Gamma_i[C'_{i + 1}]}} \\
 	\\
 	&& {C_{i + 1} = \Glob{C'_{i + 1}}}
-	\arrow["{F_i}", from=1-1, to=1-3]
+	\arrow["{\Glob{F'_i}}", from=1-1, to=1-3]
 	\arrow["{\InducedHomo{\Gamma_i}{C'_{i + 1}}}"', from=3-3, to=1-3]
 	\arrow["{\straight{F}_i}"', from=1-1, to=3-3]
 \end{tikzcd}\]
@@ -246,11 +245,11 @@ Finally, the last ingredients we require are some equations:
     \item
     Furthermore, we require that the following diagram of lexfunctors internal to $C_{i - 1}$ commutes, for each $i \geq 1$. We call this equation $E_i$.
     
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDIsIlxcR2FtbWFfe1xcR2FtbWFfe2l9W0MnX3tpICsgMX1dfSBbXFxiZW50e0Z9X2lbQydfe2kgKyAxfV1dIl0sWzMsMCwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFszLDIsIlxcR2FtbWFfaSBbXFxHYW1tYV97aSArIDF9IFtDJ197aSArIDJ9XV0iXSxbMCwxLCJGJ19pIiwyXSxbMCwzLCJGJ19pIl0sWzEsMiwiXFxJbmR1Y2VkSG9tb3tGJ19pfXtDJ197aSArIDF9fSIsMl0sWzMsNCwiXFxHYW1tYV9pIFtGJ197aSArIDF9XSJdLFsyLDQsIiIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
+% https://q.uiver.app/#q=WzAsNSxbMCwwLCJDJ19pIl0sWzAsMiwiXFxHYW1tYV9pIFtDJ197aSArIDF9XSJdLFsyLDIsIlxcR2FtbWFfe1xcR2FtbWFfe2l9W0MnX3tpICsgMX1dfSBbXFxHbG9ie0YnX2l9W0MnX3tpICsgMX1dXSJdLFszLDAsIlxcR2FtbWFfaSBbQydfe2kgKyAxfV0iXSxbMywyLCJcXEdhbW1hX2kgW1xcR2FtbWFfe2kgKyAxfSBbQydfe2kgKyAyfV1dIl0sWzAsMSwiRidfaSIsMl0sWzAsMywiRidfaSJdLFsxLDIsIlxcSW5kdWNlZEhvbW97RidfaX17Qydfe2kgKyAxfX0iLDJdLFszLDQsIlxcR2FtbWFfaSBbRidfe2kgKyAxfV0iXSxbMiw0LCIiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
 \[\begin{tikzcd}
 	{C'_i} &&& {\Gamma_i [C'_{i + 1}]} \\
 	\\
-	{\Gamma_i [C'_{i + 1}]} && {\Gamma_{\Gamma_{i}[C'_{i + 1}]} [\bent{F}_i[C'_{i + 1}]]} & {\Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]}
+	{\Gamma_i [C'_{i + 1}]} && {\Gamma_{\Gamma_{i}[C'_{i + 1}]} [\Glob{F'_i}[C'_{i + 1}]]} & {\Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]}
 	\arrow["{F'_i}"', from=1-1, to=3-1]
 	\arrow["{F'_i}", from=1-1, to=1-4]
 	\arrow["{\InducedHomo{F'_i}{C'_{i + 1}}}"', from=3-1, to=3-3]
@@ -260,7 +259,7 @@ Finally, the last ingredients we require are some equations:
 
 That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed in abuse of notation as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}.
 
-(To derive the identity in the bottom-right of the above diagram, first note that $\bent{F}_i[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
+(To derive the identity in the bottom-right of the above diagram, first note that $\Glob{F'_i}[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
 
 Thus, $\Gamma_{\Gamma_{i}[C'_{i + 1}]} [F'_i[C'_{i + 1}]] =$ $\Gamma_{\Gamma_{i}[C'_{i + 1}]} [\InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]] = \Gamma_i [\Gamma_{i + 1} [C'_{i + 2}]]$, where the last step is by \magicref{InducedGlobalCommute}.)
 \end{itemize}
@@ -335,26 +334,26 @@ The above all amounts to an infinitary presentation of the theory of geminal cat
 \begin{definition}[Geminal category, compact presentation]\label{CompactGeminalCatDefn}
 A \defined{compactly presented geminal category} internal to lexcategory $C_0$ consists of the structure $C'_i$, $F'_i$, and equations $E_i$ of the verbose presentation, but only for $i \in \{1, 2\}$.
 
-(Here, in interpreting the codomain of $F'_2$, we take $C'_3$ to be $F_1[C'_2]$, and in interpreting the equation $E_2$, we take $F'_3$ to be $F_1[F'_2]$)
+(Here, in interpreting the codomain of $F'_2$, we take $C'_3$ to be $\straight{F}_1[C'_2]$, and in interpreting the equation $E_2$, we take $F'_3$ to be $\straight{F}_1[F'_2]$, where $\straight{F}_1$ is defined from $F'_1$ just as in \magicref{VerboseGeminalCatDefn}.)
 
 That is, a compactly presented geminal category internal to $C_0$ consists of the following six pieces of data:
 
 \begin{itemize}
-    \item A lexcategory $C'_1$ internal to $C_0$, whose global aspect we call $C_1$. We refer to $\Gamma_{C'_1} : C_1 \to C_0$ as $\Gamma_1$.
+    \item A lexcategory $C'_1$ internal to $C_0$. We refer to its global aspect as  $C_1$, and we refer to $\Gamma_{C'_1} : C_1 \to C_0$ as $\Gamma_1$.
     
-    \item A lexcategory $C'_2$ internal to $C_1$, whose global aspect we call $C_2$. We refer to $\Gamma_{C'_2} : C_2 \to C_1$ as $\Gamma_2$.
+    \item A lexcategory $C'_2$ internal to $C_1$. We refer to its global aspect as $C_2$, and we refer to $\Gamma_{C'_2} : C_2 \to C_1$ as $\Gamma_2$.
     
-    \item A lexfunctor $F'_1 : C'_1 \to \Gamma_1[C'_2]$, internal to $C_0$. We call the global aspect of this $F_1 : C_1 \to C_2$.
+    \item A lexfunctor $F'_1 : C'_1 \to \Gamma_1[C'_2]$, internal to $C_0$. We define $\straight{F}_1 : C_1 \to C_2$ from this just as in \magicref{VerboseGeminalCatDefn}.
     
     \item A lexfunctor $F'_2 : C'_2 \to \Gamma_2[C'_3]$, internal to $C_1$.
     
-    (Here, $C'_3$ is defined as $F_1[C'_2]$.)
+    (Here, $C'_3$ is defined as $\straight{F}_1[C'_2]$.)
     
     \item The equation $\InducedHomo{F'_1}{C'_{2}} \circ F'_1 = \Gamma_1[F'_2] \circ F'_1$, internal to $C_0$. We call this equation $E_1$.
     
     \item The equation $\InducedHomo{F'_2}{C'_{3}} \circ F'_2 = \Gamma_2[F'_3] \circ F'_2$, internal to $C_1$. We call this equation $E_2$.
     
-    (Here, $F'_3$ is defined as $F_1[F'_2]$.)
+    (Here, $F'_3$ is defined as $\straight{F}_1[F'_2]$.)
 \end{itemize}
 \end{definition}
 
@@ -366,7 +365,7 @@ Clearly, the structure defining a compactly presented geminal category is part o
 The structure of a compactly presented geminal category uniquely determines the further structure of a geminal category (as originally defined in \magicref{VerboseGeminalCatDefn})).
 \end{theorem}
 \begin{proof}
-Throughout the following, as before, we define each $\straight{F}_i$ from the corresponding $F'_i$ by $\straight{F}_i = \left(\InducedHomo{\Gamma_i}{C'_{i + 1}}\right)^{-1} \circ \Glob{F_i} : C_i \to C_{i + 1}$.
+Throughout the following, as before, we define each $\straight{F}_i$ from the corresponding $F'_i$ just as in \magicref{VerboseGeminalCatDefn}.
 
 By definition, in a geminal category, we must have that $C'_j = \straight{F}_1[C'_{j - 1}]$ and $F'_j = \straight{F}_1[F'_{j - 1}]$ for each $j > 2$.
 
@@ -450,7 +449,7 @@ Specifically, let models of $Th$ be called \quote{gadgets}, and maps between the
 
 This is by exactly the same arguments as we have just given. All the results and arguments given earlier in this chapter apply just as well mutatis mutandis when lexcategories and lexfunctors are replaced by gadgets and gadget homomorphisms, except for \magicref{IntrospAsGeminal} (it will not be the case that an arbitrary strict introspective theory can be viewed as a geminal gadget). However, the analogue of the construction \magicref{IntrospContainsGeminal} still holds (i.e., given an introspective theory $\langle T, C \rangle$ such that $C$ is the underlying lexcategory of a gadget, then the geminal category structure which $C$ is equipped with by \magicref{IntrospContainsGeminal} furthermore underlies geminal gadget structure).
 
-\sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C_1$ is a non-strict lexcategory or gadget, and $F_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
+\sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C'_1$ is a non-strict lexcategory or gadget, and $F'_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
 \sTODOinline{
 \subsection{Modal logic in geminal categories}
