@@ -521,7 +521,7 @@ Note that the strict lexfunctor $\straight{F}_1 : C_1 \to \Glob{C'_2}$ is such t
 	\arrow["{!}"', from=1-1, to=3-1]
 \end{tikzcd}\]
 
-That this diagram commutes is by equation $E_1$. Thus $\straight{F}_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $\straight{F}_1$ acts as a strict lexfunctor from $C_1$ to the global aspect of $Z_2$. By composing this with the projection functor from $Z$ to $C_1$, we get a strict lexfunctor $\introS$ from $Z$ to the global aspect of this $Z$-internal lexcategory. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C_1$, but this will indeed be the correct one for our purposes!)
+That this diagram commutes is by equation $E_1$ of $C'_1$ being a geminal category. Thus $\straight{F}_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $\straight{F}_1$ acts as a strict lexfunctor from $C_1$ to the global aspect of $Z_2$. By composing this with the projection functor from $Z$ to $C_1$, we get a strict lexfunctor $\introS$ from $Z$ to the global aspect of this $Z$-internal lexcategory. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C_1$, but this will indeed be the correct one for our purposes!)
 
 Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes morphisms to the corresponding naturality square for $4$. Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a map from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose carrier is the morphism $m$ itself, as described by the following commutative diagram:
 
@@ -553,7 +553,7 @@ These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural trans
 
 Thus we have an introspective theory $Z = \langle Z, Z_2, \introS, \introN \rangle$.
 
-Furthermore, we have a projection lexfunctor $\pi : Z \to C_1$, sending coalgebras to their carriers. By construction, this is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
+By construction, the projection functor $\pi : Z \to C_1$, which sends coalgebras to their carriers, is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzIsMCwiQydfMSJdLFsyLDIsIlxcR2xvYntcXHBpW1pfMl19ID0gXFxHbG9ie0NfMid9Il0sWzAsMiwiXFxHbG9ie1pfMn0iXSxbMCwxLCJcXHBpIl0sWzAsMywiXFxpbnRyb1MiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97XFxwaX17Wl8yfSIsMl0sWzEsMiwiRidfMSJdXQ==
 \[\begin{tikzcd}
@@ -576,7 +576,7 @@ Having described the introspective theory $Z$ and its geminal category homomorph
 
 Let $T = \langle T, C \rangle$ be an arbitrary strict introspective theory, and let $H : T \to C'_1$ be a geminal category homomorphism. We will show that there is a unique strict introspective theory homomorphism $\beta : T \to Z$ such that $\pi \circ \beta = H$.
 
-The condition $\pi \circ \beta = H$ tells us right away what the carriers of the coalgebras and coalgebra morphisms produced by $\beta$ must be. Furthermore, our construction of $\introN_z$ for objects $z$ of $Z$ is such $\pi (\introN_z)$ in $C'_1$ is the very same as the coalgebra $z$ itself. Thus, for any object $t \in T$, the specific coalgebra $\beta(t)$ must be the one given by $\pi (\introN_{\beta(t)})$, which by virtue of $\beta$ being a strict introspective theory homomorphism is the same as $\pi (\beta (\introN_t)) = H(\introN_t)$.
+The condition $\pi \circ \beta = H$ tells us right away what the carriers of the coalgebras and coalgebra morphisms produced by $\beta$ must be. Furthermore, our construction of $\introN_z$ for objects $z$ of $Z$ was such that $\pi (\introN_z)$ in $C'_1$ is the very same as the coalgebra $z$ itself. Thus, for any object $t \in T$, the specific coalgebra $\beta(t)$ will be the one given by $\pi (\introN_{\beta(t)})$, which by virtue of $\beta$ being a strict introspective theory homomorphism must be the same as $\pi (\beta (\introN_t)) = H(\introN_t)$.
 
 Thus, the uniqueness of $\beta$ is assured and what remains is only to see that a $\beta$ so-constructed is indeed a strict introspective theory homomorphism. First, let us see that we in fact do have such a $\beta : T \to Z$ as a strict lexfunctor:
 
@@ -619,7 +619,7 @@ Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural 
 	\arrow["\introN"', shorten <=4pt, Rightarrow, from=0, to=2-2]
 \end{tikzcd}\]
 
-This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor, this $\beta$ is also a strict lexfunctor, when the category of $\Box_{C_1}$-coalgebras is construed as a strict lexcategory in the manner of \magicref{BoxCoalgebrasInGeminal}.
+This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor and this forgetful functor creates basic limits (a la \magicref{BoxCoalgebrasInGeminal}), this $\beta$ is also a strict lexfunctor.
 
 Not only that, but every coalgebra $m : c \to \Box_{C_1} c$ in the range of $\beta$ has the property that the following diagram commutes \TODO:
 
@@ -634,27 +634,42 @@ Not only that, but every coalgebra $m : c \to \Box_{C_1} c$ in the range of $\be
 	\arrow["{4_c}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-\sTODOinline{Explain above diagram}
+\TODO
 
-\TODOinline{Write out details of how, by restricting to coalgebras for $\Box_{C'_1}$ with the suitable property, we get an introspective theory, which is terminal among all introspective theories which map into this geminal category}
+Thus, $\beta$ is indeed a strict lexfunctor from $T$ to $Z$, such that $\pi \circ \beta = H$.
 
-Let $K$ be the full subcategory of $\Box_{C_1}$ coalgebras with the specified property. It is readily verified that $K$ is closed under the chosen basic limits of $\Box_{C_1}$ \TODOinline{As an equalizer between strict lexfunctors}, and thus $K$ can be seen as a full sub-strict-lexcategory of the $\Box_{C_1}$ coalgebras.
+We have three more conditions to show to demonstrate that $\beta$ is a strict introspective theory homomorphism. We must show it interacts in the appropriate way with $C$, $\introS$, and $\introN$.
 
-Note that the diagram defining $C'_2$ as an internal lexcategory in $C_1$ is in fact a diagram within the subcategory $K$, as \TODOinline{Cite relevant part of definition of a geminal category}. Thus, we may consider $C'_2$ as a $K$-\repsmall/ lexcategory as well.
+The required condition of $\beta[C]$ is that this should equal $Z_2$. Note that $\beta(C)$ is the lexcategory in $Z$ corresponding to the internal lexfunctor $H(\introN_C)$ in $C'_1$. By virtue of $H : T \to C'_1$ being a geminal category homomorphism, this $H(\introN_C)$ is $F'_2$, which is indeed our definition of the lexcategory $Z_2$ in $Z$, as required.
 
-Define the strict lexfunctor $\introS : K \to \Glob{C'_2}$ by composing the forgetful functor from $K$ to $C_1$ with $F_1 : C_1 \to \Glob{C'_2}$.
+The required condition on $\beta$ with respect to $\introS$ is that the following diagram should commute:
 
-Note that $\Hom_{C_1}(1, \introS(-)) : K \to K$ takes each $m : c \to \Box_{C_1} c$ in $K$ to $4_c : \Box_{C_1} c \to \Box_{C_1} \Box_{C_1} c$, by \TODO.
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUIl0sWzIsMCwiWiJdLFswLDEsIlxcR2xvYntDfSJdLFsyLDEsIlxcR2xvYntcXGJldGFbQ119ID0gXFxHbG9ie1pfMn0iXSxbMCwxLCJcXGJldGEiXSxbMCwyLCJcXGludHJvUyIsMl0sWzIsMywiXFxJbmR1Y2VkSG9tb3tcXGJldGF9e0N9IiwyXSxbMSwzLCJcXGludHJvUyJdXQ==
+\[\begin{tikzcd}
+	T && Z \\
+	{\Glob{C}} && {\Glob{\beta[C]} = \Glob{Z_2}}
+	\arrow["\beta", from=1-1, to=1-3]
+	\arrow["\introS"', from=1-1, to=2-1]
+	\arrow["{\InducedHomo{\beta}{C}}"', from=2-1, to=2-3]
+	\arrow["\introS", from=1-3, to=2-3]
+\end{tikzcd}\]
 
-Finally, define the natural transformation $\introN$ as sending each $m : c \to \Box_{C_1} c$ in $K$ to the following coalgebra map from $m$ to $\Box_{C_1} m$ (the coalgebra map whose underlying map in $C_1$ is $m$ itself). This square commutes because of the defining property of $K$: \TODO.
+For this diagram to commute, it suffices to know that following both paths with the projection from $\Glob{Z_2}$ to $\Glob{C'_2}$ commutes. By unwinding definitions, $\beta; \introS$ followed by this projection is $\straight{F'_1}(H(-))$ while $\introS ; \InducedHomo{\beta}{C}$ followed by this projection is $H(\introS(-))$. As $H$ is a geminal category homomorphism from $T$ to $C'_1$, these are indeed the same.
 
-Thus, we obtain a strict introspective theory $K = \langle K, C'_2, \introS, \introN \rangle$.
+Finally, the required condition on $\beta$ with respect to $\introN$ is that $\beta(\introN_t) = \introN_{\beta(t)}$ for each $t \in T$. Note that $\beta(\introN_t)$ is the coalgebra morphism in $Z$ given by applying $H$ to the naturality square in $C'_1$ for $\introN$ with respect to the morphism $\introN_t$. On the other hand, $\introN_{\beta(t)}$ is the coalgebra morphism in $Z$ from $\beta(t) = H(\introN_t)$ to $4_{H(t)} = F'_2 = H(\introN_{\Box_T t})$ whose underlying morphism in $C'_1$ is itself $\beta(t)$. Thus, $\beta(\introN_t)$ and $\introN_{\beta(t)}$ are both the same, both being the following diagram:
 
-Let the strict lexfunctor $k$ be the inclusion of $K$ into the $\Box_{C_1}$ coalgebras, followed by the forgetful functor from the $\Box_{C_1}$ coalgebras to $C_1$. Observe that $k$ acts as a geminal category homomorphism $: K \to C_1$, by \TODO.
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJIKHQpIl0sWzAsMiwiSChcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgodCkiXSxbMiwwLCJIKFxcQm94X1QgdCkgPSBcXEJveF97QydfMX0gSCh0KSJdLFsyLDIsIkgoXFxCb3hfVCBcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgoXFxCb3hfVCB0KSA9IFxcQm94X3tDJ18xfSBcXEJveF97QydfMX0gSCh0KSJdLFswLDEsIkgoXFxpbnRyb05fdCkiLDJdLFswLDIsIkgoXFxpbnRyb05fdCkiXSxbMiwzLCJIKFxcQm94X1QgXFxpbnRyb05fdCkgPSBcXEJveF97QydfMX0gSChcXGludHJvTl90KSJdLFsxLDMsIkgoXFxpbnRyb05fe1xcQm94X1QgdH0pID0gNF97SCh0KX0iLDJdXQ==
+\[\begin{tikzcd}
+	{H(t)} && {H(\Box_T t) = \Box_{C'_1} H(t)} \\
+	\\
+	{H(\Box_T t) = \Box_{C'_1} H(t)} && {H(\Box_T \Box_T t) = \Box_{C'_1} H(\Box_T t) = \Box_{C'_1} \Box_{C'_1} H(t)}
+	\arrow["{H(\introN_t)}"', from=1-1, to=3-1]
+	\arrow["{H(\introN_t)}", from=1-1, to=1-3]
+	\arrow["{H(\Box_T \introN_t) = \Box_{C'_1} H(\introN_t)}", from=1-3, to=3-3]
+	\arrow["{H(\introN_{\Box_T t}) = 4_{H(t)}}"', from=3-1, to=3-3]
+\end{tikzcd}\]
 
-Note that the construction of $K$ and $k$ depends only upon the geminal category $C_1$. Furthermore, observe for any strict introspective theory $T$ and geminal category homomorphism $H: T \to C_1$ as above, the $\beta$ as described above becomes the unique strict introspective theory homomorphism from $T$ to $K$ such that $\beta H = k$, by \TODO. 
-
-Thus, the operation turning $C_1$ into $K$ is the right adjoint to the functor turning strict introspective theories into geminal categories.
+This completes the demonstration that $\beta$ is an introspective theory homomorphism, and thus completes the proof of the desired terminality property.
 \end{proof}
 
 \begin{corollary}
@@ -669,7 +684,9 @@ In other words, for any strict lexcategory $C_0$ with an internal geminal catego
 This co-free $G$ admits an explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped. (Indeed, just as before, this whole construction can be carried out internal to an arbitrary ambient lexcategory.)
 \end{construction}
 \openDetails
-Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names of lexcategories denote global aspects of primed names and let $\straight{F}_1 : C_1 \to C_2$ be defined from $F'_1$ in our usual fashion. For convenience, we will also say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
+For convenience, we will say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
+
+Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names of lexcategories denote global aspects of primed names and let the correspondence between primed and unprimed names of lexfunctors be as before as well.
 
 Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2, G'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$ internal to $G_0$, with each $G'_n = C'_n \times C'_{n + 1}$ and $\phi'_n = F'_n \times F'_{n + 1}$, for $n \geq 1$.
 
