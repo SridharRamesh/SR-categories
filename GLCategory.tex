@@ -560,9 +560,9 @@ Note that the strict lexfunctor $F'_1 : C'_1 \to \Glob{C'_2}$ is such that for a
 	\arrow["{!}"', from=1-1, to=3-1]
 \end{tikzcd}\]
 
-That this diagram commutes is by equation $E_1$ of $C'_1$ being a geminal category. Thus $F'_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $F'_1$ acts as a strict lexfunctor from $C'_1$ to $\Glob{Z_2}$. By composing this with the projection functor from $Z$ to $C'_1$, we get a strict lexfunctor $\introS : Z \to \Glob{Z_2}$. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C'_1$, but this will indeed be the correct one for our purposes!)
+That this diagram commutes is by equation $E_1$ of $C'_1$ being a geminal category. Thus $F'_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $F'_1$ acts as a strict lexfunctor from $C'_1$ to $\Glob{Z_2}$. By composing this with the projection functor $\pi : Z \to C'_1$, we get a strict lexfunctor $\introS : Z \to \Glob{Z_2}$. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C'_1$, but this will indeed be the correct one for our purposes!)
 
-Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes morphisms to the corresponding naturality square for the natural transformation $4$. Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a coalgebra morphism from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose underlying morphism in $C'_1$ is $m$ itself, as described by the following commutative diagram in $C'_1$:
+Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes coalgebra morphisms to the corresponding naturality square for the natural transformation $4$ (thus, $\pi \circ \Hom_{Z_2}(1, \introS(-)) = \Box \circ \pi : Z \to C'_1$). Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a coalgebra morphism from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose underlying morphism in $C'_1$ is $m$ itself, as described by the following commutative diagram in $C'_1$:
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIlxcSG9tX3taXzJ9KDEsIFxcaW50cm9TKG0pKSA9IDRfYyIsMl1d
 \[\begin{tikzcd}
@@ -577,22 +577,22 @@ Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, 
 
 In the above commutative diagram within $C'_1$, the top arrow is the coalgebra $m$, while the bottom arrow is the coalgebra $\Hom_{Z_2}(1, \introS(m))$.
 
-These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural transformation $\introN$ between $\id_Z$ and $\Hom_{Z_2}(1, \introS(-))$ whose naturality is demonstrated like so: Consider any two coalgebras $m_1$ and $m_2$ in $Z$ and a coalgebra map $h : m_1 \to m_2$. The condition for $h$ to be a coalgebra map is the very same as the naturality square for this $\introN$: \TODO
+These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural transformation $\introN$ between $\id_Z$ and $\Hom_{Z_2}(1, \introS(-))$ whose naturality is demonstrated like so: Consider any two coalgebras $m_1$ and $m_2$ in $Z$ and a coalgebra map $h : m_1 \to m_2$. The condition for $h$ to be a coalgebra map is the very same as the naturality square for this $\introN$, amounting to the following commutative diagram in $C'_1$:
 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsImQiXSxbMiwyLCJcXEJveCBkIl0sWzAsMSwibV8xIiwyXSxbMCwyLCJoIl0sWzIsMywibV8yIl0sWzEsMywiXFxCb3ggaCIsMl1d
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFszLDAsImQiXSxbMywyLCJcXEJveCBkIl0sWzAsMSwibV8xIiwyXSxbMCwyLCJcXHBpKGgpIl0sWzIsMywibV8yIl0sWzEsMywiXFxCb3ggKFxccGkoaCkpID0gXFxwaShcXEhvbV97Wl8yfSgxLCBcXGludHJvUyhoKSkpIiwyXV0=
 \[\begin{tikzcd}
-	c && d \\
+	c &&& d \\
 	\\
-	{\Box c} && {\Box d}
+	{\Box c} &&& {\Box d}
 	\arrow["{m_1}"', from=1-1, to=3-1]
-	\arrow["h", from=1-1, to=1-3]
-	\arrow["{m_2}", from=1-3, to=3-3]
-	\arrow["{\Box h}"', from=3-1, to=3-3]
+	\arrow["{\pi(h)}", from=1-1, to=1-4]
+	\arrow["{m_2}", from=1-4, to=3-4]
+	\arrow["{\Box (\pi(h)) = \pi(\Hom_{Z_2}(1, \introS(h)))}"', from=3-1, to=3-4]
 \end{tikzcd}\]
 
 Thus we have a strict introspective theory $Z = \langle Z, Z_2, \introS, \introN \rangle$.
 
-By construction, the projection functor $\pi : Z \to C'_1$, which sends coalgebras to their carriers, is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
+By construction, the projection functor $\pi : Z \to C'_1$, is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzIsMCwiQydfMSJdLFsyLDIsIlxcR2xvYntcXHBpW1pfMl19ID0gXFxHbG9ie0NfMid9Il0sWzAsMiwiXFxHbG9ie1pfMn0iXSxbMCwxLCJcXHBpIl0sWzAsMywiXFxpbnRyb1MiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97XFxwaX17Wl8yfSIsMl0sWzEsMiwiRidfMSJdXQ==
 \[\begin{tikzcd}
@@ -605,11 +605,11 @@ By construction, the projection functor $\pi : Z \to C'_1$, which sends coalgebr
 	\arrow["{F'_1}", from=1-3, to=3-3]
 \end{tikzcd}\]
 
-This establishes $\pi$ as a geminal category homomorphism from $Z$ to $C'_1$.
+Thus, we have $\pi$ as a geminal category homomorphism from $Z$ to $C'_1$.
 
 \closeDetails
 
-Having described the strict introspective theory $Z$ and its geminal category homomorphism $\pi$ to $C'_1$, we now prove its terminality among all strict introspective theories with a designated geminal category homomorphism to $C'_1$:
+Having described the strict introspective theory $Z$ and its geminal category homomorphism $\pi$ to $C'_1$, we now prove their terminality among all strict introspective theories with a designated geminal category homomorphism to $C'_1$:
 
 \begin{proof}
 
@@ -619,16 +619,16 @@ The condition $\pi \circ \beta = H$ tells us right away what the carriers of the
 
 Thus, the uniqueness of $\beta$ is assured and what remains is only to see that a $\beta$ so-constructed is indeed a strict introspective theory homomorphism. First, let us see that we in fact do have such a $\beta : T \to Z$ as a strict lexfunctor:
 
-By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C_1} \circ H$. In detail, this is seen via the following commutative diagram:
+By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C'_1} \circ H$. In detail, this is seen via the following commutative diagram:
 
-% https://q.uiver.app/#q=WzAsNixbMywwLCJDXzEiXSxbMywxLCJcXEdsb2J7QydfMn0iXSxbMywyLCJDXzEiXSxbMCwwLCJUIl0sWzAsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkYnXzEiLDJdLFsxLDIsIlxcR2FtbWFfe0MnXzJ9IiwyXSxbMCwyLCJcXEJveF97Q18xfSIsMCx7ImN1cnZlIjotNX1dLFszLDAsIkgiXSxbMyw0LCJcXGludHJvUyJdLFs0LDEsIlxcSW5kdWNlZEhvbW97SH17Q30iLDFdLFs0LDUsIlxcR2FtbWFfQyJdLFs1LDIsIkgiLDJdLFszLDUsIlxcQm94X1QiLDIseyJjdXJ2ZSI6NX1dXQ==
+% https://q.uiver.app/#q=WzAsNixbMywwLCJDJ18xIl0sWzMsMSwiXFxHbG9ie0MnXzJ9Il0sWzMsMiwiQydfMSJdLFswLDAsIlQiXSxbMCwxLCJcXEdsb2J7Q30iXSxbMCwyLCJUIl0sWzAsMSwiRidfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDJ18xfSIsMCx7ImN1cnZlIjotNX1dLFszLDAsIkgiXSxbMyw0LCJcXGludHJvUyJdLFs0LDEsIlxcSW5kdWNlZEhvbW97SH17Q30iLDFdLFs0LDUsIlxcR2FtbWFfQyJdLFs1LDIsIkgiLDJdLFszLDUsIlxcQm94X1QiLDIseyJjdXJ2ZSI6NX1dXQ==
 \[\begin{tikzcd}
-	T &&& {C_1} \\
+	T &&& {C'_1} \\
 	{\Glob{C}} &&& {\Glob{C'_2}} \\
-	T &&& {C_1}
+	T &&& {C'_1}
 	\arrow["{F'_1}"', from=1-4, to=2-4]
 	\arrow["{\Gamma_{C'_2}}"', from=2-4, to=3-4]
-	\arrow["{\Box_{C_1}}", curve={height=-30pt}, from=1-4, to=3-4]
+	\arrow["{\Box_{C'_1}}", curve={height=-30pt}, from=1-4, to=3-4]
 	\arrow["H", from=1-1, to=1-4]
 	\arrow["\introS", from=1-1, to=2-1]
 	\arrow["{\InducedHomo{H}{C}}"{description}, from=2-1, to=2-4]
@@ -637,18 +637,18 @@ By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \B
 	\arrow["{\Box_T}"', curve={height=30pt}, from=1-1, to=3-1]
 \end{tikzcd}\]
 
-In the above diagram, the left side is the definition of $\Box_T$ and the right side is the definition of $\Box_{C_1}$. The top rectangle is one of the conditions in \magicref{VerboseGeminalCatHomoDefn} and the bottom rectangle is by \magicref{InducedGlobalCommute}.
+In the above diagram, the left side is the definition of $\Box_T$ and the right side is the definition of $\Box_{C'_1}$. The top rectangle is one of the conditions in \magicref{VerboseGeminalCatHomoDefn} and the bottom rectangle is by \magicref{InducedGlobalCommute}.
 
-Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $H \circ \Box_T = \Box_{C_1} \circ H$. Illustrated like so:
+Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $H \circ \Box_T = \Box_{C'_1} \circ H$. Illustrated like so:
 
-% https://q.uiver.app/#q=WzAsNixbNCwwLCJDXzEiXSxbNCwxLCJcXEdsb2J7QydfMn0iXSxbNCwyLCJDXzEiXSxbMCwwLCJUIl0sWzEsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkYnXzEiLDJdLFsxLDIsIlxcR2FtbWFfe0MnXzJ9IiwyXSxbMCwyLCJcXEJveF97Q18xfSIsMCx7ImN1cnZlIjotNX1dLFszLDAsIkgiXSxbMyw0LCJcXGludHJvUyJdLFs0LDEsIlxcSW5kdWNlZEhvbW97SH17Q30iLDFdLFs0LDUsIlxcR2FtbWFfQyJdLFs1LDIsIkgiLDJdLFszLDUsIlxcaWQiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCw0LCJcXGludHJvTiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
+% https://q.uiver.app/#q=WzAsNixbNCwwLCJDJ18xIl0sWzQsMSwiXFxHbG9ie0MnXzJ9Il0sWzQsMiwiQydfMSJdLFswLDAsIlQiXSxbMSwxLCJcXEdsb2J7Q30iXSxbMCwyLCJUIl0sWzAsMSwiRidfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDJ18xfSIsMCx7ImN1cnZlIjotNX1dLFszLDAsIkgiXSxbMyw0LCJcXGludHJvUyJdLFs0LDEsIlxcSW5kdWNlZEhvbW97SH17Q30iLDFdLFs0LDUsIlxcR2FtbWFfQyJdLFs1LDIsIkgiLDJdLFszLDUsIlxcaWQiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCw0LCJcXGludHJvTiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
 \[\begin{tikzcd}
-	T &&&& {C_1} \\
+	T &&&& {C'_1} \\
 	& {\Glob{C}} &&& {\Glob{C'_2}} \\
-	T &&&& {C_1}
+	T &&&& {C'_1}
 	\arrow["{F'_1}"', from=1-5, to=2-5]
 	\arrow["{\Gamma_{C'_2}}"', from=2-5, to=3-5]
-	\arrow["{\Box_{C_1}}", curve={height=-30pt}, from=1-5, to=3-5]
+	\arrow["{\Box_{C'_1}}", curve={height=-30pt}, from=1-5, to=3-5]
 	\arrow["H", from=1-1, to=1-5]
 	\arrow["\introS", from=1-1, to=2-2]
 	\arrow["{\InducedHomo{H}{C}}"{description}, from=2-2, to=2-5]
@@ -658,7 +658,7 @@ Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural 
 	\arrow["\introN"', shorten <=4pt, Rightarrow, from=0, to=2-2]
 \end{tikzcd}\]
 
-This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor and this forgetful functor creates basic limits (a la \magicref{BoxCoalgebrasInGeminal}), this $\beta$ is also a strict lexfunctor.
+This natural transformation from $H$ to $\Box_{C'_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C'_1}$-coalgebras, such that $\pi \circ \beta = H$. As $H$ is a strict lexfunctor and $\pi$ creates basic limits (a la \magicref{BoxCoalgebrasInGeminal}), this $\beta$ is also a strict lexfunctor.
 
 Not only that, but for each $t \in T$, the $\Box_{C'_1}$-coalgebra $\beta(t) = H(\introN_t)$ has the property that the following diagram commutes, as this diagram is $H$ applied to the naturality square in $T$ for $\introN : \id_T \to \Box_T$ with respect to the morphism $\introN_t$:
 
@@ -679,7 +679,7 @@ Thus, $\beta$ is indeed a strict lexfunctor from $T$ to $Z$, such that $\pi \cir
 
 We have three more conditions to show to demonstrate that $\beta$ is a strict introspective theory homomorphism. We must show it interacts in the appropriate way with $C$, $\introS$, and $\introN$.
 
-The required condition of $\beta[C]$ is that this should equal $Z_2$. Note that $\beta(C)$ is the lexcategory in $Z$ corresponding to the internal lexfunctor $H(\introN_C)$ in $C'_1$. By virtue of $H : T \to C'_1$ being a geminal category homomorphism, this $H(\introN_C)$ is $F'_2$, which is indeed our definition of the lexcategory $Z_2$ in $Z$, as required.
+The required condition on $\beta$ with respect to $C$ is that $\beta[C]$ should equal $Z_2$. Note that $\beta(C)$ is the lexcategory in $Z$ corresponding to the internal lexfunctor $H(\introN_C)$ in $C'_1$. By virtue of $H : T \to C'_1$ being a geminal category homomorphism, this $H(\introN_C)$ is $F'_2$, which is indeed our definition of the lexcategory $Z_2$ in $Z$, as required.
 
 The required condition on $\beta$ with respect to $\introS$ is that the following diagram should commute:
 
@@ -693,7 +693,7 @@ The required condition on $\beta$ with respect to $\introS$ is that the followin
 	\arrow["\introS", from=1-3, to=2-3]
 \end{tikzcd}\]
 
-For this diagram to commute, it suffices to know that following both paths with the projection from $\Glob{Z_2}$ to $\Glob{C'_2}$ commutes. By unwinding definitions, $\beta; \introS$ followed by this projection is $\straight{F'_1}(H(-))$ while $\introS ; \InducedHomo{\beta}{C}$ followed by this projection is $H(\introS(-))$. As $H$ is a geminal category homomorphism from $T$ to $C'_1$, these are indeed the same.
+For this diagram to commute, it suffices to know that following both paths with the projection $P : \Glob{Z_2} \to \Glob{C'_2}$ commutes. By unwinding definitions, $P \circ \introS \circ \beta = F'_1 \circ H$ while $P \circ \InducedHomo{\beta}{C} \circ \introS = \InducedHomo{H}{C} \circ \introS$. As $H$ is a geminal category homomorphism from $T$ to $C'_1$, these are indeed the same.
 
 Finally, the required condition on $\beta$ with respect to $\introN$ is that $\beta(\introN_t) = \introN_{\beta(t)}$ for each $t \in T$. Note that $\beta(\introN_t)$ is the coalgebra morphism in $Z$ given by applying $H$ to the naturality square in $T$ for $\introN : \id_T \to \Box_T$ with respect to the morphism $\introN_t$. On the other hand, $\introN_{\beta(t)}$ is the coalgebra morphism in $Z$ from $\beta(t) = H(\introN_t)$ to $4_{H(t)} = F'_2 = H(\introN_{\Box_T t})$ whose underlying morphism in $C'_1$ is itself $\beta(t)$. Thus, $\beta(\introN_t)$ and $\introN_{\beta(t)}$ are both the same, both being the following diagram (which we had already considered above):
 
