@@ -736,53 +736,56 @@ We also clearly have a projection strict lexfunctor $H$ from $\underlying{G} = C
 Having described the construction's details, we now prove that this construction has the stated terminality property:
 
 \begin{proof}
-Suppose given any geminal category $K = \langle K_0, K'_1, K'_2, \ldots; P_0, P'_1, P'_2, \ldots \rangle$ and strict lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$. As ever, we will use unprimed names for the global aspects of primed names. \TODO
+Suppose given any geminal category $K = \langle K_0, K_1, K_2, \ldots; P_0, P_1, P_2, \ldots \rangle$ and strict lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$.
 
 A strict lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times \Glob{C_1}$ is given by a pair of strict lexfunctors $J_0 : K_0 \to C_0$ and $J_1 : K_0 \to \Glob{C_1}$. Since $H$ is simply projection of the $C_0$ component, we will have that $H \circ M = J$ precisely when $J_0 = J$. Thus, specifying such $M$ is determined by specifying $J_1$ alone. We must show that there is a unique $J_1$ making this $M$ into a geminal category homomorphism from $K$ to $G$.
 
 Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, we see the conditions for such $M$ to be a geminal category homomorphism. First of all, we must have that $M[\InteriorGeminal{K}] = \InteriorGeminal{G}$, which is to say, $J[\InteriorGeminal{K}] = \gamma$ (which has already been presumed) and $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$. On top of this, the final condition for $M$ to be a geminal category homomorphism is that the following diagram commutes:
 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wIFxcOyAgW1xcdGV4dHt3aGljaCBpc30gXFw7IChjXzAsIGNfMSkgXFxtYXBzdG8gKGNfMSwgXFxzdHJhaWdodHtGfV8xKGNfMSkpXSJdXQ==
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBcXEdsb2J7Q18xfSJdLFsyLDIsIlxcR2xvYntDXzF9IFxcdGltZXMgXFxHbG9ie0NfMn0iXSxbMCwyLCJcXEdsb2J7S18xfSJdLFswLDEsIk0gPSBcXGxhbmdsZSBKLCBKXzEgXFxyYW5nbGUiXSxbMCwzLCJQXzAiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97TX17S18xfSIsMl0sWzEsMiwiXFxwaGlfMCBcXDsgIFtcXHRleHR7d2hpY2ggaXN9IFxcOyAoY18wLCBjXzEpIFxcbWFwc3RvIChjXzEsIEZfMShjXzEpKV0iXV0=
 \[\begin{tikzcd}
-	{K_0} && {C_0 \times C_1} \\
+	{K_0} && {C_0 \times \Glob{C_1}} \\
 	\\
-	{K_1} && {C_1 \times C_2}
+	{\Glob{K_1}} && {\Glob{C_1} \times \Glob{C_2}}
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
-	\arrow["{\InducedHomo{M}{K'_1}}"', from=3-1, to=3-3]
-	\arrow["{\phi_0 \;  [\text{which is} \; (c_0, c_1) \mapsto (c_1, \straight{F}_1(c_1))]}", from=1-3, to=3-3]
+	\arrow["{\InducedHomo{M}{K_1}}"', from=3-1, to=3-3]
+	\arrow["{\phi_0 \;  [\text{which is} \; (c_0, c_1) \mapsto (c_1, F_1(c_1))]}", from=1-3, to=3-3]
 \end{tikzcd}\]
 
-This diagram commutes just in case both of the following diagrams commute, which separately consider its $C_1$ and $C_2$ components:
+This diagram commutes just in case both of the following diagrams commute, which separately consider its $\Glob(C_1)$ and $\Glob(C_2)$ components:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0snXzF9IiwyXSxbMSwyLCIoY18wLCBjXzEpIFxcbWFwc3RvIGNfMSJdLFswLDIsIkpfMSIsMV1d
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBcXEdsb2J7Q18xfSJdLFsyLDIsIlxcR2xvYntDXzF9Il0sWzAsMiwiXFxHbG9ie0tfMX0iXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0tfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gY18xIl0sWzAsMiwiSl8xIiwxXV0=
 \[\begin{tikzcd}
-	{K_0} && {C_0 \times C_1} \\
+	{K_0} && {C_0 \times \Glob{C_1}} \\
 	\\
-	{K_1} && {C_1}
+	{\Glob{K_1}} && {\Glob{C_1}}
 	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
 	\arrow["{P_0}"', from=1-1, to=3-1]
-	\arrow["{\InducedHomo{J}{K'_1}}"', from=3-1, to=3-3]
+	\arrow["{\InducedHomo{J}{K_1}}"', from=3-1, to=3-3]
 	\arrow["{(c_0, c_1) \mapsto c_1}", from=1-3, to=3-3]
 	\arrow["{J_1}"{description}, from=1-1, to=3-3]
 \end{tikzcd}\]
 
-% https://q.uiver.app/#q=WzAsNSxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzIiXSxbMCwyLCJLXzEiXSxbMSwxLCJDXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0pfMX17SydfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gXFxzdHJhaWdodHtGfV8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDIsIlxcc3RyYWlnaHR7Rn1fMSIsMV1d
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXzAiXSxbNCwwLCJDXzAgXFx0aW1lcyBcXEdsb2J7Q18xfSJdLFs0LDQsIlxcR2xvYntDXzJ9Il0sWzAsNCwiXFxHbG9ie0tfMX0iXSxbMSwxLCJcXEdsb2J7Q18xfSJdLFsyLDIsIlxcR2xvYntcXEdhbW1hX3tDXzF9W0NfMl19Il0sWzAsMSwiTSA9IFxcbGFuZ2xlIEosIEpfMSBcXHJhbmdsZSJdLFswLDMsIlBfMCIsMl0sWzMsMiwiXFxJbmR1Y2VkSG9tb3tKXzF9e0tfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gXFxzdHJhaWdodHtGfV8xKGNfMSkiXSxbMCw0LCJKXzEiLDFdLFs0LDUsIlxcR2xvYntGXzF9IiwxXSxbMiw1LCJcXGxlZnQoXFxJbmR1Y2VkSG9tb3tcXEdhbW1hX3tDXzF9fXtDXzJ9XFxyaWdodCleey0xfSIsMSx7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6ImFycm93aGVhZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV1d
 \[\begin{tikzcd}
-	{K_0} && {C_0 \times C_1} \\
-	& {C_1} \\
-	{K_1} && {C_2}
-	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-3]
-	\arrow["{P_0}"', from=1-1, to=3-1]
-	\arrow["{\InducedHomo{J_1}{K'_1}}"', from=3-1, to=3-3]
-	\arrow["{(c_0, c_1) \mapsto \straight{F}_1(c_1)}", from=1-3, to=3-3]
+	{K_0} &&&& {C_0 \times \Glob{C_1}} \\
+	& {\Glob{C_1}} \\
+	&& {\Glob{\Gamma_{C_1}[C_2]}} \\
+	\\
+	{\Glob{K_1}} &&&& {\Glob{C_2}}
+	\arrow["{M = \langle J, J_1 \rangle}", from=1-1, to=1-5]
+	\arrow["{P_0}"', from=1-1, to=5-1]
+	\arrow["{\InducedHomo{J_1}{K_1}}"', from=5-1, to=5-5]
+	\arrow["{(c_0, c_1) \mapsto \straight{F}_1(c_1)}", from=1-5, to=5-5]
 	\arrow["{J_1}"{description}, from=1-1, to=2-2]
-	\arrow["{\straight{F}_1}"{description}, from=2-2, to=3-3]
+	\arrow["{\Glob{F_1}}"{description}, from=2-2, to=3-3]
+	\arrow["{\left(\InducedHomo{\Gamma_{C_1}}{C_2}\right)^{-1}}"{description}, tail reversed, no head, from=5-5, to=3-3]
 \end{tikzcd}\]
 
 In each of the above diagrams, the top-right triangle trivially commutes, so the commutativity condition for the overall square is equivalent to the commutativity of the bottom-left triangle.
 
-From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K'_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$, as well as the condition of the commutative diagram for the $C_2$ component.
+From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$, as well as the condition of the commutative diagram for the $\Glob{C_2}$ component.
 
 \bigskip
 For the former condition, we have the chain of equations 
@@ -790,9 +793,9 @@ For the former condition, we have the chain of equations
 \begin{array}{l}
 J_1[\InteriorGeminal{K}] \\
 
-= \InducedHomo{J}{K'_1} [P_0[\InteriorGeminal{K}]]\\
+= \InducedHomo{J}{K_1} [P_0[\InteriorGeminal{K}]]\\
 
-= \InducedHomo{J}{K'_1}[\InteriorGeminal{\InteriorGeminal{K}}] \\
+= \InducedHomo{J}{K_1}[\InteriorGeminal{\InteriorGeminal{K}}] \\
 
 = \InteriorGeminal{J[\InteriorGeminal{K}]} \\
 
@@ -804,25 +807,23 @@ J_1[\InteriorGeminal{K}] \\
 \bigskip
 And as for the final commutativity condition, this follows like so:
 
-% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJLXzEiXSxbNSwwLCJDXzEiXSxbNSwyLCJDXzIiXSxbMiwwLCJLXzEiXSxbMiwyLCJLXzIiXSxbMCwxLCJQXzAiLDJdLFsyLDMsIlxcc3RyYWlnaHR7Rn1fMSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLJ18xfSIsMl0sWzAsMiwiSl8xIiwwLHsiY3VydmUiOi01fV0sWzEsNSwiXFxJbmR1Y2VkSG9tb3tQXzB9e0snXzF9Il0sWzUsMywiXFxJbmR1Y2VkSG9tb3tKfXtLJ18yfSJdLFs0LDUsIlBfMSJdLFsxLDMsIlxcSW5kdWNlZEhvbW97Sl8xfXtLJ18xfSIsMix7ImN1cnZlIjo1fV0sWzEwLDQsIiIsMCx7InNob3J0ZW4iOnsic291cmNlIjoyMCwidGFyZ2V0IjoyMH0sInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNSwxNCwiIiwyLHsic2hvcnRlbiI6eyJ0YXJnZXQiOjIwfSwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% https://q.uiver.app/#q=WzAsNixbMCwwLCJLXzAiXSxbMCwyLCJcXEdsb2J7S18xfSJdLFs1LDAsIlxcR2xvYntDXzF9Il0sWzUsMiwiXFxHbG9ie1xcR2FtbWFfe0NfMX1bQ18yXX0iXSxbMiwwLCJcXEdsb2J7S18xfSJdLFsyLDIsIlxcR2xvYntcXEdhbW1hX3tLXzF9W0tfMl19Il0sWzAsMSwiUF8wIiwyXSxbMiwzLCJcXEdsb2J7Rl8xfSJdLFswLDQsIlBfMCIsMl0sWzQsMiwiXFxJbmR1Y2VkSG9tb3tKfXtLXzF9IiwyXSxbMCwyLCJKXzEiLDAseyJjdXJ2ZSI6LTV9XSxbMSw1LCJcXEluZHVjZWRIb21ve1BfMH17S18xfSJdLFs1LDMsIlxcSW5kdWNlZEhvbW97Sn17XFxHYW1tYV97S18xfVtLXzJdfSJdLFs0LDUsIlxcR2xvYntQXzF9Il0sWzEsMywiXFxJbmR1Y2VkSG9tb3tKXzF9e0tfMX0iLDIseyJjdXJ2ZSI6NX1dXQ==
 \[\begin{tikzcd}
-	{K_0} && {K_1} &&& {C_1} \\
+	{K_0} && {\Glob{K_1}} &&& {\Glob{C_1}} \\
 	\\
-	{K_1} && {K_2} &&& {C_2}
+	{\Glob{K_1}} && {\Glob{\Gamma_{K_1}[K_2]}} &&& {\Glob{\Gamma_{C_1}[C_2]}}
 	\arrow["{P_0}"', from=1-1, to=3-1]
-	\arrow["{\straight{F}_1}", from=1-6, to=3-6]
+	\arrow["{\Glob{F_1}}", from=1-6, to=3-6]
 	\arrow["{P_0}"', from=1-1, to=1-3]
-	\arrow["{\InducedHomo{J}{K'_1}}"', from=1-3, to=1-6]
-	\arrow[""{name=0, anchor=center, inner sep=0}, "{J_1}", curve={height=-30pt}, from=1-1, to=1-6]
-	\arrow["{\InducedHomo{P_0}{K'_1}}", from=3-1, to=3-3]
-	\arrow["{\InducedHomo{J}{K'_2}}", from=3-3, to=3-6]
-	\arrow["{P_1}", from=1-3, to=3-3]
-	\arrow[""{name=1, anchor=center, inner sep=0}, "{\InducedHomo{J_1}{K'_1}}"', curve={height=30pt}, from=3-1, to=3-6]
-	\arrow[shorten <=4pt, shorten >=4pt, Rightarrow, no head, from=0, to=1-3]
-	\arrow[shorten >=4pt, Rightarrow, no head, from=3-3, to=1]
+	\arrow["{\InducedHomo{J}{K_1}}"', from=1-3, to=1-6]
+	\arrow["{J_1}", curve={height=-30pt}, from=1-1, to=1-6]
+	\arrow["{\InducedHomo{P_0}{K_1}}", from=3-1, to=3-3]
+	\arrow["{\InducedHomo{J}{\Gamma_{K_1}[K_2]}}", from=3-3, to=3-6]
+	\arrow["{\Glob{P_1}}", from=1-3, to=3-3]
+	\arrow["{\InducedHomo{J_1}{K_1}}"', curve={height=30pt}, from=3-1, to=3-6]
 \end{tikzcd}\]
 
-In the above diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K'_1} \circ P_0$, and the bottom equation follows from this definition as well \sTODOinline{we may wish to clarify the reader's understanding of $\InducedHomo{J}{K'_2}$, which involves a doubly internal structure}. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P'_1] = F'_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \sTODOinline{Make sure this all makes sense.}
+In the above commutative diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K_1} \circ P_0$, and the bottom equation follows from this definition as well. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P_1] = F_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \sTODOinline{Make sure this all makes sense.}
 
 This completes the proof of the terminality property of $G$.
 \end{proof}
