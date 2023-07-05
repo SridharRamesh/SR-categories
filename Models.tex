@@ -175,7 +175,7 @@ First, we must observe a lemmatic construction, on localizing introspective theo
 \begin{construction}\label{LocalizeIntrosp}
 If $\langle T, C, \introS, \introN \rangle$ is an introspective theory, and $f : T \to T[M^{-1}]$ is a lex localization in the sense of \magicref{DefnLexLocalization}, and every morphism in $M$ is sent to an isomorphism by $\introS$, then $f$ acts as an introspective theory homomorphism (in the sense of the non-strict analogue of \magicref{StrictIntrospHomoDefn}) from $T$ to a uniquely determined introspective theory $\langle T[M^{-1}], f(C) \rangle$.
 
-Furthermore, given any introspective theory homomorphism $h : \langle T, C \rangle \to \langle T_2, C_2 \rangle$ such that $h$ sends every morphism in $M$ to an isomorphism and $h[C] = C_2$, this $h$ factors uniquely through $f$ by an introspective theory homomorphism from $\langle T[M^{-1}], f(C) \rangle$ to $\langle T_2, C_2 \rangle$. In this sense, $\langle T[M^{-1}], f(C) \rangle$ is the localization qua introspective theory of $\langle T, C \rangle$ at $M$.
+Furthermore, given any introspective theory homomorphism $h : \langle T, C \rangle \to \langle T_2, C_2 \rangle$ such that $h$ sends every morphism in $M$ to an isomorphism, this $h$ factors uniquely through $f$ by an introspective theory homomorphism from $\langle T[M^{-1}], f(C) \rangle$ to $\langle T_2, C_2 \rangle$. In this sense, $\langle T[M^{-1}], f(C) \rangle$ is the localization qua introspective theory of $\langle T, C \rangle$ at $M$.
 
 In particular, for any introspective theory, we can apply the above taking $M$ to be the set of all morphisms sent to isomorphisms by $\introS$. We may call the result the \defined{maximal localization} of our original introspective theory.
 \end{construction}
@@ -184,11 +184,47 @@ If $f : T \to T[M^{-1}]$ is to act as an introspective theory homomorphism, it m
 
 The requirement on $C'$ in \magicref{StrictIntrospHomoDefn} directly determines it as $f(C)$.
 
-The requirement on $\introS'$ is that $\introS' \circ f = \InducedHomo{f}{C} \circ \introS$. Note that the right hand side of this equation sends all morphisms in $M$ to isomorphisms (since $\introS$ already does so). Thus, by the defining property of localization, this uniquely determines $\introS'$ as a functor, and indeed it will be a lexfunctor by \magicref{LexLocalizationLemma}.
+The requirement on $\introS'$ is that $\introS' \circ f = \InducedHomo{f}{C} \circ \introS$. Note that the right hand side of this equation sends all morphisms in $M$ to isomorphisms (since $\introS$ already does so). Thus, by the defining property of the localization $f : T \to T[M^{-1}]$, this uniquely determines $\introS'$ as a functor, and indeed this $\introS'$ will be a lexfunctor by \magicref{LexLocalizationLemma}.
 
-Finally, the requirement on $\introN'$ is that $\introN'$ whiskered along $f$ is $\introN$ whiskered along $f$ from the other side. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
+Finally, the requirement on $\introN'$ is that the whiskering $\introN' f$ is equal to the whiskering $f \introN$. By \magicref{LocalizingTransform}, this uniquely determines $\introN'$.
 
-Next, we show the unique factorization property. \TODO.
+Next, we show the unique factorization property. Let $h$ be a map as described. As $f : T \to T[M^{-1}]$ is a lex localization, we have that there is a unique lexfunctor $g : T[M^{-1}] \to T_2$ such that $h = g \circ f$. All that remains is to show that this $g$ is an introspective theory homomorphism from $\langle T[M^{-1}, f(C), \introS', \introN' \rangle$ to $\langle T_2, C_2, \introS_2, \introN_2 \rangle$, in that it satisfies the conditions of \magicref{StrictIntrospHomoDefn}.
+
+The introspective theory homomorphism condition $h(C) = C_2$ gives us the corresponding introspective theory homomorphism condition $g(f(C)) = C_2$.
+
+The next condition we must establish is that this diagram commutes:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJUW01eey0xfV0iXSxbMiwwLCJUXzIiXSxbMCwxLCJcXEdsb2J7ZihDKX0iXSxbMiwxLCJcXEdsb2J7ZyhmKEMpKX0gPSBcXEdsb2J7Q18yfSJdLFswLDEsImciXSxbMCwyLCJcXGludHJvUyciLDJdLFsyLDMsIlxcSW5kdWNlZEhvbW97Z317ZihDKX0iLDJdLFsxLDMsIlxcaW50cm9TIl1d
+\[\begin{tikzcd}
+	{T[M^{-1}]} && {T_2} \\
+	{\Glob{f(C)}} && {\Glob{g(f(C))} = \Glob{C_2}}
+	\arrow["g", from=1-1, to=1-3]
+	\arrow["{\introS'}"', from=1-1, to=2-1]
+	\arrow["{\InducedHomo{g}{f(C)}}"', from=2-1, to=2-3]
+	\arrow["\introS", from=1-3, to=2-3]
+\end{tikzcd}\]
+
+Because of the uniqueness of factorizations through localizations, it suffices to establish that both paths here become the same when preceded by the localization $f : T \to T[M^{-1}]$. And that can be seen via the following commuting diagram:
+
+% https://q.uiver.app/#q=WzAsNyxbMSwwLCJUW01eey0xfV0iXSxbMywwLCJUXzIiXSxbMiwzLCJcXEdsb2J7ZihDKX0iXSxbNSwxLCJcXEdsb2J7aChDKSA9IGcoZihDKSkgPSBDXzJ9Il0sWzAsMSwiVCJdLFsxLDMsIlRbTV57LTF9XSJdLFsyLDEsIlxcR2xvYntDfSJdLFswLDEsImciXSxbMiwzLCJcXEluZHVjZWRIb21ve2d9e2YoQyl9IiwyXSxbMSwzLCJcXGludHJvUyJdLFs0LDAsImYiXSxbNSwyLCJcXGludHJvUyciLDJdLFs0LDUsImYiLDJdLFs0LDEsImgiLDFdLFs2LDMsIlxcSW5kdWNlZEhvbW97aH17Q30iLDFdLFs0LDYsIlxcaW50cm9TIiwxXSxbNiwyLCJcXEluZHVjZWRIb21ve2Z9e0N9IiwxXV0=
+\[\begin{tikzcd}
+	& {T[M^{-1}]} && {T_2} \\
+	T && {\Glob{C}} &&& {\Glob{h(C) = g(f(C)) = C_2}} \\
+	\\
+	& {T[M^{-1}]} & {\Glob{f(C)}}
+	\arrow["g", from=1-2, to=1-4]
+	\arrow["{\InducedHomo{g}{f(C)}}"', from=4-3, to=2-6]
+	\arrow["\introS", from=1-4, to=2-6]
+	\arrow["f", from=2-1, to=1-2]
+	\arrow["{\introS'}"', from=4-2, to=4-3]
+	\arrow["f"', from=2-1, to=4-2]
+	\arrow["h"{description}, from=2-1, to=1-4]
+	\arrow["{\InducedHomo{h}{C}}"{description}, from=2-3, to=2-6]
+	\arrow["\introS"{description}, from=2-1, to=2-3]
+	\arrow["{\InducedHomo{f}{C}}"{description}, from=2-3, to=4-3]
+\end{tikzcd}\]
+
+Finally, the last condition we must establish is that the whiskerings $\introN g$ and $g \introN'$ are equal. By \magicref{LocalizingTransform}, it suffices to establish that the whiskerings $\introN g f$ and $g \introN' f$ are equal. This can be seen via the chain of equations $\introN g f = \introN h = h \introN = g f \introN = g \introN' f$.
 \end{proof}
 
 \begin{theorem}\label{Sigma1ModelIAUConnection}

@@ -454,7 +454,7 @@ This is by exactly the same arguments as we have just given. All the results and
 \sTODOinline{
 \subsection{Modal logic in geminal categories}
 \begin{observation}
-In every introspective theory $\langle T, C \rangle$, we have a $T$-internal endofunctor $\Box_C$ on $C$ modeling the modal logic GL. Thus, this is in particular true of the initial introspective theory, which by \magicref{InitialIntrospectiveTheory} is the theory of geminal categories. Thus, any geminal category $K$ comes with such an operation $\Box_{|K|}$ on $|K|$, and this operation is furthermore preserved by geminal category homomorphisms.
+In every introspective theory $\langle T, C \rangle$, we have a $T$-internal endofunctor $\Box_C$ on $C$ modeling the modal logic GL. Thus, this is in particular true of the initial introspective theory, which by \magicref{InitialIntrospectiveTheory} is the theory of geminal categories. Thus, any geminal category $K$ comes with such an operation $\Box_{\underlying{K}}$ on $\underlying{K}$, and this operation is furthermore preserved by geminal category homomorphisms.
 \end{observation}
 
 \sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
@@ -505,15 +505,15 @@ Construing strict introspective theories as geminal categories via \magicref{Int
 As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction.
 \end{construction}
 \openDetails
-Throughout the following, we use our usual conventions for how unprimed names are defined from the corresponding primed names of internal lexcategories and internal lexfunctors. For linguistic convenience, we shall also in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
+For linguistic convenience, we shall in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
 
-We are tasked with showing that, for any geminal category $C'_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C'_1$.
+We are tasked with showing that, for any geminal category $C'_1$, there is a suitably terminal strict introspective theory with a geminal category homomorphism to $C'_1$.
 
 We will first give the details of the construction, and then give the proof that it has the terminality property.
 
 Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C \Box_C$ built from $\introN$. From \magicref{BoxCAlternativeDescriptionLemma}, we see that this $\Box_C$ can be defined as the composition of $\introN_C$ and $\Hom_{\introS[C]}(1, -)$.
 
-Interpreting the above in the particular context of the introspective theory $\langle \GLCatTheory, |K| \rangle$ of \magicref{GLCatTheoryIsIntrosp}, we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ \TODOinline{Should make $C_1$ into $C'_1$ throughout} comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
+Interpreting the above in the particular context of the introspective theory $\langle \GLCatTheory, \underlying{K} \rangle$ of \magicref{GLCatTheoryIsIntrosp}, we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
 
 We will in the following write $\Box$ with no subscript to mean this $\Box_{C'_1}$.
 
@@ -564,11 +564,11 @@ That this diagram commutes is by equation $E_1$ of $C'_1$ being a geminal catego
 
 Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes coalgebra morphisms to the corresponding naturality square for the natural transformation $4$ (thus, $\pi \circ \Hom_{Z_2}(1, \introS(-)) = \Box \circ \pi : Z \to C'_1$). Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a coalgebra morphism from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose underlying morphism in $C'_1$ is $m$ itself, as described by the following commutative diagram in $C'_1$:
 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIlxcSG9tX3taXzJ9KDEsIFxcaW50cm9TKG0pKSA9IDRfYyIsMl1d
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveCBcXEJveCBjIl0sWzAsMSwibSIsMl0sWzAsMiwibSJdLFsyLDMsIlxcQm94IG0iXSxbMSwzLCJcXEhvbV97Wl8yfSgxLCBcXGludHJvUyhtKSkgPSA0X2MiLDJdXQ==
 \[\begin{tikzcd}
 	c && {\Box c} \\
 	\\
-	{\Box c} && {\Box^2 c}
+	{\Box c} && {\Box \Box c}
 	\arrow["m"', from=1-1, to=3-1]
 	\arrow["m", from=1-1, to=1-3]
 	\arrow["{\Box m}", from=1-3, to=3-3]
@@ -594,11 +594,11 @@ Thus we have a strict introspective theory $Z = \langle Z, Z_2, \introS, \introN
 
 By construction, the projection functor $\pi : Z \to C'_1$, is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzIsMCwiQydfMSJdLFsyLDIsIlxcR2xvYntcXHBpW1pfMl19ID0gXFxHbG9ie0NfMid9Il0sWzAsMiwiXFxHbG9ie1pfMn0iXSxbMCwxLCJcXHBpIl0sWzAsMywiXFxpbnRyb1MiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97XFxwaX17Wl8yfSIsMl0sWzEsMiwiRidfMSJdXQ==
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzIsMCwiQydfMSJdLFsyLDIsIlxcR2xvYntcXHBpW1pfMl19ID0gXFxHbG9ie0MnXzJ9Il0sWzAsMiwiXFxHbG9ie1pfMn0iXSxbMCwxLCJcXHBpIl0sWzAsMywiXFxpbnRyb1MiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97XFxwaX17Wl8yfSIsMl0sWzEsMiwiRidfMSJdXQ==
 \[\begin{tikzcd}
 	Z && {C'_1} \\
 	\\
-	{\Glob{Z_2}} && {\Glob{\pi[Z_2]} = \Glob{C_2'}}
+	{\Glob{Z_2}} && {\Glob{\pi[Z_2]} = \Glob{C'_2}}
 	\arrow["\pi", from=1-1, to=1-3]
 	\arrow["\introS"', from=1-1, to=3-1]
 	\arrow["{\InducedHomo{\pi}{Z_2}}"', from=3-1, to=3-3]
@@ -695,7 +695,7 @@ The required condition on $\beta$ with respect to $\introS$ is that the followin
 
 For this diagram to commute, it suffices to know that following both paths with the projection $P : \Glob{Z_2} \to \Glob{C'_2}$ commutes. By unwinding definitions, $P \circ \introS \circ \beta = F'_1 \circ H$ while $P \circ \InducedHomo{\beta}{C} \circ \introS = \InducedHomo{H}{C} \circ \introS$. As $H$ is a geminal category homomorphism from $T$ to $C'_1$, these are indeed the same.
 
-Finally, the required condition on $\beta$ with respect to $\introN$ is that $\beta(\introN_t) = \introN_{\beta(t)}$ for each $t \in T$. Note that $\beta(\introN_t)$ is the coalgebra morphism in $Z$ given by applying $H$ to the naturality square in $T$ for $\introN : \id_T \to \Box_T$ with respect to the morphism $\introN_t$. On the other hand, $\introN_{\beta(t)}$ is the coalgebra morphism in $Z$ from $\beta(t) = H(\introN_t)$ to $4_{H(t)} = F'_2 = H(\introN_{\Box_T t})$ whose underlying morphism in $C'_1$ is itself $\beta(t)$. Thus, $\beta(\introN_t)$ and $\introN_{\beta(t)}$ are both the same, both being the following diagram (which we had already considered above):
+Finally, the required condition on $\beta$ with respect to $\introN$ is that $\beta(\introN_t) = \introN_{\beta(t)}$ for each $t \in T$. Note that $\beta(\introN_t)$ is the coalgebra morphism in $Z$ given by applying $H$ to the naturality square in $T$ for $\introN : \id_T \to \Box_T$ with respect to the morphism $\introN_t$. On the other hand, $\introN_{\beta(t)}$ is the coalgebra morphism in $Z$ from $\beta(t) = H(\introN_t)$ to $4_{H(t)} = F'_2 = H(\introN_{\Box_T t})$ whose underlying morphism in $C'_1$ is itself $\beta(t)$. Thus, $\beta(\introN_t)$ and $\introN_{\beta(t)}$ are both the same, both being the following commuting diagram (which we had already considered above):
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIKHQpIl0sWzAsMiwiSChcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgodCkiXSxbMiwwLCJIKFxcQm94X1QgdCkgPSBcXEJveF97QydfMX0gSCh0KSJdLFsyLDIsIkgoXFxCb3hfVCBcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgoXFxCb3hfVCB0KSA9IFxcQm94X3tDJ18xfSBcXEJveF97QydfMX0gSCh0KSJdLFswLDEsIkgoXFxpbnRyb05fdCkiLDJdLFswLDIsIkgoXFxpbnRyb05fdCkiXSxbMiwzLCJIKFxcQm94X1QgXFxpbnRyb05fdCkgPSBcXEJveF97QydfMX0gSChcXGludHJvTl90KSJdLFsxLDMsIkgoXFxpbnRyb05fe1xcQm94X1QgdH0pID0gNF97SCh0KX0iLDJdXQ==
 \[\begin{tikzcd}
@@ -708,39 +708,39 @@ Finally, the required condition on $\beta$ with respect to $\introN$ is that $\b
 	\arrow["{H(\introN_{\Box_T t}) = 4_{H(t)}}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-This completes the demonstration that $\beta$ is an introspective theory homomorphism, and thus completes the proof of the desired terminality property.
+This completes the demonstration that $\beta$ is a strict introspective theory homomorphism, and thus completes the proof of the desired terminality property.
 \end{proof}
 
 \begin{corollary}
-As left adjoints preserve initial objects, the above tells us that the initial strict introspective theory (which we described in \magicref{InitialIntrospectiveTheory}) is also the initial geminal category.
+As left adjoints preserve initial objects, the above tells us that the initial strict introspective theory (which we described in \magicref{InitialIntrospectiveTheory}) is also the initial geminal category. Thus, the underlying lexcategory of the initial geminal category is the initial lexcategory with an internal geminal category!
 \end{corollary}
 
 \begin{construction}
-Consider the functor from the category of geminal categories to the category of strict lexcategories with a designated internal geminal category, given by sending any geminal category $G$ to the strict lexcategory $|G|$ with internal geminal category $\InteriorGeminal{G}$. This functor has a right adjoint.
+Consider the functor from the category of geminal categories to the category of strict lexcategories with a designated internal geminal category, given by sending any geminal category $G$ to the strict lexcategory $\underlying{G}$ with internal geminal category $\InteriorGeminal{G}$. This functor has a right adjoint.
 
 In other words, for any strict lexcategory $C_0$ with an internal geminal category $\gamma$, there is a geminal category $G$ equipped with a strict lexfunctor $H : \underlying{G} \to C_0$ satisfying $H[\InteriorGeminal{G}] = \gamma$, which is terminal among all so equipped geminal categories (in the sense that for any other such geminal category $K$ with strict lexfunctor $J : \underlying{K} \to C_0$ satisfying $J[\InteriorGeminal{K}] = \gamma$, there is a unique geminal category homomorphism $M : K \to G$ such that $H \circ M = J$).
 
-This co-free $G$ admits an explicit description as $C_0 \times \Glob{\underlying{\gamma}}$ suitably equipped. (Indeed, just as before, this whole construction can be carried out internal to an arbitrary ambient lexcategory.)
+This co-free $G$ admits an explicit description. Indeed, just as before, this explicit construction can be carried out internal to an arbitrary ambient lexcategory $V$ (with $C_0$ as a $V$-internal lexcategory and $\gamma$ as a $\Glob{C_0}$-internal geminal category, and constructing from these a terminal $V$-internal geminal category $G$ with a $V$-internal lexfunctor $H : \underlying{G} \to C_0$ such that $H[\InteriorGeminal(G)] = \gamma$).
 \end{construction}
 \openDetails
-For convenience, we will say simply \quote{lexfunctor} in the following to mean \quote{strict lexfunctor}.
+For convenience, we will speak as though $C_0$ is internal to $\Set$, but the following construction would work just as well were $C_0$ internal to any ambient lexcategory.
 
-Let $\gamma = \langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Throughout the following, let unprimed names of lexcategories denote global aspects of primed names and let the correspondence between primed and unprimed names of lexfunctors be as before as well.
+Let us use the names $\langle C_1, C_2, C_3, \ldots; F_1, F_2, F_3, \ldots \rangle$ to refer to the components of the $C_0$-internal geminal category $\gamma$.
 
-Let $G_0 = C_0 \times C_1$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G'_1, G'_2, G'_3, \ldots; \phi'_1, \phi'_2, \phi'_3, \ldots \rangle$ internal to $G_0$, with each $G'_n = C'_n \times C'_{n + 1}$ and $\phi'_n = F'_n \times F'_{n + 1}$, for $n \geq 1$.
+Let $G_0 = C_0 \times \Glob{C_1}$. We have that $\gamma \times \InteriorGeminal{\gamma}$ is a geminal category $\langle G_1, G_2, G_3, \ldots; \phi_1, \phi_2, \phi_3, \ldots \rangle$ internal to $G_0$, with each $G_n = C_n \times C_{n + 1}$ and $\phi_n = F_n \times F_{n + 1}$, for $n \geq 1$. The terminal geminal category $G$ which we construct will have $|G| = G_0$ and $\InteriorGeminal{G} = \gamma \times \InteriorGeminal{\gamma}$.
 
-Let lexfunctor $\phi_0 : G_0 \to G_1$ be defined by $\phi_0(c_0, c_1) = (c_1, \straight{F}_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G'_1, G'_2, \ldots; \phi_0, \phi'_1, \phi'_2, \ldots \rangle$ is a geminal category (with the only nontrivial aspect being the equation $E_0$, as it were). \sTODOinline{Verify the trivial bits to be sure they're trivial, and the nontrivial bit to be sure it's also obvious enough to not need further comment}
+Specifically, let strict lexfunctor $\phi_0 : G_0 \to \Glob{G_1}$ be defined by $\phi_0(c_0, c_1) = (c_1, F_1(c_1))$. It's straightforward to then verify that $G = \langle G_0, G_1, G_2, \ldots; \phi_0, \phi_1, \phi_2, \ldots \rangle$ is a geminal category. The only nontrivial condition to verify is the equation $\InducedHomo{\phi_0}{G_1} \circ \phi_0 = \Glob{\phi_1} \circ \phi_0 : G_0 \to \Glob{\Gamma_{G_1}[G_2]}$. Unwinding the definitions of $\phi_0$ and $\phi_1$, we find that the first component of this equation amounts to the tautology $F_1 = F_1$, while the second component of this equation amounts to the equation $\InducedHomo{F_1}{C_2} \circ F_1 = \Gamma_{C_1}[F_2] \circ F_1$ of the geminal category $\gamma$.
 
-We also clearly have a projection lexfunctor $H$ from $\underlying{G} = C_0 \times C_1$ to $C_0$, and by unfolding definitions, this does indeed satisfy $H[\InteriorGeminal{G}] = \gamma$.
+We also clearly have a projection strict lexfunctor $H$ from $\underlying{G} = C_0 \times C_1$ to $C_0$, which satisfies $H[\InteriorGeminal{G}] = \gamma$.
 \closeDetails
 Having described the construction's details, we now prove that this construction has the stated terminality property:
 
 \begin{proof}
-Suppose given any geminal category $K = \langle K_0, K'_1, K'_2, \ldots; P_0, P'_1, P'_2, \ldots \rangle$ and lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$. As ever, we will use unprimed names for the global aspects of primed names.
+Suppose given any geminal category $K = \langle K_0, K'_1, K'_2, \ldots; P_0, P'_1, P'_2, \ldots \rangle$ and strict lexfunctor $J : K_0 \to C_0$ such that $J[\InteriorGeminal{K}] = \gamma$. As ever, we will use unprimed names for the global aspects of primed names. \TODO
 
-A lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times C_1$ is given by a pair of lexfunctors $J_0 : K_0 \to C_0$ and $J_1 : K_0 \to C_1$. Since $H$ is simply projection of the $C_0$ component, we will have that $H \circ M = J$ precisely when $J_0 = J$. Thus, specifying such $M$ is given by specifying $J_1$ alone. We must show that there is a unique $J_1$ making this $M$ into a geminal category homomorphism from $K$ to $G$.
+A strict lexfunctor $M$ from $\underlying{K} = K_0$ to $\underlying{G} = C_0 \times \Glob{C_1}$ is given by a pair of strict lexfunctors $J_0 : K_0 \to C_0$ and $J_1 : K_0 \to \Glob{C_1}$. Since $H$ is simply projection of the $C_0$ component, we will have that $H \circ M = J$ precisely when $J_0 = J$. Thus, specifying such $M$ is determined by specifying $J_1$ alone. We must show that there is a unique $J_1$ making this $M$ into a geminal category homomorphism from $K$ to $G$.
 
-Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, adapted to this context, we see the conditions for such $M$ to be a geminal category homomorphism. First of all, we must have that $M[\InteriorGeminal{K}] = \InteriorGeminal{G}$, which is to say, $J[\InteriorGeminal{K}] = \gamma$ (which has already been presumed) and $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$. On top of this, the final condition for $M$ to be a geminal category homomorphism is that the following diagram commutes:
+Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, we see the conditions for such $M$ to be a geminal category homomorphism. First of all, we must have that $M[\InteriorGeminal{K}] = \InteriorGeminal{G}$, which is to say, $J[\InteriorGeminal{K}] = \gamma$ (which has already been presumed) and $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$. On top of this, the final condition for $M$ to be a geminal category homomorphism is that the following diagram commutes:
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBDXzEiXSxbMiwyLCJDXzEgXFx0aW1lcyBDXzIiXSxbMCwyLCJLXzEiXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve019e0snXzF9IiwyXSxbMSwyLCJcXHBoaV8wIFxcOyAgW1xcdGV4dHt3aGljaCBpc30gXFw7IChjXzAsIGNfMSkgXFxtYXBzdG8gKGNfMSwgXFxzdHJhaWdodHtGfV8xKGNfMSkpXSJdXQ==
 \[\begin{tikzcd}
@@ -785,15 +785,21 @@ In each of the above diagrams, the top-right triangle trivially commutes, so the
 From the diagram for the $C_1$ component, we see that $J_1$ is uniquely determined as $\InducedHomo{J}{K'_1} \circ P_0$. All that remains is to verify that this choice of $J_1$ does indeed satisfy the condition $J_1[\InteriorGeminal{K}] = \InteriorGeminal{\gamma}$, as well as the condition of the commutative diagram for the $C_2$ component.
 
 \bigskip
-For the former condition, we have the chain of equations $J_1[\InteriorGeminal{K}]$ 
+For the former condition, we have the chain of equations 
+\begin{equation*}
+\begin{array}{l}
+J_1[\InteriorGeminal{K}] \\
 
-$ = \InducedHomo{J}{K'_1} [P_0[\InteriorGeminal{K}]] $ 
+= \InducedHomo{J}{K'_1} [P_0[\InteriorGeminal{K}]]\\
 
-$= \InducedHomo{J}{K'_1} [\InteriorGeminal{\InteriorGeminal{K}}] $ 
+= \InducedHomo{J}{K'_1}[\InteriorGeminal{\InteriorGeminal{K}}] \\
 
-$= \InteriorGeminal{J[\InteriorGeminal{K}]} $ 
+= \InteriorGeminal{J[\InteriorGeminal{K}]} \\
 
-$= \InteriorGeminal{\gamma}$. \sTODOinline{Are we sure all these equations are correct?}
+= \InteriorGeminal{\gamma}
+\end{array}
+\end{equation*}
+\sTODOinline{Are we sure all these equations are correct?}
 
 \bigskip
 And as for the final commutativity condition, this follows like so:
