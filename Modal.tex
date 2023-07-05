@@ -146,45 +146,6 @@ Thus, our $\Box$ follows all the rules of the modal logic K4, in each of these c
 
 \sTODOinline{Add commentary on how box extends to a bifunctor, even without presuming cartesian closure. Add commentary on the relationship with double negation/Booleanness when Lob's theorem is introduced}
 
-\sTODOinline{
-\subsection{An alternative account of the box operator on the internal category}
-
-\begin{theorem}
-Let $\langle T, C \rangle$ be an introspective theory. Then the $T$-internal endolexfunctor $\Box_{C} : C \to C$ as described in \magicref{BoxDefn} matches the composition of the $T$-internal lexfunctors $\introN_C : C \to \Box_T C$ and $\Hom_{\Box_T C}(1, -) : \Box_T C \to C$.
-
-In other words, the following diagram of $T$-indexed lexcategories and lexfunctors commutes:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJDIl0sWzIsMCwiXFxCb3hfVCBDIl0sWzIsMiwiQyJdLFswLDIsIlQvLSJdLFswLDMsIlxcSG9tX3tDfSgxLCAtKSIsMl0sWzMsMiwiXFxpbnRyb0YiLDJdLFswLDEsIlxcaW50cm9OX3tDfSJdLFsxLDIsIlxcSG9tX3tcXEJveF9UIEN9KDEsIC0pIl1d
-\[\begin{tikzcd}
-	C && {\Box_T C} \\
-	\\
-	{T/-} && C
-	\arrow["{\Hom_{C}(1, -)}"', from=1-1, to=3-1]
-	\arrow["\introF"', from=3-1, to=3-3]
-	\arrow["{\introN_{C}}", from=1-1, to=1-3]
-	\arrow["{\Hom_{\Box_T C}(1, -)}", from=1-3, to=3-3]
-\end{tikzcd}\]
-\end{theorem}
-\begin{proof}
-First, we will show that the global aspect of such a diagram always commutes. Keeping in mind that the global aspect of $\introF$ is $\introS$, and keeping in mind \magicref{SMatchesN}, the global aspect of the above diagram amounts to the following:
-
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXEdsb2J7Q30iXSxbMiwwLCJcXEdsb2J7XFxCb3hfVCBDfSJdLFsyLDIsIkMiXSxbMCwyLCJUIl0sWzAsMywiXFxIb21fe0N9KDEsIC0pIiwyXSxbMywyLCJcXGludHJvUyIsMl0sWzAsMSwiXFxpbnRyb1MiXSxbMSwyLCJcXEhvbV97XFxCb3hfVCBDfSgxLCAtKSJdXQ==
-\[\begin{tikzcd}
-	{\Glob{C}} && {\Glob{\Box_T C}} \\
-	\\
-	T && C
-	\arrow["{\Hom_{C}(1, -)}"', from=1-1, to=3-1]
-	\arrow["\introS"', from=3-1, to=3-3]
-	\arrow["\introS", from=1-1, to=1-3]
-	\arrow["{\Hom_{\Box_T C}(1, -)}", from=1-3, to=3-3]
-\end{tikzcd}\]
-
-Further keeping in mind how $\Box_T$ is defined from $\introS$, this diagram commutes by the lexfunctoriality of $\introS$. This concludes the demonstration that the global aspect of any such diagram must commute.
-
-Finally, we conclude that all aspects of such diagrams commute by observing that any aspect of such a diagram amounts to the global aspect of such a diagram on a slice introspective theory, using \magicref{IntrospSlice} and \magicref{AspectIsSliceGlobal}.
-\end{proof}
-}
-
 \subsection{As applied to our archetypal examples}
 
 \subsubsection{ZF-Finite examples}\label{ZFFiniteModal}

@@ -173,7 +173,7 @@ As the category of models of an essentially algebraic theory, this category must
 \subsection{Defining geminal categories}\label{GeminalFirstDefnSection}
 \sTODOinline{Note that throughout the following, essentially nothing about the actual lex structure of lexcategories specifically matters. All that matters is the concepts of multiply internal structures. This would all work just as well for other \quote{tree-categories}.}
 
-\newcommand{\straight}[1]{\widehat{#1}}
+\newcommand{\straight}[1]{#1}
 
 We will give two different presentations of the definition of \quote{geminal categories}. First, in this section, we give a definition using several infinite sequences of data and of equations. These infinite sequences will be highly redundant in that their first few entries suffice to derive all their later entries, but the advantage of this verbose definition is that it is made manifest how the definition contains a nested copy of itself.\footnote{In the manner which is sometimes outside of mathematics called \quote{the Droste effect}.} Later, at \magicref{CompactGeminalCatDefn}, we will see a much more compact definition eliminating these redundancies.
 
@@ -464,68 +464,107 @@ In every introspective theory $\langle T, C \rangle$, we have a $T$-internal end
 
 We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
 
+\begin{lemma}\label{BoxCAlternativeDescriptionLemma}
+Let $\langle T, C \rangle$ be an introspective theory. Then the $T$-internal endolexfunctor $\Box_{C} : C \to C$ as described in \magicref{BoxDefn} matches the composition of the $T$-internal lexfunctors $\introN_C : C \to \Box_T C$ and $\Hom_{\introS[C]}(1, -) : \Box_T C \to C$.
+
+In other words, the following diagram of $T$-indexed lexcategories and lexfunctors commutes:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDIl0sWzIsMCwiXFxCb3hfVCBDID0gXFxHYW1tYV9DW1xcaW50cm9TW0NdXSJdLFsyLDIsIkMiXSxbMCwyLCJULy0iXSxbMCwzLCJcXEhvbV9DKDEsIC0pIiwyXSxbMywyLCJcXGludHJvRiIsMl0sWzAsMSwiXFxpbnRyb05fe0N9Il0sWzEsMiwiXFxIb21fe1xcaW50cm9TW0NdfSgxLCAtKSJdXQ==
+\[\begin{tikzcd}
+	C && {\Box_T C = \Gamma_C[\introS[C]]} \\
+	\\
+	{T/-} && C
+	\arrow["{\Hom_C(1, -)}"', from=1-1, to=3-1]
+	\arrow["\introF"', from=3-1, to=3-3]
+	\arrow["{\introN_{C}}", from=1-1, to=1-3]
+	\arrow["{\Hom_{\introS[C]}(1, -)}", from=1-3, to=3-3]
+\end{tikzcd}\]
+\end{lemma}
+\begin{proof}
+Via \magicref{IntrospSlice} and \magicref{AspectIsSliceGlobal}, it suffices to show that the global aspects of such diagrams commute, as arbitrary aspects can be seen as global aspects of slice introspective theories.
+
+The global aspect of the above diagram amounts to the following (keeping in mind \magicref{SMatchesN} for the top arrow):
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJcXEdsb2J7Q30iXSxbMiwwLCJcXEdsb2J7XFxpbnRyb1NbQ119Il0sWzIsMiwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDMsIlxcR2FtbWFfQyIsMl0sWzMsMiwiXFxpbnRyb1MiLDJdLFswLDEsIlxcSW5kdWNlZEhvbW97XFxpbnRyb1N9e0N9Il0sWzEsMiwiXFxHYW1tYV97XFxpbnRyb1NbQ119Il1d
+\[\begin{tikzcd}
+	{\Glob{C}} && {\Glob{\introS[C]}} \\
+	\\
+	T && {\Glob{C}}
+	\arrow["{\Gamma_C}"', from=1-1, to=3-1]
+	\arrow["\introS"', from=3-1, to=3-3]
+	\arrow["{\InducedHomo{\introS}{C}}", from=1-1, to=1-3]
+	\arrow["{\Gamma_{\introS[C]}}", from=1-3, to=3-3]
+\end{tikzcd}\]
+
+Finally, we observe that this last diagram commutes as an instance of \magicref{InducedGlobalCommute}.
+\end{proof}
+
 \begin{construction}
 Construing strict introspective theories as geminal categories via \magicref{IntrospAsGeminal} gives us a functor from the category of strict introspective theories to the category of geminal categories (or more generally, a functor from the category of $V$-internal strict introspective theories to the category of $V$-internal geminal categories, for any fixed lexcategory $V$). This functor has a right adjoint.
 
 As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction.
 \end{construction}
 \openDetails
-For linguistic convenience, we shall in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
+Throughout the following, we use our usual conventions for how unprimed names are defined from the corresponding primed names of internal lexcategories and internal lexfunctors. For linguistic convenience, we shall also in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
 
 We are tasked with showing that, for any geminal category $C'_1$, there is a suitably terminal introspective theory with a geminal category homomorphism to $C'_1$.
 
 We will first give the details of the construction, and then give the proof that it has the terminality property.
 
-Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C = \introF(\Hom_C(1, -)): C \to C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C \Box_C$ built from $\introN$. As this applies in particular to the introspective theory $\langle \GLCatTheory, |K| \rangle$ of \magicref{GLCatTheoryIsIntrosp} (where $\introF(\Hom_C(1, -)) = $ \TODO), we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ \TODOinline{Should make $C_1$ into $C'_1$ throughout} comes with an endolexfunctor $\Box_{C_1} = \Gamma_{C'_2} \circ \straight{F}_1 : C_1 \to C_1$, along with a natural transformation $4 : \Box_{C_1} \to \Box_{C_1} \Box_{C_1}$ corresponding to the action of $F'_2$.
+Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C \Box_C$ built from $\introN$. From \magicref{BoxCAlternativeDescriptionLemma}, we see that this $\Box_C$ can be defined as the composition of $\introN_C$ and $\Hom_{\introS[C]}(1, -)$.
 
-Via \magicref{BoxCoalgebrasInGeminal}, the category of $\Box_{C_1}$-coalgebras is a strict lexcategory. Among these $\Box_{C_1}$-coalgebras, there are some coalgebras $m : c \to \Box_{C_1} c$ with the property that the following diagram commutes:
+Interpreting the above in the particular context of the introspective theory $\langle \GLCatTheory, |K| \rangle$ of \magicref{GLCatTheoryIsIntrosp}, we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ \TODOinline{Should make $C_1$ into $C'_1$ throughout} comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
+We will in the following write $\Box$ with no subscript to mean this $\Box_{C'_1}$.
+
+Via \magicref{BoxCoalgebrasInGeminal}, the category of $\Box$-coalgebras is a strict lexcategory. Among these $\Box$-coalgebras, there are some coalgebras $m : c \to \Box c$ with the property that the following diagram commutes:
+
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveCBcXEJveCBjIl0sWzAsMSwibSIsMl0sWzAsMiwibSJdLFsyLDMsIlxcQm94IG0iXSxbMSwzLCI0X2MiLDJdXQ==
 \[\begin{tikzcd}
 	c && {\Box c} \\
 	\\
-	{\Box c} && {\Box^2 c}
+	{\Box c} && {\Box \Box c}
 	\arrow["m"', from=1-1, to=3-1]
 	\arrow["m", from=1-1, to=1-3]
 	\arrow["{\Box m}", from=1-3, to=3-3]
 	\arrow["{4_c}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-Let $Z$ be the full subcategory of those $\Box_{C_1}$-coalgebras with the specified property. It is readily seen that this $Z$ is closed under the finite limits of the category of $\Box_{C_1}$-coalgebras, and thus is itself a strict lexcategory. (Indeed, $Z$ can be defined as the equalizer of two strict lexfunctors from the $\Box_{C_1}$-coalgebras to the $\Box_{C_1}^2$-coalgebras.)
+Let $Z$ be the full subcategory of those $\Box$-coalgebras with the specified property. It is readily seen that this $Z$ is closed under the finite limits of the category of $\Box$-coalgebras, and thus is itself a strict lexcategory. (Indeed, $Z$ can be defined as the equalizer of two strict lexfunctors from the $\Box$-coalgebras to the $\Box \Box$-coalgebras.)
 
-Note that we have the following commutative diagram of internal lexfunctors in $C_1$:
+Note that we have the following commutative diagram of internal lexfunctors in $C'_1$:
 
-% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDJ18yIl0sWzAsMiwiXFxCb3hfe0NfMX0gQydfMiJdLFszLDAsIlxcQm94X3tDXzF9IEMnXzIiXSxbMywyLCJcXEJveF97Q18xfSBcXEJveF97Q18xfSBDJ18yIl0sWzAsMSwiRidfMiIsMl0sWzAsMiwiRidfMiJdLFsyLDMsIlxcQm94X3tDXzF9IEYnXzIgPSBcXEdhbW1hX3tDJ18yfSBbXFxzdHJhaWdodHtGfV8xW0YnXzJdXSA9IFxcR2FtbWFfe0MnXzJ9W0YnXzNdIl0sWzEsMywiNF97QydfMn0gPSBcXEluZHVjZWRIb21ve0YnXzJ9e0MnXzJ9IiwyXV0=
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJDJ18yIl0sWzAsMiwiXFxCb3ggQydfMiJdLFszLDAsIlxcQm94IEMnXzIiXSxbMywyLCJcXEJveCBcXEJveCBDJ18yIl0sWzAsMSwiRidfMiIsMl0sWzAsMiwiRidfMiJdLFsyLDMsIlxcQm94IEYnXzIgPSBcXEdhbW1hX3tDJ18yfSBbXFxzdHJhaWdodHtGfV8xW0YnXzJdXSA9IFxcR2FtbWFfe0MnXzJ9W0YnXzNdIl0sWzEsMywiNF97QydfMn0gPSBcXEluZHVjZWRIb21ve0YnXzJ9e0MnXzJ9IiwyXV0=
 \[\begin{tikzcd}
-	{C'_2} &&& {\Box_{C_1} C'_2} \\
+	{C'_2} &&& {\Box C'_2} \\
 	\\
-	{\Box_{C_1} C'_2} &&& {\Box_{C_1} \Box_{C_1} C'_2}
+	{\Box C'_2} &&& {\Box \Box C'_2}
 	\arrow["{F'_2}"', from=1-1, to=3-1]
 	\arrow["{F'_2}", from=1-1, to=1-4]
-	\arrow["{\Box_{C_1} F'_2 = \Gamma_{C'_2} [\straight{F}_1[F'_2]] = \Gamma_{C'_2}[F'_3]}", from=1-4, to=3-4]
+	\arrow["{\Box F'_2 = \Gamma_{C'_2} [\straight{F}_1[F'_2]] = \Gamma_{C'_2}[F'_3]}", from=1-4, to=3-4]
 	\arrow["{4_{C'_2} = \InducedHomo{F'_2}{C'_2}}"', from=3-1, to=3-4]
 \end{tikzcd}\]
 
-This diagram commutes by equation $E_2$. But this is also the commutative diagram which establishes that the internal lexcategory $F'_2: C'_2 \to \Box_{C_1} C'_2$ within the category of $\Box_{C_1}$-coalgebras is furthermore within its subcategory $Z$. When thinking of $F'_2$ as an internal lexcategory within $Z$ in this way, let us call it $Z_2$.
+This diagram commutes by equation $E_2$. But this is also the commutative diagram which establishes that the internal lexcategory $F'_2: C'_2 \to \Box C'_2$ within the category of $\Box$-coalgebras is furthermore within its subcategory $Z$. When thinking of $F'_2$ as an internal lexcategory within $Z$ in this way, let us call it $Z_2$.
 
-Note that the strict lexfunctor $\straight{F}_1 : C_1 \to \Glob{C'_2}$ is such that for any object or morphism $x$ of $C_1$, if we interpret $\straight{F}_1(x)$ as a morphism from $1$ to $\Ob(C'_2)$ or $\Mor(C'_2)$, we obtain a commutative diagram of the following form:
+Note that the strict lexfunctor $F'_1 : C'_1 \to \Glob{C'_2}$ is such that for any object or morphism $x$ of $C'_1$, if we interpret $F'_1(x)$ as a morphism from $1$ to $\Ob(C'_2)$ or $\Mor(C'_2)$, we obtain a commutative diagram of the following form:
 
-% https://q.uiver.app/#q=WzAsNCxbMywwLCJcXE9iKEMnXzIpIFxcOyBcXHRleHR7b3J9IFxcOyBcXE1vcihDJ18yKSJdLFszLDIsIlxcQm94X3tDXzF9IFxcbGVmdCggXFxPYihDJ18yKSBcXDsgXFx0ZXh0e29yfSBcXDsgXFxNb3IoQydfMikgXFxyaWdodCkiXSxbMCwwLCIxIl0sWzAsMiwiXFxCb3hfe0NfMX0gMSA9IDEiXSxbMCwxLCJGJ18yIl0sWzIsMCwiXFxzdHJhaWdodHtGfV8xKHgpIl0sWzMsMSwiXFxCb3hfe0NfMX0gXFxsZWZ0KCBcXHN0cmFpZ2h0e0Z9XzEoeCkgIFxccmlnaHQpID0gXFxHYW1tYV97QydfMn0gW1xcc3RyYWlnaHR7Rn1fMVtcXHN0cmFpZ2h0e0Z9XzEoeCldXSIsMl0sWzIsMywiISIsMl1d
+% https://q.uiver.app/#q=WzAsNCxbMywwLCJcXE9iKEMnXzIpIFxcOyBcXHRleHR7b3J9IFxcOyBcXE1vcihDJ18yKSJdLFszLDIsIlxcQm94IFxcbGVmdCggXFxPYihDJ18yKSBcXDsgXFx0ZXh0e29yfSBcXDsgXFxNb3IoQydfMikgXFxyaWdodCkiXSxbMCwwLCIxIl0sWzAsMiwiXFxCb3ggMSA9IDEiXSxbMCwxLCJGJ18yIl0sWzIsMCwiRidfMSh4KSJdLFszLDEsIlxcQm94IFxcbGVmdChGJ18xKHgpICBcXHJpZ2h0KSA9IFxcR2FtbWFfe0MnXzJ9IFtGJ18xW0YnXzEoeCldXSIsMl0sWzIsMywiISIsMl1d
 \[\begin{tikzcd}
 	1 &&& {\Ob(C'_2) \; \text{or} \; \Mor(C'_2)} \\
 	\\
-	{\Box_{C_1} 1 = 1} &&& {\Box_{C_1} \left( \Ob(C'_2) \; \text{or} \; \Mor(C'_2) \right)}
+	{\Box 1 = 1} &&& {\Box \left( \Ob(C'_2) \; \text{or} \; \Mor(C'_2) \right)}
 	\arrow["{F'_2}", from=1-4, to=3-4]
-	\arrow["{\straight{F}_1(x)}", from=1-1, to=1-4]
-	\arrow["{\Box_{C_1} \left( \straight{F}_1(x)  \right) = \Gamma_{C'_2} [\straight{F}_1[\straight{F}_1(x)]]}"', from=3-1, to=3-4]
+	\arrow["{F'_1(x)}", from=1-1, to=1-4]
+	\arrow["{\Box \left(F'_1(x)  \right) = \Gamma_{C'_2} [F'_1[F'_1(x)]]}"', from=3-1, to=3-4]
 	\arrow["{!}"', from=1-1, to=3-1]
 \end{tikzcd}\]
 
-That this diagram commutes is by equation $E_1$ of $C'_1$ being a geminal category. Thus $\straight{F}_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $\straight{F}_1$ acts as a strict lexfunctor from $C_1$ to the global aspect of $Z_2$. By composing this with the projection functor from $Z$ to $C_1$, we get a strict lexfunctor $\introS$ from $Z$ to the global aspect of this $Z$-internal lexcategory. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C_1$, but this will indeed be the correct one for our purposes!)
+That this diagram commutes is by equation $E_1$ of $C'_1$ being a geminal category. Thus $F'_1(x)$ amounts to a global element of $\Ob(Z_2)$ or $\Mor(Z_2)$, and thus $F'_1$ acts as a strict lexfunctor from $C'_1$ to $\Glob{Z_2}$. By composing this with the projection functor from $Z$ to $C'_1$, we get a strict lexfunctor $\introS : Z \to \Glob{Z_2}$. (It may be surprising that this $\introS$ will discard all information lost in the projection from $Z$ to $C'_1$, but this will indeed be the correct one for our purposes!)
 
-Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes morphisms to the corresponding naturality square for $4$. Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a map from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose carrier is the morphism $m$ itself, as described by the following commutative diagram:
+Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, \introS(-)) : Z \to Z$ is the functor which takes a coalgebra on carrier object $c$ to the coalgebra $4_c : \Box c \to \Box \Box c$ and which takes morphisms to the corresponding naturality square for the natural transformation $4$. Thus, by the defining condition of $Z$, we get for each $m \in \Ob(Z)$ a coalgebra morphism from $m$ to $\Hom_{Z_2}(1, \introS(m))$ whose underlying morphism in $C'_1$ is $m$ itself, as described by the following commutative diagram in $C'_1$:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIlxcSG9tX3taXzJ9KDEsIFxcaW50cm9TKG0pKSA9IDRfYyIsMl1d
 \[\begin{tikzcd}
 	c && {\Box c} \\
 	\\
@@ -533,12 +572,12 @@ Finally, for $\introN$, we observe by unwinding definitions that $\Hom_{Z_2}(1, 
 	\arrow["m"', from=1-1, to=3-1]
 	\arrow["m", from=1-1, to=1-3]
 	\arrow["{\Box m}", from=1-3, to=3-3]
-	\arrow["{4_c}"', from=3-1, to=3-3]
+	\arrow["{\Hom_{Z_2}(1, \introS(m)) = 4_c}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-In the above commutative diagram within $C'_1$, the top arrow is the coalgebra $m$, while the bottom arrow is the coalgebra $\Hom_{Z_2}(1, \introS(m))$. The left arrow is thus the carrier of a coalgebra morphism from the former to the latter, and the diagram overall commutes because this is the defining condition for $m$ to be within $Z$.
+In the above commutative diagram within $C'_1$, the top arrow is the coalgebra $m$, while the bottom arrow is the coalgebra $\Hom_{Z_2}(1, \introS(m))$.
 
-These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural transformation $\introN$ between $\id_Z$ and $\Hom_{Z_2}(1, \introS(-))$ whose naturality is demonstrated like so: Consider any two coalgebras $m_1$ and $m_2$ in $Z$ and a coalgebra map $h : m_1 \to m_2$. The condition for $h$ to be a coalgebra map is the very same as the naturality square for this $\introN$:
+These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural transformation $\introN$ between $\id_Z$ and $\Hom_{Z_2}(1, \introS(-))$ whose naturality is demonstrated like so: Consider any two coalgebras $m_1$ and $m_2$ in $Z$ and a coalgebra map $h : m_1 \to m_2$. The condition for $h$ to be a coalgebra map is the very same as the naturality square for this $\introN$: \TODO
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsImQiXSxbMiwyLCJcXEJveCBkIl0sWzAsMSwibV8xIiwyXSxbMCwyLCJoIl0sWzIsMywibV8yIl0sWzEsMywiXFxCb3ggaCIsMl1d
 \[\begin{tikzcd}
@@ -551,9 +590,9 @@ These maps from each $m$ to $\Hom_{Z_2}(1, \introS(m))$ comprise a natural trans
 	\arrow["{\Box h}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-Thus we have an introspective theory $Z = \langle Z, Z_2, \introS, \introN \rangle$.
+Thus we have a strict introspective theory $Z = \langle Z, Z_2, \introS, \introN \rangle$.
 
-By construction, the projection functor $\pi : Z \to C_1$, which sends coalgebras to their carriers, is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
+By construction, the projection functor $\pi : Z \to C'_1$, which sends coalgebras to their carriers, is a strict lexfunctor which takes $Z_2$ to $C'_2$ and takes $\introN_{Z_2}$ to $F'_2$, while furthermore the following diagram commutes:
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJaIl0sWzIsMCwiQydfMSJdLFsyLDIsIlxcR2xvYntcXHBpW1pfMl19ID0gXFxHbG9ie0NfMid9Il0sWzAsMiwiXFxHbG9ie1pfMn0iXSxbMCwxLCJcXHBpIl0sWzAsMywiXFxpbnRyb1MiLDJdLFszLDIsIlxcSW5kdWNlZEhvbW97XFxwaX17Wl8yfSIsMl0sWzEsMiwiRidfMSJdXQ==
 \[\begin{tikzcd}
@@ -566,11 +605,11 @@ By construction, the projection functor $\pi : Z \to C_1$, which sends coalgebra
 	\arrow["{F'_1}", from=1-3, to=3-3]
 \end{tikzcd}\]
 
-This establishes $\pi$ as a geminal category homomorphism from $Z$ to $C_1$.
+This establishes $\pi$ as a geminal category homomorphism from $Z$ to $C'_1$.
 
 \closeDetails
 
-Having described the introspective theory $Z$ and its geminal category homomorphism $\pi$ to $C_1$, we now prove its terminality among all introspective theories with a designated geminal category homomorphism to $C_1$:
+Having described the strict introspective theory $Z$ and its geminal category homomorphism $\pi$ to $C'_1$, we now prove its terminality among all strict introspective theories with a designated geminal category homomorphism to $C'_1$:
 
 \begin{proof}
 
@@ -582,12 +621,12 @@ Thus, the uniqueness of $\beta$ is assured and what remains is only to see that 
 
 By virtue of $H$ being a geminal category homomorphism, we have that $H \circ \Box_T = \Box_{C_1} \circ H$. In detail, this is seen via the following commutative diagram:
 
-% https://q.uiver.app/?q=WzAsNixbMywwLCJDXzEiXSxbMywxLCJcXEdsb2J7QydfMn0iXSxbMywyLCJDXzEiXSxbMCwwLCJUIl0sWzAsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkZfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDXzF9IiwwLHsiY3VydmUiOi01fV0sWzMsMCwiSCJdLFszLDQsIlxcaW50cm9TIl0sWzQsMSwiXFxJbmR1Y2VkSG9tb3tIfXtDfSIsMV0sWzQsNSwiXFxHYW1tYV9DIl0sWzUsMiwiSCIsMl0sWzMsNSwiXFxCb3hfVCIsMix7ImN1cnZlIjo1fV1d
+% https://q.uiver.app/#q=WzAsNixbMywwLCJDXzEiXSxbMywxLCJcXEdsb2J7QydfMn0iXSxbMywyLCJDXzEiXSxbMCwwLCJUIl0sWzAsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkYnXzEiLDJdLFsxLDIsIlxcR2FtbWFfe0MnXzJ9IiwyXSxbMCwyLCJcXEJveF97Q18xfSIsMCx7ImN1cnZlIjotNX1dLFszLDAsIkgiXSxbMyw0LCJcXGludHJvUyJdLFs0LDEsIlxcSW5kdWNlZEhvbW97SH17Q30iLDFdLFs0LDUsIlxcR2FtbWFfQyJdLFs1LDIsIkgiLDJdLFszLDUsIlxcQm94X1QiLDIseyJjdXJ2ZSI6NX1dXQ==
 \[\begin{tikzcd}
 	T &&& {C_1} \\
 	{\Glob{C}} &&& {\Glob{C'_2}} \\
 	T &&& {C_1}
-	\arrow["{F_1}"', from=1-4, to=2-4]
+	\arrow["{F'_1}"', from=1-4, to=2-4]
 	\arrow["{\Gamma_{C'_2}}"', from=2-4, to=3-4]
 	\arrow["{\Box_{C_1}}", curve={height=-30pt}, from=1-4, to=3-4]
 	\arrow["H", from=1-1, to=1-4]
@@ -602,12 +641,12 @@ In the above diagram, the left side is the definition of $\Box_T$ and the right 
 
 Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural transformation from $H$ to $H \circ \Box_T = \Box_{C_1} \circ H$. Illustrated like so:
 
-% https://q.uiver.app/?q=WzAsNixbNCwwLCJDXzEiXSxbNCwxLCJcXEdsb2J7QydfMn0iXSxbNCwyLCJDXzEiXSxbMCwwLCJUIl0sWzEsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkZfMSIsMl0sWzEsMiwiXFxHYW1tYV97QydfMn0iLDJdLFswLDIsIlxcQm94X3tDXzF9IiwwLHsiY3VydmUiOi01fV0sWzMsMCwiSCJdLFszLDQsIlxcaW50cm9TIl0sWzQsMSwiXFxJbmR1Y2VkSG9tb3tIfXtDfSIsMV0sWzQsNSwiXFxHYW1tYV9DIl0sWzUsMiwiSCIsMl0sWzMsNSwiXFxpZCIsMix7ImxldmVsIjoyLCJzdHlsZSI6eyJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE0LDQsIlxcaW50cm9OIiwyLHsic2hvcnRlbiI6eyJzb3VyY2UiOjIwfX1dXQ==
+% https://q.uiver.app/#q=WzAsNixbNCwwLCJDXzEiXSxbNCwxLCJcXEdsb2J7QydfMn0iXSxbNCwyLCJDXzEiXSxbMCwwLCJUIl0sWzEsMSwiXFxHbG9ie0N9Il0sWzAsMiwiVCJdLFswLDEsIkYnXzEiLDJdLFsxLDIsIlxcR2FtbWFfe0MnXzJ9IiwyXSxbMCwyLCJcXEJveF97Q18xfSIsMCx7ImN1cnZlIjotNX1dLFszLDAsIkgiXSxbMyw0LCJcXGludHJvUyJdLFs0LDEsIlxcSW5kdWNlZEhvbW97SH17Q30iLDFdLFs0LDUsIlxcR2FtbWFfQyJdLFs1LDIsIkgiLDJdLFszLDUsIlxcaWQiLDIseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCw0LCJcXGludHJvTiIsMix7InNob3J0ZW4iOnsic291cmNlIjoyMH19XV0=
 \[\begin{tikzcd}
 	T &&&& {C_1} \\
 	& {\Glob{C}} &&& {\Glob{C'_2}} \\
 	T &&&& {C_1}
-	\arrow["{F_1}"', from=1-5, to=2-5]
+	\arrow["{F'_1}"', from=1-5, to=2-5]
 	\arrow["{\Gamma_{C'_2}}"', from=2-5, to=3-5]
 	\arrow["{\Box_{C_1}}", curve={height=-30pt}, from=1-5, to=3-5]
 	\arrow["H", from=1-1, to=1-5]
@@ -621,20 +660,20 @@ Thus, the whiskering of $\introN : \id_T \to \Box_T$ along $H$ yields a natural 
 
 This natural transformation from $H$ to $\Box_{C_1} \circ H$ acts as a functor $\beta$ from $T$ to the category of $\Box_{C_1}$-coalgebras, such that $\beta$ followed by the forgetful functor to $C_1$ yields $H$. As $H$ is a strict lexfunctor and this forgetful functor creates basic limits (a la \magicref{BoxCoalgebrasInGeminal}), this $\beta$ is also a strict lexfunctor.
 
-Not only that, but every coalgebra $m : c \to \Box_{C_1} c$ in the range of $\beta$ has the property that the following diagram commutes \TODO:
+Not only that, but for each $t \in T$, the $\Box_{C'_1}$-coalgebra $\beta(t) = H(\introN_t)$ has the property that the following diagram commutes, as this diagram is $H$ applied to the naturality square in $T$ for $\introN : \id_T \to \Box_T$ with respect to the morphism $\introN_t$:
 
-% https://q.uiver.app/?q=WzAsNCxbMCwwLCJjIl0sWzAsMiwiXFxCb3ggYyJdLFsyLDAsIlxcQm94IGMiXSxbMiwyLCJcXEJveF4yIGMiXSxbMCwxLCJtIiwyXSxbMCwyLCJtIl0sWzIsMywiXFxCb3ggbSJdLFsxLDMsIjRfYyIsMl1d
+% https://q.uiver.app/#q=WzAsNCxbMCwwLCJIKHQpIl0sWzAsMiwiSChcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgodCkiXSxbMiwwLCJIKFxcQm94X1QgdCkgPSBcXEJveF97QydfMX0gSCh0KSJdLFsyLDIsIkgoXFxCb3hfVCBcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgoXFxCb3hfVCB0KSA9IFxcQm94X3tDJ18xfSBcXEJveF97QydfMX0gSCh0KSJdLFswLDEsIkgoXFxpbnRyb05fdCkiLDJdLFswLDIsIkgoXFxpbnRyb05fdCkiXSxbMiwzLCJIKFxcQm94X1QgXFxpbnRyb05fdCkgPSBcXEJveF97QydfMX0gSChcXGludHJvTl90KSJdLFsxLDMsIkgoXFxpbnRyb05fe1xcQm94X1QgdH0pID0gNF97SCh0KX0iLDJdXQ==
 \[\begin{tikzcd}
-	c && {\Box c} \\
+	{H(t)} && {H(\Box_T t) = \Box_{C'_1} H(t)} \\
 	\\
-	{\Box c} && {\Box^2 c}
-	\arrow["m"', from=1-1, to=3-1]
-	\arrow["m", from=1-1, to=1-3]
-	\arrow["{\Box m}", from=1-3, to=3-3]
-	\arrow["{4_c}"', from=3-1, to=3-3]
+	{H(\Box_T t) = \Box_{C'_1} H(t)} && {H(\Box_T \Box_T t) = \Box_{C'_1} H(\Box_T t) = \Box_{C'_1} \Box_{C'_1} H(t)}
+	\arrow["{H(\introN_t)}"', from=1-1, to=3-1]
+	\arrow["{H(\introN_t)}", from=1-1, to=1-3]
+	\arrow["{H(\Box_T \introN_t) = \Box_{C'_1} H(\introN_t)}", from=1-3, to=3-3]
+	\arrow["{H(\introN_{\Box_T t}) = 4_{H(t)}}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 
-\TODO
+The commuting of the above diagram is the condition for $\beta(t)$ to be within the category $Z$.
 
 Thus, $\beta$ is indeed a strict lexfunctor from $T$ to $Z$, such that $\pi \circ \beta = H$.
 
@@ -656,7 +695,7 @@ The required condition on $\beta$ with respect to $\introS$ is that the followin
 
 For this diagram to commute, it suffices to know that following both paths with the projection from $\Glob{Z_2}$ to $\Glob{C'_2}$ commutes. By unwinding definitions, $\beta; \introS$ followed by this projection is $\straight{F'_1}(H(-))$ while $\introS ; \InducedHomo{\beta}{C}$ followed by this projection is $H(\introS(-))$. As $H$ is a geminal category homomorphism from $T$ to $C'_1$, these are indeed the same.
 
-Finally, the required condition on $\beta$ with respect to $\introN$ is that $\beta(\introN_t) = \introN_{\beta(t)}$ for each $t \in T$. Note that $\beta(\introN_t)$ is the coalgebra morphism in $Z$ given by applying $H$ to the naturality square in $C'_1$ for $\introN$ with respect to the morphism $\introN_t$. On the other hand, $\introN_{\beta(t)}$ is the coalgebra morphism in $Z$ from $\beta(t) = H(\introN_t)$ to $4_{H(t)} = F'_2 = H(\introN_{\Box_T t})$ whose underlying morphism in $C'_1$ is itself $\beta(t)$. Thus, $\beta(\introN_t)$ and $\introN_{\beta(t)}$ are both the same, both being the following diagram:
+Finally, the required condition on $\beta$ with respect to $\introN$ is that $\beta(\introN_t) = \introN_{\beta(t)}$ for each $t \in T$. Note that $\beta(\introN_t)$ is the coalgebra morphism in $Z$ given by applying $H$ to the naturality square in $T$ for $\introN : \id_T \to \Box_T$ with respect to the morphism $\introN_t$. On the other hand, $\introN_{\beta(t)}$ is the coalgebra morphism in $Z$ from $\beta(t) = H(\introN_t)$ to $4_{H(t)} = F'_2 = H(\introN_{\Box_T t})$ whose underlying morphism in $C'_1$ is itself $\beta(t)$. Thus, $\beta(\introN_t)$ and $\introN_{\beta(t)}$ are both the same, both being the following diagram (which we had already considered above):
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJIKHQpIl0sWzAsMiwiSChcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgodCkiXSxbMiwwLCJIKFxcQm94X1QgdCkgPSBcXEJveF97QydfMX0gSCh0KSJdLFsyLDIsIkgoXFxCb3hfVCBcXEJveF9UIHQpID0gXFxCb3hfe0MnXzF9IEgoXFxCb3hfVCB0KSA9IFxcQm94X3tDJ18xfSBcXEJveF97QydfMX0gSCh0KSJdLFswLDEsIkgoXFxpbnRyb05fdCkiLDJdLFswLDIsIkgoXFxpbnRyb05fdCkiXSxbMiwzLCJIKFxcQm94X1QgXFxpbnRyb05fdCkgPSBcXEJveF97QydfMX0gSChcXGludHJvTl90KSJdLFsxLDMsIkgoXFxpbnRyb05fe1xcQm94X1QgdH0pID0gNF97SCh0KX0iLDJdXQ==
 \[\begin{tikzcd}
