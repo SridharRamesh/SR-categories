@@ -53,6 +53,8 @@ Recall \magicref{TermModelIsInitialForLex}, which tells us that, for any lexcate
 
 In this way, for any $B$-internal structure $S$, we obtain a homomorphism from $\LabeledGlob{B}(S)$ to $\LabeledGlob{C}(F[S])$. We refer to this homomorphism as $\InducedHomo{F}{S}$.
 
+More explicitly, $\InducedHomo{F}{S}$ is the action of the functor $F$ taking each $x \in \Hom_B(1, s)$ to $F(x) \in \Hom_C(F(1), F(s)) = \Hom_C(1, F(s))$, where $s$ is any object of the diagram in $B$ corresponding to the structure $S$.
+
 This process can be carried out in the internal logic of a lexcategory as well. That is, if $F : B \to C$ is an internal lexfunctor between $V$-internal lexcategories, and $S$ is some structure internal to the global aspect of $B$ (thus doubly internal to $V$), we get a $V$-internal homomorphism $\InducedHomo{F}{S} : \Gamma_B[S] \to \Gamma_C[F[S]]$ in the same way. (Note that $F[S]$ here, the application of an internal lexfunctor $F : B \to C$ to a structure in the global aspect of $B$, is the same as what could also be called $\Glob{F}[S]$ where $\Glob{F} : \Glob{B} \to \Glob{C}$.)
 \end{definition}
 
@@ -97,6 +99,12 @@ Note that any structure $S$ which is $n$-tuply internal to a lexcategory $C$ (fo
 
 This operation $\TransferN{n}{F}{S}$ for multiply internal $S$ can be inductively understood like so: The base case is when $S$ is singly internal to the domain of $F$, in which case $\TransferN{1}{F}{S}$ is just the ordinary application of $F$ to yield a structure singly internal to the codomain of $F$. On the other hand, if $S$ is $n$-tuply internal to $\dom(F)$ for $n \geq 2$, then there is some $\dom(F)$-internal lexcategory $B'$ such that $S$ is $(n - 1)$-tuply internal to $\Glob{B'}$. In this case, we have also the lexfunctor $\InducedHomo{F}{B'} : \Glob{B'} \to \Glob{F[B']}$, and thus we can understand $\TransferN{n}{F}{S}$ as meaning $\TransferN{n - 1}{\InducedHomo{F}{B'}}{S}$, reducing us from the $n$-tuply internal case to the $(n - 1)$-tuply internal case.
 \end{definition}
+
+\begin{note}\label{InternalNotationNote}
+Our notation for dealing with switching internality levels can sometimes cause expressions simultaneously involving structures at different levels of internality to get pretty cluttered. We recommend that readers first read such expressions and diagrams treating all instances of $\Gamma[X]$ or $\Glob{X}$ as simply saying $X$, and treating all instances of $\InducedHomo{F}{S}$ as simplying saying $F$, to understand the gists of these expressions. A formal account of how to rigorously reason using this less verbose shorthand can be given, but we save such an account of terser notation for future work.
+
+It may be helpful to keep in mind that when $F : A \to B$ is a map, then $\Gamma[F] : \Gamma[A] \to \Gamma[B]$, $\Glob{F} : \Glob{A} \to \Glob{B}$, or $\InducedHomo{F}{S} : \Glob{S} \to \Glob{F[S]}$ do not change the action of the map $F$, per se, but rather merely restrict its domain and then restrict its codomain accordingly ($\Gamma[F]$ or $\Glob{F}$ restrict $F$ to just its action on global elements rather than elements in arbitrary aspects of its domain, while $\InducedHomo{F}{S}$ restricts a lexfunctor $F$ to just its action on global elements of the objects used in $S$, rather than the action of $F$ on elements in arbitrary aspects of arbitrary objects in its domain).
+\end{note}
 
 \subsection{Strict introspective theories}\label{StrictIntrospSection}
 It will be technically convenient for us to work in this chapter with a slightly less \quote{presentation-free} variant of our notion of introspective theories.
@@ -257,7 +265,7 @@ Finally, the last ingredients we require are some equations:
 	\arrow[Rightarrow, no head, from=3-3, to=3-4]
 \end{tikzcd}\]
 
-That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed in abuse of notation as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}.
+That is, we require that $\InducedHomo{F'_i}{C'_{i + 1}} \circ F'_i = \Gamma_i[F'_{i + 1}] \circ F'_i$. This could be glossed as \quote{$F'_i \circ F'_i = F'_{i + 1} \circ F'_i$}, in abuse of notation a la \magicref{InternalNotationNote}.
 
 (To derive the identity in the bottom-right of the above diagram, first note that $\Glob{F'_i}[C'_{i + 1}] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [ \straight{F}_i[C'_{i + 1}]] = \InducedHomo{\Gamma_i}{C'_{i + 1}} [C'_{i + 2}]$. 
 
@@ -408,9 +416,9 @@ From a strict introspective theory $\langle T, C, \introS, \introN \rangle$, we 
 This is the result of first obtaining the geminal category $\gamma = \langle T, C, \introS, \introN_C \rangle$ from \magicref{IntrospAsGeminal}, and then forming $\InteriorGeminal{\gamma}$.
 \end{proof}
 
+\subsection{The free introspective theory}\label{InitialIntrospectiveTheorySection}
 We now are ready to prove our main result about geminal categories.
 
-\subsection{The free introspective theory}\label{InitialIntrospectiveTheorySection}
 \begin{theorem}\label{InitialIntrospectiveTheory}
 The strict introspective theory given in \magicref{GLCatTheoryIsIntrosp} is the initial strict introspective theory.
 \end{theorem}
@@ -451,18 +459,32 @@ This is by exactly the same arguments as we have just given. All the results and
 
 \sTODOinline{Perhaps also discuss the straightforward notion of a non-strict geminal category or gadget: One for which $C'_1$ is a non-strict lexcategory or gadget, and $F'_1$ needn't be strict either (preserves finite limits but not necessarily on the nose), but everything else remains strict. Every non-strict geminal gadget straightforwardly admits a presentation by a strict one, by using a presentation of $C_1$ with no nontrivial equations on objects in a suitable sense.}
 
-\sTODOinline{
-\subsection{Modal logic in geminal categories}
-\begin{observation}
-In every introspective theory $\langle T, C \rangle$, we have a $T$-internal endofunctor $\Box_C$ on $C$ modeling the modal logic GL. Thus, this is in particular true of the initial introspective theory, which by \magicref{InitialIntrospectiveTheory} is the theory of geminal categories. Thus, any geminal category $K$ comes with such an operation $\Box_{\underlying{K}}$ on $\underlying{K}$, and this operation is furthermore preserved by geminal category homomorphisms.
-\end{observation}
+\subsection{Archetypal examples of geminal categories}
+Given any introspective theory $\langle T, C \rangle$ and any lexfunctor $f : T \to \Set$, we obtain automatically a geminal category $f[\InteriorGeminal{\langle T, C \rangle}] = f[\langle C, \introS[C]; \introN_C, \introS[\introN_C]\rangle]$.
+
+Thus we have archetypal geminal categories corresponding to each of our archetypal introspective theories:
+
+\subsubsection{ZF-Finite example}
+Recall the introspective theory $\langle Z_{\Sigma_1}, Z'\rangle$ of \magicref{SigmaModelComplex}, in which $Z_{\Sigma_1}$ was the category of $\Sigma_1$-definable sets and functions modulo provable equality in ZF-Finite, while $Z'$ was the internal construction of the category $Z$ of $\Sigma_1$-definable sets and functions modulo provable equality in ZF-Finite
+
+There is a lexfunctor $f: Z_{\Sigma_1} \to \Set$ which sends each definition in ZF-Finite to the set or function it actually defines (in particular, $f[Z'] = Z$). We thus obtain a geminal category $f[\InteriorGeminal{\langle Z_{\Sigma_1}, Z'\rangle}] = \langle Z, Z'; F_1, F'_2 \rangle$ in which $Z$ is the category of arbitrary definable sets and functions modulo provable equality in ZF-Finite, while $Z'$ is the analogous construction internal to $Z$. $F_1 : Z \to \Glob{Z'}$ straightforwardly sends each definable set or function in $Z$ to the corresponding construction in $\Glob{Z'}$, and $F'_2$ is the $Z$-internal lexfunctor constructed exactly analogously to $F_1$.
+
+Notably, this example of a geminal category does not require us to incorporate $\Sigma_1$ constraints anywhere. In this sense, it is a more familiar object for study than $Z_{\Sigma_1}$ itself was. We had noted in \magicref{ZFFiniteExampleWarning} that this structure $\langle Z, Z' \rangle$ is not an introspective theory, but we see here that the natural structure it has is as a geminal category instead.
+
+\subsubsection{Kripke frame example}
+\newcommand{\PshUnderQ}[1]{\mathrm{Psh}'(|P|_{<#1})}
+
+In \magicref{KripkeIntrosp}, we constructed from any well-founded pre-order $P$ (and a suitable choice of set-sized full sublexcategories $\Set_q$ of $\Set$ for each $q \in P$), an introspective theory $T$. As the global aspect of $\InteriorGeminal{T}$ for this introspective theory, we get a geminal category $\langle C_1, C'_2; F_1, F'_2 \rangle$ where $C_1$ is the full subcategory of $\Set^{|P|}$ comprising those presheaves $X$ for which $X(p) \in \Set_p$ for each $p \in P$. The $C$-internal lexcategory $C'_2$ is the $|P|$-indexed category such that for each $p \in P$, we have $C'_2(p) = \prod_{q < p} \Set_q$. Thus, $\Glob{C'_2} = \prod_{p \in P} \prod_{q < p} \Set_q$. The functor $F_1 : C \to \Glob{C'_2}$ is then defined by $F_1(X)(p)(q) = X(q)$, and then $\Gamma_{C'_2} \circ F_1 : C \to C$ is the map $X \mapsto p \mapsto \prod_{q < p} X(q)$. Accordingly, $\Gamma_{C'_2}[F_1[C'_2]]$ is the $|P|$-indexed category given by $p \mapsto \prod_{q < p} \prod_{r < q} \Set_r$. And the map $F'_2 : C'_2 \to \Gamma_{C'_2}[F_1[C'_2]]$ is given by the obvious projections (that is, its aspect at $p$ maps $\prod_{r < p} \Set_r$ to $\prod_{q < p} \prod_{r < q} \Set_r$ in the obvious way, taking advantage of the transitivity of $<$).
+
+\subsubsection{Step-indexing example}
+Our last archetypal example of a geminal category would be $\Glob{\InteriorGeminal{T}}$, where $T$ is our archetypal example of an introspective theory constructed in \magicref{StepIndexingIntrosp}. However, with this particular introspective theory, we have the property that the geminal category homomorphism $\IntoSelf{T} : T \to \Glob{\InteriorGeminal{T}}$ is an isomorphism\footnote{Pedantically, we should say that there is a choice of strict introspective theory presenting $T$ for which this is an isomorphism}. Thus, this $\Glob{\InteriorGeminal{T}}$ is not very illustrative of the distinctive nature of geminal categories as differentiated from introspective theories in general. But it is useful as a reminder that every example of an introspective theory is also an example of a geminal category (via \magicref{IntrospAsGeminal})!
 
 \sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
-}
 
-\subsection{Co-free introspective theories and geminal categories}\label{CofreeGeminalSection}
+\subsection{Modal logic in geminal categories}
+Recall that every introspective theory $\langle T, C \rangle$ comes with an internal endolexfunctor $\Box_C : C \to C$ which interprets the modal logic GL, in that we have a canonical natural transformation $4 : \Box_C \to \Box_C \Box_C$, and furthermore $\Box_C$ has the \Loeb/ property with equality. \TODOinline{cites}
 
-We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
+As the theory of geminal categories is itself an introspective theory, we obtain on the underlying lexcategory of any geminal category an endolexfunctor with the same properties.
 
 \begin{lemma}\label{BoxCAlternativeDescriptionLemma}
 Let $\langle T, C \rangle$ be an introspective theory. Then the $T$-internal endolexfunctor $\Box_{C} : C \to C$ as described in \magicref{BoxDefn} matches the composition of the $T$-internal lexfunctors $\introN_C : C \to \Box_T C$ and $\Hom_{\introS[C]}(1, -) : \Box_T C \to C$.
@@ -498,6 +520,10 @@ The global aspect of the above diagram amounts to the following (keeping in mind
 
 Finally, we observe that this last diagram commutes as an instance of \magicref{InducedGlobalCommute}.
 \end{proof}
+
+\subsection{Co-free introspective theories and geminal categories}\label{CofreeGeminalSection}
+
+We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
 
 \begin{construction}
 Construing strict introspective theories as geminal categories via \magicref{IntrospAsGeminal} gives us a functor from the category of strict introspective theories to the category of geminal categories (or more generally, a functor from the category of $V$-internal strict introspective theories to the category of $V$-internal geminal categories, for any fixed lexcategory $V$). This functor has a right adjoint.
@@ -753,7 +779,7 @@ Keeping in mind \magicref{VerboseGeminalCatHomoDefn}, we see the conditions for 
 	\arrow["{\phi_0 \;  [\text{which is} \; (c_0, c_1) \mapsto (c_1, F_1(c_1))]}", from=1-3, to=3-3]
 \end{tikzcd}\]
 
-This diagram commutes just in case both of the following diagrams commute, which separately consider its $\Glob(C_1)$ and $\Glob(C_2)$ components:
+This diagram commutes just in case both of the following diagrams commute, which separately consider its $\Glob{C_1}$ and $\Glob{C_2}$ components:
 
 % https://q.uiver.app/#q=WzAsNCxbMCwwLCJLXzAiXSxbMiwwLCJDXzAgXFx0aW1lcyBcXEdsb2J7Q18xfSJdLFsyLDIsIlxcR2xvYntDXzF9Il0sWzAsMiwiXFxHbG9ie0tfMX0iXSxbMCwxLCJNID0gXFxsYW5nbGUgSiwgSl8xIFxccmFuZ2xlIl0sWzAsMywiUF8wIiwyXSxbMywyLCJcXEluZHVjZWRIb21ve0p9e0tfMX0iLDJdLFsxLDIsIihjXzAsIGNfMSkgXFxtYXBzdG8gY18xIl0sWzAsMiwiSl8xIiwxXV0=
 \[\begin{tikzcd}
