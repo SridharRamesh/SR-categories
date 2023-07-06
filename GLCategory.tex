@@ -482,9 +482,9 @@ Our last archetypal example of a geminal category would be $\Glob{\InteriorGemin
 \sTODOinline{Guide readers by showing how we have the axioms of GL modal logic in a geminal category, but do NOT have A |- []A. Weave our archetypal examples into here.}
 
 \subsection{Modal logic in geminal categories}
-Recall that every introspective theory $\langle T, C \rangle$ comes with an internal endolexfunctor $\Box_C : C \to C$ which interprets the modal logic GL, in that we have a canonical natural transformation $4 : \Box_C \to \Box_C \Box_C$, and furthermore $\Box_C$ has the \Loeb/ property with equality. \TODOinline{cites}
+Recall from \magicref{BoxOperatorDefn} and \magicref{ModalAxiom4Section} that every introspective theory $\langle T, C \rangle$ comes with an internal endolexfunctor $\Box_C = \introF(\Hom_C(1, -)) : C \to C$ which interprets the modal logic GL, in that we have a canonical natural transformation $4 : \Box_C \to \Box_C \Box_C$ induced by the natural transformation $\introN$.
 
-As the theory of geminal categories is itself an introspective theory, we obtain on the underlying lexcategory of any geminal category an endolexfunctor with the same properties.
+As the theory of geminal categories is itself an introspective theory, we thus obtain on the underlying lexcategory of any geminal category an endolexfunctor with the same properties. However, it may be tricky to see what this box operator directly amounts to for geminal categories (as a geminal category does not contain such structure as $\introF$, which we used when defining the box operators of an introspective theory). The following lemma will help us see how the box operator for geminal categories can be more directly defined in terms of geminal category structure.
 
 \begin{lemma}\label{BoxCAlternativeDescriptionLemma}
 Let $\langle T, C \rangle$ be an introspective theory. Then the $T$-internal endolexfunctor $\Box_{C} : C \to C$ as described in \magicref{BoxDefn} matches the composition of the $T$-internal lexfunctors $\introN_C : C \to \Box_T C$ and $\Hom_{\introS[C]}(1, -) : \Box_T C \to C$.
@@ -521,6 +521,14 @@ The global aspect of the above diagram amounts to the following (keeping in mind
 Finally, we observe that this last diagram commutes as an instance of \magicref{InducedGlobalCommute}.
 \end{proof}
 
+\begin{corollary}\label{GeminalS4}
+Interpreting \magicref{BoxCAlternativeDescriptionLemma} in the particular context of the introspective theory $\langle \GLCatTheory, \underlying{K} \rangle$ of \magicref{GLCatTheoryIsIntrosp}, we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
+\end{corollary}
+
+\begin{observation}
+For any geminal category $\langle C'_1, C'_2; F'_1, F'_2 \rangle$, the operator $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$ defined above has the \Loeb/ property with uniqueness (as defined at \magicref{LoebPropertyDefn}). This follows from the fact that, by \magicref{IntrospLoebAtEachAspect}, every aspect of every box operator on every introspective theory has the \Loeb/ property with uniqueness, and thus in particular, in the internal logic of the introspective theory $\langle \GLCatTheory, \underlying{K} \rangle$ of \magicref{GLCatTheoryIsIntrosp}, we have that $\Box_K$ has the \Loeb/ property with uniqueness (in more detail, the \Loeb/ property is satisfied with respect to the generic morphism of $\underlying{K}$ in its $\Mor(\underlying{K})$-aspect, thus establishing that it holds for all geminal categories with respect to all of their morphisms; uniqueness follows by a similar argument, or just by invoking \magicref{LoebPropertyLexUniqueness}).
+\end{observation}
+
 \subsection{Co-free introspective theories and geminal categories}\label{CofreeGeminalSection}
 
 We have above discussed how to create free introspective theories, which can be thought of as produced by a certain left adjoint functor\footnote{Specifically, left adjoint to the forgetful functor from strict introspective theories to strict lexcategories with a designated internal lexcategory.}. In this section, we discuss some right adjoint constructions, which can be thought of as \quote{co-free}.
@@ -537,9 +545,7 @@ We are tasked with showing that, for any geminal category $C'_1$, there is a sui
 
 We will first give the details of the construction, and then give the proof that it has the terminality property.
 
-Recall from \magicref{ModalAxiom4Section} that any introspective theory $\langle T, C \rangle$ comes with a $T$-internal endolexfunctor $\Box_C$, along with a $T$-internal natural transformation $4 : \Box_C \to \Box_C \Box_C$ built from $\introN$. From \magicref{BoxCAlternativeDescriptionLemma}, we see that this $\Box_C$ can be defined as the composition of $\introN_C$ and $\Hom_{\introS[C]}(1, -)$.
-
-Interpreting the above in the particular context of the introspective theory $\langle \GLCatTheory, \underlying{K} \rangle$ of \magicref{GLCatTheoryIsIntrosp}, we find that any geminal category $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
+Let $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ be an arbitrary geminal category. Via \magicref{GeminalS4}, this comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
 
 We will in the following write $\Box$ with no subscript to mean this $\Box_{C'_1}$.
 
