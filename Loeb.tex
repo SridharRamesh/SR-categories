@@ -15,10 +15,10 @@ The sole theorem in \magicref{NoSmallSelfIndexing} is the same theorem as proven
 \subsection{The \Loeb/ property in abstract}\label{LoebPropertySection}
 \begin{definition}\label{LoebPropertyDefn}
 Let $D$ be any category with a terminal object and let $\Box : D \to D$ be a terminal-object-preserving endofunctor on $D$. We say $\Box$ has the \defined{\Loeb/ property} if, for every object $\Omega$ of $D$ and every morphism $\loebNeg : \Box \Omega \to \Omega$, there exists a morphism $\omega : 1 \to \Omega$ making the following square commute:
-% https://q.uiver.app/?q=WzAsNCxbMCwxLCIxIl0sWzEsMCwiXFxCb3ggXFxPbWVnYSJdLFsxLDEsIlxcT21lZ2EiXSxbMCwwLCJcXEJveCAxIl0sWzEsMiwiXFxsb2ViTmVnIl0sWzAsMiwiXFxvbWVnYSIsMl0sWzMsMCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCJcXEJveCBcXG9tZWdhIl1d
-\[\begin{tikzcd}
-	{\Box 1} & {\Box \Omega} \\
-	1 & \Omega
+% https://q.uiver.app/#q=WzAsNCxbMCwxLCIxIl0sWzEsMCwiXFxCb3ggXFxPbWVnYSJdLFsxLDEsIlxcT21lZ2EiXSxbMCwwLCJcXEJveCAxIl0sWzEsMiwiXFxsb2ViTmVnIl0sWzAsMiwiXFxvbWVnYSIsMl0sWzMsMCwiIiwwLHsibGV2ZWwiOjIsInN0eWxlIjp7ImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMywxLCJcXEJveCBcXG9tZWdhIl1d
+\[\begin{tikzcd}[ampersand replacement=\&]
+	{\Box 1} \& {\Box \Omega} \\
+	1 \& \Omega
 	\arrow["\loebNeg", from=1-2, to=2-2]
 	\arrow["\omega"', from=2-1, to=2-2]
 	\arrow[Rightarrow, no head, from=1-1, to=2-1]

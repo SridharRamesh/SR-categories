@@ -15,12 +15,13 @@ Thus, we have three $T$-indexed lexcategories of note: $T$ itself (considered as
 
 Between these, we also have a cycle of $T$-indexed lexfunctors, like so:
 
+% https://q.uiver.app/#q=WzAsMyxbMiwwLCJULy0iXSxbMCwyLCJDIl0sWzQsMiwiXFxQc2h7Q30iXSxbMCwxLCJcXGludHJvRiIsMl0sWzEsMiwiYyBcXDsgXFxtYXBzdG8gXFxIb21fQygtLCBjKSIsMl0sWzIsMCwiUCBcXG1hcHN0byBQKDEpIiwyXV0=
 \[\begin{tikzcd}
 	&& {T/-} \\
 	\\
 	C &&&& {\Psh{C}}
 	\arrow["\introF"', from=1-3, to=3-1]
-	\arrow["{c \; \mapsto \Hom_{C}(-, c)}"', from=3-1, to=3-5]
+	\arrow["{c \; \mapsto \Hom_C(-, c)}"', from=3-1, to=3-5]
 	\arrow["{P \mapsto P(1)}"', from=3-5, to=1-3]
 \end{tikzcd}\]
 
@@ -175,7 +176,7 @@ In this way, we may note that any identity which holds of the $\Box_C$ operator 
 In the above, we discussed the locally introspective theory constructed by \magicref{KripkeLocallyIntrosp} from a transitive relation $<$. Recall that, in the particular case where $<$ is furthermore well-founded, we may impose cardinality constraints in a suitable fashion to turn this into an introspective theory (this being \magicref{KripkeIntrosp}). The nature of the $\Box$ operators on the introspective theory \magicref{KripkeIntrosp} will be essentially the same as for \magicref{KripkeLocallyIntrosp}, as the former is a sub-introspection of the latter\sTODOinline{Discuss the interaction between $\Box$ and sub-introspections}. Thus, again, these $\Box$ operators will match the traditional interpretation of the box operator in Kripke frames. In this way, we find that the logic of the $\Box_C$ operators in introspective theories $\langle T, C \rangle$ is no stronger than that of the $\Box$ operator in well-founded transitive Kripke frames, which is well known to correspond to the modal logic GL (given by K4 + \Loeb/'s theorem). In the next chapter, we will prove the remarkable fact that \Loeb/'s theorem (and thus all of GL) is validated in all introspective theories, so that the logic of the $\Box_C$ operator in introspective theories can be said to be precisely that of the modal logic GL.
 
 \subsubsection{Step-indexing example}\label{StepIndexingModal}
-Recall the locally introspective theory $\langle \Psh{\omega}, C \rangle$ from \magicref{StepIndexingLocallyIntrosp}, in which $\introS : \Psh{\Omega} \to \Glob{C}$ acts as an equivalence. It was also observed in that construction that $\Hom_C(1, \introS(-)) : \Psh{\omega} \to \Psh{\omega}$ acts as the operator $\Later$, such that $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$, for $P \in \Psh{\omega}$ and $n \in \omega$.
+Recall the locally introspective theory $\langle \Psh{\omega}, C \rangle$ from \magicref{StepIndexingLocallyIntrosp}, in which $\introS : \Psh{\omega} \to \Glob{C}$ acts as an equivalence. It was also observed in that construction that $\Hom_C(1, \introS(-)) : \Psh{\omega} \to \Psh{\omega}$ acts as the operator $\Later$, such that $\Later(P)(0) = 1$ and $\Later(P)(n + 1) = P(n)$, for $P \in \Psh{\omega}$ and $n \in \omega$.
 
 Thus, the operator $\Box_{\Psh{\omega}}$ here is precisely this operator $\Later$.
 
@@ -192,7 +193,7 @@ We have defined the $\Box$ operator in the context of locally introspective theo
 
 We have furthermore shown how each of these $\Box$ operators satisfies the rules of K4 modal logic.
 
-We have also seen that the traditional interpretation of K4 modal logic in Kripke frames is a special case of our $\Box$ operator for locally introspective theories (thus letting us conclude a tight correspondence between locally introspective theories and K4 modal logic).
+We have also seen that the traditional interpretation of K4 modal logic in transitive Kripke frames is a special case of our $\Box$ operator for locally introspective theories (thus letting us conclude a tight correspondence between locally introspective theories and K4 modal logic).
 
 The traditional provability operator on ZF-Finite (or just as well, on Peano Arithmetic) was also seen as a special case of our $\Box$ operator on an introspective theory. And the step-indexing operator considered in guarded recursion on the topos of trees was also seen as a special case of our $\Box$ operator on locally introspective or introspective theories.
 
