@@ -1,5 +1,10 @@
-\documentclass[12pt]{article}
+\documentclass{ucbthesis}
+%\documentclass[12pt]{article}
 % The above line really belongs in the prelude, but Overleaf gets a little weird about it not being in the main .tex file.
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+\include{UCBprelude}
 \include{prelude}
 
 \include{commands}
@@ -14,14 +19,12 @@
 
 \title{Introspective Theories and Geminal Categories}
 
-\author{
-  Sridhar Ramesh\\
-  \texttt{sramesh@berkeley.edu}
-}
+\author{Sridhar Ramesh}
 
-\pagenumbering{roman}
 \begin{document}
 \maketitle
+
+\copyrightpage
 
 \begin{abstract}
 In provability logic, a key principle is \Loeb/'s theorem, stating that if the provability of $P$ provably entails $P$, then $P$ itself is provable (in modal notation, $\Box P \vdash P$ has as a consequence $\vdash P$). This was first discovered in the follow-up work on \Goedel/'s incompleteness theorems, with \Goedel/'s results viewable as following from \Loeb/'s theorem. Later, it was also seen that the same formal pattern of \Loeb/'s theorem described certain fixed point constructions studied under the name of \quote{guarded recursion}.
@@ -35,13 +38,28 @@ We also explore free instances of our structure, which turn out to admit a tract
 % It should perhaps be noted that the core of the work in this document was originally developed during my time in graduate school from 2006 to 2013, but I did not write it up suitably at that time.
 \end{abstract}
 
-\newpage
+\begin{frontmatter}
+
+\begin{dedication}
+\null\vfil
+\begin{center}
+To Amma, who showed me why adding \textit{this} many \textit{that}s is the same as adding \textit{that} many \textit{this}es,
+\\\vspace{12pt}
+
+and Appa, who showed me what those $\sin$ and $\cos$ buttons on calculators mean.
+
+\end{center}
+\vfil\null
+\end{dedication}
+
 \tableofcontents
 
-\newpage
+\begin{acknowledgements}
+\end{acknowledgements}
+
+\end{frontmatter}
+
 \setcounter{section}{-1}
-\pagenumbering{arabic}
-\setcounter{page}{1}
 \fileinclude{Introduction}
 
 \fileinclude{Preliminaries}
@@ -58,8 +76,6 @@ We also explore free instances of our structure, which turn out to admit a tract
 
 % \fileinclude{Future}
 
-\newpage
-\section{Bibliography}
 \printbibliography
 
 \printindex
