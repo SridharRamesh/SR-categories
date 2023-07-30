@@ -33,8 +33,6 @@ Similarly, if we ever describe diagrams involving functors between categories as
 
 (That all said, nothing we do is higher-dimensional than 2-categorical, so everything could in theory be strictified in some fashion, if so desired.)
 
-Finally, we note that we often use the word \defined{slice} to refer to an object of a slice category, or say \quote{a slice over $c$} to refer to an object of a slice category $C/c$. This is idiosyncratic, others do not use the word \quote{slice} in this way, but this idiosyncratic habit nonetheless is present throughout the current document.
-
 \subsection{Indexed sets and \repsmallness/}
 We will now give a series of related definitions, concerning what are called indexed structures. The notions being described in this section are all old hat, none of them are newly invented by us, but we wish to pin them down with particular names to establish a language for easily talking about the things we wish to talk about in the rest of this document.
 
@@ -458,7 +456,7 @@ Even when we do not have local cartesian closure in full, note that when $A = 1$
 
 \sTODOinline{Get rid of stuff like the following about finite product categories, since we've decided to only focus for now  on the lex case of everything.}
 \begin{definition}
-In the same way, we can also speak of an \defined{indexed category with finite products}, and indeed, from any category with finite products $T$ (or even just a category with binary products), we obtain a $T$-indexed category with finite products by considering the functor $T//-$ which assigns to each object $t$ of $T$ the full subcategory of $T/t$ consisting of projection slices (slices given by the projection $: t \times s \to t$ for some object $s$ of $T$), and whose action on morphisms is again given by pullback (the pullback of a projection being another projection in a canonical way). We refer to this as the \defined{simple self-indexing} of $T$. Note that $T//t$ can also be thought of as the Kleisli category for the $t \times -$ comonad; that is, the objects of $T//t$ are the same as the objects of $T$, while a morphism $: s_1 \to s_2$ in $T//t$ is the same as a morphism $: t \times s_1 \to s_2$ in $T$, with suitable composition structure.
+In the same way, we can also speak of an \defined{indexed category with finite products}, and indeed, from any category with finite products $T$ (or even just a category with binary products), we obtain a $T$-indexed category with finite products by considering the functor $T//-$ which assigns to each object $t$ of $T$ the full subcategory of $T/t$ consisting of projections (slice category objects given by the projection $: t \times s \to t$ for some object $s$ of $T$), and whose action on morphisms is again given by pullback (the pullback of a projection being another projection in a canonical way). We refer to this as the \defined{simple self-indexing} of $T$. Note that $T//t$ can also be thought of as the Kleisli category for the $t \times -$ comonad; that is, the objects of $T//t$ are the same as the objects of $T$, while a morphism $: s_1 \to s_2$ in $T//t$ is the same as a morphism $: t \times s_1 \to s_2$ in $T$, with suitable composition structure.
 
 For a category with finite limits (or just pullbacks and binary products), the simple self-indexing can be thought of as a full subcategory of the self-indexing; specifically, the full subcategory whose objects in each aspect are restricted to those of $T$ itself.
 \end{definition}
@@ -598,7 +596,7 @@ Thus, we have the uniqueness to complement existence, and have established that 
 
 Finally, it is easy to verify that the pullback actions from $T/t$ to $T/s$ for arbitrary morphisms $m : s \to t$ correspond to the reindexings from $T[1 \to t]$ to $T[1 \to s]$ along $m$. \sTODOinline{Expand on this}
 
-This completes the proof that $T/-$ is the same as $T[1 \to -]$. Note that the same argument, restricted to only those slices which are projections, also shows that when $T$ is a category with finite products, the simple self-indexing $T//-$ is the same as $T[[1 \to -]]$.
+This completes the proof that $T/-$ is the same as $T[1 \to -]$. Note that the same argument, restricted to only those slice category objects which are projections, also shows that when $T$ is a category with finite products, the simple self-indexing $T//-$ is the same as $T[[1 \to -]]$.
 \end{proof}
 
 \begin{observation}\label{SelfIndexingIsFreeCorollary}
@@ -1204,7 +1202,7 @@ Given any pullback-preserving functor $f : A \to B$ between lexcategories, we ha
 \end{tikzcd}\]
 \end{construction}
 \openDetails
-Given any slice or commutative triangle in $A$, we may apply $f$ to it to get a slice or commutative triangle in $B$, and because finite limits in slice categories are computed via pullbacks, this action preserves those finite limits.
+Given any object or morphism of a slice category of $A$ (that is, a morphism or commutative triangle in $A$), we may apply $f$ to it to get an object or morphism of a slice category of $B$, and because finite limits in slice categories are computed via pullbacks, this action preserves those finite limits.
 \closeDetails
 
 \fileend
