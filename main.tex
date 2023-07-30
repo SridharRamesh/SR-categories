@@ -1,8 +1,14 @@
 \documentclass{ucbthesis}
 %\documentclass[12pt]{article}
 % The above line really belongs in the prelude, but Overleaf gets a little weird about it not being in the main .tex file.
-\setcounter{secnumdepth}{3}
-\setcounter{tocdepth}{3}
+
+% Because ucbthesis uses chapters as the top-level units, not sections, but I developed this using sections as the top-level units (because of the article documentclass), I use the following to quickly transition:
+\let\paragraph\subsubsection
+\let\subsubsection\subsection
+\let\subsection\section
+\let\section\chapter
+
+\pagestyle{headings}
 
 \include{UCBprelude}
 \include{prelude}
@@ -59,7 +65,8 @@ and Appa, who showed me what those $\sin$ and $\cos$ buttons on calculators mean
 
 \end{frontmatter}
 
-\setcounter{section}{-1}
+%\setcounter{section}{-1}
+\setcounter{chapter}{-1}
 \fileinclude{Introduction}
 
 \fileinclude{Preliminaries}
