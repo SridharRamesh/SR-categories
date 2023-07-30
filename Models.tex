@@ -268,7 +268,7 @@ In this section, we will develop an introspective theory construction which unif
 \begin{construction}\label{GeneralPresheafLocalIntrosp}
 Let $i : D \to S$ be an arbitrary functor between \setsmall/ categories $D$ and $S$.
 
-Furthermore, suppose given some subset of the morphisms of $S$ which is closed under composition on either side with arbitrary morphisms. That is, suppose given some bifunctor $\SpecialHom_S(-, =) : S^{op} \times S \to \Set$ along with an inclusion map from $\SpecialHom_S$ to $\Hom_S(-, =) : S^{op} \times S \to \Set$.\footnote{This construction would work just as well for any bifunctor $\SpecialHom_S$ with a map to $\Hom_S$. It is not actually necessary that this map be monic. We use the language of \quote{subfunctor} and \quote{inclusion} here just for linguistic convenience, and because our archetypal examples happen to be of this form.}
+Furthermore, suppose given some subset of the morphisms of $S$ which is closed under composition on either side with arbitrary morphisms. That is, suppose given some bifunctor $\SpecialHom_S : S^{op} \times S \to \Set$ along with an inclusion map from $\SpecialHom_S$ to $\Hom_S : S^{op} \times S \to \Set$.\footnote{This construction would work just as well for any bifunctor $\SpecialHom_S$ with a map to $\Hom_S$. It is not actually necessary that this map be monic. We use the language of \quote{subfunctor} and \quote{inclusion} here just for linguistic convenience, and because our archetypal examples happen to be of this form.}
 
 By currying, we may read this $\SpecialHom_S$ as a functor from $S$ to $\Psh{S}$ which is a subfunctor of the Yoneda embedding. As the Yoneda embedding exhibits $\Psh{S}$ as the free cocompletion of $S$ under \setsmall/ colimits, we can uniquely extend this subfunctor of the Yoneda embedding to an endofunctor $\Prior$ on $\Psh{S}$ which is a subfunctor of the identity and which preserves \setsmall/ colimits. By the adjoint functor theorem, this $\Prior$ is a left adjoint. \sTODOinline{Discuss this Yoneda extension process in preliminaries; it can alternatively be described as left Kan extension along the Yoneda embedding. Is it actually true that we should say \quote{subfunctor of the identity} here, or should we just say that we have a map into the identity, not necessarily monic?}
 
@@ -308,9 +308,9 @@ Unfortunately, this \magicref{GeneralPresheafLocalIntrosp} does not in general y
 
 But by passing to suitable full sublexcategories of $\Psh{S}$ and $\Psh{D}/-$ a la \magicref{SubTPreIntrosp} and \magicref{SubCPreIntrosp}, we may hope to obtain an introspective theory, and indeed we shall always be able to do so in a convenient way whenever $\SpecialHom$ satisfies a certain well-foundedness condition. The details of this process are described in the next sections.
 
-\subsubsection{Presheaves with variable cardinality constraints (aka, ramps)}
+\subsubsection{Presheaves with varying cardinality constraints (aka, ramps)}
 
-The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}.
+The details in this section may seem like a lot. Bear with me! We are simply abstracting the same kind of cardinality constraints used in \magicref{StepIndexingIntrosp} and \magicref{KripkeIntrosp}. Note that this amounts to a generalization of the construction from \autocite{hofmann1999lifting}, to allow for constraints which vary over the objects of the indexing category rather than remaining constant.
 
 \sTODOinline{Improve notation and readability throughout the following.}
 
