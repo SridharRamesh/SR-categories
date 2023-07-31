@@ -1201,8 +1201,6 @@ Given any pullback-preserving functor $f : A \to B$ between lexcategories, we ha
 	\arrow["f", shorten <=3pt, Rightarrow, from=0, to=1-3]
 \end{tikzcd}\]
 \end{construction}
-\openDetails
-Given any object or morphism of a slice category of $A$ (that is, a morphism or commutative triangle in $A$), we may apply $f$ to it to get an object or morphism of a slice category of $B$, and because finite limits in slice categories are computed via pullbacks, this action preserves those finite limits.
-\closeDetails
+That is, given any object or morphism of a slice category $A/a$, we may apply $f$ to it (considered as a morphism or commutative triangle in $A$) to get an object or morphism of the slice category $B/f(a)$. And because finite limits in slice categories are computed via pullbacks, this action preserves those finite limits.
 
 \fileend

@@ -1,6 +1,6 @@
 \filestart
 
-\section{Geminal categories: The free introspective theory}\label{GeminalChapter}
+\section{Geminal categories}\label{GeminalChapter}
 \subsection{Preview}
 In this chapter, we build the machinery to give an explicit yet tractably compact description of the initial introspective theory (which we call the theory of \quote{geminal categories}). This is the key result of this chapter.
 
@@ -277,7 +277,7 @@ This concludes the definition of a geminal category internal to $C_0$.
 
 By a \defined{geminal category} simpliciter, we mean of course the case where $C_0 = \Set$. (Note that in this case, $C'_1$ can be identified with its global aspect $C_1$, in the same way that any structure internal to $\Set$ can be identified with its global aspect, as the global elements functor from $\Set$ to $\Set$ is the identity.). We wrote out here the definition for general $C_0$, instead of specifically for $C_0 = \Set$, in order to emphasize certain symmetries in this definition.
 
-When being fully explicit, we reference a geminal category by enumerating $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $\underlying{K}$ to refer to its underlying lexcategory $C'_1$.
+When being fully explicit, we reference a geminal category by enumerating its components $\langle C'_1, C'_2, C'_3, \ldots; F'_1, F'_2, F'_3, \ldots \rangle$. Given such a geminal category $K$, we may write $\underlying{K}$ to refer to its underlying lexcategory $C'_1$.
 
 All aforementioned structure apart from $C_0$ itself has been given as $i$-tuply internal to $C_0$ for some $i > 0$. Thus, all of this structure is indeed given by diagrams within $C_0$.
 
@@ -538,13 +538,14 @@ Construing strict introspective theories as geminal categories via \magicref{Int
 
 As this works for arbitrary lexcategories $V$, this right adjoint admits an explicit description, as a purely lex construction.
 \end{construction}
-\openDetails
+
 For linguistic convenience, we shall in the following take $V$ as $\Set$, but it will be clear that the same explicit construction works for any ambient lexcategory $V$.
 
 We are tasked with showing that, for any geminal category $C'_1$, there is a suitably terminal strict introspective theory with a geminal category homomorphism to $C'_1$.
 
 We will first give the details of the construction, and then give the proof that it has the terminality property.
 
+\openDetails
 Let $C'_1 = \langle C'_1, C'_2; F'_1, F'_2 \rangle$ be an arbitrary geminal category. Via \magicref{GeminalS4}, this comes with an endolexfunctor $\Box_{C'_1} = \Gamma_{C'_2} \circ F'_1: C'_1 \to C'_1$, along with a natural transformation $4 : \Box_{C'_1} \to \Box_{C'_1} \Box_{C'_1}$ corresponding to the action of $F'_2$.
 
 We will in the following write $\Box$ with no subscript to mean this $\Box_{C'_1}$.
@@ -754,7 +755,7 @@ Consider the functor from the category of geminal categories to the category of 
 
 In other words, for any strict lexcategory $C_0$ with an internal geminal category $\gamma$, there is a geminal category $G$ equipped with a strict lexfunctor $H : \underlying{G} \to C_0$ satisfying $H[\InteriorGeminal{G}] = \gamma$, which is terminal among all so equipped geminal categories (in the sense that for any other such geminal category $K$ with strict lexfunctor $J : \underlying{K} \to C_0$ satisfying $J[\InteriorGeminal{K}] = \gamma$, there is a unique geminal category homomorphism $M : K \to G$ such that $H \circ M = J$).
 
-This co-free $G$ admits an explicit description. Indeed, just as before, this explicit construction can be carried out internal to an arbitrary ambient lexcategory $V$ (with $C_0$ as a $V$-internal lexcategory and $\gamma$ as a $\Glob{C_0}$-internal geminal category, and constructing from these a terminal $V$-internal geminal category $G$ with a $V$-internal lexfunctor $H : \underlying{G} \to C_0$ such that $H[\InteriorGeminal(G)] = \gamma$).
+This co-free $G$ admits an explicit description. Indeed, just as before, this explicit construction can be carried out internal to an arbitrary ambient lexcategory $V$ (with $C_0$ as a $V$-internal lexcategory and $\gamma$ as a $\Glob{C_0}$-internal geminal category, and constructing from these a terminal $V$-internal geminal category $G$ with a $V$-internal lexfunctor $H : \underlying{G} \to C_0$ such that $H[\InteriorGeminal{G}] = \gamma$).
 \end{construction}
 \openDetails
 For convenience, we will speak as though $C_0$ is internal to $\Set$, but the following construction would work just as well were $C_0$ internal to any ambient lexcategory.

@@ -133,7 +133,7 @@ Now let us define a category whose objects are the $\Sigma_1$ formulae with one 
 
 Given two such objects $\phi(n)$ and $\psi(m)$, we take as morphisms between these any $\Sigma_1$ formula $F(n, m)$ which provably acts as the graph of a function between the corresponding classes. That is, such that both $\forall n, m . F(n, m) \implies (\phi(n) \wedge \psi(m))$ and $\forall n . \phi(n) \implies \exists! m . F(n, m)$ are provable.
 
-Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case $\forall n, m . F(n, m) \biimplies G(n, m)$ is provable. 
+Two such morphisms $F(n, m)$ and $G(n, m)$ are considered equal just in case the bi-implication $\forall n, m . F(n, m) \biimplies G(n, m)$ is provable. 
 
 Finally, morphisms compose in the expected way for graphs of functions; that is, the composition of $F(n, p)$ with $G(p, m)$ is given by $(G \circ F)(n, m) = \exists p (F(n, p) \wedge G(p, m))$.
 
@@ -207,7 +207,7 @@ Summarizing, we get an introspective theory $\langle \ZfinSigma, \InnerZfin, \in
 Phew! What a long walk it was to get to describing that example! All the better, then, that we have formalized introspective theories so abstractly, and can work with them without having to fuss about such concrete details as in that example. But this is indeed the archetypal example it will be best to keep in mind to guide the reader's intuition throughout all further discussion.
 
 \begin{warningenv}\label{ZFFiniteExampleWarning}
-While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$. As a check of their understanding, the reader is encouraged to think about why this is.
+While we have above constructed introspective theories $\langle \ZfinSigma, \InnerZfinSigma \rangle$ and $\langle \ZfinSigma, \InnerZfin \rangle$, the reader should be cautioned that there is no natural introspective theory $\langle \Zfin, \InnerZfin \rangle$. As a check of their understanding, the reader is encouraged to think about why this is. Later on, we will characterize the kind of structure which $\langle \Zfin, \InnerZfin \rangle$ has, which is that of a \quote{geminal category} as defined in \magicref{GeminalChapter}.
 \end{warningenv}
 
 \subsubsection{Examples based on presheaf categories}
