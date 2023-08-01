@@ -103,7 +103,7 @@ Throughout the following, we say an initial object in a category of the form $\L
 By the 2-category $\initMod{T}$, we mean $\LexCat$ with its objects restricted to just those lexcategories with initial internal models of $T$, and its $1$-cells restricted to just those lexfunctors which preserve initial models of $T$. (The $2$-cells remain unchanged.)
 
 \begin{theorem}\label{InitialModelWithInitialModel}
-For every \setsmall/ lexcategory $Th$, there is an initial object within $\initMod{Th}$.
+$\initMod{Th}$ has an initial object, whenever $Th$ is a \setsmall/ lexcategory.
 \end{theorem}
 \begin{proof}
 This is in exactly the same way that we have familiar constructions such as of the initial NNO-topos, the initial arithmetic universe, the initial lexcategory with countable products, etc.
@@ -114,7 +114,7 @@ In more detail, the category of strict lexcategories with internal initial model
 \begin{construction}\label{IntrospFromSelfInitializing}
 If $Th$ is a self-initializing theory, then $\initMod{Th}$ is left comma-stable within $\LexCat$, via \magicref{InitialModelCommaStable}. Furthermore, it has an initial object $T$ via \magicref{InitialModelWithInitialModel}. This $T$ by definition has an initial internal model of $Th$; that is, there is an initial $f \in \LexCat(Th, T)$. Furthermore, since $Th$ is self-initializing, it contains an internal category $C$ such that $\Glob{f[C]}$ itself is an object of $\initMod{Th}$.
 
-We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, f[C], \introS, \introN \rangle$ such that $\introS$ is a map in $\initMod{Th}$.
+We can thus invoke \magicref{SpecialInitialIntrosp} to obtain a unique introspective theory $\langle T, \allowbreak f[C], \allowbreak \introS, \allowbreak \introN \rangle$ such that $\introS$ is a map in $\initMod{Th}$.
 \end{construction}
 
 There is an extension of the above construction to super-initializing theories. However, it is a bit trickier. The key issue is to construct, for a super-initializing lexfunctor $i : Th \to Th'$, a lexcategory which captures simultaneously the properties which are shared by initial models of $Th$ and by initial models of $Th'$. We sketch out the construction as follows:

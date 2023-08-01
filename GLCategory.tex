@@ -78,11 +78,11 @@ That is to say, $\InducedHomo{\Gamma_{B'}}{S} : \Glob{S} \to \Glob{\Gamma_{B'}[S
 If $F : C \to D$ is a strict lexfunctor, and $Q$ is a $C$-internal lexcategory, then $F \circ \Gamma_Q = \Gamma_{F(Q)} \circ \InducedHomo{F}{Q}$. That is to say, the following outer diagram commutes, as evidenced by the inner chase of an arbitrary datum $m$ in $\Glob{Q}$:
 
 % https://q.uiver.app/#q=WzAsOCxbMCwwLCJcXEdsb2J7UX0iXSxbMywwLCJcXEdsb2J7RihRKX0iXSxbMCwzLCJDIl0sWzMsMywiRCJdLFsxLDEsIm0iXSxbMiwxLCJGKG0pIl0sWzEsMiwiXFxIb21fUSgxLCBtKSJdLFsyLDIsIkYoXFxIb21fUSgxLCBtKSkgPSBcXEhvbV97RihRKX0oMSwgRihtKSkiXSxbMCwxLCJcXEluZHVjZWRIb21ve0Z9e1F9Il0sWzAsMiwiXFxHYW1tYV9RIiwyXSxbMSwzLCJcXEdhbW1hX3tGKFEpfSJdLFs0LDYsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbNCw1LCIiLDAseyJzdHlsZSI6eyJ0YWlsIjp7Im5hbWUiOiJtYXBzIHRvIn19fV0sWzUsNywiIiwwLHsic3R5bGUiOnsidGFpbCI6eyJuYW1lIjoibWFwcyB0byJ9fX1dLFs2LDcsIiIsMix7InN0eWxlIjp7InRhaWwiOnsibmFtZSI6Im1hcHMgdG8ifX19XSxbMiwzLCJGIiwyXV0=
-\[\begin{tikzcd}
-	{\Glob{Q}} &&& {\Glob{F(Q)}} \\
-	& m & {F(m)} \\
-	& {\Hom_Q(1, m)} & {F(\Hom_Q(1, m)) = \Hom_{F(Q)}(1, F(m))} \\
-	C &&& D
+\[\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+	{\Glob{Q}} \&\&\& {\Glob{F(Q)}} \\
+	\& m \& {F(m)} \\
+	\& {\Hom_Q(1, m)} \& {F(\Hom_Q(1, m)) = \Hom_{F(Q)}(1, F(m))} \\
+	C \&\&\& D
 	\arrow["{\InducedHomo{F}{Q}}", from=1-1, to=1-4]
 	\arrow["{\Gamma_Q}"', from=1-1, to=4-1]
 	\arrow["{\Gamma_{F(Q)}}", from=1-4, to=4-4]
@@ -858,7 +858,7 @@ And as for the final commutativity condition, this follows like so:
 	\arrow["{\InducedHomo{J_1}{K_1}}"', curve={height=30pt}, from=3-1, to=3-6]
 \end{tikzcd}\]
 
-In the above commutative diagram, the top equation is our definition $J_1 = \InducedHomo{J}{K_1} \circ P_0$, and the bottom equation follows from this definition as well. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P_1] = F_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \sTODOinline{Make sure this all makes sense.}
+In the above commutative diagram, the top equation is our definition of $J_1$ as $\InducedHomo{J}{K_1} \circ P_0$, and the bottom equation follows from this definition as well. The left square commutes as part of the definition of $K$ being a geminal category, and the right square commutes because $J[P_1] = F_1$ (which was part of our presumption that $J[\InteriorGeminal{K}] = \gamma$). \sTODOinline{Make sure this all makes sense.}
 
 This completes the proof of the terminality property of $G$.
 \end{proof}
