@@ -1,6 +1,6 @@
 % Commands defined by Sridhar for this document
 
-% Remember: \newtheorem{command name}{displayed name}[parent counter] makes a theorem whose counter is subordinate to counter, but \newtheorem{command name}[shared counter]{displayed name} makes a theorem which shares the counter. Also remember that there is automatically a counter available named "section".
+% Remember: \newtheorem{command name}{displayed name}[parent counter] makes a theorem whose counter is subordinate to counter, but \newtheorem{command name}[shared counter]{displayed name} makes a theorem which shares the counter. Also remember that there is automatically a counter available named "section" and similarly a counter available named "chapter".
 
 % Playing around
 \newtheoremstyle{envstyle}
@@ -15,7 +15,7 @@
 
 %\theoremstyle{plain}
 \theoremstyle{envstyle}
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[\topLevelCounter]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{example}[theorem]{Example}
