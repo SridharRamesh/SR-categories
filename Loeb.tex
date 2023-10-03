@@ -117,10 +117,10 @@ In the above proof, we used \magicref{LoebTransfer} to transfer the \Loeb/ prope
 \end{remark}
 }
 
-\magicref{LoebPropertyLexUniqueness} is only a special case of a much broader and important theorem which we now discuss.
+\magicref{LoebPropertyLexUniqueness} is only a special case of a much broader and important theorem which we now discuss. For convenience of exposition, we take $\Box$ in the following to be a lexfunctor, though this can be relaxed.
 
 \begin{theorem}\label{CoalgToAlg}
-Let $D$ be any lexcategory and let $\Box : D \to D$ be any terminal-object-preserving functor. Let $E$ be any \repsmall/ $D$-indexed category. (Note that $\Box$ acting on $E$ induces also another \repsmall/ $D$-indexed category $\Box E$ \sTODOinline{Note in preliminaries how the choice of internal category presenting these indexed categories doesn't matter, as $\Box$ acts on the internal functors between these too}, as well as a functor from each $d$-defined aspect of $E$ to the $(\Box d)$-defined aspect of $\Box E$, for $d \in D$. In particular, as $\Box$ is terminal-object-preserving, $\Box$ acts as a functor from the global aspect of $E$ to the global aspect of $\Box E$.) 
+Let $D$ be any lexcategory and let $\Box : D \to D$ be a lexfunctor. Let $E$ be any \repsmall/ $D$-indexed category. (Note that $\Box$ acting on $E$ induces also another \repsmall/\sTODOinline{Is this \repsmall/ when $\Box$ is not lex? It may be that we actually are using some kind of left Kan extension here, and the result will not be \repsmall/ in such cases. At any rate, it seems the better thing to do is to return to how I originally framed this from line 312 in commit commit 375fa9c.} $D$-indexed category $\Box E$ \sTODOinline{Note in preliminaries how the choice of internal category presenting these indexed categories doesn't matter, as $\Box$ acts on the internal functors between these too}, as well as a functor from each $d$-defined aspect of $E$ to the $(\Box d)$-defined aspect of $\Box E$, for $d \in D$. In particular, as $\Box$ is terminal-object-preserving, $\Box$ acts as a functor from the global aspect of $E$ to the global aspect of $\Box E$.) 
 
 Suppose also given a $D$-indexed functor $f : \Box E \to E$, and let the endofunctor $F$ on the global aspect of $E$ be given by first applying $\Box$ to arrive in the global aspect of $\Box E$, then applying $f$ to arrive back in the global aspect of $E$.
 
@@ -134,9 +134,9 @@ The hylomorphisms from $W$ to $M$ are thus the same as the fixed points given by
 
 \sTODOinline{The above theorem \magicref{CoalgToAlg} generalizes a little further than we've stated it. It is not quite necessary that $E$ be \repsmall/ overall, nor that $D$ have any limits beyond a terminal object. It would suffice for the hom-sets between globally defined objects of $E$ to be \repsmall/ (this is the structure of an enriched category). But it seems not worth the extra hassle of explaining what $\Box E$ means in that situation right now, and every use we will make of this is anyway covered by the description above.}
 
-We now demonstrate how \magicref{LoebPropertyLexUniqueness} can be seen as a special case of \magicref{CoalgToAlg}:
+We now demonstrate how \magicref{LoebPropertyLexUniqueness} can be seen as a special case of \magicref{CoalgToAlg} (at least, in the case where $\Box$ is a lexfunctor):
 \begin{corollary}\label{LoebPropertyLexUniquenessRedux}
-Let $D$ be any lexcategory\sTODOinline{Or any category with terminal object and equalizers, but for now we will go ahead and presume binary products as well for convenience}, and let $\Box : D \to D$ be a terminal-object-preserving endofunctor on $D$. If $\Box$ has the \Loeb/ property, then it furthermore has the \Loeb/ property with uniqueness.
+Let $D$ be any lexcategory\sTODOinline{Or any category with terminal object and equalizers, but for now we will go ahead and presume binary products as well for convenience}, and let $\Box : D \to D$ be a lexfunctor. If $\Box$ has the \Loeb/ property, then it furthermore has the \Loeb/ property with uniqueness.
 \end{corollary}
 \begin{proof}
 Let $E$ be an arbitrary object of $D$ (thus, a \repsmall/ $D$-indexed set) and let us construe this also as a \repsmall/ $D$-indexed discrete category. Let $f : \Box E \to E$ be an arbitrary map in $D$, and as above, let us take $F : \Hom_D(1, E) \to \Hom_D(1, E)$ to be given as the composition of $\Box : \Hom_D(1, E) \to \Hom_D(1, \Box E)$ with $f \circ - : \Hom_D(1, \Box E) \to \Hom_D(1, E)$.
@@ -427,7 +427,7 @@ By \magicref{SliceBoxIsAspectBox}, each aspect of any of these $\Box$ functors i
 The above is our key result. The fact that the simple definition of introspective theories is enough to lead to their satisfying the \Loeb/ property with uniqueness motivates much of our interest in the concept of introspective theories.
 
 \begin{observation}
-The fixed points produced by \magicref{IntrospTyConFixedPoints} are furthermore unique up to canonical isomorphism, by combining \magicref{IntrospLoeb} with \magicref{InitialTerminalCoincidence}.
+The fixed points produced by \magicref{IntrospTyConFixedPoints} are furthermore unique up to canonical isomorphism, by combining \magicref{IntrospLoeb} with \magicref{InitialTerminalCoincidence}. \sTODOinline{Give more details}
 \end{observation}
 
 \subsection{The self-indexing cannot be \repsmall/, except trivially}\label{NoSmallSelfIndexing}
@@ -479,7 +479,7 @@ The global aspect of $C'$ here is a certain full sublexcategory of $\Set^{|P|}$ 
 
 In this context, the \Loeb/ property with uniqueness which we are given by \magicref{IntrospLoeb} tells us that we may define functions by transfinite recursion: Given at each $x \in P$ a function $g$ from $\prod_{y < x} F(y)$ to $F(x)$, we obtain a uniquely determined function $G$ whose domain is $P$ such that each $G(x)$ is given by $g$ applied to the values of $G$ at $y < x$.
 
-In the particular case where $F$ is subterminal representing an proposition (that is, an arbitrary subset of $|P|$), this amounts to the principle of transfinite induction or \quote{strong induction}: It tells us that a proposition holds of all of $P$ so long as it holds of any particular $x \in P$ once it holds of all $y < x$.
+In the particular case where $F$ is subterminal representing a proposition (that is, an arbitrary subset of $|P|$), this amounts to the principle of transfinite induction or \quote{strong induction}: It tells us that a proposition holds of all of $P$ so long as it holds of any particular $x \in P$ once it holds of all $y < x$.
 
 Of course, these principles of transfinite recursion/induction over well-founded transitive relations are well-known and easy to establish directly, without all the machinery of introspective theories. (The induction principle here is after all the very defining characteristic of well-foundedness.) But it is remarkable to observe how these phenomena are in this way unified with the phenomena of \Loeb/'s theorem in traditional logic (as discussed at \magicref{ZFFiniteLoebDiscussion}), not just in the form of the \Loeb/ property result but in the particular derivation of it as well.
 
