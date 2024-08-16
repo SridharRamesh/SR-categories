@@ -1043,15 +1043,17 @@ That $g$ is eso follows from the fact that $h = g \circ f$ is eso when acting on
 
 Since $f$ is eso and $h = g \circ f$, to show that $g$ is full, it suffices to show that for every $c_1, c_2 \in C$, each $m \in \Hom_D(h(c_1), h(c_2))$ is given by $g$ applied to some morphism in $\Hom_{C[M^{-1}]}(f(c_1), f(c_2))$. Begin by considering $\langle \id, m \rangle : h(c_1) \to h(c_1) \times h(c_2)$, as in the following commutative diagram:
 
-% https://q.uiver.app/?q=WzAsNCxbMiwwLCJoKGNfMSkiXSxbMiwxLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwxLCJoKGNfMSkiXSxbNCwxLCJoKGNfMikiXSxbMSwyLCJoKFxccGlfe2NfMX0pIl0sWzEsMywiaChcXHBpX3tjXzJ9KSIsMl0sWzAsMSwiXFxsYW5nbGUgXFxpZCwgbSBcXHJhbmdsZSIsMl0sWzAsMywibSJdLFswLDIsIlxcaWQiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dXQ==
+% For this diagram to commute, we must take id as only pointing in one direction. Similarly for the diagram two below it.
+
+% https://q.uiver.app/#q=WzAsNCxbMiwwLCJoKGNfMSkiXSxbMiwxLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwxLCJoKGNfMSkiXSxbNCwxLCJoKGNfMikiXSxbMSwyLCJoKFxccGlfe2NfMX0pIl0sWzEsMywiaChcXHBpX3tjXzJ9KSIsMl0sWzAsMSwiXFxsYW5nbGUgXFxpZCwgbSBcXHJhbmdsZSIsMl0sWzAsMywibSJdLFswLDIsIlxcaWQiLDFdXQ==
 \[\begin{tikzcd}
 	&& {h(c_1)} \\
 	{h(c_1)} && {h(c_1) \times h(c_2) = h(c_1 \times c_2)} && {h(c_2)}
-	\arrow["{h(\pi_{c_1})}", from=2-3, to=2-1]
-	\arrow["{h(\pi_{c_2})}"', from=2-3, to=2-5]
+	\arrow["\id"{description}, from=1-3, to=2-1]
 	\arrow["{\langle \id, m \rangle}"', from=1-3, to=2-3]
 	\arrow["m", from=1-3, to=2-5]
-	\arrow["\id"{description}, Rightarrow, no head, from=1-3, to=2-1]
+	\arrow["{h(\pi_{c_1})}", from=2-3, to=2-1]
+	\arrow["{h(\pi_{c_2})}"', from=2-3, to=2-5]
 \end{tikzcd}\]
 
 Here, $\pi_{c_1}$ and $\pi_{c_2}$ are the projections out of $c_1 \times c_2$, and we keep in mind that as a lexfunctor, $h$ preserves this product cone.
@@ -1069,15 +1071,15 @@ Next, by presumption, this $\langle \id, m \rangle$ is isomorphic, as an object 
 \end{tikzcd}\]
 
 Putting these together, we find that $j = h(n) ; h(\pi_{c_1}) = h(n ; \pi_{c_1})$, as in the following commutative diagram:
-% https://q.uiver.app/?q=WzAsNCxbMSwwLCJoKGNfMSkiXSxbMSwyLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwwLCJoKFxcZG9tKG4pKSJdLFsyLDAsImgoY18xKSJdLFswLDEsIlxcbGFuZ2xlIFxcaWQsIG0gXFxyYW5nbGUiLDFdLFsyLDEsImgobikiLDFdLFsyLDAsImoiLDFdLFswLDMsIlxcaWQiLDEseyJsZXZlbCI6Miwic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxLDMsImgoXFxwaV97Y18xfSkiLDJdXQ==
+% https://q.uiver.app/#q=WzAsNCxbMSwwLCJoKGNfMSkiXSxbMSwyLCJoKGNfMSkgXFx0aW1lcyBoKGNfMikgPSBoKGNfMSBcXHRpbWVzIGNfMikiXSxbMCwwLCJoKFxcZG9tKG4pKSJdLFsyLDAsImgoY18xKSJdLFswLDEsIlxcbGFuZ2xlIFxcaWQsIG0gXFxyYW5nbGUiLDFdLFsyLDEsImgobikiLDFdLFsyLDAsImoiLDFdLFswLDMsIlxcaWQiLDFdLFsxLDMsImgoXFxwaV97Y18xfSkiLDJdXQ==
 \[\begin{tikzcd}
 	{h(\dom(n))} & {h(c_1)} & {h(c_1)} \\
 	\\
 	& {h(c_1) \times h(c_2) = h(c_1 \times c_2)}
-	\arrow["{\langle \id, m \rangle}"{description}, from=1-2, to=3-2]
-	\arrow["{h(n)}"{description}, from=1-1, to=3-2]
 	\arrow["j"{description}, from=1-1, to=1-2]
-	\arrow["\id"{description}, Rightarrow, no head, from=1-2, to=1-3]
+	\arrow["{h(n)}"{description}, from=1-1, to=3-2]
+	\arrow["\id"{description}, from=1-2, to=1-3]
+	\arrow["{\langle \id, m \rangle}"{description}, from=1-2, to=3-2]
 	\arrow["{h(\pi_{c_1})}"', from=3-2, to=1-3]
 \end{tikzcd}\]
 
